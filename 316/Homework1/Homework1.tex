@@ -46,74 +46,122 @@
 \begin{enumerate}
 
 \newcommand{\qd}{\dot{q}}
+\newcommand{\qdd}{\ddot{q}}
 \newcommand{\Qd}{\dot{Q}}
 
-    \item \begin{problem}
-        Suppose we have a mechanical system with $n$ degrees of freedom.  Let $q_1(t), q_2(t), \ldots, q_n(t)$ be its generalized coordinates.  Now consider a time-dependent coordinate transformation
-        $$Q_i = Q_i(t, q_1, q_2, \ldots, q_n) \quad\quad i = 1, 2, \ldots, n.$$
-        Show that if $q_i(t)$ solve a system of Euler-Lagrange equations involving a Lagrangian $L(t, q_i, \qd_i)$, then $Q_i(t)$ solves the Euler-Lagrange equations involving $L(t, Q_i, \Qd_i)$ provided the time-dependent coordinate transformation fulfills some minimal standard of good behavior.  Specify this ``minimal standard of good behavior.''
-    \end{problem}
+	\item \begin{problem}
+		Suppose we have a mechanical system with $n$ degrees of freedom.  Let $q_1(t), q_2(t), \ldots, q_n(t)$ be its generalized coordinates.  Now consider a time-dependent coordinate transformation
+		$$Q_i = Q_i(t, q_1, q_2, \ldots, q_n) \quad\quad i = 1, 2, \ldots, n.$$
+		Show that if $q_i(t)$ solves a system of Euler-Lagrange equations involving a Lagrangian $L(t, q_i, \qd_i)$, then $Q_i(t)$ solves the Euler-Lagrange equations involving $L(t, Q_i, \Qd_i)$ provided the time-dependent coordinate transformation fulfills some minimal standard of good behavior.  Specify this ``minimal standard of good behavior.''
+	\end{problem}
     
-    \begin{solution}
-        Suppose that
-        \begin{equation} \label{given}
-        \pder{L}{q_i} - \der{}{t} \pder{L}{\qd_i} = 0;
-        \end{equation}
-        that is, $q_i(t)$ solve a system of Euler-Lagrange equations.  We want to show that
-        \begin{equation} \label{show}
-        \pder{L}{Q_i} - \der{}{t} \pder{L}{\Qd_i} = 0.
-        \end{equation}
+	\begin{solution}
+		Suppose that
+		\begin{equation} \label{given}
+			\pder{L}{q_i} - \der{}{t} \pder{L}{\qd_i} = 0;
+		\end{equation}
+		that is, $q_i(t)$ solve a system of Euler-Lagrange equations.  We want to show that
+		\begin{equation} \label{show}
+			\pder{L}{Q_i} - \der{}{t} \pder{L}{\Qd_i} = 0.
+		\end{equation}
         
-	Beginning with the first term of~\refeq{show}, we can use the chain rule to write
-	\begin{equation} \label{showleft}
-	\pder{L}{Q_i} = \pder{L}{q_j} \pder{q_j}{Q_i} + \pder{L}{\qd_j} \pder{\qd_j}{Q_i}.
-	\end{equation}
-	However, $\partial q_j / \partial Q_i$ and $\partial \qd_j / \partial Q_i$ are only guaranteed to exist if there is an inverse transformation
-	\begin{equation}
-	q_i = q_i(t, Q_1, Q_2, \ldots, Q_n) \quad\quad i = 1, 2, \ldots, n.
-	\end{equation}
-	This is only possible if there is a one-to-one correspondence between $q_i(t)$ and $Q_i(t)$, which is the ``minimal standard of good behavior'' for the transformation.
+		Beginning with the first term of~\refeq{given}, we can use the chain rule for $L(t, Q_i, \Qd_i)$ to write
+		\begin{equation} \label{givenleft}
+			\pder{L}{q_i} = \pder{L}{Q_j} \pder{Q_j}{q_i} + \pder{L}{\Qd_j} \pder{\Qd_j}{q_i},
+		\end{equation}
+%		provided $Q_j$ and $\Qd_j$ are continuously differentiable with respect to $q_1, q_2, \ldots, q_n$.
+		provided there exists an inverse transformation
+		\begin{equation}
+			q_i = q_i(t, Q_1, Q_2, \ldots, Q_n) \quad\quad i = 1, 2, \ldots, n
+		\end{equation}
+		that allows us to write $L(t, q_i, \qd_i)$ in terms of $t$, $Q_i$, and $\Qd_i$.  This is only possible if there is a one-to-one correspondence between $q_i(t)$ and $Q_i(t)$, which is the ``minimal standard of good behavior'' for the transformation.  We will assume the transformation is so well behaved.
 
-	Assuming this is the case, we can write
-	\begin{equation} \label{qdot}
-	\qd_i = \pder{q_i}{Q_j} \Qd_j + \pder{q_i}{t}
-	\end{equation}
-	so \refeq{showleft} becomes
-	\begin{equation} \label{showleft2}
-%	\pder{L}{Q_i} = \pder{L}{q_j} \pder{q_j}{Q_i} + \pder{L}{\qd_j} \pder{}{Q_i} \left( \pder{q_j}{Q_k} \Qd_k + \pder{q_j}{t} \right).
-	\pder{L}{Q_i} = \pder{L}{q_j} \pder{q_j}{Q_i} + \pder{L}{\qd_j} \left(\pmder{q_j}{Q_i}{Q_k} \Qd_k + \pmder{q_j}{t}{Q_i} \right).
-	\end{equation}
+		Again using the chain rule for $Q_j = Q_j(t, q_1, q_2, \ldots, q_n)$, note that
+		\begin{equation} \label{qdot}
+			\Qd_j =  \pder{Q_j}{t} + \pder{Q_j}{q_i} \qd_i
+		\end{equation}
+		so \refeq{givenleft} becomes
+		\begin{equation} \label{givenleft2}
+			\pder{L}{q_i} = \pder{L}{Q_j} \pder{Q_j}{q_i} + \pder{L}{\Qd_j} \left(\pmder{Q_j}{q_i}{t} + \pmder{Q_j}{q_i}{q_k} \qd_k \right).
+		\end{equation}
 	
-	For the second term of \refeq{show}, we have
-	\begin{equation}
-	\pder{L}{\Qd_i} = \pder{L}{\qd_j} \pder{\qd_j}{\Qd_i}  = \pder{L}{\qd_j} \pder{q_j}{Q_i}
-	\end{equation}
-	where the right-hand side comes from applying \refeq{qdot}.  Then, using the product rule to take the time derivative,
-	\begin{equation} \label{showright}
-	\der{}{t} \pder{L}{\Qd_i} = \pder{q_j}{Q_i} \der{}{t} \pder{L}{\qd_j} + \pder{L}{\qd_j} \der{}{t} \pder{q_j}{Q_i}.
-	\end{equation}
-	\hl{For the second term of} \refeq{showright}, \hl{the chain rule gives}
-	\begin{equation}
-	\pder{L}{\qd_j} \der{}{t} \pder{q_j}{Q_i} =  \pder{L}{\qd_j} \left( \pmder{q_j}{t}{Q_i} + \pmder{q_j}{Q_i}{Q_k} \Qd_k \right).
-	\end{equation}
-	The second term on the right side also appeared in \refeq{showleft2}, so substituting back into \refeq{showright} we now have
-	\begin{equation}
-	\der{}{t} \pder{L}{\Qd_i} = \pder{q_j}{Q_i} \der{}{t} \pder{L}{\qd_j} + \pder{L}{Q_i} - \pder{L}{q_j} \pder{q_j}{Q_i}.
-	\end{equation}
-	Rearranged, this is
-	\begin{equation} \label{showright2}
-	\pder{L}{Q_i} - \der{}{t} \pder{L}{\Qd_i} = \pder{q_j}{Q_i} \left( \pder{L}{q_j} - \der{}{t} \pder{L}{\qd_j} \right).
-	\end{equation}
-	Finally, substituting the original assumption \refeq{given}, we have
-	\begin{equation} \label{showright2}
-	\pder{L}{Q_i} - \der{}{t} \pder{L}{\Qd_i} = 0
-	\end{equation}
-	which is what we sought to prove. \qed
+		Applying the chain rule now to the second term of \refeq{given}, we have
+		\begin{equation}
+			\pder{L}{\qd_i} = \pder{L}{\Qd_j} \pder{\Qd_j}{\qd_i}  = \pder{L}{\Qd_j} \pder{Q_j}{q_i}
+		\end{equation}
+		where the right-hand side comes from \refeq{qdot}.  Then, using the product rule to take the time derivative,
+		\begin{equation} \label{givenright}
+			\der{}{t} \pder{L}{\qd_i} = \left( \der{}{t} \pder{L}{\Qd_j} \right) \pder{Q_j}{q_i} + \pder{L}{\Qd_j} \left( \der{}{t} \pder{Q_j}{q_i} \right).
+		\end{equation} \label{givenright2}
+		For the second term of \refeq{givenright}, the chain rule for $Q_j = Q_j(t, q_1, q_2, \ldots, q_n)$ gives
+		\begin{equation} \label{givenright3}
+			\der{}{t} \pder{Q_j}{q_i} = \pmder{Q_j}{t}{q_i} + \pmder{Q_j}{q_i}{q_k} \qd_k.
+		\end{equation}
+		Substituting \refeq{givenright3} into \refeq{givenright}, we have
+		\begin{equation}
+			\der{}{t} \pder{L}{\qd_i} = \left( \der{}{t} \pder{L}{\Qd_j} \right) \pder{Q_j}{q_i} + \pder{L}{\Qd_j} \left( \pmder{Q_j}{t}{q_i} + \pmder{Q_j}{q_k}{q_i} \qd_k \right)
+		\end{equation}
+		where the terms on the far right appeared in \refeq{givenleft2}.  Making this substitution,
+		\begin{equation}
+			\der{}{t} \pder{L}{\qd_i} = \left( \der{}{t} \pder{L}{\Qd_j} \right) \pder{Q_j}{q_i} + \pder{L}{q_i} - \pder{L}{Q_j} \pder{Q_j}{q_i},
+		\end{equation}
+		and rearranging,
+		\begin{equation}
+		\pder{Q_j}{q_i} \left( \pder{L}{Q_j} - \der{}{t} \pder{L}{\Qd_j} \right) = \pder{L}{q_i} - \der{}{t} \pder{L}{\qd_i},
+		\end{equation}
+		Finally, substituting the original assumption \refeq{given}, we find
+		\begin{equation}
+			\pder{L}{Q_j} - \der{}{t} \pder{L}{\Qd_j} = 0
+		\end{equation}
+		which is what we sought to prove. \qed
+	\end{solution}
+
+
+	\item \begin{problem}
+		Look at the Lagrangian
+		$$L = e^{\sigma t} \left( \frac{m \qd^2}{2} - \frac{kq^2}{2} \right)$$
+		for one-dimensional motion.
+		
+	\begin{enumerate}
+		\item Write down the associated Euler-Lagrange ODE.
+		
+		\item Now perform a point transformation
+		$$Q = e^{\sigma t / 2} q$$
+		where the new position coordinate $Q$ is a function of $t$ and $q$.  What is the equation of motion for $Q(t)$?  Are there conserved quantities?
+	\end{enumerate}
+	\end{problem}
 	
+	\begin{solution}
+	\begin{enumerate}
+		\item Beginning from the general expression for the Euler-Lagrange equations,
+			\begin{equation}
+				\pder{L}{q} - \der{}{t} \pder{L}{\qd} = -e^{\sigma t} kq - \der{}{t}\left( e^{\sigma t} m\qd \right) = -m e^{\sigma t} \left( \qdd + \sigma \qd + \frac{k}{m} q \right)
+			\end{equation}
+			so the ODE is
+			\begin{equation} \label{ode}
+				0 = \qdd + \sigma \qd + \frac{k}{m} q.
+			\end{equation}
+		
+		\item It is possible to invert this transformation and write $q = q(t, Q)$.  This is
+			\begin{equation} \label{inversion}
+				q = Q e^{-\sigma t / 2}
+			\end{equation}
+			which implies
+			\begin{equation}
+				\qd = e^{-\sigma t / 2} \left(\Qd -\frac{\sigma t}{2} Q \right)
+			\end{equation}
+			and
+			\begin{equation}
+				\qdd = e^{-\sigma t / 2} \left(\Qd -\frac{\sigma t}{2} Q \right)
+			\end{equation}
+			Now we can write \refeq{ode} in terms of $Q$ and $\Qd$:
+			\begin{equation}
+				0 = \qdd + \sigma \qd + \frac{k}{m} q.
+			\end{equation}
 
-       
-    \end{solution}
-
+	\end{enumerate}
+	\end{solution}
+	
 
 \end{enumerate}
 \end{document}
