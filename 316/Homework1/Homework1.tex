@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\usepackage[parfill]{parskip}
+\usepackage{physics, amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+%\allowdisplaybreaks
+ 
+ 
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 316 Homework 1}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{12pt}
+
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\pmder}[3]{\frac{\partial^2#1}{\partial#2 \, \partial#3}}
+\newcommand{\der}[2]{\frac{d#1}{d#2}}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \textbf{Problem.}\quad
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip\bigskip
+}
+
+
+
+\begin{document}
+\begin{enumerate}
+
+\newcommand{\qd}{\dot{q}}
+\newcommand{\Qd}{\dot{Q}}
+
+    \item \begin{problem}
+        Suppose we have a mechanical system with $n$ degrees of freedom.  Let $q_1(t), q_2(t), \ldots, q_n(t)$ be its generalized coordinates.  Now consider a time-dependent coordinate transformation
+        $$Q_i = Q_i(t, q_1, q_2, \ldots, q_n) \quad\quad i = 1, 2, \ldots, n.$$
+        Show that if $q_i(t)$ solve a system of Euler-Lagrange equations involving a Lagrangian $L(t, q_i, \qd_i)$, then $Q_i(t)$ solves the Euler-Lagrange equations involving $L(t, Q_i, \Qd_i)$ provided the time-dependent coordinate transformation fulfills some minimal standard of good behavior.  Specify this ``minimal standard of good behavior.''
+    \end{problem}
+    
+    \begin{solution}
+        Suppose that
+        \begin{equation} \label{given}
+        \pder{L}{q_i} - \der{}{t} \pder{L}{\qd_i} = 0;
+        \end{equation}
+        that is, $q_i(t)$ solve a system of Euler-Lagrange equations.  We want to show that
+        \begin{equation} \label{show}
+        \pder{L}{Q_i} - \der{}{t} \pder{L}{\Qd_i} = 0.
+        \end{equation}
+        
+	Beginning with the first term of~\refeq{show}, we can use the chain rule to write
+	\begin{equation} \label{showleft}
+	\pder{L}{Q_i} = \pder{L}{q_j} \pder{q_j}{Q_i} + \pder{L}{\qd_j} \pder{\qd_j}{Q_i}.
+	\end{equation}
+	However, $\partial q_j / \partial Q_i$ and $\partial \qd_j / \partial Q_i$ are only guaranteed to exist if there is an inverse transformation
+	\begin{equation}
+	q_i = q_i(t, Q_1, Q_2, \ldots, Q_n) \quad\quad i = 1, 2, \ldots, n.
+	\end{equation}
+	This is only possible if there is a one-to-one correspondence between $q_i(t)$ and $Q_i(t)$, which is the ``minimal standard of good behavior'' for the transformation.
+
+	Assuming this is the case, we can write
+	\begin{equation} \label{qdot}
+	\qd_i = \pder{q_i}{Q_j} \Qd_j + \pder{q_i}{t}
+	\end{equation}
+	so \refeq{showleft} becomes
+	\begin{equation} \label{showleft2}
+%	\pder{L}{Q_i} = \pder{L}{q_j} \pder{q_j}{Q_i} + \pder{L}{\qd_j} \pder{}{Q_i} \left( \pder{q_j}{Q_k} \Qd_k + \pder{q_j}{t} \right).
+	\pder{L}{Q_i} = \pder{L}{q_j} \pder{q_j}{Q_i} + \pder{L}{\qd_j} \left(\pmder{q_j}{Q_i}{Q_k} \Qd_k + \pmder{q_j}{t}{Q_i} \right).
+	\end{equation}
+	
+	For the second term of \refeq{show}, we have
+	\begin{equation}
+	\pder{L}{\Qd_i} = \pder{L}{\qd_j} \pder{\qd_j}{\Qd_i}  = \pder{L}{\qd_j} \pder{q_j}{Q_i}
+	\end{equation}
+	where the right-hand side comes from applying \refeq{qdot}.  Then, using the product rule to take the time derivative,
+	\begin{equation} \label{showright}
+	\der{}{t} \pder{L}{\Qd_i} = \pder{q_j}{Q_i} \der{}{t} \pder{L}{\qd_j} + \pder{L}{\qd_j} \der{}{t} \pder{q_j}{Q_i}.
+	\end{equation}
+	\hl{For the second term of} \refeq{showright}, \hl{the chain rule gives}
+	\begin{equation}
+	\pder{L}{\qd_j} \der{}{t} \pder{q_j}{Q_i} =  \pder{L}{\qd_j} \left( \pmder{q_j}{t}{Q_i} + \pmder{q_j}{Q_i}{Q_k} \Qd_k \right).
+	\end{equation}
+	The second term on the right side also appeared in \refeq{showleft2}, so substituting back into \refeq{showright} we now have
+	\begin{equation}
+	\der{}{t} \pder{L}{\Qd_i} = \pder{q_j}{Q_i} \der{}{t} \pder{L}{\qd_j} + \pder{L}{Q_i} - \pder{L}{q_j} \pder{q_j}{Q_i}.
+	\end{equation}
+	Rearranged, this is
+	\begin{equation} \label{showright2}
+	\pder{L}{Q_i} - \der{}{t} \pder{L}{\Qd_i} = \pder{q_j}{Q_i} \left( \pder{L}{q_j} - \der{}{t} \pder{L}{\qd_j} \right).
+	\end{equation}
+	Finally, substituting the original assumption \refeq{given}, we have
+	\begin{equation} \label{showright2}
+	\pder{L}{Q_i} - \der{}{t} \pder{L}{\Qd_i} = 0
+	\end{equation}
+	which is what we sought to prove. \qed
+	
+
+       
+    \end{solution}
+
+
+\end{enumerate}
+\end{document}
