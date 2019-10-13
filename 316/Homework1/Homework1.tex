@@ -7,6 +7,15 @@
 \usepackage{enumitem}
 \usepackage{xcolor, soul}
 %\allowdisplaybreaks
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
  
  
 \setlist[enumerate]{leftmargin=*}
@@ -48,6 +57,7 @@
 \newcommand{\qd}{\dot{q}}
 \newcommand{\qdd}{\ddot{q}}
 \newcommand{\Qd}{\dot{Q}}
+\newcommand{\Qdd}{\ddot{Q}}
 
 	\item \begin{problem}
 		Suppose we have a mechanical system with $n$ degrees of freedom.  Let $q_1(t), q_2(t), \ldots, q_n(t)$ be its generalized coordinates.  Now consider a time-dependent coordinate transformation
@@ -142,22 +152,46 @@
 				0 = \qdd + \sigma \qd + \frac{k}{m} q.
 			\end{equation}
 		
-		\item It is possible to invert this transformation and write $q = q(t, Q)$.  This is
+		\item It is possible to invert this transformation and write $q = q(t, Q)$.  Explicitly, this is
 			\begin{equation} \label{inversion}
 				q = Q e^{-\sigma t / 2}
 			\end{equation}
-			which implies
+			so
 			\begin{equation}
-				\qd = e^{-\sigma t / 2} \left(\Qd -\frac{\sigma t}{2} Q \right)
+				\qd = e^{-\sigma t / 2} \left(\Qd - \frac{\sigma}{2} Q \right).
 			\end{equation}
-			and
+			Rewriting the Lagrangian such that $L = L(t, Q, \Qd)$ results in
+			\begin{align}
+				L &= e^{\sigma t} \left(\frac{m}{2} \left(e^{-\sigma t / 2} \left( \Qd - \frac{\sigma}{2} Q \right) \right)^2 - \frac{k}{2} \left( Q e^{-\sigma t / 2} \right)^2 \right) \\
+				&= \frac{m}{2} \left( \Qd - \frac{\sigma}{2} Q \right)^2 - \frac{k}{2} Q^2 \\
+				&= \label{lagrangian} \frac{m}{2} \left(\Qd^2 - \sigma Q \Qd + \left(\frac{\sigma^2}{4} - \frac{k}{m} \right) Q^2 \right).
+			\end{align}
+			Then the Euler-Lagrange equations are given by
 			\begin{equation}
-				\qdd = e^{-\sigma t / 2} \left(\Qd -\frac{\sigma t}{2} Q \right)
+				0 = \pder{L}{Q} - \der{}{t} \pder{L}{\Qd} = \frac{m}{2} \left( -\sigma \Qd + 2 \left( \frac{\sigma^2}{4} - \frac{k}{m} \right) Q - \der{}{t} \left(2 \Qd - \sigma Q \right) \right)
 			\end{equation}
-			Now we can write \refeq{ode} in terms of $Q$ and $\Qd$:
+			which simplifies to
+			\begin{equation} \label{newode} 
+				0 = \Qdd + \left( \frac{k}{m} - \frac{\sigma^2}{4} \right) Q.
+			\end{equation}
+			
+			The solutions to \refeq{newode} have the form
 			\begin{equation}
-				0 = \qdd + \sigma \qd + \frac{k}{m} q.
+				Q(t) = \begin{cases}[2.8]
+						A_1 \sin\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t + A_2 \cos\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t \quad \quad &\text{if}\quad \dfrac{k}{m} > \dfrac{\sigma^2}{4}, \\
+						B_1 + B_2 t \quad \quad &\text{if}\quad \dfrac{k}{m} = \dfrac{\sigma^2}{4}, \\
+						C_1 \exp{-\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t} + C_2 \exp{\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t} \quad \quad &\text{if} \quad \dfrac{k}{m} < \dfrac{\sigma^2}{4}, \\
+					\end{cases}
 			\end{equation}
+			where $A_i, B_i, C_i$ are real constants.
+			
+			The Lagrangian in \refeq{lagrangian} does not explicitly depend on time.  Thus, the total energy of the system
+			\begin{equation}
+				E = \Qd \pder{L}{\Qd} - L
+			\end{equation}
+			is conserved.
+			
+			
 
 	\end{enumerate}
 	\end{solution}
