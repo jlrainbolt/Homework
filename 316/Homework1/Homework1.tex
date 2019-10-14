@@ -178,7 +178,7 @@
 			The solutions to \refeq{newode} have the form
 			\begin{equation}
 				Q(t) = \begin{cases}[2.8]
-						A_1 \sin\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t + A_2 \cos\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t \quad \quad &\text{if}\quad \dfrac{k}{m} > \dfrac{\sigma^2}{4}, \\
+						A_1 \sin\left(\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t\right) + A_2 \cos\left(\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t\right) \quad \quad &\text{if}\quad \dfrac{k}{m} > \dfrac{\sigma^2}{4}, \\
 						B_1 + B_2 t \quad \quad &\text{if}\quad \dfrac{k}{m} = \dfrac{\sigma^2}{4}, \\
 						C_1 \exp{-\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t} + C_2 \exp{\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t} \quad \quad &\text{if} \quad \dfrac{k}{m} < \dfrac{\sigma^2}{4}, \\
 					\end{cases}
@@ -210,7 +210,7 @@
 		\begin{enumerate}
 			\item Show that the equations of motion associated with such a potential remain unchanged under a dilation of the distance scale if the time scale is also dilated by some other factor $\beta$.  Find $\beta$ as a function of $\alpha$ and $k$.
 			
-			\item If $k = 2$, the forces correspond to a system of harmonic oscillators couples to each other.  Show that the result in part (a) implies the frequencies of such a system are independent of the oscillation amplitude.
+			\item If $k = 2$, the forces correspond to a system of harmonic oscillators coupled to each other.  Show that the result in part (a) implies the frequencies of such a system are independent of the oscillation amplitude.
 			
 			\item If $k = -1$, we have an inverse square force law, such as that which arises in mutual gravitational attraction.  Show that the result in part (a) implies Kepler's third law: the square of the orbital period of a planet is directly proporitonal to the cube of the semi-major axis of its orbit.
 		\end{enumerate}
@@ -245,7 +245,7 @@
 		\end{equation}
 		
 		\begin{enumerate}
-			\item The equations of motion associated to the Lagrangians \refeq{lagr1} and \refeq{larg2} are identical if the Euler-Lagrange equations in \refeq{el1} and \refeq{el2} are identical.  We will now show that this is the case.
+			\item The equations of motion associated to the Lagrangians \refeq{lagr1} and \refeq{lagr2} are identical if the Euler-Lagrange equations in \refeq{el1} and \refeq{el2} are identical.  We will now show that this is the case.
 			
 			The transformation $\vR_i = \alpha \vr_i$ is invertible, so $\vr_i = \vR_i / \alpha$.  Likewise, $t = T / \beta$.  By the chain rule,
 			\begin{equation} \label{transT}
@@ -274,10 +274,39 @@
 			\end{equation}
 			which is equivalent to \refeq{el1} so long as
 			\begin{equation}
-				\alpha^k \beta^2 = 1 \implies \beta = \alpha^{-k/2}.
+				\alpha^k \beta^2 = 1 \implies \beta = \pm\alpha^{-k/2}.
 			\end{equation}
-			(The solution where $\beta < 1$ is spurious unless we are interested in running time backwards.)
+			\qed
 			
+			
+			\item Fixing $k=2$ requires that $U$ is of the form
+			\begin{equation}
+				U(\vr_1, \ldots, \vr_N) = \frac{k_{ij}}{2} \vr_i \cdot \vr_j
+			\end{equation}
+			where $k_ij$ are real constants.  Then
+			\begin{equation} \label{upart}
+				\pder{U}{\vr_i} = \frac{k_{ii}}{2} \vr_i + \frac{k_{ij}}{2} \vr_j.
+			\end{equation}
+			Substituting \refeq{upart} into \refeq{el1}, the Euler-Lagrange equations for this system are
+			\begin{equation} \label{el3}
+				m_i \vrdd_i + \frac{k_{ii}}{2} \vr_i + \frac{k_{ij}}{2} \vr_j = 0.
+			\end{equation}
+			We make an ansatz for the solutions,
+			\begin{equation}
+				\vr_i(t) = A_i \cos(\omega t)
+			\end{equation}
+			where $A_i$ are constants representing the amplitude of oscillation and $\omega$ are the normal mode frequencies.  Then
+			\begin{equation}
+				\vrdd_i = -A_i \omega^2 \cos(\omega t)
+			\end{equation}
+			so \refeq{el3} becomes
+			\begin{equation}
+				-m_i A_i \omega^2 \cos(\omega t) + \frac{k_{ii}}{2} A_i \cos(\omega t) + \frac{k_{ij}}{2} A_j \cos(\omega t) = 0 \implies m_i A_i \omega^2 - \frac{k_{ii}}{2} A_i + \frac{k_{ij}}{2} A_j = 0
+			\end{equation}
+			\hl{???}
+			
+			
+			\item \hl{help}
 		\end{enumerate}
 	\end{solution}
 	
