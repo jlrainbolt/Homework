@@ -185,7 +185,7 @@
 			\end{equation}
 			where $A_i, B_i, C_i$ are real constants.
 			
-			The Lagrangian in \refeq{lagrangian} does not explicitly depend on time.  Thus, the total energy $H$ of the system is conserved.  Explicitly,
+			The Lagrangian in \refeq{lagrangian} does not explicitly depend on time (in contrast to the Lagrangian in the problem statement).  Thus, the total energy $H$ of the system is conserved.  Explicitly,
 			\begin{equation}
 				H = \Qd \pder{L}{\Qd} - L = \frac{m}{2} \left( \Qd^2 - \left(\frac{\sigma^2}{4} - \frac{k}{m} \right) Q^2 \right)
 			\end{equation}
@@ -270,43 +270,32 @@
 			
 			Making use of \refeq{secondder}, \refeq{urel}, and \refeq{rpart}, we can rewrite \refeq{el2} in terms of the original coordinates:
 			\begin{equation}
-			0 = \frac{\alpha^k}{\alpha} \pder{U}{\vr_i} + m_i \frac{\alpha}{\beta^2} \vrdd_i \implies \alpha^k \beta^2 \pder{U}{\vr_i} + m_i \vrdd_i = 0
+			0 = \frac{\alpha^k}{\alpha} \pder{U}{\vr_i} + m_i \frac{\alpha}{\beta^2} \vrdd_i \implies \alpha^{k-2} \beta^2 \pder{U}{\vr_i} + m_i \vrdd_i = 0
 			\end{equation}
 			which is equivalent to \refeq{el1} so long as
-			\begin{equation}
-				\alpha^k \beta^2 = 1 \implies \beta = \pm\alpha^{-k/2}.
+			\begin{equation} \label{result}
+				\alpha^{k-2} \beta^2 = 1 \implies \beta = \alpha^{{k-2}/2}.
 			\end{equation}
 			\qed
 			
 			
-			\item Fixing $k=2$ requires that $U$ is of the form
-			\begin{equation}
-				U(\vr_1, \ldots, \vr_N) = \frac{k_{ij}}{2} \vr_i \cdot \vr_j
+			\item Fixing $k = 2$, the solution of (a) gives us
+			\begin{equation} \label{betab}
+				\beta = \alpha^0 = 1.
 			\end{equation}
-			where $k_ij$ are real constants.  Then
-			\begin{equation} \label{upart}
-				\pder{U}{\vr_i} = \frac{k_{ii}}{2} \vr_i + \frac{k_{ij}}{2} \vr_j.
-			\end{equation}
-			Substituting \refeq{upart} into \refeq{el1}, the Euler-Lagrange equations for this system are
-			\begin{equation} \label{el3}
-				m_i \vrdd_i + \frac{k_{ii}}{2} \vr_i + \frac{k_{ij}}{2} \vr_j = 0.
-			\end{equation}
-			We make an ansatz for the solutions,
-			\begin{equation}
-				\vr_i(t) = A_i \cos(\omega t)
-			\end{equation}
-			where $A_i$ are constants representing the amplitude of oscillation and $\omega$ are the normal mode frequencies.  Then
-			\begin{equation}
-				\vrdd_i = -A_i \omega^2 \cos(\omega t)
-			\end{equation}
-			so \refeq{el3} becomes
-			\begin{equation}
-				-m_i A_i \omega^2 \cos(\omega t) + \frac{k_{ii}}{2} A_i \cos(\omega t) + \frac{k_{ij}}{2} A_j \cos(\omega t) = 0 \implies m_i A_i \omega^2 - \frac{k_{ii}}{2} A_i + \frac{k_{ij}}{2} A_j = 0
-			\end{equation}
-			\hl{???}
+			This result indicates that the time scale is completely independent of the distance scale.  That is, if we make the distance scale transformation $\vr_i \mapsto \alpha \vr_i$, the equations of motion will remain unchanged with respect to time ($t \mapsto \beta t = t$).
+
+			For the system of harmonic oscillators, the oscillation amplitudes $A_i$ have units of distance.  The frequencies $\omega_i$ have units of inverse time.  Making the transformation $\vr_i \mapsto \alpha \vr_i$ will change the distance scale and therefore the amplitudes, but the time scale and hence $\omega_i$ will remain unchanged.  In other words, the frequencies are independent of the amplitudes. \qed
+
 			
+			\item Fixing $k = -1$, the solution of (a) gives us
+			\begin{equation} \label{betab}
+				\beta = \alpha^{-3/2} = 1.
+			\end{equation}
+			This means making the distance scale transformation $\vr_i \mapsto \alpha \vr_i$ requires that we also make the time scale transformation $t \mapsto \alpha^{-3/2} t$.
 			
-			\item \hl{help}
+			The orbital period of a planet $T$ has units of time, and its semi-major axis $a$ has units of distance.  agljshn
+			
 		\end{enumerate}
 	\end{solution}
 	
@@ -315,8 +304,53 @@
 		A particle in three-dimensional space is confined in a central potential
 		$$U(r) = -U_0 \left( \frac{r_0}{r} \right)^n.$$
 		Here $r = |\vr|$ where $\vr(t)$ is the location of the particle at time $t$, $U_0$ is a characteristic energy scale and $r_0$ is a characteristic length scale.  Show that the particle motion is confined to a two-dimensional orbital plane.  For what values of $n$ are circular orbits stable?
-	
 	\end{problem}
+	
+	\newcommand{\rd}{\dot{r}}
+	\newcommand{\rdd}{\ddot{r}}
+	\newcommand{\thetad}{\dot{\theta}}
+	\newcommand{\phid}{\dot{\phi}}
+		
+	\begin{solution}
+		We want to show that the particle motion is confined to a two-dimensional orbital plane.
+		
+		The kinetic energy of the particle is
+		\begin{equation}
+			T = \frac{1}{2} m \vrd^2
+		\end{equation}
+		where $m$ is the mass of the particle.  Then the system has the Lagrangian
+		\begin{equation}
+			L = T - U = \frac{1}{2} m \vrd^2 + U_0 \left( \frac{r_0}{r} \right)^n.
+		\end{equation}
+		We will change to a spherical coordinate system, defined $(\rho, \theta, \phi)$.  Then
+		\begin{equation}
+			\vrd^2 = \rd^2 + r^2 \thetad^2 + r^2 \sin^2\theta \phid^2
+		\end{equation}
+		and the Lagrangian becomes
+		\begin{equation}
+			L(r, \rd, \theta, \thetad, \phi, \phid) = \frac{1}{2} m \left( \rd^2 + r^2 \thetad^2 + r^2 \sin^2\theta \phid^2 \right) + U_0 \frac{r_0^n}{r^n}.
+		\end{equation}
+		Note that $\partial L / \partial \phi = 0$.  Therefore, by Noether's theorem, $\phi$ is a cyclic coordinate and
+		\begin{equation}
+			\pder{L}{\phid} = m r^2 \sin^2\theta \phid
+		\end{equation}
+		is conserved.
+%		can write as cross product with r and rdot
+
+\hl{HELP}
+
+		Just use angular momentum argument
+		
+		\begin{equation}
+			L(r, \rd, \theta, \thetad) = \frac{1}{2} m \left(\rd^2 + r^2 \thetad^2 \right) + U_0 \frac{r_0^n}{r^n}
+		\end{equation}
+		For $r$, the Euler-Lagrange equations are
+		\begin{equation}
+			\pder{L}{r} - \der{}{t} \pder{L}{\rd} = m r \thetad^2 - n U_0 \frac{r_0^n}{r^{n+1}} - m \rdd
+		\end{equation}
+		
+	\end{solution}
+
 	
 
 \end{enumerate}
