@@ -25,6 +25,7 @@
 \rhead{Lacey Rainbolt}
 \setlength{\headheight}{14pt}
 \setlength{\headsep}{12pt}
+\cfoot{\thepage}
 
 \newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
 \newcommand{\pmder}[3]{\frac{\partial^2#1}{\partial#2 \, \partial#3}}
@@ -61,7 +62,9 @@
 \newcommand{\Qdd}{\ddot{Q}}
 
 	\item \begin{problem}
-		Suppose we have a mechanical system with $n$ degrees of freedom.  Let $q_1(t), q_2(t), \ldots, q_n(t)$ be its generalized coordinates.  Now consider a time-dependent coordinate transformation
+		Suppose we have a mechanical system with $n$ degrees of freedom.  Let
+		$$q_1(t), q_2(t), \ldots, q_n(t)$$
+		be its generalized coordinates.  Now consider a time-dependent coordinate transformation
 		$$Q_i = Q_i(t, q_1, q_2, \ldots, q_n) \quad\quad i = 1, 2, \ldots, n.$$
 		Show that if $q_i(t)$ solves a system of Euler-Lagrange equations involving a Lagrangian $L(t, q_i, \qd_i)$, then $Q_i(t)$ solves the Euler-Lagrange equations involving $L(t, Q_i, \Qd_i)$ provided the time-dependent coordinate transformation fulfills some minimal standard of good behavior.  Specify this ``minimal standard of good behavior.''
 	\end{problem}
@@ -84,7 +87,7 @@
 		\begin{equation}
 			q_i = q_i(t, Q_1, Q_2, \ldots, Q_n) \quad\quad i = 1, 2, \ldots, n
 		\end{equation}
-		that allows us to write $L(t, q_i, \qd_i)$ in terms of $t$, $Q_i$, and $\Qd_i$.  This is only possible if there is a one-to-one correspondence between $q_i(t)$ and $Q_i(t)$, which is the ``minimal standard of good behavior'' for the transformation.  We will assume the transformation is so well behaved.
+		that allows us to write $L(t, q_i, \qd_i)$ in terms of only $t$, $Q_i$, and $\Qd_i$.  This is only possible if there is a one-to-one correspondence between $q_i(t)$ and $Q_i(t)$, which is the ``minimal standard of good behavior'' for the transformation.  We will assume the transformation is so well behaved.
 
 		Again using the chain rule for $Q_j = Q_j(t, q_1, q_2, \ldots, q_n)$, note that
 		\begin{equation} \label{qdot}
@@ -178,14 +181,14 @@
 			The solutions to \refeq{newode} have the form
 			\begin{equation}
 				Q(t) = \begin{cases}[2.8]
-						A_1 \sin\left(\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t\right) + A_2 \cos\left(\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t\right) \quad \quad &\text{if}\quad \dfrac{k}{m} > \dfrac{\sigma^2}{4}, \\
-						B_1 + B_2 t \quad \quad &\text{if}\quad \dfrac{k}{m} = \dfrac{\sigma^2}{4}, \\
-						C_1 \exp{-\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t} + C_2 \exp{\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t} \quad \quad &\text{if} \quad \dfrac{k}{m} < \dfrac{\sigma^2}{4}, \\
+						A_1 \sin\left(\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t\right) + A_2 \cos\left(\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t\right) \quad \quad &\dfrac{k}{m} > \dfrac{\sigma^2}{4}, \\
+						B_1 + B_2 t \quad \quad &\dfrac{k}{m} = \dfrac{\sigma^2}{4}, \\
+						C_1 \exp{-\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t} + C_2 \exp{\sqrt{\dfrac{k}{m} - \dfrac{\sigma^2}{4}}\,t} \quad \quad &\dfrac{k}{m} < \dfrac{\sigma^2}{4}, \\
 					\end{cases}
 			\end{equation}
 			where $A_i, B_i, C_i$ are real constants.
 			
-			The Lagrangian in \refeq{lagrangian} does not explicitly depend on time (in contrast to the Lagrangian in the problem statement).  Thus, the total energy $H$ of the system is conserved.  Explicitly,
+			The Lagrangian in \refeq{lagrangian} does not explicitly depend on time.  (Note that the Lagrangian in the problem statement \emph{does} have an explicit time dependence.)  Thus, the total energy $H$ of the system in the new coordinate system is conserved.  Explicitly,
 			\begin{equation}
 				H = \Qd \pder{L}{\Qd} - L = \frac{m}{2} \left( \Qd^2 - \left(\frac{\sigma^2}{4} - \frac{k}{m} \right) Q^2 \right)
 			\end{equation}
@@ -245,8 +248,8 @@
 		\end{equation}
 		
 		\begin{enumerate}
-			\item The equations of motion associated to the Lagrangians \refeq{lagr1} and \refeq{lagr2} are identical if the Euler-Lagrange equations in \refeq{el1} and \refeq{el2} are identical.  We will now show that this is the case.
-			
+			\item The equations of motion associated to the Lagrangians \refeq{lagr1} and \refeq{lagr2} are identical if the Euler-Lagrange equations in \refeq{el1} and \refeq{el2} are identical.  We will now show that this is the case for a particular value of $\beta$.
+
 			The transformation $\vR_i = \alpha \vr_i$ is invertible, so $\vr_i = \vR_i / \alpha$.  Likewise, $t = T / \beta$.  By the chain rule,
 			\begin{equation} \label{transT}
 				\der{}{T} = \der{}{t} \der{t}{T} = \frac{1}{\beta} \der{}{t}
@@ -267,40 +270,32 @@
 			\begin{equation} \label{rpart}
 				\pder{}{\vR_i} = \pder{}{\vr_i} \der{\vr_i}{\vR_i} = \frac{1}{\alpha} \pder{}{\vr_i}.
 			\end{equation}
-			
+
 			Making use of \refeq{secondder}, \refeq{urel}, and \refeq{rpart}, we can rewrite \refeq{el2} in terms of the original coordinates:
-			\begin{equation}
+			\begin{equation} 
 			0 = \frac{\alpha^k}{\alpha} \pder{U}{\vr_i} + m_i \frac{\alpha}{\beta^2} \vrdd_i \implies \alpha^{k-2} \beta^2 \pder{U}{\vr_i} + m_i \vrdd_i = 0
 			\end{equation}
 			which is equivalent to \refeq{el1} so long as
 			\begin{equation} \label{result}
 				\alpha^{k-2} \beta^2 = 1 \implies \beta = \alpha^{{2-k}/2}.
 			\end{equation}
-			\qed
+			So we have proven that \refeq{el1} and \refeq{el2} are equivalent under the condition \refeq{result}. \qed
 			
 			
-			\item Fixing $k = 2$, the solution of (a) gives us
-			\begin{equation} \label{betab}
-				\beta = \alpha^0 = 1.
-			\end{equation}
-			This result indicates that the time scale is completely independent of the distance scale.  That is, if we make the distance scale transformation $\vr_i \mapsto \alpha \vr_i$, the equations of motion will remain unchanged with respect to time ($t \mapsto \beta t = t$).
+			\item Fixing $k = 2$, the condition of (a) gives us $\beta = \alpha^0 = 1$.  This result indicates that the time scale is completely independent of the distance scale.  That is, if we make the distance scale transformation $\vr_i \mapsto \alpha \vr_i$, the equations of motion will remain unchanged with no change to the time scale ($t \mapsto \beta t = t$).
 
-			For the system of harmonic oscillators, the oscillation amplitudes $A_i$ have units of distance.  The frequencies $\omega_i$ have units of inverse time.  Making the transformation $\vr_i \mapsto \alpha \vr_i$ will change the distance scale and therefore the amplitudes, but the time scale and hence $\omega_i$ will remain unchanged.  In other words, the frequencies are independent of the amplitudes. \qed
+			For the system of harmonic oscillators, the oscillation amplitudes $A_i$ have units of distance.  The frequencies $\omega_i$ have units of inverse time.  Making the transformation $\vr_i \mapsto \alpha \vr_i$ will change the distance scale and therefore the amplitudes, but the time scale and hence $\omega_i$ will remain unchanged.  We may thus conclude that the frequencies are independent of the amplitudes. \qed
 
 			
-			\item Fixing $k = -1$, the solution of (a) gives us
-			\begin{equation}
-				\beta = \alpha^{3/2}.
-			\end{equation}
-			Let $a$ be the semi-major axis length of some planet's orbit and $T$ its orbital period.  Kepler's third law states that
+			\item Fixing $k = -1$, the solution of (a) gives us $\beta = \alpha^{3/2}$.  Consider a planet whose orbit has semi-major axis length $a$ and orbital period $T$.  For this arbitrary planet, there exists some constant $j$ such that
 			\begin{equation} \label{kepler3}
-				T^2 \propto a^3.
+				T^2 = j a^3.
 			\end{equation}
-			Note that $a$ has units of distance and $T$ has units of time.  In order to show that \refeq{kepler3} holds for any planet, we can consider an arbitrary length $\alpha a$ for the semimajor axis.  Thus, we want to show that \refeq{kepler3} is unchanged under the transformation $a \mapsto \alpha a$ and the corresponding time dilation $T \mapsto \beta T = \alpha^{3/2} T$.  Making these transformations,
+			Note that $a$ has units of distance and $T$ has units of time.  In order to show that \refeq{kepler3} holds for \emph{any} planet, we can consider an arbitrary length $\alpha a$ for the semimajor axis.  Thus, we want to show that \refeq{kepler3} is unchanged under the transformation $a \mapsto \alpha a$ and the corresponding time dilation $T \mapsto \beta T = \alpha^{3/2} T$.  Making these transformations,
 			\begin{equation}
-				(\alpha^{3/2} T)^2 \propto (\alpha a)^3 \iff \alpha^3 T^2 \propto \alpha^3 a^3 \iff T^2 \propto a^3
+				(\alpha^{3/2} T)^2 = j (\alpha a)^3 \iff \alpha^3 T^2 = j \alpha^3 a^3 \iff T^2 = j a^3
 			\end{equation}
-			which is indeed equivalent to \refeq{kepler3}.  Thus, Kepler's law holds for any planet. \qed
+			which is indeed equivalent to \refeq{kepler3}.  Thus, we have shown that Kepler's third law holds for any planet. \qed
 			
 		\end{enumerate}
 	\end{solution}
@@ -324,30 +319,30 @@
 	\newcommand{\Ueff}{U_\text{eff}}
 		
 	\begin{solution}
-		We want to show that the particle motion is confined to a two-dimensional orbital plane.  We will use the spherical coordinates $(\rho, \theta, \phi)$, so $r$ retains its definition as the particle's distance from the origin.
+		We want to show that the particle motion is confined to a two-dimensional orbital plane.  We will use the spherical coordinates $(r, \theta, \phi)$, so $r$ retains its definition as the particle's distance from the origin.
 		
 		$U(r)$ is a central potential, so it has a corresponding central force
 		\begin{equation}
 			\vF = -\nabla U(r) = -n U_0 \frac{r_0^n}{r^{n+1}} \vrh
 		\end{equation}
-		which is radially symmetric by inspection.  This means that the particle's torque $\boldsymbol{\tau} = 0$.  Therefore, the particle's angular momentum
+		which is radially symmetric.  This means that the particle's torque $\boldsymbol{\tau} = 0$.  Therefore, the particle's angular momentum
 		\begin{equation} \label{momcons}
 			\vL = \vr \times \vec{p}
 		\end{equation}
-		is conserved; that is, it is constant over time.  Notably, the \textit{direction} of $\vL$ does not change over time.  Because $\vr$ is perpendicular to $\vL$ as defined by \refeq{momcons}, $\vL$'s not changing direction implies that $\vr$ is confined to a plane perpendicular to $\vL$ for all time.
+		is conserved; that is, it is constant over time.  Notably, the \textit{direction} of $\vL$ does not change over time.  Because $\vr$ is perpendicular to $\vL$ as defined by \refeq{momcons}, $\vL$'s not changing direction implies that $\vr$ is confined to a plane perpendicular to $\vL$ for all time.  This is what we sought to show. \qed
 		
-		We will choose $\vL$ to point in the $\boldsymbol{\hat{\phi}}$ direction, so $\vr$ is confined to the plane $(r, \theta)$.  Therefore, we can write $\vr = \vr(r, \theta)$.  The particle's potential energy $T = m \vr^2 / 2$ where $m$ is the particle's mass.  This gives us the Lagrangian
+		Now we will find the values of $n$ for which circular orbits are stable.  We will choose $\vL$ to point in the $\boldsymbol{\hat{\phi}}$ direction, so $\vr$ is confined to the plane $(r, \theta)$.  Then $\vr = \vr(r, \theta)$.  The particle's potential energy is $T = m \vr^2 / 2$ where $m$ is the particle's mass.  In spherical coordinates, this gives us the Lagrangian
 		\begin{equation}
 			L(r, \rd, \theta, \thetad) = \frac{1}{2} m \left(\rd^2 + r^2 \thetad^2 \right) + U_0 \frac{r_0^n}{r^n},
 		\end{equation}
-		which does not depend explicitly on $\theta$ or on $t$.
+		which does not depend explicitly on $\theta$.
 		
 		For $r$, the Euler-Lagrange equations are
-		\begin{equation}
+		\begin{equation} \label{elr}
 			\pder{L}{r} - \der{}{t} \pder{L}{\rd} = m r \thetad^2 - n U_0 \frac{r_0^n}{r^{n+1}} - m \rdd = 0.
 		\end{equation}
 		For $\theta$, the Euler-Lagrange equations are
-		\begin{equation} \label{elr}
+		\begin{equation}
 			\pder{L}{\theta} - \der{}{t} \pder{L}{\thetad} = 0 - \der{}{t} \left(m r^2 \thetad \right) = 0
 		\end{equation}
 		which implies
@@ -363,27 +358,23 @@
 			\Ueff = -U_0 \frac{r_0^n}{r^n} + \frac{1}{2} \frac{l^2}{mr^2}.
 		\end{equation}
 		
-		If a circular orbit at $r = r_c$ to be stable, small perturbations $r_c \mapsto r_c + \delta r$ will stay close to $r_c$ as time moves forward.  In order for this to be the case, $\Ueff(r)$ must have a local minimum at $r_c$. In order to have any kind of extremum at $r_c$, we require
-		\begin{equation}
-			\left. \pder{\Ueff}{r} \right|_{r_c} = 0.
-		\end{equation}
-		Using the definition of \refeq{ueff},
+		If a circular orbit at $r = r_c$ is stable, small perturbations $r_c \mapsto r_c + \delta r$ will result in orbits that do not ``blow up''; that is, they stay close to $r_c$.  In order for this to be the case, $\Ueff(r)$ must have a local minimum at $r_c$. In order to have any kind of extremum at $r_c$, we require
 		\begin{equation} \label{extremum}
-			\left. \pder{\Ueff}{r} \right|_{r_c} = 0 \implies \frac{l^2}{m r_c^3} = n U_0 \frac{r_0^n}{r_c^{n+1}}.
+			\left. \pder{\Ueff}{r} \right|_{r_c} = 0 \implies \frac{l^2}{m r_c^3} = n U_0 \frac{r_0^n}{r_c^{n+1}}
 		\end{equation}
-		In order for the extremum at $r_c = 0$ to be a minimum, we require
+		where we have applied the definition \refeq{ueff}.  In order for the extremum at $r_c = 0$ to be a minimum, we require
 		\begin{equation}
 			\left. \pdder{\Ueff}{r} \right|_{r_c} > 0.
 		\end{equation}
-		Using the definition of \refeq{ueff},
+		Again using \refeq{ueff},
 		\begin{equation} \label{minimum}
 			\left. \pdder{\Ueff}{r} \right|_{r_c} = -n (n+1) U_0 \frac{r_0^n}{r_c^{n+2}} + 3 \frac{l^2}{m r_c^4} = -n (n+1) U_0 \frac{r_0^n}{r_c^{n+2}} + \frac{3}{r_c} n U_0 \frac{r_0^n}{r_c^{n+1}}
 		\end{equation}
 		where in the final equality we are substituting the result of \refeq{extremum}.  So the condition for a stable circular orbit becomes
 		\begin{equation}
-			3 n U_0 \frac{r_0^n}{r^{n+2}} > n (n + 1) U_0 \frac{r_0^n}{r^{n+2}}
+			3 n U_0 \frac{r_0^n}{r^{n+2}} > n (n + 1) U_0 \frac{r_0^n}{r^{n+2}}.
 		\end{equation}
-		which holds for $n < 2$ by inspection.  Thus, for the conditions of this problem, it is only possible to have a stable circular orbit for $n = 1$.
+		This holds for $n < 2$.  Thus, for the conditions of this problem, it is only possible to have a stable circular orbit for $n = 1$.
 			
 	\end{solution}
 
