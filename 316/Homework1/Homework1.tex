@@ -28,6 +28,7 @@
 
 \newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
 \newcommand{\pmder}[3]{\frac{\partial^2#1}{\partial#2 \, \partial#3}}
+\newcommand{\pdder}[2]{\frac{\partial^2 #1}{\partial #2^2}}
 \newcommand{\der}[2]{\frac{d#1}{d#2}}
 \newcommand{\refeq}[1]{(\ref{#1})}
 
@@ -79,7 +80,6 @@
 		\begin{equation} \label{givenleft}
 			\pder{L}{q_i} = \pder{L}{Q_j} \pder{Q_j}{q_i} + \pder{L}{\Qd_j} \pder{\Qd_j}{q_i},
 		\end{equation}
-%		provided $Q_j$ and $\Qd_j$ are continuously differentiable with respect to $q_1, q_2, \ldots, q_n$.
 		provided there exists an inverse transformation
 		\begin{equation}
 			q_i = q_i(t, Q_1, Q_2, \ldots, Q_n) \quad\quad i = 1, 2, \ldots, n
@@ -274,7 +274,7 @@
 			\end{equation}
 			which is equivalent to \refeq{el1} so long as
 			\begin{equation} \label{result}
-				\alpha^{k-2} \beta^2 = 1 \implies \beta = \alpha^{{k-2}/2}.
+				\alpha^{k-2} \beta^2 = 1 \implies \beta = \alpha^{{2-k}/2}.
 			\end{equation}
 			\qed
 			
@@ -289,12 +289,18 @@
 
 			
 			\item Fixing $k = -1$, the solution of (a) gives us
-			\begin{equation} \label{betab}
-				\beta = \alpha^{-3/2} = 1.
+			\begin{equation}
+				\beta = \alpha^{3/2}.
 			\end{equation}
-			This means making the distance scale transformation $\vr_i \mapsto \alpha \vr_i$ requires that we also make the time scale transformation $t \mapsto \alpha^{-3/2} t$.
-			
-			The orbital period of a planet $T$ has units of time, and its semi-major axis $a$ has units of distance.  agljshn
+			Let $a$ be the semi-major axis length of some planet's orbit and $T$ its orbital period.  Kepler's third law states that
+			\begin{equation} \label{kepler3}
+				T^2 \propto a^3.
+			\end{equation}
+			Note that $a$ has units of distance and $T$ has units of time.  In order to show that \refeq{kepler3} holds for any planet, we can consider an arbitrary length $\alpha a$ for the semimajor axis.  Thus, we want to show that \refeq{kepler3} is unchanged under the transformation $a \mapsto \alpha a$ and the corresponding time dilation $T \mapsto \beta T = \alpha^{3/2} T$.  Making these transformations,
+			\begin{equation}
+				(\alpha^{3/2} T)^2 \propto (\alpha a)^3 \iff \alpha^3 T^2 \propto \alpha^3 a^3 \iff T^2 \propto a^3
+			\end{equation}
+			which is indeed equivalent to \refeq{kepler3}.  Thus, Kepler's law holds for any planet. \qed
 			
 		\end{enumerate}
 	\end{solution}
@@ -303,55 +309,86 @@
 	\item \begin{problem}
 		A particle in three-dimensional space is confined in a central potential
 		$$U(r) = -U_0 \left( \frac{r_0}{r} \right)^n.$$
-		Here $r = |\vr|$ where $\vr(t)$ is the location of the particle at time $t$, $U_0$ is a characteristic energy scale and $r_0$ is a characteristic length scale.  Show that the particle motion is confined to a two-dimensional orbital plane.  For what values of $n$ are circular orbits stable?
+		Here $r = |\vr|$ where $\vr(t)$ is the location of the particle at time $t$, $U_0$ is a characteristic energy scale and $r_0$ is a characteristic length scale.  The exponent $n$ is an integer that is greater than or equal to 1.  Show that the particle motion is confined to a two-dimensional orbital plane.  For what values of $n$ are circular orbits stable?
 	\end{problem}
 	
 	\newcommand{\rd}{\dot{r}}
 	\newcommand{\rdd}{\ddot{r}}
 	\newcommand{\thetad}{\dot{\theta}}
 	\newcommand{\phid}{\dot{\phi}}
+	
+	\newcommand{\vF}{\vec{F}}
+	\newcommand{\vL}{\vec{L}}
+	\newcommand{\vrh}{\vec{\hat{r}}}
+	
+	\newcommand{\Ueff}{U_\text{eff}}
 		
 	\begin{solution}
-		We want to show that the particle motion is confined to a two-dimensional orbital plane.
+		We want to show that the particle motion is confined to a two-dimensional orbital plane.  We will use the spherical coordinates $(\rho, \theta, \phi)$, so $r$ retains its definition as the particle's distance from the origin.
 		
-		The kinetic energy of the particle is
+		$U(r)$ is a central potential, so it has a corresponding central force
 		\begin{equation}
-			T = \frac{1}{2} m \vrd^2
+			\vF = -\nabla U(r) = -n U_0 \frac{r_0^n}{r^{n+1}} \vrh
 		\end{equation}
-		where $m$ is the mass of the particle.  Then the system has the Lagrangian
-		\begin{equation}
-			L = T - U = \frac{1}{2} m \vrd^2 + U_0 \left( \frac{r_0}{r} \right)^n.
+		which is radially symmetric by inspection.  This means that the particle's torque $\boldsymbol{\tau} = 0$.  Therefore, the particle's angular momentum
+		\begin{equation} \label{momcons}
+			\vL = \vr \times \vec{p}
 		\end{equation}
-		We will change to a spherical coordinate system, defined $(\rho, \theta, \phi)$.  Then
-		\begin{equation}
-			\vrd^2 = \rd^2 + r^2 \thetad^2 + r^2 \sin^2\theta \phid^2
-		\end{equation}
-		and the Lagrangian becomes
-		\begin{equation}
-			L(r, \rd, \theta, \thetad, \phi, \phid) = \frac{1}{2} m \left( \rd^2 + r^2 \thetad^2 + r^2 \sin^2\theta \phid^2 \right) + U_0 \frac{r_0^n}{r^n}.
-		\end{equation}
-		Note that $\partial L / \partial \phi = 0$.  Therefore, by Noether's theorem, $\phi$ is a cyclic coordinate and
-		\begin{equation}
-			\pder{L}{\phid} = m r^2 \sin^2\theta \phid
-		\end{equation}
-		is conserved.
-%		can write as cross product with r and rdot
-
-\hl{HELP}
-
-		Just use angular momentum argument
+		is conserved; that is, it is constant over time.  Notably, the \textit{direction} of $\vL$ does not change over time.  Because $\vr$ is perpendicular to $\vL$ as defined by \refeq{momcons}, $\vL$'s not changing direction implies that $\vr$ is confined to a plane perpendicular to $\vL$ for all time.
 		
+		We will choose $\vL$ to point in the $\boldsymbol{\hat{\phi}}$ direction, so $\vr$ is confined to the plane $(r, \theta)$.  Therefore, we can write $\vr = \vr(r, \theta)$.  The particle's potential energy $T = m \vr^2 / 2$ where $m$ is the particle's mass.  This gives us the Lagrangian
 		\begin{equation}
-			L(r, \rd, \theta, \thetad) = \frac{1}{2} m \left(\rd^2 + r^2 \thetad^2 \right) + U_0 \frac{r_0^n}{r^n}
+			L(r, \rd, \theta, \thetad) = \frac{1}{2} m \left(\rd^2 + r^2 \thetad^2 \right) + U_0 \frac{r_0^n}{r^n},
 		\end{equation}
+		which does not depend explicitly on $\theta$ or on $t$.
+		
 		For $r$, the Euler-Lagrange equations are
 		\begin{equation}
-			\pder{L}{r} - \der{}{t} \pder{L}{\rd} = m r \thetad^2 - n U_0 \frac{r_0^n}{r^{n+1}} - m \rdd
+			\pder{L}{r} - \der{}{t} \pder{L}{\rd} = m r \thetad^2 - n U_0 \frac{r_0^n}{r^{n+1}} - m \rdd = 0.
+		\end{equation}
+		For $\theta$, the Euler-Lagrange equations are
+		\begin{equation} \label{elr}
+			\pder{L}{\theta} - \der{}{t} \pder{L}{\thetad} = 0 - \der{}{t} \left(m r^2 \thetad \right) = 0
+		\end{equation}
+		which implies
+		\begin{equation} \label{angmom}
+			m r^2 \thetad = l
+		\end{equation}
+		where $l = |\vL|$ is a constant.  Substituting \refeq{angmom} into \refeq{elr}, and rearranging, we obtain
+		\begin{equation}
+			m \rdd = \frac{l^2}{m r^3} - n U_0 \frac{r_0^n}{r^{n+1}} \equiv -\pder{\Ueff}{r}
+		\end{equation}
+		where we have defined the effective potential $\Ueff = \Ueff(r)$.  Explicitly,
+		\begin{equation} \label{ueff}
+			\Ueff = -U_0 \frac{r_0^n}{r^n} + \frac{1}{2} \frac{l^2}{mr^2}.
 		\end{equation}
 		
+		If a circular orbit at $r = r_c$ to be stable, small perturbations $r_c \mapsto r_c + \delta r$ will stay close to $r_c$ as time moves forward.  In order for this to be the case, $\Ueff(r)$ must have a local minimum at $r_c$. In order to have any kind of extremum at $r_c$, we require
+		\begin{equation}
+			\left. \pder{\Ueff}{r} \right|_{r_c} = 0.
+		\end{equation}
+		Using the definition of \refeq{ueff},
+		\begin{equation} \label{extremum}
+			\left. \pder{\Ueff}{r} \right|_{r_c} = 0 \implies \frac{l^2}{m r_c^3} = n U_0 \frac{r_0^n}{r_c^{n+1}}.
+		\end{equation}
+		In order for the extremum at $r_c = 0$ to be a minimum, we require
+		\begin{equation}
+			\left. \pdder{\Ueff}{r} \right|_{r_c} > 0.
+		\end{equation}
+		Using the definition of \refeq{ueff},
+		\begin{equation} \label{minimum}
+			\left. \pdder{\Ueff}{r} \right|_{r_c} = -n (n+1) U_0 \frac{r_0^n}{r_c^{n+2}} + 3 \frac{l^2}{m r_c^4} = -n (n+1) U_0 \frac{r_0^n}{r_c^{n+2}} + \frac{3}{r_c} n U_0 \frac{r_0^n}{r_c^{n+1}}
+		\end{equation}
+		where in the final equality we are substituting the result of \refeq{extremum}.  So the condition for a stable circular orbit becomes
+		\begin{equation}
+			3 n U_0 \frac{r_0^n}{r^{n+2}} > n (n + 1) U_0 \frac{r_0^n}{r^{n+2}}
+		\end{equation}
+		which holds for $n < 2$ by inspection.  Thus, for the conditions of this problem, it is only possible to have a stable circular orbit for $n = 1$.
+			
 	\end{solution}
 
-	
-
 \end{enumerate}
+
+In writing these solutions, I consulted David Tong's lecture notes, Goldstein's \emph{Classical Mechanics}, and Landau and Lifshitz's \emph{Mechanics}.
+
 \end{document}
