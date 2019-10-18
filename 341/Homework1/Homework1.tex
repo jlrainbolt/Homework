@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\usepackage[parfill]{parskip}
+\usepackage{physics, amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+%\allowdisplaybreaks
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+ 
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 316 Homework 1}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{12pt}
+
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\pmder}[3]{\frac{\partial^2#1}{\partial#2 \, \partial#3}}
+\newcommand{\der}[2]{\frac{d#1}{d#2}}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \subsection{}
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip\bigskip
+}
+
+
+
+\begin{document}
+
+\newcommand{\keq}{\ket{e_1}}
+\newcommand{\beq}{\bra{e_1}}
+\newcommand{\kew}{\ket{e_2}}
+\newcommand{\bew}{\bra{e_2}}
+\newcommand{\kee}{\ket{e_3}}
+\newcommand{\bee}{\bra{e_3}}
+
+\section{Problem 1}
+\begin{statement}
+	Consider operators $J$ and $K$ acting in a three-dimensional space as
+	\begin{align}
+		J \keq &= i \kew, & J \kew &= -i \keq, & J \kee &= 0, \\
+		K \keq &= 0, & K \kew &= i \kee, & K \kee &= -i \kew,
+	\end{align}
+	where $\keq, \kew, \kee$ for a complete orthonormal basis.
+\end{statement}
+
+\begin{problem}
+	Compute the matrix elements of $J$ and $K$.
+\end{problem}
+	
+\begin{solution} The matrix elements of $J$ are
+	\begin{align}
+		J_{11} &= \mel{e_1}{J}{e_1} = i \braket{e_1}{e_2} = 0, \label{J11} \\
+		J_{12} &= \mel{e_1}{J}{e_2} = -i \braket{e_1}{e_1} = -i, \\
+		J_{13} &= \mel{e_1}{J}{e_3} = 0, \\
+		J_{21} &= \mel{e_2}{J}{e_1} = i \braket{e_2}{e_2} = i, \\
+		J_{22} &= \mel{e_2}{J}{e_2} = -i \braket{e_2}{e_1} = 0, \\
+		J_{23} &= \mel{e_2}{J}{e_3} = 0, \\
+		J_{31} &= \mel{e_3}{J}{e_1} = i \braket{e_3}{e_2} = 0, \\
+		J_{32} &= \mel{e_3}{J}{e_2} = -i \braket{e_3}{e_1} = 0, \\
+		J_{33} &= \mel{e_3}{J}{e_3} = 0.
+	\end{align}
+	
+	The matrix elements of $K$ are
+	\begin{align}
+		K_{11} &= \mel{e_1}{K}{e_1} = 0, \\
+		K_{12} &= \mel{e_1}{K}{e_2} = i \braket{e_1}{e_3} = 0, \\
+		K_{13} &= \mel{e_1}{K}{e_3} = -i \braket{e_1}{e_2} = 0, \\
+		K_{21} &= \mel{e_2}{K}{e_1} = 0, \\
+		K_{22} &= \mel{e_2}{K}{e_2} = i \braket{e_2}{e_3} = 0, \\
+		K_{23} &= \mel{e_2}{K}{e_3} = -i \braket{e_2}{e_2} = -i, \\
+		K_{31} &= \mel{e_3}{K}{e_1} = 0, \\
+		K_{32} &= \mel{e_3}{K}{e_2} = i \braket{e_3}{e_3} = i, \\
+		K_{33} &= \mel{e_3}{K}{e_3} = -i \braket{e_3}{e_2} = 0. \label{J33}
+	\end{align}
+\end{solution}
+
+\begin{problem}
+	Consider $O = AJ + BK$ where $A, B$ are real numbers.  Show that $O$ is Hermitian.
+\end{problem}
+
+\begin{solution}
+	Using \refeq{J11}--\refeq{K33}, the matrix elements of $O$ are
+	\begin{align}
+		O_{11} &= 0, \\
+		O_{12} &= -iA, \\
+		O_{13} &= 0, \\
+		O_{21} &= iA, \\
+		O_{22} &= 0, \\
+		O_{23} &= -iA, \\
+		O_{31} &= 0, \\
+		O_{32} &= iB, \\
+		O_{33} &= 0.
+	\end{align}
+\end{solution}
+
+
+\end{document}
