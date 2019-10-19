@@ -35,6 +35,9 @@
     \color{darkgray}
     \ignorespaces
 }
+{
+    \bigskip
+}
 
 \newenvironment{problem}
 {
@@ -50,7 +53,7 @@
     \ignorespaces
 }
 {
-    \bigskip\bigskip
+    \bigskip
 }
 
 
@@ -146,6 +149,7 @@
 \newcommand{\uoq}{\lambda_{0,1}}
 \newcommand{\uow}{\lambda_{0,2}}
 \newcommand{\uoe}{\lambda_{0,3}}
+\newcommand{\mO}{\mqty[0 & -iA & 0 \\ iA & 0 & -iB \\ 0 & iB & 0]}
 
 \newcommand{\upmq}{\lambda_{\pm,1}}
 \newcommand{\upmw}{\lambda_{\pm,2}}
@@ -163,11 +167,11 @@
 \begin{solution}
 	Using a matrix representation in the $\keq, \kew, \kee$ basis, we can write
 	\begin{equation}
-		O = \mqty[0 & iA & 0 \\ -iA & 0 & iB \\ 0 & -iB & 0].
+		O = \mO.
 	\end{equation}
 	$\lambda$ is an eigenvalue of $O$ if $\det(O - \lambda I) = 0$, where $I$ is the identity matrix.  That is,
 	\begin{align}
-		0 &= \mdet{-\lambda & iA & 0 \\ -iA & -\lambda & iB \\ 0 & -iB & -\lambda} \\
+		0 &= \mdet{-\lambda & -iA & 0 \\ iA & -\lambda & -iB \\ 0 & iB & -\lambda} \\
 		&= (-\lambda)^3 - (-\lambda)(-iB)(iB) - (-iA)(iA)(-\lambda) \\
 		&= \lambda(\lambda^2 - A^2 - B^2) \label{lambda0} \\
 		&= \lambda^2 - A^2 - B^2 \label{lambdapm}.
@@ -176,35 +180,35 @@
 
 	Let $\klo, \klpm$ be the not-necessarily-normalized eigenvectors corresponding to $\lo, \lpm$.  Beginning with $\lo$, we will find the corresponding eigenvector $\klo = \uoq \keq + \uow + \kew + \uoe + \kee$.  We seek $\uoq, \uow, \uoe$ such that
 	\begin{equation} \label{ev0}
-		\mqty[0 & iA & 0 \\ -iA & 0 & iB \\ 0 & -iB & 0] \mqty[\uoq \\ \uow \\ \uoe] = 0 \mqty[\uoq \\ \uow \\ \uoe].
+		\mO \mqty[\uoq \\ \uow \\ \uoe] = 0 \mqty[\uoq \\ \uow \\ \uoe].
 	\end{equation}
 	The algebraic equations corresponding to \refeq{ev0} are
 	\begin{align}
-		iA \,\uow &= 0, \label{u02a} \\
-		iB \,\uoe - iA \,\uoq &= 0, \label{u01} \\
-		-iB \,\uow &= 0. \label{u02b}
+		-iA \,\uow &= 0, \label{u02a} \\
+		iA \,\uoq - iB \,\uoe &= 0, \label{u01} \\
+		iB \,\uow &= 0. \label{u02b}
 	\end{align}
 	\refeq{u02a} and \refeq{u02b} imply that $\uow = 0$.  We may fix $\uoe = A$ without loss of generality.  Then \refeq{u01} implies $\uoq = B$.  Thus, $\klo = B \keq + A \kee$.
 
 	For $\klpm = \upmq \keq + \upmw + \kew + \upme + \kee$, we seek $\upmq, \upmw, \upme$ such that
 	\begin{equation} \label{evpm}
-		\mqty[0 & iA & 0 \\ -iA & 0 & iB \\ 0 & -iB & 0] \mqty[\upmq \\ \upmw \\ \upme] = \pmsq \mqty[\upmq \\ \upmw \\ \upme].
+		\mO \mqty[\upmq \\ \upmw \\ \upme] = \pmsq \mqty[\upmq \\ \upmw \\ \upme].
 	\end{equation}
 	The algrabraic equations corresponding to \refeq{evpm} are
 	\begin{align}
-		iA \,\upmw &= \pmsq \,\upmq, \label{upm1} \\
-		iB \,\upme - iA \,\upmq &= \pmsq \,\upmw, \label{upm2} \\
-		-iB \,\upmw &= \pmsq \,\upme. \label{upm3}
+		-iA \,\upmw &= \pmsq \,\upmq, \label{upm1} \\
+		iA \,\upmq - iB \,\upme &= \pmsq \,\upmw, \label{upm2} \\
+		iB \,\upmw &= \pmsq \,\upme. \label{upm3}
 	\end{align}
 	Summing \refeq{upm1}, \refeq{upm2}, and \refeq{upm3}, we have
 	\begin{align}
-		\pmsq (\upmq + \upmw + \upme) &= iA (\upmw - \upmq) + iB (\upme - \upmw) \\
-		\pmisq (\upmq + \upmw + \upme) &= B (\upmw - \upme) -  A (\upmw - \upmq). \label{pmform}
+		\pmsq (\upmq + \upmw + \upme) &= iA (\upmq - \upmw) + iB (\upmw - \upme) \\
+		\pmisq (\upmq + \upmw + \upme) &= A (\upmw - \upmq) - B (\upmw - \upme). \label{pmform}
 	\end{align}
 	From the form of \refeq{pmform}, we make the ansatz $\upmq = -A, \upme = B$.  Making the relevant substituions in \refeq{upm1} and \refeq{upm3}, we have
 	\begin{align}
-		iA \,\upmw &= \mp A \sqab, \\ 
-		-iB \,\upmw &= \pm B \sqab
+		-iA \,\upmw &= \pm A \sqab, \\ 
+		iB \,\upmw &= \pm B \sqab
 	\end{align}
 	which both imply $\upmw = \mpisq$.  Therefore, $\klpm = -A \keq \mpisq \kew + B \kee$.
 	
@@ -222,16 +226,16 @@
 \end{solution}
 
 \newcommand{\bpo}{\bra{p_0}}
-\newcommand{\kep}{\ket{e_1'}}
+\newcommand{\kepq}{\ket{e_1'}}
 \newcommand{\khq}{\ket{h_1}}
 \newcommand{\ab}{A^2 + B^2}
 
 \begin{problem}
-	Define a new state $\kep$ by $\kep = \khq / \norm{h_1}$ where $\norm{h_1} = \sqrt{\braket{h_1}{h_1}}$ and $\khq = (1 - \kpo \bpo) \keq$.  Find the probability that the state $\kep$ is found to have the eigenvalue $\lp, \lo, \lm$.
+	Define a new state $\kepq$ by $\kepq= \khq / \norm{h_1}$ where $\norm{h_1} = \sqrt{\braket{h_1}{h_1}}$ and $\khq = (1 - \kpo \bpo) \keq$.  Find the probability that the state $\kepq$ is found to have the eigenvalue $\lp, \lo, \lm$.
 \end{problem}
 
 \begin{solution}
-	First, we can find an $\kep$ using the result \refeq{p0} for $\kpo$.  Beginning with $\khq$, we have
+	First, we can find an $\kepq$ using the result \refeq{p0} for $\kpo$.  Beginning with $\khq$, we have
 	\begin{align}
 		\khq &= \keq - \braket{p_0}{e_1} \kpo = \keq - \frac{B}{\sqab} \kpo = \keq - \frac{B}{\sqab} \left(\frac{B \keq + A \kee}{\sqab}\right) \\
 		&= \left(1 - \frac{B^2}{\ab}\right) \keq - \frac{AB}{\ab} \kee.
@@ -244,15 +248,129 @@
 	\end{align}
 	so
 	\begin{align}
-		\kep &= \frac{\khq}{\norm{h_1}} = \frac{\sqab}{A} \left[\left(1 - \frac{B^2}{\ab}\right) \keq - \frac{AB}{\ab} \kee \right] \\
+		\kepq&= \frac{\khq}{\norm{h_1}} = \frac{\sqab}{A} \left[\left(1 - \frac{B^2}{\ab}\right) \keq - \frac{AB}{\ab} \kee \right] \\
 %		&= \left(\frac{\sqab}{A} - \frac{B^2}{A \sqab}\right) \keq - \frac{B}{\sqab} \kee \\
 		&= \frac{A}{\sqab} \keq - \frac{B}{\sqab} \kee
 	\end{align}
-	The probability that $\kep$ has the eigenvalue $\lambda$ is $\qty|\braket{p_\lambda}{e_1'}|^2$.  Thus,
+	The probability that $\kepq$ has the eigenvalue $\lambda$ is $\qty|\braket{p_\lambda}{e_1'}|^2$.  Thus,
 	\begin{align}
 		\qty|\braket{p_\pm}{e_1'}|^2 &= \left| -\frac{A}{\sqab} \frac{A}{\sqrt{2}\sqab} - \frac{B}{\sqab} \frac{B}{\sqrt{2}\sqab} \right|^2 = \left| -\frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2}, \\
 		\qty|\braket{p_0}{e_1'}|^2 &= \left| -\frac{A}{\sqab} \frac{B}{\sqab} + \frac{B}{\sqab} \frac{A}{\sqab} \right|^2 = 0.
 	\end{align}
+\end{solution}
+
+
+\section{Problem 2}
+\begin{statement}
+	Consider an operator $A$ acting in a two-dimensional space as
+	\begin{equation} \label{A}
+		A\keq = i \kew, \quad A\kew = -i \keq,
+	\end{equation}
+	where $\keq, \kew$ form a complete orthonormal basis.
+\end{statement}
+
+\begin{problem}
+	Find the matrix elements $A_{ij}$ ($i,j = 1,2$) of $A$ with respect to $\keq, \kew$.
+\end{problem}
+
+\begin{solution}
+	Using \refeq{A}, the matrix elements of $A$ are
+	\begin{align}
+		A_{11} &= \mel{e_1}{A}{e_1} = i \braket{e_1}{e_2} = 0, &
+		A_{12} &= \mel{e_1}{A}{e_2} = -i \braket{e_1}{e_1} = -i, \\
+		A_{21} &= \mel{e_2}{A}{e_1} = i \braket{e_2}{e_2} = i, &\
+		A_{22} &= \mel{e_2}{A}{e_2} = -i \braket{e_2}{e_1} = 0.
+	\end{align}
+\end{solution}
+
+\newcommand{\kepw}{\ket{e_2'}}
+\newcommand{\mA}{\mqty[0 & -i \\ i & 0]}
+\newcommand{\lpmq}{\lambda_{\pm1}}
+\newcommand{\lpmw}{\lambda_{\pm2}}
+
+
+\begin{problem} \label{2.2}
+	The eigenvalues of $A$ are $\pm1$.  Find the corresponding eigenvectors $\kepq, \kepw$ and represent them in terms of $\keq, \kew$.
+\end{problem}
+
+\begin{solution}
+	Using a matrix representation in the $\keq, \kew$ basis, we can write
+	\begin{equation} \label{matA}
+		A = \mA.
+	\end{equation}
+	Let $\klpm$ be the not-necessarily-normalized eigenvector corresponding to the eigenvalue $\pm1$.  We seek $\lpmq, \lpmw$ such that
+	\begin{equation} \label{evpm}
+		\mA \mqty[\lpmq \\ \lpmw] = \pm \mqty[\lpmq \\ \lpmw].
+	\end{equation}
+	The algebraic equations corresponding to \refeq{evpm} are
+	\begin{equation} \label{lpm}
+		-i \,\lpmw = \pm \,\lpmq, \quad\quad\quad i \,\lpmq = \pm \,\lpmw.
+	\end{equation}
+	By inspection of \refeq{lpm}, $\lpmq = \mp i$ and $\lpmw = 1$.  Thus $\klpm = \mp i \keq + \kew$.
+	
+	Let $\kepq$~($\kepw$) be the normalized eigenvector corresponding to eigenvalue 1~($-1$).  Then
+	\begin{equation} \label{eprime}
+		\kepq = \frac{\klp}{\norm{\lp}} = \frac{-i \keq + \kew}{\sqrt{2}}, \quad\quad\quad
+		\kepw = \frac{\klm}{\norm{\lm}} = \frac{i \keq + \kew}{\sqrt{2}}.
+	\end{equation}
+\end{solution}
+
+\begin{problem}
+	Let $U$ be the unitary operator such that $\ket{e_i'} = U \ket{e_i}$.  Find the matrix elements $U_{ij}$ of $U$ with respect to $\keq, \kew$.
+\end{problem}
+
+\newcommand{\Ud}{U^\dagger}
+
+\begin{solution}
+	Using $\refeq{eprime}$, the matrix elements of $U$ are
+	\begin{align}
+		U_{11} &= \mel{e_1}{U}{e_1} = \braket{e_1}{e_1'} = -\frac{i}{\sqrt{2}}, &
+		U_{12} &= \mel{e_1}{U}{e_2} = \braket{e_1}{e_2'} = \frac{i}{\sqrt{2}}, \label{melua} \\
+		U_{21} &= \mel{e_2}{U}{e_1} = \braket{e_2}{e_1'} = \frac{1}{\sqrt{2}}, &\
+		U_{22} &= \mel{e_2}{U}{e_2} = \braket{e_2}{e_2'} = \frac{1}{\sqrt{2}}. \label{melub}
+	\end{align}
+	$U$ is a unitary operator if and only if $U \Ud = \Ud U = I$ where $I$ is the identity matrix.  Using a matrix representation in the $\keq, \kew$ basis, we have
+	\begin{equation} \label{matrep}
+		U = \frac{1}{\sqrt{2}} \mqty[-i & i \\ 1 & 1], \quad\quad\quad \Ud = \frac{1}{\sqrt{2}} \mqty[i & 1 \\ -i & 1]
+	\end{equation}
+	so
+	\begin{align}
+		U \Ud &= \frac{1}{2} \mqty[-i & i \\ 1 & 1] \mqty[i & 1 \\ -i & 1] = \frac{1}{2} \mqty[2 & 0 \\ 0 & 2] = \mqty[1 & 0 \\ 0 & 1], \\
+		\Ud U &= \frac{1}{2} \mqty[i & 1 \\ -i & 1] \mqty[-i & i \\ 1 & 1] = \frac{1}{2} \mqty[2 & 0 \\ 0 & 2] = \mqty[1 & 0 \\ 0 & 1]
+	\end{align}
+	so $U$ is indeed unitary.
+\end{solution}
+
+\begin{problem}
+	Consider the matrix elements of $A$ in the $\kepq, \kepw$ basis.  Represent $A_{ij}'$ using $A_{ij}$ and $U_{ij}$.  (Numerical values of $A_{ij}'$ are not required.)
+\end{problem}
+
+\begin{solution}
+	Recall that $\keq, \kew$ form a complete orthonormal basis, so $\ket{e_i}\bra{e_i} = I$.  This allows us to write
+	\begin{equation}
+		A = \sum_{n=1}^2 \sum_{m=1}^2 \ket{e_n} \mel{e_n}{A}{e_m} \bra{e_m} = \sum_{n=1}^2 \sum_{m=1}^2 \ket{e_n} A_{nm} \bra{e_m}.
+	\end{equation}
+	Then the matrix elements $A_{ij}'$ are
+	\begin{equation} \label{rep1}
+		A_{ij}' = \mel*{e_i'}{A}{e_j'} = \sum_{n=1}^2 \sum_{m=1}^2 \braket{e_i'}{e_n} A_{nm} \braket{e_m}{e_j'}.
+	\end{equation}
+	From \refeq{melua} and \refeq{melub} we know that
+	\begin{equation} \label{thing1}
+		\braket*{e_m}{e_j'} = \mel{e_m}{U}{e_j} = U_{mj}.
+	\end{equation}
+	Similarly,
+	\begin{equation} \label{thing2}
+		\braket*{e_i'}{e_n} = (\braket{e_n}{e_i'})^* = (\mel{e_n}{U}{e_i'})^* = U^*_{ni}.
+	\end{equation}
+	Making the substitutions \refeq{thing1} and \refeq{thing2}, \refeq{rep1} becomes
+	\begin{equation}
+		A_{ij}' = \sum_{n=1}^2 \sum_{m=1}^2 U_{in}^* A_{nm} U_{mj}.
+	\end{equation}
+	Explicitly in terms of $i, j$, this is
+	\begin{align}
+		A_{ij}' = U_{ii}^* A_{ii} U_{ij} + U_{ii}^* A_{ij} U_{jj} + U_{ij}^* A_{ji} U_{ij} + U_{ij}^* A_{jj} U_{jj}.
+	\end{align}
+
 \end{solution}
 
 \end{document}
