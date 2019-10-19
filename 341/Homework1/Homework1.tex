@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\usepackage{geometry}
+\usepackage{geometry, titlesec}
 \usepackage[parfill]{parskip}
 \usepackage{physics, amsfonts, amsthm}
 \usepackage{fullpage}
@@ -26,9 +26,7 @@
 \setlength{\headheight}{14pt}
 \setlength{\headsep}{12pt}
 
-\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
-\newcommand{\pmder}[3]{\frac{\partial^2#1}{\partial#2 \, \partial#3}}
-\newcommand{\der}[2]{\frac{d#1}{d#2}}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 \newcommand{\refeq}[1]{(\ref{#1})}
 
 
@@ -73,7 +71,7 @@
 		J \keq &= i \kew, & J \kew &= -i \keq, & J \kee &= 0, \\
 		K \keq &= 0, & K \kew &= i \kee, & K \kee &= -i \kew,
 	\end{align}
-	where $\keq, \kew, \kee$ for a complete orthonormal basis.
+	where $\keq, \kew, \kee$ form a complete orthonormal basis.
 \end{statement}
 
 \begin{problem}
@@ -82,28 +80,27 @@
 	
 \begin{solution} The matrix elements of $J$ are
 	\begin{align}
-		J_{11} &= \mel{e_1}{J}{e_1} = i \braket{e_1}{e_2} = 0, \label{J11} \\
-		J_{12} &= \mel{e_1}{J}{e_2} = -i \braket{e_1}{e_1} = -i, \\
+		J_{11} &= \mel{e_1}{J}{e_1} = i \braket{e_1}{e_2} = 0, \label{J11} &
+		J_{12} &= \mel{e_1}{J}{e_2} = -i \braket{e_1}{e_1} = -i, &
 		J_{13} &= \mel{e_1}{J}{e_3} = 0, \\
-		J_{21} &= \mel{e_2}{J}{e_1} = i \braket{e_2}{e_2} = i, \\
-		J_{22} &= \mel{e_2}{J}{e_2} = -i \braket{e_2}{e_1} = 0, \\
+		J_{21} &= \mel{e_2}{J}{e_1} = i \braket{e_2}{e_2} = i, &
+		J_{22} &= \mel{e_2}{J}{e_2} = -i \braket{e_2}{e_1} = 0, &
 		J_{23} &= \mel{e_2}{J}{e_3} = 0, \\
-		J_{31} &= \mel{e_3}{J}{e_1} = i \braket{e_3}{e_2} = 0, \\
-		J_{32} &= \mel{e_3}{J}{e_2} = -i \braket{e_3}{e_1} = 0, \\
+		J_{31} &= \mel{e_3}{J}{e_1} = i \braket{e_3}{e_2} = 0, &
+		J_{32} &= \mel{e_3}{J}{e_2} = -i \braket{e_3}{e_1} = 0, &
 		J_{33} &= \mel{e_3}{J}{e_3} = 0.
 	\end{align}
-	
 	The matrix elements of $K$ are
 	\begin{align}
-		K_{11} &= \mel{e_1}{K}{e_1} = 0, \\
-		K_{12} &= \mel{e_1}{K}{e_2} = i \braket{e_1}{e_3} = 0, \\
+		K_{11} &= \mel{e_1}{K}{e_1} = 0, &
+		K_{12} &= \mel{e_1}{K}{e_2} = i \braket{e_1}{e_3} = 0, &
 		K_{13} &= \mel{e_1}{K}{e_3} = -i \braket{e_1}{e_2} = 0, \\
-		K_{21} &= \mel{e_2}{K}{e_1} = 0, \\
-		K_{22} &= \mel{e_2}{K}{e_2} = i \braket{e_2}{e_3} = 0, \\
-		K_{23} &= \mel{e_2}{K}{e_3} = -i \braket{e_2}{e_2} = -i, \\
-		K_{31} &= \mel{e_3}{K}{e_1} = 0, \\
-		K_{32} &= \mel{e_3}{K}{e_2} = i \braket{e_3}{e_3} = i, \\
-		K_{33} &= \mel{e_3}{K}{e_3} = -i \braket{e_3}{e_2} = 0. \label{J33}
+		K_{21} &= \mel{e_2}{K}{e_1} = 0, &
+		K_{22} &= \mel{e_2}{K}{e_2} = i \braket{e_2}{e_3} = 0, &
+		K_{23} &= \mel{e_2}{K}{e_3} = -i \braket{e_2}{e_2} = -i,\!\\
+		K_{31} &= \mel{e_3}{K}{e_1} = 0, &
+		K_{32} &= \mel{e_3}{K}{e_2} = i \braket{e_3}{e_3} = i, &
+		K_{33} &= \mel{e_3}{K}{e_3} = -i \braket{e_3}{e_2} = 0. \label{K33}
 	\end{align}
 \end{solution}
 
@@ -114,17 +111,148 @@
 \begin{solution}
 	Using \refeq{J11}--\refeq{K33}, the matrix elements of $O$ are
 	\begin{align}
-		O_{11} &= 0, \\
+		O_{11} &= O_{13} = O_{22} = O_{31} = O_{33} = 0, \label{O11} \\
 		O_{12} &= -iA, \\
-		O_{13} &= 0, \\
 		O_{21} &= iA, \\
-		O_{22} &= 0, \\
-		O_{23} &= -iA, \\
-		O_{31} &= 0, \\
-		O_{32} &= iB, \\
-		O_{33} &= 0.
+		O_{23} &= -iB, \\
+		O_{32} &= iB. \label{O32}
+	\end{align}
+	$O$ is Hermitian if and only if $O_{ij} = O_{ji}^*$ for all $O_{ij}$.  Recall that $(z^*)^* = z$ for any $z \in \mathbb{C}$.  From \refeq{O11}--\refeq{O32}, note that
+	\begin{align}
+		O_{11} &= 0 = O_{11}^*, \\
+		O_{12} &= -iA = (iA)^* = O_{21}^*, \\
+		O_{13} &= 0 = O_{31}^*, \\
+		O_{22} &= 0 = O_{22}^*, \\
+		O_{23} &= -iB = (iB)^* = O_{32}^*, \\
+		O_{33} &= 0 = O_{33}^*,
+	\end{align}
+	so $O$ is indeed Hermitian. \qed
+\end{solution}
+
+\newcommand{\kpl}{\ket{p_\lambda}}
+\newcommand{\lp}{\lambda_+}
+\newcommand{\lo}{\lambda_0}
+\newcommand{\lm}{\lambda_-}
+\newcommand{\lpm}{\lambda_\pm}
+\newcommand{\kpp}{\ket{p_+}}
+\newcommand{\kpo}{\ket{p_0}}
+\newcommand{\kpm}{\ket{p_-}}
+\newcommand{\kppm}{\ket{p_\pm}}
+
+\newcommand{\klo}{\ket{\lo}}
+\newcommand{\klp}{\ket{\lp}}
+\newcommand{\klm}{\ket{\lm}}
+\newcommand{\klpm}{\ket{\lpm}}
+\newcommand{\uoq}{\lambda_{0,1}}
+\newcommand{\uow}{\lambda_{0,2}}
+\newcommand{\uoe}{\lambda_{0,3}}
+
+\newcommand{\upmq}{\lambda_{\pm,1}}
+\newcommand{\upmw}{\lambda_{\pm,2}}
+\newcommand{\upme}{\lambda_{\pm,3}}
+\newcommand{\sqab}{\sqrt{A^2 + B^2}}
+\newcommand{\pmsq}{\pm \sqab}
+\newcommand{\pmisq}{\pm i \sqab}
+\newcommand{\mpisq}{\mp i \sqab}
+\newcommand{\isq}{i \sqab}
+
+\begin{problem}
+	If $\kpl$ is an eignevector of $)$, we have $O \kpl = \lambda \kpl$ where $\lambda$ is the corresponding eigenvalue. $\kpl$ can be expanded as $\kpl = \sum{i=1}^3 u_{\lambda, i} \ket{e_i}$.  Denote the three eigenvalues and the corresponding normalized eigenvectors of $O$ as $\lp, \lo, \lm$ and $\kpp, \kpo, \kpm$ where $\lp$~($\lm$) is the largest~(smallest) eigenvalue.  Find $\lp, \lo, \lm$ and $\kpp, \kpo, \kpm$.
+\end{problem}
+
+\begin{solution}
+	Using a matrix representation in the $\keq, \kew, \kee$ basis, we can write
+	\begin{equation}
+		O = \mqty[0 & iA & 0 \\ -iA & 0 & iB \\ 0 & -iB & 0].
+	\end{equation}
+	$\lambda$ is an eigenvalue of $O$ if $\det(O - \lambda I) = 0$, where $I$ is the identity matrix.  That is,
+	\begin{align}
+		0 &= \mdet{-\lambda & iA & 0 \\ -iA & -\lambda & iB \\ 0 & -iB & -\lambda} \\
+		&= (-\lambda)^3 - (-\lambda)(-iB)(iB) - (-iA)(iA)(-\lambda) \\
+		&= \lambda(\lambda^2 - A^2 - B^2) \label{lambda0} \\
+		&= \lambda^2 - A^2 - B^2 \label{lambdapm}.
+	\end{align}
+	From \refeq{lambda0} we obtain $\lo = 0$, and from \refeq{lambdapm} we obtain $\lpm = \pm \sqab$.
+
+	Let $\klo, \klpm$ be the not-necessarily-normalized eigenvectors corresponding to $\lo, \lpm$.  Beginning with $\lo$, we will find the corresponding eigenvector $\klo = \uoq \keq + \uow + \kew + \uoe + \kee$.  We seek $\uoq, \uow, \uoe$ such that
+	\begin{equation} \label{ev0}
+		\mqty[0 & iA & 0 \\ -iA & 0 & iB \\ 0 & -iB & 0] \mqty[\uoq \\ \uow \\ \uoe] = 0 \mqty[\uoq \\ \uow \\ \uoe].
+	\end{equation}
+	The algebraic equations corresponding to \refeq{ev0} are
+	\begin{align}
+		iA \,\uow &= 0, \label{u02a} \\
+		iB \,\uoe - iA \,\uoq &= 0, \label{u01} \\
+		-iB \,\uow &= 0. \label{u02b}
+	\end{align}
+	\refeq{u02a} and \refeq{u02b} imply that $\uow = 0$.  We may fix $\uoe = A$ without loss of generality.  Then \refeq{u01} implies $\uoq = B$.  Thus, $\klo = B \keq + A \kee$.
+
+	For $\klpm = \upmq \keq + \upmw + \kew + \upme + \kee$, we seek $\upmq, \upmw, \upme$ such that
+	\begin{equation} \label{evpm}
+		\mqty[0 & iA & 0 \\ -iA & 0 & iB \\ 0 & -iB & 0] \mqty[\upmq \\ \upmw \\ \upme] = \pmsq \mqty[\upmq \\ \upmw \\ \upme].
+	\end{equation}
+	The algrabraic equations corresponding to \refeq{evpm} are
+	\begin{align}
+		iA \,\upmw &= \pmsq \,\upmq, \label{upm1} \\
+		iB \,\upme - iA \,\upmq &= \pmsq \,\upmw, \label{upm2} \\
+		-iB \,\upmw &= \pmsq \,\upme. \label{upm3}
+	\end{align}
+	Summing \refeq{upm1}, \refeq{upm2}, and \refeq{upm3}, we have
+	\begin{align}
+		\pmsq (\upmq + \upmw + \upme) &= iA (\upmw - \upmq) + iB (\upme - \upmw) \\
+		\pmisq (\upmq + \upmw + \upme) &= B (\upmw - \upme) -  A (\upmw - \upmq). \label{pmform}
+	\end{align}
+	From the form of \refeq{pmform}, we make the ansatz $\upmq = -A, \upme = B$.  Making the relevant substituions in \refeq{upm1} and \refeq{upm3}, we have
+	\begin{align}
+		iA \,\upmw &= \mp A \sqab, \\ 
+		-iB \,\upmw &= \pm B \sqab
+	\end{align}
+	which both imply $\upmw = \mpisq$.  Therefore, $\klpm = -A \keq \mpisq \kew + B \kee$.
+	
+	Now we will compute $\kpp, \kpo, \kpm$ by normalizing $\klo, \klpm$.  Note that
+	\begin{align}
+		\norm{\lo}^2 &= \braket{\lo}{\lo} = A^2 + B^2, \\
+		\norm{\lpm}^2 &= \braket{\lpm}{\lpm} = A^2 + (A^2 + B^2) + B^2 = 2 A^2 + 2 B^2,
+	\end{align}
+	so
+	\begin{align}
+		\kpp &= \frac{\klp}{\norm{\lp}} = \frac{-A \keq - \isq \kew + B \kee}{\sqrt{2} \sqab}, \\
+		\kpo &= \frac{\klo}{\norm{\lo}} = \frac{B \keq + A \kee}{\sqab}, \label{p0} \\
+		\kpm &= \frac{\klm}{\norm{\lm}} = \frac{-A \keq + \isq \kew + B \kee}{\sqrt{2} \sqab}.
 	\end{align}
 \end{solution}
 
+\newcommand{\bpo}{\bra{p_0}}
+\newcommand{\kep}{\ket{e_1'}}
+\newcommand{\khq}{\ket{h_1}}
+\newcommand{\ab}{A^2 + B^2}
+
+\begin{problem}
+	Define a new state $\kep$ by $\kep = \khq / \norm{h_1}$ where $\norm{h_1} = \sqrt{\braket{h_1}{h_1}}$ and $\khq = (1 - \kpo \bpo) \keq$.  Find the probability that the state $\kep$ is found to have the eigenvalue $\lp, \lo, \lm$.
+\end{problem}
+
+\begin{solution}
+	First, we can find an $\kep$ using the result \refeq{p0} for $\kpo$.  Beginning with $\khq$, we have
+	\begin{align}
+		\khq &= \keq - \braket{p_0}{e_1} \kpo = \keq - \frac{B}{\sqab} \kpo = \keq - \frac{B}{\sqab} \left(\frac{B \keq + A \kee}{\sqab}\right) \\
+		&= \left(1 - \frac{B^2}{\ab}\right) \keq - \frac{AB}{\ab} \kee.
+	\end{align}
+	Then
+	\begin{align}
+		\norm{h_1}^2 &= \left(1 - \frac{B^2}{\ab}\right)^2 - \left(\frac{AB}{\ab}\right)^2 = 1 - \frac{2B^2}{\ab} + \frac{B^4}{(\ab)^2} - \frac{A^2 B^2}{(\ab)^2} \\
+		&= \frac{(\ab)^2 - 2B^2(\ab) + B^4 - A^2B^2}{(\ab)^2} = \frac{A^2 (\ab)}{(\ab)^2} \\
+		&= \frac{A^2}{A^2 + B^2}
+	\end{align}
+	so
+	\begin{align}
+		\kep &= \frac{\khq}{\norm{h_1}} = \frac{\sqab}{A} \left[\left(1 - \frac{B^2}{\ab}\right) \keq - \frac{AB}{\ab} \kee \right] \\
+%		&= \left(\frac{\sqab}{A} - \frac{B^2}{A \sqab}\right) \keq - \frac{B}{\sqab} \kee \\
+		&= \frac{A}{\sqab} \keq - \frac{B}{\sqab} \kee
+	\end{align}
+	The probability that $\kep$ has the eigenvalue $\lambda$ is $\qty|\braket{p_\lambda}{e_1'}|^2$.  Thus,
+	\begin{align}
+		\qty|\braket{p_\pm}{e_1'}|^2 &= \left| -\frac{A}{\sqab} \frac{A}{\sqrt{2}\sqab} - \frac{B}{\sqab} \frac{B}{\sqrt{2}\sqab} \right|^2 = \left| -\frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2}, \\
+		\qty|\braket{p_0}{e_1'}|^2 &= \left| -\frac{A}{\sqab} \frac{B}{\sqab} + \frac{B}{\sqab} \frac{A}{\sqab} \right|^2 = 0.
+	\end{align}
+\end{solution}
 
 \end{document}
