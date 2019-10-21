@@ -1,0 +1,122 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage{physics, amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+%\allowdisplaybreaks
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+ 
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 316 Homework 2}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{12pt}
+\cfoot{\thepage}
+
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \subsection{}
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+
+
+\begin{document}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newcommand{\vR}{\vec{R}}
+\newcommand{\vRd}{\vec{\dot{R}}}
+\newcommand{\vRdd}{\vec{\ddot{R}}}
+\newcommand{\vr}{\vec{r}}
+\newcommand{\vrd}{\vec{\dot{r}}}
+
+\section{Reduced three-body problem}
+\begin{statement}
+		The problem of three point particles interacting gravitationally has a particularly simple limit: let the third body $m_3 \ll m_2, m_1$ so that its effect on the motions of $m_1$ and $m_2$ is negligible.  Assume in addition that $m_3$ moves in the same orbital plane as $m_1$ and $m_2$.  For simplicity, consider only the case of $m_1$ and $m_2$ in circular orbit about their center of mass.
+\end{statement}
+
+\begin{problem}
+	Switch into a reference frame rotating with angular velocity $\omega$ associated with the circular orbit for the two-body problem.  Choose the center of mass of the two-body problem to be the origin.  Choose the $x$ axis to go through $m_1$ and $m_2$.  Show that the (now stationary) $m_1$ and $m_2$ are located at $-r_c \mu / m_1$ and $r_c \mu / m_2$.
+\end{problem}
+
+\begin{solution}
+	\hl{Call the stationary coordinate system} $(r, \theta, \phi)$.  We showed in Prob.~4 of Homework 1, that the motion for $m_1, m_2$ is confined to a plane, which we may choose to be $(r, \theta)$.  Then $m_1$ and $m_2$ are located at $\vR_1 = \vR_1(t, r, \theta)$ and $\vR_2 = \vR_2(t, r, \theta)$.  Let $\vR = \vR_1 - \vR_2$ denote the separation between the masses.  Using the method discussed in class, the motion of $m_1$ and $m_2$ is governed by the equation
+	\begin{equation} \label{lagr1}
+		\mu \vRdd = -\pdv{}{r} V_\text{eff}
+	\end{equation}
+	where $\mu = m_1 m_2 / (m_1 + m_2)$ is the reduced mass, $\vR_{12} = \vR_1 - \vR_2$ is the separation between the two masses, and the effective potential
+	\begin{equation}
+		V_\text{eff}(R) = V(R) + \frac{J^2}{2 \mu R^2} = -\frac{G m_1 m_2}{R} + \frac{J^2}{2 \mu R^2}
+	\end{equation}
+	where $J = \mu R^2 \dot{\theta}$ is the magnitude of the total angular momentum, which is conserved. 
+	
+	
+\hl{???}
+
+	Call the stationary coordinate system $(X, Y, Z)$, and choose $(X, Y)$ as the orbital plane.  Let the locations of $m_1$ and $m_2$ be given by $\vR_1 = \vR_1(t, X, Y)$ and $\vR_2 = \vR_2(t, X, Y)$.  Let $r_c$ be the radius of the orbit about the $Z$ axis.  We know that $m_1, m_2$ both have circular orbits about the $Z$ axis with frequency $\omega$, so we can write
+	\begin{equation}
+		\vR_1(t) = 
+	\end{equation}
+	
+	Call the rotating coordinate system $(x, y, z)$, in which the locations of $m_1$ and $m_2$ are $\vr_1 = \vr_1(t, x, y, z)$ and $\vr_2 = \vr_2(x, y, z)$.
+	
+	Since we have chosen the $x$ axis to go through $m_1$ and $m_2$, we will choose our reference frame to be rotating about the $z$ axis.  We thus have the transformation
+	\begin{align}
+		x &= X \cos{\omega t} + Y \sin{\omega t}, \\
+		y &= Y \cos{\omega t} - X \sin{\omega t}, \\
+		z &= Z.
+	\end{align}
+\end{solution}
+
+\newcommand{\xd}{\dot{x}}
+\newcommand{\yd}{\dot{y}}
+
+\begin{problem}
+	Show that the Lagrangian governing the wquation of motion of $m_3$ at location $(x(t), y(t))$ is
+	\begin{equation}
+		L_3 = \frac{m_3}{2} \left[ (\xd - \omega y)^2 + (\yd + \omega x)^2 \right] - U_{13} - U_{23},
+	\end{equation}
+	where $U_13(x, y)$ is the gravitaional interaction of $m_3$ with $m_1$, while $U_{23}$ is associated with $m_3$ and $m_2$.
+\end{problem}
+    
+
+\end{document}
