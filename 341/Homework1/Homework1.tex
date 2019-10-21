@@ -161,7 +161,7 @@
 \newcommand{\isq}{i \sqab}
 
 \begin{problem}
-	If $\kpl$ is an eignevector of $)$, we have $O \kpl = \lambda \kpl$ where $\lambda$ is the corresponding eigenvalue. $\kpl$ can be expanded as $\kpl = \sum{i=1}^3 u_{\lambda, i} \ket{e_i}$.  Denote the three eigenvalues and the corresponding normalized eigenvectors of $O$ as $\lp, \lo, \lm$ and $\kpp, \kpo, \kpm$ where $\lp$~($\lm$) is the largest~(smallest) eigenvalue.  Find $\lp, \lo, \lm$ and $\kpp, \kpo, \kpm$.
+	If $\kpl$ is an eignevector of $O$, we have $O \kpl = \lambda \kpl$ where $\lambda$ is the corresponding eigenvalue. $\kpl$ can be expanded as $\kpl = \sum{i=1}^3 u_{\lambda, i} \ket{e_i}$.  Denote the three eigenvalues and the corresponding normalized eigenvectors of $O$ as $\lp, \lo, \lm$ and $\kpp, \kpo, \kpm$ where $\lp$~($\lm$) is the largest~(smallest) eigenvalue.  Find $\lp, \lo, \lm$ and $\kpp, \kpo, \kpm$.
 \end{problem}
 
 \begin{solution}
@@ -178,7 +178,7 @@
 	\end{align}
 	From \refeq{lambda0} we obtain $\lo = 0$, and from \refeq{lambdapm} we obtain $\lpm = \pm \sqab$.
 
-	Let $\klo, \klpm$ be the not-necessarily-normalized eigenvectors corresponding to $\lo, \lpm$.  Beginning with $\lo$, we will find the corresponding eigenvector $\klo = \uoq \keq + \uow + \kew + \uoe + \kee$.  We seek $\uoq, \uow, \uoe$ such that
+	Let $\klo, \klpm$ be the not-necessarily-normalized eigenvectors corresponding to $\lo, \lpm$.  Beginning with $\lo$, we will find the corresponding eigenvector $\klo = \uoq \keq + \uow \kew + \uoe \kee$.  We seek $\uoq, \uow, \uoe$ such that
 	\begin{equation} \label{ev0}
 		\mO \mqty[\uoq \\ \uow \\ \uoe] = 0 \mqty[\uoq \\ \uow \\ \uoe].
 	\end{equation}
@@ -190,7 +190,7 @@
 	\end{align}
 	\refeq{u02a} and \refeq{u02b} imply that $\uow = 0$.  We may fix $\uoe = A$ without loss of generality.  Then \refeq{u01} implies $\uoq = B$.  Thus, $\klo = B \keq + A \kee$.
 
-	For $\klpm = \upmq \keq + \upmw + \kew + \upme + \kee$, we seek $\upmq, \upmw, \upme$ such that
+	For $\klpm = \upmq \keq + \upmw \kew + \upme \kee$, we seek $\upmq, \upmw, \upme$ such that
 	\begin{equation} \label{evpm}
 		\mO \mqty[\upmq \\ \upmw \\ \upme] = \pmsq \mqty[\upmq \\ \upmw \\ \upme].
 	\end{equation}
@@ -257,6 +257,7 @@
 		\qty|\braket{p_\pm}{e_1'}|^2 &= \left| -\frac{A}{\sqab} \frac{A}{\sqrt{2}\sqab} - \frac{B}{\sqab} \frac{B}{\sqrt{2}\sqab} \right|^2 = \left| -\frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2}, \\
 		\qty|\braket{p_0}{e_1'}|^2 &= \left| -\frac{A}{\sqab} \frac{B}{\sqab} + \frac{B}{\sqab} \frac{A}{\sqab} \right|^2 = 0.
 	\end{align}
+	As expected, $\qty|\braket{p_+}{e_1'}|^2 + \qty|\braket{p_0}{e_1'}|^2 + \qty|\braket{p_0}{e_1'}|^2 = 1$.
 \end{solution}
 
 
@@ -346,7 +347,7 @@
 \end{problem}
 
 \begin{solution}
-	Recall that $\keq, \kew$ form a complete orthonormal basis, so $\ket{e_i}\bra{e_i} = I$.  This allows us to write
+	Recall that $\keq, \kew$ form a complete orthonormal basis, so $\sum_{i=1}^2 \ket{e_i}\bra{e_i} = I$.  This allows us to write
 	\begin{equation}
 		A = \sum_{n=1}^2 \sum_{m=1}^2 \ket{e_n} \mel{e_n}{A}{e_m} \bra{e_m} = \sum_{n=1}^2 \sum_{m=1}^2 \ket{e_n} A_{nm} \bra{e_m}.
 	\end{equation}
@@ -360,7 +361,7 @@
 	\end{equation}
 	Similarly,
 	\begin{equation} \label{thing2}
-		\braket*{e_i'}{e_n} = (\braket{e_n}{e_i'})^* = (\mel{e_n}{U}{e_i'})^* = U^*_{ni}.
+		\braket*{e_i'}{e_n} = (\braket{e_n}{e_i'})^* = (\mel{e_n}{U}{e_i})^* = U^*_{ni}.
 	\end{equation}
 	Making the substitutions \refeq{thing1} and \refeq{thing2}, \refeq{rep1} becomes
 	\begin{equation}
