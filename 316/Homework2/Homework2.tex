@@ -79,44 +79,231 @@
 \end{problem}
 
 \begin{solution}
-	\hl{Call the stationary coordinate system} $(r, \theta, \phi)$.  We showed in Prob.~4 of Homework 1, that the motion for $m_1, m_2$ is confined to a plane, which we may choose to be $(r, \theta)$.  Then $m_1$ and $m_2$ are located at $\vR_1 = \vR_1(t, r, \theta)$ and $\vR_2 = \vR_2(t, r, \theta)$.  Let $\vR = \vR_1 - \vR_2$ denote the separation between the masses.  Using the method discussed in class, the motion of $m_1$ and $m_2$ is governed by the equation
-	\begin{equation} \label{lagr1}
-		\mu \vRdd = -\pdv{}{r} V_\text{eff}
-	\end{equation}
-	where $\mu = m_1 m_2 / (m_1 + m_2)$ is the reduced mass, $\vR_{12} = \vR_1 - \vR_2$ is the separation between the two masses, and the effective potential
-	\begin{equation}
-		V_\text{eff}(R) = V(R) + \frac{J^2}{2 \mu R^2} = -\frac{G m_1 m_2}{R} + \frac{J^2}{2 \mu R^2}
-	\end{equation}
-	where $J = \mu R^2 \dot{\theta}$ is the magnitude of the total angular momentum, which is conserved. 
-	
-	
-\hl{???}
-
-	Call the stationary coordinate system $(X, Y, Z)$, and choose $(X, Y)$ as the orbital plane.  Let the locations of $m_1$ and $m_2$ be given by $\vR_1 = \vR_1(t, X, Y)$ and $\vR_2 = \vR_2(t, X, Y)$.  Let $r_c$ be the radius of the orbit about the $Z$ axis.  We know that $m_1, m_2$ both have circular orbits about the $Z$ axis with frequency $\omega$, so we can write
-	\begin{equation}
-		\vR_1(t) = 
-	\end{equation}
-	
-	Call the rotating coordinate system $(x, y, z)$, in which the locations of $m_1$ and $m_2$ are $\vr_1 = \vr_1(t, x, y, z)$ and $\vr_2 = \vr_2(x, y, z)$.
-	
-	Since we have chosen the $x$ axis to go through $m_1$ and $m_2$, we will choose our reference frame to be rotating about the $z$ axis.  We thus have the transformation
+	Call the stationary coordinate system $\vR = (X, Y, Z)$, and choose $(X, Y)$ as the orbital plane.  Call the rotating coordinate system $\vr = (x, y, z)$, which is rotated about the $Z$ axis by angle $\omega t$.  This gives us the transformation
 	\begin{align}
-		x &= X \cos{\omega t} + Y \sin{\omega t}, \\
-		y &= Y \cos{\omega t} - X \sin{\omega t}, \\
+		x &= X \cos{\omega t} + Y \sin{\omega t}, \label{oldx} \\
+		y &= Y \cos{\omega t} - X \sin{\omega t},  \label{oldy} \\
 		z &= Z.
 	\end{align}
+	From our choice of orbital plane, there is no motion in the $z$ direction.  Let the locations of $m_1$ and $m_2$ be given by $\vr_1 = (x_1, y_1)$ and $\vr_2 = (x_2, y_2)$ in the rotating frame.
+	
+	From our choice of $x$ axis, we know that $y_1 = y_2 = 0$.  From our choice of the origin as the center of mass, we have
+	\begin{equation} \label{cm1}
+		m_1 x_1 + m_2 x_2 = 0.
+	\end{equation}
+	By construction, $m_1$ and $m_2$ are stationary in the rotating frame, so $\dv*{x_1}{t} = \dv*{x_2}{t} = 0$.  In other words, $x_1$ and $x_2$ must both be constant.  Therefore, let
+	\begin{equation} \label{cm2}
+		r_c = x_2 - x_1
+	\end{equation}
+	be the constant distance between $m_1$ and $m_2$.  Now we have the system of two equations \refeq{cm1} and \refeq{cm2}, so we can solve for $x_1$ and $x_2$.  Substituting \refeq{cm2} as $x_2 = r_c + x_1$ into \refeq{cm1},
+	\begin{equation} \label{x1}
+		m_1 x_1 + m_2 (r_c + x_1) = 0 \implies x_1 = -\frac{m_2}{m_1 + m_2} r_c.
+	\end{equation}
+	Now substituting \refeq{x1} back into \refeq{cm1},
+	\begin{equation} \label{x2}
+		r_c = x_2 + \frac{m_2}{m_1 + m_2} r_c \implies x_2 = \frac{m_1}{m_1 + m_2} r_c.
+	\end{equation}
+	Note that the reduced mass $\mu = m_1 m_2 / (m_1 + m_2)$.  Substituting $\mu$ into \refeq{x1} and \refeq{x2} yields
+	\begin{align} \label{result1a}
+		\vr_1 = x_1 = - r_c \mu / m_1, & \vr_2 = x_2 = r_c \mu / m_2
+	\end{align}
+	as desired. \qed
+
+
 \end{solution}
 
 \newcommand{\xd}{\dot{x}}
+\newcommand{\Xd}{\dot{X}}
 \newcommand{\yd}{\dot{y}}
+\newcommand{\Yd}{\dot{Y}}
 
 \begin{problem}
-	Show that the Lagrangian governing the wquation of motion of $m_3$ at location $(x(t), y(t))$ is
-	\begin{equation}
+	Show that the Lagrangian governing the equation of motion of $m_3$ at location $(x(t), y(t))$ is
+	\begin{equation} \label{lagr3given}
 		L_3 = \frac{m_3}{2} \left[ (\xd - \omega y)^2 + (\yd + \omega x)^2 \right] - U_{13} - U_{23},
 	\end{equation}
-	where $U_13(x, y)$ is the gravitaional interaction of $m_3$ with $m_1$, while $U_{23}$ is associated with $m_3$ and $m_2$.
+	where $U_13(x, y)$ is the gravitational interaction of $m_3$ with $m_1$, while $U_{23}(x, y)$ is associated with $m_3$ and $m_2$.
 \end{problem}
-    
+
+\begin{solution}
+	In general, the Lagrangian for $m_3$ is given by
+	\begin{equation} \label{lagr3}
+		L_3 = T_3 - U_3,
+	\end{equation}
+	where $T_3$ is the kinetic energy of $m_3$ and $U_3$ is its potential energy.
+	
+	Beginning with $U_3$, the only forces acting upon $m_3$ are the gravitational interactions with $m_1$ and $m_2$.  We know from the problem statement that these interactions are independent of each other; $m_3$ has a negligible effect on the motions of each $m_1$ and $m_2$, so it cannot couple them in any way.  Thus, we can write
+	\begin{equation} \label{potential}
+		U_3 = -G \frac{m_1 m_3}{r_{13}} - G \frac{m_2 m_3}{r_{23}} \equiv U_{13} + U_{23},
+	\end{equation}
+	where $r_{13}$~($r_23$) is the separation between $m_3$ and $m_1$~($m_2$), and we have defined $U_{13}$ and $U_{23}$.
+	
+	Now we will find an expression for $T_3$.  Let $\vR_3 = (X(t), Y(t))$ be the position of $m_3$ in the stationary coordinate system.  Then
+	\begin{equation} \label{kinetic1}
+		T_3 = \frac{m_3}{2} \vRd_3^2 = \frac{m_3}{2} (\Xd + \Yd)^2.
+	\end{equation}
+	We can define an inverse transformation back to the old coordinate system by simply rotating the $(x, y)$ plane about the $z$ axis by angle $-\omega t$.  This inverse transformation is
+	\begin{align}
+		X &= x \cos{\omega t} - y \sin{\omega t}, \label{newx} \\
+		Y &= x \sin{\omega t} + y \cos{\omega t},  \label{newy} \\
+		Z &= z.
+	\end{align}
+	It follows from \refeq{newx} and \refeq{newy} that
+	\begin{align}
+		\Xd &= \pdv{X}{t} + \pdv{X}{x} \dv{x}{t} + \pdv{X}{y} \dv{y}{t} = - \omega x \sin{\omega t} - \omega y \cos{\omega t} + \xd \cos{\omega t} - \yd \sin{\omega t} \label{xlong} \\
+			&= (\xd - \omega y) \cos{\omega t} - (\yd + \omega x) \sin{\omega t}, \\
+		\Yd &= \pdv{Y}{t} + \pdv{Y}{x} \dv{x}{t} + \pdv{Y}{y} \dv{y}{t} =  \omega x \cos{\omega t} - \omega y \sin{\omega t} + \xd \sin{\omega t} + \yd \cos{\omega t} \label{ylong} \\
+		&= (\yd + \omega x) \cos{\omega t} + (\xd - \omega y) \sin{\omega t}.
+	\end{align}
+	Now using the forms of \refeq{xlong} and \refeq{ylong},
+	\begin{align}
+		\Xd^2 &= (\xd - \omega y)^2 \cos^2{\omega t} - 2 (\xd - \omega y) (\yd + \omega x) \cos{\omega t} \sin{\omega t} + (\yd + \omega x)^2 \sin^2{\omega t}, \\
+		\Yd^2 &= (\yd + \omega x)^2 \cos^2{\omega t} + 2 (\xd - \omega y) (\yd + \omega x) \cos{\omega t} \sin{\omega t} + (\xd - \omega y)^2 \sin^2{\omega t},
+	\end{align}
+	which implies
+	\begin{align}
+		\Xd^2 + \Yd^2 &= (\xd - \omega y)^2 (\cos^2{\omega t} + \sin^2{\omega t}) + (\yd + \omega x)^2 (\cos^2{\omega t} + \sin^2{\omega t}) \\
+		&= (\xd - \omega y)^2 + (\yd + \omega x)^2. \label{squared}
+	\end{align}
+	Substituting \refeq{squared} into \refeq{kinetic1}, we have
+	\begin{equation} \label{kinetic2}
+		T_3 = \frac{m_3}{2} \left[ (\xd - \omega y)^2 + (\yd + \omega x)^2 \right].
+	\end{equation}
+	
+	Finally, substituting \refeq{potential} and \refeq{kinetic2} into \refeq{lagr3} yields \refeq{lagr3given} as desired. \qed
+\end{solution}
+
+\newcommand{\xdd}{\ddot{x}}
+\newcommand{\ydd}{\ddot{y}}
+
+\begin{problem}
+	Show that the mechanical system described by $L_3$ has five locations in mechanical equilibrium.  These are known as \emph{Lagrange points}.  (Hint: the graphical method is perfectly good for demonstrating a real root exists in a particular instance.)
+\end{problem}
+
+\begin{solution}
+	The Euler-Lagrange equations for $m_3$ are given by
+	\begin{align}
+		0 &= \pdv{L_3}{x} - \dv{}{t} \pdv{L_3}{\xd}, \label{elx} \\
+		0 &= \pdv{L_3}{y} - \dv{}{t} \pdv{L_3}{\yd}. \label{ely}
+	\end{align}
+	We will attack each term of the Lagrangian in \refeq{lagr3} separately.  Beginning with $T_3$, note that
+	\begin{align}
+		\pdv{T_3}{x} &= m_3 (\omega \yd + \omega^2 x), &
+		\pdv{T_3}{y} &= m_3 (-\omega \xd + \omega^2 y), \\
+		\pdv{T_3}{\xd} &= m_3 (\xd - \omega y), &
+		\pdv{T_3}{\yd} &= m_3 (\yd + \omega x). \label{partd}
+	\end{align}
+	In turn, \refeq{partd} implies
+	\begin{align}
+		\dv{}{t} \pdv{T_3}{\xd} &= m_3 (\xdd - \omega \yd), &
+		\dv{}{t} \pdv{T_3}{\yd} &= m_3 (\ydd + \omega \xd).
+	\end{align}
+	
+	Now for $U_3$, we can find explicitly the $r_{13}$ and $r_{23}$ appearing in \refeq{potential} using the positions of $m_1$ and $m_2$ on the $x$ axis given by \refeq{result1a}.  These are
+	\begin{align} \label{rdefs}
+		r_{13} &= \sqrt{\left( x + \frac{r_c \mu}{m_1} \right)^2 + y^2}, &
+		r_{23} &= \sqrt{\left( x - \frac{r_c \mu}{m_2} \right)^2 + y^2}.
+	\end{align}
+	It follows from \refeq{rdefs} that
+	\begin{align}
+		\pdv{r_{13}}{x} &= \frac{1}{r_{13}} \left( x + \frac{r_c \mu}{m_1} \right), &
+		\pdv{r_{23}}{x} &= \frac{1}{r_{23}} \left( x - \frac{r_c \mu}{m_2} \right), \\
+		\pdv{r_{13}}{y} &= \frac{y}{r_{13}},
+		& \pdv{r_{23}}{y} &= \frac{y}{r_{23}}, \\
+		\pdv{r_{13}}{\xd} &= \pdv{r_{23}}{\xd} = \pdv{r_{13}}{\yd} = \pdv{r_{23}}{\yd} = 0.
+	\end{align}
+	Then
+	\begin{align}
+		\pdv{U_{13}}{x} &= \pdv{U_{13}}{r_{13}} \pdv{r_{13}}{x} = G \frac{m_1 m_3}{r_{13}^3} \left( x + \frac{r_c \mu}{m_1} \right), & 
+		\pdv{U_{23}}{x} &= G \frac{m_2 m_3}{r_{23}^3} \left( x - \frac{r_c \mu}{m_2} \right), \\
+		\pdv{U_{13}}{y} &= \pdv{U_{13}}{r_{13}} \pdv{r_{13}}{y} = G \frac{m_1 m_3}{r_{13}^3} y, &
+		\pdv{U_{23}}{y} &= G \frac{m_2 m_3}{r_{23}^3} y, \\
+		\pdv{U_{13}}{\xd} &= \pdv{U_{23}}{\xd} = \pdv{U_{13}}{\yd} = \pdv{U_{23}}{\yd} = 0.
+	\end{align}
+	Making the appropriate substitutions, \refeq{elx} becomes
+	\begin{align}
+		0 &= m_3 (\omega \yd + \omega^2 x) - G \frac{m_1 m_3}{r_{13}^3} \left( x + \frac{r_c \mu}{m_1} \right) - G \frac{m_2 m_3}{r_{23}^3} \left( x - \frac{r_c \mu}{m_2} \right) - m_3 (\xdd - \omega \yd) \\
+		\implies \xdd &= 2 \omega \yd + \omega^2 x - G \frac{m_1}{r_{13}^3} \left( x + \frac{r_c \mu}{m_1} \right) - G \frac{m_2}{r_{23}^3} \left( x - \frac{r_c \mu}{m_2} \right), \label{motionx}
+	\end{align}
+	and \refeq{ely} becomes
+	\begin{align}
+		0 &= m_3 (-\omega \xd + \omega^2 y) - G \frac{m_1 m_3}{r_{13}^3} y - G \frac{m_2 m_3}{r_{23}^3} y - m_3 (\ydd + \omega \xd) \\
+		\implies \ydd &= -2 \omega \xd + \omega^2 y - G y \left( \frac{m_1}{r_{13}^3} + \frac{m_2}{r_{23}^3} \right). \label{motiony}
+	\end{align}
+
+	The system is in mechanical equilibrium at points where $\xd = \yd = 0$.  The equilibrium behavior persists over time, implying $\xdd = \ydd = 0$.  With these restrictions, \refeq{motionx} and \refeq{motiony} become
+	\begin{align}
+		x &= \frac{G}{\omega^2} \frac{m_1}{r_{13}^3} \left( x + \frac{r_c \mu}{m_1} \right) + \frac{G}{\omega^2} \frac{m_2}{r_{23}^3} \left( x - \frac{r_c \mu}{m_2} \right), \label{simplex} \\
+		y &= \frac{G}{\omega^2} y \left( \frac{m_1}{r_{13}^3} + \frac{m_2}{r_{23}^3} \right).\label{simpley}
+	\end{align}
+	The real roots of \refeq{simplex} and \refeq{simpley} are the Lagrange points.
+	
+	Inspection of \refeq{simpley} indicates that there is at least one solution where $y = 0$.  In this case \refeq{simpley} is eliminated.  Additionally, \refeq{rdefs} becomes
+	\begin{align}
+		r_{13} &= \qty|x + \frac{r_c \mu}{m_1}|, &
+		r_{23} &= \qty|x - \frac{r_c \mu}{m_2}|,
+	\end{align}
+	and thus \refeq{simplex} reduces to
+	\begin{equation}
+		x = \frac{G}{\omega^2} \frac{m_1}{\qty|x + r_c \mu / m_1|^3} \left( x + \frac{r_c \mu}{m_1} \right) + \frac{G}{\omega^2} \frac{m_2}{\qty|x - r_c \mu / m_2|^3} \left( x - \frac{r_c \mu}{m_2} \right) \equiv f(x), \label{y0case}
+	\end{equation}
+	where we have defined $f(x)$ as the right-hand side of the equation.  Note the following observations about $f(x)$:
+	\begin{itemize}
+		\item $f(x)$ has singularities at $x = - r_c \mu / m_1$ and $x = r_c \mu / m_2$;
+		\item $f(x) < 0$ in the regime $x < - r_c \mu / m_1$;
+		\item $f(x) > 0$ in the regime $x > r_c \mu / m_2$;
+		\item $f(x)$ crosses the $x$ axis somewhere in the regime $- r_c \mu / m_1 < x < r_c \mu / m_2$;
+		\item $\dv*{f}{x} < 0$ for all defined values of $x$ because it is dominated by negative powers of $x$.
+	\end{itemize}
+	Based on these observations, we can sketch $f(x)$ and $x$ as shown in Fig.~\ref{fig1a}.  The three intersection points indicate that there are three real roots of \refeq{y0case}.  These are the first three Lagrange points.
+	
+	In the case $y \neq 0$, \refeq{simpley} may be written
+	\begin{equation} \label{simplery}
+		\frac{\omega^2}{G} = \frac{m_1}{r_{13}^3} + \frac{m_2}{r_{23}^3}.
+	\end{equation}
+	Substituting \refeq{simplery} into \refeq{simplex},
+	\begin{equation}
+		\left (\frac{m_1}{r_{13}^3} + \frac{m_2}{r_{23}^3} \right) x = \frac{m_1}{r_{13}^3} \left( x + \frac{r_c \mu}{m_1} \right) + \frac{m_2}{r_{23}^3} \left( x - \frac{r_c \mu}{m_2} \right) \implies \frac{m_1}{r_{13}^3} \frac{r_c \mu}{m_1} = \frac{m_2}{r_{23}^3} \frac{r_c \mu}{m_2} \implies r_{13} = r_{23}.
+	\end{equation}
+	\hl{Applying this condition to} \refeq{rdefs},
+	\begin{equation} \label{yn0case}
+		\left( x + \frac{r_c \mu}{m_1} \right)^2 + y^2 = \left( x - \frac{r_c \mu}{m_2} \right)^2 + y^2 \implies 
+	\end{equation}
+	\hl{But why does this imply they equal} $r$?.
+	Geometrically, this is only possible at two locations in the $(x, y)$ plane as shown in Fig.~\ref{fig1b}.  These are the final two Lagrange points, for a total of five as desired. \qed
+\end{solution}
+	
+	\unitlength=.35in
+	\begin{figure}[p] \centering \label{fig1a}
+		\begin{picture}(10.5,10.5)(-5,-5)
+			{\color{lightgray}
+			\thinlines
+			\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+			\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+			}
+			\thicklines
+			\put(-5,0){\vector(1,0){10.2}}
+			\put(0,-5){\vector(0,1){10.2}}
+			\put(5.3,0){\makebox(1,0)[l]{$x$}}
+			\put(0,5.3){\makebox(0,1)[b]{$f(x)$}}
+		\end{picture}
+		\caption{Three Lagrange points, indicated by roots of \refeq{y0case}.}
+	\end{figure}
+	
+	\begin{figure} \centering \label{fig1b}
+		\begin{picture}(10.5,10.5)(-5,-5)
+			{\color{lightgray}
+			\thinlines
+			\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+			\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+			}
+			\thicklines
+			\put(-5,0){\vector(1,0){10.2}}
+			\put(0,-5){\vector(0,1){10.2}}
+			\put(5.3,0){\makebox(1,0)[l]{$x$}}
+			\put(0,5.3){\makebox(0,1)[b]{$y$}}
+		\end{picture}
+		\caption{Two more Lagrange points, found by the geometrical argument implied by \refeq{yn0case}.}
+	\end{figure}
 
 \end{document}
