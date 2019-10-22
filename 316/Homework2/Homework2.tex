@@ -278,13 +278,13 @@
 	\begin{picture}(10.5,10.5)(-5,-5)
 		{\color{lightgray}
 		\thinlines
-		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
 		}
 		\thicklines
-		\put(-5,0){\vector(1,0){10.2}}
+		\put(-8,0){\vector(1,0){16.2}}
 		\put(0,-5){\vector(0,1){10.2}}
-		\put(5.3,0){\makebox(1,0)[l]{$x$}}
+		\put(8.3,0){\makebox(1,0)[l]{$x$}}
 		\put(0,5.3){\makebox(0,1)[b]{}}
 	\end{picture}
 	\caption{Three Lagrange points, indicated by roots of \refeq{y0case}.}
@@ -294,13 +294,13 @@
 	\begin{picture}(10.5,10.5)(-5,-5)
 		{\color{lightgray}
 		\thinlines
-		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
 		}
 		\thicklines
-		\put(-5,0){\vector(1,0){10.2}}
+		\put(-8,0){\vector(1,0){16.2}}
 		\put(0,-5){\vector(0,1){10.2}}
-		\put(5.3,0){\makebox(1,0)[l]{$x$}}
+		\put(8.3,0){\makebox(1,0)[l]{$x$}}
 		\put(0,5.3){\makebox(0,1)[b]{$y$}}
 	\end{picture}
 	\caption{Two more Lagrange points, found by the geometrical argument implied by \refeq{yn0case}.}
@@ -316,8 +316,71 @@
 	Is this mechanical system integrable?  In other words, does this problem have as many independent conserved quantities as there are unknown dynamical variables?
 \end{problem}
 
+%\newcommand{\xd}{\dot{x}}
+%\newcommand{\yd}{\dot{y}}
+\newcommand{\zd}{\dot{z}}
+
+\newcommand{\phid}{\dot{\phi}}
+\newcommand{\thetad}{\dot{\theta}}
+
 \begin{solution}
-	\hl{Yes, energy and angular momentum are conserved and there are two degrees of freedom }$\theta$ and $\phi$
+	The inextensible string fixes $\rho = \ell$, so the point mass's motion is constrained to a sphere of radius $\ell$.  Thus the system has two unknown dynamical variables, $\theta$ and $\phi$.  Therefore, we will need to find two independent conserved quantities in order for the system to be integrable.  We will search for these quantities by analyzing the Lagrangian of the system.
+	
+	We will begin with $T$.  In Cartesian coordinates, kinetic energy in three dimensions is given by
+	\begin{equation} \label{Tcart}
+		T = \frac{m}{2} (\xd^2 + \yd^2 + \zd^2).
+	\end{equation}
+	The transformation to Cartesian coordinates from the spherical coordinate system defined in the problem statement is given by
+	\begin{align}
+		x &= \ell \cos{\phi} \sin{\theta}, \label{xcart} \\
+		y &= \ell \sin{\phi} \sin{\theta}, \label{ycart} \\
+		z &= -\ell \cos{\theta}. \label{zcart}
+	\end{align}
+	The time derivatives corresponding to \refeq{xcart}--\refeq{zcart} are then
+	\begin{align}
+		\xd &= \dv{x}{\phi} \dv{\phi}{t} + \dv{x}{\theta} \dv{\theta}{t} = -\ell \sin{\phi} \sin{\theta} \,\phid + \ell \cos{\phi} \cos{\theta} \,\thetad, \label{xcdot} \\
+		\yd &= \dv{y}{\phi} \dv{\phi}{t} + \dv{y}{\theta} \dv{\theta}{t} = \ell \cos{\phi} \sin{\theta} \,\phid + \ell \sin{\phi} \cos{\theta} \,\thetad, \label{ycdot} \\
+		\zd &= \dv{z}{\phi} \dv{\phi}{t} + \dv{z}{\theta} \dv{\theta}{t} = \ell \sin{\theta} \,\thetad. \label{zcdot}
+	\end{align}
+	From \refeq{xcdot}--\refeq{zcdot}, note that
+	\begin{align}
+	\xd^2 &= \ell^2 (\sin^2{\phi} \sin^2{\theta} \,\phid^2 - 2 \cos{\phi} \sin{\phi} \cos{\theta} \sin{\theta} \,\phid \,\thetad + \cos^2{\phi} \cos^2{\theta} \,\thetad^2), \label{xcdot2} \\
+	\yd^2 &= \ell^2 (\cos^2{\phi} \sin^2{\theta} \,\phid^2 + 2 \cos{\phi} \sin{\phi} \cos{\theta} \sin{\theta} \,\phid \,\thetad + \sin^2{\phi} \cos^2{\theta} \,\thetad^2), \label{ycdot2} \\
+	\zd^2 &= \ell^2 \sin^2{\theta} \,\thetad^2. \label{zcdot2}
+	\end{align}
+	From \refeq{xcdot2} and \refeq{ycdot2},
+	\begin{align}
+		\xd^2 + \yd^2 &= \ell^2 \left[ (\sin^2{\phi} \sin^2{\theta} + \cos^2{\phi} \sin^2{\theta}) \,\phid^2 + (\cos^2{\phi} \cos^2{\theta} + \sin^2{\phi} \cos^2{\theta}) \,\thetad^2 \right] \\
+		&= \ell^2 (\sin^2{\theta} \,\phid^2 + \cos^2{\theta} \,\thetad^2).
+	\end{align}
+	Now adding \refeq{zcdot2},
+	\begin{equation}
+		\xd^2 + \yd^2 + \zd^2 = \ell^2 (\sin^2{\theta} \,\phid^2 + (\cos^2{\theta} + \sin^2{\theta}) \,\thetad^2) = \ell^2 (\sin^2{\theta} \,\phid^2 + \thetad^2). \label{sqaured}
+	\end{equation}
+	Substituting \refeq{squared}, we can write \refeq{Tcart} in polar coordinates:
+	\begin{equation} \label{spherekin}
+		T = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2).
+	\end{equation}
+	
+	Now addressing $U$, we know that the only external force acting upon the particle is gravity in the $-z$ direction.  This is
+	\begin{equation} \label{spherepot}
+		U = m g z = - m g \ell \cos{\theta},
+	\end{equation}
+	where $g$ is the acceleration of gravity and we have made the substitution \refeq{zcart}.
+	
+	Combining \refeq{spherekin} and \refeq{spherepot} yields the Lagrangian
+	\begin{equation} \label{spherelagr}
+		L = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2) + m g \ell \cos{\theta}.
+	\end{equation}
+	Note firstly that the Lagrangian \refeq{spherelagr} has no explicit time dependence.  Thus, Noether's theorem implies that the total energy $H$ of the system is conserved, where
+	\begin{equation} \label{consH}
+		H = \phid \pdv{L}{\phid} + \thetad \pdv{L}{\thetad} - L = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2) - m g \ell \cos{\theta}.
+	\end{equation}
+	Note also that \refeq{spherelagr} has no explicit $\phi$ dependence.  From Noether's theorem, this implies a second conserved quantity, given by
+	\begin{equation} \label{consH}
+		\pdv{L}{\phid} = m \ell^2 \sin^2{\theta} \,\phid \equiv J
+	\end{equation}
+	where we have defined $J$, which is the angular momentum of the system.  The two conserved quantities $H$ and $J$ are independent; therefore, the mechanical system is indeed integrable.
 \end{solution}
 
 \begin{problem} \label{2b}
@@ -325,7 +388,10 @@
 \end{problem}
 
 \begin{solution}
-	Fix $\phi \implies$ \hl{normal pendulum?}
+	The Euler-Lagrange equations for the Lagrangian \refeq{spherelagr} are
+	\begin{align}
+		
+	\end{align}
 \end{solution}
 
 \section{Spherical pendulum, continued}
@@ -346,7 +412,7 @@
 	\hl{Sinusoidal on the surface of a sphere}
 \end{solution}
 
-\section{Double-well potential}
+\section{Double-well potential} \label{prob4}
 
 \begin{statement}
 	A particle with mass $m$ is confined to one dimension and placed in the potential
@@ -396,11 +462,9 @@
 	\end{equation}
 	Then Hamilton's equations for the system are
 	\begin{align}
-		\qd &= \pdv{H}{p} = \frac{p}{m} \equiv f(q, p) \implies p = m\qd, \label{qdot} \\
-		\pd &= -\pdv{H}{q} = q - q^3 \equiv g(q, p), \label{pdot}
+		\qd &= \pdv{H}{p} = \frac{p}{m} \implies p = m\qd, \label{qdot} \\
+		\pd &= -\pdv{H}{q} = q - q^3. \label{pdot}
 	\end{align}
-	where we have defined $f(q, p)$ and $g(q, p)$.
-	
 	We are interested in the phase space $(q, p)$.  Fixed points $(q^*, p^*)$ occur where $\pd = \qd = 0$.  Making the appropriate equality from \refeq{pdot} and \refeq{qdot}, the fixed points are the roots of the equation
 	\begin{equation} \label{fps}
 		q^* - (q^*)^3 = p^*.
@@ -409,34 +473,29 @@
 	\begin{equation}
 		(q^*, p^*) = (0,0), (\pm 1, 0).
 	\end{equation}
-	We may linearize the system of two equations \refeq{pdot} and \refeq{qdot} to determine the staibility of the fixed points.  Consider some small perturbation $\dlq = q - q^*$, $\dlp = p - p^*$ from a fixed point.  Performing a Taylor series expansion about a fixed point $(q^*, p^*)$ gives the general expressions
-	\begin{align}
-		\dv{\,\dlq}{t} &= \qd = f(\dlq + q^*, \dlp + p^*) = f(q^*, p^*) + \left. \dlq \pdv{f}{q} \right|_{q^*} + \left. \dlp \pdv{f}{p} \right|_{p^*} + \order{\dlq^2, \dlp^2, \dlq \,\dlp}, \label{taylorq} \\
-		\dv{\,\dlp}{t} &= g(q^*, p^*) + \left. \dlq \pdv{g}{q} \right|_{q^*} + \left. \dlp \pdv{g}{p} \right|_{p^*} + \order{\dlq^2, \dlp^2, \dlq \,\dlp}. \label{taylorp}
-	\end{align}
-%	Neglecting higher-order terms, we can write down the linearized system in the basis $\dlq, \dlp$ using a matrix notation:
-%	\begin{equation}
-%		\mqty[\dv*{\,\dlq}{t} \\ \dv*{\,\dlp}{t} ] = \mqty[\left. \pdv*{f}{q} \right|_{q^*} & \left. \pdv*{f}{p} \right|_{p^*} \\ \left. \pdv*{g}{q} \right|_{q^*} & \left. \pdv*{g}{p} \right|_{p^*} ] \mqty[\dlq \\ \dlp] \equiv J \mqty[\dlq \\ \dlp],
-%	\end{equation}
-%	where we have defined the Jacobian matrix $J$.
-	Evaluating \refeq{taylorq} and \refeq{taylorp} for $f(q, p)$ and $g(q, p)$ as defined in \refeq{qdot} and \refeq{pdot} yields the linearized system
-	\begin{align}
-		\dv{\,\dlq}{t} &\approx f(q^*, p^*) + \dlp\, \frac{p^*}{m}, &
-		\dv{\,\dlp}{t} &\approx g(q^*, p^*) + \dlq\, (1 - 3 (q^*)^2).
-	\end{align}
-	For the fixed point $(0, 0)$,
-	\begin{align}
-		\dv{\,\dlq}{t} &\approx 0, &
-		\dv{\,\dlp}{t} &\approx \dlq,
-	\end{align}
-	so this point is \hl{unstable.}  The change in momentum of the particle scales as its distance from the equlibrium point.
+	These points are drawn in green in Fig.~\ref{fig4b}.
+	
+	In order to classify the stability of the fixed points, note that \refeq{qdot} gives a relationship for the time evolution in the $q$ direction.  That is, time evolution flows in the $+q$~($-q$) direction when $p > 0$~($p < 0$), which corresponds to the top~(bottom) half of the phase plane.  By this argument, we can figure out the behavior near the fixed points.  These partial trajectories are drawn in purple in Fig.~\ref{fig4b}.  We can conclude from this time evolution behavior that the fixed point at $(0, 0)$ is unstable (a saddle point).  The points at $(\pm 1, 0)$ are stable, but not attracting; they are centers of orbital motion.
+	
+	Drawing through the trajectories intersecting $(0,0)$, we identify the separatrix, drawn in red in Fig.~\ref{fig4b}.  \hl{Equation for separatrix}
+	
+		
+\begin{figure} \centering \label{fig4b}
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-8,0){\vector(1,0){16.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$q$}}
+		\put(0,5.3){\makebox(0,1)[b]{$p$}}
+	\end{picture}
+	\caption{Time evolution trajectories in phase space for the system of Prob.~\ref{prob4}.  Fixed points are shown in green.  The separatrix is shown in red.}
+\end{figure}
 
-	For the fixed point $(\pm 1, 0)$,
-	\begin{align}
-		\dv{\,\dlq}{t} &\approx 0, &
-		\dv{\,\dlp}{t} &\approx -2 \,\dlq,
-	\end{align}
-	so these points are stable.  A perturbation 
 \end{solution}
 	
 In writing these solutions, I consulted David Tong's lecture notes and Steven Strogatz'z \emph{Nonlinear Dynamics and Chaos}.
