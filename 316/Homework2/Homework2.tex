@@ -312,7 +312,7 @@
 	A point mass $m$ in three spatial dimensions is connected by a light inextensible string of length $\ell$ to a fixed pivot and experiences a uniform gravitational field.  Use spherical polar coordinates $(\rho, \theta, \phi)$, where $\rho$ is the radial distance, $\theta$ the relative inclination with respect to the downward vertical, and $\phi$ the azimuthal angle.
 \end{statement}
 
-\begin{problem}
+\begin{problem} \label{2a}
 	Is this mechanical system integrable?  In other words, does this problem have as many independent conserved quantities as there are unknown dynamical variables?
 \end{problem}
 
@@ -372,16 +372,20 @@
 	\begin{equation} \label{spherelagr}
 		L = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2) + m g \ell \cos{\theta}.
 	\end{equation}
-	Note firstly that the Lagrangian \refeq{spherelagr} has no explicit time dependence.  Thus, Noether's theorem implies that the total energy $H$ of the system is conserved, where
+	Note firstly that the Lagrangian \refeq{spherelagr} has no explicit time dependence.  Thus, the total energy $H$ of the system is conserved, where
 	\begin{equation} \label{consH}
 		H = \phid \pdv{L}{\phid} + \thetad \pdv{L}{\thetad} - L = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2) - m g \ell \cos{\theta}.
 	\end{equation}
 	Note also that \refeq{spherelagr} has no explicit $\phi$ dependence.  From Noether's theorem, this implies a second conserved quantity, given by
-	\begin{equation} \label{consH}
+	\begin{equation} \label{consJ}
 		\pdv{L}{\phid} = m \ell^2 \sin^2{\theta} \,\phid \equiv J
 	\end{equation}
 	where we have defined $J$, which is the angular momentum of the system.  The two conserved quantities $H$ and $J$ are independent; therefore, the mechanical system is indeed integrable.
 \end{solution}
+
+\newcommand{\phidd}{\ddot{\phi}}
+\newcommand{\thetadd}{\ddot{\theta}}
+\newcommand{\Ueff}{U_\text{eff}}
 
 \begin{problem} \label{2b}
 	When appropriately simplified, the motion of the spherical pendulum reduces to one-dimensional motion of a point mass in an effective potential.  Find the effective potential.
@@ -390,8 +394,18 @@
 \begin{solution}
 	The Euler-Lagrange equations for the Lagrangian \refeq{spherelagr} are
 	\begin{align}
-		
+		0 &= \pdv{L}{\phi} - \dv{}{t} \pdv{L}{\phid} = -\dv{}{t} J = m \ell^2 \sin^2{\theta} \phidd, \label{phidd} \\
+		0 &= \pdv{L}{\theta} - \dv{}{t} \pdv{L}{\thetad} = -mg \ell \sin{\theta} + m \ell^2 \cos{\theta} \sin{\theta} \,\phid^2 - m \ell^2 \,\thetadd. \label{thetadd}
 	\end{align}
+	Note that \refeq{phidd} is simply a restatement of the conservation of angular momentum that was shown in \ref{2a}.  Only \refeq{thetadd} is relevant to the motion of the system; therfore, we are concerned with one-dimensional motion.  We can rewrite \refeq{thetadd} as
+	\begin{equation} \label{ueff}
+		\thetadd = \cos{\theta} \sin{\theta} \,\phid^2 - \frac{g}{\ell} \sin{\theta} \equiv - \pdv{\Ueff}{\theta}
+	\end{equation}
+	where we have defined the effective potential $\Ueff$ by
+	\begin{equation}
+		\Ueff = \frac{\sin^2{\theta}}{2} \,\phidd^2 - \frac{g}{\ell} \cos{\theta} = \frac{J^2}{2 m^2 \ell^4 \sin^2{\theta}} - \frac{g}{\ell} \cos{\theta},
+	\end{equation}
+	using $J$ as defined by \refeq{consJ}.
 \end{solution}
 
 \section{Spherical pendulum, continued}
