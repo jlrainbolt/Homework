@@ -42,8 +42,8 @@
 
 \newenvironment{problem}
 {
-    \color{darkgray}
     \subsection{}
+    \color{darkgray}
     \ignorespaces
 }
 
@@ -105,7 +105,7 @@
 	\end{equation}
 	Note that the reduced mass $\mu = m_1 m_2 / (m_1 + m_2)$.  Substituting $\mu$ into \refeq{x1} and \refeq{x2} yields
 	\begin{align} \label{result1a}
-		\vr_1 = x_1 = - r_c \mu / m_1, & \vr_2 = x_2 = r_c \mu / m_2
+		\vr_1 &= x_1 = - r_c \mu / m_1, & \vr_2 &= x_2 = r_c \mu / m_2
 	\end{align}
 	as desired. \qed
 
@@ -142,7 +142,7 @@
 	\begin{equation} \label{kinetic1}
 		T_3 = \frac{m_3}{2} \vRd_3^2 = \frac{m_3}{2} (\Xd + \Yd)^2.
 	\end{equation}
-	We can define an inverse transformation back to the old coordinate system by simply rotating the $(x, y)$ plane about the $z$ axis by angle $-\omega t$.  This inverse transformation is
+	We want to find an expression for $T_3$ in the rotating coordinate system.  We can define an inverse transformation back to the stationary coordinate system by simply rotating the $(x, y)$ plane about the $z$ axis in the opposite direction; that is, by angle $-\omega t$.  This inverse transformation is
 	\begin{align}
 		X &= x \cos{\omega t} - y \sin{\omega t}, \label{newx} \\
 		Y &= x \sin{\omega t} + y \cos{\omega t},  \label{newy} \\
@@ -273,37 +273,131 @@
 	Geometrically, this is only possible at two locations in the $(x, y)$ plane as shown in Fig.~\ref{fig1b}.  These are the final two Lagrange points, for a total of five as desired. \qed
 \end{solution}
 	
-	\unitlength=.35in
-	\begin{figure}[p] \centering \label{fig1a}
-		\begin{picture}(10.5,10.5)(-5,-5)
-			{\color{lightgray}
-			\thinlines
-			\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-			\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
-			}
-			\thicklines
-			\put(-5,0){\vector(1,0){10.2}}
-			\put(0,-5){\vector(0,1){10.2}}
-			\put(5.3,0){\makebox(1,0)[l]{$x$}}
-			\put(0,5.3){\makebox(0,1)[b]{$f(x)$}}
-		\end{picture}
-		\caption{Three Lagrange points, indicated by roots of \refeq{y0case}.}
-	\end{figure}
+\unitlength=.35in
+\begin{figure}[p] \centering \label{fig1a}
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-5,0){\vector(1,0){10.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(5.3,0){\makebox(1,0)[l]{$x$}}
+		\put(0,5.3){\makebox(0,1)[b]{}}
+	\end{picture}
+	\caption{Three Lagrange points, indicated by roots of \refeq{y0case}.}
+\end{figure}
 	
-	\begin{figure} \centering \label{fig1b}
-		\begin{picture}(10.5,10.5)(-5,-5)
-			{\color{lightgray}
-			\thinlines
-			\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-			\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
-			}
-			\thicklines
-			\put(-5,0){\vector(1,0){10.2}}
-			\put(0,-5){\vector(0,1){10.2}}
-			\put(5.3,0){\makebox(1,0)[l]{$x$}}
-			\put(0,5.3){\makebox(0,1)[b]{$y$}}
-		\end{picture}
-		\caption{Two more Lagrange points, found by the geometrical argument implied by \refeq{yn0case}.}
-	\end{figure}
+\begin{figure} \centering \label{fig1b}
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-5,0){\vector(1,0){10.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(5.3,0){\makebox(1,0)[l]{$x$}}
+		\put(0,5.3){\makebox(0,1)[b]{$y$}}
+	\end{picture}
+	\caption{Two more Lagrange points, found by the geometrical argument implied by \refeq{yn0case}.}
+\end{figure}
+
+\section{Spherical pendulum}
+
+\begin{statement}
+	A point mass $m$ in three spatial dimensions is connected by a light inextensible string of length $\ell$ to a fixed pivot and experiences a uniform gravitational field.  Use spherical polar coordinates $(\rho, \theta, \phi)$, where $\rho$ is the radial distance, $\theta$ the relative inclination with respect to the downward vertical, and $\phi$ the azimuthal angle.
+\end{statement}
+
+\begin{problem}
+	Is this mechanical system integrable?  In other words, does this problem have as many independent conserved quantities as there are unknown dynamical variables?
+\end{problem}
+
+\begin{solution}
+	\hl{Yes, energy and angular momentum are conserved and there are two degrees of freedom }$\theta$ and $\phi$
+\end{solution}
+
+\begin{problem} \label{2b}
+	When appropriately simplified, the motion of the spherical pendulum reduces to one-dimensional motion of a point mass in an effective potential.  Find the effective potential.
+\end{problem}
+
+\begin{solution}
+	Fix $\phi \implies$ \hl{normal pendulum?}
+\end{solution}
+
+\section{Spherical pendulum, continued}
+
+\begin{problem}
+	Write down the Hamiltonian describing the one-dimensional motion in problem \ref{2b}.  Sketch some time-evolution trajectories in phase space.  Make sure you include all qualitatively different features and indicate the direction of time evolution.  If there are fixed points corresponding to states in mechanical equilibrium, identify them.  If there is a separatrix, a trajectory separating qualitatively different motion, write down the equation describing its shape and specify its energy.  (You do not need to solve the equation.)
+\end{problem}
+
+\begin{solution}
+	\hl{If this is the normal pendulum, it's exactly what we did in class?}
+\end{solution}
+
+\begin{problem}
+	Using the results derived earlier, give a simple qualitative description of the spherical pendulum motion in three-dimensional space.
+\end{problem}
+
+\begin{solution}
+	\hl{Sinusoidal on the surface of a sphere}
+\end{solution}
+
+\section{Double-well potential}
+
+\begin{statement}
+	A particle with mass $m$ is confined to one dimension and placed in the potential
+	\begin{equation}
+		U(q) = U_0 - \frac{q^2}{2} + \frac{q^4}{4}.
+	\end{equation}
+\end{statement}
+
+\begin{problem}
+	Write down the Lagrangian and the Hamiltonian.
+\end{problem}
+
+\newcommand{\qd}{\dot{q}}
+
+\begin{solution}
+	The Lagrangian is
+	\begin{equation} \label{lagr2well}
+		L = T - U = m \frac{\qd^2}{2} - U_0 + \frac{q^2}{2} - \frac{q^4}{4},
+	\end{equation}
+	and the Hamiltonian is
+	\begin{equation} \label{ham2well} 
+		H = T + U = m \frac{\qd^2}{2} + U_0 - \frac{q^2}{2} + \frac{q^4}{4}.
+	\end{equation}
+\end{solution}
+
+\begin{problem}
+	Sketch some time evolution trajectories in phase space.  Make sure you include all qualitatively different features and indicate the direction of time evolution.  If there are fixed points corresponding to states in mechanical equilibrium, identify them.  If there is a separatrix, a trajectory separating qualitatively different motion, write down the equation describing its shape and specify its energy.
+\end{problem}
+
+\newcommand{\qdd}{\ddot{q}}
+\newcommand{\pd}{\dot{p}}
+
+\begin{solution}
+%	The Euler-Lagrange equation corresponding to the Lagrangian \refeq{lagr2well} is
+%	\begin{equation}
+%		0 = \pdv{L}{q} - \dv{}{t} \pdv{L}{\qd} = q - q^3 - m \qdd
+%	\end{equation}
+	Using the Lagrangian of \refeq{lagr2well}, the generalized momentum corresponding to the Hamiltonian in \refeq{ham2well} is
+	\begin{equation}
+		p = \pdv{L}{\qd} = m\qd.
+	\end{equation}
+	Making this substitution in \refeq{ham2well} gives
+	\begin{equation}
+		H = \frac{p^2}{2m} + U_0 - \frac{q^2}{2} + \frac{q^4}{4}.
+	\end{equation}
+	Then Hamilton's equations for the system are
+	\begin{align}
+		\pd &= -\pdv{H}{q} = q - q^3, \\
+		\qd &= \pdv{H}{p} = \frac{p}{m}
+	\end{align}
+\end{solution}
+	
 
 \end{document}
