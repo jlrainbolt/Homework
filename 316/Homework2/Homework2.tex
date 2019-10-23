@@ -8,6 +8,8 @@
 \usepackage{xcolor, soul}
 %\allowdisplaybreaks
 
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
 \makeatletter
 \renewcommand*\env@cases[1][1.2]{%
   \let\@ifnextchar\new@ifnextchar
@@ -79,7 +81,7 @@
 \end{problem}
 
 \begin{solution}
-	Call the stationary coordinate system $\vR = (X, Y, Z)$, and choose $(X, Y)$ as the orbital plane.  Call the rotating coordinate system $\vr = (x, y, z)$, which is rotated about the $Z$ axis by angle $\omega t$.  This gives us the transformation
+	Call the stationary coordinate system $(X, Y, Z)$, and choose $(X, Y)$ as the orbital plane.  Call the rotating coordinate system $(x, y, z)$, which is rotated about the $Z$ axis by angle $\omega t$.  This gives us the transformation
 	\begin{align}
 		x &= X \cos{\omega t} + Y \sin{\omega t}, \label{oldx} \\
 		y &= Y \cos{\omega t} - X \sin{\omega t},  \label{oldy} \\
@@ -95,7 +97,7 @@
 	\begin{equation} \label{cm2}
 		r_c = x_2 - x_1
 	\end{equation}
-	be the constant distance between $m_1$ and $m_2$.  Now we have the system of two equations \refeq{cm1} and \refeq{cm2}, so we can solve for $x_1$ and $x_2$.  Substituting \refeq{cm2} as $x_2 = r_c + x_1$ into \refeq{cm1},
+	be the constant distance between $m_1$ and $m_2$.  Now we have the system of two equations \refeq{cm1} and \refeq{cm2}, so we can solve for $x_1$ and $x_2$.  Substituting \refeq{cm2} into \refeq{cm1} yields
 	\begin{equation} \label{x1}
 		m_1 x_1 + m_2 (r_c + x_1) = 0 \implies x_1 = -\frac{m_2}{m_1 + m_2} r_c.
 	\end{equation}
@@ -122,7 +124,7 @@
 	\begin{equation} \label{lagr3given}
 		L_3 = \frac{m_3}{2} \left[ (\xd - \omega y)^2 + (\yd + \omega x)^2 \right] - U_{13} - U_{23},
 	\end{equation}
-	where $U_13(x, y)$ is the gravitational interaction of $m_3$ with $m_1$, while $U_{23}(x, y)$ is associated with $m_3$ and $m_2$.
+	where $U_{13}(x, y)$ is the gravitational interaction of $m_3$ with $m_1$, while $U_{23}(x, y)$ is associated with $m_3$ and $m_2$.
 \end{problem}
 
 \begin{solution}
@@ -134,15 +136,20 @@
 	
 	Beginning with $U_3$, the only forces acting upon $m_3$ are the gravitational interactions with $m_1$ and $m_2$.  We know from the problem statement that these interactions are independent of each other; $m_3$ has a negligible effect on the motions of each $m_1$ and $m_2$, so it cannot couple them in any way.  Thus, we can write
 	\begin{equation} \label{potential}
-		U_3 = -G \frac{m_1 m_3}{r_{13}} - G \frac{m_2 m_3}{r_{23}} \equiv U_{13} + U_{23},
+		U_3(x, y) = -G \frac{m_1 m_3}{r_{13}} - G \frac{m_2 m_3}{r_{23}} \equiv U_{13} + U_{23},
 	\end{equation}
-	where $r_{13}$~($r_23$) is the separation between $m_3$ and $m_1$~($m_2$), and we have defined $U_{13}$ and $U_{23}$.
+	where $r_{13}$~($r_{23}$) is the separation between $m_3$ and $m_1$~($m_2$) in the rotating frame.  Using the positions of $m_1$ and $m_2$ on the $x$ axis given by \refeq{result1a}, they are given by
+	\begin{align} \label{rdefs}
+		r_{13} &= \sqrt{\left( x + \frac{r_c \mu}{m_1} \right)^2 + y^2}, &
+		r_{23} &= \sqrt{\left( x - \frac{r_c \mu}{m_2} \right)^2 + y^2}.
+	\end{align}
+	So in \refeq{potential} we have defined $U_{13}(x, y)$ and $U_{23}(x, y)$.
 	
-	Now we will find an expression for $T_3$.  Let $\vR_3 = (X(t), Y(t))$ be the position of $m_3$ in the stationary coordinate system.  Then
+	Now we will find an expression for $T_3$.  Let $\vR_3 = (X(t), Y(t))$ be the position of $m_3$ in the stationary frame.  Then
 	\begin{equation} \label{kinetic1}
 		T_3 = \frac{m_3}{2} \vRd_3^2 = \frac{m_3}{2} (\Xd + \Yd)^2.
 	\end{equation}
-	We want to find an expression for $T_3$ in the rotating coordinate system.  We can define an inverse transformation back to the stationary coordinate system by simply rotating the $(x, y)$ plane about the $z$ axis in the opposite direction; that is, by angle $-\omega t$.  This inverse transformation is
+	We want to find an expression for $T_3$ in the rotating coordinate system.  We can define an inverse transformation back to the stationary frame by simply rotating the $(x, y)$ plane about the $z$ axis in the opposite direction; that is, by angle $-\omega t$.  This inverse transformation is
 	\begin{align}
 		X &= x \cos{\omega t} - y \sin{\omega t}, \label{newx} \\
 		Y &= x \sin{\omega t} + y \cos{\omega t},  \label{newy} \\
@@ -199,12 +206,7 @@
 		\dv{}{t} \pdv{T_3}{\yd} &= m_3 (\ydd + \omega \xd).
 	\end{align}
 	
-	Now for $U_3$, we can find explicitly the $r_{13}$ and $r_{23}$ appearing in \refeq{potential} using the positions of $m_1$ and $m_2$ on the $x$ axis given by \refeq{result1a}.  These are
-	\begin{align} \label{rdefs}
-		r_{13} &= \sqrt{\left( x + \frac{r_c \mu}{m_1} \right)^2 + y^2}, &
-		r_{23} &= \sqrt{\left( x - \frac{r_c \mu}{m_2} \right)^2 + y^2}.
-	\end{align}
-	It follows from \refeq{rdefs} that
+	Now for $U_3$, it follows from \refeq{rdefs} that
 	\begin{align}
 		\pdv{r_{13}}{x} &= \frac{1}{r_{13}} \left( x + \frac{r_c \mu}{m_1} \right), &
 		\pdv{r_{23}}{x} &= \frac{1}{r_{23}} \left( x - \frac{r_c \mu}{m_2} \right), \\
@@ -231,7 +233,7 @@
 		\implies \ydd &= -2 \omega \xd + \omega^2 y - G y \left( \frac{m_1}{r_{13}^3} + \frac{m_2}{r_{23}^3} \right). \label{motiony}
 	\end{align}
 
-	The system is in mechanical equilibrium at points where $\xd = \yd = 0$.  The equilibrium behavior persists over time, implying $\xdd = \ydd = 0$.  With these restrictions, \refeq{motionx} and \refeq{motiony} become
+	The system is in mechanical equilibrium at points where $\xd = \yd = 0$.  The equilibrium behavior persists over time, implying $\xdd = \ydd = 0$.  With these restrictions, the equations of motion \refeq{motionx} and \refeq{motiony} become
 	\begin{align}
 		x &= \frac{G}{\omega^2} \frac{m_1}{r_{13}^3} \left( x + \frac{r_c \mu}{m_1} \right) + \frac{G}{\omega^2} \frac{m_2}{r_{23}^3} \left( x - \frac{r_c \mu}{m_2} \right), \label{simplex} \\
 		y &= \frac{G}{\omega^2} y \left( \frac{m_1}{r_{13}^3} + \frac{m_2}{r_{23}^3} \right).\label{simpley}
@@ -247,7 +249,7 @@
 	\begin{equation}
 		x = \frac{G}{\omega^2} \frac{m_1}{\qty|x + r_c \mu / m_1|^3} \left( x + \frac{r_c \mu}{m_1} \right) + \frac{G}{\omega^2} \frac{m_2}{\qty|x - r_c \mu / m_2|^3} \left( x - \frac{r_c \mu}{m_2} \right) \equiv f(x), \label{y0case}
 	\end{equation}
-	where we have defined $f(x)$ as the right-hand side of the equation.  Note the following observations about $f(x)$:
+	where we have defined $f(x)$ as the right-hand side of the equation.  We make the following observations about $f(x)$:
 	\begin{itemize}
 		\item $f(x)$ has singularities at $x = - r_c \mu / m_1$ and $x = r_c \mu / m_2$;
 		\item $f(x) < 0$ in the regime $x < - r_c \mu / m_1$;
@@ -255,7 +257,7 @@
 		\item $f(x)$ crosses the $x$ axis somewhere in the regime $- r_c \mu / m_1 < x < r_c \mu / m_2$;
 		\item $\dv*{f}{x} < 0$ for all defined values of $x$ because it is dominated by negative powers of $x$.
 	\end{itemize}
-	Based on these observations, we can sketch $f(x)$ and $x$ as shown in Fig.~\ref{fig1a}.  The three intersection points indicate that there are three real roots of \refeq{y0case}.  These are the first three Lagrange points.
+	Based on these observations, we can sketch $f(x)$ and $x$ as shown in figure~\ref{fig1a}.  The three intersection points indicate that there are three real roots of \refeq{y0case}.  These are the first three Lagrange points.
 	
 	In the case $y \neq 0$, \refeq{simpley} may be written
 	\begin{equation} \label{simplery}
@@ -265,7 +267,7 @@
 	\begin{equation}
 		\left (\frac{m_1}{r_{13}^3} + \frac{m_2}{r_{23}^3} \right) x = \frac{m_1}{r_{13}^3} \left( x + \frac{r_c \mu}{m_1} \right) + \frac{m_2}{r_{23}^3} \left( x - \frac{r_c \mu}{m_2} \right) \implies \frac{m_1}{r_{13}^3} \frac{r_c \mu}{m_1} = \frac{m_2}{r_{23}^3} \frac{r_c \mu}{m_2} \implies r_{13} = r_{23}. \label{yn0case}
 	\end{equation}
-	Geometrically, this is only possible at two locations in the $(x, y)$ plane as shown in Fig.~\ref{fig1b}.  These are the final two Lagrange points, for a total of five as desired. \qed
+	Geometrically, this is only possible at two locations in the $(x, y)$ plane as shown in figure~\ref{fig1b}.  These are the final two Lagrange points, for a total of five as desired. \qed
 \end{solution}
 	
 \unitlength=.35in
@@ -282,7 +284,7 @@
 		\put(8.3,0){\makebox(1,0)[l]{$x$}}
 		\put(0,5.3){\makebox(0,1)[b]{}}
 	\end{picture}
-	\caption{Three Lagrange points, indicated by roots of \refeq{y0case}.}
+	\caption{Three Lagrange points, shown as red dots, indicated by roots of \refeq{y0case}.  The blue curve is $f(x)$ and the purple line is $x$.}
 	\label{fig1a}
 \end{figure}
 	
@@ -299,7 +301,7 @@
 		\put(8.3,0){\makebox(1,0)[l]{$x$}}
 		\put(0,5.3){\makebox(0,1)[b]{$y$}}
 	\end{picture}
-	\caption{Two more Lagrange points, found by the geometrical argument implied by \refeq{yn0case}.}
+	\caption{Two more Lagrange points, shown as red dots, found by the geometrical argument implied by \refeq{yn0case}.  At these points, $r_{13} = r_{23} = r^*$.}
 	\label{fig1b}
 \end{figure}
 
@@ -333,7 +335,7 @@
 		y &= \ell \sin{\phi} \sin{\theta}, \label{ycart} \\
 		z &= -\ell \cos{\theta}. \label{zcart}
 	\end{align}
-	The time derivatives corresponding to \refeq{xcart}--\refeq{zcart} are then
+	Note that these transformations are defined only for the intervals $\phi \in [0, 2\pi)$ and $\theta \in [0, \pi)$.  The time derivatives corresponding to \refeq{xcart}--\refeq{zcart} are
 	\begin{align}
 		\xd &= \dv{x}{\phi} \dv{\phi}{t} + \dv{x}{\theta} \dv{\theta}{t} = -\ell \sin{\phi} \sin{\theta} \,\phid + \ell \cos{\phi} \cos{\theta} \,\thetad, \label{xcdot} \\
 		\yd &= \dv{y}{\phi} \dv{\phi}{t} + \dv{y}{\theta} \dv{\theta}{t} = \ell \cos{\phi} \sin{\theta} \,\phid + \ell \sin{\phi} \cos{\theta} \,\thetad, \label{ycdot} \\
@@ -359,19 +361,19 @@
 		T = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2).
 	\end{equation}
 	
-	Now addressing $U$, we know that the only external force acting upon the particle is gravity in the $-z$ direction.  This is
+	Now addressing $U$, we know that the only external force acting upon the particle is gravity in the $-z$ direction.  This implies
 	\begin{equation} \label{spherepot}
 		U = m g z = - m g \ell \cos{\theta},
 	\end{equation}
-	where $g$ is the acceleration of gravity and we have made the substitution \refeq{zcart}.
+	where $g$ is the acceleration of gravity and we have made use of \refeq{zcart}.
 	
 	Combining \refeq{spherekin} and \refeq{spherepot} yields the Lagrangian
 	\begin{equation} \label{spherelagr}
-		L = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2) + m g \ell \cos{\theta}.
+		L = T - U = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2) + m g \ell \cos{\theta}.
 	\end{equation}
 	Note firstly that the Lagrangian \refeq{spherelagr} has no explicit time dependence.  Thus, the total energy $H$ of the system is conserved, where
 	\begin{equation} \label{consH}
-		H = \phid \pdv{L}{\phid} + \thetad \pdv{L}{\thetad} - L = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2) - m g \ell \cos{\theta}.
+		H = T + U = \frac{m \ell^2}{2} (\sin^2{\theta} \,\phid^2 + \thetad^2) - m g \ell \cos{\theta}.
 	\end{equation}
 	Note also that \refeq{spherelagr} has no explicit $\phi$ dependence.  From Noether's theorem, this implies a second conserved quantity, given by
 	\begin{equation} \label{consJ}
@@ -395,102 +397,114 @@
 		0 &= \pdv{L}{\theta} - \dv{}{t} \pdv{L}{\thetad} = -mg \ell \sin{\theta} + m \ell^2 \cos{\theta} \sin{\theta} \,\phid^2 - m \ell^2 \,\thetadd. \label{thetadd}
 	\end{align}
 	Note that \refeq{phidd} is simply a restatement of the conservation of angular momentum that was shown in \ref{2a}.  Only \refeq{thetadd} is relevant to the motion of the system; therfore, we are concerned with one-dimensional motion.  We can rewrite \refeq{thetadd} as
-	\begin{equation} \label{ueff}
+	\begin{equation} \label{dUeff}
 		\thetadd = \cos{\theta} \sin{\theta} \,\phid^2 - \frac{g}{\ell} \sin{\theta} \equiv - \pdv{\Ueff}{\theta}
 	\end{equation}
-	where we have defined the effective potential $\Ueff$ by
+	where we are defining the effective potential $\Ueff$ by
 	\begin{equation} \label{Ueff}
-		\Ueff = \frac{\sin^2{\theta}}{2} \,\phid^2 - \frac{g}{\ell} \cos{\theta} = \frac{J^2}{2 m^2 \ell^4 \sin^2{\theta}} - \frac{g}{\ell} \cos{\theta},
+		\Ueff = \frac{\sin^2{\theta}}{2} \,\phid^2 - \frac{g}{\ell} \cos{\theta} = \frac{J^2}{2 m^2 \ell^4} \frac{1}{\sin^2{\theta}} - \frac{g}{\ell} \cos{\theta},
 	\end{equation}
 	using $J$ as defined by \refeq{consJ}.
 \end{solution}
 
+\clearpage
 \section{Spherical pendulum, continued}
 
 \begin{problem} \label{prob3}
-	Write down the Hamiltonian describing the one-dimensional motion in problem \ref{2b}.  Sketch some time-evolution trajectories in phase space.  Make sure you include all qualitatively different features and indicate the direction of time evolution.  If there are fixed points corresponding to states in mechanical equilibrium, identify them.  If there is a separatrix, a trajectory separating qualitatively different motion, write down the equation describing its shape and specify its energy.  (You do not need to solve the equation.)
+	Write down the Hamiltonian describing the one-dimensional motion in problem \ref{2b}.  Sketch some time-evolution trajectories in phase space.  Make sure you include all qualitatively different features and indicate the direction of time evolution.  If there are fixed points corresponding to states in mechanical equilibrium, identify them.  If there is a separatrix, a trajectory separating qualitatively different motion, write down the equation describing its shape and specify its energy.
 \end{problem}
 
 \newcommand{\ptheta}{p_\theta}
 \newcommand{\pthetad}{\dot{p}_\theta}
+\newcommand{\Teff}{T_\text{eff}}
 
 \begin{solution}
-\hl{Hamiltonian with effective potential}
-
-	The Hamiltonian is equal to the conserved energy that we wrote down as \refeq{consH}.  The one-dimensional version is written in terms of the conserved angular momentum $J$.  Substituting \refeq{consJ} into \refeq{consH} gives
-	\begin{equation}
-		H = \frac{m \ell^2}{2} \thetad^2 + \frac{J^2}{2 m \ell^2 \sin^2{\theta}} - mg \ell \cos{\theta}.
+	The Hamiltonian for the one-dimensional system is given by
+	\begin{equation} \label{newhamil}
+		H = \Teff + \Ueff = \frac{1}{2} \thetad^2 + \Ueff(\theta),
 	\end{equation}
-	Likewise, substituting \refeq{consJ} into \refeq{spherelagr} gives the Lagrangian
+	with the definition of $\Ueff$ given by \refeq{Ueff}.  The mass does not show up in the kinetic energy term $\Teff$ because it was eliminated from \refeq{dUeff}, which we used to find $\Ueff$.
+	
+	We know from the form of \refeq{newhamil} that fixed points of this system will exist at $\theta^*$ such that $\Ueff(\theta^*)$ is an extremum.  The condition for this to occur is
+	\begin{equation}
+		\left. \pdv{\Ueff}{\theta} \right|_{\theta^*} = 0.
+	\end{equation}
+	Substituting $J$ as defined in \refeq{consJ} into \refeq{dUeff}, we find
+	\begin{equation} \label{newtheta}
+		\pdv{\Ueff}{\theta} = \frac{g}{\ell} \sin{\theta} - \frac{J^2}{m^2 \ell^4} \frac{\cos{\theta}}{\sin^3{\theta}} \equiv f(\theta) - g(\theta),
+	\end{equation}
+	where we have defined $f(\theta)$ and $g(\theta)$.  We will make a geometrical argument similar to that for the first three Lagrange points of problem~\ref{1c} to find the roots $\theta^*$ of $\pdv*{\Ueff}{\theta} = 0$, which exist where $f(\theta)$ and $g(\theta)$ intersect.  Recall when we defined the coordinate transformation in \refeq{xcart}--\refeq{zcart} that we are only concerned with the interval $\theta \in [0, \pi)$; in this range, $\sin{\theta} \geq 0$.  We make the following observations about $g(\theta)$:
+	\begin{itemize}
+		\item $g(\theta)$ has singularities at $\theta = 0$ and $\theta = \pi$;
+		\item $g(\pi/2) = 0$;
+		\item $\dv*{g}{\theta} < 0$ for $\theta \in [0, \pi)$ because it is dominated by negative powers of $\sin{\theta}$.
+	\end{itemize}
+	Based on these observations, we can sketch $f(x)$ and $g(x)$ qualitatively as shown in figure~\ref{fig3a1}.  Their intersection indicates that there exists exactly one $\theta^* \in [0, \pi/2)$.
+	
+	Using figure~\ref{fig3a1} as a reference, we can geometrically perform the subtraction $f(\theta) - g(\theta)$ to obtain a sketch of $\pdv{\Ueff}{\theta}$ as a function of $\theta$.  This is shown in figure~\ref{fig3a2}, where the positive slope at $\theta^*$ indicates $\pdv*[2]{\Ueff}{\theta}|_{\theta^*} > 0$.  This means $\theta^*$ is a minimum of $\Ueff$; in fact, it is the global minimum in the interval $\theta \in [0, \pi)$.  Therefore, $\theta^*$ is a stable fixed point.
+
+
+\begin{figure}[p] \centering
+	\begin{picture}(10.5,10.5)(-1.2,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-1,-4)(0,1){9}{\line(1,0){9}}
+		\multiput(0,-5)(1,0){8}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-1,0){\vector(1,0){9.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$\theta$}}
+		\put(0,5.3){\makebox(0,1)[b]{}}
+	\end{picture}
+	\caption{Intersection of $f(\theta)$~(purple line) and $g(\theta)$~(blue line) as defined in \refeq{newtheta}, showing the existence of a fixed point at $0 < \theta^* < \pi/2$~(red dot).}
+	 \label{fig3a1}
+\end{figure}
+
+\begin{figure} \centering
+	\begin{picture}(10.5,10.5)(-1.2,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-1,-4)(0,1){9}{\line(1,0){9}}
+		\multiput(0,-5)(1,0){8}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-1,0){\vector(1,0){9.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$\theta$}}
+		\put(0,5.3){\makebox(0,1)[b]{$\pdv*{\Ueff}{\theta}$}}
+	\end{picture}
+	\caption{Qualitative sketch of $\pdv*{\Ueff}{\theta}$, whose slope indicates a local minimum at fixed point $\theta^*$~(red dot).}
+	 \label{fig3a2}
+\end{figure}
+	
+	Now we want to draw trajectories in the phase plane $(\theta, \ptheta)$, where $\ptheta$ is the generalized momentum corresponding to $\theta$.  Substituting \refeq{consJ} into \refeq{spherelagr} gives the Lagrangian
 	\begin{equation} \label{spherelagr2}
 		L = \frac{m \ell^2}{2} \thetad^2 + \frac{J^2}{2 m \ell^2 \sin^2{\theta}} + mg \ell \cos{\theta}.
 	\end{equation}
-	Using the \refeq{spherelagr2}, the generalized momentum corresponding to $\theta$  is
-	\begin{equation}
+	Using the Lagrangian \refeq{spherelagr2}, the generalized momentum corresponding to $\theta$ is given by
+	\begin{equation} \label{ptheta}
 		\ptheta = \pdv{L}{\thetad} = m \ell^2 \thetad.
 	\end{equation}
-	Writing the Hamiltonian in terms of $\ptheta$, we have
-	\begin{equation} \label{hamilp}
-		H = \frac{\ptheta^2}{2 m \ell^2} + \frac{J^2}{2 m \ell^2 \sin^2{\theta}} + mg \ell \cos{\theta}.
-	\end{equation}
-	Using the form of \refeq{hamilp}, Hamilton's equations for the system are
-	\begin{align}
-		\thetad &= \pdv{H}{\ptheta} = \frac{\ptheta}{m \ell^2} \implies \ptheta = m \ell^2 \thetad, \label{theta} \\
-		\pthetad &= -\pdv{H}{\theta} = \frac{J^2}{m \ell^2} \frac{\cos{\theta}}{\sin^2{\theta}} + m g \ell \sin{\theta}. \label{ptheta}
-	\end{align}
+	In general, fixed points $(\theta^*, \ptheta^*)$ occur where $\thetad = \pthetad = 0$.  It follows immediately from \refeq{ptheta} that $\ptheta^* = 0$.  The fixed point $(\theta^*, 0)$ is drawn in red in figure~\ref{fig3a3}.  In order to characterize the trajectories near this fixed point, note that \refeq{ptheta} gives a relationship for the time evolution in the $\theta$ direction.  That is, time evolution flows in the $+\theta$~($-\theta$) direction when $\ptheta > 0$~($\ptheta < 0$), which corresponds to the top~(bottom) half of the phase plane.  By this argument, and our knowledge of the stability of the fixed point, we can draw the trajectories shown in blue in figure~\ref{fig3a3}.  We see that the fixed point, while stable, is not an attractor; it is a center of orbital motion.
 	
-	We are interested in the phase space $(\theta, \ptheta)$.  Fixed points $(\theta^*, \ptheta^*)$ occur where $\thetad = \pthetad = 0$.  Making this equality using \refeq{theta} and \refeq{ptheta}, we get
-	\begin{equation}
-		\ptheta = \frac{J^2}{m \ell^2} \frac{\cos{\theta}}{\sin^2{\theta}} + m g \ell \sin{\theta} \equiv f(\theta) + g(\theta) \label{newtheta}
-	\end{equation}
-	where we have defined $f(\theta)$ and $g(\theta)$.  By inspecting \refeq{newtheta}, we make the ansatz that there is one fixed point at $p^* = 0$.   \hl{But WHY is it 0?}
-	
-	We will make a geometrical argument similar to that for the first three Lagrange points of problem~\ref{1c} to show that there exists one corresponding $\theta^*$.  Note the following observations about $f(\theta)$:
-	\begin{itemize}
-		\item $\theta$ is only defined on the interval $[0, \pi]$;
-		\item $f(\theta)$ has singularities at $\theta = \pm \pi$;
-		\item $\dv*{f}{\theta} < 0$ on the interval $[0, \pi]$.
-	\end{itemize}
-	Based on these observations, we can sketch $f(x)$ and $g(x)$ as shown in Fig.~\ref{fig3a1}.  Their intersection indicates that there is one $\pi/2 < \theta^* < \pi$.
-	
-	In order to classify the stability of this fixed point, we will use the shape of $\Ueff$.  If $\Ueff$ 
-	
-	note that \refeq{theta} gives a relationship for the time evolution in the $\theta$ direction.  That is, time evolution flows in the $+\theta$~($-\theta$) direction when $\ptheta > 0$~($\ptheta < 0$), which corresponds to the top~(bottom) half of the phase plane.  By this argument, we can figure out the behavior near the fixed points.
-	
-	
-	\hl{INSTEAD: GEometrically find the minimum of the effective potential.  Show it is a minimum.  That makes it a stable point.  Then some shit.}
+	Because there is only this one fixed point in the region of interest, all motion is orbital, and so there is no separatrix in figure~\ref{fig3a1}.
 \end{solution}
 
-\begin{figure}[p] \centering \label{fig3a1}
-	\begin{picture}(10.5,10.5)(-5,-5)
+\begin{figure}[t] \centering \label{fig3a3}
+	\begin{picture}(10.5,10.5)(-1.2,-5)
 		{\color{lightgray}
 		\thinlines
-		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
-		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		\multiput(-1,-4)(0,1){9}{\line(1,0){9}}
+		\multiput(0,-5)(1,0){8}{\line(0,1){10}}
 		}
 		\thicklines
-		\put(-8,0){\vector(1,0){16.2}}
+		\put(-1,0){\vector(1,0){9.2}}
 		\put(0,-5){\vector(0,1){10.2}}
-		\put(8.3,0){\makebox(1,0)[l]{$q$}}
-		\put(0,5.3){\makebox(0,1)[b]{$p$}}
+		\put(8.3,0){\makebox(1,0)[l]{$\theta$}}
+		\put(0,5.3){\makebox(0,1)[b]{$\ptheta$}}
 	\end{picture}
-	\caption{Intersection of $f(\theta)$ and $g(\theta)$ as defined in \ref{newtheta}, showing the existence of a fixed point at $\pi/2 < \theta^* < \pi$, $\ptheta^* = 0$.}
-\end{figure}
-
-\begin{figure} \centering \label{fig3a2}
-	\begin{picture}(10.5,10.5)(-5,-5)
-		{\color{lightgray}
-		\thinlines
-		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
-		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
-		}
-		\thicklines
-		\put(-8,0){\vector(1,0){16.2}}
-		\put(0,-5){\vector(0,1){10.2}}
-		\put(8.3,0){\makebox(1,0)[l]{$q$}}
-		\put(0,5.3){\makebox(0,1)[b]{$p$}}
-	\end{picture}
-	\caption{Time evolution trajectories in phase space for the system of problem~\ref{prob3}.  The fixed point is shown in green.}
+	\caption{Time evolution trajectories~(blue) in phase space for the system of problem~\ref{prob3}.  The fixed point $(\theta^*, 0)$ is shown in red.}
 \end{figure}
 
 \begin{problem}
@@ -498,14 +512,14 @@
 \end{problem}
 
 \begin{solution}
-	\hl{Sinusoidal on the surface of a sphere}
+	The mass moves on the surface of a sphere of radius $\ell$, as noted in \ref{2a}.  It rotates with constant angular velocity $\phid = \omega$ about the $z$ axis.  The motion in the $\theta$ direction depends on the initial condition $\theta_0 = \theta(t = 0)$.  If $\theta_0 = \theta^*$, it mass's inclination does not change, so it rotates in a circular orbit.  If $\theta_0 \neq \theta_*$, the motion is oscillatory in $\theta$.  If $\theta_0 < \theta_*$~($\theta_0 > \theta_*$), $\theta_0$ is the minimum~(maximum) angle of inclination.
 \end{solution}
 
 \section{Double-well potential} \label{prob4}
 
 \begin{statement}
 	A particle with mass $m$ is confined to one dimension and placed in the potential
-	\begin{equation}
+	\begin{equation} \label{probstate}
 		U(q) = U_0 - \frac{q^2}{2} + \frac{q^4}{4}.
 	\end{equation}
 \end{statement}
@@ -528,7 +542,7 @@
 \end{solution}
 
 \begin{problem}
-	Sketch some time evolution trajectories in phase space.  Make sure you include all qualitatively different features and indicate the direction of time evolution.  If there are fixed points corresponding to states in mechanical equilibrium, identify them.  If there is a separatrix, a trajectory separating qualitatively different motion, write down the equation describing its shape and specify its energy.
+	Sketch some time evolution trajectories in phase space.  Make sure you include all qualitatively different features and indicate the direction of time evolution.  If there are fixed points corresponding to states in mechanical equilibrium, identify them.  If there is a separatrix, a trajectory separating qualitatively different motion, write down the equation describing its shape and specify its energy.  (You do not need to solve the equation.)
 \end{problem}
 
 \newcommand{\qdd}{\ddot{q}}
@@ -542,7 +556,7 @@
 		p = \pdv{L}{\qd} = m\qd.
 	\end{equation}
 	Making this substitution in \refeq{ham2well} gives
-	\begin{equation}
+	\begin{equation} \label{ham2well2}
 		H = \frac{p^2}{2m} + U_0 - \frac{q^2}{2} + \frac{q^4}{4}.
 	\end{equation}
 	Then Hamilton's equations for the system are
@@ -556,13 +570,33 @@
 	\end{equation}
 	By inspection of \refeq{fps}, the fixed points are located at
 	\begin{equation}
-		(q^*, p^*) = (0,0), (\pm 1, 0).
+		(q^*, p^*) = (0,0), \ (\pm 1, 0).
 	\end{equation}
-	These points are drawn in green in Fig.~\ref{fig4b}.
+	These points are drawn in red in figure~\ref{fig4b}.
 	
-	In order to classify the stability of the fixed points, note that \refeq{qdot} gives a relationship for the time evolution in the $q$ direction.  That is, time evolution flows in the $+q$~($-q$) direction when $p > 0$~($p < 0$), which corresponds to the top~(bottom) half of the phase plane.  By this argument, we can figure out the behavior near the fixed points.  \hl{INSERT PHYSICAL ARGUMENT}  These partial trajectories are drawn in purple in Fig.~\ref{fig4b}.  We can conclude from this time evolution behavior that the fixed point at $(0, 0)$ is unstable (a saddle point).  The points at $(\pm 1, 0)$ are stable, but not attracting; they are centers of orbital motion.
+	In order to classify the stability of the fixed points, we can examine the curvature of $U(q)$ at each.  By definition, $\pdv*{U}{q}|_{q^*} = 0$, meaning that each fixed point corresponds to an extremum of $U$.  From the definition \refeq{probstate}, we have
+	\begin{equation} \label{2ndder}
+		\pdv[2]{U}{q} = -2 + 3 q^2.
+	\end{equation}
+	If $\pdv*[2]{U}{q}|_{q^*} > 0$, $q^*$ is a local minimum of $U$ and therefore a stable fixed point.  On the contrary, if $\pdv*[2]{U}{q}|_{q^*} < 0$, $q^*$ is a local maximum and thus unstable.  Evaluating \refeq{2ndder} at each of the fixed points, we have
+	\begin{align}
+		\left. \pdv[2]{U}{q} \right|_{q^* = 0} &= -2 < 0, &
+		\left. \pdv[2]{U}{q} \right|_{q^* = 1} &= 1 > 0, &
+		\left. \pdv[2]{U}{q} \right|_{q^* = -1} &= 1 > 0.
+	\end{align}
+	Therefore, $(0, 0)$ is an unstable fixed point, and $(\pm 1, 0)$ are both stable.
 	
-	Drawing through the trajectories intersecting $(0,0)$, we identify the separatrix, drawn in red in Fig.~\ref{fig4b}.  \hl{Equation for separatrix}
+	In order to determine the behavior near the fixed points, we use the same reasoning as in problem~\ref{prob3} to draw the trajectories.  That is, \refeq{qdot} implies that time evolution flows in the $+q$~($-q$) direction in the top~(bottom) half of the phase plane.  Using our knowledge of the stability of each point, we can draw the partial trajectories shown in purple in figure~\ref{fig4b}.  We see that the fixed point at $(0, 0)$ is a saddle point.  The points at $(\pm 1, 0)$ are stable, but not attracting; they are centers of orbital motion.
+	
+	Drawing through the trajectories intersecting $(0,0)$, we identify the separatrix, drawn in green in figure~\ref{fig4b}.  To find the equation for the separatrix, note that the Hamiltonian in \refeq{ham2well} is conserved because the Lagrangian in \refeq{lagr2well} is time independent.  We know that the separatrix intersects $(q, p) = (0, 0)$.  Substituting this condition into \refeq{ham2well2} gives us
+	\begin{equation}
+		H = U_0
+	\end{equation}
+	as the energy of the separatrix.  This energy is conserved, so $H = U_0$ at any point along the separatrix.  Substituting back into \refeq{ham2well2} gives us
+	\begin{equation}
+		\frac{q^4}{2} = q^2 - \frac{p^2}{m}
+	\end{equation}
+	as the equation describing the shape of the separatrix.
 	
 		
 \begin{figure} \centering \label{fig4b}
@@ -578,11 +612,11 @@
 		\put(8.3,0){\makebox(1,0)[l]{$q$}}
 		\put(0,5.3){\makebox(0,1)[b]{$p$}}
 	\end{picture}
-	\caption{Time evolution trajectories in phase space for the system of problem~\ref{prob4}.  Fixed points are shown in green.  The separatrix is shown in red.}
+	\caption{Time evolution trajectories in phase space for the system of problem~\ref{prob4}.  Fixed points are shown in red.  The separatrix is shown in green.}
 \end{figure}
 
 \end{solution}
 	
-In writing these solutions, I consulted David Tong's lecture notes and Steven Strogatz'z \emph{Nonlinear Dynamics and Chaos}.
+In writing these solutions, I consulted David Tong's lecture notes and Steven Strogatz'z \emph{Nonlinear Dynamics and Chaos}.  I also got some advice from Morgan Lynn.
 
 \end{document}
