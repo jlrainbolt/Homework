@@ -176,7 +176,7 @@
 \newcommand{\xdd}{\ddot{x}}
 \newcommand{\ydd}{\ddot{y}}
 
-\begin{problem}
+\begin{problem} \label{1c}
 	Show that the mechanical system described by $L_3$ has five locations in mechanical equilibrium.  These are known as \emph{Lagrange points}.  (Hint: the graphical method is perfectly good for demonstrating a real root exists in a particular instance.)
 \end{problem}
 
@@ -263,18 +263,13 @@
 	\end{equation}
 	Substituting \refeq{simplery} into \refeq{simplex},
 	\begin{equation}
-		\left (\frac{m_1}{r_{13}^3} + \frac{m_2}{r_{23}^3} \right) x = \frac{m_1}{r_{13}^3} \left( x + \frac{r_c \mu}{m_1} \right) + \frac{m_2}{r_{23}^3} \left( x - \frac{r_c \mu}{m_2} \right) \implies \frac{m_1}{r_{13}^3} \frac{r_c \mu}{m_1} = \frac{m_2}{r_{23}^3} \frac{r_c \mu}{m_2} \implies r_{13} = r_{23}.
+		\left (\frac{m_1}{r_{13}^3} + \frac{m_2}{r_{23}^3} \right) x = \frac{m_1}{r_{13}^3} \left( x + \frac{r_c \mu}{m_1} \right) + \frac{m_2}{r_{23}^3} \left( x - \frac{r_c \mu}{m_2} \right) \implies \frac{m_1}{r_{13}^3} \frac{r_c \mu}{m_1} = \frac{m_2}{r_{23}^3} \frac{r_c \mu}{m_2} \implies r_{13} = r_{23}. \label{yn0case}
 	\end{equation}
-	\hl{Applying this condition to} \refeq{rdefs},
-	\begin{equation} \label{yn0case}
-		\left( x + \frac{r_c \mu}{m_1} \right)^2 + y^2 = \left( x - \frac{r_c \mu}{m_2} \right)^2 + y^2 \implies 
-	\end{equation}
-	\hl{But why does this imply they equal} $r$?.
 	Geometrically, this is only possible at two locations in the $(x, y)$ plane as shown in Fig.~\ref{fig1b}.  These are the final two Lagrange points, for a total of five as desired. \qed
 \end{solution}
 	
 \unitlength=.35in
-\begin{figure}[p] \centering \label{fig1a}
+\begin{figure}[p] \centering
 	\begin{picture}(10.5,10.5)(-5,-5)
 		{\color{lightgray}
 		\thinlines
@@ -288,9 +283,10 @@
 		\put(0,5.3){\makebox(0,1)[b]{}}
 	\end{picture}
 	\caption{Three Lagrange points, indicated by roots of \refeq{y0case}.}
+	\label{fig1a}
 \end{figure}
 	
-\begin{figure} \centering \label{fig1b}
+\begin{figure} \centering
 	\begin{picture}(10.5,10.5)(-5,-5)
 		{\color{lightgray}
 		\thinlines
@@ -304,6 +300,7 @@
 		\put(0,5.3){\makebox(0,1)[b]{$y$}}
 	\end{picture}
 	\caption{Two more Lagrange points, found by the geometrical argument implied by \refeq{yn0case}.}
+	\label{fig1b}
 \end{figure}
 
 \section{Spherical pendulum}
@@ -402,21 +399,99 @@
 		\thetadd = \cos{\theta} \sin{\theta} \,\phid^2 - \frac{g}{\ell} \sin{\theta} \equiv - \pdv{\Ueff}{\theta}
 	\end{equation}
 	where we have defined the effective potential $\Ueff$ by
-	\begin{equation}
-		\Ueff = \frac{\sin^2{\theta}}{2} \,\phidd^2 - \frac{g}{\ell} \cos{\theta} = \frac{J^2}{2 m^2 \ell^4 \sin^2{\theta}} - \frac{g}{\ell} \cos{\theta},
+	\begin{equation} \label{Ueff}
+		\Ueff = \frac{\sin^2{\theta}}{2} \,\phid^2 - \frac{g}{\ell} \cos{\theta} = \frac{J^2}{2 m^2 \ell^4 \sin^2{\theta}} - \frac{g}{\ell} \cos{\theta},
 	\end{equation}
 	using $J$ as defined by \refeq{consJ}.
 \end{solution}
 
 \section{Spherical pendulum, continued}
 
-\begin{problem}
+\begin{problem} \label{prob3}
 	Write down the Hamiltonian describing the one-dimensional motion in problem \ref{2b}.  Sketch some time-evolution trajectories in phase space.  Make sure you include all qualitatively different features and indicate the direction of time evolution.  If there are fixed points corresponding to states in mechanical equilibrium, identify them.  If there is a separatrix, a trajectory separating qualitatively different motion, write down the equation describing its shape and specify its energy.  (You do not need to solve the equation.)
 \end{problem}
 
+\newcommand{\ptheta}{p_\theta}
+\newcommand{\pthetad}{\dot{p}_\theta}
+
 \begin{solution}
-	\hl{If this is the normal pendulum, it's exactly what we did in class?}
+\hl{Hamiltonian with effective potential}
+
+	The Hamiltonian is equal to the conserved energy that we wrote down as \refeq{consH}.  The one-dimensional version is written in terms of the conserved angular momentum $J$.  Substituting \refeq{consJ} into \refeq{consH} gives
+	\begin{equation}
+		H = \frac{m \ell^2}{2} \thetad^2 + \frac{J^2}{2 m \ell^2 \sin^2{\theta}} - mg \ell \cos{\theta}.
+	\end{equation}
+	Likewise, substituting \refeq{consJ} into \refeq{spherelagr} gives the Lagrangian
+	\begin{equation} \label{spherelagr2}
+		L = \frac{m \ell^2}{2} \thetad^2 + \frac{J^2}{2 m \ell^2 \sin^2{\theta}} + mg \ell \cos{\theta}.
+	\end{equation}
+	Using the \refeq{spherelagr2}, the generalized momentum corresponding to $\theta$  is
+	\begin{equation}
+		\ptheta = \pdv{L}{\thetad} = m \ell^2 \thetad.
+	\end{equation}
+	Writing the Hamiltonian in terms of $\ptheta$, we have
+	\begin{equation} \label{hamilp}
+		H = \frac{\ptheta^2}{2 m \ell^2} + \frac{J^2}{2 m \ell^2 \sin^2{\theta}} + mg \ell \cos{\theta}.
+	\end{equation}
+	Using the form of \refeq{hamilp}, Hamilton's equations for the system are
+	\begin{align}
+		\thetad &= \pdv{H}{\ptheta} = \frac{\ptheta}{m \ell^2} \implies \ptheta = m \ell^2 \thetad, \label{theta} \\
+		\pthetad &= -\pdv{H}{\theta} = \frac{J^2}{m \ell^2} \frac{\cos{\theta}}{\sin^2{\theta}} + m g \ell \sin{\theta}. \label{ptheta}
+	\end{align}
+	
+	We are interested in the phase space $(\theta, \ptheta)$.  Fixed points $(\theta^*, \ptheta^*)$ occur where $\thetad = \pthetad = 0$.  Making this equality using \refeq{theta} and \refeq{ptheta}, we get
+	\begin{equation}
+		\ptheta = \frac{J^2}{m \ell^2} \frac{\cos{\theta}}{\sin^2{\theta}} + m g \ell \sin{\theta} \equiv f(\theta) + g(\theta) \label{newtheta}
+	\end{equation}
+	where we have defined $f(\theta)$ and $g(\theta)$.  By inspecting \refeq{newtheta}, we make the ansatz that there is one fixed point at $p^* = 0$.   \hl{But WHY is it 0?}
+	
+	We will make a geometrical argument similar to that for the first three Lagrange points of problem~\ref{1c} to show that there exists one corresponding $\theta^*$.  Note the following observations about $f(\theta)$:
+	\begin{itemize}
+		\item $\theta$ is only defined on the interval $[0, \pi]$;
+		\item $f(\theta)$ has singularities at $\theta = \pm \pi$;
+		\item $\dv*{f}{\theta} < 0$ on the interval $[0, \pi]$.
+	\end{itemize}
+	Based on these observations, we can sketch $f(x)$ and $g(x)$ as shown in Fig.~\ref{fig3a1}.  Their intersection indicates that there is one $\pi/2 < \theta^* < \pi$.
+	
+	In order to classify the stability of this fixed point, we will use the shape of $\Ueff$.  If $\Ueff$ 
+	
+	note that \refeq{theta} gives a relationship for the time evolution in the $\theta$ direction.  That is, time evolution flows in the $+\theta$~($-\theta$) direction when $\ptheta > 0$~($\ptheta < 0$), which corresponds to the top~(bottom) half of the phase plane.  By this argument, we can figure out the behavior near the fixed points.
+	
+	
+	\hl{INSTEAD: GEometrically find the minimum of the effective potential.  Show it is a minimum.  That makes it a stable point.  Then some shit.}
 \end{solution}
+
+\begin{figure}[p] \centering \label{fig3a1}
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-8,0){\vector(1,0){16.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$q$}}
+		\put(0,5.3){\makebox(0,1)[b]{$p$}}
+	\end{picture}
+	\caption{Intersection of $f(\theta)$ and $g(\theta)$ as defined in \ref{newtheta}, showing the existence of a fixed point at $\pi/2 < \theta^* < \pi$, $\ptheta^* = 0$.}
+\end{figure}
+
+\begin{figure} \centering \label{fig3a2}
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-8,0){\vector(1,0){16.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$q$}}
+		\put(0,5.3){\makebox(0,1)[b]{$p$}}
+	\end{picture}
+	\caption{Time evolution trajectories in phase space for the system of problem~\ref{prob3}.  The fixed point is shown in green.}
+\end{figure}
 
 \begin{problem}
 	Using the results derived earlier, give a simple qualitative description of the spherical pendulum motion in three-dimensional space.
@@ -462,10 +537,6 @@
 \newcommand{\dlp}{\delta p}
 
 \begin{solution}
-%	The Euler-Lagrange equation corresponding to the Lagrangian \refeq{lagr2well} is
-%	\begin{equation}
-%		0 = \pdv{L}{q} - \dv{}{t} \pdv{L}{\qd} = q - q^3 - m \qdd
-%	\end{equation}
 	Using the Lagrangian of \refeq{lagr2well}, the generalized momentum corresponding to the Hamiltonian in \refeq{ham2well} is
 	\begin{equation}
 		p = \pdv{L}{\qd} = m\qd.
@@ -479,7 +550,7 @@
 		\qd &= \pdv{H}{p} = \frac{p}{m} \implies p = m\qd, \label{qdot} \\
 		\pd &= -\pdv{H}{q} = q - q^3. \label{pdot}
 	\end{align}
-	We are interested in the phase space $(q, p)$.  Fixed points $(q^*, p^*)$ occur where $\pd = \qd = 0$.  Making the appropriate equality from \refeq{pdot} and \refeq{qdot}, the fixed points are the roots of the equation
+	We are interested in the phase space $(q, p)$.  Fixed points $(q^*, p^*)$ occur where $\qd = \pd = 0$.  Making the appropriate equality from \refeq{pdot} and \refeq{qdot}, the fixed points are the roots of the equation
 	\begin{equation} \label{fps}
 		q^* - (q^*)^3 = p^*.
 	\end{equation}
@@ -489,7 +560,7 @@
 	\end{equation}
 	These points are drawn in green in Fig.~\ref{fig4b}.
 	
-	In order to classify the stability of the fixed points, note that \refeq{qdot} gives a relationship for the time evolution in the $q$ direction.  That is, time evolution flows in the $+q$~($-q$) direction when $p > 0$~($p < 0$), which corresponds to the top~(bottom) half of the phase plane.  By this argument, we can figure out the behavior near the fixed points.  These partial trajectories are drawn in purple in Fig.~\ref{fig4b}.  We can conclude from this time evolution behavior that the fixed point at $(0, 0)$ is unstable (a saddle point).  The points at $(\pm 1, 0)$ are stable, but not attracting; they are centers of orbital motion.
+	In order to classify the stability of the fixed points, note that \refeq{qdot} gives a relationship for the time evolution in the $q$ direction.  That is, time evolution flows in the $+q$~($-q$) direction when $p > 0$~($p < 0$), which corresponds to the top~(bottom) half of the phase plane.  By this argument, we can figure out the behavior near the fixed points.  \hl{INSERT PHYSICAL ARGUMENT}  These partial trajectories are drawn in purple in Fig.~\ref{fig4b}.  We can conclude from this time evolution behavior that the fixed point at $(0, 0)$ is unstable (a saddle point).  The points at $(\pm 1, 0)$ are stable, but not attracting; they are centers of orbital motion.
 	
 	Drawing through the trajectories intersecting $(0,0)$, we identify the separatrix, drawn in red in Fig.~\ref{fig4b}.  \hl{Equation for separatrix}
 	
@@ -507,7 +578,7 @@
 		\put(8.3,0){\makebox(1,0)[l]{$q$}}
 		\put(0,5.3){\makebox(0,1)[b]{$p$}}
 	\end{picture}
-	\caption{Time evolution trajectories in phase space for the system of Prob.~\ref{prob4}.  Fixed points are shown in green.  The separatrix is shown in red.}
+	\caption{Time evolution trajectories in phase space for the system of problem~\ref{prob4}.  Fixed points are shown in green.  The separatrix is shown in red.}
 \end{figure}
 
 \end{solution}
