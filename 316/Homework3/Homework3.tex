@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage{physics, amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+%\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+ 
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 316 Homework 3}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{12pt}
+\cfoot{\thepage}
+
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+\newenvironment{problem}
+{
+    \subsection{}
+    \color{darkgray}
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+
+
+\begin{document}
+
+\newcommand{\omo}{\omega_0}
+\newcommand{\omp}{\omega_+}
+\newcommand{\omm}{\omega_-}
+\newcommand{\ompm}{\omega_\pm}
+\newcommand{\lmp}{\lambda_+}
+\newcommand{\lmm}{\lambda_-}
+\newcommand{\lmpm}{\lambda_\pm}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\xd}{\dot{x}}
+\newcommand{\xdd}{\ddot{x}}
+
+\section{}
+\begin{statement}
+	Two identical harmonic oscillators with mass $M$ and natural frequency $\omo$ are coupled to each other, and to an extra mass $m$, such that the equations of motion have the form
+	\begin{align}
+		\xdd_1 + \frac{m}{M} \xdd_2 + \omo^2 x_1 &= 0, \label{given1} \\
+		\xdd_2 + \frac{m}{M} \xdd_1 + \omo^2 x_2 &= 0. \label{given2}
+	\end{align}
+	What are the normal mode frequencies?
+\end{statement}
+
+\begin{solution}
+	We will begin by rewriting \refeq{given1} and \refeq{given2} such that they have no cross terms.  Solving \refeq{given1} for $\xdd_2$ and \refeq{given2} for $\xdd_1$ gives us
+	\begin{align}
+		\xdd_2 &= -\frac{M}{m} (\xdd_1 + \omo^2 x_1), \label{solved2} \\
+		\xdd_1 &= -\frac{M}{m} (\xdd_2 + \omo^2 x_2). \label{solved1}
+	\end{align}
+	Now substituting \refeq{solved2} into \refeq{given2} and \refeq{solved1} into \refeq{given1} gives us
+	\begin{align}
+		-\frac{M}{m} (\xdd_1 + \omo^2 x_1) + \frac{m}{M} \xdd_1 + \omo^2 x_2 = 0 &\implies \xdd_1 = \frac{\omo^2}{m^2 - M^2} (M^2 x_1 - M m x_2), \label{new1} \\
+		-\frac{M}{m} (\xdd_2 + \omo^2 x_2) + \frac{m}{M} \xdd_2 + \omo^2 x_1 = 0 &\implies \xdd_2 = \frac{\omo^2}{m^2 - M^2} (M^2 x_2 - M m x_1). \label{new2}
+	\end{align}
+	Then \refeq{new1} and \refeq{new2} may be rewritten in a matrix form in the basis $\vx$:
+	\begin{align}
+		\dv{}{t} \mqty[ x_1 \\ x_2 ] = \frac{\omo^2}{m^2 - M^2} \mqty[ M^2 & -Mm \\ -Mm & M^2 ] \mqty[ x_1 \\ x_2 ] \equiv \frac{\omo^2}{m^2 - M^2} A \vx,
+	\end{align}
+	where we have defined the matrix $A$ and the vector $\vx$.
+	
+	Let $\lmpm$ be the two eigenvalues of $A$.  The eigenvalues are given by $\det(A - \lambda I) = 0$, where $I$ is the identity matrix.  That is,
+	\begin{align}
+		0 = \mdet{M^2 - \lambda & -Mm \\ -Mm & M^2 - \lambda} = (M^2 - \lambda)^2 - M^2 m^2 \implies M^2 - \lambda = \pm Mm \implies \lmpm = M^2 \pm Mm.
+	\end{align}
+	Let $\ompm$ be the normal mode frequencies, which are given by $\ompm^2 = \omo^2 \lmpm / (m^2 - M^2)$.  Explicitly,
+	\begin{align}
+		\omp &= \omo \sqrt{\frac{M^2 + Mm}{m^2 - M^2}}, &
+		\omm &= \omo \sqrt{\frac{M^2 - Mm}{m^2 - M^2}}.
+	\end{align}
+\end{solution}
+
+
+\section{Designing a Double Pendulum}
+\begin{statement}
+	Suppose you are asked to design a double pendulum whose lower frequency is half that of the higher frequency by changing the lengths of the strings and/or the masses.  What are the possible designs?
+\end{statement}
+
+%\begin{solution}
+%	
+%\end{solution}
+
+
+\section{Beats and Double Pendulum}
+\begin{statement}
+	Given a double pendulum whose two strings are of equal length, how should the masses be chosen so that tthe two eigenfrequencies approach each other, i.e.~that the system approaches a degeneracy?  Show that the resultant motion proceeds in ``beats.''
+\end{statement}
+
+%\begin{solution}
+%
+%\end{solution}
+
+
+\section{Triple Oscillator System}
+\begin{statement}
+	Consider three identical masses connected by identical springs in the shape of an equilateral triangle.  Suppose the three springs lie along the arcs of a circle that circumscribes the triangle.  Suppose also that the motion of the masses is constrained to move along the circle.  Find the normal modes and the eigenfrequencies about the equilibrium state.  If there is a zero mode, identify the associated continuous symmetry.
+\end{statement}
+
+%\begin{solution}
+%
+%\end{solution}
+
+	
+In writing these solutions, I consulted David Tong's lecture notes.
+
+\end{document}
