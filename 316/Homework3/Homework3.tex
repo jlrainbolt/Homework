@@ -39,7 +39,7 @@
     \ignorespaces
 }
 {
-    \bigskip
+    \smallskip
 }
 
 \newenvironment{problem}
@@ -72,34 +72,37 @@
 \newcommand{\lmp}{\lambda_+}
 \newcommand{\lmm}{\lambda_-}
 \newcommand{\lmpm}{\lambda_\pm}
+
 \newcommand{\vx}{\vec{x}}
-\newcommand{\xd}{\dot{x}}
-\newcommand{\xdd}{\ddot{x}}
+\newcommand{\xq}{x_1}
+\newcommand{\xw}{x_2}
+\newcommand{\xddq}{\ddot{x}_1}
+\newcommand{\xddw}{\ddot{x}_2}
 
 \section{}
 \begin{statement}
 	Two identical harmonic oscillators with mass $M$ and natural frequency $\omo$ are coupled to each other, and to an extra mass $m$, such that the equations of motion have the form
 	\begin{align}
-		\xdd_1 + \frac{m}{M} \xdd_2 + \omo^2 x_1 &= 0, \label{given1} \\
-		\xdd_2 + \frac{m}{M} \xdd_1 + \omo^2 x_2 &= 0. \label{given2}
+		\xddq + \frac{m}{M} \xddw + \omo^2 \xq &= 0, \label{given1} \\
+		\xddw + \frac{m}{M} \xddq + \omo^2 \xw &= 0. \label{given2}
 	\end{align}
 	What are the normal mode frequencies?
 \end{statement}
 
 \begin{solution}
-	We will begin by rewriting \refeq{given1} and \refeq{given2} such that they have no cross terms.  Solving \refeq{given1} for $\xdd_2$ and \refeq{given2} for $\xdd_1$ gives us
+	We will begin by rewriting \refeq{given1} and \refeq{given2} such that they have no cross terms.  Solving \refeq{given1} for $\xddw$ and \refeq{given2} for $\xddq$ gives us
 	\begin{align}
-		\xdd_2 &= -\frac{M}{m} (\xdd_1 + \omo^2 x_1), \label{solved2} \\
-		\xdd_1 &= -\frac{M}{m} (\xdd_2 + \omo^2 x_2). \label{solved1}
+		\xddw &= -\frac{M}{m} (\xddq + \omo^2 \xq), \label{solved2} \\
+		\xddq &= -\frac{M}{m} (\xddw + \omo^2 \xw). \label{solved1}
 	\end{align}
 	Now substituting \refeq{solved2} into \refeq{given2} and \refeq{solved1} into \refeq{given1} gives us
 	\begin{align}
-		-\frac{M}{m} (\xdd_1 + \omo^2 x_1) + \frac{m}{M} \xdd_1 + \omo^2 x_2 = 0 &\implies \xdd_1 = \frac{\omo^2}{m^2 - M^2} (M^2 x_1 - M m x_2), \label{new1} \\
-		-\frac{M}{m} (\xdd_2 + \omo^2 x_2) + \frac{m}{M} \xdd_2 + \omo^2 x_1 = 0 &\implies \xdd_2 = \frac{\omo^2}{m^2 - M^2} (M^2 x_2 - M m x_1). \label{new2}
+		-\frac{M}{m} (\xddq + \omo^2 \xq) + \frac{m}{M} \xddq + \omo^2 \xw = 0 &\implies \xddq = \frac{\omo^2}{m^2 - M^2} (M^2 \xq - M m \xw), \label{new1} \\
+		-\frac{M}{m} (\xddw + \omo^2 \xw) + \frac{m}{M} \xddw + \omo^2 \xq = 0 &\implies \xddw = \frac{\omo^2}{m^2 - M^2} (M^2 \xw - M m \xq). \label{new2}
 	\end{align}
 	Then \refeq{new1} and \refeq{new2} may be rewritten in a matrix form in the basis $\vx$:
 	\begin{align}
-		\dv{}{t} \mqty[ x_1 \\ x_2 ] = \frac{\omo^2}{m^2 - M^2} \mqty[ M^2 & -Mm \\ -Mm & M^2 ] \mqty[ x_1 \\ x_2 ] \equiv \frac{\omo^2}{m^2 - M^2} A \vx,
+		\dv{}{t} \mqty[ \xq \\ \xw ] = \frac{\omo^2}{m^2 - M^2} \mqty[ M^2 & -Mm \\ -Mm & M^2 ] \mqty[ \xq \\ \xw ] \equiv \frac{\omo^2}{m^2 - M^2} A \vx,
 	\end{align}
 	where we have defined the matrix $A$ and the vector $\vx$.
 	
@@ -114,20 +117,178 @@
 	\end{align}
 \end{solution}
 
+\newcommand{\mq}{m_1}
+\newcommand{\mw}{m_2}
+\newcommand{\elq}{\ell_1}
+\newcommand{\elw}{\ell_2}
 
-\section{Designing a Double Pendulum}
+\newcommand{\thq}{\theta_1}
+\newcommand{\thw}{\theta_2}
+\newcommand{\thdq}{\dot{\theta}_1}
+\newcommand{\thdw}{\dot{\theta}_2}
+\newcommand{\thddq}{\ddot{\theta}_1}
+\newcommand{\thddw}{\ddot{\theta}_2}
+
+\newcommand{\vrq}{\vec{r}_1}
+\newcommand{\vrw}{\vec{r}_2}
+\newcommand{\xdq}{\dot{x}_1}
+\newcommand{\xdw}{\dot{x}_2}
+\newcommand{\yq}{y_1}
+\newcommand{\yw}{y_2}
+\newcommand{\ydq}{\dot{y}_1}
+\newcommand{\ydw}{\dot{y}_2}
+
+\newcommand{\Lh}{\hat{L}}
+\newcommand{\vth}{\boldsymbol{\theta}}
+
+\section{Designing a Double Pendulum} \label{prob2}
 \begin{statement}
 	Suppose you are asked to design a double pendulum whose lower frequency is half that of the higher frequency by changing the lengths of the strings and/or the masses.  What are the possible designs?
 \end{statement}
 
-%\begin{solution}
-%	
-%\end{solution}
+\unitlength=.35in
+\begin{figure}[b] \centering
+	\begin{picture}(10.5,10.5)(-1.2,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-1,-4)(0,1){9}{\line(1,0){9}}
+		\multiput(0,-5)(1,0){8}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-1,4){\vector(1,0){9.2}}
+		\put(0,5){\vector(0,-1){10.2}}
+		\put(8.3,4){\makebox(1,0)[l]{$x$}}
+		\put(0,-5){\makebox(0,-1)[c]{$y$}}
+	\end{picture}
+	\medskip
+	\caption{Double pendulum in problem~\ref{prob2} with labeled coordinates.}
+	\label{fig:dp}
+\end{figure}
+
+\begin{solution}
+	A labeled diagram of the system is shown in figure~\ref{fig:dp}.  Let the upper part of the pendulum have mass $\mq$ and string length $\elq$.  Let its position be $\vrq = (\xq, \yq)$ where the pivot is located at the origin, and the $y$ axis points downward.  Define $\mw$, $\elw$, and $\vrw$ similarly for the lower part.  Then the Lagrangian for the system is given by
+	\begin{equation} \label{lagrdp}
+		L = T_1 + T_2 - U_1 - U_2 = \frac{1}{2} \mq (\xdq^2 + \ydq^2) + \frac{1}{2} \mw (\xdw^2 + \ydw^2) - m g \yq - m g \yw.
+	\end{equation}
+	Define the generalized coordinates $\thq, \thw$ which represent the inclination of each mass with respect to the vertical.  Then the Cartesian coordinates representing the position of each mass are
+	\begin{align}
+		\xq &= \elq \sin{\thq}, &
+		\yq &= \elq \cos{\thq}, \\
+		\xw &= \elq \sin{\thq} + \elw \sin{\thw}, &
+		\yw &= \elq \cos{\thq} + \elw \cos{\thw},
+	\end{align}
+	which have the time derivatives
+	\begin{align}
+		\xdq &= \pdv{\xq}{\thq} \dv{\thq}{t} = \elq \cos{\thq} \thdq, \label{x1d} \\
+		\ydq &= \pdv{\yq}{\thq} \dv{\thq}{t} = -\elq \sin{\thq} \thdq, \label{y1d} \\
+		\xdw &= \pdv{\xw}{\thq} \dv{\thq}{t} + \pdv{\xw}{\thw} \dv{\thw}{t} = \elq \cos{\thq} \thdq + \elw \cos{\thw} \thdw, \label{x2d} \\
+		\ydw &= \pdv{\yw}{\thq} \dv{\thq}{t} + \pdv{\yw}{\thw} \dv{\thw}{t} = -\elq \sin{\thq} \thdq - \elw \sin{\thw} \thdw. \label{y2d}
+	\end{align}
+	From \refeq{x1d} and \refeq{y1d},
+	\begin{equation}
+		\xdq^2 + \ydq^2 = \elq^2 \thdq^2 (\cos^2{\thq} + \sin^2{\thq}) = \elq^2 \thdq^2.
+	\end{equation}
+	From \refeq{x2d} and \refeq{y2d},
+	\begin{align}
+		\xdw^2 &= \elq^2 \cos^2{\thq} \thdq^2 + 2 \elq \elw \cos{\thq} \cos{\thw} \thdq \thdw + \elw^2 \cos^2{\thw} \thdw^2, \\
+		\ydw^2 &= \elq^2 \sin^2{\thq} \thdq^2 + 2 \elq \elw \sin{\thq} \sin{\thw} \thdq \thdw + \elw^2 \sin^2{\thw} \thdw^2,
+	\end{align}
+	so
+	\begin{align}
+		\xdw^2 + \ydw^2 &= \elq^2 \thdq^2 + \elw^2 \thdw^2 + 2 \elq \elw \thdq \thdw (\cos{\thq} \cos{\thw} + \sin{\thq} \sin{\thw}) \\
+		&= \elq^2 \thdq^2 + \elw^2 \thdw^2 + 2 \elq \elw \cos(\thq - \thw) \thdq \thdw.
+	\end{align}
+	Writing \refeq{lagrdp} in terms of the generalized coordinates, we have
+	\begin{align}
+		L &= \frac{1}{2} \mq \elq^2 \thdq^2 + \frac{1}{2} \mw \left( \elq^2 \thdq^2 + \elw^2 \thdw^2 + 2 \elq \elw \cos(\thq - \thw) \thdq \thdw \right) + \mq g \elq \cos{\thq} \notag \\
+		&\phantom{=\ } + \mw g \left( \elq \cos{\thq} + \elw \cos{\thw} \right) \\
+		&= \frac{1}{2} (\mq + \mw) \elq^2 \thdq^2 + \frac{1}{2} \mw \elw^2 \thdw^2 + \mw \elq \elw \cos(\thq - \thw) \thdq \thdw + g (\mq + \mw) \elq \cos{\thq} \notag \\
+		&\phantom{=\ } + g \elw \mw \cos{\thw}. \label{lagrdpnew}
+	\end{align}
+	
+	The stable equilibrium solution is for the pendulum hanging straight down, which is at the point $(\thq^*, \thw^*) = (0, 0)$.  We will linearize the $L = L(\thq, \thw, \thdq, \thdw)$ given by \refeq{lagrdpnew} about this stable point in order to find general expressions for the normal modes.  Note that
+	\begin{align}
+		\pdv{L}{\thq} &= -\mw \elq \elw (\sin{\thq} \cos{\thw} - \cos{\thq} \sin{\thw}) \thdq \thdw - g (\mq + \mw) \elq \sin{\thq} \\
+		&= -\mw \elq \elw \sin(\thq - \thw) \thdq \thdw - g (\mq + \mw) \elq \sin{\thq}, \\
+		\pdv{L}{\thw} &= \mw \elq \elw (\sin{\thq} \cos{\thw} - \cos{\thq} \sin{\thw}) \thdq \thdw - g \mw \elw \sin{\thw} \\
+		&= \mw \elq \elw \sin(\thq - \thw) \thdq \thdw - g \mw \elw \sin{\thw},
+	\end{align}
+	which implies
+	\begin{equation}
+		\left. \pdv{L}{\thq}\right|_{0, 0} \thq = \left. \pdv{L}{\thw}\right|_{0, 0} \thw = 0.
+	\end{equation}
+	Thus, we must expand to second order.  Note that
+	\begin{align}
+		\pdv[2]{L}{\thq} &= -\mw \elq \elw (\cos{\thq} \cos{\thw} + \sin{\thq} \sin{\thw}) \thdq \thdw - g (\mq + \mw) \elq \cos{\thq} \\
+		&= -\mw \elq \elw \cos(\thq - \thw) \thdq \thdw - g (\mq + \mw) \elq \cos{\thq}, \\
+%		\pdv[2]{L}{\thq}{\thw} &= \mw \elq \elw (\cos{\thq} \cos{\thw} + \sin{\thq} \sin{\thw}) \thdq \thdw = \mw \elq \elw \cos(\thq - \thw) \thdq \thdw \\
+		\pdv[2]{L}{\thw} &= -\mw \elq \elw (\cos{\thq} \cos{\thw} + \sin{\thq} \sin{\thw}) \thdq \thdw - g \mw \elw \cos{\thw} \\
+		&= -\mw \elq \elw \cos(\thq - \thw) \thdq \thdw - g \mw \elw \cos{\thw}.
+	\end{align}
+	Then, expanding to second order in $\thq$ and $\thw$, %FIXME
+	\begin{align}
+%		L(\thq, \thw, \thdq, \thdw) &\approx L(0, 0, \thdq, \thdw) + \frac{1}{2} \left. \pdv[2]{L}{\thq}\right|_{0, 0} \thq^2 + \left. \pdv[2]{L}{\thq}{\thw}\right|_{0, 0} \thq \thw + \frac{1}{2} \left. \pdv[2]{L}{\thw}\right|_{0, 0} \thw^2 \\
+		L &\approx L(0, 0, \thdq, \thdw) + \frac{1}{2} \left. \pdv[2]{L}{\thq}\right|_{0, 0} \thq^2 + \frac{1}{2} \left. \pdv[2]{L}{\thw}\right|_{0, 0} \thw^2 \\
+		&\approx \frac{1}{2} (\mq + \mw) \elq^2 \thdq^2 + \frac{1}{2} \mw \elw^2 \thdw^2 + \mw \elq \elw \thdq \thdw + g (\mq + \mw) \elq + g \elw \mw \notag \\
+		&\phantom{\approx\ } + \frac{1}{2} \left( -\mw \elq \elw \thdq \thdw - g (\mq + \mw) \elq \right) \thq^2 + \frac{1}{2} \left( -\mw \elq \elw \thdq \thdw - g \mw \elw \right) \thw^2 \\
+		&\approx \frac{1}{2} (\mq + \mw) \elq^2 \thdq^2 + \frac{1}{2} \mw \elw^2 \thdw^2 + \mw \elq \elw \thdq \thdw - \frac{1}{2} g (\mq + \mw) \elq \thq^2 - \frac{1}{2} g \mw \elw \thw^2, \label{lagrlin}
+	\end{align}
+	where in going to \refeq{lagrlin} we have omitted constant terms and terms proportional to $\thdq \thdw \thq^2$ and to $\thdq \thdw \thw^2$.
+	
+	Now we can obtain the equations of motion for the linearized Lagrangian \refeq{lagrlin}, which we will call $\Lh$:
+	\begin{align}
+		0 &= \pdv{\Lh}{\thq} - \dv{}{t} \pdv{\Lh}{\thdq} = (\mq + \mw) \elq^2 \thddq + \mw \elq \elw \thddw + g (\mq + \mw) \elq \thq, \label{el1} \\
+		0 &= \pdv{\Lh}{\thw} - \dv{}{t} \pdv{\Lh}{\thdw} = \mw \elq \elw \thddq + \mw \elw^2 \thddw + g \mw \elw \thw. \label{el2}
+	\end{align}
+	Solving \refeq{el1} for $\thddw$ and \refeq{el2} for $\thddq$ gives us
+	\begin{align}
+		\thddw &= -\frac{1}{\mw \elq \elw} \left( g (\mq + \mw) \elq \thq + (\mq + \mw) \elq^2 \thddq \right), \label{2solved2} \\
+		\thddq &= -\frac{1}{\mw \elq \elw} \left( \mw \elw^2 \thddw + g \mw \elw \thw \right) \label{2solved1}.
+	\end{align}
+	Substituting \refeq{2solved2} into \refeq{el2} gives us
+	\begin{align}
+		0 &= \mw \elq \elw \thddq - \frac{\elw}{\elq} \left( g (\mq + \mw) \elq \thq + (\mq + \mw) \elq^2 \thddq \right) + g \mw \elw \thw \\
+		&\implies \mq \elq \elw \thddq = -g (\mq + \mw) \elw \thq + g \mw \elw \thw, \label{mot1}
+	\end{align}
+	and substituting \refeq{2solved1} into \refeq{el1} gives us
+	\begin{align}
+		0 &= -(\mq + \mw) \elq \left( \elw \thddw + g \thw \right) + \mw \elq \elw \thddw + g (\mq + \mw) \elq \thq \\
+		&\implies \mq \elq \elw \thddw = g (\mq + \mw) \elq \thq - g (\mq + \mw) \elq \thw. \label{mot2}
+	\end{align}
+	Then \refeq{mot1} and \refeq{mot2} may be rewritten in a matrix form in the basis $\vth$:
+	\begin{equation}
+		\dv{}{t} \mqty[ \thq \\ \thw ] = -\frac{g (\mq + \mw)}{\mq \elq \elw} \mqty[ \elw & -\mw \elw / (\mq + \mw) \\ -\elq & \elq ] \mqty[ \thq \\ \thw ] \equiv -\frac{g (\mq + \mw)}{\mq \elq \elw} A \vth,
+	\end{equation}
+	where we have defined the matrix $A$ and the vector $\vth$.
+	
+	Let $\lmpm$ be the two eigenvalues of $A$.  Then
+	\begin{align}
+		0 &= \mdet{\elw - \lambda & -\mw \elw / (\mq + \mw) \\ -\elq & \elq - \lambda} = (\elq - \lambda) (\elw - \lambda) - \frac{\mw}{\mq + \mw} \elq \elw \\
+		&= \lambda^2 - (\elq + \elw) \lambda + \frac{\mq}{\mq + \mw} \elq \elw
+	\end{align}
+	which implies
+	\begin{equation} \label{eigenvalues}
+		\lmpm = \frac{1}{2} \left( (\elq + \elw) \pm \sqrt{(\elq + \elw)^2 - 4 \elq \elw \frac{\mq}{\mq + \mw}} \right).
+	\end{equation}
+	Let $\ompm$ be the normal mode frequencies, which are given by
+	\begin{equation}
+		\ompm^2 = -\frac{g (\mq + \mw)}{\mq \elq \elw} \lmpm.
+	\end{equation}
+	The higher frequency is $\omm$.  In order for the lower frequency to be half of this, we need $\omm^2 = 4 \omp^2$, or equivalently $\lmm = 4 \lmp$.  Using \refeq{eigenvalues}, this gives us the condition
+	\begin{align}
+		\left( (\elq + \elw) - \sqrt{(\elq + \elw)^2 - 4 \elq \elw \frac{\mq}{\mq + \mw}} \right) &= 4 \left( (\elq + \elw) + \sqrt{(\elq + \elw)^2 - 4 \elq \elw \frac{\mq}{\mq + \mw}} \right) \\
+		-3 (\elq + \elw) &= 5 \sqrt{(\elq + \elw)^2 - 4 \elq \elw \frac{\mq}{\mq + \mw}} \\
+		9 (\elq + \elw)^2 &= 25 \left( (\elq + \elw)^2 - 4 \elq \elw \frac{\mq}{\mq + \mw} \right) \\
+		100 \elq \elw \frac{\mq}{\mq + \mw} &= 16 (\elq + \elw)^2 \\
+		\frac{\elq}{\elq + \elw} \frac{\elw}{\elq + \elw} \frac{\mq}{\mq + \mw} &= 0.16. \label{designs}
+	\end{align}
+	The possible designs are those that satisfy \refeq{designs}.
+\end{solution}
 
 
 \section{Beats and Double Pendulum}
 \begin{statement}
-	Given a double pendulum whose two strings are of equal length, how should the masses be chosen so that tthe two eigenfrequencies approach each other, i.e.~that the system approaches a degeneracy?  Show that the resultant motion proceeds in ``beats.''
+	Given a double pendulum whose two strings are of equal length, how should the masses be chosen so that the two eigenfrequencies approach each other, i.e.~that the system approaches a degeneracy?  Show that the resultant motion proceeds in ``beats.''
 \end{statement}
 
 %\begin{solution}
