@@ -147,7 +147,7 @@
 \end{statement}
 
 \unitlength=.35in
-\begin{figure}[b] \centering
+\begin{figure}[h] \centering
 	\begin{picture}(10.5,10.5)(-1.2,-5)
 		{\color{lightgray}
 		\thinlines
@@ -291,9 +291,19 @@
 	Given a double pendulum whose two strings are of equal length, how should the masses be chosen so that the two eigenfrequencies approach each other, i.e.~that the system approaches a degeneracy?  Show that the resultant motion proceeds in ``beats.''
 \end{statement}
 
-%\begin{solution}
-%
-%\end{solution}
+\begin{solution}
+	The eigenfrequencies $\ompm$ approaching each other is equivalent to $\lmpm$ approaching each other.  Substituting $\ell = \elq = \elw$ into \refeq{eigenvalues} results in
+	\begin{equation} \label{eigenvalues}
+		\lmpm = \frac{1}{2} \left( 2 \ell \pm \sqrt{(2 \ell)^2 - 4 \ell^2 \frac{\mq}{\mq + \mw}} \right) = \ell \pm \ell \sqrt{1 - \frac{\mq}{\mq + \mw}},
+	\end{equation}
+	so the system will approach a degeneracy as
+	\begin{equation}
+		1 - \frac{\mq}{\mq + \mw} \to 0.
+	\end{equation}
+	This means the masses should be chosen such that $\mw \ll \mq$.
+	
+	\hl{how to show beats?}
+\end{solution}
 
 
 \section{Triple Oscillator System}
