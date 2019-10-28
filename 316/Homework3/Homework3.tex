@@ -20,6 +20,7 @@
 \makeatother
  
  
+\renewcommand{\footrulewidth}{.2pt}
 \setlist[enumerate]{leftmargin=*}
 \pagestyle{fancy}
 \fancyhf{}
@@ -27,7 +28,8 @@
 \rhead{Lacey Rainbolt}
 \setlength{\headheight}{14pt}
 \setlength{\headsep}{12pt}
-\cfoot{\thepage}
+\lfoot{\today}
+\rfoot{\thepage}
 
 \titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 \newcommand{\refeq}[1]{(\ref{#1})}
@@ -39,7 +41,7 @@
     \ignorespaces
 }
 {
-    \smallskip
+%    \smallskip
 }
 
 \newenvironment{problem}
@@ -110,10 +112,10 @@
 	\begin{align}
 		0 = \mdet{M^2 - \lambda & -Mm \\ -Mm & M^2 - \lambda} = (M^2 - \lambda)^2 - M^2 m^2 \implies M^2 - \lambda = \pm Mm \implies \lmpm = M^2 \pm Mm.
 	\end{align}
-	Let $\ompm$ be the normal mode frequencies, which are given by $\ompm^2 = \omo^2 \lmpm / (m^2 - M^2)$.  Explicitly,
+	Let $\ompm$ be the normal mode frequencies, which are given by $\ompm^2 = -\omo^2 \lmpm / (m^2 - M^2)$.  Explicitly,
 	\begin{align}
-		\omp &= \omo \sqrt{\frac{M^2 + Mm}{m^2 - M^2}}, &
-		\omm &= \omo \sqrt{\frac{M^2 - Mm}{m^2 - M^2}}.
+		\omp &= \omo \sqrt{\frac{M^2 + Mm}{M^2 - m^2}}, &
+		\omm &= \omo \sqrt{\frac{M^2 - Mm}{M^2 - m^2}}.
 	\end{align}
 \end{solution}
 
@@ -146,8 +148,8 @@
 	Suppose you are asked to design a double pendulum whose lower frequency is half that of the higher frequency by changing the lengths of the strings and/or the masses.  What are the possible designs?
 \end{statement}
 
-\unitlength=.35in
-\begin{figure}[h] \centering
+\unitlength=.25in
+\begin{figure}[t] \centering
 	\begin{picture}(10.5,10.5)(-1.2,-5)
 		{\color{lightgray}
 		\thinlines
@@ -233,7 +235,7 @@
 		&\phantom{\approx\ } + \frac{1}{2} \left( -\mw \elq \elw \thdq \thdw - g (\mq + \mw) \elq \right) \thq^2 + \frac{1}{2} \left( -\mw \elq \elw \thdq \thdw - g \mw \elw \right) \thw^2 \\
 		&\approx \frac{1}{2} (\mq + \mw) \elq^2 \thdq^2 + \frac{1}{2} \mw \elw^2 \thdw^2 + \mw \elq \elw \thdq \thdw - \frac{1}{2} g (\mq + \mw) \elq \thq^2 - \frac{1}{2} g \mw \elw \thw^2, \label{lagrlin}
 	\end{align}
-	where in going to \refeq{lagrlin} we have omitted constant terms and terms proportional to $\thdq \thdw \thq^2$ and to $\thdq \thdw \thw^2$.
+	where in going to \refeq{lagrlin} we have omitted constant terms and terms proportional to $\thdq \thdw \thq^2$ and to $\thdq \thdw \thw^2$.  \hl{what did I do wrong here?}
 	
 	Now we can obtain the equations of motion for the linearized Lagrangian \refeq{lagrlin}, which we will call $\Lh$:
 	\begin{align}
@@ -256,7 +258,7 @@
 		&\implies \mq \elq \elw \thddw = g (\mq + \mw) \elq \thq - g (\mq + \mw) \elq \thw. \label{mot2}
 	\end{align}
 	Then \refeq{mot1} and \refeq{mot2} may be rewritten in a matrix form in the basis $\vth$:
-	\begin{equation}
+	\begin{equation} \label{defa}
 		\dv{}{t} \mqty[ \thq \\ \thw ] = -\frac{g (\mq + \mw)}{\mq \elq \elw} \mqty[ \elw & -\mw \elw / (\mq + \mw) \\ -\elq & \elq ] \mqty[ \thq \\ \thw ] \equiv -\frac{g (\mq + \mw)}{\mq \elq \elw} A \vth,
 	\end{equation}
 	where we have defined the matrix $A$ and the vector $\vth$.
@@ -271,8 +273,8 @@
 		\lmpm = \frac{1}{2} \left( (\elq + \elw) \pm \sqrt{(\elq + \elw)^2 - 4 \elq \elw \frac{\mq}{\mq + \mw}} \right).
 	\end{equation}
 	Let $\ompm$ be the normal mode frequencies, which are given by
-	\begin{equation}
-		\ompm^2 = -\frac{g (\mq + \mw)}{\mq \elq \elw} \lmpm.
+	\begin{equation} \label{frequencies}
+		\ompm^2 = \frac{g (\mq + \mw)}{\mq \elq \elw} \lmpm.
 	\end{equation}
 	The higher frequency is $\omm$.  In order for the lower frequency to be half of this, we need $\omm^2 = 4 \omp^2$, or equivalently $\lmm = 4 \lmp$.  Using \refeq{eigenvalues}, this gives us the condition
 	\begin{align}
@@ -285,37 +287,268 @@
 	The possible designs are those that satisfy \refeq{designs}.
 \end{solution}
 
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vvpm}{\vec{v}_\pm}
+\newcommand{\vq}{v_1}
+\newcommand{\vw}{v_2}
 
-\section{Beats and Double Pendulum}
+\newcommand{\Cp}{C_+}
+\newcommand{\Cm}{C_-}
+\newcommand{\Cpm}{C_\pm}
+\newcommand{\php}{\phi_+}
+\newcommand{\phm}{\phi_-}
+\newcommand{\phpm}{\phi_\pm}
+
+\section{Beats and Double Pendulum} \label{prob3}
 \begin{statement}
 	Given a double pendulum whose two strings are of equal length, how should the masses be chosen so that the two eigenfrequencies approach each other, i.e.~that the system approaches a degeneracy?  Show that the resultant motion proceeds in ``beats.''
 \end{statement}
 
 \begin{solution}
 	The eigenfrequencies $\ompm$ approaching each other is equivalent to $\lmpm$ approaching each other.  Substituting $\ell = \elq = \elw$ into \refeq{eigenvalues} results in
-	\begin{equation} \label{eigenvalues}
-		\lmpm = \frac{1}{2} \left( 2 \ell \pm \sqrt{(2 \ell)^2 - 4 \ell^2 \frac{\mq}{\mq + \mw}} \right) = \ell \pm \ell \sqrt{1 - \frac{\mq}{\mq + \mw}},
+	\begin{equation} \label{eigenvalues2}
+		\lmpm = \frac{1}{2} \left( 2 \ell \pm \sqrt{(2 \ell)^2 - 4 \ell^2 \frac{\mq}{\mq + \mw}} \right) = \ell \pm \ell \sqrt{1 - \frac{\mq}{\mq + \mw}} = \ell \pm \ell \sqrt{\frac{\mw}{\mq + \mw}},
 	\end{equation}
-	so the system will approach a degeneracy as
+	so the system will approach a degeneracy as $\mw / (\mq + \mw) \to 0$.  This means the masses should be chosen such that $\mw \ll \mq$.
+
+	In order to show that the resultant motion proceeds in ``beats,'' we will solve for $\thq(t)$ and $\thw(t)$ of the linearized system given by the Lagrangian~\refeq{lagrlin}.  Let $\epsilon^2 = \mw / \mq \ll 1$.  From \refeq{eigenvalues2},
+	\begin{equation} \label{eigenepsilon}
+		\lmpm = \ell (1 \pm \epsilon).
+	\end{equation}
+	Substituting \refeq{eigenepsilon} into \refeq{frequencies} to find the oscillation frequencies, we have
+	\begin{align}
+		\omp^2 = \frac{g}{\ell} (1 + \epsilon) (1 + \epsilon) &\implies \omp = (1 + \epsilon) \sqrt{\frac{g}{\ell}}, \\
+		\omm^2 = \frac{g}{\ell} (1 + \epsilon) (1 - \epsilon) &\implies \omm = \sqrt{\frac{g}{\ell} (1 + \epsilon^2)} \approx \sqrt{\frac{g}{\ell}},
+	\end{align}
+	where we are neglecting terms of $\order{\epsilon^2}$.  Note that $\omp = (1 + \epsilon) \omm$.  We will now find the corresponding eigenvectors $\vvpm$, which are the normal modes of the system.  For the matrix $A$ defined in \refeq{defa}, we must find $\vq, \vw$ such that
+	\begin{equation} \label{eigendeg}
+		A \vvpm = \lmpm \vvpm \implies \ell \mqty[ 1 & -\epsilon^2 \\ -1 & 1 ] \mqty[ \vq \\ \vw ] = \ell (1 \pm \epsilon) \mqty[ \vq \\ \vw ].
+	\end{equation}
+	The algebraic equations corresponding to \refeq{eigendeg} are
+	\begin{align}
+		\vq - \epsilon^2 \vw = (1 \pm \epsilon) \vq &\implies -\epsilon^2 = \pm \epsilon \vq, \\
+		-\vq + \vw = (1 \pm \epsilon) \vw &\implies -\vq = \pm \epsilon \vw,
+	\end{align}
+	which have solutions $\vq = \mp \epsilon$ and $\vw = 1$.  Thus, the eigenvectors for the normal modes are
 	\begin{equation}
-		1 - \frac{\mq}{\mq + \mw} \to 0.
+		\vvpm = \mqty[ \mp \epsilon \\ 1 ].
 	\end{equation}
-	This means the masses should be chosen such that $\mw \ll \mq$.
+	Then we can write down $\thq(t)$ and $\thw(t)$:
+	\begin{equation} \label{mateqs}
+		\mqty[\thq(t) \\ \thw(t) ] = \Cp \mqty[ \epsilon \\ 1 ] \cos{(\omp t + \php)} + \Cm \mqty[ -\epsilon \\ 1 ] \cos{(\omm t + \phm)},
+	\end{equation}
+	where $\Cpm$ and $\phpm$ are the amplitudes and phases, respectively, corresponding to $\ompm$.
 	
-	\hl{how to show beats?}
+	Without loss of generality, we will consider the case where $\Cpm = 1$ and $\phpm = 0$.  Then \refeq{mateqs} simplifies to the two equations
+	\begin{align}
+		\thq(t) &= \epsilon \cos{(\omp t)} - \epsilon \cos{(\omm t)} = -2 \epsilon \sin{[(\omp + \omm) t]} \sin{[(\epsilon / 2) t]}, \label{final1} \\
+		\thw(t) &= \cos{(\omp t)} + \cos{(\omm t)} = 2 \cos{[(\omp + \omm) t]} \cos{[(\epsilon / 2) t]}, \label{final2}
+	\end{align}
+	where we have used the identities
+	\begin{align}
+		\cos{(\alpha + \beta)} + \cos{(\alpha - \beta)} &= 2 \cos{\alpha} \cos{\beta}, \label{mot1t} \\
+		\cos{(\alpha + \beta)} - \cos{(\alpha - \beta)} &= -2 \sin{\alpha} \sin{\beta}. \label{mot2t}
+	\end{align}
+	with $\alpha = (\omp + \omm)/2$ and $\beta = (\omp - \omm)/2 = \epsilon/2$.  The forms of \refeq{final1} and \refeq{final2} enable us to sketch the qualitative behavior as in figure~\ref{fig:beats}, which indicates the motion of the system proceeding in beats. \qed
 \end{solution}
 
+\unitlength=.25in
+\begin{figure}[t] \centering
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-8,0){\vector(1,0){16.2}}
+		\put(-7,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$t$}}
+		\put(0,5.3){\makebox(-14,1)[b]{$\theta$}}
+	\end{picture}
+	\caption{The beat motion of the double pendulum in problem~\ref{prob3}.  The blue~(red) line indicates the motion of $\mq$~($\mw$).}
+	\label{fig:beats}
+\end{figure}
 
-\section{Triple Oscillator System}
+\newcommand{\me}{m_3}
+\newcommand{\ome}{\omega_3}
+\newcommand{\te}{\theta_3}
+\newcommand{\thde}{\dot{\theta}_3}
+\newcommand{\thdde}{\ddot{\theta}_3}
+
+\newcommand{\lmq}{\lambda_1}
+\newcommand{\lmw}{\lambda_2}
+\newcommand{\lme}{\lambda_3}
+
+\newcommand{\ve}{v_3}
+
+\section{Triple Oscillator System} \label{prob4}
 \begin{statement}
 	Consider three identical masses connected by identical springs in the shape of an equilateral triangle.  Suppose the three springs lie along the arcs of a circle that circumscribes the triangle.  Suppose also that the motion of the masses is constrained to move along the circle.  Find the normal modes and the eigenfrequencies about the equilibrium state.  If there is a zero mode, identify the associated continuous symmetry.
 \end{statement}
 
-%\begin{solution}
-%
-%\end{solution}
+\unitlength=.25in
+\begin{figure}[h] \centering
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{gray}
+		\thinlines
+		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-5,0){\vector(1,0){10.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(5.3,0){\makebox(1,0)[l]{$x$}}
+		\put(0,5.3){\makebox(0,1)[b]{$y$}}
+	\end{picture}
+	\caption{Mass-spring system in problem~\ref{prob4} with labeled coordinates.}
+	\label{fig:triangle}
+\end{figure}
 
+\begin{solution}
+	A labeled diagram of the system is shown in figure~\ref{fig:triangle}.  Let $m$ be the mass of each oscillator, and $k$ be the spring constant of each of the springs connecting them.  The motion is constrained to a circle, so we will use the generalized coordinates $\thq, \thw, \te$ to represent the positions of each of the masses.  The Lagrangian for this system is given by
+	\begin{align}
+		L &= T_1 + T_2 + T_3 - U_{21} - U_{32} - U_{13} \\
+		&= \frac{m}{2} (\thdq^2 + \thdw^2 + \thde^2) - \frac{k}{2} \left( (\thw - \thq)^2 + (\te - \thw)^2 + (\thq - \te)^2 \right) \\
+		&= \frac{m}{2} (\thdq^2 + \thdw^2 + \thde^2) - k (\thq^2 + \thw^2 + \te^2 - \thq \thw - \thw \te - \thq \te). \label{lagrcircle}
+	\end{align}
+	The Euler-Lagrange equations for the Lagrangian \refeq{lagrcircle} are
+	\begin{align}
+		0 = \pdv{L}{\thq} - \dv{}{t} \pdv{L}{\thdq} &\implies \thddq = -\frac{k}{m} (2 \thq - \thw - \te), \label{motcircle1} \\
+		0 = \pdv{L}{\thw} - \dv{}{t} \pdv{L}{\thdw} &\implies \thddw = -\frac{k}{m} (2 \thw - \thq + \te), \label{motcircle2} \\
+		0 = \pdv{L}{\te} - \dv{}{t} \pdv{L}{\te} &\implies \thdde = -\frac{k}{m} (2 \te - \thq - \thw). \label{motcircle3}
+	\end{align}
+	Then \refeq{motcircle1}--\refeq{motcircle3} may be rewritten in a matrix form in the basis $\vth$:
+	\begin{equation}
+		\dv{}{t} \mqty[ \thq \\ \thw \\ \te ] = -\frac{k}{m} \mqty[ 2 & -1 & -1 \\ -1 & 2 & -1 \\ -1 & -1 & 2 ] \mqty[ \thq \\ \thw \\ \te ] \equiv -\frac{k}{m} A \vth,
+	\end{equation}
+	where we have defined the matrix $A$ and the vector $\vth$.  Let $\lambda$ be an eigenvalues of $A$.  Then
+	\begin{align}
+		0 &= \mdet{2 - \lambda & -1 & -1 \\ -1 & 2 - \lambda & -1 \\ -1 & -1 & 2 - \lambda} = (2 - \lambda)^3 - (2 - \lambda) - 1 - (2 - \lambda) - 1 - (2 - \lambda) \\
+		&= (2 - \lambda)^3 - 3 (2 - \lambda) - 2 = -\lambda^3 + 6 \lambda^2 - 9 \lambda. \label{cubic}
+	\end{align}
+	By inspection of \refeq{cubic}, $\lambda \in \{ 0, 3, 3 \}$.  Thus the normal modes of the system are degenerate.  The eigenfrequencies of the system are given by $\omega^2 = \lambda k / m$.
 	
-In writing these solutions, I consulted David Tong's lecture notes.
+	In order to find the normal modes, we must find eigenvectors $\vv$ corresponding to $\lambda \in \{ 0, 3, 3 \}$.  Beginning with $\lambda = 3$, we need to find $\vq, \vw, \ve$ such that
+	\begin{equation} \label{eigen3}
+		A \mqty[ \vq \\ \vw \\ \ve ] = 3 \mqty[ \vq \\ \vw \\ \ve ].
+	\end{equation}
+	The algebraic equations corresponding to \refeq{eigen3} are
+	\begin{align}
+		2 \vq - \vw - \ve = 3 \vq &\implies \vq = -(\vw + \ve), \label{v1} \\
+		2 \vw - \vq - \ve = 3 \vw &\implies \vw = -(\vq + \ve), \label{v2} \\
+		2 \ve - \vq - \vw = 3 \ve &\implies \ve = -(\vq + \vw). \label{v3}
+	\end{align}
+	Inspecting \refeq{v1}--\refeq{v3}, we may fix $\vq = 0$ without loss of generality.  Then we are left with $\vw = -\ve$, so we may fix $\vw = 1$ which implies $\ve = -1$.  Alternatively, we may instead fix $\vq = 2$.  Then we are left with $\vw + \ve = -2$, so we may fix $\vw = -1$ which implies $\ve = -1$.  For the case $\lambda = 0$, the equations correspsonding to \refeq{v1}--\refeq{v3} are trivial and we may fix $\vq = \vw = \ve$ without loss of generality.
+	
+	In summary, the normal modes and corresponding eigenfrequencies are as follows:
+	\renewcommand{\theenumi}{\alph{enumi}}
+	\begin{enumerate}
+		\item $\mq$ remains still while $\mw$ and $\me$ oscillate out of phase with the same amplitude.  This is illustrated in figure~\ref{fig:triangles}(a).  The oscillation frequency and the eigenvector for this mode are
+			\begin{align}
+				\ome &= \sqrt{3 \frac{k}{m}}, & \vv &= \mqty[0 \\ 1 \\ -1].
+			\end{align}
+		
+		\item $\mq$ oscillates out of phase with $\mw$ and $\me$, which are in phase with each other, and have half the oscillation amplitude of $\mq$.  This is illustrated in figure~\ref{fig:triangles}(b).  The oscillation frequency and eigenvector for this mode are
+			\begin{align}
+				\ome &= \sqrt{3 \frac{k}{m}}, & \vv &= \mqty[2 \\ -1 \\ -1].
+			\end{align}
+			
+		\item All three masses move in phase with the same velocity.  This is the ``zero mode'' in which no actual oscillations occur; the circle in figure~\ref{fig:triangle} is simply rotating.  \hl{This mode is associated with a continuous rotational symmetry.}  This is illustrated in figure~\ref{fig:triangles}(c).  For completeness, the oscillation frequency and the eigenvector for this mode are
+			\begin{align}
+				\omo &= 0, & \vv &= \mqty[1 \\ 1 \\ 1].
+			\end{align}
+	\end{enumerate}
+\end{solution}
+
+\unitlength=.15in
+\begin{figure}[t] \centering
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{gray}
+		\thinlines
+		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-5,0){\vector(1,0){10.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(5.5,0){\makebox(1,0)[l]{$x$}}
+		\put(0,5.5){\makebox(0,1)[b]{$y$}}
+	\end{picture}
+	\quad\quad\quad
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{gray}
+		\thinlines
+		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-5,0){\vector(1,0){10.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(5.5,0){\makebox(1,0)[l]{$x$}}
+		\put(0,5.5){\makebox(0,1)[b]{$y$}}
+	\end{picture}
+	\quad\quad\quad
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{gray}
+		\thinlines
+		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-5,0){\vector(1,0){10.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(5.5,0){\makebox(1,0)[l]{$x$}}
+		\put(0,5.5){\makebox(0,1)[b]{$y$}}
+	\end{picture}
+	\bigskip \bigskip
+	\\
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{gray}
+		\thinlines
+		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-5,0){\vector(1,0){10.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(5.5,0){\makebox(1,0)[l]{$x$}}
+		\put(0,5.5){\makebox(0,1)[b]{$y$}}
+		\put(0,-5.3){\makebox(0,-1)[t]{(a)}}
+	\end{picture}
+	\quad\quad\quad
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{gray}
+		\thinlines
+		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-5,0){\vector(1,0){10.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(5.5,0){\makebox(1,0)[l]{$x$}}
+		\put(0,5.5){\makebox(0,1)[b]{$y$}}
+		\put(0,-5.3){\makebox(0,-1)[t]{(b)}}
+	\end{picture}
+	\quad\quad\quad
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{gray}
+		\thinlines
+		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
+		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-5,0){\vector(1,0){10.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(5.5,0){\makebox(1,0)[l]{$x$}}
+		\put(0,5.5){\makebox(0,1)[b]{$y$}}
+		\put(0,-5.3){\makebox(0,-1)[t]{(c)}}
+	\end{picture}
+	\bigskip\bigskip
+	\caption{Normal modes of the system in problem~\ref{prob4}.}
+	\label{fig:triangles}
+\end{figure}
+
+In writing these solutions, I consulted David Tong's lecture notes, Goldstein's \emph{Classical Mechanics}, and Landau and Lifshitz's \emph{Mechanics}.
 
 \end{document}
