@@ -102,7 +102,7 @@
 		-\frac{M}{m} (\xddq + \omo^2 \xq) + \frac{m}{M} \xddq + \omo^2 \xw = 0 &\implies \xddq = \frac{\omo^2}{m^2 - M^2} (M^2 \xq - M m \xw), \label{new1} \\
 		-\frac{M}{m} (\xddw + \omo^2 \xw) + \frac{m}{M} \xddw + \omo^2 \xq = 0 &\implies \xddw = \frac{\omo^2}{m^2 - M^2} (M^2 \xw - M m \xq). \label{new2}
 	\end{align}
-	Then \refeq{new1} and \refeq{new2} may be rewritten in a matrix form in the basis $\vx$:
+	Then \refeq{new1} and \refeq{new2} may be rewritten in a matrix form in the basis $(\xq, \xw)$:
 	\begin{align}
 		\dv{}{t} \mqty[ \xq \\ \xw ] = \frac{\omo^2}{m^2 - M^2} \mqty[ M^2 & -Mm \\ -Mm & M^2 ] \mqty[ \xq \\ \xw ] \equiv \frac{\omo^2}{m^2 - M^2} A \vx,
 	\end{align}
@@ -153,7 +153,7 @@
 	\begin{equation} \label{lagrdp}
 		L = T_1 + T_2 - U_1 - U_2 = \frac{1}{2} \mq (\xdq^2 + \ydq^2) + \frac{1}{2} \mw (\xdw^2 + \ydw^2) - m g \yq - m g \yw.
 	\end{equation}
-	Define the generalized coordinates $\thq, \thw$ which represent the inclination of each mass with respect to the vertical.  Then the Cartesian coordinates representing the position of each mass are
+	Define the generalized coordinates $\thq, \thw$ which represent the angle of inclination of each mass with respect to the vertical.  Then the Cartesian coordinates representing the position of each mass are
 	\begin{align}
 		\xq &= \elq \sin{\thq}, &
 		\yq &= \elq \cos{\thq}, \\
@@ -189,7 +189,7 @@
 		&\phantom{=\ } + g \elw \mw \cos{\thw}. \label{lagrdpnew}
 	\end{align}
 	
-	The stable equilibrium solution is for the pendulum hanging straight down, which is at the point $(\thq^*, \thw^*) = (0, 0)$.  We will approximate the Lagrangian $L = L(\thq, \thw, \thdq, \thdw)$ given by \refeq{lagrdpnew} using a Taylor series expansionabout this stable point in order to find general expressions for the normal modes.  Note that
+	The stable equilibrium solution is for the pendulum hanging straight down, which is at the point $(\thq, \thw) = (0, 0)$.  We will approximate the Lagrangian $L = L(\thq, \thw, \thdq, \thdw)$ given by \refeq{lagrdpnew} using a Taylor series expansion about this stable point in order to find general expressions for the normal modes.  Note that
 	\begin{align}
 		\pdv{L}{\thq} &= -\mw \elq \elw (\sin{\thq} \cos{\thw} - \cos{\thq} \sin{\thw}) \thdq \thdw - g (\mq + \mw) \elq \sin{\thq} \\
 		&= -\mw \elq \elw \sin(\thq - \thw) \thdq \thdw - g (\mq + \mw) \elq \sin{\thq}, \\
@@ -286,7 +286,7 @@
 \end{statement}
 
 \begin{solution}
-	The eigenfrequencies $\ompm$ approaching each other is equivalent to $\lmpm$ approaching each other.  Substituting $\ell = \elq = \elw$ into \refeq{eigenvalues} results in
+	The eigenfrequencies $\ompm$ approaching each other is equivalent to $\lmpm$ approaching each other.  Substituting $\ell \equiv \elq = \elw$ into \refeq{eigenvalues} results in
 	\begin{equation} \label{eigenvalues2}
 		\lmpm = \frac{1}{2} \left( 2 \ell \pm \sqrt{(2 \ell)^2 - 4 \ell^2 \frac{\mq}{\mq + \mw}} \right) = \ell \pm \ell \sqrt{1 - \frac{\mq}{\mq + \mw}} = \ell \pm \ell \sqrt{\frac{\mw}{\mq + \mw}},
 	\end{equation}
@@ -320,31 +320,32 @@
 	\end{equation}
 	where $\Cpm$ and $\phpm$ are the amplitudes and phases, respectively, corresponding to $\ompm$.
 	
-	Without loss of generality, we will consider the case where $\Cpm = 1$ and $\phpm = 0$.  Then \refeq{mateqs} simplifies to the two equations
+	We will consider the case where $\Cpm = 1$ and $\phpm = 0$, which is representative of the qualitative behavior of the system.  Then \refeq{mateqs} simplifies to the two equations
 	\begin{align}
-		\thq(t) &= \epsilon \cos{(\omp t)} - \epsilon \cos{(\omm t)} = -2 \epsilon \sin{[(\omp + \omm) t]} \sin{[(\epsilon / 2) t]}, \label{final1} \\
-		\thw(t) &= \cos{(\omp t)} + \cos{(\omm t)} = 2 \cos{[(\omp + \omm) t]} \cos{[(\epsilon / 2) t]}, \label{final2}
+		\thq(t) &= \epsilon \cos{(\omp t)} - \epsilon \cos{(\omm t)} = -2 \epsilon \sin{[(\omp + \omm) t]} \,\sin{[(\epsilon / 2) t]}, \label{final1} \\
+		\thw(t) &= \cos{(\omp t)} + \cos{(\omm t)} = 2 \cos{[(\omp + \omm) t]} \,\cos{[(\epsilon / 2) t]}, \label{final2}
 	\end{align}
 	where we have used the identities
 	\begin{align}
 		\cos{(\alpha + \beta)} + \cos{(\alpha - \beta)} &= 2 \cos{\alpha} \cos{\beta}, \label{mot1t} \\
 		\cos{(\alpha + \beta)} - \cos{(\alpha - \beta)} &= -2 \sin{\alpha} \sin{\beta}. \label{mot2t}
 	\end{align}
-	with $\alpha = (\omp + \omm)/2$ and $\beta = (\omp - \omm)/2 = \epsilon/2$.  The forms of \refeq{final1} and \refeq{final2} enable us to sketch the qualitative behavior as in figure~\ref{fig:beats}, which indicates the motion of the system proceeding in beats. \qed
+	with $\alpha = (\omp + \omm)/2$ and $\beta = (\omp - \omm)/2 = \epsilon/2$.  The forms of \refeq{final1} and \refeq{final2} enable us to sketch qualitatively $\thq(t)$ and $\thw(t)$ as in figure~\ref{fig:beats}, which indicates the motion of the system proceeding in ``beats.''  That is, both masses experience rapid oscillations at the same frequency, with the oscillation amplitude for each mass varying periodically at a lower common frequency.  The maximum amplitude for $\mw$ is larger than that of $\mq$ by a factor $1 / \epsilon$.  The amplitude oscillations are exactly out of phase, so the masses appear to ``take turns'' oscillating at their respective maximum amplitudes.
 \end{solution}
 
+\clearpage
 \unitlength=.25in
 \begin{figure}[t] \centering
-	\begin{picture}(10.5,10.5)(-5,-5)
+	\begin{picture}(10.5,10.5)(-3,-5)
 		{\color{lightgray}
 		\thinlines
-		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
-		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		\multiput(-8,-4)(0,1){9}{\line(1,0){21}}
+		\multiput(-7,-5)(1,0){20}{\line(0,1){10}}
 		}
 		\thicklines
-		\put(-8,0){\vector(1,0){16.2}}
+		\put(-8,0){\vector(1,0){21.2}}
 		\put(-7,-5){\vector(0,1){10.2}}
-		\put(8.3,0){\makebox(1,0)[l]{$t$}}
+		\put(13.3,0){\makebox(1,0)[l]{$t$}}
 		\put(0,5.3){\makebox(-14,1)[b]{$\theta$}}
 	\end{picture}
 	\caption{The beat motion of the double pendulum in problem~\ref{prob3}.  The blue~(red) line indicates the motion of $\mq$~($\mw$).}
@@ -411,13 +412,11 @@
 			\begin{align}
 				\ome &= \sqrt{3 \frac{k}{m}}, & \vv &= \mqty[0 \\ 1 \\ -1].
 			\end{align}
-		
 		\item $\mq$ oscillates out of phase with $\mw$ and $\me$, which are in phase with each other, and have half the oscillation amplitude of $\mq$.  The oscillation frequency and eigenvector for this mode are
 			\begin{align}
 				\ome &= \sqrt{3 \frac{k}{m}}, & \vv &= \mqty[2 \\ -1 \\ -1].
 			\end{align}
-			
-		\item All three masses move in phase with the same velocity.  This is the ``zero mode'' in which no actual oscillations occur; the circle in figure~\ref{fig:triangle} is simply rotating.  This mode is associated with a continuous rotational symmetry.  For completeness, the oscillation frequency and the eigenvector for this mode are
+		\item All three masses move in phase with the same velocity.  This is the ``zero mode'' in which no actual oscillations occur; the system is simply rotating.  This mode is associated with a continuous rotational symmetry.  For completeness, the oscillation frequency and the eigenvector for this mode are
 			\begin{align}
 				\omo &= 0, & \vv &= \mqty[1 \\ 1 \\ 1].
 			\end{align}
