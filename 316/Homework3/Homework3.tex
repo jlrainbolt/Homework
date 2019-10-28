@@ -114,8 +114,8 @@
 	\end{align}
 	Let $\ompm$ be the normal mode frequencies, which are given by $\ompm^2 = -\omo^2 \lmpm / (m^2 - M^2)$.  Explicitly,
 	\begin{align}
-		\omp &= \omo \sqrt{\frac{M^2 + Mm}{M^2 - m^2}}, &
-		\omm &= \omo \sqrt{\frac{M^2 - Mm}{M^2 - m^2}}.
+		\omp &= \omo \sqrt{\frac{M^2 + Mm}{M^2 - m^2}} = \omo \sqrt{\frac{M}{M - m}}, \\
+		\omm &= \omo \sqrt{\frac{M^2 - Mm}{M^2 - m^2}} = \omo \sqrt{\frac{M}{M + m}}.
 	\end{align}
 \end{solution}
 
@@ -148,27 +148,8 @@
 	Suppose you are asked to design a double pendulum whose lower frequency is half that of the higher frequency by changing the lengths of the strings and/or the masses.  What are the possible designs?
 \end{statement}
 
-\unitlength=.25in
-\begin{figure}[t] \centering
-	\begin{picture}(10.5,10.5)(-1.2,-5)
-		{\color{lightgray}
-		\thinlines
-		\multiput(-1,-4)(0,1){9}{\line(1,0){9}}
-		\multiput(0,-5)(1,0){8}{\line(0,1){10}}
-		}
-		\thicklines
-		\put(-1,4){\vector(1,0){9.2}}
-		\put(0,5){\vector(0,-1){10.2}}
-		\put(8.3,4){\makebox(1,0)[l]{$x$}}
-		\put(0,-5){\makebox(0,-1)[c]{$y$}}
-	\end{picture}
-	\medskip
-	\caption{Double pendulum in problem~\ref{prob2} with labeled coordinates.}
-	\label{fig:dp}
-\end{figure}
-
 \begin{solution}
-	A labeled diagram of the system is shown in figure~\ref{fig:dp}.  Let the upper part of the pendulum have mass $\mq$ and string length $\elq$.  Let its position be $\vrq = (\xq, \yq)$ where the pivot is located at the origin, and the $y$ axis points downward.  Define $\mw$, $\elw$, and $\vrw$ similarly for the lower part.  Then the Lagrangian for the system is given by
+	Let the upper part of the pendulum have mass $\mq$ and string length $\elq$.  Let its position be $\vrq = (\xq, \yq)$ where the pivot is located at the origin, and the $y$ axis points downward.  Define $\mw$, $\elw$, and $\vrw$ similarly for the lower part.  Then the Lagrangian for the system is given by
 	\begin{equation} \label{lagrdp}
 		L = T_1 + T_2 - U_1 - U_2 = \frac{1}{2} \mq (\xdq^2 + \ydq^2) + \frac{1}{2} \mw (\xdw^2 + \ydw^2) - m g \yq - m g \yw.
 	\end{equation}
@@ -208,7 +189,7 @@
 		&\phantom{=\ } + g \elw \mw \cos{\thw}. \label{lagrdpnew}
 	\end{align}
 	
-	The stable equilibrium solution is for the pendulum hanging straight down, which is at the point $(\thq^*, \thw^*) = (0, 0)$.  We will linearize the $L = L(\thq, \thw, \thdq, \thdw)$ given by \refeq{lagrdpnew} about this stable point in order to find general expressions for the normal modes.  Note that
+	The stable equilibrium solution is for the pendulum hanging straight down, which is at the point $(\thq^*, \thw^*) = (0, 0)$.  We will approximate the Lagrangian $L = L(\thq, \thw, \thdq, \thdw)$ given by \refeq{lagrdpnew} using a Taylor series expansionabout this stable point in order to find general expressions for the normal modes.  Note that
 	\begin{align}
 		\pdv{L}{\thq} &= -\mw \elq \elw (\sin{\thq} \cos{\thw} - \cos{\thq} \sin{\thw}) \thdq \thdw - g (\mq + \mw) \elq \sin{\thq} \\
 		&= -\mw \elq \elw \sin(\thq - \thw) \thdq \thdw - g (\mq + \mw) \elq \sin{\thq}, \\
@@ -223,21 +204,21 @@
 	\begin{align}
 		\pdv[2]{L}{\thq} &= -\mw \elq \elw (\cos{\thq} \cos{\thw} + \sin{\thq} \sin{\thw}) \thdq \thdw - g (\mq + \mw) \elq \cos{\thq} \\
 		&= -\mw \elq \elw \cos(\thq - \thw) \thdq \thdw - g (\mq + \mw) \elq \cos{\thq}, \\
-%		\pdv[2]{L}{\thq}{\thw} &= \mw \elq \elw (\cos{\thq} \cos{\thw} + \sin{\thq} \sin{\thw}) \thdq \thdw = \mw \elq \elw \cos(\thq - \thw) \thdq \thdw \\
+		\pdv[2]{L}{\thq}{\thw} &= \mw \elq \elw (\cos{\thq} \cos{\thw} + \sin{\thq} \sin{\thw}) \thdq \thdw = \mw \elq \elw \cos(\thq - \thw) \thdq \thdw \\
 		\pdv[2]{L}{\thw} &= -\mw \elq \elw (\cos{\thq} \cos{\thw} + \sin{\thq} \sin{\thw}) \thdq \thdw - g \mw \elw \cos{\thw} \\
 		&= -\mw \elq \elw \cos(\thq - \thw) \thdq \thdw - g \mw \elw \cos{\thw}.
 	\end{align}
-	Then, expanding to second order in $\thq$ and $\thw$, %FIXME
+	Then, to second order in $\thq$ and $\thw$, %FIXME
 	\begin{align}
-%		L(\thq, \thw, \thdq, \thdw) &\approx L(0, 0, \thdq, \thdw) + \frac{1}{2} \left. \pdv[2]{L}{\thq}\right|_{0, 0} \thq^2 + \left. \pdv[2]{L}{\thq}{\thw}\right|_{0, 0} \thq \thw + \frac{1}{2} \left. \pdv[2]{L}{\thw}\right|_{0, 0} \thw^2 \\
-		L &\approx L(0, 0, \thdq, \thdw) + \frac{1}{2} \left. \pdv[2]{L}{\thq}\right|_{0, 0} \thq^2 + \frac{1}{2} \left. \pdv[2]{L}{\thw}\right|_{0, 0} \thw^2 \\
+		L &\approx L(0, 0, \thdq, \thdw) + \frac{1}{2} \left. \pdv[2]{L}{\thq}\right|_{0, 0} \thq^2 + \left. \pdv[2]{L}{\thq}{\thw}\right|_{0, 0} \thq \thw + \frac{1}{2} \left. \pdv[2]{L}{\thw}\right|_{0, 0} \thw^2 \\
 		&\approx \frac{1}{2} (\mq + \mw) \elq^2 \thdq^2 + \frac{1}{2} \mw \elw^2 \thdw^2 + \mw \elq \elw \thdq \thdw + g (\mq + \mw) \elq + g \elw \mw \notag \\
-		&\phantom{\approx\ } + \frac{1}{2} \left( -\mw \elq \elw \thdq \thdw - g (\mq + \mw) \elq \right) \thq^2 + \frac{1}{2} \left( -\mw \elq \elw \thdq \thdw - g \mw \elw \right) \thw^2 \\
+		&\phantom{\approx\ } + \frac{1}{2} \left( -\mw \elq \elw \thdq \thdw - g (\mq + \mw) \elq \right) \thq^2 + \left( \mw \elq \elw \cos(\thq - \thw) \thdq \thdw \right) \thq \thw \notag \\
+		&\phantom{\approx\ } + \frac{1}{2} \left( -\mw \elq \elw \thdq \thdw - g \mw \elw \right) \thw^2 \\
 		&\approx \frac{1}{2} (\mq + \mw) \elq^2 \thdq^2 + \frac{1}{2} \mw \elw^2 \thdw^2 + \mw \elq \elw \thdq \thdw - \frac{1}{2} g (\mq + \mw) \elq \thq^2 - \frac{1}{2} g \mw \elw \thw^2, \label{lagrlin}
 	\end{align}
-	where in going to \refeq{lagrlin} we have omitted constant terms and terms proportional to $\thdq \thdw \thq^2$ and to $\thdq \thdw \thw^2$.  \hl{what did I do wrong here?}
+	where in going to \refeq{lagrlin} we have omitted constant terms and terms of $\order{\theta^4}$.  In doing so, we have made use of the fact that $\dot{\theta} \propto \theta$.
 	
-	Now we can obtain the equations of motion for the linearized Lagrangian \refeq{lagrlin}, which we will call $\Lh$:
+	Now we can obtain the equations of motion for the approximated Lagrangian \refeq{lagrlin}, which we will call $\Lh$:
 	\begin{align}
 		0 &= \pdv{\Lh}{\thq} - \dv{}{t} \pdv{\Lh}{\thdq} = (\mq + \mw) \elq^2 \thddq + \mw \elq \elw \thddw + g (\mq + \mw) \elq \thq, \label{el1} \\
 		0 &= \pdv{\Lh}{\thw} - \dv{}{t} \pdv{\Lh}{\thdw} = \mw \elq \elw \thddq + \mw \elw^2 \thddw + g \mw \elw \thw. \label{el2}
@@ -387,26 +368,8 @@
 	Consider three identical masses connected by identical springs in the shape of an equilateral triangle.  Suppose the three springs lie along the arcs of a circle that circumscribes the triangle.  Suppose also that the motion of the masses is constrained to move along the circle.  Find the normal modes and the eigenfrequencies about the equilibrium state.  If there is a zero mode, identify the associated continuous symmetry.
 \end{statement}
 
-\unitlength=.25in
-\begin{figure}[h] \centering
-	\begin{picture}(10.5,10.5)(-5,-5)
-		{\color{gray}
-		\thinlines
-		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
-		}
-		\thicklines
-		\put(-5,0){\vector(1,0){10.2}}
-		\put(0,-5){\vector(0,1){10.2}}
-		\put(5.3,0){\makebox(1,0)[l]{$x$}}
-		\put(0,5.3){\makebox(0,1)[b]{$y$}}
-	\end{picture}
-	\caption{Mass-spring system in problem~\ref{prob4} with labeled coordinates.}
-	\label{fig:triangle}
-\end{figure}
-
 \begin{solution}
-	A labeled diagram of the system is shown in figure~\ref{fig:triangle}.  Let $m$ be the mass of each oscillator, and $k$ be the spring constant of each of the springs connecting them.  The motion is constrained to a circle, so we will use the generalized coordinates $\thq, \thw, \te$ to represent the positions of each of the masses.  The Lagrangian for this system is given by
+	Let $m$ be the mass of each oscillator, and $k$ be the spring constant of each of the springs connecting them.  The motion is constrained to a circle, so we will use the generalized coordinates $\thq, \thw, \te$ to represent the positions of each of the masses.  The Lagrangian for this system is given by
 	\begin{align}
 		L &= T_1 + T_2 + T_3 - U_{21} - U_{32} - U_{13} \\
 		&= \frac{m}{2} (\thdq^2 + \thdw^2 + \thde^2) - \frac{k}{2} \left( (\thw - \thq)^2 + (\te - \thw)^2 + (\thq - \te)^2 \right) \\
@@ -444,110 +407,22 @@
 	In summary, the normal modes and corresponding eigenfrequencies are as follows:
 	\renewcommand{\theenumi}{\alph{enumi}}
 	\begin{enumerate}
-		\item $\mq$ remains still while $\mw$ and $\me$ oscillate out of phase with the same amplitude.  This is illustrated in figure~\ref{fig:triangles}(a).  The oscillation frequency and the eigenvector for this mode are
+		\item $\mq$ remains still while $\mw$ and $\me$ oscillate out of phase with the same amplitude.  The oscillation frequency and the eigenvector for this mode are
 			\begin{align}
 				\ome &= \sqrt{3 \frac{k}{m}}, & \vv &= \mqty[0 \\ 1 \\ -1].
 			\end{align}
 		
-		\item $\mq$ oscillates out of phase with $\mw$ and $\me$, which are in phase with each other, and have half the oscillation amplitude of $\mq$.  This is illustrated in figure~\ref{fig:triangles}(b).  The oscillation frequency and eigenvector for this mode are
+		\item $\mq$ oscillates out of phase with $\mw$ and $\me$, which are in phase with each other, and have half the oscillation amplitude of $\mq$.  The oscillation frequency and eigenvector for this mode are
 			\begin{align}
 				\ome &= \sqrt{3 \frac{k}{m}}, & \vv &= \mqty[2 \\ -1 \\ -1].
 			\end{align}
 			
-		\item All three masses move in phase with the same velocity.  This is the ``zero mode'' in which no actual oscillations occur; the circle in figure~\ref{fig:triangle} is simply rotating.  \hl{This mode is associated with a continuous rotational symmetry.}  This is illustrated in figure~\ref{fig:triangles}(c).  For completeness, the oscillation frequency and the eigenvector for this mode are
+		\item All three masses move in phase with the same velocity.  This is the ``zero mode'' in which no actual oscillations occur; the circle in figure~\ref{fig:triangle} is simply rotating.  This mode is associated with a continuous rotational symmetry.  For completeness, the oscillation frequency and the eigenvector for this mode are
 			\begin{align}
 				\omo &= 0, & \vv &= \mqty[1 \\ 1 \\ 1].
 			\end{align}
 	\end{enumerate}
 \end{solution}
-
-\unitlength=.15in
-\begin{figure}[t] \centering
-	\begin{picture}(10.5,10.5)(-5,-5)
-		{\color{gray}
-		\thinlines
-		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
-		}
-		\thicklines
-		\put(-5,0){\vector(1,0){10.2}}
-		\put(0,-5){\vector(0,1){10.2}}
-		\put(5.5,0){\makebox(1,0)[l]{$x$}}
-		\put(0,5.5){\makebox(0,1)[b]{$y$}}
-	\end{picture}
-	\quad\quad\quad
-	\begin{picture}(10.5,10.5)(-5,-5)
-		{\color{gray}
-		\thinlines
-		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
-		}
-		\thicklines
-		\put(-5,0){\vector(1,0){10.2}}
-		\put(0,-5){\vector(0,1){10.2}}
-		\put(5.5,0){\makebox(1,0)[l]{$x$}}
-		\put(0,5.5){\makebox(0,1)[b]{$y$}}
-	\end{picture}
-	\quad\quad\quad
-	\begin{picture}(10.5,10.5)(-5,-5)
-		{\color{gray}
-		\thinlines
-		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
-		}
-		\thicklines
-		\put(-5,0){\vector(1,0){10.2}}
-		\put(0,-5){\vector(0,1){10.2}}
-		\put(5.5,0){\makebox(1,0)[l]{$x$}}
-		\put(0,5.5){\makebox(0,1)[b]{$y$}}
-	\end{picture}
-	\bigskip \bigskip
-	\\
-	\begin{picture}(10.5,10.5)(-5,-5)
-		{\color{gray}
-		\thinlines
-		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
-		}
-		\thicklines
-		\put(-5,0){\vector(1,0){10.2}}
-		\put(0,-5){\vector(0,1){10.2}}
-		\put(5.5,0){\makebox(1,0)[l]{$x$}}
-		\put(0,5.5){\makebox(0,1)[b]{$y$}}
-		\put(0,-5.3){\makebox(0,-1)[t]{(a)}}
-	\end{picture}
-	\quad\quad\quad
-	\begin{picture}(10.5,10.5)(-5,-5)
-		{\color{gray}
-		\thinlines
-		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
-		}
-		\thicklines
-		\put(-5,0){\vector(1,0){10.2}}
-		\put(0,-5){\vector(0,1){10.2}}
-		\put(5.5,0){\makebox(1,0)[l]{$x$}}
-		\put(0,5.5){\makebox(0,1)[b]{$y$}}
-		\put(0,-5.3){\makebox(0,-1)[t]{(b)}}
-	\end{picture}
-	\quad\quad\quad
-	\begin{picture}(10.5,10.5)(-5,-5)
-		{\color{gray}
-		\thinlines
-		\multiput(-5,-4)(0,1){9}{\line(1,0){10}}
-		\multiput(-4,-5)(1,0){9}{\line(0,1){10}}
-		}
-		\thicklines
-		\put(-5,0){\vector(1,0){10.2}}
-		\put(0,-5){\vector(0,1){10.2}}
-		\put(5.5,0){\makebox(1,0)[l]{$x$}}
-		\put(0,5.5){\makebox(0,1)[b]{$y$}}
-		\put(0,-5.3){\makebox(0,-1)[t]{(c)}}
-	\end{picture}
-	\bigskip\bigskip
-	\caption{Normal modes of the system in problem~\ref{prob4}.}
-	\label{fig:triangles}
-\end{figure}
 
 In writing these solutions, I consulted David Tong's lecture notes, Goldstein's \emph{Classical Mechanics}, and Landau and Lifshitz's \emph{Mechanics}.
 
