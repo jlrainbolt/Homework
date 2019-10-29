@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage{physics, amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+%\allowdisplaybreaks
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+ 
+\renewcommand{\footrulewidth}{.2pt}
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 341 Homework 1}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{12pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \subsection{}
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+
+\setcounter{enumi}{2}
+\begin{document}
+
+\newcommand{\ihb}{i \hbar}
+\newcommand{\partt}{\partial_t}
+\newcommand{\partx}{\partial_x}
+
+\newcommand{\bkPsix}{\braket{\Psi(t)}{x}}
+\newcommand{\bkxPsi}{\braket{x}{\Psi(t)}}
+\newcommand{\bPsi}{\bra{\Psi(t)}}
+\newcommand{\kx}{\ket{x}}
+
+\newcommand{\bkPhix}{\braket{\Phi(t)}{x}}
+
+\section{Problem 3}
+\begin{statement}
+	Consider a particle moving in one dimension with the Hamiltonian
+	\begin{equation}
+		H = \frac{p^2}{2m} + V(x).
+	\end{equation}
+\end{statement}
+
+\begin{problem}
+	Verify the following:
+	
+	\renewcommand{\theenumi}{\alph{enumi}}
+	\begin{enumerate}
+		\item $\ihb \bkPsix = - \mel{\Psi(t)}{H}{x}$,
+		\item $\ihb \bkPhix \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi$,
+		\item $\ihb \partt \bkPhix \bkxPsi = -\dfrac{\hbar^2}{2m} \left( \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right)$,
+		\item $
+	\end{enumerate}
+\end{problem}
+	
+\begin{solution}
+	?
+\end{solution}
+
+
+\end{document}
