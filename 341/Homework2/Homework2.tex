@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 \usepackage{geometry, titlesec}
 \usepackage[parfill]{parskip}
 \usepackage{physics, amsfonts, amsthm}
@@ -59,6 +59,8 @@
     \bigskip
 }
 
+\newcommand{\Schrodinger}{Schr\"{o}dinger}
+
 
 \setcounter{enumi}{2}
 \begin{document}
@@ -70,6 +72,7 @@
 \newcommand{\bkPsix}{\braket{\Psi(t)}{x}}
 \newcommand{\bkxPsi}{\braket{x}{\Psi(t)}}
 \newcommand{\bPsi}{\bra{\Psi(t)}}
+\newcommand{\kPsi}{\ket{\Psi(t)}}
 \newcommand{\kx}{\ket{x}}
 
 \newcommand{\bkPhix}{\braket{\Phi(t)}{x}}
@@ -87,15 +90,42 @@
 	
 	\renewcommand{\theenumi}{\alph{enumi}}
 	\begin{enumerate}
-		\item $\ihb \bkPsix = - \mel{\Psi(t)}{H}{x}$,
-		\item $\ihb \bkPhix \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi$,
+		\item $\ihb \partt \bkPsix = - \mel{\Psi(t)}{H}{x}$,
+		\item $\ihb \partt \bkPhix \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi$,
 		\item $\ihb \partt \bkPhix \bkxPsi = -\dfrac{\hbar^2}{2m} \left( \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right)$,
-		\item $
+		\item 
 	\end{enumerate}
 \end{problem}
 	
 \begin{solution}
-	?
+	\renewcommand{\theenumi}{\alph{enumi}}
+	\begin{enumerate} \label{a}
+		\item Beginning with \Schrodinger's equation, note that
+			\begin{align}
+				\ihb \partt \kPsi &= H \kPsi \\
+				\ihb \partt \bkxPsi &= \mel{x}{H}{\Psi(t)} \label{schrox} \\
+				(\ihb \partt \bkxPsi)^* &= (\mel{x}{H}{\Psi(t)})^* \\
+				-\ihb \partt \bkPsix &= \mel{\Psi(t)}{H}{x} \label{hermitianH} \\
+				\ihb \partt \bkPsix &= -\mel{\Psi(t)}{H}{x},
+			\end{align}
+			where in going to \refeq{hermitianH} we have used the fact that $H$ is Hermitian. \qed
+			
+		\item Beginning with what was proven in (a),
+			\begin{align}
+				\ihb \partt \bkPhix &= -\mel{\Phi(t)}{H}{x} \\
+				\ihb (\partt \bkPhix) \bkxPsi &= -\mel{\Phi(t)}{H}{x} \bkxPsi. \label{term1}
+			\end{align}
+			From \refeq{schrox}, we can write
+			\begin{equation}
+				\bkPhix \ihb \partt \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)}. \label{term2}
+			\end{equation}
+			Adding \refeq{term1} and \refeq{term2} yields
+			\begin{align}
+				\bkPhix \ihb \partt \bkxPsi + \ihb (\partt \bkPhix) \bkxPsi &= \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi \\
+				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi \label{product},
+			\end{align}
+			where in going to \refeq{product} we have used the product rule of differentiation. \qed
+	\end{enumerate}
 \end{solution}
 
 
