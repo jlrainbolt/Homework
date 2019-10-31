@@ -73,14 +73,17 @@
 \newcommand{\bkxPsi}{\braket{x}{\Psi(t)}}
 \newcommand{\bPsi}{\bra{\Psi(t)}}
 \newcommand{\kPsi}{\ket{\Psi(t)}}
+\newcommand{\bx}{\bra{x}}
 \newcommand{\kx}{\ket{x}}
 
 \newcommand{\bkPhix}{\braket{\Phi(t)}{x}}
+\newcommand{\bPhi}{\bra{\Phi(t)}}
+\newcommand{\kPhi}{\ket{\Phi(t)}}
 
 \section{Problem 3}
 \begin{statement}
 	Consider a particle moving in one dimension with the Hamiltonian
-	\begin{equation}
+	\begin{equation} \label{hamiltonian}
 		H = \frac{p^2}{2m} + V(x).
 	\end{equation}
 \end{statement}
@@ -93,7 +96,8 @@
 		\item $\ihb \partt \bkPsix = - \mel{\Psi(t)}{H}{x}$,
 		\item $\ihb \partt \bkPhix \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi$,
 		\item $\ihb \partt \bkPhix \bkxPsi = -\dfrac{\hbar^2}{2m} \left( \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right)$,
-		\item 
+		\item $\bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi = \dfrac{\hbar}{i} \left( \bkPhix \partx \bkxPsi - (\partx \bkPhix) \bkxPsi \right)$
+		\item $\dfrac{\hbar}{i} \partx \left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right] = \bkPhix \mel{x}{p^2}{\Psi(t)} - mel{\Phi(t)}{p^2}{x} \bkxPsi$
 	\end{enumerate}
 \end{problem}
 	
@@ -125,6 +129,65 @@
 				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi \label{product},
 			\end{align}
 			where in going to \refeq{product} we have used the product rule of differentiation. \qed
+			
+		\item Using \refeq{hamiltonian}, note that:
+			\begin{align}
+				\mel{x}{H}{\Psi(t)} &= \bx \left( \frac{p^2}{2m} + V(x) \right) \kPsi \\
+				&= \frac{1}{2m} \mel{x}{p^2}{\Psi(t)} + \mel{x}{V(x)}{\Psi(t)} \\
+				&= \frac{(-\ihb \partx)^2}{2m} \bkxPsi + V(x) \bkxPsi \label{commutation} \\
+				&= -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi, \label{term1}
+			\end{align}
+			where in going to \refeq{commutation} we have used the fact that
+			\begin{equation} \label{pbra}
+				\mel{x}{p}{\Psi(x)} = -\ihb \partx \bkxPsi.
+			\end{equation}
+			Similarly, note that
+			\begin{equation} \label{term2}
+				\mel{\Phi(t)}{H}{x} = -\frac{\hbar^2}{2m} \partx^2 \bkPhix + V(x) \bkPhix
+			\end{equation}
+			where we have used
+			\begin{equation} \label{pket}
+				 \mel{\Phi(t)}{p}{x} = \ihb \partx \bkPhix.
+			\end{equation}
+			Making the substitutions \refeq{term1} and \refeq{term2} into what was proven in (b),
+			\begin{align}
+				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \left( -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi \right) \notag \\
+				&\phantom{=\ } - \left( -\frac{\hbar^2}{2m} \partx^2 \bkPhix + V(x) \bkPhix \right) \bkxPsi \\
+				&= -\frac{\hbar^2}{2m} \left( \bkPhix \partx^2 \bkPhix - (\partx^2 \bkPhix) \bkxPsi \right) \notag \\
+				&\phantom{=\ } + V(x) \bkPhix \bkxPsi - V(x) \bkPhix \bkxPsi \\
+				&= -\dfrac{\hbar^2}{2m} \left( \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right),
+			\end{align}
+			as we sought to prove. \qed
+			
+		\item Applying \refeq{pket} and \refeq{pbra},
+			\begin{align}
+				\bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi &= \bkPhix (-\ihb \partx \bkxPsi) + (\ihb \partx \bkPhix) \bkxPsi \\
+				&= \dfrac{\hbar}{i} \left[ \bkPhix \partx \bkxPsi - (\partx \bkPhix) \bkxPsi \right]
+			\end{align}
+			as we sought to prove. \qed
+			
+		\item Beginning with the first term of the left-hand side of the expression in (e), applying the product rule of differentiation yields
+		\begin{equation}
+			\partx (\bkPhix \mel{x}{p}{\Psi(t)}) = (\partx \bkPhix) \mel{x}{p}{\Psi(t)} + \bkPhix \partx \mel{x}{p}{\Psi(t)}
+		\end{equation}
+		Multiplying through by $\hbar/i$,
+		\begin{align}
+			\frac{\hbar}{i} \partx (\bkPhix \mel{x}{p}{\Psi(t)}) &= (-\ihb \partx \bkPhix) \mel{x}{p}{\Psi(t)} - \bkPhix \ihb \partx \mel{x}{p}{\Psi(t)} \\
+			&= -\mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} + \bkPhix \mel{x}{p^2}{\Psi(t)}, \label{res1e}
+		\end{align}
+		where in going to \refeq{res1e} we have used \refeq{pket} and \refeq{pbra}.  Using a similar procedure for the second term of the left-hand side of (e),
+		\begin{align}
+			\frac{\hbar}{i} \partx (\mel{\Phi(t)}{p}{x} \bkxPsi) &= (-\ihb \partx \mel{\Phi(t)}{p}{x}) \bkxPsi - \mel{\Phi(t)}{p}{x} \ihb \partx \bkxPsi \\
+			&= -\mel{\Phi(t)}{p^2}{x} \bkxPsi + \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)}. \label{res2e}
+		\end{align}
+		Adding the results of \refeq{res1} and \refeq{res2},
+		\begin{align}
+			\frac{\hbar}{i} \partx \left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right] &= \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} \notag \\
+			&\phantom{=\ } + \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \\
+			&= \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi
+		\end{align}
+		as we sought to prove. \qed
+		
 	\end{enumerate}
 \end{solution}
 
