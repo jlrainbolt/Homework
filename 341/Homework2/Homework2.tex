@@ -22,7 +22,7 @@
 \setlist[enumerate]{leftmargin=*}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{\textbf{Physics 341 Homework 1}}
+\lhead{\textbf{Physics 341 Homework 2}}
 \rhead{Lacey Rainbolt}
 \setlength{\headheight}{14pt}
 \setlength{\headsep}{12pt}
@@ -224,7 +224,43 @@
 		&\phantom{=\ } + \frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right] \\
 		&= 0
 	\end{align}
-	as we sought to prove. \qed
+	as we sought to prove.  This is is the continuity equation. \qed
+\end{solution}
+
+\newcommand{\Le}{L_3}
+\newcommand{\Lz}{L_z}
+\newcommand{\Py}{P_y}
+\newcommand{\Px}{P_x}
+
+\newcommand{\Ud}{U^\dagger}
+
+\section{Problem 4}
+\begin{statement}
+	Consider a particle moving in three dimensions.  Consider an operator
+	\begin{align}
+		U(\phi) &= \exp(-\frac{i}{\hbar} \Le \phi), & \Le &= \Lz = X \Py - Y \Px,
+	\end{align}
+	where $X, Y$ and $\Px, \Py$ are position and momentum operators, respectively.  Define new operators
+	\begin{align}
+		X(phi) &= \Ud(\phi) X U(\phi), \label{defx} \\
+		Y(\phi) &= \Ud(\phi) Y U(\phi). \label{defy}
+	\end{align}
+	Note that $X(0) = Y(0) = 0$.
+\end{statement}
+
+\begin{problem}
+	Derive the equation
+	\begin{equation}
+		\dv{X(\phi)}{\phi} = \frac{i}{\hbar} \Ud(\phi) [\Le, X] U(\phi) = -Y(\phi),
+	\end{equation}
+	and a similar equation for $\dv*{Y(\phi)}{\phi}$.
+\end{problem}
+
+\begin{solution}
+	Using the definition of $X = X(\phi)$ in \refeq{defx} and applying the product rule of differentiation,
+	\begin{align}
+		\dv{X}{\phi} &= \dv{}{\phi} (\Ud X U) = \dv{\Ud}{\phi} X U + \Ud \dv{}{\phi} (X U) = \dv{\Ud}{\phi} X U + \Ud \dv{X}{\phi} U + \Ud X \dv{U}{\phi}
+	\end{align}
 \end{solution}
 
 
