@@ -95,8 +95,8 @@
 	\begin{enumerate}
 		\item $\ihb \partt \bkPsix = - \mel{\Psi(t)}{H}{x}$,
 		\item $\ihb \partt \bkPhix \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi$,
-		\item $\ihb \partt \bkPhix \bkxPsi = -\dfrac{\hbar^2}{2m} \left( \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right)$,
-		\item $\bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi = \dfrac{\hbar}{i} \left( \bkPhix \partx \bkxPsi - (\partx \bkPhix) \bkxPsi \right)$
+		\item $\ihb \partt \bkPhix \bkxPsi = -\dfrac{\hbar^2}{2m} \left[ \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right]$,
+		\item $\bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi = \dfrac{\hbar}{i} \left[ \bkPhix \partx \bkxPsi - (\partx \bkPhix) \bkxPsi \right]$
 		\item $\dfrac{\hbar}{i} \partx \left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right] = \bkPhix \mel{x}{p^2}{\Psi(t)} - mel{\Phi(t)}{p^2}{x} \bkxPsi$
 	\end{enumerate}
 \end{problem}
@@ -110,9 +110,9 @@
 				\ihb \partt \bkxPsi &= \mel{x}{H}{\Psi(t)} \label{schrox} \\
 				(\ihb \partt \bkxPsi)^* &= (\mel{x}{H}{\Psi(t)})^* \\
 				-\ihb \partt \bkPsix &= \mel{\Psi(t)}{H}{x} \label{hermitianH} \\
-				\ihb \partt \bkPsix &= -\mel{\Psi(t)}{H}{x},
+				\ihb \partt \bkPsix &= -\mel{\Psi(t)}{H}{x}, \label{res1a}
 			\end{align}
-			where in going to \refeq{hermitianH} we have used the fact that $H$ is Hermitian. \qed
+			where in going to \refeq{hermitianH} we have used the fact that $H$ is Hermitian, and \refeq{res1a} is what we sought to prove. \qed
 			
 		\item Beginning with what was proven in (a),
 			\begin{align}
@@ -126,13 +126,13 @@
 			Adding \refeq{term1} and \refeq{term2} yields
 			\begin{align}
 				\bkPhix \ihb \partt \bkxPsi + \ihb (\partt \bkPhix) \bkxPsi &= \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi \\
-				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi \label{product},
+				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi, \label{res1b}
 			\end{align}
-			where in going to \refeq{product} we have used the product rule of differentiation. \qed
+			where in going to \refeq{res1b} we have used the product rule of differentiation.   \refeq{res1b} is what we sought to prove. \qed
 			
 		\item Using \refeq{hamiltonian}, note that:
 			\begin{align}
-				\mel{x}{H}{\Psi(t)} &= \bx \left( \frac{p^2}{2m} + V(x) \right) \kPsi \\
+				\mel{x}{H}{\Psi(t)} &= \bx \left[ \frac{p^2}{2m} + V(x) \right] \kPsi \\
 				&= \frac{1}{2m} \mel{x}{p^2}{\Psi(t)} + \mel{x}{V(x)}{\Psi(t)} \\
 				&= \frac{(-\ihb \partx)^2}{2m} \bkxPsi + V(x) \bkxPsi \label{commutation} \\
 				&= -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi, \label{term1}
@@ -151,15 +151,15 @@
 			\end{equation}
 			Making the substitutions \refeq{term1} and \refeq{term2} into what was proven in (b),
 			\begin{align}
-				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \left( -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi \right) \notag \\
-				&\phantom{=\ } - \left( -\frac{\hbar^2}{2m} \partx^2 \bkPhix + V(x) \bkPhix \right) \bkxPsi \\
-				&= -\frac{\hbar^2}{2m} \left( \bkPhix \partx^2 \bkPhix - (\partx^2 \bkPhix) \bkxPsi \right) \notag \\
+				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \left[ -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi \right] \notag \\
+    				&\phantom{=\ } - \left[ -\frac{\hbar^2}{2m} \partx^2 \bkPhix + V(x) \bkPhix \right] \bkxPsi \\
+				&= -\frac{\hbar^2}{2m} \left[ \bkPhix \partx^2 \bkPhix - (\partx^2 \bkPhix) \bkxPsi \right] \notag \\
 				&\phantom{=\ } + V(x) \bkPhix \bkxPsi - V(x) \bkPhix \bkxPsi \\
-				&= -\dfrac{\hbar^2}{2m} \left( \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right),
+				&= -\dfrac{\hbar^2}{2m} \left[ \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right],
 			\end{align}
 			as we sought to prove. \qed
 			
-		\item Applying \refeq{pket} and \refeq{pbra},
+		\item Applying \refeq{pbra} and \refeq{pket} to the left-hand side of (d),
 			\begin{align}
 				\bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi &= \bkPhix (-\ihb \partx \bkxPsi) + (\ihb \partx \bkPhix) \bkxPsi \\
 				&= \dfrac{\hbar}{i} \left[ \bkPhix \partx \bkxPsi - (\partx \bkPhix) \bkxPsi \right]
@@ -175,20 +175,56 @@
 			\frac{\hbar}{i} \partx (\bkPhix \mel{x}{p}{\Psi(t)}) &= (-\ihb \partx \bkPhix) \mel{x}{p}{\Psi(t)} - \bkPhix \ihb \partx \mel{x}{p}{\Psi(t)} \\
 			&= -\mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} + \bkPhix \mel{x}{p^2}{\Psi(t)}, \label{res1e}
 		\end{align}
-		where in going to \refeq{res1e} we have used \refeq{pket} and \refeq{pbra}.  Using a similar procedure for the second term of the left-hand side of (e),
+		where in going to \refeq{res1e} we have used \refeq{pbra} and \refeq{pket}.  Using a similar procedure for the second term of the left-hand side of (e),
 		\begin{align}
 			\frac{\hbar}{i} \partx (\mel{\Phi(t)}{p}{x} \bkxPsi) &= (-\ihb \partx \mel{\Phi(t)}{p}{x}) \bkxPsi - \mel{\Phi(t)}{p}{x} \ihb \partx \bkxPsi \\
 			&= -\mel{\Phi(t)}{p^2}{x} \bkxPsi + \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)}. \label{res2e}
 		\end{align}
-		Adding the results of \refeq{res1} and \refeq{res2},
+		Adding the results of \refeq{res1e} and \refeq{res2e},
 		\begin{align}
 			\frac{\hbar}{i} \partx \left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right] &= \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} \notag \\
 			&\phantom{=\ } + \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \\
 			&= \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi
 		\end{align}
 		as we sought to prove. \qed
-		
 	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	Define
+	\begin{align}
+		\rho(x, t) &= \bkPhix \bkxPsi, \label{rhodef} \\
+		J_x(x, t) &= \frac{1}{2m} \left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right]. \label{Jdef}
+	\end{align}
+	Show that $\rho(x, t) + \partx J_x(x, t) = 0.$
+\end{problem}
+
+\begin{solution}
+	From \refeq{rhodef},
+	\begin{equation} \label{rho1}
+		\partt \rho(x, t) = \partt (\bkPhix \bkxPsi),
+	\end{equation}
+	and from what was proven in 1(c),
+	\begin{align} 
+		\partt ( \bkPhix \bkxPsi) &= -\frac{1}{\ihb} \left[ \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right] \\
+		&= -\frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right], \label{psq}
+	\end{align}
+	where we have applied \refeq{pbra} and \refeq{pket} in going to \refeq{psq}.  Equating \refeq{rho1} and \refeq{psq},
+	\begin{equation} \label{rhoexp}
+		\partt \rho(x, t) = -\frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right].
+	\end{equation}
+	Beginning from \refeq{Jdef},
+	\begin{align}
+		\partx J_x(x, t) &= \frac{1}{2m} \partx \left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right] \\
+		&= \frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right] \label{Jexp},
+	\end{align}
+	where in going to \refeq{Jexp} we have used what was proven in 1(e).  Summing \refeq{rhoexp} and \refeq{Jexp}, we have
+	\begin{align}
+		\partt \rho(x, t) + \partx J_x(x, t) &= -\frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right] \notag \\
+		&\phantom{=\ } + \frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right] \\
+		&= 0
+	\end{align}
+	as we sought to prove. \qed
 \end{solution}
 
 
