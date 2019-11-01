@@ -147,9 +147,9 @@
 			\end{equation}
 			where we have used
 			\begin{equation} \label{pket}
-				 \mel{\Phi(t)}{p}{x} = \ihb \partx \bkPhix.
+				 \mel{\Phi(t)}{p}{x} = \ihb \partx \bkPhix,
 			\end{equation}
-			Making the substitutions \refeq{term1} and \refeq{term2} into what was proven in (b),
+			which is the complex conjugate of \refeq{pbra} with $\Psi(t) \mapsto \Phi(t)$.  Note that $p$ is Hermitian.  Making the substitutions \refeq{term1} and \refeq{term2} into what was proven in (b),
 			\begin{align}
 				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \left[ -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi \right] \notag \\
     				&\phantom{=\ } - \left[ -\frac{\hbar^2}{2m} \partx^2 \bkPhix + V(x) \bkPhix \right] \bkxPsi \\
@@ -237,13 +237,13 @@
 \section{Problem 4}
 \begin{statement}
 	Consider a particle moving in three dimensions.  Consider an operator
-	\begin{align}
+	\begin{align} \label{defu}
 		U(\phi) &= \exp(-\frac{i}{\hbar} \Le \phi), & \Le &= \Lz = X \Py - Y \Px,
 	\end{align}
 	where $X, Y$ and $\Px, \Py$ are position and momentum operators, respectively.  Define new operators
-	\begin{align}
-		X(phi) &= \Ud(\phi) X U(\phi), \label{defx} \\
-		Y(\phi) &= \Ud(\phi) Y U(\phi). \label{defy}
+	\begin{align} \label{defxy}
+		X(\phi) &= \Ud(\phi) X U(\phi), &
+		Y(\phi) &= \Ud(\phi) Y U(\phi).
 	\end{align}
 	Note that $X(0) = Y(0) = 0$.
 \end{statement}
@@ -251,15 +251,35 @@
 \begin{problem}
 	Derive the equation
 	\begin{equation}
-		\dv{X(\phi)}{\phi} = \frac{i}{\hbar} \Ud(\phi) [\Le, X] U(\phi) = -Y(\phi),
+		\dv{X(\phi)}{\phi} = \frac{i}{\hbar} \Ud(\phi) [\Le, X] U(\phi) = -Y(\phi), \label{show2}
 	\end{equation}
 	and a similar equation for $\dv*{Y(\phi)}{\phi}$.
 \end{problem}
 
 \begin{solution}
-	Using the definition of $X = X(\phi)$ in \refeq{defx} and applying the product rule of differentiation,
+	Using the definition of $X = X(\phi)$ in \refeq{defxy} and applying the product rule of differentiation,
+	\begin{equation}
+		\dv{X}{\phi} = \dv{}{\phi} \left( \Ud X U \right) = \dv{\Ud}{\phi} X U + \Ud \dv{}{\phi} (X U) = \dv{\Ud}{\phi} X U + \Ud \dv{X}{\phi} U + \Ud X \dv{U}{\phi}. \label{product}
+	\end{equation}
+	Note that
 	\begin{align}
-		\dv{X}{\phi} &= \dv{}{\phi} (\Ud X U) = \dv{\Ud}{\phi} X U + \Ud \dv{}{\phi} (X U) = \dv{\Ud}{\phi} X U + \Ud \dv{X}{\phi} U + \Ud X \dv{U}{\phi}
+		\dv{X}{\phi} &= 0, &
+		\dv{U}{\phi} &= -\frac{i}{\hbar} \Le \exp(-\frac{i}{\hbar} \Le \phi) = -\frac{i}{\hbar} \Le U, \\
+	\end{align}
+	and
+	\begin{equation}
+		\Ud = \exp(\frac{i}{\hbar} \Le \phi) \implies \dv{\Ud}{\phi} = \frac{i}{\hbar} \Le \exp(\frac{i}{\hbar} \Le \phi) = \frac{i}{\hbar} \Le \Ud = \frac{i}{\hbar} \Ud \Le,
+	\end{equation}
+	where the final equality follows because $[\Le, U] = 0$.  Then \refeq{product} becomes
+	\begin{equation}
+		\dv{X}{\phi} = \frac{i}{\hbar} \Ud \Le X U - \frac{i}{\hbar} \Ud X \Le U = \frac{i}{\hbar} \Ud (\Le X - X \Le) U = \frac{i}{\hbar} \Ud(\phi) [\Le, X] U(\phi),
+	\end{equation}
+	which is the first equality of what we wanted to show in \refeq{show2}.
+	
+	From the definition of $\Le$ in \refeq{defu},
+	\begin{align}
+		[\Le, X] &= \Le X - X \Le = (X \Py - Y \Px) X - X (X \Py - Y \Px) \\
+		&= X \Py X - Y \Px X - X X \Px - X Y \Px
 	\end{align}
 \end{solution}
 
