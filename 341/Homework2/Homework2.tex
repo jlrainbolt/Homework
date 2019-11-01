@@ -107,28 +107,28 @@
 		\item Beginning with \Schrodinger's equation, note that
 			\begin{align}
 				\ihb \partt \kPsi &= H \kPsi \\
-				\ihb \partt \bkxPsi &= \mel{x}{H}{\Psi(t)} \label{schrox} \\
-				(\ihb \partt \bkxPsi)^* &= (\mel{x}{H}{\Psi(t)})^* \\
-				-\ihb \partt \bkPsix &= \mel{\Psi(t)}{H}{x} \label{hermitianH} \\
+				\ihb \mel{x}{\partt}{\Psi(t)} &= \mel{x}{H}{\Psi(t)} \label{schrox} \\
+				(\ihb \mel{x}{\partt}{\Psi(t)})^\dagger &= (\mel{x}{H}{\Psi(t)})^\dagger \\
+				-\ihb \mel{\Psi(t)}{\partt}{x} &= \mel{\Psi(t)}{H}{x} \label{hermitianH} \\
 				\ihb \partt \bkPsix &= -\mel{\Psi(t)}{H}{x}, \label{res1a}
 			\end{align}
-			where in going to \refeq{hermitianH} we have used the fact that $H$ is Hermitian, and \refeq{res1a} is what we sought to prove. \qed
+			where in going to \refeq{hermitianH} we are assuming that $H$ is Hermitian.  Note also that $\partt$ is Hermitian because $t$ is merely a parameter of the system.  \refeq{res1a} is what we sought to prove. \qed
 			
-		\item Beginning with what was proven in (a),
+		\item Rewriting what was proven in (a) with $\Psi \mapsto \Phi$ and then multiplying by $\Psi(x, t)$ on the right,
 			\begin{align}
 				\ihb \partt \bkPhix &= -\mel{\Phi(t)}{H}{x} \\
-				\ihb (\partt \bkPhix) \bkxPsi &= -\mel{\Phi(t)}{H}{x} \bkxPsi. \label{term1}
+				\ihb (\partt \bkPhix) \bkxPsi &= -\mel{\Phi(t)}{H}{x} \bkxPsi. \label{term01}
 			\end{align}
-			From \refeq{schrox}, we can write
+			Multiplying \refeq{schrox} by $\Phi^*(x, t)$ on the left,
 			\begin{equation}
-				\bkPhix \ihb \partt \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)}. \label{term2}
+				\bkPhix \ihb \partt \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)}. \label{term02}
 			\end{equation}
-			Adding \refeq{term1} and \refeq{term2} yields
+			Adding \refeq{term02} and \refeq{term01} yields
 			\begin{align}
 				\bkPhix \ihb \partt \bkxPsi + \ihb (\partt \bkPhix) \bkxPsi &= \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi \\
 				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi, \label{res1b}
 			\end{align}
-			where in going to \refeq{res1b} we have used the product rule of differentiation.   \refeq{res1b} is what we sought to prove. \qed
+			where in going to \refeq{res1b} we have used the product rule of differentiation on the left-hand side.   \refeq{res1b} is what we sought to prove. \qed
 			
 		\item Using \refeq{hamiltonian}, note that:
 			\begin{align}
@@ -137,7 +137,7 @@
 				&= \frac{(-\ihb \partx)^2}{2m} \bkxPsi + V(x) \bkxPsi \label{commutation} \\
 				&= -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi, \label{term1}
 			\end{align}
-			where in going to \refeq{commutation} we have used the fact that
+			where in going to \refeq{commutation} we have (twice) used the fact that
 			\begin{equation} \label{pbra}
 				\mel{x}{p}{\Psi(x)} = -\ihb \partx \bkxPsi.
 			\end{equation}
@@ -145,11 +145,11 @@
 			\begin{equation} \label{term2}
 				\mel{\Phi(t)}{H}{x} = -\frac{\hbar^2}{2m} \partx^2 \bkPhix + V(x) \bkPhix
 			\end{equation}
-			where we have used
+			where we have (twice) used the adjoint of \refeq{pbra} with $\Psi \mapsto \Phi$,
 			\begin{equation} \label{pket}
-				 \mel{\Phi(t)}{p}{x} = \ihb \partx \bkPhix,
+				 \mel{\Phi(t)}{p}{x} = \ihb \partx \bkPhix.
 			\end{equation}
-			which is the complex conjugate of \refeq{pbra} with $\Psi(t) \mapsto \Phi(t)$.  Note that $p$ is Hermitian.  Making the substitutions \refeq{term1} and \refeq{term2} into what was proven in (b),
+			This follows because $p$ is Hermitian.  Making the substitutions \refeq{term1} and \refeq{term2} into what was proven in (b),
 			\begin{align}
 				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \left[ -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi \right] \notag \\
     				&\phantom{=\ } - \left[ -\frac{\hbar^2}{2m} \partx^2 \bkPhix + V(x) \bkPhix \right] \bkxPsi \\
@@ -224,7 +224,7 @@
 		&\phantom{=\ } + \frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right] \\
 		&= 0
 	\end{align}
-	as we sought to prove.  This is is the continuity equation. \qed
+	as we sought to prove.  This is is the continuity equation for probability. \qed
 \end{solution}
 
 \newcommand{\Le}{L_3}
@@ -232,7 +232,18 @@
 \newcommand{\Py}{P_y}
 \newcommand{\Px}{P_x}
 
+\newcommand{\lei}{l_{3,i}}
+\newcommand{\klei}{\ket{\lei}}
+
 \newcommand{\Ud}{U^\dagger}
+\newcommand{\Uii}{U_{ii}}
+
+\newcommand{\Xpm}{X_\pm}
+\newcommand{\Xp}{X_+}
+\newcommand{\Xm}{X_-}
+\newcommand{\Ypm}{Y_\pm}
+
+\newcommand{\Cpm}{C_\pm}
 
 \section{Problem 4}
 \begin{statement}
@@ -257,31 +268,113 @@
 \end{problem}
 
 \begin{solution}
-	Using the definition of $X = X(\phi)$ in \refeq{defxy} and applying the product rule of differentiation,
-	\begin{equation}
-		\dv{X}{\phi} = \dv{}{\phi} \left( \Ud X U \right) = \dv{\Ud}{\phi} X U + \Ud \dv{}{\phi} (X U) = \dv{\Ud}{\phi} X U + \Ud \dv{X}{\phi} U + \Ud X \dv{U}{\phi}. \label{product}
-	\end{equation}
-	Note that
+	Using the definition of $X(\phi)$ in \refeq{defxy} and applying the product rule of differentiation,
 	\begin{align}
-		\dv{X}{\phi} &= 0, &
-		\dv{U}{\phi} &= -\frac{i}{\hbar} \Le \exp(-\frac{i}{\hbar} \Le \phi) = -\frac{i}{\hbar} \Le U, \\
+		\dv{X(\phi)}{\phi} &= \dv{}{\phi} \left( \Ud X U \right) = \dv{\Ud}{\phi} X U + \Ud \dv{}{\phi} (X U) \\
+		&= \dv{\Ud}{\phi} X U + \Ud \dv{X}{\phi} U + \Ud X \dv{U}{\phi}. \label{product}
 	\end{align}
-	and
-	\begin{equation}
-		\Ud = \exp(\frac{i}{\hbar} \Le \phi) \implies \dv{\Ud}{\phi} = \frac{i}{\hbar} \Le \exp(\frac{i}{\hbar} \Le \phi) = \frac{i}{\hbar} \Le \Ud = \frac{i}{\hbar} \Ud \Le,
+	We know immediately that $\dv*{X}{\phi} = 0$ because $\phi$ is not a parameter of the position operator $X$.  Let $\klei$ denote the eigenbasis of $\Le$ and $\lei$ its eigenvalues.  $\Le$ \hl{is Hermitian so an orthonormal basis is guaranteed to exist.  USE POWER SERIES INSTEAD.}  In this basis, $U(\phi)$ is diagonal and its nonzero matrix elements are given by
+	\begin{equation} \label{diag}
+		\Uii = \exp(-\frac{i}{\hbar} \lei \phi)
 	\end{equation}
-	where the final equality follows because $[\Le, U] = 0$.  Then \refeq{product} becomes
+	which implies
+	\begin{align}
+		\dv{\Uii}{\phi} &= -\frac{i}{\hbar} \lei \exp(-\frac{i}{\hbar} \lei \phi) = -\exp(-\frac{i}{\hbar} \lei \phi) \frac{i}{\hbar} \lei \\
+		&= -\frac{i}{\hbar} \lei \Uii = -\frac{i}{\hbar} \Uii \lei. \label{eigencomm}
+	\end{align}
+	The power-series representation of $e^{x}$ allows us to retrieve from \refeq{eigencomm} the operator relationships
+	\begin{equation} \label{oper}
+		\dv{U}{\phi} = -\frac{i}{\hbar} \Le U = -\frac{i}{\hbar} U \Le, \\
+	\end{equation}
+	which informs us that $[\Le, U] = 0$.  In a similar fashion, note that
 	\begin{equation}
-		\dv{X}{\phi} = \frac{i}{\hbar} \Ud \Le X U - \frac{i}{\hbar} \Ud X \Le U = \frac{i}{\hbar} \Ud (\Le X - X \Le) U = \frac{i}{\hbar} \Ud(\phi) [\Le, X] U(\phi),
+		\Ud = \exp(\frac{i}{\hbar} \Le \phi) \implies \dv{\Ud}{\phi} = \frac{i}{\hbar} \Le \exp(\frac{i}{\hbar} \Le \phi) = \frac{i}{\hbar} \Le \Ud = \frac{i}{\hbar} \Ud \Le
+	\end{equation}
+	and $[\Le, \Ud] = 0$ as well.  Then \refeq{product} becomes
+	\begin{equation}
+		\dv{X(\phi)}{\phi} = \frac{i}{\hbar} \Ud \Le X U - \frac{i}{\hbar} \Ud X \Le U = \frac{i}{\hbar} \Ud (\Le X - X \Le) U = \frac{i}{\hbar} \Ud(\phi) [\Le, X] U(\phi), \label{middle}
 	\end{equation}
 	which is the first equality of what we wanted to show in \refeq{show2}.
 	
 	From the definition of $\Le$ in \refeq{defu},
 	\begin{align}
 		[\Le, X] &= \Le X - X \Le = (X \Py - Y \Px) X - X (X \Py - Y \Px) \\
-		&= X \Py X - Y \Px X - X X \Px - X Y \Px
+		&= X \Py X - Y \Px X - X X \Py + X Y \Px = Y X \Px - Y \Px X \label{[X, Py]} \\
+		&= Y [X, \Px] = \ihb Y \label{[X, Px]}
 	\end{align}
+	where in \refeq{[X, Py]} we have used $[X, \Py] = [X, Y] = 0$, and in \refeq{[X, Px]} we have used $[X, \Px] = \ihb$.  Making the substitution \refeq{[X, Px]} into \refeq{middle}, we have
+	\begin{equation}
+		\dv{X(\phi)}{\phi} = \frac{i}{\hbar} \Ud(\phi) (\ihb Y) U(\phi) = -\Ud(\phi) Y U(\phi) = -Y(\phi),
+	\end{equation}
+	where the last equality is from the definition of $Y(\phi)$ in \refeq{defxy}.  This is the second equality of what we wanted to show in \refeq{show2}, which completes the proof.
+	
+	For $\dv*{Y(\phi)}{\phi}$, we can make the substitutions $X(\phi) \mapsto Y(\phi), X \mapsto Y$ in \refeq{product} and \refeq{middle} to obtain
+	\begin{equation} \label{middleY}
+		\dv{Y(\phi)}{\phi} = \frac{i}{\hbar} \Ud(\phi) [\Le, Y] U(\phi).
+	\end{equation}
+	Then making similar use of commutators $[Y, \Px] = [X, Y] = 0$ and $[Y, \Py] = \ihb$ as for \refeq{[X, Py]} and \refeq{[X, Px]},
+	\begin{align}
+		[\Le, Y] &= \Le Y - Y \Le = (X \Py - Y \Px) Y - Y (X \Py - Y \Px) \\
+		&= X \Py Y - Y \Px Y - Y X \Py + Y Y \Px = X \Py Y - X Y \Py \\
+		&= X [\Py, Y] = -X [Y, \Py] = -\ihb X. \label{[Y, Py]}
+	\end{align}
+	Substituting \refeq{[Y, Py]} into \refeq{middleY},
+		\begin{equation}
+		\dv{Y(\phi)}{\phi} = \frac{i}{\hbar} \Ud(\phi) (-\ihb X) U(\phi) = X(\phi),
+	\end{equation}
+	and so we have derived
+	\begin{equation} \label{show2Y}
+		\dv{Y(\phi)}{\phi} = \frac{i}{\hbar} \Ud(\phi) [\Le, Y] U(\phi) = X(\phi).
+	\end{equation}
+	and \refeq{show2} as desired. \qed
 \end{solution}
 
+\begin{problem}
+	Define $\Xpm(\phi) = X(\phi) \pm i Y(\phi)$.  From the results of previous parts, show $\Xp(\phi) = e^{i\phi} \Xp$ where $\Xp = \Xp(0)$.  Derive the similar expression for $\Xm(\phi)$.
+\end{problem}
 
+\begin{solution}
+	Differentiating $\Xpm(\phi)$ and making use of \refeq{show2} and \refeq{show2Y},
+	\begin{align}
+		\dv{\Xpm(\phi)}{\phi} &= \dv{X(\phi)}{\phi} \pm i \dv{Y(\phi)}{\phi} = -Y(\phi) \pm i X(\phi) = \pm i \left[ X(\phi) \pm i Y(\phi) \right] \\
+		&= \pm i \Xpm(\phi). \label{expform}
+	\end{align}
+	The differential equation \refeq{expform} has solutions given by exponential functions of $\pm i \phi$.  We will make the ansatz
+	\begin{equation} \label{ansatz}
+		\Xpm(\phi) = e^{\pm i\phi} \Cpm,
+	\end{equation}
+	where $\Cpm$ is an operator ``constant'' in $\phi$ (that is, independent of it) and is fixed by an initial condition.  Inspecting \refeq{ansatz}, clearly $\Xpm(0) = \Cpm$ where it is defined $\Xpm(0) \equiv \Xpm$.  All that remains is to show that \refeq{ansatz} obeys the relation \refeq{expform}, as follows:
+	\begin{equation}
+		\dv{\Xpm(\phi)}{\phi} = \dv{}{\phi} \left( e^{\pm i\phi} \right) \Cpm = \pm i e^{\pm i\phi} \Cpm = \pm i \Xpm(\phi).
+	\end{equation}
+	Thus, we have derived
+	\begin{align}
+		\Xp(\phi) &= e^{i\phi} \Xp, &
+		\Xm(\phi) &= e^{-i\phi} \Xm
+	\end{align}
+	as desired. \qed
+\end{solution}
+
+\begin{problem}
+	Show that $[\Le, \Xp] = \hbar \Xp$.  Derive the similar expression for $[\Le, \Xm]$.
+\end{problem}
+
+\begin{solution}
+	Firstly, note that
+	\begin{equation}
+		\Xpm = \Xpm(0) = X(0) \pm i Y(0) = \Ud(0) X U(0) \pm i \Ud(0) Y U(0) = X \pm i Y
+	\end{equation}
+	because $U(0) = \Ud(0) = I$.  Also applying the definition of $\Le$ in \refeq{defu}, we have
+	\begin{align}
+		[\Le, \Xpm] &= [X \Py - Y \Px, X \pm i Y] = (X \Py - Y \Px) (X \pm i Y) - (X \pm i Y) (X \Py - Y \Px) \\
+		&= X \Py X \pm i X \Py Y - Y \Px X \mp i Y \Px Y - X X \Py + X Y \Px \mp i Y X \Py \pm i Y Y \Px \\
+		&= \pm i X \Py Y - Y \Px X + X Y \Px \mp i Y X \Py = \pm i X [\Py, Y] + Y [X, \Px] \\
+		&= \pm \hbar X + \ihb Y = \pm \hbar [X \pm i Y] = \pm \hbar \Xpm.
+	\end{align}
+	Thus, we have shown
+	\begin{align}
+		[\Le, \Xp] &= \hbar \Xp, & [\Le, \Xm] &= -\hbar \Xm
+	\end{align}
+	as desired. \qed
+\end{solution}
 \end{document}
