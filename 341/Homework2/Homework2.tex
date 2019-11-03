@@ -19,7 +19,7 @@
  
  
 \renewcommand{\footrulewidth}{.2pt}
-\setlist[enumerate]{leftmargin=*}
+%\setlist[enumerate]{leftmargin=*}
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\textbf{Physics 341 Homework 2}}
@@ -71,14 +71,22 @@
 
 \newcommand{\bkPsix}{\braket{\Psi(t)}{x}}
 \newcommand{\bkxPsi}{\braket{x}{\Psi(t)}}
-\newcommand{\bPsi}{\bra{\Psi(t)}}
-\newcommand{\kPsi}{\ket{\Psi(t)}}
+\newcommand{\bPsit}{\bra{\Psi(t)}}
+\newcommand{\kPsit}{\ket{\Psi(t)}}
+\newcommand{\bPsi}{\bra{\Psi}}
+\newcommand{\kPsi}{\ket{\Psi}}
 \newcommand{\bx}{\bra{x}}
 \newcommand{\kx}{\ket{x}}
 
 \newcommand{\bkPhix}{\braket{\Phi(t)}{x}}
 \newcommand{\bPhi}{\bra{\Phi(t)}}
 \newcommand{\kPhi}{\ket{\Phi(t)}}
+
+\newcommand{\Ei}{E_i}
+\newcommand{\kEi}{\ket{E_i}}
+\newcommand{\bEi}{\bra{E_i}}
+\newcommand{\bkEiPsi}{\braket{E_i}{\Psi}}
+\newcommand{\bkPsiEi}{\braket{\Psi}{E_i}}
 
 \section{Problem 3}
 \begin{statement}
@@ -104,22 +112,38 @@
 \begin{solution}
 	\renewcommand{\theenumi}{\alph{enumi}}
 	\begin{enumerate} \label{a}
-		\item Beginning with \Schrodinger's equation, note that
-			\begin{align}
-				\ihb \partt \kPsi &= H \kPsi \\
-				\ihb \mel{x}{\partt}{\Psi(t)} &= \mel{x}{H}{\Psi(t)} \label{schrox} \\
-				(\ihb \mel{x}{\partt}{\Psi(t)})^\dagger &= (\mel{x}{H}{\Psi(t)})^\dagger \\
-				-\ihb \mel{\Psi(t)}{\partt}{x} &= \mel{\Psi(t)}{H}{x} \label{hermitianH} \\
-				\ihb \partt \bkPsix &= -\mel{\Psi(t)}{H}{x}, \label{res1a}
-			\end{align}
-			where in going to \refeq{hermitianH} we are assuming that $H$ is Hermitian.  Note also that $\partt$ is Hermitian because $t$ is merely a parameter of the system.  \refeq{res1a} is what we sought to prove. \qed
+		\item We will begin with the {\Schrodinger} equation,
+			\begin{equation} \label{schro}
+				\ihb \partt \kPsit = H \kPsit.
+			\end{equation}
+			Since the Hamiltonian given by \refeq{hamiltonian} is time independent, the system evolves in time under the time-evolution operator $U(t) = \exp(-i H t / \hbar)$.  Denote the eigenkets of $H$ by $\kEi$ and the corresponding eigenvalues by $\Ei$.  Assuming $V(x)$ is a real-valued function, $H$ is Hermitian, and so $\kEi$ form a complete orthonormal basis.  Then we may rewrite $\kPsit$ in terms of $U(t)$ and expand it in $\kEi$:
+			\begin{equation} \label{expPsi}
+				\kPsit = U(t) \kPsi = e^{i H t / \hbar} \sum_i \kEi \bkEiPsi = \sum_i e^{i \Ei t / \hbar} \kEi \bkEiPsi.
+			\end{equation}
+			Substituting \refeq{expPsi} into \refeq{schro} and evaluating the time derivative,
+			\begin{equation} \label{step2}
+				-\sum_i \Ei e^{i \Ei t / \hbar} \kEi \bkEiPsi = H \sum_i e^{i \Ei t / \hbar} \kEi \bkEiPsi.
+			\end{equation}
+			Taking the adjoint of \refeq{step2} yields
+			\begin{equation} \label{adj}
+				-\sum_i \Ei \bkPsiEi \bEi e^{-i \Ei t / \hbar} = H \sum_i \bkPsiEi \bEi e^{-i \Ei t / \hbar}.
+			\end{equation}
+			From the adjoint of \refeq{expPsi}, note that
+			\begin{equation}
+				\ihb \partt \bPsit = \ihb \partt \sum_i \bkPsiEi \bEi e^{-i \Ei t / \hbar} = \sum_i \Ei \bkPsiEi \bEi e^{-i \Ei t / \hbar}.
+			\end{equation}
+			Making these substitutions into \refeq{adj}, and multiplying by $\kx$ on the right, we have
+			\begin{equation}
+				-\ihb \partt \bPsit = H \bPsit \implies \ihb \partt \bkPsix = - \mel{\Psi(t)}{H}{x}
+			\end{equation}
+			as we sought to prove. \qed
 			
 		\item Rewriting what was proven in (a) with $\Psi \mapsto \Phi$ and then multiplying by $\Psi(x, t)$ on the right,
 			\begin{align}
 				\ihb \partt \bkPhix &= -\mel{\Phi(t)}{H}{x} \\
 				\ihb (\partt \bkPhix) \bkxPsi &= -\mel{\Phi(t)}{H}{x} \bkxPsi. \label{term01}
 			\end{align}
-			Multiplying \refeq{schrox} by $\Phi^*(x, t)$ on the left,
+			Multiplying \refeq{schro} by $\bkPhix \bra{x}$ on the left,
 			\begin{equation}
 				\bkPhix \ihb \partt \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)}. \label{term02}
 			\end{equation}
@@ -132,12 +156,10 @@
 			
 		\item Using \refeq{hamiltonian}, note that:
 			\begin{align}
-				\mel{x}{H}{\Psi(t)} &= \bx \left[ \frac{p^2}{2m} + V(x) \right] \kPsi \\
-				&= \frac{1}{2m} \mel{x}{p^2}{\Psi(t)} + \mel{x}{V(x)}{\Psi(t)} \\
-				&= \frac{(-\ihb \partx)^2}{2m} \bkxPsi + V(x) \bkxPsi \label{commutation} \\
+				\mel{x}{H}{\Psi(t)} &= \bx \left[ \frac{p^2}{2m} + V(x) \right] \kPsit = \frac{1}{2m} \mel{x}{p^2}{\Psi(t)} + \mel{x}{V(x)}{\Psi(t)} \\
 				&= -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi, \label{term1}
 			\end{align}
-			where in going to \refeq{commutation} we have (twice) used the fact that
+			where in going to \refeq{term1} we have (twice) used the fact that
 			\begin{equation} \label{pbra}
 				\mel{x}{p}{\Psi(x)} = -\ihb \partx \bkxPsi.
 			\end{equation}
@@ -273,24 +295,15 @@
 		\dv{X(\phi)}{\phi} &= \dv{}{\phi} \left( \Ud X U \right) = \dv{\Ud}{\phi} X U + \Ud \dv{}{\phi} (X U) \\
 		&= \dv{\Ud}{\phi} X U + \Ud \dv{X}{\phi} U + \Ud X \dv{U}{\phi}. \label{product}
 	\end{align}
-	We know immediately that $\dv*{X}{\phi} = 0$ because $\phi$ is not a parameter of the position operator $X$.  Let $\klei$ denote the eigenbasis of $\Le$ and $\lei$ its eigenvalues.  $\Le$ \hl{is Hermitian so an orthonormal basis is guaranteed to exist.  USE POWER SERIES INSTEAD.}  In this basis, $U(\phi)$ is diagonal and its nonzero matrix elements are given by
-	\begin{equation} \label{diag}
-		\Uii = \exp(-\frac{i}{\hbar} \lei \phi)
-	\end{equation}
-	which implies
-	\begin{align}
-		\dv{\Uii}{\phi} &= -\frac{i}{\hbar} \lei \exp(-\frac{i}{\hbar} \lei \phi) = -\exp(-\frac{i}{\hbar} \lei \phi) \frac{i}{\hbar} \lei \\
-		&= -\frac{i}{\hbar} \lei \Uii = -\frac{i}{\hbar} \Uii \lei. \label{eigencomm}
-	\end{align}
-	The power-series representation of $e^{x}$ allows us to retrieve from \refeq{eigencomm} the operator relationships
+	We know immediately that $\dv*{X}{\phi} = 0$ because $\phi$ is not a parameter of the position operator $X$.  From the definition of $U(\phi)$ in \refeq{defu}, we know that $[\Le, U(\phi)] = 0$.  Thus
 	\begin{equation} \label{oper}
-		\dv{U}{\phi} = -\frac{i}{\hbar} \Le U = -\frac{i}{\hbar} U \Le, \\
+		\dv{U}{\phi} = -\frac{i}{\hbar} \Le U = -\frac{i}{\hbar} \Le \exp(-\frac{i}{\hbar} \Le \phi) = -\frac{i}{\hbar} U \Le, \\
 	\end{equation}
-	which informs us that $[\Le, U] = 0$.  In a similar fashion, note that
+	and likewise
 	\begin{equation}
 		\Ud = \exp(\frac{i}{\hbar} \Le \phi) \implies \dv{\Ud}{\phi} = \frac{i}{\hbar} \Le \exp(\frac{i}{\hbar} \Le \phi) = \frac{i}{\hbar} \Le \Ud = \frac{i}{\hbar} \Ud \Le
 	\end{equation}
-	and $[\Le, \Ud] = 0$ as well.  Then \refeq{product} becomes
+	because $[\Le, \Ud] = 0$ as well.  Then \refeq{product} becomes
 	\begin{equation}
 		\dv{X(\phi)}{\phi} = \frac{i}{\hbar} \Ud \Le X U - \frac{i}{\hbar} \Ud X \Le U = \frac{i}{\hbar} \Ud (\Le X - X \Le) U = \frac{i}{\hbar} \Ud(\phi) [\Le, X] U(\phi), \label{middle}
 	\end{equation}
@@ -377,4 +390,157 @@
 	\end{align}
 	as desired. \qed
 \end{solution}
+
+\newcommand{\bp}{\bra{p}}
+\newcommand{\kp}{\ket{p}}
+
+\newcommand{\bkxp}{\braket{x}{p}}
+\newcommand{\bkpx}{\braket{p}{x}}
+\newcommand{\bkpPsi}{\braket{p}{\Psi}}
+
+\newcommand{\kPsip}{\ket{\Psi'}}
+\newcommand{\bkpPsip}{\braket{p}{\Psi'}}
+
+\newcommand{\kPsipp}{\ket{\Psi''}}
+\newcommand{\bkxPsipp}{\braket{x}{\Psi''}}
+\newcommand{\bkxppPsi}{\braket{x''}{\Psi}}
+
+\newcommand{\partp}{\partial_p}
+\newcommand{\po}{p_0}
+
+\newcommand{\wpih}{\frac{1}{\sqrt{2\pi \hbar}}}
+
+\newcommand{\Ua}{U(a)}
+\newcommand{\Uad}{U^\dagger(a)}
+\newcommand{\Vpo}{V(\po)}
+\newcommand{\Vpod}{V^\dagger(\po)}
+
+\section{Problem 1}
+\begin{statement}
+	Consider a particle with coordinate $x \in (-\infty, \infty)$, and momentum $p \in (-\infty, \infty)$, along with corresponding operators $X$ and $P$.  We have
+	\begin{equation} \label{given1}
+		\bkxp = \wpih e^{ipx / \hbar}.
+	\end{equation}
+\end{statement}
+
+\begin{problem}
+	Consider $\mel{p}{X}{\Psi}$.  Express it in terms of $\bkpPsi$.
+\end{problem}
+
+\begin{solution}
+	In the momentum space, the action of $X$ is given by
+	\begin{equation} \label{actionx}
+		\mel{p}{X}{\Psi} = \ihb \partp \bkpPsi.
+	\end{equation}
+\end{solution}
+
+\begin{problem}
+	Define a state $\kPsip$ from $\kPsi$ by $\braket{p - \po}{\Psi} = \bkpPsip$.  Construct the unitary operator $\Vpo$ such that
+	\begin{equation} \label{Vpo}
+		\kPsip = \Vpo \kPsi.
+	\end{equation}
+\end{problem}
+
+\begin{solution}
+	For an infinitesimal $\po$,
+	\begin{equation}
+		\Vpod \kp = \ket{p - \po} = e^{-\po \partp} \kp
+	\end{equation}
+	and since $\partp^\dagger = -\partp$ in the momentum basis,
+	\begin{equation}
+		\Vpo = e^{\po \partp} = e^{i \po X / \hbar}
+	\end{equation}
+	because $X = -\ihb \partp$ when acting on the $\kp$ basis, as given by the adjoint of \refeq{actionx}.  Then
+	\begin{equation}
+		\mel{p}{\Vpo}{\Psi} = \braket{p - \po}{\Psi} = \bkpPsip
+	\end{equation}
+	as desired.
+	
+	$\Vpo$ has the following properties that were also required of $\Ua$:
+	\begin{enumerate}
+		\item In the limit $\po \to 0$, $\Vpo \to I$:
+			\begin{equation}
+				\lim_{\po \to 0} \Vpo = \lim_{\po \to 0} e^{i \po X / \hbar} = e^0 = I.
+			\end{equation} 
+			
+		\item Successive applications are equivalent to a single application:
+			\begin{equation}
+				V(p_1) V(p_2) = e^{i p_1 X / \hbar} e^{i p_2 X / \hbar} = e^{i (p_1 + p_2) X / \hbar} = V(p_1 + p_2).
+			\end{equation}
+				
+		\item Unitarity:
+			\begin{align}
+				\Vpo \Vpod &= e^{i \po X / \hbar} e^{-i \po X / \hbar} = I, &
+				\Vpod \Vpo &= e^{-i \po X / \hbar} e^{i \po X / \hbar} = I.
+			\end{align}
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	Consider $\kPsipp = \Ua \Vpo \kPsi$ where $\Ua$ is the spatial translation operator.  Express $\bkxPsipp$ as
+	\begin{equation}
+		\bkxPsipp = \exp(i \Phi(x, a, \po)) \bkxppPsi
+	\end{equation}
+	where the phase $\Phi$ and $x''$ are to be determined as part of the problem.
+\end{problem}
+
+\begin{solution}
+	Using the definition of $\kPsipp$,
+	\begin{equation} \label{kPsipp}
+		\bkxPsipp = \bx \Ua \Vpo \kPsi = \bra{x - a} \Vpo \kPsi = \bra{x - a} e^{i \po X / \hbar} \kPsi = e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi}
+	\end{equation}
+	which gives
+	\begin{align}
+		\Phi &= \frac{p_0 (x - a)}{\hbar}, &
+		x'' = x - a.
+	\end{align}
+\end{solution}
+
+\begin{problem}
+	Defining $\ev{X} = \ev{X}{\Psi}$ and $\ev{P} = \ev{P}{\Psi}$, define formulas which express $\ev{X}{\Psi''}$ and $\ev{P}{\Psi''}$ in terms of $\ev{X}$, $\ev{P}$, and constants.
+\end{problem}
+
+\begin{solution}
+	Beginning with $\ev{V}{\Psi''}$, we may insert the identity operator:
+	\begin{align}
+		\ev{X}{\Psi''} &= \iint \braket{\Psi''}{x} \mel{x}{X}{x'} \braket{x'}{\Psi''} \dd{x} \dd{x'} \\
+		&= \iint \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} x' \delta(x - x') e^{i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \dd{x} \dd{x'}, \label{subs} \\
+		&= \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} x e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi} \dd{x} \\
+		&= \int \braket{\Psi}{x - a} x \braket{x - a}{\Psi} \dd{x}, \label{simplep}
+	\end{align}
+	where in going to \refeq{subs} we have substituted \refeq{kPsipp} and its adjoint.  Now making the change of variable $x - a \mapsto x$, \refeq{simplex} becomes
+	\begin{equation}
+		\ev{X}{\Psi''} = \int \braket{\Psi}{x} (x + a) \braket{x}{\Psi} \dd{x} = a \int \braket{\Psi}{x}\braket{x}{\Psi} \dd{x} + \int \braket{\Psi}{x} x \braket{x}{\Psi} \dd{x} = a + \ev{X}.
+	\end{equation}
+	Now proceeding similarly for $\ev{P}{\Psi''}$,
+	\begin{align}
+		\ev{P}{\Psi''} &= \iint \braket{\Psi''}{x} \mel{x}{P}{x'} \braket{x'}{\Psi''} \dd{x} \dd{x'} \\
+		&= \iint \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left( \ihb \pdv{}{x'} \delta(x - x') e^{i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \right) \dd{x} \dd{x'}, \\
+		&= \ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left(\pdv{}{x} e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi} \right) \dd{x}, \\
+		&= \ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left(\pdv{}{x} e^{i \po (x - a) / \hbar} \right) \braket{x - a}{\Psi} \dd{x} \notag \\
+		&\phantom{=\ } + \ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} e^{i \po (x - a) / \hbar} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}, \\
+		&= \ihb \frac{i \po}{\hbar} \int \braket{\Psi}{x - a} \braket{x - a}{\Psi} \dd{x} + \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}. \label{simplep}
+	\end{align}
+	Again making the change of variable $x - a \mapsto x$, \refeq{simplep} becomes
+	\begin{equation}
+		\ev{P}{\Psi''} = \ihb \int \braket{\Psi}{x} \left(\pdv{}{x} \braket{x}{\Psi} \right) \dd{x} = \po \int \braket{\Psi}{x} \braket{x}{\Psi} \dd{x} = \ev{P} - \po.
+	\end{equation}
+	In summary, we have found $\ev{X}{\Psi''} = \ev{X} + a$ and $\ev{P}{\Psi''} = \ev{P} - \po$.
+\end{solution}
+
+\newcommand{\Ho}{H_0}
+
+\section{Problem 2}
+\begin{statement}
+	Suppose we have a particle moving in one dimension $(-\infty < x < \infty)$, with quantum Hamiltonian given by
+	\begin{equation}
+		H(t) = \Ho - X F(t)
+	\end{equation}
+	where
+	\begin{equation}
+		\Ho = \frac{P^2}{2m} + V(X)
+	\end{equation}
+	where $V(X)$ is the potential and $F(t)$ is a c-number function.  Consider 
+\end{statement}
+	
 \end{document}
