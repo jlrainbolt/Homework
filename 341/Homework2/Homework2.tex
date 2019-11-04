@@ -482,11 +482,11 @@
 \begin{solution}
 	Using the definition of $\kPsipp$,
 	\begin{equation} \label{kPsipp}
-		\bkxPsipp = \bx \Ua \Vpo \kPsi = \bra{x - a} \Vpo \kPsi = \bra{x - a} e^{i \po X / \hbar} \kPsi = e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi}
+		\bkxPsipp = \bx \Ua \Vpo \kPsi = \bra{x - a} \Vpo \kPsi = \bra{x - a} e^{-i \po X / \hbar} \kPsi = e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi}
 	\end{equation}
 	which is equivalent to \refeq{show3.3} with
 	\begin{align}
-		\Phi &= \frac{p_0 (x - a)}{\hbar}, &
+		\Phi &= -\frac{p_0 (x - a)}{\hbar}, &
 		x'' = x - a.
 	\end{align}
 \end{solution}
@@ -499,8 +499,8 @@
 	Beginning with $\ev{V}{\Psi''}$, we may insert the identity operator:
 	\begin{align}
 		\ev{X}{\Psi''} &= \iint \braket{\Psi''}{x} \mel{x}{X}{x'} \braket{x'}{\Psi''} \dd{x} \dd{x'} \\
-		&= \iint \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} x' \delta(x - x') e^{i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \dd{x} \dd{x'}, \label{subs} \\
-		&= \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} x e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi} \dd{x} \\
+		&= \iint \braket{\Psi}{x - a} e^{i \po (x - a) / \hbar} x' \delta(x - x') e^{-i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \dd{x} \dd{x'}, \label{subs} \\
+		&= \int \braket{\Psi}{x - a} e^{i \po (x - a) / \hbar} x e^{-i \po (x - a) / \hbar} \braket{x - a}{\Psi} \dd{x} \\
 		&= \int \braket{\Psi}{x - a} x \braket{x - a}{\Psi} \dd{x}, \label{simplex}
 	\end{align}
 	where in going to \refeq{subs} we have substituted \refeq{kPsipp} and its adjoint.  Now making the change of variable $x - a \mapsto x$, \refeq{simplex} becomes
@@ -510,16 +510,16 @@
 	Now proceeding similarly for $\ev{P}{\Psi''}$,
 	\begin{align}
 		\bra{\Psi''}&{P}\ket{\Psi''} = \iint \braket{\Psi''}{x} \mel{x}{P}{x'} \braket{x'}{\Psi''} \dd{x} \dd{x'} \\
-		&= \iint \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left( \ihb \delta(x - x') \pdv{}{x'} e^{i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \right) \dd{x} \dd{x'}, \\
-		&= \ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left(\pdv{}{x} e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi} \right) \dd{x}, \\
-		&= \ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left(\pdv{}{x} e^{i \po (x - a) / \hbar} \right) \braket{x - a}{\Psi} \dd{x} + \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}, \\
-		&= \ihb \frac{i \po}{\hbar} \int \braket{\Psi}{x - a} \braket{x - a}{\Psi} \dd{x} + \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}. \label{simplep}
+		&= \iint \braket{\Psi}{x - a} e^{i \po (x - a) / \hbar} \left( \ihb \delta(x - x') \pdv{}{x'} e^{-i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \right) \dd{x} \dd{x'}, \\
+		&= \ihb \int \braket{\Psi}{x - a} e^{i \po (x - a) / \hbar} \left(\pdv{}{x} e^{-i \po (x - a) / \hbar} \braket{x - a}{\Psi} \right) \dd{x}, \\
+		&= \ihb \int \braket{\Psi}{x - a} e^{i \po (x - a) / \hbar} \left(\pdv{}{x} e^{-i \po (x - a) / \hbar} \right) \braket{x - a}{\Psi} \dd{x} + \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}, \\
+		&= -\ihb \frac{i \po}{\hbar} \int \braket{\Psi}{x - a} \braket{x - a}{\Psi} \dd{x} + \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}. \label{simplep}
 	\end{align}
 	Again making the change of variable $x - a \mapsto x$, \refeq{simplep} becomes
 	\begin{equation}
-		\ev{P}{\Psi''} = \ihb \int \braket{\Psi}{x} \left(\pdv{}{x} \braket{x}{\Psi} \right) \dd{x} - \po \int \braket{\Psi}{x} \braket{x}{\Psi} \dd{x} = \ev{P} - \po.
+		\ev{P}{\Psi''} = -\ihb \int \braket{\Psi}{x} \left(\pdv{}{x} \braket{x}{\Psi} \right) \dd{x} + \po \int \braket{\Psi}{x} \braket{x}{\Psi} \dd{x} = \ev{P} + \po.
 	\end{equation}
-	In summary, we have found $\ev{X}{\Psi''} = \ev{X} + a$ and $\ev{P}{\Psi''} = \ev{P} - \po$.
+	In summary, we have found $\ev{X}{\Psi''} = \ev{X} + a$ and $\ev{P}{\Psi''} = \ev{P} + \po$.
 \end{solution}
 
 \newcommand{\Ho}{H_0}
@@ -633,7 +633,7 @@
 		[\Ho, \Ht] = [P^2/(2m) + \VX, -X \Ft] = - \Ft \left( \frac{1}{2m}[P^2, X] + [\VX, X] \right) = \Ft \frac{\ihb}{m} P,
 	\end{equation}
 	so
-	\begin{equation}
+	\begin{equation} \label{dtHo}
 		\pdv{}{t} \evHot = -\frac{i}{\hbar} \ev{[\Ho, \Ht]}{\Psi(t)} = -\frac{i}{\hbar} \Ft \frac{\ihb}{m} \ev{P}{\Psi(t)} = \frac{\Ft}{m} \evPt.
 	\end{equation}
 \end{solution}
@@ -645,15 +645,9 @@
 \begin{solution}
 	The total energy put into the system by $\Ft$ is
 	\begin{equation}
-		\DE = \evHopi - \evHomi.
+		\DE = \evHopi - \evHomi = \int_{-\infty}^\infty \pdv{}{t} \evHot \dd{t} = \int_{-\infty}^\infty \frac{\Ft}{m} \evPt \dd{t},
 	\end{equation}
-	\hl{????}
-%	Let $t' = -\infty$ as suggested.  Evaluating the expectation values,
-%	\begin{align}
-%		\evHomi &= \ev{\Ho}{\Psi(t')} = \iint \braket{\Psi(t')}{x} \mel{x}{\Ho}{x'} \braket{x'}{\Psi(t')} \dd{x} \dd{x'} \\
-%		&= \iint \braket{\Psi(t')}{x} \mel{x}{\left( \frac{P^2}{2m} + \VX \right)}{x'} \braket{x'}{\Psi(t')} \dd{x} \dd{x'} \\
-%		&= \frac{1}{2m} \iint \braket{\Psi(t')}{x} \mel{x}{P^2}{x'} \braket{x'}{\Psi(t')} \dd{x} \dd{x'} + \iint \braket{\Psi(t')}{x} \mel{x}{\VX}{x'} \braket{x'}{\Psi(t')} \dd{x} \dd{x'}
-%	\end{align}
+	where we have used the fundamental theorem of calculus and \refeq{dtHo}.
 \end{solution}
 
 \newcommand{\Xt}{X(t)}
@@ -915,6 +909,7 @@
 		\evDXqt \evDPqt = \frac{\hbar}{4}
 	\end{equation}
 	which is unchanged from the initial state of the system considered in \ref{init}.
-
 \end{solution}
+
+In writing up these solutions, I consulted Sakurai's and Shankar's \emph{Quantum Mechanics}.
 \end{document}
