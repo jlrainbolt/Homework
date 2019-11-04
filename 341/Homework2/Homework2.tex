@@ -1,8 +1,8 @@
-\documentclass[10pt]{article}
+\documentclass[11pt]{article}
 \usepackage{geometry, titlesec}
 \usepackage[parfill]{parskip}
 \usepackage{physics, amsfonts, amsthm}
-\usepackage{fullpage}
+\usepackage[cm]{fullpage}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
 \usepackage{xcolor, soul}
@@ -24,8 +24,9 @@
 \fancyhf{}
 \lhead{\textbf{Physics 341 Homework 2}}
 \rhead{Lacey Rainbolt}
-\setlength{\headheight}{14pt}
-\setlength{\headsep}{12pt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
 \lfoot{\today}
 \rfoot{\thepage}
 
@@ -56,7 +57,7 @@
     \ignorespaces
 }
 {
-    \bigskip
+%    \smallskip
 }
 
 \newcommand{\Schrodinger}{Schr\"{o}dinger}
@@ -173,10 +174,9 @@
 			\end{equation}
 			This follows because $p$ is Hermitian.  Making the substitutions \refeq{term1} and \refeq{term2} into what was proven in (b),
 			\begin{align}
-				\ihb \partt \bkPhix \bkxPsi &= \bkPhix \left[ -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi \right] \notag \\
-    				&\phantom{=\ } - \left[ -\frac{\hbar^2}{2m} \partx^2 \bkPhix + V(x) \bkPhix \right] \bkxPsi \\
-				&= -\frac{\hbar^2}{2m} \left[ \bkPhix \partx^2 \bkPhix - (\partx^2 \bkPhix) \bkxPsi \right] \notag \\
-				&\phantom{=\ } + V(x) \bkPhix \bkxPsi - V(x) \bkPhix \bkxPsi \\
+				\ihb \partt &\bkPhix \bkxPsi \notag \\
+				&= \bkPhix \left[ -\frac{\hbar^2}{2m} \partx^2 \bkxPsi + V(x) \bkxPsi \right] - \left[ -\frac{\hbar^2}{2m} \partx^2 \bkPhix + V(x) \bkPhix \right] \bkxPsi \\
+				&= -\frac{\hbar^2}{2m} \left[ \bkPhix \partx^2 \bkPhix - (\partx^2 \bkPhix) \bkxPsi \right] + \left[ V(x) - V(x) \right] \bkPhix \bkxPsi \\
 				&= -\dfrac{\hbar^2}{2m} \left[ \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right],
 			\end{align}
 			as we sought to prove. \qed
@@ -204,8 +204,8 @@
 		\end{align}
 		Adding the results of \refeq{res1e} and \refeq{res2e},
 		\begin{align}
-			\frac{\hbar}{i} \partx \left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right] &= \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} \notag \\
-			&\phantom{=\ } + \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \\
+			\frac{\hbar}{i} \partx &\left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right] \notag \\
+			&= \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \mel{x}{p}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \\
 			&= \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi
 		\end{align}
 		as we sought to prove. \qed
@@ -241,11 +241,9 @@
 		&= \frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right] \label{Jexp},
 	\end{align}
 	where in going to \refeq{Jexp} we have used what was proven in 1(e).  Summing \refeq{rhoexp} and \refeq{Jexp}, we have
-	\begin{align}
-		\partt \rho(x, t) + \partx J_x(x, t) &= -\frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right] \notag \\
-		&\phantom{=\ } + \frac{1}{2m} \frac{i}{\hbar} \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right] \\
-		&= 0
-	\end{align}
+	\begin{equation}
+		\partt \rho(x, t) + \partx J_x(x, t) = \left(-\frac{1}{2m} \frac{i}{\hbar} + \frac{1}{2m} \frac{i}{\hbar} \right) \left[ \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi \right] = 0
+	\end{equation}
 	as we sought to prove.  This is is the continuity equation for probability. \qed
 \end{solution}
 
@@ -435,10 +433,7 @@
 \end{solution}
 
 \begin{problem}
-	Define a state $\kPsip$ from $\kPsi$ by $\braket{p - \po}{\Psi} = \bkpPsip$.  Construct the unitary operator $\Vpo$ such that
-	\begin{equation} \label{Vpo}
-		\kPsip = \Vpo \kPsi.
-	\end{equation}
+	Define a state $\kPsip$ from $\kPsi$ by $\braket{p - \po}{\Psi} = \bkpPsip$.  Construct the unitary operator $\Vpo$ such that $\kPsip = \Vpo \kPsi$.
 \end{problem}
 
 \begin{solution}
@@ -478,7 +473,7 @@
 
 \begin{problem}
 	Consider $\kPsipp = \Ua \Vpo \kPsi$ where $\Ua$ is the spatial translation operator.  Express $\bkxPsipp$ as
-	\begin{equation}
+	\begin{equation} \label{show3.3}
 		\bkxPsipp = \exp(i \Phi(x, a, \po)) \bkxppPsi
 	\end{equation}
 	where the phase $\Phi$ and $x''$ are to be determined as part of the problem.
@@ -489,7 +484,7 @@
 	\begin{equation} \label{kPsipp}
 		\bkxPsipp = \bx \Ua \Vpo \kPsi = \bra{x - a} \Vpo \kPsi = \bra{x - a} e^{i \po X / \hbar} \kPsi = e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi}
 	\end{equation}
-	which gives
+	which is equivalent to \refeq{show3.3} with
 	\begin{align}
 		\Phi &= \frac{p_0 (x - a)}{\hbar}, &
 		x'' = x - a.
@@ -506,41 +501,268 @@
 		\ev{X}{\Psi''} &= \iint \braket{\Psi''}{x} \mel{x}{X}{x'} \braket{x'}{\Psi''} \dd{x} \dd{x'} \\
 		&= \iint \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} x' \delta(x - x') e^{i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \dd{x} \dd{x'}, \label{subs} \\
 		&= \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} x e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi} \dd{x} \\
-		&= \int \braket{\Psi}{x - a} x \braket{x - a}{\Psi} \dd{x}, \label{simplep}
+		&= \int \braket{\Psi}{x - a} x \braket{x - a}{\Psi} \dd{x}, \label{simplex}
 	\end{align}
 	where in going to \refeq{subs} we have substituted \refeq{kPsipp} and its adjoint.  Now making the change of variable $x - a \mapsto x$, \refeq{simplex} becomes
 	\begin{equation}
-		\ev{X}{\Psi''} = \int \braket{\Psi}{x} (x + a) \braket{x}{\Psi} \dd{x} = a \int \braket{\Psi}{x}\braket{x}{\Psi} \dd{x} + \int \braket{\Psi}{x} x \braket{x}{\Psi} \dd{x} = a + \ev{X}.
+		\ev{X}{\Psi''} = \int \braket{\Psi}{x} (x + a) \braket{x}{\Psi} \dd{x} = \int \braket{\Psi}{x} x \braket{x}{\Psi} \dd{x} + a \int \braket{\Psi}{x}\braket{x}{\Psi} \dd{x} = \ev{X} + a.
 	\end{equation}
 	Now proceeding similarly for $\ev{P}{\Psi''}$,
 	\begin{align}
-		\ev{P}{\Psi''} &= \iint \braket{\Psi''}{x} \mel{x}{P}{x'} \braket{x'}{\Psi''} \dd{x} \dd{x'} \\
-		&= \iint \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left( \ihb \pdv{}{x'} \delta(x - x') e^{i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \right) \dd{x} \dd{x'}, \\
+		\bra{\Psi''}&{P}\ket{\Psi''} = \iint \braket{\Psi''}{x} \mel{x}{P}{x'} \braket{x'}{\Psi''} \dd{x} \dd{x'} \\
+		&= \iint \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left( \ihb \delta(x - x') \pdv{}{x'} e^{i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \right) \dd{x} \dd{x'}, \\
 		&= \ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left(\pdv{}{x} e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi} \right) \dd{x}, \\
-		&= \ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left(\pdv{}{x} e^{i \po (x - a) / \hbar} \right) \braket{x - a}{\Psi} \dd{x} \notag \\
-		&\phantom{=\ } + \ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} e^{i \po (x - a) / \hbar} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}, \\
+		&= \ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left(\pdv{}{x} e^{i \po (x - a) / \hbar} \right) \braket{x - a}{\Psi} \dd{x} + \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}, \\
 		&= \ihb \frac{i \po}{\hbar} \int \braket{\Psi}{x - a} \braket{x - a}{\Psi} \dd{x} + \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}. \label{simplep}
 	\end{align}
 	Again making the change of variable $x - a \mapsto x$, \refeq{simplep} becomes
 	\begin{equation}
-		\ev{P}{\Psi''} = \ihb \int \braket{\Psi}{x} \left(\pdv{}{x} \braket{x}{\Psi} \right) \dd{x} = \po \int \braket{\Psi}{x} \braket{x}{\Psi} \dd{x} = \ev{P} - \po.
+		\ev{P}{\Psi''} = \ihb \int \braket{\Psi}{x} \left(\pdv{}{x} \braket{x}{\Psi} \right) \dd{x} - \po \int \braket{\Psi}{x} \braket{x}{\Psi} \dd{x} = \ev{P} - \po.
 	\end{equation}
 	In summary, we have found $\ev{X}{\Psi''} = \ev{X} + a$ and $\ev{P}{\Psi''} = \ev{P} - \po$.
 \end{solution}
 
 \newcommand{\Ho}{H_0}
+\newcommand{\Ht}{H(t)}
+\newcommand{\Ft}{F(t)}
+\newcommand{\Utt}{U(t, t')}
+\newcommand{\VX}{V(X)}
+
+\newcommand{\evXt}{\ev{X}\!(t)}
+\newcommand{\evPt}{\ev{P}\!(t)}
+\newcommand{\evHot}{\ev{\Ho}\!(t)}
+
+\newcommand{\kPsitp}{\ket{\Psi(t')}}
 
 \section{Problem 2}
 \begin{statement}
 	Suppose we have a particle moving in one dimension $(-\infty < x < \infty)$, with quantum Hamiltonian given by
 	\begin{equation}
-		H(t) = \Ho - X F(t)
+		\Ht = \Ho - X \Ft
 	\end{equation}
 	where
 	\begin{equation}
-		\Ho = \frac{P^2}{2m} + V(X)
+		\Ho = \frac{P^2}{2m} + \VX
 	\end{equation}
-	where $V(X)$ is the potential and $F(t)$ is a c-number function.  Consider 
+	where $V(X)$ is the potential and $\Ft$ is a c-number function.  Consider a state ket $\kPsit$ which evolves in time according to $\kPsit = \Utt \kPsitp$, where the unitary time-evolution operator satisfies
+	\begin{equation}
+		\ihb \pdv{}{t} U(t, t') = H(t) \Utt.
+	\end{equation}
+	Define the expectation values
+	\begin{align}
+		\evXt &= \ev{X}{\Psi(t)}, &
+		\evPt &= \ev{P}{\Psi(t)}, &
+		\evHot &= \ev{\Ho}{\Psi(t)}.
+	\end{align}
 \end{statement}
+
+\begin{problem}
+	Derive the formulas for $\pdv*{\evXt}{t}$ and $\pdv*{\evPt}{t}$.  Your results should include other expectation values.  Show that your answer reduces to a classical expression if expectation values are replaced by classical values.
+\end{problem}
+
+\begin{solution}
+	Beginning with $X$, the product rule of differentiation yields
+	\begin{equation} \label{Xexp}
+		\pdv{}{t} \evXt = \pdv{}{t} \ev{X}{\Psi(t)} = \mel*{\dot{\Psi}(t)}{X}{\Psi(t)} + \ev*{\dot{X}}{\Psi(t)} + \mel*{\Psi(t)}{X}{\dot{\Psi}(t)},
+	\end{equation}
+	where the dots indicate $\pdv*{}{t}$.  Obviously $\pdv*{X}{t} = 0$.  We can find the other two terms from the {\Schrodinger} equation~\refeq{schro} and its adjoint, which was found in 1.1(a):
+	\begin{align}
+		\ihb \partt \kPsit = \Ht \kPsit &\implies \ket*{\dot{\Psi}(t)} = -\frac{i}{\hbar} \Ht \kPsit, \\
+		\ihb \partt \bPsit = -\bPsit \Ht &\implies \bra*{\dot{\Psi}(t)} = \frac{i}{\hbar} \bPsit \Ht.
+	\end{align}
+	Now \refeq{Xexp} can be written
+	\begin{align}
+		\pdv{}{t} \evXt &= -\frac{i}{\hbar} \mel{\Psi(t)}{X \Ht}{\Psi(t)} + \frac{i}{\hbar} \mel{\Psi(t)}{\Ht X}{\Psi(t)} \\
+		&= -\frac{i}{\hbar} \ev{[X, \Ht]}{\Psi(t)}, \label{ehren}
+	\end{align}
+	which is Ehrenfest's theorem.  For the commutator,
+	\begin{equation}
+		[X, \Ht] = [X, P^2/(2m)] = \frac{[X, P^2]}{2m} = \frac{P [X, P] + [X, P] P}{2m} = \frac{\ihb}{m} P,
+	\end{equation}
+	so we find
+	\begin{equation}
+		\pdv{}{t} \evXt = -\frac{i}{\hbar} \frac{\ihb}{m} \ev{P}{\Psi(t)} = \frac{1}{m} \evPt.
+	\end{equation}
 	
+	Now for $P$, we have the commutator
+	\begin{align}
+		[P, \Ht] &= [P, \VX - X \Ft] = P (\VX - X \Ft) - (\VX - X \Ft) P \\
+		&= P \VX - P X \Ft - \VX P + X \Ft P = [P, \VX] + [X, P] \Ft.
+	\end{align}
+	Note that
+	\begin{equation}
+		\mel{x}{[P, \VX]}{\Psi(t)} = -\ihb \pdv{V(x)}{x} \braket{x}{\Psi(t)} \implies [P, \VX] = -\ihb \pdv{V(X)}{X}
+	\end{equation}
+	so \refeq{ehren} with $X \mapsto P$ yields
+	\begin{align}
+		\pdv{}{t} \evPt &= -\frac{i}{\hbar} \ev{[P, \Ht]}{\Psi(t)} = -\frac{i}{\hbar} \ev{\left( -\ihb \pdv{V(X)}{X} + \ihb \Ft \right)}{\Psi(t)} \\
+		&= -\ev{\pdv{V(X)}{X}}{\Psi(t)} + \ev{F(t)}{\Psi(t)} = F(t) - \ev{\pdv{V(X)}{X}}.
+	\end{align}
+	However, since
+	\begin{align}
+		\frac{P}{m} &= \pdv{\Ho}{P} = \pdv{\Ht}{P}, &
+		F(t) - \pdv{V(0)}{X} &= F(t) - \pdv{\Ho}{X} = -\pdv{\Ht}{X},
+	\end{align}
+	we can also write
+	\begin{align} \label{hameq}
+		\pdv{}{t} \evXt &= \ev{\pdv{\Ht}{P}}, &
+		\pdv{}{t} \evPt &= -\ev{\pdv{\Ht}{X}},
+	\end{align}
+	which appear similar to Hamilton's equations.
+	
+	Now we will show that \refeq{hameq} reduce to classical expressions when expectation values are replaced by classical values.  Let $\ev{X} \mapsto x$, $\ev{P} \mapsto p$, and so on.  Then \refeq{hameq} become
+	\begin{align}
+		\pdv{}{t} x(t) &= \pdv{\Ht}{p} = \frac{p}{m}, \label{velocity} \\
+		\pdv{}{t} p(t) &= -\pdv{\Ht}{x} = F(t) - \pdv{V(x)}{x}, \label{force}
+	\end{align}
+	where \refeq{velocity} is a classical expression for velocity, and \refeq{force} is a classical expression for force. \qed
+\end{solution}
+
+\begin{problem}
+	Derive a formula for $\pdv*{\ev{\Ho}}{t}$ which involves only expectation values.
+\end{problem}
+
+\begin{solution}
+	$\Ho$ is time independent, so we may again apply \refeq{ehren} with $X \mapsto \Ho$.  For the commutator,
+	\begin{equation}
+		[\Ho, \Ht] = [P^2/(2m) + \VX, -X \Ft] = - \Ft \left( \frac{1}{2m}[P^2, X] + [\VX, X] \right) = \Ft \frac{\ihb}{m} P,
+	\end{equation}
+	so
+	\begin{equation}
+		\pdv{}{t} \evHot = -\frac{i}{\hbar} \ev{[\Ho, \Ht]}{\Psi(t)} = -\frac{i}{\hbar} \Ft \frac{\ihb}{m} \ev{P}{\Psi(t)} = \frac{\Ft}{m} \ev{P}.
+	\end{equation}
+\end{solution}
+
+\begin{problem}
+	Assume that $\Ft$ vanishes for $|t| \to \infty$.  In this case, it is useful to take $t' \to -\infty$.  Derive a formula for the total energy put into the system by $\Ft$ over the time interval $(-\infty, \infty)$ for $t$.  Your result will again involve expectation values.  Here, the energy is defined in terms of the Hamiltonian without the external time-dependent force.
+\end{problem}
+
+\begin{solution}
+	The total energy put into the system by $\Ft$ is
+	\begin{align}
+		\int_{-\infty}^\infty \Ft X \dd{t}
+	\end{align}
+	\hl{idk}
+\end{solution}
+
+\newcommand{\Xt}{X(t)}
+\newcommand{\Pt}{P(t)}
+\newcommand{\Ut}{U(t)}
+\newcommand{\Udt}{\Ud(t)}
+
+\newcommand{\Psio}{\Psi(0)}
+
+\section{Problem 3}
+
+\begin{statement}
+	Consider the harmonic oscillator described by the Hamiltonian
+	\begin{equation}
+		H = \frac{P^2}{2m} + \frac{m \omega^2 X^2}{2}.
+	\end{equation}
+\end{statement}
+
+\begin{problem}
+	Consider the Heisenberg operators $\Xt$ and $\Pt$.  Derive the Heisenberg equation of motion for $\Xt$ and $\Pt$.
+\end{problem}
+
+\begin{solution}
+%	From the defining equation for Heisenberg operators,
+%	\begin{align}
+%		\Xt &= \Udt X \Ut, &
+%		\Pt &= \Udt P \Ut
+%	\end{align}
+%	where the time-evolution operator
+%	\begin{equation}
+%		\Ut = \exp(-\frac{i}{\hbar} H t ) = \exp(-\frac{i P^2 t}{2\hbar m} - \frac{i m \omega^2 X^2 t}{2 \hbar}).
+%	\end{equation}
+	In general, the Heisenberg equations of motion are given by
+	\begin{align} \label{heiseq}
+		\dv{\Xt}{t} &= -\frac{i}{\hbar} [\Xt, H], &
+		\dv{\Pt}{t} &= -\frac{i}{\hbar} [\Pt, H].
+	\end{align}
+	Using Sakurai's partial derivative formulation for evaluating commutators,
+	\begin{align}
+		[\Xt, H] &= \ihb \pdv{H}{\Pt} = \ihb \frac{\Pt}{m}, &
+		[\Pt, H] &= -\ihb \pdv{H}{\Xt} = -\ihb m \omega^2 \Xt.
+	\end{align}
+	Making these substitutions into \refeq{heiseq},
+	\begin{align}
+		\dv{\Xt}{t} &= -\frac{i}{\hbar} \ihb \frac{\Pt}{m} = \frac{\Pt}{m}, &
+		\dv{\Pt}{t} &= \frac{i}{\hbar} \ihb m \omega^2 \Xt = -m \omega^2 \Xt
+	\end{align}
+	are the Heisenberg equations of motion.
+\end{solution}
+
+\begin{problem}
+	Consider the same oscillator classically.  Derive the equations for $x(t)$ and $p(t)$ when the oscillator is released from rest at $x = b$ at $t = 0$, where $b$ is a constant.
+\end{problem}
+
+\begin{solution}
+	Using Hamilton's equations,
+	\begin{align}
+		\dv{x}{t} &= \pdv{H}{p} = \frac{p}{m}, \label{poseq} \\
+		\dv{p}{t} = -\pdv{X}{x} = m \omega^2 x \label{momeq}
+	\end{align}
+	Writing \refeq{poseq} as $p = m \dv*{x}{t}$, we can substitute into \refeq{momeq} to get a second-order equation in $x$ only:
+	\begin{equation}
+		m \dv[2]{x}{t} = m \omega^2 x \implies \pdv[2]{x}{t} = \omega^2 x
+	\end{equation}
+	which has solutions
+	\begin{align}
+		x(t) &= A \cos(\omega t) + B \sin(\omega t), \\
+		p(t) &= m \omega B \cos(\omega t) - m \omega A \sin(\omega t) \label{momsol}
+	\end{align}
+	where $A$ and $B$ are constants.  To find \refeq{momsol}, we have applied \refeq{poseq}.
+	
+	Applying the given initial conditions, we have
+	\begin{align}
+		x(0) &= A = b, &
+		p(0) &= 0 = m \omega B
+	\end{align}
+	which fixes $A$ and implies $B = 0$.  Thus
+	\begin{align} \label{motion}
+		x(t) &= b \cos(\omega t), &
+		p(t) &= -m \omega b \sin(\omega t).
+	\end{align}
+\end{solution}
+
+\begin{problem}
+	Take the initial wave function to be
+	\begin{equation}
+		\braket{x}{\Psi(0)} = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega (x - b)^2}{2 \hbar}).
+	\end{equation}
+	This is a displaced ground wave function for the oscillator.  Show that $\ev{X}{\Psio}$ and $\ev{P}{\Psio}$ agree with the classical results you found in the previous problem.
+\end{problem}
+
+\begin{solution}
+	Beginning with $\ev{X}{\Psio}$,
+	\begin{align}
+		\ev{X}{\Psio} &= \iint \braket{\Psio}{x} \mel{x}{X}{x'} \braket{x'}{\Psio} \dd{x} \dd{x'} \\
+		&= \sqrt{\frac{m \omega}{\pi \hbar}} \iint \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) x' \delta(x - x') \exp(-\frac{m \omega (x' - b)^2}{2 \hbar}) \dd{x} \dd{x'} \\
+		&= \sqrt{\frac{m \omega}{\pi \hbar}} \int x \exp(-\frac{m \omega (x - b)^2}{\hbar}) \dd{x}. \label{last}
+	\end{align}
+	Making the change of variable
+	\begin{equation} \label{chvar}
+		u = \sqrt{\frac{m\omega}{h}} (x - b) \implies x = b + u \sqrt{\frac{h}{m\omega}} \implies \dd{x} = \sqrt{\frac{h}{m\omega}} \dd{u}, 
+	\end{equation}
+	\refeq{last} becomes
+	\begin{equation}
+		\ev{X}{\Psio} = \frac{1}{\sqrt{\pi}} \int \left(b + u \sqrt{\frac{h}{m\omega}} \right) e^{-u^2} \dd{u} = \frac{b}{\sqrt{\pi}} \int e^{-u^2} \dd{u} + \sqrt{\frac{\hbar}{m \pi \omega}} \int u e^{-u^2} \dd{u} = b.
+	\end{equation}
+	From the classical equation in \refeq{motion}, $x(0) = b$ as well.
+	
+	For $\ev{P}{\Psio}$,
+	\begin{align}
+		\ev{P}{\Psio} &= \iint \braket{\Psio}{x} \mel{x}{P}{x'} \braket{x'}{\Psio} \dd{x} \dd{x'} \\
+		&= \sqrt{\frac{m \omega}{\pi \hbar}} \iint \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \left( \ihb \delta(x - x') \pdv{}{x'} \exp(-\frac{m \omega (x' - b)^2}{2 \hbar}) \right) \dd{x} \dd{x'} \\
+		&= \ihb \sqrt{\frac{m \omega}{\pi \hbar}} \int \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \left(\pdv{}{x} \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \right) \dd{x} \\
+		&= -\ihb \frac{1}{\sqrt{pi}} \left( \frac{m \omega}{\hbar} \right)^{3/2} \int \exp(-\frac{m \omega (x - b)^2}{\hbar}) (x - b) \dd{x}. \label{lastp}
+	\end{align}
+	Again making the change of variable \refeq{chvar}, \refeq{lastp} becomes
+	\begin{equation}
+		\ev{P}{\Psio} = -\ihb \frac{1}{\sqrt{pi}} \frac{m \omega}{\hbar} \int u e^{-u^2} \dd{u} = 0.
+	\end{equation}
+	From the classical equation in \refeq{motion}, $p(0) = 0$ as well.
+\end{solution}
+
 \end{document}
