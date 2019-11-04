@@ -533,6 +533,11 @@
 \newcommand{\evHot}{\ev{\Ho}\!(t)}
 
 \newcommand{\kPsitp}{\ket{\Psi(t')}}
+\newcommand{\Psit}{\Psi(t)}
+
+\newcommand{\DE}{\Delta E}
+\newcommand{\evHopi}{\ev{\Ho}\!(t = \infty)}
+\newcommand{\evHomi}{\ev{\Ho}\!(t = -\infty)}
 
 \section{Problem 2}
 \begin{statement}
@@ -629,7 +634,7 @@
 	\end{equation}
 	so
 	\begin{equation}
-		\pdv{}{t} \evHot = -\frac{i}{\hbar} \ev{[\Ho, \Ht]}{\Psi(t)} = -\frac{i}{\hbar} \Ft \frac{\ihb}{m} \ev{P}{\Psi(t)} = \frac{\Ft}{m} \ev{P}.
+		\pdv{}{t} \evHot = -\frac{i}{\hbar} \ev{[\Ho, \Ht]}{\Psi(t)} = -\frac{i}{\hbar} \Ft \frac{\ihb}{m} \ev{P}{\Psi(t)} = \frac{\Ft}{m} \evPt.
 	\end{equation}
 \end{solution}
 
@@ -639,10 +644,16 @@
 
 \begin{solution}
 	The total energy put into the system by $\Ft$ is
-	\begin{align}
-		\int_{-\infty}^\infty \Ft X \dd{t}
-	\end{align}
-	\hl{idk}
+	\begin{equation}
+		\DE = \evHopi - \evHomi.
+	\end{equation}
+	\hl{????}
+%	Let $t' = -\infty$ as suggested.  Evaluating the expectation values,
+%	\begin{align}
+%		\evHomi &= \ev{\Ho}{\Psi(t')} = \iint \braket{\Psi(t')}{x} \mel{x}{\Ho}{x'} \braket{x'}{\Psi(t')} \dd{x} \dd{x'} \\
+%		&= \iint \braket{\Psi(t')}{x} \mel{x}{\left( \frac{P^2}{2m} + \VX \right)}{x'} \braket{x'}{\Psi(t')} \dd{x} \dd{x'} \\
+%		&= \frac{1}{2m} \iint \braket{\Psi(t')}{x} \mel{x}{P^2}{x'} \braket{x'}{\Psi(t')} \dd{x} \dd{x'} + \iint \braket{\Psi(t')}{x} \mel{x}{\VX}{x'} \braket{x'}{\Psi(t')} \dd{x} \dd{x'}
+%	\end{align}
 \end{solution}
 
 \newcommand{\Xt}{X(t)}
@@ -650,13 +661,27 @@
 \newcommand{\Ut}{U(t)}
 \newcommand{\Udt}{\Ud(t)}
 
+\newcommand{\At}{A(t)}
+\newcommand{\Ad}{A^\dagger}
+\newcommand{\Adt}{\Ad(t)}
+
 \newcommand{\Psio}{\Psi(0)}
+
+\newcommand{\DX}{\Delta X}
+\newcommand{\DP}{\Delta P}
+\newcommand{\evDPqt}{\ev{\DP^2}\!(t)}
+\newcommand{\evDXqt}{\ev{\DX^2}\!(t)}
+
+\newcommand{\coswt}{\cos(\omega t)}
+\newcommand{\cosqwt}{\cos^2(\omega t)}
+\newcommand{\sinwt}{\sin(\omega t)}
+\newcommand{\sinqwt}{\sin^2(\omega t)}
 
 \section{Problem 3}
 
 \begin{statement}
 	Consider the harmonic oscillator described by the Hamiltonian
-	\begin{equation}
+	\begin{equation} \label{hamosc}
 		H = \frac{P^2}{2m} + \frac{m \omega^2 X^2}{2}.
 	\end{equation}
 \end{statement}
@@ -666,15 +691,6 @@
 \end{problem}
 
 \begin{solution}
-%	From the defining equation for Heisenberg operators,
-%	\begin{align}
-%		\Xt &= \Udt X \Ut, &
-%		\Pt &= \Udt P \Ut
-%	\end{align}
-%	where the time-evolution operator
-%	\begin{equation}
-%		\Ut = \exp(-\frac{i}{\hbar} H t ) = \exp(-\frac{i P^2 t}{2\hbar m} - \frac{i m \omega^2 X^2 t}{2 \hbar}).
-%	\end{equation}
 	In general, the Heisenberg equations of motion are given by
 	\begin{align} \label{heiseq}
 		\dv{\Xt}{t} &= -\frac{i}{\hbar} [\Xt, H], &
@@ -686,11 +702,43 @@
 		[\Pt, H] &= -\ihb \pdv{H}{\Xt} = -\ihb m \omega^2 \Xt.
 	\end{align}
 	Making these substitutions into \refeq{heiseq},
-	\begin{align}
+	\begin{align} \label{system}
 		\dv{\Xt}{t} &= -\frac{i}{\hbar} \ihb \frac{\Pt}{m} = \frac{\Pt}{m}, &
 		\dv{\Pt}{t} &= \frac{i}{\hbar} \ihb m \omega^2 \Xt = -m \omega^2 \Xt
 	\end{align}
 	are the Heisenberg equations of motion.
+	
+	We can solve \refeq{system} by making use of the annihilation and creation operators,
+	\begin{align} \label{cran}
+		A &= \sqrt{\frac{m \omega}{2\hbar}} \left( X + \frac{i P}{m \omega} \right), &
+		\Ad &= \sqrt{\frac{m \omega}{2\hbar}} \left( X - \frac{i P}{m \omega} \right).
+	\end{align}
+	Differentiating \refeq{cran} and feeding in \refeq{system}, we retrieve the differential equations
+	\begin{align}
+		\dv{\At}{t} &= \sqrt{\frac{m \omega}{2\hbar}} \left( \dv{\Xt}{t} + \frac{i}{m\omega} \dv{\Pt}{t} \right) = \sqrt{\frac{m \omega}{2\hbar}} \left( \frac{\Pt}{m} - i \omega \Xt \right) = -i \omega \At, \\
+		\dv{\Adt}{t} &= \sqrt{\frac{m \omega}{2\hbar}} \left( \frac{\Pt}{m} + i \omega \Xt \right) = i\omega \Adt,
+	\end{align}
+	which have solutions
+	\begin{align} \label{diffA}
+		\At &= A e^{-i \omega t}, & \Adt = \Ad e^{i \omega t},
+	\end{align}
+	where $A$ and $\Ad$ are the {\Schrodinger} representations, which are ``constants'' (that is, time independent) in the Heisenberg picture.  In terms of $\Xt$ and $\Pt$, \refeq{diffA} become
+	\begin{align}
+		\Xt + \frac{i}{m \omega} \Pt &= \left(X + \frac{i}{m \omega} P \right) e^{-i\omega t}, \label{diffA1} \\
+		\Xt - \frac{i}{m \omega} \Pt &= \left(X - \frac{i}{m \omega} P \right) e^{i\omega t}, \label{diffAd1}
+	\end{align}
+	where $X$ and $P$ are the {\Schrodinger} representations.  Adding \refeq{diffA1} and \refeq{diffAd1},
+	\begin{equation}
+		\Xt = X (e^{-i\omega t} + e^{i\omega t}) + \frac{i}{m \omega} P (e^{-i\omega t} - e^{i\omega t}) = X \coswt + \frac{P}{m \omega} \sinwt.
+	\end{equation}
+	Now subtracting \refeq{diffAd1} from \refeq{diffA1},
+	\begin{equation}
+		\Pt = -i m \omega \left( X (e^{-i\omega t} - e^{i\omega t}) + \frac{i}{m \omega} P (e^{-i\omega t} + e^{i\omega t}) \right) = P \coswt - m \omega X \sinwt.
+	\end{equation}
+	The (solved) Heisenberg equations of motion are then
+	\begin{align} \label{heissol}
+		\Xt &= X \coswt + \frac{P}{m \omega} \sinwt, & \Pt &= P \coswt - m \omega X \sinwt.
+	\end{align}
 \end{solution}
 
 \begin{problem}
@@ -701,18 +749,18 @@
 	Using Hamilton's equations,
 	\begin{align}
 		\dv{x}{t} &= \pdv{H}{p} = \frac{p}{m}, \label{poseq} \\
-		\dv{p}{t} = -\pdv{X}{x} = m \omega^2 x \label{momeq}
+		\dv{p}{t} &= -\pdv{X}{x} = -m \omega^2 x \label{momeq}
 	\end{align}
 	Writing \refeq{poseq} as $p = m \dv*{x}{t}$, we can substitute into \refeq{momeq} to get a second-order equation in $x$ only:
 	\begin{equation}
-		m \dv[2]{x}{t} = m \omega^2 x \implies \pdv[2]{x}{t} = \omega^2 x
+		m \dv[2]{x}{t} = -m \omega^2 x \implies \pdv[2]{x}{t} = -\omega^2 x
 	\end{equation}
 	which has solutions
 	\begin{align}
-		x(t) &= A \cos(\omega t) + B \sin(\omega t), \\
-		p(t) &= m \omega B \cos(\omega t) - m \omega A \sin(\omega t) \label{momsol}
+		x(t) &= A \coswt + B \sinwt, \\
+		p(t) &= m \omega B \coswt - m \omega A \sinwt, \label{momsol}
 	\end{align}
-	where $A$ and $B$ are constants.  To find \refeq{momsol}, we have applied \refeq{poseq}.
+	where $A$ and $B$ are constants.  To find \refeq{momsol}, we have applied \refeq{poseq}.  The equations are identical in form to \refeq{heissol}.
 	
 	Applying the given initial conditions, we have
 	\begin{align}
@@ -721,21 +769,21 @@
 	\end{align}
 	which fixes $A$ and implies $B = 0$.  Thus
 	\begin{align} \label{motion}
-		x(t) &= b \cos(\omega t), &
-		p(t) &= -m \omega b \sin(\omega t).
+		x(t) &= b \coswt, &
+		p(t) &= -m \omega b \sinwt.
 	\end{align}
 \end{solution}
 
 \begin{problem}
 	Take the initial wave function to be
 	\begin{equation}
-		\braket{x}{\Psi(0)} = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega (x - b)^2}{2 \hbar}).
+		\braket{x}{\Psio} = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega (x - b)^2}{2 \hbar}).
 	\end{equation}
 	This is a displaced ground wave function for the oscillator.  Show that $\ev{X}{\Psio}$ and $\ev{P}{\Psio}$ agree with the classical results you found in the previous problem.
 \end{problem}
 
 \begin{solution}
-	Beginning with $\ev{X}{\Psio}$,
+	Firstly,
 	\begin{align}
 		\ev{X}{\Psio} &= \iint \braket{\Psio}{x} \mel{x}{X}{x'} \braket{x'}{\Psio} \dd{x} \dd{x'} \\
 		&= \sqrt{\frac{m \omega}{\pi \hbar}} \iint \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) x' \delta(x - x') \exp(-\frac{m \omega (x' - b)^2}{2 \hbar}) \dd{x} \dd{x'} \\
@@ -743,26 +791,130 @@
 	\end{align}
 	Making the change of variable
 	\begin{equation} \label{chvar}
-		u = \sqrt{\frac{m\omega}{h}} (x - b) \implies x = b + u \sqrt{\frac{h}{m\omega}} \implies \dd{x} = \sqrt{\frac{h}{m\omega}} \dd{u}, 
+		u = \sqrt{\frac{m\omega}{\hbar}} (x - b) \implies x = b + u \sqrt{\frac{\hbar}{m\omega}} \implies \dd{x} = \sqrt{\frac{\hbar}{m\omega}} \dd{u}, 
 	\end{equation}
 	\refeq{last} becomes
-	\begin{equation}
-		\ev{X}{\Psio} = \frac{1}{\sqrt{\pi}} \int \left(b + u \sqrt{\frac{h}{m\omega}} \right) e^{-u^2} \dd{u} = \frac{b}{\sqrt{\pi}} \int e^{-u^2} \dd{u} + \sqrt{\frac{\hbar}{m \pi \omega}} \int u e^{-u^2} \dd{u} = b.
+	\begin{equation} \label{expx}
+		\ev{X}{\Psio} = \frac{1}{\sqrt{\pi}} \int \left(b + u \sqrt{\frac{\hbar}{m\omega}} \right) e^{-u^2} \dd{u} = \frac{b}{\sqrt{\pi}} \int e^{-u^2} \dd{u} + \sqrt{\frac{\hbar}{m \pi \omega}} \int u e^{-u^2} \dd{u} = b.
 	\end{equation}
 	From the classical equation in \refeq{motion}, $x(0) = b$ as well.
 	
-	For $\ev{P}{\Psio}$,
+	Secondly,
 	\begin{align}
 		\ev{P}{\Psio} &= \iint \braket{\Psio}{x} \mel{x}{P}{x'} \braket{x'}{\Psio} \dd{x} \dd{x'} \\
-		&= \sqrt{\frac{m \omega}{\pi \hbar}} \iint \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \left( \ihb \delta(x - x') \pdv{}{x'} \exp(-\frac{m \omega (x' - b)^2}{2 \hbar}) \right) \dd{x} \dd{x'} \\
-		&= \ihb \sqrt{\frac{m \omega}{\pi \hbar}} \int \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \left(\pdv{}{x} \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \right) \dd{x} \\
-		&= -\ihb \frac{1}{\sqrt{pi}} \left( \frac{m \omega}{\hbar} \right)^{3/2} \int \exp(-\frac{m \omega (x - b)^2}{\hbar}) (x - b) \dd{x}. \label{lastp}
+		&= \ihb \sqrt{\frac{m \omega}{\pi \hbar}} \iint \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \delta(x - x') \pdv{}{x'} \exp(-\frac{m \omega (x' - b)^2}{2 \hbar}) \dd{x} \dd{x'} \\
+		&= \ihb \sqrt{\frac{m \omega}{\pi \hbar}} \int \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \pdv{}{x} \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \dd{x}. \label{lastp}
 	\end{align}
-	Again making the change of variable \refeq{chvar}, \refeq{lastp} becomes
-	\begin{equation}
-		\ev{P}{\Psio} = -\ihb \frac{1}{\sqrt{pi}} \frac{m \omega}{\hbar} \int u e^{-u^2} \dd{u} = 0.
+	Again making the change of variable \refeq{chvar}, note that $\pdv*{}{x} = \sqrt{m\omega / \hbar} \pdv*{}{u}$.  Making these substitutions in \refeq{lastp}, 
+	\begin{equation} \label{expp}
+		\ev{P}{\Psio} = i \frac{m \omega}{\sqrt{\pi}} \int e^{-u^2/2} \pdv{}{u} e^{-u^2/2} \dd{u} = -i \frac{m \omega}{\sqrt{\pi}} \int u e^{-u^2} \dd{u} = 0.
 	\end{equation}
-	From the classical equation in \refeq{motion}, $p(0) = 0$ as well.
+	From the classical equation in \refeq{motion}, $p(0) = 0$ as well.  So the results agree with the classical limit for both cases, as we wanted to show. \qed
 \end{solution}
 
+\begin{problem} \label{init}
+	Now consider uncertainties at $t = 0$.  Define
+	\begin{align}
+		\ev{\DX^2} &= \ev{X^2}{\Psio} - (\ev{X}{\Psio})^2, &
+		\ev{\DP^2} &= \ev{P^2}{\Psio} - (\ev{P}{\Psio})^2.
+	\end{align}
+	Calculate $\ev{\DX^2} \ev{\DP^2}$.
+\end{problem}
+
+\begin{solution}
+	Once again using the change of variable \refeq{chvar},
+	\begin{align}
+		\ev{X^2}{\Psio} &= \iint \braket{\Psio}{x} \mel{x}{X^2}{x'} \braket{x'}{\Psio} \dd{x} \dd{x'} \\
+		&= \sqrt{\frac{m \omega}{\pi \hbar}} \iint \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) {x'}^2 \delta(x - x') \exp(-\frac{m \omega (x' - b)^2}{2 \hbar}) \dd{x} \dd{x'} \\
+		&= \sqrt{\frac{m \omega}{\pi \hbar}} \int x^2 \exp(-\frac{m \omega (x - b)^2}{\hbar}) \dd{x} = \frac{1}{\sqrt{\pi}} \int \left(b + u \sqrt{\frac{\hbar}{m\omega}} \right)^2 e^{-u^2} \dd{u} \\
+		&= \frac{b^2}{\sqrt{\pi}} \int e^{-u^2} \dd{u} + \frac{2b}{\sqrt{\pi}} \sqrt{\frac{\hbar}{m\omega}} \int u e^{-u^2} \dd{u} + \frac{1}{\sqrt{\pi}} \frac{\hbar}{m\omega} \int u^2 e^{-u^2} \dd{u} \\
+		&= b^2 + \frac{\hbar}{2 m \omega}, \label{expx2}
+	\end{align}
+	and
+	\begin{align}
+		\ev{P^2}{\Psio} &= \iint \braket{\Psio}{x} \mel{x}{P^2}{x'} \braket{x'}{\Psio} \dd{x} \dd{x'} \\
+		&= -\hbar^2 \sqrt{\frac{m \omega}{\pi \hbar}} \iint \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \delta(x - x') \frac{\partial^2}{\partial {x'}^2} \exp(-\frac{m \omega (x' - b)^2}{2 \hbar}) \dd{x} \dd{x'} \\
+		&= -\hbar^2 \sqrt{\frac{m \omega}{\pi \hbar}} \int \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \frac{\partial^2}{\partial x^2} \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \dd{x} \\
+		&= -\frac{\hbar m \omega}{\sqrt{\pi}} \int e^{-u^2/2} \frac{\partial^2}{\partial u^2} e^{-u^2/2} \dd{u} = -\frac{\hbar m \omega}{\sqrt{\pi}} \int (u^2 - 1) e^{-u^2} \dd{u} \\
+		&= -\frac{\hbar m \omega}{\sqrt{\pi}} \left( \frac{\sqrt{\pi}}{2} - \sqrt{\pi} \right) = \frac{\hbar m \omega}{2} \label{expp2}
+	\end{align}.
+	Then, using the results from \refeq{expx} and \refeq{expp},
+	\begin{align}
+		\ev{\DX^2} &= b^2 + \frac{\hbar}{2 m \omega} - b^2 = \frac{\hbar}{2 m \omega}, &
+		\ev{\DP^2} &= \frac{\hbar m \omega}{2}, &
+		\ev{\DX^2} \ev{\DP^2} &= \frac{\hbar^2}{4}.
+	\end{align}
+\end{solution}
+
+\begin{problem}
+	Now consider
+	\begin{align} \label{givenpsit}
+		\evDXqt &= \ev{X^2}{\Psit} - (\ev{X}{\Psit})^2, &
+		\evDPqt &= \ev{P^2}{\Psit} - (\ev{P}{\Psit})^2.
+	\end{align}
+	Calculate $\evDXqt \evDPqt$.
+\end{problem}
+
+\begin{solution}
+	In the Heisenberg picture, \refeq{givenpsit} becomes
+	\begin{align}
+		\evDXqt &= \ev{\Xt^2}{\Psio} - (\ev{\Xt}{\Psio})^2, \\
+		\evDPqt &= \ev{\Pt^2}{\Psio} - (\ev{\Pt}{\Psio})^2,
+	\end{align}
+	Using the expressions for $\Xt$ and $\Pt$ in \refeq{heissol},
+	\begin{equation} \label{exX}
+		\ev{\Xt}{\Psio} = \ev{\left( X \coswt + \frac{P}{m \omega} \sinwt \right)}{\Psio} = \coswt \ev{X} + \frac{\sinwt}{m \omega} \ev{P} = b \coswt
+	\end{equation}
+	where we use the notation $\ev{X} = \ev{X}{\Psio}$ and so forth, as well as the results of \refeq{expx} and \refeq{expp}.  Continuing on,
+	\begin{align}
+		\ev{\Xt^2}{\Psio} &= \ev{\left( X \coswt + \frac{P}{m \omega} \sinwt \right)^2}{\Psio} \\
+		&= \cosqwt \ev{X^2} + \frac{\sinqwt}{m^2 \omega^2} \ev{P^2} + \frac{\coswt \sinwt}{m \omega} \ev{XP} + \frac{\coswt \sinwt}{m \omega} \ev{PX}.
+	\end{align}
+	Again using the change of variable \refeq{chvar}, note that
+	\begin{align}
+		\ev{XP}{\Psio} &= \iint \braket{\Psio}{x} \mel{x}{XP}{x'} \braket{x'}{\Psio} \dd{x} \dd{x'} \\
+		&= \ihb \sqrt{\frac{m \omega}{\pi \hbar}} \iint \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) x' \delta(x - x') \pdv{}{x'} \exp(-\frac{m \omega (x' - b)^2}{2 \hbar}) \dd{x} \dd{x'} \\
+		&= \ihb \sqrt{\frac{m \omega}{\pi \hbar}} \int \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) x \pdv{}{x} \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \dd{x} \\
+		&= i \frac{m \omega}{\sqrt{\pi}} \int e^{-u^2/2} \left(b + u \sqrt{\frac{\hbar}{m\omega}} \right) \pdv{}{u} e^{-u^2/2} \dd{u} = -i \frac{m \omega}{\sqrt{\pi}} \int u e^{-u^2} \left(b + u \sqrt{\frac{\hbar}{m\omega}} \right) \dd{u} \\
+		&= -ib \frac{m \omega}{\sqrt{\pi}} \int u e^{-u^2/2} \dd{u} - i \frac{m \omega}{\sqrt{\pi}} \sqrt{\frac{\hbar}{m\omega}} \int u^2 e^{-u^2} \dd{u} = -i \frac{m\omega}{2} \sqrt{\frac{\hbar}{m\omega}},
+	\end{align}
+	and
+	\begin{align}
+		\ev{PX}{\Psio} &= \iint \braket{\Psio}{x} \mel{x}{PX}{x'} \braket{x'}{\Psio} \dd{x} \dd{x'} \\
+		&= \ihb \sqrt{\frac{m \omega}{\pi \hbar}} \iint \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \delta(x - x') \pdv{}{x'} x' \exp(-\frac{m \omega (x' - b)^2}{2 \hbar}) \dd{x} \dd{x'} \\
+		&= \ihb \sqrt{\frac{m \omega}{\pi \hbar}} \int \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \left( \pdv{}{x} x \exp(-\frac{m \omega (x - b)^2}{2 \hbar}) \right) \dd{x} \\
+		&= i \frac{m \omega}{\sqrt{\pi}} \int e^{-u^2/2} \left[ \pdv{}{u} \left(b + u \sqrt{\frac{\hbar}{m\omega}} \right) e^{-u^2/2} \right] \dd{u} \\
+		&= ib \frac{m \omega}{\sqrt{\pi}} \int e^{-u^2/2} \pdv{}{u} e^{-u^2/2} \dd{u} + i \frac{m \omega}{\sqrt{\pi}} \sqrt{\frac{\hbar}{m\omega}} \int e^{-u^2/2} \left( \pdv{}{u} u e^{-u^2/2} \right) \dd{u} \\
+		&= -ib \frac{m \omega}{\sqrt{\pi}} \int u e^{-u^2} \dd{u} + i \frac{m \omega}{\sqrt{\pi}} \sqrt{\frac{\hbar}{m\omega}} \int (1 - u^2) e^{-u^2} \dd{u} = i \frac{m \omega}{\sqrt{\pi}} \sqrt{\frac{\hbar}{m\omega}} \left( \sqrt{\pi} - \frac{\sqrt{\pi}}{2} \right) \\
+		&= i \frac{m\omega}{2} \sqrt{\frac{\hbar}{m\omega}},
+	\end{align}
+	so $\ev{XP} + \ev{PX} = 0$ and
+	\begin{align}
+		\ev{\Xt^2}{\Psio} &= \cosqwt \ev{X^2} + \frac{\sinqwt}{m^2 \omega^2} \ev{P^2} = \cosqwt \left( b^2 + \frac{\hbar}{2 m \omega} \right) + \sinqwt \frac{\hbar}{2 m \omega} \\
+		&= b^2 \cosqwt + \frac{\hbar}{2 m \omega}, \label{exX2}
+	\end{align}
+	where we have substituted \refeq{expx2} and \refeq{expp2}.  Similarly,
+	\begin{align}
+		\ev{\Pt}{\Psio} &= \ev{\big( P \coswt - m \omega X \sinwt \big)}{\Psio} = \coswt \ev{P} - m \omega \sinwt \ev{X} \\
+		&= -b m \omega \sinwt, \label{exP}
+	\end{align}
+	and
+	\begin{align}
+		\ev{\Pt^2}{\Psio} &= \ev{\big( P \coswt - m \omega X \sinwt \big)^2}{\Psio} \\
+		&= \cosqwt \ev{P^2} + m^2 \omega^2 \sinqwt \ev{X^2} - m \omega \sinwt \coswt (\ev{PX} + \ev{XP}) \\
+		&= \frac{\hbar m \omega}{2} \cosqwt + m^2 \omega^2 \sinqwt \left( b^2 + \frac{\hbar}{2 m \omega} \right) = b^2 m^2 \omega^2 \sinqwt + \frac{\hbar m \omega}{2}. \label{exP2}
+	\end{align}
+	
+	Using \refeq{exX}, \refeq{exX2}, \refeq{exP}, and \refeq{exP2}
+	\begin{align}
+		\evDXqt &= b^2 \cosqwt + \frac{\hbar}{2 m \omega} - [b \coswt]^2 = \frac{\hbar}{2 m \omega}, \\
+		\evDPqt &= b^2 m^2 \omega^2 \sinqwt + \frac{\hbar m \omega}{2} - [-b m \omega \sinwt]^2 = \frac{\hbar m \omega}{2}.
+	\end{align}
+	Finally,
+	\begin{equation}
+		\evDXqt \evDPqt = \frac{\hbar}{4}
+	\end{equation}
+	which is unchanged from the initial state of the system considered in \ref{init}.
+
+\end{solution}
 \end{document}
