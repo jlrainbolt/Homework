@@ -106,7 +106,7 @@
 		\item $\ihb \partt \bkPhix \bkxPsi = \bkPhix \mel{x}{H}{\Psi(t)} - \mel{\Phi(t)}{H}{x} \bkxPsi$,
 		\item $\ihb \partt \bkPhix \bkxPsi = -\dfrac{\hbar^2}{2m} \left[ \bkPhix \partx^2 \bkxPsi - (\partx^2 \bkPhix) \bkxPsi \right]$,
 		\item $\bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi = \dfrac{\hbar}{i} \left[ \bkPhix \partx \bkxPsi - (\partx \bkPhix) \bkxPsi \right]$
-		\item $\dfrac{\hbar}{i} \partx \left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right] = \bkPhix \mel{x}{p^2}{\Psi(t)} - mel{\Phi(t)}{p^2}{x} \bkxPsi$
+		\item $\dfrac{\hbar}{i} \partx \left[ \bkPhix \mel{x}{p}{\Psi(t)} + \mel{\Phi(t)}{p}{x} \bkxPsi \right] = \bkPhix \mel{x}{p^2}{\Psi(t)} - \mel{\Phi(t)}{p^2}{x} \bkxPsi$
 	\end{enumerate}
 \end{problem}
 	
@@ -511,16 +511,16 @@
 	Now proceeding similarly for $\ev{P}{\Psi''}$,
 	\begin{align}
 		\bra{\Psi''}&{P}\ket{\Psi''} = \iint \braket{\Psi''}{x} \mel{x}{P}{x'} \braket{x'}{\Psi''} \dd{x} \dd{x'} \\
-		&= \iint \braket{\Psi}{x - a} e^{i \po (x - a) / \hbar} \left( \ihb \delta(x - x') \pdv{}{x'} e^{-i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \right) \dd{x} \dd{x'}, \\
-		&= \ihb \int \braket{\Psi}{x - a} e^{i \po (x - a) / \hbar} \left(\pdv{}{x} e^{-i \po (x - a) / \hbar} \braket{x - a}{\Psi} \right) \dd{x}, \\
-		&= \ihb \int \braket{\Psi}{x - a} e^{i \po (x - a) / \hbar} \left(\pdv{}{x} e^{-i \po (x - a) / \hbar} \right) \braket{x - a}{\Psi} \dd{x} + \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}, \\
-		&= -\ihb \frac{i \po}{\hbar} \int \braket{\Psi}{x - a} \braket{x - a}{\Psi} \dd{x} + \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}. \label{simplep}
+		&= -\iint \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left( \ihb \delta(x - x') \pdv{}{x'} e^{i \po (x' - a) / \hbar} \braket{x' - a}{\Psi} \right) \dd{x} \dd{x'}, \\
+		&= -\ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left(\pdv{}{x} e^{i \po (x - a) / \hbar} \braket{x - a}{\Psi} \right) \dd{x}, \\
+		&= -\ihb \int \braket{\Psi}{x - a} e^{-i \po (x - a) / \hbar} \left(\pdv{}{x} e^{i \po (x - a) / \hbar} \right) \braket{x - a}{\Psi} \dd{x} - \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}, \\
+		&= -\ihb \frac{i \po}{\hbar} \int \braket{\Psi}{x - a} \braket{x - a}{\Psi} \dd{x} - \ihb \int \braket{\Psi}{x - a} \left(\pdv{}{x} \braket{x - a}{\Psi} \right) \dd{x}. \label{simplep}
 	\end{align}
 	Again making the change of variable $x - a \mapsto x$, \refeq{simplep} becomes
 	\begin{equation}
 		\ev{P}{\Psi''} = -\ihb \int \braket{\Psi}{x} \left(\pdv{}{x} \braket{x}{\Psi} \right) \dd{x} + \po \int \braket{\Psi}{x} \braket{x}{\Psi} \dd{x} = \ev{P} + \po.
 	\end{equation}
-	In summary, we have found $\ev{X}{\Psi''} = \ev{X} + a$ and $\ev{P}{\Psi''} = \ev{P} + \po$.
+	In summary, we have found $\ev{X}{\Psi''} = \ev{X} + a$ and $\ev{P}{\Psi''} = \ev{P} - \po$.
 \end{solution}
 
 \newcommand{\Ho}{H_0}

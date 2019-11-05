@@ -24,7 +24,7 @@
 %\setlist[enumerate]{leftmargin=*}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{\textbf{Physics 341 Homework 2}}
+\lhead{\textbf{Physics 316 Homework 4}}
 \rhead{Lacey Rainbolt}
 \setlength{\headheight}{11pt}
 \setlength{\headsep}{11pt}
@@ -69,7 +69,6 @@
 \begin{document}
 
 \newcommand{\ko}{k_0}
-\newcommand{\Du}{\Delta u}
 \newcommand{\DS}{\Delta S}
 \newcommand{\dS}{\delta S}
 \newcommand{\eps}{\epsilon}
@@ -97,7 +96,7 @@
 \section{Elastically fastened ends} \label{1}
 
 \begin{problem}
-	Consider an ideal stretched string in two dimensions with length $\ell$, density per unit length $\rho$, and effective elastic modulus $k$.  Suppose its two ends are fastened \emph{elastically} by two springs with spring constant $\ko$ so that a nonzero deflection $u(x, t)$ of the end location from either $(0, 0)$ or $\ell, 0)$ is penalized by a linear restrictive force $-ku$.  Adapt the derivation in class for a stretched spring with two fixed ends to this situation.  What are the Euler-Lagrange equations and the associated boundary conditions?
+	Consider an ideal stretched string in two dimensions with length $\ell$, density per unit length $\rho$, and effective elastic modulus $k$.  Suppose its two ends are fastened \emph{elastically} by two springs with spring constant $\ko$ so that a nonzero deflection $u(x, t)$ of the end location from either $(0, 0)$ or $\ell, 0)$ is penalized by a linear restrictive force $-ku$.  Adapt the derivation in class for a stretched spring with two fixed ends to this situation.  What is the Euler-Lagrange equation and the associated boundary conditions?
 \end{problem}
 
 \begin{solution}
@@ -107,56 +106,60 @@
 \end{equation}
 	where we have integrated over the length of the string to obtain $T$.
 	
-	For the potential energy, let $\Uq$ be the work required to stretch the string, and $\Uw$ the work to compress and decompress the springs.  (The addition of $\Uw$ is what differs from the derivation in class.).  For $\Uq$, consider an infinitesimal length of string $\dd{x}$.  If this length is stretched by some amount $\Du$ to a total length
+	For the potential energy, let $\Uq$ be the work required to stretch the string, and let $\Uw$ be the work to stretch and compress the springs.  For $\Uq$, consider an infinitesimal length of string $\dd{x}$.  If this length is stretched by some amount $\dd{\ell}$ to a total length
 	\begin{equation}
-		\dd{x} + \Du = \sqrt{(\dd{x})^2 + (\dd{u})^2},
+		\dd{x} + \dd{\ell} = \sqrt{(\dd{x})^2 + (\dd{u})^2},
 	\end{equation}
-	it has potential energy $\dd{\Uq} = k \,\Du$.  Performing a Taylor series expansion for a small $\Du$ and integrating to obtain $\Uq$,
+	it has potential energy $\dd{\Uq} = k \,\dd{\ell}$.  The limit $\dd{x} \to \infty$ respresents the entire length of string, $\ell$, so we may perform a Taylor series expansion about $\infty$ to first order in $\dd{x}$:
 	\begin{equation} \label{U1}
-		\dd{\Uq} = k \,\Du = k (\sqrt{(\dd{x})^2 + (\dd{u})^2} - \dd{x}) \approx \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{x} \implies \Uq = \frac{k}{2} \intx \dudxw \dd{x}.
+		\dd{\Uq} = k \,\dd{\ell} = k (\sqrt{(\dd{x})^2 + (\dd{u})^2} - \dd{x}) \approx \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{x} \implies \Uq = \frac{k}{2} \intx \dudxw \dd{x},
 	\end{equation}
-	This approximation is sufficient because we consider only small oscillations.  For $\Uw$, the potential energy in the two springs is given by
+	where we have integrated to obtain $\Uq$.  For $\Uw$, the potential energy in the two springs is given by
 	\begin{equation} \label{U2}
 		\Uw = \frac{\ko}{2} \uo^2 + \frac{\ko}{2} \uel^2,
 	\end{equation}
-	where $\uo = \uo(t) = u(0, t)$ and $\uel = \uel(t) = u(\ell, t)$.  The total potential energy $U = \Uq + \Uw$.
+	where $\uo = \uo(t) = u(0, t)$ and $\uel = \uel(t) = u(\ell, t)$.  The total potential energy $U = \Uq + \Uw$.  (The addition of $\Uw$ is what differs from the derivation in class.)
 	
-	Using \refeq{T}, \refeq{U1}, and \refeq{U2}, we can write an expression for the action of the string:
-	\begin{align} \label{action}
-		S[u] &= \intt (T - U) \dd{t} = \intt \left[ \frac{\rho}{2} \intx \dudtw \dd{x} - \frac{k}{2} \intx \dudxw \dd{x} - \frac{\ko}{2} \uo^2 - \frac{\ko}{2} \uel^2 \right] \dd{t} \\
-		&= \frac{\rho}{2} \intt \intx \dudtw \dd{x} \dd{t} - \frac{k}{2} \intt \intx \dudxw \dd{x} \dd{t} - \frac{\ko}{2} \intt \left( \uel^2 + \uo^2 \right) \dd{t} \\
-		&= \intt \intx \Ld \dd{x} \dd{t},
-	\end{align}
-	where $\Ld$ is the Lagrangian density.  Consider some variation of the action $\DS = S[u + \eps \psi] - S[u]$, where $\psi = \psi(x, t)$ is a function representing a variation and $\eps \ll 1$.  The principle component of $\DS$, $\dS$, is given by
-	\begin{equation}
-		\frac{\dS}{\eps} = \intt \intx \left( \pdv{\Ld}{u} - \pdv{}{t} \pdv{\Ld}{\ut} - \pdv{}{x} \pdv{\Ld}{\ux} \right) \psi \dd{x} \dd{t} + \intt \intx \left[ \pdv{}{t} \left( \pdv{\Ld}{\ut} \psi \right) + \pdv{}{x} \left( \pdv{\Ld}{\ux} \psi \right) \right] \dd{x} \dd{t},
+	Using \refeq{T}, \refeq{U1}, and \refeq{U2}, we can write an expression for the Lagrangian density $\Ld$:
+	\begin{equation} \label{ld1}
+		\Ld = T - U = \frac{\rho}{2} \intx \dudtw \dd{x} - \frac{k}{2} \intx \dudxw \dd{x} - \frac{\ko}{2} \uo^2 - \frac{\ko}{2} \uel^2.
 	\end{equation}
-	where $\ut = \pdv*{u}{t}$ and $\ux = \pdv*{u}{x}$.  Note that
-	\begin{align}
+	The general expression for the Euler-Lagrange equation in the generalized coordinates $t$ and $x$ is
+	\begin{equation} \label{el1}
+		0 = \pdv{\Ld}{u} - \pdv{t} \pdv{\Ld}{\ut} - \pdv{x} \pdv{\Ld}{\ux}.
+	\end{equation}
+	From \refeq{ld1},
+	\begin{align} \label{devs}
+		\pdv{\Ld}{u} &= 0, &
 		\pdv{\Ld}{\ut} &= \rho \pdv{u}{t}, &
-		\pdv{\Ld}{\ux} &= -k \pdv{u}{x},
+		\pdv{\Ld}{\ux} &= \rho \pdv{u}{x},
 	\end{align}
-	so
+	so \refeq{el1} becomes
+	\begin{equation} \label{el}
+		\pdv[2]{u}{t} = \frac{k}{\rho} \pdv[2]{u}{x}
+	\end{equation}
+	(This is the same as we derived in class.)
+	
+	In order to evaluate the boundary conditions, we must invoke Hamilton's principle.  The action of the string is
+	\begin{align} \label{action}
+		S[u] &= \intt \intx \Ld \dd{x} \dd{t} = \intt \left[ \frac{\rho}{2} \intx \dudtw \dd{x} - \frac{k}{2} \intx \dudxw \dd{x} - \frac{\ko}{2} \uo^2 - \frac{\ko}{2} \uel^2 \right] \dd{t} \\
+		&= \frac{\rho}{2} \intt \intx \dudtw \dd{x} \dd{t} - \frac{k}{2} \intt \intx \dudxw \dd{x} \dd{t} - \frac{\ko}{2} \intt \left( \uel^2 + \uo^2 \right) \dd{t}.
+	\end{align}
+	Consider some variation of the action $\DS = S[u + \eps \psi] - S[u]$, where $\psi = \psi(x, t)$ is a function representing a variation and $\eps \ll 1$.  The principle component of $\DS$, $\dS$, is given by
+	\begin{equation}
+		\dS = \eps \intt \intx \left( \pdv{\Ld}{u} - \pdv{}{t} \pdv{\Ld}{\ut} - \pdv{}{x} \pdv{\Ld}{\ux} \right) \psi \dd{x} \dd{t} + \eps \intt \intx \left[ \pdv{}{t} \left( \pdv{\Ld}{\ut} \psi \right) + \pdv{}{x} \left( \pdv{\Ld}{\ux} \psi \right) \right] \dd{x} \dd{t},
+	\end{equation}
+	where $\ut = \pdv*{u}{t}$ and $\ux = \pdv*{u}{x}$.  Once again invoking \refeq{devs},
 	\begin{align} \label{dS}
 		\frac{\dS}{\eps} = \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x} \dd{t} + \rho \intt \intx \pdv{}{t} \left( \pdv{u}{t} \psi \right) \dd{x} \dd{t} - k \intt &\intx \pdv{}{x} \left( \pdv{u}{x} \psi \right) \dd{x} \dd{t} \notag \\
 		& - \ko \intt (\uel \psil + \uo \psio) \dd{t} ,
 	\end{align}
-	where $\psio = \psio(t) = \psi(0, t)$ and $\psil = \psil(t) = \psi(\ell, t)$.  We stipulate that $\psi(x, \tto) = \psi(x, \tq) = 0$ for $x \in [0, \ell]$ and that $\psi(0, t) = \psi(\ell, t) = 0$ for $t \in [\tto, \tq]$.  Then \refeq{dS} becomes
+	where $\psio = \psio(t) = \psi(0, t)$ and $\psil = \psil(t) = \psi(\ell, t)$.  We stipulate that $\psi(x, \tto) = \psi(x, \tq) = 0$ for $x \in [0, \ell]$, and that \refeq{el} is satisfied.  Then \refeq{dS} becomes
 	\begin{align}
 		\frac{\dS}{\eps} &= \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x} \dd{t} + k \intt \left( \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) \dd{t} - \ko \intt (\uel \psil + \uo \psio) \dd{t} \label{psit} \\
-		&= \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x}
+		&= k \intt \left( \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) \dd{t} - \ko \intt (\uel \psil + \uo \psio) \dd{t}.
 	\end{align}
-	By the principle of least action, $\dS = 0$ for the actual solution $u(x, t)$:
-	\begin{equation} \label{el}
-		0 = \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x} \implies \pdv[2]{u}{t} = \frac{k}{\rho} \pdv[2]{u}{x}
-	\end{equation}
-	for $x \in (0, \ell)$ and for $t \in (-\infty, \infty)$, since the time interval $[\tto, \tq]$ was arbitrary.  \refeq{el} is the Euler-Lagrange equation for the system.  (This is the same as we derived in class.)
-	
-	In order to evaluate the boundary conditions, we remove the stipulation $\psi(0, t) = \psi(\ell, t) = 0$ for $t \in [\tto, \tq]$.  Under the condition that \label{EL} is satisfied, \refeq{psit} reduces to
-	\begin{equation}
-		\frac{\dS}{\eps} = k \intt \left( \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) \dd{t} - \ko \intt (\uel \psil + \uo \psio) \dd{t},
-	\end{equation}
-	and once again invoking the principle of least action,
+	By Hamilton's principle, $\dS = 0$ for the solution $u(x, t)$.  Then
 	\begin{equation} \label{bc}
 		\dS = 0 \implies k \left(\psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) = \ko (\uel \psil + \uo \psio) = 0.
 	\end{equation}
@@ -169,6 +172,7 @@
 \end{solution}
 
 
+\clearpage
 \section{}
 
 \begin{problem}
@@ -200,21 +204,21 @@
 \section{Stretched membrane}
 
 \begin{problem}
-	Consider the transverse motion of a stretched membrane.  Assume the membrane is homogeneous, with density per unit area $\rho$, and let $u(x, y)$ denote the displacement from the stable equilibrium position.  For simplicity you may assume the boundary of the membrane is fixed.  Adapt the derivation for a stretched string to a membrane and find the Euler-Lagrange equations.
+	Consider the transverse motion of a stretched membrane.  Assume the membrane is homogeneous, with density per unit area $\rho$, and let $u(x, y)$ denote the displacement from the stable equilibrium position.  For simplicity you may assume the boundary of the membrane is fixed.  Adapt the derivation for a stretched string to a membrane and find the Euler-Lagrange equation.
 \end{problem}
 
 \begin{solution}
 	Let the membrane cover a square in the $(x, y)$ plane with corners at $(0, 0),\ (0, \ell),\ (\ell, 0)$, and $(\ell, \ell)$.  Assume the boundary around the edge of the square is fixed.  Let $k$ be the effective elastic modulus of the membrane.
 	
-	Analogous to problem~\ref{1}, let $\dd{x} \dd{y}$ denote an infinitesimal area of the membrane with mass.  Then we can find the kinetic energy as in \refeq{T}:
+	Analogous to problem~\ref{1}, let $\dd{x} \dd{y}$ denote an infinitesimal area of the membrane with mass $\dd{m}$.  Then we can find the kinetic energy as in \refeq{T}:
 	\begin{equation} \label{T2}
 		\dd{T} = \frac{\rho}{2} \dudtw \dd{x} \dd{y} \implies T = \frac{\rho}{2} \intx \inty \dudtw \dd{x} \dd{y}.
 	\end{equation}
-	Because we are assuming a fixed boundary, we will only have one potential energy term, which is the work required to stretch the membrane.  In two dimensions, \refeq{U1} becomes
+	Because we are assuming a fixed boundary, we only have one potential energy term, which is the work required to stretch the membrane.  In two dimensions, \refeq{U1} becomes
 	\begin{equation}
-		\dd{\Uq} = k \,\Du = k (\sqrt{(\dd{x})^2 + (\dd{y})^2 + (\dd{u})^2} - \sqrt{(\dd{x})^2 + (\dd{y})^2} \approx \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{x} + \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{y}.
+		\dd{\Uq} = k \,\dd{\ell} = k (\sqrt{(\dd{x})^2 + (\dd{y})^2 + (\dd{u})^2} - \sqrt{(\dd{x})^2 + (\dd{y})^2} \approx \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{x} + \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{y},
 	\end{equation}
-	Note that the cross terms in the expansion are all zero.  Then
+	where we note that the cross terms in the two-dimensional Taylor series expansion have vanished.  Then
 	\begin{equation} \label{U3}
 		\Uq = \frac{k}{2} \intx \dudxw \dd{x} + \frac{k}{2} \int \dudyw \dd{y}.
 	\end{equation}
@@ -238,7 +242,49 @@
 		\rho \pdv[2]{u}{t} = k \left( \pdv[2]{u}{x} + \pdv[2]{u}{y} \right).
 	\end{equation}
 \end{solution}
-	
+
+
+\newcommand{\pio}{\pi_0}
+\newcommand{\intR}{\int_R}
+\newcommand{\phid}{\dot{\phi}}
+\newcommand{\phidd}{\ddot{\phi}}
+\newcommand{\phix}{\phi_x}
+\newcommand{\phiy}{\phi_y}
+\newcommand{\phiz}{\phi_z}
+
+\section{$\pio$ mesons}
+
+\begin{problem}
+	A model for uncharged particles of mass $M$ and spin 0 involves a scalar field $\phi(t, x, y, z)$ with kinetic and potential energy
+	\begin{align}
+		T&= \intR \frac{\phid^2}{2} \dd{x} \dd{y} \dd{z}, &
+		U &= \intR \left( \frac{\phix^2 + \phiy^2 + \phiz^2}{2} + \frac{M^2 \phi^2}{2} \right) \dd{x} \dd{y} \dd{z},
+	\end{align}
+	satisfying Hamilton's principle.  The region $R$ is simply connected and $u$ has fixed values and the boundaries of $R$.  What is the associated Euler-Lagrange equation?
+\end{problem}
+
+\begin{solution}
+	The Lagrangian density is
+	\begin{equation} \label{Lpi}
+		\Ld = T - U = \frac{1}{2} \intR \left( \phid^2 - \phix^2 - \phiy^2 - \phiz^2 - M^2 \phi^2 \right) \dd{x} \dd{y} \dd{z}
+	\end{equation}
+	and the Euler-Lagrange equation is given by
+	\begin{equation}
+		0 = \pdv{\Ld}{\phi} - \pdv{}{t} \pdv{\Ld}{\phid} - \pdv{}{x} \pdv{\Ld}{\phix} - \pdv{}{y} \pdv{\Ld}{\phiy} - \pdv{}{z} \pdv{\Ld}{\phiz},
+	\end{equation}
+	where
+	\begin{align}
+		\pdv{\Ld}{\phi} &= -M^2 \phi, &
+		\pdv{\Ld}{\phid} &= \phid, &
+		\pdv{\Ld}{\phix} &= -\phix, &
+		\pdv{\Ld}{\phiy} &= -\phiy, &
+		\pdv{\Ld}{\phiz} &= -\phiz.
+	\end{align}
+	Then \refeq{Lpi} becomes
+	\begin{align}
+		\phidd + M^2 \phi &= \pdv[2]{\phi}{x} + \pdv[2]{\phi}{y} + \pdv[2]{\phi}{z}.
+	\end{align}
+\end{solution}
 
 
 In writing these solutions, I consulted Gelfand's \emph{Calculus of Variations}.
