@@ -1,0 +1,176 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage{physics, amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+%\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 341 Homework 2}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+%    \subsection{}
+    \color{darkgray}
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+%    \bigskip
+}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+
+
+\begin{document}
+
+\newcommand{\ko}{k_0}
+\newcommand{\Dx}{\Delta x}
+\newcommand{\DS}{\Delta S}
+\newcommand{\dS}{\delta S}
+\newcommand{\eps}{\epsilon}
+
+\newcommand{\dudtw}{\bigg( \pdv{u}{t} \bigg)^2}
+\newcommand{\dudxw}{\bigg( \pdv{u}{x} \bigg)^2}
+
+\newcommand{\uo}{u_0}
+\newcommand{\uel}{u_\ell}
+\newcommand{\tto}{t_0}
+\newcommand{\tq}{t_1}
+\newcommand{\psio}{\psi_0}
+\newcommand{\psil}{\psi_\ell}
+
+\newcommand{\intt}{\int_{\tto}^{\tq}}
+\newcommand{\intx}{\int_0^\ell}
+\newcommand{\ut}{u_t}
+\newcommand{\ux}{u_x}
+
+\newcommand{\Uq}{U_1}
+\newcommand{\Uw}{U_2}
+
+\newcommand{\Ld}{\mathcal{L}}
+
+\section{Elastically fastened ends}
+
+\begin{problem}
+	Consider an ideal stretched string in two dimensions with length $\ell$, density per unit length $\rho$, and effective elastic modulus $k$.  Suppose its two ends are fastened \emph{elastically} by two springs with spring constant $\ko$ so that a nonzero deflection $u(x, t)$ of the end location from either $(0, 0)$ or $\ell, 0)$ is penalized by a linear restrictive force $-ku$.  Adapt the derivation in class for a stretched spring with two fixed ends to this situation.  What are the Euler-Lagrange equations and the associated boundary conditions?
+\end{problem}
+
+\begin{solution}
+	We will begin with the expression for the kinetic energy $T$ of the string.  Let $\dd{x}$ denote an infinitesimal length of string.  Its mass $\dd{m} = \rho \dd{x}$, so its kinetic energy $\dd{T}$ is
+\begin{equation} \label{T}
+	\dd{T} = \frac{\rho}{2} \dudtw \dd{x} \implies T = \frac{\rho}{2} \intx \dudtw \dd{x},
+\end{equation}
+	where we have integrated over the length of the string to obtain $T$.
+	
+	For the potential energy, let $\Uq$ be the work required to stretch the string, and $\Uw$ the work to compress and decompress the springs.  (The addition of $\Uw$ is what differs from the derivation in class.).  For $\Uq$, consider an infinitesimal length of string $\dd{x}$.  If this length is stretched by some amount $\Dx$ to a total length
+	\begin{equation}
+		\dd{x} + \Dx = \sqrt{(\dd{x})^2 + (\dd{u})^2},
+	\end{equation}
+	it has potential energy $\dd{\Uq} = k \,\Dx$.  Performing a Taylor series expansion for a small $\Dx$ and integrating to obtain $\Uq$,
+	\begin{equation} \label{U1}
+		\dd{\Uq} = k \,\Dx = k (\sqrt{(\dd{x})^2 + (\dd{u})^2} - \dd{x}) \approx \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{x} \implies \Uq = \frac{k}{2} \intx \dudxw \dd{x}.
+	\end{equation}
+	This approximation is sufficient because we consider only small oscillations.  For $\Uw$, the potential energy in the two springs is given by
+	\begin{equation} \label{U2}
+		\Uw = \frac{k}{2} \uo^2 + \frac{k}{2} \uel^2,
+	\end{equation}
+	where $\uo = \uo(t) = u(0, t)$ and $\uel = \uel(t) = u(\ell, t)$.  The total potential energy $U = \Uq + \Uw$.
+	
+	Using \refeq{T}, \refeq{U1}, and \refeq{U2}, we can write an expression for the action of the string:
+	\begin{align} \label{action}
+		S[u] &= \intt (T - U) \dd{t} = \intt \left[ \frac{\rho}{2} \intx \dudtw \dd{x} - \frac{k}{2} \intx \dudxw \dd{x} - \frac{k}{2} \uo^2 - \frac{k}{2} \uel^2 \right] \dd{t} \\
+		&= \frac{\rho}{2} \intt \intx \dudtw \dd{x} \dd{t} - \frac{k}{2} \intt \intx \dudxw \dd{x} \dd{t} - \frac{k}{2} \intt \left( \uel^2 + \uo^2 \right) \dd{t} \\
+		&= \intt \intx \Ld \dd{x} \dd{t},
+	\end{align}
+	where $\Ld$ is the Lagrangian density.  Consider some variation of the action $\DS = S[u + \eps \psi] - S[u]$, where $\psi = \psi(x, t)$ is a function representing a variation and $\eps \ll 1$.  The principle component of $\DS$, $\dS$, is given by
+	\begin{equation}
+		\frac{\dS}{\eps} = \intt \intx \left( \pdv{\Ld}{u} - \pdv{}{t} \pdv{\Ld}{\ut} - \pdv{}{x} \pdv{\Ld}{\ux} \right) \psi \dd{x} \dd{t} + \intt \intx \left[ \pdv{}{t} \left( \pdv{\Ld}{\ut} \psi \right) + \pdv{}{x} \left( \pdv{\Ld}{\ux} \psi \right) \right] \dd{x} \dd{t},
+	\end{equation}
+	where $\ut = \pdv*{u}{t}$ and $\ux = \pdv*{u}{x}$.  Note that
+	\begin{align}
+		\pdv{\Ld}{\ut} &= \rho \pdv{u}{t}, &
+		\pdv{\Ld}{\ux} &= -k \pdv{u}{x},
+	\end{align}
+	so
+	\begin{align} \label{dS}
+		\frac{\dS}{\eps} = \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi &\dd{x} \dd{t} - k \intt (\uel \psil + \uo \psio) \dd{t} \notag \\
+		& + \rho \intt \intx \pdv{}{t} \left( \pdv{u}{t} \psi \right) \dd{x} \dd{t} - k \intt \intx \pdv{}{x} \left( \pdv{u}{x} \psi \right) \dd{x} \dd{t},
+	\end{align}
+	where $\psio = \psio(t) = \psi(0, t)$ and $\psil = \psil(t) = \psi(\ell, t)$.  We stipulate that $\psi(x, \tto) = \psi(x, \tq) = 0$ for $x \in [0, \ell]$ and that $\psi(0, t) = \psi(\ell, t) = 0$ for $t \in [\tto, \tq]$.  Then \refeq{dS} becomes
+	\begin{align}
+		\frac{\dS}{\eps} &= \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x} \dd{t} - k \intt (\uel \psil + \uo \psio) \dd{t} + k \intt \left( \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) \dd{t} \label{psit} \\
+		&= \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x}
+	\end{align}
+	By the principle of least action, $\dS = 0$ for the actual solution $u(x, t)$:
+	\begin{equation} \label{EL}
+		0 = \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x} \implies \pdv[2]{u}{t} = \frac{k}{\rho} \pdv[2]{u}{x}
+	\end{equation}
+	for $x \in (0, \ell)$ and for $t \in (-\infty, \infty)$, since the time interval $[\tto, \tq]$ was arbitrary.  \refeq{EL} is the Euler-Lagrange equation for the system.  (This is the same as we derived in class.)
+	
+	In order to evaluate the boundary conditions, we remove the stipulation $\psi(0, t) = \psi(\ell, t) = 0$ for $t \in [\tto, \tq]$.  Under the condition that \label{EL} is satisfied, \refeq{psit} reduces to
+	\begin{equation}
+		\frac{\dS}{\eps} = - k \intt (\uel \psil + \uo \psio) \dd{t} + k \intt \left( \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) \dd{t},
+	\end{equation}
+	and once again invoking the principle of least action,
+	\begin{equation} \label{bc}
+		\dS = 0 \implies \uel \psil + \uo \psio = \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} = 0.
+	\end{equation}
+	Rearranging the result of \refeq{bc}, we find
+	\begin{align}
+		0 &= u(0, t) - \left. \pdv{u}{x} \right|_{x=0}, &
+		0 &= u(\ell, t) + \left. \pdv{u}{x} \right|_{x=\ell}
+	\end{align}
+	as the boundary conditions for \refeq{EL}.
+	
+\end{solution}
+	
+
+
+%In writing these solutions, I consulted Gelfand's \emph{Calculus of Variations}.
+
+\end{document}
