@@ -94,7 +94,7 @@
 
 \newcommand{\Ld}{\mathcal{L}}
 
-\section{Elastically fastened ends}
+\section{Elastically fastened ends} \label{1}
 
 \begin{problem}
 	Consider an ideal stretched string in two dimensions with length $\ell$, density per unit length $\rho$, and effective elastic modulus $k$.  Suppose its two ends are fastened \emph{elastically} by two springs with spring constant $\ko$ so that a nonzero deflection $u(x, t)$ of the end location from either $(0, 0)$ or $\ell, 0)$ is penalized by a linear restrictive force $-ku$.  Adapt the derivation in class for a stretched spring with two fixed ends to this situation.  What are the Euler-Lagrange equations and the associated boundary conditions?
@@ -117,14 +117,14 @@
 	\end{equation}
 	This approximation is sufficient because we consider only small oscillations.  For $\Uw$, the potential energy in the two springs is given by
 	\begin{equation} \label{U2}
-		\Uw = \frac{k}{2} \uo^2 + \frac{k}{2} \uel^2,
+		\Uw = \frac{\ko}{2} \uo^2 + \frac{\ko}{2} \uel^2,
 	\end{equation}
 	where $\uo = \uo(t) = u(0, t)$ and $\uel = \uel(t) = u(\ell, t)$.  The total potential energy $U = \Uq + \Uw$.
 	
 	Using \refeq{T}, \refeq{U1}, and \refeq{U2}, we can write an expression for the action of the string:
 	\begin{align} \label{action}
-		S[u] &= \intt (T - U) \dd{t} = \intt \left[ \frac{\rho}{2} \intx \dudtw \dd{x} - \frac{k}{2} \intx \dudxw \dd{x} - \frac{k}{2} \uo^2 - \frac{k}{2} \uel^2 \right] \dd{t} \\
-		&= \frac{\rho}{2} \intt \intx \dudtw \dd{x} \dd{t} - \frac{k}{2} \intt \intx \dudxw \dd{x} \dd{t} - \frac{k}{2} \intt \left( \uel^2 + \uo^2 \right) \dd{t} \\
+		S[u] &= \intt (T - U) \dd{t} = \intt \left[ \frac{\rho}{2} \intx \dudtw \dd{x} - \frac{k}{2} \intx \dudxw \dd{x} - \frac{\ko}{2} \uo^2 - \frac{\ko}{2} \uel^2 \right] \dd{t} \\
+		&= \frac{\rho}{2} \intt \intx \dudtw \dd{x} \dd{t} - \frac{k}{2} \intt \intx \dudxw \dd{x} \dd{t} - \frac{\ko}{2} \intt \left( \uel^2 + \uo^2 \right) \dd{t} \\
 		&= \intt \intx \Ld \dd{x} \dd{t},
 	\end{align}
 	where $\Ld$ is the Lagrangian density.  Consider some variation of the action $\DS = S[u + \eps \psi] - S[u]$, where $\psi = \psi(x, t)$ is a function representing a variation and $\eps \ll 1$.  The principle component of $\DS$, $\dS$, is given by
@@ -138,35 +138,57 @@
 	\end{align}
 	so
 	\begin{align} \label{dS}
-		\frac{\dS}{\eps} = \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi &\dd{x} \dd{t} - k \intt (\uel \psil + \uo \psio) \dd{t} \notag \\
-		& + \rho \intt \intx \pdv{}{t} \left( \pdv{u}{t} \psi \right) \dd{x} \dd{t} - k \intt \intx \pdv{}{x} \left( \pdv{u}{x} \psi \right) \dd{x} \dd{t},
+		\frac{\dS}{\eps} = \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x} \dd{t} + \rho \intt \intx \pdv{}{t} \left( \pdv{u}{t} \psi \right) \dd{x} \dd{t} - k \intt &\intx \pdv{}{x} \left( \pdv{u}{x} \psi \right) \dd{x} \dd{t} \notag \\
+		& - \ko \intt (\uel \psil + \uo \psio) \dd{t} ,
 	\end{align}
 	where $\psio = \psio(t) = \psi(0, t)$ and $\psil = \psil(t) = \psi(\ell, t)$.  We stipulate that $\psi(x, \tto) = \psi(x, \tq) = 0$ for $x \in [0, \ell]$ and that $\psi(0, t) = \psi(\ell, t) = 0$ for $t \in [\tto, \tq]$.  Then \refeq{dS} becomes
 	\begin{align}
-		\frac{\dS}{\eps} &= \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x} \dd{t} - k \intt (\uel \psil + \uo \psio) \dd{t} + k \intt \left( \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) \dd{t} \label{psit} \\
+		\frac{\dS}{\eps} &= \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x} \dd{t} + k \intt \left( \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) \dd{t} - \ko \intt (\uel \psil + \uo \psio) \dd{t} \label{psit} \\
 		&= \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x}
 	\end{align}
 	By the principle of least action, $\dS = 0$ for the actual solution $u(x, t)$:
-	\begin{equation} \label{EL}
+	\begin{equation} \label{el}
 		0 = \intt \intx \left( k \pdv[2]{u}{x} - \rho \pdv[2]{u}{t} \right) \psi \dd{x} \implies \pdv[2]{u}{t} = \frac{k}{\rho} \pdv[2]{u}{x}
 	\end{equation}
-	for $x \in (0, \ell)$ and for $t \in (-\infty, \infty)$, since the time interval $[\tto, \tq]$ was arbitrary.  \refeq{EL} is the Euler-Lagrange equation for the system.  (This is the same as we derived in class.)
+	for $x \in (0, \ell)$ and for $t \in (-\infty, \infty)$, since the time interval $[\tto, \tq]$ was arbitrary.  \refeq{el} is the Euler-Lagrange equation for the system.  (This is the same as we derived in class.)
 	
 	In order to evaluate the boundary conditions, we remove the stipulation $\psi(0, t) = \psi(\ell, t) = 0$ for $t \in [\tto, \tq]$.  Under the condition that \label{EL} is satisfied, \refeq{psit} reduces to
 	\begin{equation}
-		\frac{\dS}{\eps} = - k \intt (\uel \psil + \uo \psio) \dd{t} + k \intt \left( \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) \dd{t},
+		\frac{\dS}{\eps} = k \intt \left( \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) \dd{t} - \ko \intt (\uel \psil + \uo \psio) \dd{t},
 	\end{equation}
 	and once again invoking the principle of least action,
 	\begin{equation} \label{bc}
-		\dS = 0 \implies \uel \psil + \uo \psio = \psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} = 0.
+		\dS = 0 \implies k \left(\psio \left. \pdv{u}{x} \right|_{x=0} - \psil \left. \pdv{u}{x} \right|_{x=\ell} \right) = \ko (\uel \psil + \uo \psio) = 0.
 	\end{equation}
 	Rearranging the result of \refeq{bc}, we find
-	\begin{align}
-		0 &= u(0, t) - \left. \pdv{u}{x} \right|_{x=0}, &
-		0 &= u(\ell, t) + \left. \pdv{u}{x} \right|_{x=\ell}
+	\begin{align} \label{bcs}
+		0 &= \frac{\ko}{k} u(0, t) - \left. \pdv{u}{x} \right|_{x=0}, &
+		0 &= \frac{\ko}{k} u(\ell, t) + \left. \pdv{u}{x} \right|_{x=\ell}
 	\end{align}
-	as the boundary conditions for \refeq{EL}.
+	as the boundary conditions for \refeq{el}.
+\end{solution}
+
+
+\section{}
+
+\begin{problem}
+	Check that the boundary conditions you derived in problem~\ref{1} are reasonable by considering two limiting scenarios: $\ko / k \to 0$ and $\ko / k \to \infty$.  Show that the boundary conditions simplify to the forms one would expect based on physical intuition.
+\end{problem}
+
+\begin{solution}
+	For the case $\ko / k \to \infty$, $k / \ko \to 0$ and the boundary conditions in \label{bcs} reduce to
+	\begin{align}
+		0 &= u(0, t), &
+		0 &= u(\ell, t).
+	\end{align}
+	These are the boundary conditions for a string with fixed endpoints, as we discussed in class.  In the limit $\ko / k \to \infty$, infinite force is required to deflect the ends of the string.  Hence, the ends are effectively fixed.  The vibrations of the string are standing waves in the $(x, u)$ plane, with the ends as nodes.
 	
+	For the case $\ko / k \to 0$, the boundary conditions in \label{bcs} reduce to
+	\begin{align}
+		0 &= \left. \pdv{u}{x} \right|_{x=0}, &
+		0 &= \left. \pdv{u}{x} \right|_{x=\ell}.
+	\end{align}
+	In the limit $\ko / k \to 0$, the force that penalizes displacements at the ends of the string disappears.  Physically, this means the ends of the string are allowed to slide up and down freely.  In this situation, the vibrations in $(x, u)$ are standing waves with the ends as antinodes.  An antinode is a local maximum or minimum of a wave, so the slope of the wave at such a point must be zero, as represented in the boundary conditions.
 \end{solution}
 	
 
