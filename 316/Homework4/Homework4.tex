@@ -69,7 +69,7 @@
 \begin{document}
 
 \newcommand{\ko}{k_0}
-\newcommand{\Dx}{\Delta x}
+\newcommand{\Du}{\Delta u}
 \newcommand{\DS}{\Delta S}
 \newcommand{\dS}{\delta S}
 \newcommand{\eps}{\epsilon}
@@ -107,13 +107,13 @@
 \end{equation}
 	where we have integrated over the length of the string to obtain $T$.
 	
-	For the potential energy, let $\Uq$ be the work required to stretch the string, and $\Uw$ the work to compress and decompress the springs.  (The addition of $\Uw$ is what differs from the derivation in class.).  For $\Uq$, consider an infinitesimal length of string $\dd{x}$.  If this length is stretched by some amount $\Dx$ to a total length
+	For the potential energy, let $\Uq$ be the work required to stretch the string, and $\Uw$ the work to compress and decompress the springs.  (The addition of $\Uw$ is what differs from the derivation in class.).  For $\Uq$, consider an infinitesimal length of string $\dd{x}$.  If this length is stretched by some amount $\Du$ to a total length
 	\begin{equation}
-		\dd{x} + \Dx = \sqrt{(\dd{x})^2 + (\dd{u})^2},
+		\dd{x} + \Du = \sqrt{(\dd{x})^2 + (\dd{u})^2},
 	\end{equation}
-	it has potential energy $\dd{\Uq} = k \,\Dx$.  Performing a Taylor series expansion for a small $\Dx$ and integrating to obtain $\Uq$,
+	it has potential energy $\dd{\Uq} = k \,\Du$.  Performing a Taylor series expansion for a small $\Du$ and integrating to obtain $\Uq$,
 	\begin{equation} \label{U1}
-		\dd{\Uq} = k \,\Dx = k (\sqrt{(\dd{x})^2 + (\dd{u})^2} - \dd{x}) \approx \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{x} \implies \Uq = \frac{k}{2} \intx \dudxw \dd{x}.
+		\dd{\Uq} = k \,\Du = k (\sqrt{(\dd{x})^2 + (\dd{u})^2} - \dd{x}) \approx \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{x} \implies \Uq = \frac{k}{2} \intx \dudxw \dd{x}.
 	\end{equation}
 	This approximation is sufficient because we consider only small oscillations.  For $\Uw$, the potential energy in the two springs is given by
 	\begin{equation} \label{U2}
@@ -190,9 +190,57 @@
 	\end{align}
 	In the limit $\ko / k \to 0$, the force that penalizes displacements at the ends of the string disappears.  Physically, this means the ends of the string are allowed to slide up and down freely.  In this situation, the vibrations in $(x, u)$ are standing waves with the ends as antinodes.  An antinode is a local maximum or minimum of a wave, so the slope of the wave at such a point must be zero, as represented in the boundary conditions.
 \end{solution}
+
+
+\newcommand{\inty}{\int_0^\ell}
+\newcommand{\Dy}{\Delta y}
+\newcommand{\dudyw}{\bigg( \pdv{u}{y} \bigg)^2}
+\newcommand{\uy}{u_y}
+
+\section{Stretched membrane}
+
+\begin{problem}
+	Consider the transverse motion of a stretched membrane.  Assume the membrane is homogeneous, with density per unit area $\rho$, and let $u(x, y)$ denote the displacement from the stable equilibrium position.  For simplicity you may assume the boundary of the membrane is fixed.  Adapt the derivation for a stretched string to a membrane and find the Euler-Lagrange equations.
+\end{problem}
+
+\begin{solution}
+	Let the membrane cover a square in the $(x, y)$ plane with corners at $(0, 0),\ (0, \ell),\ (\ell, 0)$, and $(\ell, \ell)$.  Assume the boundary around the edge of the square is fixed.  Let $k$ be the effective elastic modulus of the membrane.
+	
+	Analogous to problem~\ref{1}, let $\dd{x} \dd{y}$ denote an infinitesimal area of the membrane with mass.  Then we can find the kinetic energy as in \refeq{T}:
+	\begin{equation} \label{T2}
+		\dd{T} = \frac{\rho}{2} \dudtw \dd{x} \dd{y} \implies T = \frac{\rho}{2} \intx \inty \dudtw \dd{x} \dd{y}.
+	\end{equation}
+	Because we are assuming a fixed boundary, we will only have one potential energy term, which is the work required to stretch the membrane.  In two dimensions, \refeq{U1} becomes
+	\begin{equation}
+		\dd{\Uq} = k \,\Du = k (\sqrt{(\dd{x})^2 + (\dd{y})^2 + (\dd{u})^2} - \sqrt{(\dd{x})^2 + (\dd{y})^2} \approx \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{x} + \frac{k}{2} \bigg( \dv{u}{x} \bigg)^2 \dd{y}.
+	\end{equation}
+	Note that the cross terms in the expansion are all zero.  Then
+	\begin{equation} \label{U3}
+		\Uq = \frac{k}{2} \intx \dudxw \dd{x} + \frac{k}{2} \int \dudyw \dd{y}.
+	\end{equation}
+	Using \refeq{T2} and \refeq{U3}, we have as the action
+	\begin{equation}
+		S[u] = \frac{\rho}{2} \intt \intx \inty \dudtw \dd{x} \dd{y} \dd{t} - \frac{k}{2} \intt \intx \dudxw \dd{x} \dd{t} - \frac{k}{2} \inty \inty \dudyw \dd{y} \dd{t}.
+	\end{equation}
+	In general, the Euler-Lagrange equation is given by
+	\begin{equation} \label{el3}
+		0 = \pdv{\Ld}{u} - \pdv{t} \pdv{\Ld}{\ut} - \pdv{x} \pdv{\Ld}{\ux} - \pdv{y} \pdv{\Ld}{\uy}.
+	\end{equation}
+	Here,
+	\begin{align}
+		\pdv{\Ld}{u} &= 0, &
+		\pdv{\Ld}{\ut} &= \rho \pdv{u}{t}, &
+		\pdv{\Ld}{\ux} &= -k \pdv{u}{x}, &
+		\pdv{\Ld}{\uy} &= -k \pdv{u}{y},
+	\end{align}
+	so \refeq{el3} becomes
+	\begin{equation}
+		\rho \pdv[2]{u}{t} = k \left( \pdv[2]{u}{x} + \pdv[2]{u}{y} \right).
+	\end{equation}
+\end{solution}
 	
 
 
-%In writing these solutions, I consulted Gelfand's \emph{Calculus of Variations}.
+In writing these solutions, I consulted Gelfand's \emph{Calculus of Variations}.
 
 \end{document}
