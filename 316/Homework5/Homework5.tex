@@ -1,0 +1,187 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage{physics, amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+%\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 316 Homework 5}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\newcommand{\blg}{\begin{align}}
+\newcommand{\elg}{\end{align}}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+    \subsection{}
+    \color{darkgray}
+    \ignorespaces
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+%    \bigskip
+}
+
+
+
+\begin{document}
+
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\intr}{\int_R}
+\newcommand{\dR}{\partial R}
+\newcommand{\dr}{\dd{x} \dd{y} \dd{z}}
+\newcommand{\ux}{u_x}
+\newcommand{\uy}{u_y}
+\newcommand{\uz}{u_z}
+
+\newcommand{\uxx}{u_{xx}}
+\newcommand{\uyx}{u_{yx}}
+\newcommand{\uzx}{u_{zx}}
+
+\newcommand{\uxy}{u_{xy}}
+\newcommand{\uyy}{u_{yy}}
+\newcommand{\uzy}{u_{zy}}
+
+\newcommand{\uxz}{u_{xz}}
+\newcommand{\uyz}{u_{yz}}
+\newcommand{\uzz}{u_{zz}}
+
+\newcommand{\Ld}{\mathcal{L}}
+
+\section{}
+\begin{statement}
+	Find the Euler-Lagrange equation associated with the functional
+	\beq
+		J[u(x, y, z)] = \intr \sqrt{1 + \ux^2 + \uy^2 + \uz^2} \dr,
+	\eeq
+	where $R$ is a region in three-dimensional space.
+\end{statement}
+
+\begin{solution}
+	We will assume $u(x, y, z)$ has explicit values on the boundary of $R$, $\dR$.  By the definition of the action,
+	\beq
+		J[u] = \intr \Ld \dr \implies \Ld = \sqrt{1 + \ux^2 + \uy^2 + \uz^2}.
+	\eeq
+	In general, the Euler-Lagrange equation is
+	\beq \label{el1}
+		0 = \pdv{\Ld}{u} - \pdv{}{x} \pdv{\Ld}{\ux} - \pdv{}{y} \pdv{\Ld}{\uy} - \pdv{}{z} \pdv{\Ld}{\uz}.
+	\eeq
+	Here,
+	\begin{align}
+		\pdv{\Ld}{u} &= 0, &
+		\pdv{\Ld}{\ux} &= \pdv{\Ld}{\ux^2} \pdv{\ux^2}{\ux} = \frac{\ux}{\sqrt{1 + \ux^2 + \uy^2 + \uz^2}} = \frac{\ux}{\Ld} &
+		\pdv{\Ld}{\uy} &= \frac{\uy}{\Ld}, &
+		\pdv{\Ld}{\uz} &= \frac{\uz}{\Ld}.
+	\end{align}
+	For the $\pdv*{}{x}$ term of \refeq{el1},
+	\beq
+		\pdv{}{x} \pdv{\Ld}{\ux} = \pdv{}{x} \frac{\ux}{\Ld} = \pdv{\ux}{x} \pdv{}{\ux} \frac{\ux}{\Ld} + \pdv{\uy}{x} \pdv{}{\uy} \frac{\ux}{\Ld} + \pdv{\uz}{x} \pdv{}{\uz} \frac{\ux}{\Ld}
+	\eeq
+	where
+	\begin{align}
+		\pdv{}{\ux} \frac{\ux}{\Ld} &= \frac{1}{\Ld^2} \left(\pdv{\ux}{\ux} \Ld - \ux \pdv{\Ld}{\ux} \right) = \frac{1}{\Ld^2} \left( \Ld - \ux \frac{\ux}{\Ld} \right) = \frac{\Ld^2 - \ux^2}{\Ld^3}, \\
+		\pdv{}{\uy} \frac{\ux}{\Ld} &= \frac{1}{\Ld^2} \left(\pdv{\ux}{\uy} \Ld - \ux \pdv{\Ld}{\uy} \right) = -\frac{\ux \uy}{\Ld^3}, \\
+		\pdv{}{\uz} \frac{\ux}{\Ld} &= -\frac{\ux \uz}{\Ld^3},
+	\end{align}
+	so, generalizing this result to the $\pdv*{}{y}$ and $\pdv*{}{z}$ terms,
+	\begin{align}
+		\pdv{}{x} \pdv{\Ld}{\ux} &= \uxx \frac{\Ld^2 - \ux^2}{\Ld^3} - \uyx \frac{\ux \uy}{\Ld^3} - \uzx \frac{\ux \uz}{\Ld^3}, \\
+		\pdv{}{y} \pdv{\Ld}{\uy} &= \uyy \frac{\Ld^2 - \uy^2}{\Ld^3} - \uxy \frac{\ux \uy}{\Ld^3} - \uzy \frac{\uy \uz}{\Ld^3}, \\
+		\pdv{}{z} \pdv{\Ld}{\uz} &= \uzz \frac{\Ld^2 - \uz^2}{\Ld^3} - \uxz \frac{\ux \uz}{\Ld^3} - \uyz \frac{\uy \uz}{\Ld^3}.
+	\end{align}
+	Then, assuming $\uxy = \uyx$ and so on, \refeq{el1} becomes
+	\begin{align}
+		0 &= \uxx (\Ld^4 - \ux^2) + \uyy (\Ld^4 - \uy^2) + \uzz (\Ld^4 - \uz^2) - 2 \uxy \ux \uy - 2 \uyz \uy \uz - 2 \uxz \ux \uz \\
+		&= (\uxx + \uyy + \uzz) (1 + \ux^2 + \uy^2 + \uz^2) - \uxx \ux^2 - \uyy \uy^2 - \uzz \uz^2 - 2 \uxy \ux \uy - 2 \uyz \uy \uz - 2 \uxz \ux \uz \\
+		&= \uxx (1 + \uy^2 + \uz^2) + \uyy (1 + \ux^2 + \uz^2) + \uzz(1 + \ux^2 + \uy^2) - 2 \uxy \ux \uy - 2 \uyz \uy \uz - 2 \uxz \ux \uz.
+	\end{align}
+%	In general,
+%	\beq
+%		\pdv{}{x} \pdv{\Ld}{\ux} = \pdv{
+%	\eeq
+%	so
+%	\begin{align}
+%		\pdv{}{x} \pdv{\Ld}{\ux} &= \frac{\ux (\uxx + \uyx + \uzx)}{\sqrt{1 + \ux^2 + \uy^2 + \uz^2}}, &
+%		\pdv{}{y} \pdv{\Ld}{\uy} &= \frac{\uy (\uxy + \uyy + \uzy)}{\sqrt{1 + \ux^2 + \uy^2 + \uz^2}}, &
+%		\pdv{}{z} \pdv{\Ld}{\uz} &= \frac{\uz (\uxz + \uyz + \uzz)}{\sqrt{1 + \ux^2 + \uy^2 + \uz^2}}.
+%	\end{align}
+%	so
+%	\begin{align}
+%		0 &= \uxx (1 + \uy^2 + \uz^2) + \uyy (1 + \ux^2 + \uz^2) + \uzz (1 + \ux^2 + \uy^2) - 2 (\uxy \ux \uy + \uxz \ux \uz + \uyz \uy \uz) \\
+%		&= (\uxx + \uyy + \uzz) + \uxx \uy^2 + \uxx \uz^2 + \uyy \ux^2 + \uyy \uz^2 + \uzz \ux^2 + \uzz \uy^2 - 2 (\uxy \ux \uy + \uxz \ux \uz + \uyz \uy \uz)
+%	\end{align}
+
+\end{solution}
+
+
+\newcommand{\intdr}{\int_{\partial R}}
+
+\section{Plate vibrations (preliminiaries)}
+
+\begin{statement}
+	Start from Green's theorem
+	\beq
+		\intr \left( \pdv{Q}{x} - \pdv{P}{y} \right) \dd{x} \dd{y} = \intdr (P \dd{x} + Q \dd{y}),
+	\eeq
+	where $R$ is the region in the $xy$ plane spanned by the plate, and $\dR$ its boundary.
+\end{statement}
+
+\begin{problem}
+	Show that
+	\beq
+		\intr \phi \pdv[2]{\psi}{x} \dd{x} \dd{y} = \intr \psi \pdv[2]{\phi}{x} \dd{x} \dd{y} + \intdr \left( \phi \pdv{\psi}{x} - \psi \pdv{\phi}{x} \right) \dd{y}.
+	\eeq
+\end{problem}
+
+\begin{solution}
+	Let 
+\end{solution}
+
+%In writing these solutions, I consulted Gelfand's \emph{Calculus of Variations}.
+
+\end{document}
