@@ -34,11 +34,14 @@
 \titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 \newcommand{\refeq}[1]{(\ref{#1})}
 
-\newcommand{\beq}{\begin{equation}}
-\newcommand{\eeq}{\end{equation}}
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
 
-\newcommand{\blg}{\begin{align}}
-\newcommand{\elg}{\end{align}}
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\blg}{\begin{align*}}
+\newcommand{\elg}{\end{align*}}
 
 
 \newenvironment{statement}
@@ -108,60 +111,44 @@
 		J[u] = \intr \Ld \dr \implies \Ld = \sqrt{1 + \ux^2 + \uy^2 + \uz^2}.
 	\eeq
 	In general, the Euler-Lagrange equation is
-	\beq \label{el1}
+	\beqn \label{el1}
 		0 = \pdv{\Ld}{u} - \pdv{}{x} \pdv{\Ld}{\ux} - \pdv{}{y} \pdv{\Ld}{\uy} - \pdv{}{z} \pdv{\Ld}{\uz}.
-	\eeq
+	\eeqn
 	Here,
-	\begin{align}
+	\begin{align*}
 		\pdv{\Ld}{u} &= 0, &
 		\pdv{\Ld}{\ux} &= \pdv{\Ld}{\ux^2} \pdv{\ux^2}{\ux} = \frac{\ux}{\sqrt{1 + \ux^2 + \uy^2 + \uz^2}} = \frac{\ux}{\Ld} &
 		\pdv{\Ld}{\uy} &= \frac{\uy}{\Ld}, &
 		\pdv{\Ld}{\uz} &= \frac{\uz}{\Ld}.
-	\end{align}
+	\end{align*}
 	For the $\pdv*{}{x}$ term of \refeq{el1},
 	\beq
 		\pdv{}{x} \pdv{\Ld}{\ux} = \pdv{}{x} \frac{\ux}{\Ld} = \pdv{\ux}{x} \pdv{}{\ux} \frac{\ux}{\Ld} + \pdv{\uy}{x} \pdv{}{\uy} \frac{\ux}{\Ld} + \pdv{\uz}{x} \pdv{}{\uz} \frac{\ux}{\Ld}
 	\eeq
 	where
 	\begin{align}
-		\pdv{}{\ux} \frac{\ux}{\Ld} &= \frac{1}{\Ld^2} \left(\pdv{\ux}{\ux} \Ld - \ux \pdv{\Ld}{\ux} \right) = \frac{1}{\Ld^2} \left( \Ld - \ux \frac{\ux}{\Ld} \right) = \frac{\Ld^2 - \ux^2}{\Ld^3}, \\
+		\pdv{}{\ux} \frac{\ux}{\Ld} &= \frac{1}{\Ld^2} \left(\pdv{\ux}{\ux} \Ld - \ux \pdv{\Ld}{\ux} \right) = \frac{1}{\Ld^2} \left( \Ld - \ux \frac{\ux}{\Ld} \right) = \frac{\Ld^2 - \ux^2}{\Ld^3}, \label{uxx} \\
 		\pdv{}{\uy} \frac{\ux}{\Ld} &= \frac{1}{\Ld^2} \left(\pdv{\ux}{\uy} \Ld - \ux \pdv{\Ld}{\uy} \right) = -\frac{\ux \uy}{\Ld^3}, \\
-		\pdv{}{\uz} \frac{\ux}{\Ld} &= -\frac{\ux \uz}{\Ld^3},
+		\pdv{}{\uz} \frac{\ux}{\Ld} &= -\frac{\ux \uz}{\Ld^3}, \label{uxz}
 	\end{align}
-	so, generalizing this result to the $\pdv*{}{y}$ and $\pdv*{}{z}$ terms,
-	\begin{align}
+	Generalizing \refeq{uxx}--\refeq{uxz} to the $\pdv*{}{y}$ and $\pdv*{}{z}$ terms,
+	\begin{align*}
 		\pdv{}{x} \pdv{\Ld}{\ux} &= \uxx \frac{\Ld^2 - \ux^2}{\Ld^3} - \uyx \frac{\ux \uy}{\Ld^3} - \uzx \frac{\ux \uz}{\Ld^3}, \\
 		\pdv{}{y} \pdv{\Ld}{\uy} &= \uyy \frac{\Ld^2 - \uy^2}{\Ld^3} - \uxy \frac{\ux \uy}{\Ld^3} - \uzy \frac{\uy \uz}{\Ld^3}, \\
 		\pdv{}{z} \pdv{\Ld}{\uz} &= \uzz \frac{\Ld^2 - \uz^2}{\Ld^3} - \uxz \frac{\ux \uz}{\Ld^3} - \uyz \frac{\uy \uz}{\Ld^3}.
-	\end{align}
-	Then, assuming $\uxy = \uyx$ and so on, \refeq{el1} becomes
-	\begin{align}
+	\end{align*}
+	Then, assuming $\uxy = \uyx$, $\uyz = \uzy$, and $\uxz = \uzx$, \refeq{el1} becomes
+	\begin{align*}
 		0 &= \uxx (\Ld^4 - \ux^2) + \uyy (\Ld^4 - \uy^2) + \uzz (\Ld^4 - \uz^2) - 2 \uxy \ux \uy - 2 \uyz \uy \uz - 2 \uxz \ux \uz \\
 		&= (\uxx + \uyy + \uzz) (1 + \ux^2 + \uy^2 + \uz^2) - \uxx \ux^2 - \uyy \uy^2 - \uzz \uz^2 - 2 \uxy \ux \uy - 2 \uyz \uy \uz - 2 \uxz \ux \uz \\
 		&= \uxx (1 + \uy^2 + \uz^2) + \uyy (1 + \ux^2 + \uz^2) + \uzz(1 + \ux^2 + \uy^2) - 2 \uxy \ux \uy - 2 \uyz \uy \uz - 2 \uxz \ux \uz.
-	\end{align}
-%	In general,
-%	\beq
-%		\pdv{}{x} \pdv{\Ld}{\ux} = \pdv{
-%	\eeq
-%	so
-%	\begin{align}
-%		\pdv{}{x} \pdv{\Ld}{\ux} &= \frac{\ux (\uxx + \uyx + \uzx)}{\sqrt{1 + \ux^2 + \uy^2 + \uz^2}}, &
-%		\pdv{}{y} \pdv{\Ld}{\uy} &= \frac{\uy (\uxy + \uyy + \uzy)}{\sqrt{1 + \ux^2 + \uy^2 + \uz^2}}, &
-%		\pdv{}{z} \pdv{\Ld}{\uz} &= \frac{\uz (\uxz + \uyz + \uzz)}{\sqrt{1 + \ux^2 + \uy^2 + \uz^2}}.
-%	\end{align}
-%	so
-%	\begin{align}
-%		0 &= \uxx (1 + \uy^2 + \uz^2) + \uyy (1 + \ux^2 + \uz^2) + \uzz (1 + \ux^2 + \uy^2) - 2 (\uxy \ux \uy + \uxz \ux \uz + \uyz \uy \uz) \\
-%		&= (\uxx + \uyy + \uzz) + \uxx \uy^2 + \uxx \uz^2 + \uyy \ux^2 + \uyy \uz^2 + \uzz \ux^2 + \uzz \uy^2 - 2 (\uxy \ux \uy + \uxz \ux \uz + \uyz \uy \uz)
-%	\end{align}
-
+	\end{align*}
 \end{solution}
 
 
 \newcommand{\intdr}{\int_{\partial R}}
 
-\section{Plate vibrations (preliminiaries)}
+\section{Plate vibrations (preliminaries)} \label{2}
 
 \begin{statement}
 	Start from Green's theorem
@@ -178,10 +165,187 @@
 	\eeq
 \end{problem}
 
+%\begin{solution}
+%	
+%\end{solution}
+
+
+\newcommand{\eps}{\epsilon}
+\newcommand{\intt}{\int_{t_0}^{t_1}}
+\newcommand{\ut}{u_t}
+\newcommand{\utt}{u_{tt}}
+\newcommand{\kaq}{\kappa_1}
+\newcommand{\lapw}{\nabla^4}
+\newcommand{\Pu}{P(u)}
+\newcommand{\Mu}{M(u)}
+\newcommand{\dlt}{\dd{l} \dd{t}}
+\newcommand{\uo}{u_0}
+
+\section{Plate vibrations}
+
+\begin{statement}
+	Start with the action for a vibrating plate whose potential energy is dominated by bending,
+	\beq
+		S[u(x, y, t)] = \eps \intt \intr \left\{ \rho \ut^2 - \kaq \left[ (\uxx^2 + \uyy^2) - 2 (1 - \mu) (\uxx \uyy - \uxy^2) \right] \right\} \dr,
+	\eeq
+	where $\rho$ is the mass density per unit area, $\kaq$ has the dimension of energy and is sometimes called flexural rigidity, and $\mu$ is a dimensionless material constant called Poisson's ratio.  For isotropic material, $\rho = 1/4$.  Notice that there is \emph{no} external bending moment applied to the plate boundary.  There is also \emph{no} external forcing.
+\end{statement}
+
+\begin{problem}
+Using the results of problem~\ref{2}, show that the variation generated by going from a solution $\uo$ to $\uo + \eps\psi$ had the form
+	\beq
+		S[u(x, y, t)] = \eps \intt \intr \left(\rho \utt - \kaq \lapw u \right) \psi \dr + \eps \intt \intdr \left( \Pu \psi + \Mu \pdv{\psi}{n} \right) \dlt.
+	\eeq
+	Specify $\Pu$ and $\Mu$.
+\end{problem}
+
+\begin{problem}
+	Finally, derive the Euler-Lagrange equation and the associated boundary conditions.
+\end{problem}
+
+
+\newcommand{\lam}{\lambda}
+\newcommand{\vrt}{v(r, \theta)}
+\newcommand{\gt}{g(t)}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\fnr}{f_n(r)}
+
+\section{Vibrations of a circular disk}
+
+\begin{statement}
+	The only scenario in which plate vibrations can be described analytically in terms of known functions is a circular disk.  Work with polar coordinates $(r, \theta)$, the Euler-Lagrange equation
+	\beqn \label{el4}
+		\utt - \lam \lapw u = 0,
+	\eeqn
+	and the boundary conditions
+	\begin{align*}
+		u &= 0, & \pdv{u}{n} &= 0.
+	\end{align*}
+\end{statement}
+
+
+\newcommand{\Cq}{C_1}
+\newcommand{\Cw}{C_2}
+
+\newcommand{\Dq}{D_1}
+\newcommand{\Dw}{D_2}
+
+\newcommand{\sqmu}{\sqrt{\mu}}
+
+\begin{problem}
+	Show that this problem reduces to an eigenvalue problem if we assume that $u(r, \theta, t)$ is separable:
+	\beqn \label{udef}
+		u = \vrt\, \gt.
+	\eeqn
+	Write down the general form of $g(t)$.
+\end{problem}
+
 \begin{solution}
-	Let 
+	Substituting the ansatz \refeq{udef} into \refeq{el4}, we have
+	\beqn \label{pde4}
+		v \pdv[2]{g}{t} - \lambda g \,\lapw v = 0 \implies \frac{1}{g} \pdv[2]{g}{t} = \lambda \frac{1}{v} \lapw v \equiv -\mu
+	\eeqn
+	where we have defined some constant $\mu$.  We may then separate \refeq{pde4} into two differential equations,
+	\begin{align}
+		\lambda \lapw v + \mu v &= 0, \label{evp} \\
+		\pdv[2]{g}{t} + \mu g &= 0. \label{time}
+	\end{align}
+	The eigenvalue problem is \refeq{evp}, which we may solve for the eigenvalues $\mu_n$ and obtain the eigenfunctions $v_n(r, \theta)$.  Then we simply feed $\mu_n$ into \refeq{time} to obtain $g_n(t)$, which have the general form
+	\beqn \label{gt}
+		g(t) = \Cq e^{\sqmu x} + \Cw e^{-\sqmu x},
+	\eeqn
+	where we note that $\sqmu$ may be imaginary.  If so, \refeq{gt} may be written in terms of sines and cosines.  Finally, the solutions to \refeq{el4} are $u_n(r, \theta, t) = v_n(r, \theta) \, g_n(t)$.
 \end{solution}
 
-%In writing these solutions, I consulted Gelfand's \emph{Calculus of Variations}.
+\begin{problem}
+	Now consider the eigenvalue problem
+	\beqn \label{evpb}
+		(\lapw - k^4) \vrt = 0,
+	\eeqn
+	with $\lam$ set to be $k^4$.  Notice that it factors into
+	\beqn \label{sep}
+		(\lap - k^2)(\lap + k^2) \vrt = 0,
+	\eeqn
+	with
+	\beq
+		\lap = \pdv[2]{}{r} + \frac{1}{r} \pdv{}{r} + \frac{1}{r^2} \pdv[2]{}{\theta}.
+	\eeq
+	Since the disk is circular, we expect the vibration modes to be periodic in $\theta$.  This suggests the ansatz
+	\beqn \label{ansatz4}
+		v = \sum_{n = -\infty}^\infty \fnr \, e^{in\theta}.
+	\eeqn
+	Obtain the ODE governing $\fnr$.
+\end{problem}
+
+\newcommand{\fm}{f_m}
+\newcommand{\fp}{f_p}
+
+\newcommand{\km}{k_m}
+\newcommand{\kp}{k_m}
+
+\newcommand{\eint}{e^{in\theta}}
+\newcommand{\eimt}{e^{im\theta}}
+\newcommand{\eipt}{e^{ip\theta}}
+
+\begin{solution}
+	Firstly, note that
+		\beq
+		\lapw = \left( \pdv[2]{}{r} + \frac{1}{r} \pdv{}{r} + \frac{1}{r^2} \pdv[2]{}{\theta} \right)^2 = \pdv[4]{}{r} + \frac{2}{r} \pdv[3]{}{r} + \frac{1}{r^2} \pdv[2]{}{r} + \frac{2}{r^2} \pdv[2]{}{r} \pdv[2]{}{\theta} + \frac{2}{r^3} \pdv{}{r} \pdv[2]{}{\theta} + \frac{1}{r^4} \pdv[4]{}{\theta}.
+	\eeq
+	Substituting the ansatz of \refeq{ansatz4} into \refeq{evpb} yields
+	\begin{align*}
+		k^4 \fnr \,\eint &= -\lapw \fnr \,\eint \\
+		&= \left( \pdv[4]{}{r} + \frac{2}{r} \pdv[3]{}{r} + \frac{1}{r^2} \pdv[2]{}{r} + \frac{2}{r^2} \pdv[2]{}{r} \pdv[2]{}{\theta} + \frac{2}{r^3} \pdv{}{r} \pdv[2]{}{\theta} + \frac{1}{r^4} \pdv[4]{}{\theta} \right) \fnr \,\eint \\
+		&= \eint \left( \pdv[4]{}{r} + \frac{2}{r} \pdv[3]{}{r} + \frac{1}{r^2} \pdv[2]{}{r} - \frac{2n^2}{r^2} \pdv[2]{}{r} - \frac{2n^2}{r^3} \pdv{}{r} + \frac{n^4}{r^4} \right) \fnr.
+	\end{align*}
+	Dividing out $\eint$, we have
+	\beq
+		k^4 \fnr = \pdv[4]{\fnr}{r} + \frac{2}{r} \pdv[3]{\fnr}{r} + \frac{1 - 2n^2}{r^2} \pdv[2]{\fnr}{r} - \frac{2n^2}{r^3} \pdv{\fnr}{r} + \frac{n^4}{r^4} \fnr
+	\eeq
+	as the ODE governing $\fnr$.
+\end{solution}
+
+\begin{problem}
+	What are the appropriate boundary conditions on $\fnr$?
+\end{problem}
+
+\begin{solution}
+	Firstly, note that \refeq{evpb} may be separated into the two eigenvalue problems
+	\begin{align}
+		0 &= \lapw v - k^2 v, \label{kneg} \\
+		0 &= \lapw v + k^2 v. \label{kpos}
+	\end{align}
+	Any $k$ that corresponds to a nontrivial solution of \refeq{evpb} must also correspond to a nontrivial solution of \refeq{kneg} and of \refeq{kpos}.  We will proceed by solving \refeq{kneg} for $k_m$ and \refeq{kpos} for $k_p$.  Then, any $k_n \in k_m \cap k_p$ that nontrivially solves both \refeq{kpos} and \refeq{kneg} must also nontrivially solve \refeq{evpb}.
+	
+	Beginning with \refeq{kneg}, we have
+	\beq
+		0 = \left( \pdv[2]{}{r} + \frac{1}{r} \pdv{}{r} + \frac{1}{r^2} \pdv[2]{}{\theta} \right) \fm(r) \, \eimt - \km^2 \fm(r) \, \eimt = \left( \pdv[2]{}{r} + \frac{1}{r} \pdv{}{r} \right) \fm \, \eimt - \frac{1}{r^2} m^2 \fm \, \eimt - \km^2 \fm \, \eimt
+	\eeq
+	where we have substituted the ansatz \refeq{ansatz4}, here $v_m = \fm(r) \, \eimt$.  Dividing out $\eimt$, this becomes
+	\beqn \label{modbess}
+		0 = r^2 \pdv[2]{\fm}{r} + r \pdv{\fm}{r} - (\km^2 r^2 + m^2) \fm,
+	\eeqn
+	which is the modified Bessel equation of order $m$.  It has solutions
+	\beq
+		\fm(r) = \Cq I_m(kr) + \Cw K_p(kr),
+	\eeq
+	where $\Cq$ and $\Cw$ are constants, $I_m$ is the modified Bessel function of the first kind, and $K_m$ is the modified Bessel function of the second kind.  Both functions are of order $m$.
+	
+	Proceeding similarly for \refeq{kpos}, we obtain
+	\beqn \label{bess}
+		0 = r^2 \pdv[2]{\fp}{r} + r \pdv{\fp}{r} + (\kp^2 r^2 - p^2) \fp,
+	\eeqn
+	which is the Bessel equation of order $p$, and has solutions
+	\beq
+		\fp(r) = \Dq J_p(kr) + \Dw Y_p(kr),
+	\eeq
+	where $\Dq$ and $\Dw$ are constants, $J_p$ is the Bessel function of the first kind, $Y_p$ is the Bessel function of the second kind, and both are of order $p$.
+
+	Both $Y_n$ and $K_n$ diverge as $r \to 0$ for all $n$, so we do not want them in our solution.
+\end{solution}
+
+
+
+In writing these solutions, I consulted Gelfand and Fomin's \emph{Calculus of Variations}, Olmstead and Volpert's \emph{Differential Equations in Applied Mathemtics}.
 
 \end{document}
