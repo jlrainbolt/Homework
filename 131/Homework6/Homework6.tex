@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{siunitx}
+%\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\setenumerate[1]{label={(\alph*)}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 131 Homework 6}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\blg}{\begin{align*}}
+\newcommand{\elg}{\end{align*}}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+%    \color{darkgray}
+    \ignorespaces
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+
+\begin{document}
+
+\paragraph{10.2}
+\begin{problem}
+	Calculate the net torque about point $O$ for the two forces applied as in Fig.~\ref{E10.2}.  The rod and both forces are in the plane of the page.
+\end{problem}
+
+%\begin{figure} \centering
+	
+%	\label{E10.2}
+%\end{figure}
+
+\newcommand{\ih}{\vec{\,\hat{i}}}
+\newcommand{\jh}{\vec{\,\hat{j}}}
+\newcommand{\kh}{\vec{\,\hat{k}}}
+
+\newcommand{\vF}{\vec{F}}
+\newcommand{\vt}{\boldsymbol{\tau}}
+\newcommand{\vr}{\vec{r}}
+
+\newcommand{\vFq}{\vF_1}
+\newcommand{\Fq}{F_1}
+\newcommand{\vFw}{\vF_2}
+\newcommand{\Fw}{F_2}
+
+\newcommand{\vtq}{\vt_1}
+\newcommand{\vtw}{\vt_2}
+\newcommand{\vrq}{\vr_1}
+\newcommand{\rrq}{r_1}
+\newcommand{\vrw}{\vr_2}
+\newcommand{\rw}{r_2}
+
+\newcommand{\vtnet}{\vt_\text{net}}
+\newcommand{\tnet}{\tau_\text{net}}
+
+
+\begin{solution}
+	The net torque is the sum of the torques due to each of the forces.  Let $\vtq$ be the~(vector) torque due to $\vFq$ relative to point $O$, and $\vrq$ the vector from $O$ to where $\vFq$ acts.  Using the coordinate axes drawn in Fig.~\ref{E10.2}, we have
+	\begin{align*}
+		\vrq &= -\rrq \ih, \\
+		\vFq &= -\Fq \jh,
+	\end{align*}
+	where $\rrq = \SI{5.00}{\meter}$ and $\Fw = \SI{8.00}{\newton}$.  Then
+	\beq
+		\vtq = \vrq \times \vFq = \rrq \Fq \kh.
+	\eeq
+	Now define $\vtq$, $\vtw$, and $\vrw$ similarly for $\vFw$.  Then
+		\begin{align*}
+		\vrw &= -\rw \ih, \\
+		\vFw &= -(\cos{30^\circ} \Fw) \ih + (\sin{30^\circ} \Fw) \jh = -\frac{\sqrt{3}}{2} \Fw \ih + \frac{1}{2} \Fw \jh,
+	\end{align*}
+	where $\rw = \SI{2.00}{\meter}$ and $\Fw = \SI{12.0}{\newton}$, and
+	\beq
+		\vtw = \vrw \times \vFw = -\frac{1}{2} \rw \Fw \kh.
+	\eeq
+	The net torque $\vtnet$ is then
+	\beq
+		\vtnet = \vtq + \vtw = \left( \rrq \Fq - \frac{1}{2} \rw \Fw \right)\!\kh = \tnet \kh,
+	\eeq
+	where $\tnet$ is the magnitude of the net torque.  Plugging everything in,
+	\beq
+		\tnet = \rrq \Fq - \frac{1}{2} \rw \Fw = (\SI{5.00}{\meter}) (\SI{8.00}{\newton}) - \frac{1}{2} (\SI{2.00}{\meter}) (\SI{12.0}{\newton}) = {\color{blue} \SI{28.0}{\newton\meter}}.
+	\eeq
+\end{solution}
+
+\newcommand{\mb}{m_b}
+\newcommand{\mw}{m_w}
+\newcommand{\mmp}{m_p}
+
+\newcommand{\simb}{\SI{12.0}{\kg}}
+\newcommand{\simw}{\SI{5.00}{\kg}}
+\newcommand{\simp}{\SI{2.00}{\kg}}
+\newcommand{\sIip}{\SI{0.0625}{\kg\square\meter}}
+
+\newcommand{\Ww}{W_w}
+\newcommand{\aq}{a_b}
+
+\newcommand{\Tb}{T_b}
+\newcommand{\Tw}{T_w}
+
+\newcommand{\az}{\alpha_z}
+
+\paragraph{10.16}
+\begin{problem}
+	A \simb box resting on a horizontal, frictionless surface is attached to a \simp weight by a thin, light wire that passes over a frictionless pulley (Fig.~\ref{E10.16}).  The pulley has the shape of a uniform solid disk of mass \simp and diameter \SI{0.500}{\meter}.  After the system is released, find
+	\begin{enumerate}
+		\item the tension in the wire on both sides of the pulley,
+		\item the acceleration of the box, and
+		\item the h\hl{orizontal and vertical components of the force that the axle exerts on the pulley.}
+	\end{enumerate}
+\end{problem}
+
+\begin{solution}
+	The box and the weight must have the same acceleration $a$ since they are connected by the wire.  We also assume the pulley rolls without slipping, so its tangential acceleration is also $a$.  Using the notation of the free-body diagrams in Fig.~\ref{E10.16}, let $\Tb$ be the tension in the side of the wire connected to the box and $\Tw$ the tension in the side connected to the weight.
+	
+	Let $\mb$ denote the mass of the box and $\mw$ that of the weight.  We can write down three equations using Newton's second law: one equation from the free-body diagram for the box in Fig.~\ref{E10.16},
+			\beqn \label{box}
+				\mb a = \Tb,
+			\eeqn
+			one from the diagram for the weight,
+			\beqn \label{weight}
+				\mw a = \mw g - \Tw.
+			\eeqn
+			and one from the diagram for the pulley,
+			\beq
+				\tnet = I \alpha \iff (\Tw - \Tb) r = I \frac{a}{r} \iff \Tw - \Tb = I \frac{a}{r^2},
+			\eeq
+			where $r$ is the pulley's radius, $I$ the moment of inertia about its center, and $\alpha$ its angular acceleration.  For rolling without slipping, $\alpha = a / r$.
+			
+			The pulley is a solid cylinder rotating about its $z$ axis.  Let $\mmp$ be its mass.  Then
+			\beq
+				I = \frac{1}{2} \mmp r^2,
+			\eeq
+			and \refeq{pulley0} can be rewritten as
+			\beqn \label{pulley}
+				\Tw - \Tb = \frac{1}{2} \mmp a.
+			\eeqn
+			The system of three equations \refeq{box}, \refeq{weight}, and \refeq{pulley} has three unknowns.  The solutions are
+			\begin{align}
+				\Tb &= 2g \frac{\mb \mw}{2 \mb + 2 \mw + \mmp}, \label{Tb} \\
+				\Tw &= g \mw \frac{2 \mb + \mmp}{2 \mb + 2 \mw + \mmp}, \label{Tw} \\
+				a &= 2g \frac{\mw}{2 \mb + 2 \mw + \mmp}. \label{acc}
+			\end{align}
+			
+			
+			
+	\begin{enumerate}
+		\item Plugging numbers into \refeq{Tb} and \refeq{Tw}, we have
+			\begin{align*}
+				\Tb &= \frac{\mb \mw}{I + \mb + \mw} g
+			\end{align*}
+		
+		\item Torque due to $\Tb$ is $\Tb R$, also $\Tw R$
+	\end{enumerate}
+	
+\end{solution}
+
+
+\paragraph{10.22}
+\begin{problem}
+	A string is wrapped several times around the rim of a small hoop with radius \SI{8.00}{\centi\meter} and mass \SI{0.180}{\kilo\gram}.  The free end of the string is held in place and the hoop is released from rest (Fig.~\ref{E10.22}).  After the hoop has descended \SI{75.0}{\centi\meter}, calculate
+	\begin{enumerate}
+		\item the angular speed of the rotating hoop, and
+		\item the speed of its center.
+	\end{enumerate}
+\end{problem}
+
+\begin{solution}
+
+\end{solution}
+
+\end{document}

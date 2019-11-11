@@ -1,7 +1,8 @@
 \documentclass[11pt]{article}
 \usepackage{geometry, titlesec}
 \usepackage[parfill]{parskip}
-\usepackage{physics, amsfonts, amsthm}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
 \usepackage[cm]{fullpage}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
@@ -106,7 +107,7 @@
 \end{statement}
 
 \begin{solution}
-	We will assume $u(x, y, z)$ has explicit values on the boundary of $R$, $\dR$.  By the definition of the action,
+	We will assume $u(x, y, z)$ has explicit values on the boundary of $R$, $\dr$.  By the definition of the action,
 	\beq
 		J[u] = \intr \Ld \dr \implies \Ld = \sqrt{1 + \ux^2 + \uy^2 + \uz^2}.
 	\eeq
@@ -155,14 +156,14 @@
 	\beqn \label{green}
 		\intr \left( \pdv{Q}{x} - \pdv{P}{y} \right) \dd{x} \dd{y} = \intdr (P \dd{x} + Q \dd{y}),
 	\eeqn
-	where $R$ is the region in the $xy$ plane spanned by the plate, and $\dR$ its boundary.
+	where $R$ is the region in the $xy$ plane spanned by the plate, and $\dr$ its boundary.
 \end{statement}
 
 \begin{problem}
 	Show that
-	\beq
+	\beqn \label{greenxx}
 		\intr \phi \pdv[2]{\psi}{x} \dd{x} \dd{y} = \intr \psi \pdv[2]{\phi}{x} \dd{x} \dd{y} + \intdr \left( \phi \pdv{\psi}{x} - \psi \pdv{\phi}{x} \right) \dd{y}.
-	\eeq
+	\eeqn
 \end{problem}
 
 \begin{solution}
@@ -174,7 +175,7 @@
 	Then
 	\begin{align*}
 		\pdv{Q}{x} &= \pdv{\phi}{x} \pdv{\psi}{x} + \phi \pdv[2]{\psi}{x} - \pdv{\psi}{x} \pdv{\phi}{x} - \psi \pdv[2]{\phi}{x} = \phi \pdv[2]{\psi}{x} - \psi \pdv[2]{\phi}{x}, &
-		P &= 0.
+		\pdv{P}{y} &= 0.
 	\end{align*}
 	Making these substitutions into \refeq{green} gives
 	\begin{align*}
@@ -187,16 +188,27 @@
 \begin{problem}
 	Work out analogous expressions for
 	\begin{align}
-		&\intr \psi \pdv[2]{\psi}{x} \dd{x} \dd{y}, \label{2bfirst} \\
+		&\intr \phi \pdv[2]{\psi}{y} \dd{x} \dd{y}, \label{2bfirst} \\
 		&\intr \phi \pdv{\psi}{x}{y} \dd{x} \dd{y}. \label{2bsecond}
 	\end{align}
 \end{problem}
 
 \begin{solution}
-	For \refeq{2bfirst}, \hl{???}
-	\beq
-		\intr \phi \pdv[2]{\psi}{y} \dd{x} \dd{y} = \intr \psi \pdv[2]{\psi}{y} \dd{x} \dd{y} - \intdr \left( \phi \pdv{\psi}{y} - \psi \pdv{\phi}{y} \right) \dd{x}
-	\eeq
+	For \refeq{2bfirst}, let
+	\begin{align*}
+		Q &= 0, &
+		P &= \psi \pdv{\phi}{y} - \phi \pdv{\psi}{y},
+	\end{align*}
+	in \refeq{green}.  Then, similarly to the proof for \refeq{greenxx},
+	\begin{align*}
+		\pdv{Q}{x} &= 0, &
+		\pdv{P}{y} &= \psi \pdv[2]{\phi}{y} - \phi \pdv[2]{\psi}{y}.
+	\end{align*}
+	Substituting into \refeq{green},
+	\begin{align}
+		\intr \left( \phi \pdv[2]{\psi}{y} - \psi \pdv[2]{\phi}{y} \right) \dd{x} \dd{y} &= \intdr \left( \psi \pdv{\phi}{y} - \phi \pdv{\psi}{y} \right) \dd{x} \notag \\
+		\iff \intr \phi \pdv[2]{\psi}{y} \dd{x} \dd{y} &= \intr \psi \pdv[2]{\phi}{y} \dd{x} \dd{y} + \intdr \left( \psi \pdv{\phi}{y} - \phi \pdv{\psi}{y} \right) \dd{y}. \label{greenyy}
+	\end{align}
 	
 	For \refeq{2bsecond}, let
 	\begin{align*}
@@ -209,63 +221,219 @@
 		2 \pdv{P}{y} &= \pdv{\psi}{y} \pdv{\phi}{x} + \psi \pdv{\phi}{x}{y} - \pdv{\phi}{y} \pdv{\psi}{x} - \phi \pdv{\psi}{x}{y} = \psi \pdv{\phi}{x}{y} - \phi \pdv{\psi}{x}{y}.
 	\end{align*}
 	Substituting into \refeq{green}, we have
-	\begin{align*}
-		\frac{1}{2} \intr \left( \phi \pdv{\psi}{x}{y} - \psi \pdv{\phi}{x}{y} - \psi \pdv{\phi}{x}{y} + \phi \pdv{\psi}{x}{y} \right) \dd{x} \dd{y} = \frac{1}{2} \intdr \left( \psi \pdv{\phi}{x} - \phi \pdv{\psi}{x} \right) \dd{x} + \frac{1}{2} \intdr \left( \phi \pdv{\psi}{y} - \psi \pdv{\phi}{y} \right) &\dd{y} \\
-		\iff \intr \phi \pdv{\psi}{x}{y} \dd{x} \dd{y} = \intr \psi \pdv{\phi}{x}{y} \dd{x} \dd{y} + \frac{1}{2} \intdr \left( \psi \pdv{\phi}{x} - \phi \pdv{\psi}{x} \right) \dd{x} + \frac{1}{2} \intdr \left( \phi \pdv{\psi}{y} - \psi \pdv{\phi}{y} \right) &\dd{y}.
-	\end{align*}
+	\begin{align}
+		\frac{1}{2} \intr &\left( \phi \pdv{\psi}{x}{y} - \psi \pdv{\phi}{x}{y} - \psi \pdv{\phi}{x}{y} + \phi \pdv{\psi}{x}{y} \right) \dd{x} \dd{y} = \frac{1}{2} \intdr \left( \psi \pdv{\phi}{x} - \phi \pdv{\psi}{x} \right) \dd{x} + \frac{1}{2} \intdr \left( \phi \pdv{\psi}{y} - \psi \pdv{\phi}{y} \right) \dd{y} \notag \\
+		&\iff \intr \phi \pdv{\psi}{x}{y} \dd{x} \dd{y} = \intr \psi \pdv{\phi}{x}{y} \dd{x} \dd{y} + \frac{1}{2} \intdr \left( \psi \pdv{\phi}{x} - \phi \pdv{\psi}{x} \right) \dd{x} + \frac{1}{2} \intdr \left( \phi \pdv{\psi}{y} - \psi \pdv{\phi}{y} \right) \dd{y}. \label{greenxy}
+	\end{align}
 \end{solution}
 
 
 \newcommand{\dS}{\delta S}
+\newcommand{\DS}{\Delta S}
 \newcommand{\eps}{\epsilon}
 \newcommand{\intt}{\int_{t_0}^{t_1}}
-\newcommand{\ut}{u_t}
-\newcommand{\utt}{u_{tt}}
 \newcommand{\kaq}{\kappa_1}
 \newcommand{\lapw}{\nabla^4}
 \newcommand{\Pu}{P(u)}
 \newcommand{\Mu}{M(u)}
-\newcommand{\dlt}{\dd{l} \dd{t}}
-\newcommand{\uo}{u_0}
+\newcommand{\uo}{u^0}
+
+\newcommand{\ut}{u_t}
+\newcommand{\utt}{u_{tt}}
+\newcommand{\uxxx}{u_{xxx}}
+\newcommand{\uxxxx}{u_{xxxx}}
+\newcommand{\uxxyy}{u_{xxyy}}
+\newcommand{\uxxy}{u_{xxy}}
+\newcommand{\uxyy}{u_{xyy}}
+\newcommand{\uyyy}{u_{yyy}}
+\newcommand{\uyyyy}{u_{yyyy}}
+
+\newcommand{\psit}{\psi_t}
+\newcommand{\psix}{\psi_{x}}
+\newcommand{\psiy}{\psi_{y}}
+\newcommand{\psixx}{\psi_{xx}}
+\newcommand{\psixy}{\psi_{xy}}
+\newcommand{\psiyy}{\psi_{yy}}
+\newcommand{\psixxy}{\psi_{xxy}}
+\newcommand{\psixyy}{\psi_{xyy}}
+
+\newcommand{\inttr}{\intt \!\!\intr}
+\newcommand{\inttdr}{\intt \!\!\intdr}
+\newcommand{\drt}{\dd{x} \dd{y} \dd{t}}
+\newcommand{\dlt}{\dd{\ell} \dd{t}}
+
+\newcommand{\vn}{\vec{\hat{n}}}
+\newcommand{\vl}{\boldsymbol{\hat{\ell}}}
+\newcommand{\xn}{x_n}
+\newcommand{\yn}{y_n}
+\newcommand{\xl}{x_\ell}
+\newcommand{\yl}{y_\ell}
+\newcommand{\lap}{\nabla^2}
 
 \section{Plate vibrations}
 
 \begin{statement}
 	Start with the action for a vibrating plate whose potential energy is dominated by bending,
 	\beqn \label{action3}
-		S[u(x, y, t)] = \eps \intt \intr \left\{ \rho \ut^2 - \kaq \left[ (\uxx^2 + \uyy^2) - 2 (1 - \mu) (\uxx \uyy - \uxy^2) \right] \right\} \dr,
+		S[u(x, y, t)] = \frac{1}{2} \inttr \left\{ \rho \ut^2 - \kaq \left[ (\uxx^2 + \uyy^2) - 2 (1 - \mu) (\uxx \uyy - \uxy^2) \right] \right\} \dd{x} \dd{y} \dd{t},
 	\eeqn
-	where $\rho$ is the mass density per unit area, $\kaq$ has the dimension of energy and is sometimes called flexural rigidity, and $\mu$ is a dimensionless material constant called Poisson's ratio.  For isotropic material, $\rho = 1/4$.  Notice that there is \emph{no} external bending moment applied to the plate boundary.  There is also \emph{no} external forcing.
+	where $\rho$ is the mass density per unit area, $\kaq$ has the dimension of energy and is sometimes called flexural rigidity, and $\mu$ is a dimensionless material constant called Poisson's ratio.  For isotropic material, $\mu = 1/4$.  Notice that there is \emph{no} external bending moment applied to the plate boundary.  There is also \emph{no} external forcing.
 \end{statement}
 
 \begin{problem}
 Using the results of problem~\ref{2}, show that the variation generated by going from a solution $\uo$ to $\uo + \eps\psi$ has the form
-	\beq
-		\dS = \eps \intt \intr \left(\rho \utt - \kaq \lapw u \right) \psi \dd{x} \dd{y} \dd{t} + \eps \intt \intdr \left( \Pu \psi + \Mu \pdv{\psi}{n} \right) \dlt.
-	\eeq
+	\beqn \label{daction3}
+		\dS = \eps \inttr \left(-\rho \utt - \kaq \lapw u \right) \psi \drt + \eps \inttdr \left( \Pu \psi + \Mu \pdv{\psi}{n} \right) \dlt.
+	\eeqn
 	Specify $\Pu$ and $\Mu$.
 \end{problem}
 
 \begin{solution}
-	Define $\Ld$ as the integrand in \refeq{action3}, and note that $\Ld = , and $\psi = \psi(x, y, t)$ as some variatoin of $u$.  In general,
+	Making the substitution $u \mapsto u + \eps \psi$ into \refeq{action3},
+	\begin{align*}
+		S[u + \eps \psi] &= \inttr \left\{ \frac{\rho}{2} (\ut + \eps \psit)^2 - \frac{\kaq}{2} \left[ (\uxx + \eps \psixx)^2 + (\uyy + \eps \psiyy)^2 \right] \right\} \drt \\
+		&\phantom{mmm} + \kaq (1 - \mu) \inttr \left[ (\uxx + \eps \psixx) (\uyy + \eps \psiyy) - (\uxy + \eps \psixy)^2 \right] \drt \\
+		&= \inttr \left[ \frac{\rho}{2} (\ut^2 + 2 \eps \ut \psit + \eps^2 \psit^2) - \frac{\kaq}{2} (\uxx^2 + 2 \eps \uxx \psixx + \eps^2 \psixx^2 + \uyy^2 + 2 \eps \uyy \psiyy + \eps^2 \psiyy^2) \right] \drt \\
+		&\phantom{mmm} + \kaq (1 - \mu) \inttr (\uxx \uyy + \eps \uxx \psiyy + \eps \uyy \psixx + \eps^2 \psixx \psiyy - \uxy^2 - 2 \eps \uxy \psixy - \eps^2 \psixy^2 ) \drt.
+	\end{align*}
+	Then
+	\begin{align*}
+		\DS &= S[u + \eps \psi] - S[u] \\
+		&=  \inttr \left[ \frac{\rho}{2} (2 \eps \ut \psit + \eps^2 \psit^2) - \frac{\kaq}{2} (2 \eps \uxx \psixx + \eps^2 \psixx^2 + 2 \eps \uyy \psiyy + \eps^2 \psiyy^2) \right] \drt \\
+		&\phantom{mmmmmmmmm} + \kaq (1 - \mu) \inttr (\eps \uxx \psiyy + \eps \uyy \psixx + \eps^2 \psixx \psiyy - 2 \eps \uxy \psixy - \eps^2 \psixy^2 ) \drt,
+	\end{align*}
+	and so, dropping terms of $\order{\eps^2}$,
+	\beqn \label{dS1}
+		\dS = \eps \inttr \left\{ \rho \ut \psit - \kaq \left[ (\uxx \psixx + \uyy \psiyy) - (1 - \mu) (\uxx \psiyy + \uyy \psixx - 2 \uxy \psixy) \right] \right\} \drt.
+	\eeqn
+	
+	For the first term in the integrand of \refeq{dS1}, using the product rule of differentiation yields
 	\beq
-		\dS = \epsilon \intt \intr \left[ \left( \pdv{\Ld}{u} - \pdv{}{x} \pdv{\Ld}{\ux} - \pdv{}{y} \pdv{\Ld}{\uy} - \pdv{}{t} \pdv{\Ld}{\ut} \right) \psi + \pdv{}{x} \left( \pdv{\Ld}{\ux} \psi \right) + \pdv{}{y} \left( \pdv{\Ld}{\uy} \psi \right) + \pdv{}{t} \left( \pdv{\Ld}{\ut} \psi \right) \right] \dd{x} \dd{y} \dd{t},
+		\ut \psit = \pdv{}{t} (\ut \psi) - \utt \psi.
 	\eeq
-	where $\eps \ll 1$.  For the \refeq{action3},
+	For the second two terms, we may apply what was proven in problem~\ref{2}.  Letting $\phi \mapsto \uxx$ and $\psi \mapsto \psi$ in \refeq{greenxx} and \refeq{greenyy}, we have
+	\begin{align*}
+		\inttr \uxx \psixx \drt &= \inttr \psi \uxxxx \drt + \inttdr \left( \uxx \psix - \psi \uxxx \right) \dd{y} \dd{t}, \\
+		\inttr \uxx \psiyy \drt &= \inttr \psi \uxxyy \drt - \inttdr \left( \uxx \psiy - \psi \uxxy \right) \dd{x} \dd{t}.
+	\end{align*}
+	Now with $\phi \mapsto \uyy$,
+	\begin{align*}
+		\inttr \uyy \psixx \drt &= \inttr \psi \uxxyy \drt + \inttdr \left( \uyy \psix - \psi \uxyy \right) \dd{y} \dd{t}, \\
+		\inttr \uyy \psiyy \drt &= \inttr \psi \uyyyy \drt - \inttdr \left( \uyy \psiy - \psi \uyyy \right) \dd{x} \dd{t}.
+	\end{align*}
+	Finally, with $\phi \mapsto \uxy$ and $\psi \mapsto \psi$ in \refeq{greenxy}, we have
+	\begin{align*}
+		\inttr \uxy \psixy \drt = \inttr \psi \uxxyy \drt - \frac{1}{2} \inttdr &\left( \uxy \psix - \psi \uxxy \right) \dd{x} \dd{t} \\
+		&+ \frac{1}{2} \inttdr \left( \uxy \psiy - \psi \uxyy \right) \dd{y} \dd{t}.
+	\end{align*}
+	Making these substitutions into \refeq{dS1},
+	\begin{align*}
+		\frac{\dS}{\eps} &= \inttr \psi \left\{ -\rho \utt - \kaq \left[ (\uxxxx + \uyyyy) - (1 - \mu) (\uxxyy + \uxxyy - 2 \uxxyy) \right] \right\} \drt \\
+		&\phantom{=\ } + \rho \inttr \pdv{}{t} (\ut \psi) \drt - \kaq \inttdr \left[ (\uxx \psix - \psi \uxxx) + (1 - \mu) (\uxx \psiy - \psi \uxxy - \uxy + \psi \uxxy) \right] \dd{x} \dd{t} \\
+		&\phantom{=\ } + \kaq \inttdr \left[ (\uyy \psiy - \psi \uyy) + (1 - \mu) (\uyy \psix - \psi \uxyy - \uxy \psiy + \psi \uxyy) \right] \dd{y} \dd{t} \\
+		&= \inttr \psi \left[ -\rho \utt - \kaq (\uxxxx + \uyyyy) \right] \drt + \rho \intr \ut \psi \dd{x} \dd{y} \\
+		&\phantom{=\ } - \kaq \inttdr \left[ (\uxx \psix - \psi \uxxx) + (1 - \mu) (\uxx \psiy - \uxy \psix) \right] \dd{x} \dd{t} \\
+		&\phantom{=\ } + \kaq \inttdr \left[ (\uyy \psiy - \psi \uyy) + (1 - \mu) (\uyy \psix - \uxy \psiy) \right] \dd{y} \dd{t}.
+	\end{align*}
+	Note that
 	\beq
-		\dS = \epsilon \intt \intr \left[ \left( \pdv{\Ld}{u} - \pdv{}{x} \pdv{\Ld}{\ux} - \pdv{}{y} \pdv{\Ld}{\uy} - \pdv{}{t} \pdv{\Ld}{\ut} \right) \psi + \pdv{}{x} \left( \pdv{\Ld}{\ux} \psi \right) + \pdv{}{y} \left( \pdv{\Ld}{\uy} \psi \right) + \pdv{}{t} \left( \pdv{\Ld}{\ut} \psi \right) \right] \dd{x} \dd{y} \dd{t}
+		\lapw u = \pdv[4]{u}{x} + 2 \frac{\partial^4 u}{\partial x^2 \partial y^2} + \pdv[4]{u}{y},
 	\eeq
+	so
+	\begin{align*}
+		\frac{\dS}{\eps} &= \inttr \psi (-\rho \utt - \kaq \lapw u) \drt + 2 \kaq \inttr \psi \uxxyy \drt + \rho \intr \ut \psi \dd{x} \dd{y} \\
+		&\phantom{=\ } - \kaq \inttdr \left[ (\uxx \psix - \psi \uxxx) + (1 - \mu) (\uxx \psiy - \uxy \psix) \right] \dd{x} \dd{t} \\
+		&\phantom{=\ } + \kaq \inttdr \left[ (\uyy \psiy - \psi \uyy) + (1 - \mu) (\uyy \psix - \uxy \psiy) \right] \dd{y} \dd{t}
+	\end{align*}
+	Define $\vn$ as the unit vector normal to the surface and $\vl$ as the unit vector tangent to the surface.  Then we have the directional derivatives
+	\begin{align*}
+		\pdv{}{n} &= \vn \cdot \nabla = \xn \pdv{}{x} + \yn \pdv{}{y}, &
+		\pdv{}{\ell} &= \vl \cdot \nabla = \xl \pdv{}{x} + \yl \pdv{}{y}.
+	\end{align*}
+	
+	\hl{Eventually}, we find
+	\beq
+		\dS = -\eps \inttr \left(\rho \utt + \kaq \lapw u \right) \psi \drt + \eps \inttdr \left( \Pu \psi + \Mu \pdv{\psi}{n} \right) \dlt
+	\eeq
+	where
+	\begin{align*}
+		\Pu &= \kaq \left\{ \pdv{}{n} \lap u + (1 - \mu) \pdv{}{\ell} [\uxx \xn \xl + \uxy (\xn \yl + \xl \yn) + \uyy \yn \yl] \right\}, \\
+		\Mu &= -\kaq \left[ \mu \lap u + (1 - \mu) (\uxx \xn^2 + 2 \uxy \xn \yn + \uyy \yn^2) \right].
+	\end{align*}
+
+%	Define $\Ld$ as the integrand in \refeq{action3}.  Explicitly,
+%	\beqn \label{ld3}
+%		\Ld = \frac{\rho}{2} \ut^2 - \frac{\kaq}{2} (\uxx^2 + \uyy^2) + \frac{3}{2} \kaq (\uxx \uyy - \uxy^2),
+%	\eeqn
+%	where we note that $\Ld = \Ld(\ut, \uxx, \uxy, \uyy)$.  Then
+%	\beqn \label{dS1}
+%		\dS = \epsilon \inttr \left( \pdv{\Ld}{\ut} \pdv{\psi}{t} + \pdv{\Ld}{\uxx} \pdv[2]{\psi}{x} + \pdv{\Ld}{\uxy} \pdv{\psi}{x}{y} + \pdv{\Ld}{\uyy} \pdv[2]{\psi}{y} \right) \dd{x} \dd{y} \dd{t},
+%	\eeqn
+%	where $\psi = \psi(x, y, t)$ is some variation of the solution $\uo$ and $\eps \ll 1$.  Using the product rule of differentiation,
+%	\beq
+%		\pdv{\Ld}{\ut} \pdv{\psi}{t} = \pdv{}{t} \left( \psi \pdv{\Ld}{\ut} \right) - \psi \pdv{}{t} \pdv{\Ld}{\ut},
+%	\eeq
+%	and so on for the other arguments of $\Ld$.  Making this substitution, \refeq{dS1} becomes
+%	\begin{align}
+%		\frac{\dS}{\eps} = -\inttr &\left( \pdv{}{t} \pdv{\Ld}{\ut} + \pdv[2]{}{x} \pdv{\Ld}{\uxx} + \pdv{}{x}{y} \pdv{\Ld}{\uxy} + \pdv[2]{}{y} \pdv{\Ld}{\uyy} \right) \psi \dd{x} \dd{y} \dd{t} \notag \\
+%		&+ \inttr \left[ \pdv{}{t} \left( \psi \pdv{\Ld}{\ut} \right) + \pdv[2]{}{x} \left( \psi \pdv{\Ld}{\uxx} \right) + \pdv{}{x}{y} \left( \psi \pdv{\Ld}{\uxy} \right) + \pdv[2]{}{y} \left( \psi \pdv{\Ld}{\uyy} \right) \right] \dd{x} \dd{y} \dd{t}. \label{dS2}
+%	\end{align}
+%	From the definition of $\Ld$ in \refeq{action3}, note that
+%	\begin{align*}
+%		\pdv{\Ld}{\ut} &= \rho \ut, &
+%		\pdv{\Ld}{\uxx} &= \kaq \left( \frac{3}{4} \uyy - \uxx \right), \\
+%		\pdv{\Ld}{\uxy} &= -\frac{3}{2} \kaq \uxy, &
+%		\pdv{\Ld}{\uyy} &= \kaq \left( \frac{3}{4} \uxx - \uyy \right),
+%	\end{align*}
+%	and that
+%	\begin{align*}
+%		\pdv{}{t} \pdv{\Ld}{\ut} &= \rho \utt, &
+%		\pdv[2]{}{x} \pdv{\Ld}{\uxx} &= \kaq \left( \frac{3}{4} \uxxyy - \uxxxx \right), \\
+%		\pdv{}{x}{y} \pdv{\Ld}{\uxy} &= -\frac{3}{2} \kaq \uxxyy, &
+%		\pdv[2]{}{y} \pdv{\Ld}{\uyy} &= \kaq \left( \frac{3}{4} \uxxyy - \uyyyy \right).
+%	\end{align*}
+%	Then the first integrand in \refeq{dS2} can be written
+%	\begin{align*}
+%		-\left[ \rho \utt + \kaq \left( \frac{3}{2} \uxxyy - \uxxxx - 3 \uxxyy + \frac{3}{2} \uxxyy - \uyyyy \right) \right] \psi = \left[- \rho \utt - \kaq (\uxxxx + \uyyyy) \right] \psi.
+%	\end{align*}
 \end{solution}
+
+\newcommand{\ello}{\ell^0}
 
 \begin{problem}
 	Finally, derive the Euler-Lagrange equation and the associated boundary conditions.
 \end{problem}
 
+\begin{solution}
+	We begin by making the strong assumption that the boundary of the plate remains fixed.  Mathematically, we assume that the solution $\uo$ does not vary on the boundary of the plate, denoted by $\ell \in \dR$.  We further assume that the edges of the plate cannot move; that is, the first derivative of $\uo$ normal to the plate does not vary either.  These assumptions constrain $\psi = \psi(\ell, t)$:
+	\begin{align*}
+		\uo(\ell, t) = 0 &\implies \psi(\ell, t) = 0, &
+		\pdv{\uo(\ell, t)}{n} = 0 &\implies \pdv{\psi(\ell, t)}{n} = 0.
+	\end{align*}
+	Making these assumptions, the entire surface integral of \refeq{daction3} vanishes, and we are left with
+	\beq
+		\dS = -\eps \inttr \left(\rho \utt + \kaq \lapw u \right) \psi \drt.
+	\eeq
+	By Hamilton's principle, this gives us
+	\beq \label{el3}
+		0 = \rho \utt + \kaq \lapw u
+	\eeq
+	as the Euler-Lgrange equation.
+	
+	Now we use \refeq{el3} as our assumption and return to \refeq{daction3}, which becomes
+	\beq
+		\dS = \eps \inttdr \left( \Pu \psi + \Mu \pdv{\psi}{n} \right) \dlt.
+	\eeq
+	Once again invoking Hamilton's principle, we find the boundary conditions
+	\begin{align}
+		\Mu &= 0, & \Pu &= 0.
+	\end{align}
+\end{solution}
+
 
 \newcommand{\lam}{\lambda}
 \newcommand{\vrt}{v(r, \theta)}
 \newcommand{\gt}{g(t)}
-\newcommand{\lap}{\nabla^2}
 \newcommand{\fnr}{f_n(r)}
 
 \section{Vibrations of a circular disk}
@@ -276,9 +444,9 @@ Using the results of problem~\ref{2}, show that the variation generated by going
 		\utt - \lam \lapw u = 0,
 	\eeqn
 	and the boundary conditions
-	\begin{align*}
+	\begin{align} \label{bc4}
 		u &= 0, & \pdv{u}{n} &= 0.
-	\end{align*}
+	\end{align}
 \end{statement}
 
 
@@ -368,42 +536,53 @@ Using the results of problem~\ref{2}, show that the variation generated by going
 \end{problem}
 
 \begin{solution}
-	Firstly, note that \refeq{evpb} may be separated into the two eigenvalue problems
+	From \refeq{udef} and \refeq{ansatz4}, the solution $u$ is defined
+	\beq
+		u = \vrt \,\gt = \gt \sum_{n = -\infty}^\infty \fnr e^{i n \theta}.
+	\eeq
+	From \refeq{bc4},
 	\begin{align}
-		0 &= \lapw v - k^2 v, \label{kneg} \\
-		0 &= \lapw v + k^2 v. \label{kpos}
+		u = 0 \implies v = 0 \implies \sum_{n = -\infty}^\infty \fnr = 0, \\
+		\pdv{u}{n} = 0 \implies \pdv{v}{n} = 0 \implies \sum_{n = -\infty}^\infty \pdv{\fnr}{r} = 0.
 	\end{align}
-	Any $k$ that corresponds to a nontrivial solution of \refeq{evpb} must also correspond to a nontrivial solution of \refeq{kneg} and of \refeq{kpos}.  We will proceed by solving \refeq{kneg} for $k_m$ and \refeq{kpos} for $k_p$.  Then, any $k_n \in k_m \cap k_p$ that nontrivially solves both \refeq{kpos} and \refeq{kneg} must also nontrivially solve \refeq{evpb}.
+	on the boundry $\dR$ of the plate.  Note that $\pdv*{}{n}$ is the normal derivative.  % Because $\gt$ is a function of purely time, it has no effect on the boundary.  Furthermore, the $e^{i n \theta}$ factor in the expression for $\vrt$ is periodic, so it likewise cannot be used to set boundary conditions.
 	
-	Beginning with \refeq{kneg}, we have
-	\beq
-		0 = \left( \pdv[2]{}{r} + \frac{1}{r} \pdv{}{r} + \frac{1}{r^2} \pdv[2]{}{\theta} \right) \fm(r) \, \eimt - \km^2 \fm(r) \, \eimt = \left( \pdv[2]{}{r} + \frac{1}{r} \pdv{}{r} \right) \fm \, \eimt - \frac{1}{r^2} m^2 \fm \, \eimt - \km^2 \fm \, \eimt
-	\eeq
-	where we have substituted the ansatz \refeq{ansatz4}, here $v_m = \fm(r) \, \eimt$.  Dividing out $\eimt$, this becomes
-	\beqn \label{modbess}
-		0 = r^2 \pdv[2]{\fm}{r} + r \pdv{\fm}{r} - (\km^2 r^2 + m^2) \fm,
-	\eeqn
-	which is the modified Bessel equation of order $m$.  It has solutions
-	\beq
-		\fm(r) = \Cq I_m(kr) + \Cw K_p(kr),
-	\eeq
-	where $\Cq$ and $\Cw$ are constants, $I_m$ is the modified Bessel function of the first kind, and $K_m$ is the modified Bessel function of the second kind.  Both functions are of order $m$.
-	
-	Proceeding similarly for \refeq{kpos}, we obtain
-	\beqn \label{bess}
-		0 = r^2 \pdv[2]{\fp}{r} + r \pdv{\fp}{r} + (\kp^2 r^2 - p^2) \fp,
-	\eeqn
-	which is the Bessel equation of order $p$, and has solutions
-	\beq
-		\fp(r) = \Dq J_p(kr) + \Dw Y_p(kr),
-	\eeq
-	where $\Dq$ and $\Dw$ are constants, $J_p$ is the Bessel function of the first kind, $Y_p$ is the Bessel function of the second kind, and both are of order $p$.
-
-	Both $Y_n$ and $K_n$ diverge as $r \to 0$ for all $n$, so we do not want them in our solution.
+%	Firstly, note that \refeq{evpb} may be separated into the two eigenvalue problems
+%	\begin{align}
+%		0 &= \lapw v - k^2 v, \label{kneg} \\
+%		0 &= \lapw v + k^2 v. \label{kpos}
+%	\end{align}
+%	Any $k$ that corresponds to a nontrivial solution of \refeq{evpb} must also correspond to a nontrivial solution of \refeq{kneg} and of \refeq{kpos}.  We will proceed by solving \refeq{kneg} for $k_m$ and \refeq{kpos} for $k_p$.  Then, any $k_n \in k_m \cap k_p$ that nontrivially solves both \refeq{kpos} and \refeq{kneg} must also nontrivially solve \refeq{evpb}.
+%	
+%	Beginning with \refeq{kneg}, we have
+%	\beq
+%		0 = \left( \pdv[2]{}{r} + \frac{1}{r} \pdv{}{r} + \frac{1}{r^2} \pdv[2]{}{\theta} \right) \fm(r) \, \eimt - \km^2 \fm(r) \, \eimt = \left( \pdv[2]{}{r} + \frac{1}{r} \pdv{}{r} \right) \fm \, \eimt - \frac{1}{r^2} m^2 \fm \, \eimt - \km^2 \fm \, \eimt
+%	\eeq
+%	where we have substituted the ansatz \refeq{ansatz4}, here $v_m = \fm(r) \, \eimt$.  Dividing out $\eimt$, this becomes
+%	\beqn \label{modbess}
+%		0 = r^2 \pdv[2]{\fm}{r} + r \pdv{\fm}{r} - (\km^2 r^2 + m^2) \fm,
+%	\eeqn
+%	which is the modified Bessel equation of order $m$.  It has solutions
+%	\beq
+%		\fm(r) = \Cq I_m(kr) + \Cw K_p(kr),
+%	\eeq
+%	where $\Cq$ and $\Cw$ are constants, $I_m$ is the modified Bessel function of the first kind, and $K_m$ is the modified Bessel function of the second kind.  Both functions are of order $m$.
+%	
+%	Proceeding similarly for \refeq{kpos}, we obtain
+%	\beqn \label{bess}
+%		0 = r^2 \pdv[2]{\fp}{r} + r \pdv{\fp}{r} + (\kp^2 r^2 - p^2) \fp,
+%	\eeqn
+%	which is the Bessel equation of order $p$, and has solutions
+%	\beq
+%		\fp(r) = \Dq J_p(kr) + \Dw Y_p(kr),
+%	\eeq
+%	where $\Dq$ and $\Dw$ are constants, $J_p$ is the Bessel function of the first kind, $Y_p$ is the Bessel function of the second kind, and both are of order $p$.
+%
+%	Both $Y_n$ and $K_n$ diverge as $r \to 0$ for all $n$, so we do not want them in our solution.
 \end{solution}
 
 
 
-In writing these solutions, I consulted Gelfand and Fomin's \emph{Calculus of Variations}, Olmstead and Volpert's \emph{Differential Equations in Applied Mathemtics}.
+In writing these solutions, I consulted Gelfand and Fomin's \emph{Calculus of Variations}, and Olmstead and Volpert's \emph{Differential Equations in Applied Mathemtics}.
 
 \end{document}
