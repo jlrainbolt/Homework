@@ -119,7 +119,7 @@
 
 
 \begin{solution}
-	This problem is a simple plug and chug to help us practice calculating torques.  The net torque on the rod is the sum of the torques due to each of the forces:
+	This problem is a simple plug and chug to help us practice calculating cross products and torques.  The net torque on the rod is the sum of the torques due to each of the forces:
 	\beqn \label{nett}
 		\vtnet = \vtq + \vtw.
 	\eeqn
@@ -147,8 +147,9 @@
 	\eeq
 	where $\tnet$ is the magnitude of the net torque.  Plugging everything in,
 	\beq
-		\tnet = \rrq \Fq - \frac{1}{2} \rw \Fw = (\SI{5.00}{\meter}) (\SI{8.00}{\newton}) - \frac{1}{2} (\SI{2.00}{\meter}) (\SI{12.0}{\newton}) = {\color{blue} \SI{28.0}{\newton\meter}}.
+		\tnet = \rrq \Fq - \frac{1}{2} \rw \Fw = (\SI{5.00}{\meter}) (\SI{8.00}{\newton}) - \frac{1}{2} (\SI{2.00}{\meter}) (\SI{12.0}{\newton}) = {\color{blue} \SI{28.0}{\newton\meter}},
 	\eeq
+	which seems reasonable given the magnitudes of the forces and the length of the rod.
 \end{solution}
 
 \newcommand{\mb}{m_b}
@@ -190,7 +191,7 @@
 	\label{E10.16}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[b]
 	\vspace{1.5in}
 	\caption{Free-body diagrams for 10.16(a).}
 	\label{E10.16a}
@@ -211,7 +212,7 @@
 	\beqn \label{pulley0}
 		\tnet = I \alpha = I \frac{a}{r}.
 	\eeqn
-	Here, $I$ is the moment of inertia about the pulley's center and $\alpha$ its angular acceleration.  Since the pulley rolls without slipping, $\alpha = a / r$.
+	Here, $I$ is the moment of inertia about the pulley's center and $\alpha$ its angular acceleration.  Since the pulley rolls without slipping, $\alpha = a / r$, where $r$ is the radius of the pulley.
 			
 	$\Tw$ and $\Tb$ each exert a torque on the outer edge of the pulley, but in opposite directions.  We know the weight must be moving downward, meaning $\Tw$ has a greater magnitude, and so the pulley is rotating in the direction due to $\tau_w$.  The lever arm for each torque is the radius of the pulley $r$.  Putting this all together,
 	\beq
@@ -225,7 +226,9 @@
 	\beqn \label{pulley}
 		(\Tw - \Tb) r = \frac{1}{2} \mmp r^2 \frac{a}{r} \implies \Tw - \Tb = \frac{1}{2} \mmp a.
 	\eeqn
-	The system of three equations \refeq{box}, \refeq{weight}, and \refeq{pulley} has three unknowns.  The solutions are
+	Notice that this does not depend on the pulley's radius!  Notice also that if $\mp = 0$, we would have $\Tb = \Tw$; that is, equal tension in the wire on either side of the pulley.  This is the idealized case we studied in earlier problems involving \emph{massless} pulleys.
+
+	Getting back to the problem at hand, the system of three equations \refeq{box}, \refeq{weight}, and \refeq{pulley} has three unknowns.  The solutions are
 	\begin{align}
 		\Tb &= 2g \frac{\mb \mw}{2 \mb + 2 \mw + \mmp}, \label{Tb} \\
 		\Tw &= g \mw \frac{2 \mb + \mmp}{2 \mb + 2 \mw + \mmp}, \label{Tw} \\
@@ -255,8 +258,7 @@
 	\end{enumerate}
 \end{solution}
 
-\begin{figure}
-	\vspace{1.5in}
+\begin{figure}[b]
 	\caption{Free-body diagram for 10.16(c).}
 	\label{E10.16c}
 \end{figure}
@@ -342,7 +344,7 @@
 	Example 10.7 describes the same situation, except the ball is rolling downhill.  We can use that worked example to solve this problem.
 	
 	\begin{enumerate}
-		\item The free-body diagram is the same as for Example 10.7, and is shown in Fig.~\ref{10.19}(b).  The friction force must be directed uphill because it is preventing the ball from sliding down the ramp.  This is true even when the ball is rolling uphill instead of downhill, because the force of gravity is \emph{always} trying to make the ball slide downhill.
+		\item The free-body diagram is the same as for Example 10.7, and is shown in Fig.~\ref{10.19}(b).  {\color{blue} The friction force must be directed uphill because it is preventing the ball from \emph{sliding} down the ramp due to gravity.  This is true even when the ball is rolling uphill instead of downhill, because gravity is the only force acting upon the ball, and it always acts downward.}
 		\item The free-body diagram is the same as in Example 10.7, so the acceleration of the center of mass is also the same:
 			\beq
 				a_{\text{cm-}x} = {\color{blue} \frac{5}{7} g \sin{\beta}}.
@@ -447,7 +449,7 @@
 \begin{solution}
 	This is another problem we can solve using conservation of energy.  We are concerned with three states of the system, all of which have the same energy.
 	
-	Let $U$ be the shell's gravitational potential energy, which is the only potential energy in this system.  At points $\ho$, $A$, and $B$, respectively, it is given by
+	Let $U$ be the shell's gravitational potential energy, which is the only potential energy in this system.  When the shell is at points $\ho$, $A$, and $B$, respectively, its potential energy is given by
 	\begin{align*}
 		U_0 &= m g \ho, \\
 		U_A &= 2 m g R, \\
@@ -485,36 +487,34 @@
 				\Delta K_{0,A} + \Delta U_{0,A} = 0 \implies mg (\ho - 2R) = \frac{5}{6} mg R \implies \ho = {\color{blue} \frac{17}{6} R}.
 			\eeq
 		
-		\item The track will be exerting a normal force $N_B$ on the sphere at point $B$, which acts in the horizontal direction.  It is responsible for the sphere's centripetal acceleration at $B$.  We can find the force by finding the centripetal acceleration, which will look similar to \refeq{centr}.
+		\item The track will be exerting a normal force $N_B$ on the shell at point $B$, which acts in the horizontal direction.  It is solely responsible for the shell's centripetal acceleration at $B$.  We can find the force by finding the centripetal acceleration, which will look similar to \refeq{centr}.
 		
 		Invoking conservation of energy between points $\ho$ and $B$, and plugging in our answer for $\ho$, we have
 			\beq
 				\Delta K_{0,B} + \Delta U_{0,B} = 0 \implies mg (\ho - R) = \frac{5}{6} m v_B^2 \implies \frac{v_B^2}{R} = \frac{11}{5} g.
 			\eeq
-			Now that we have the centripetal acceleration, we use Newton's second law to find the force:
+			Now that we have the centripetal acceleration, we apply Newton's second law to find the force:
 			\beq
 				N_b = {\color{blue} \frac{11}{5} m g}.
 			\eeq
 			
-		\item If the track has no friction, the sphere will have no rotational motion.  So the situation looks just like translational motion problems we have solved before using conservation of energy.  When the sphere does not rotate, the kinetic energy looks like
+		\item If the track has no friction, the shell will have no rotational motion.  So the situation looks just like translational motion problems we have solved before using conservation of energy.  When the shell does not rotate, its kinetic energy at point $A$ is
 			\beq
 				K_A = \frac{1}{2} m v_A^2.
 			\eeq
-			The potential energy is unchanged.
-			
-			The condition for making a complete loop-the-loop is the same, so we need to check whether the sphere's velocity still satisfies \refeq{centr} at a minimum.  Invoking conservation of energy between points $\ho$ and $A$ using the new $K_A$,
+			The condition for making a complete loop-the-loop is the same, so we need to check whether the shell's velocity still satisfies \refeq{centr} at minimum.  Invoking conservation of energy between points $\ho$ and $A$ using the new $K_A$,
 			\beq
 				\Delta K_{0,A} + \Delta U_{0,A} = 0 \implies mg (\ho - 2R) = \frac{1}{2} m v_A^2 \implies \frac{v_A^2}{R} = \frac{5}{3} g.
 			\eeq
-			{color{blue} Yes}, the sphere will make a complete loop-the-loop, because its speed in this case is \emph{greater} than what is required to counteract the force of gravity at point $A$.
+			{\color{blue} Yes, the shell will make a complete loop-the-loop, because its speed in this case is \emph{greater} than what is required to counteract the force of gravity at point $A$.}
 			
 		\item As we did in (b) for point $B$, we can calculate the normal force exerted by the track at point $A$.
 			
-			In part (c), we know that the centripetal acceleration at $A$ is greater than $g$, so the normal force is balancing out the weight of the sphere:
+			In part (c), we know that the centripetal acceleration at $A$ is greater than $g$, so the normal force is contributing to the centripetal force $F_c$:
 			\beq
-				N_A = \frac{5}{3} m g - m g = {\color{blue} \frac{2}{3} m g}.
+				F_c = N_A + m g \implies N_A = \frac{5}{3} m g - m g = {\color{blue} \frac{2}{3} m g}.
 			\eeq
-			In part (a), the condition we enforced to find that minimum $\ho$ was that the centripetal acceleration at $A$ was \emph{exactly} equal to $g$, so there can be no forces acting upon the sphere other than gravity.  In other words,
+			In part (a), the condition we enforced to find that minimum $\ho$ was that the centripetal acceleration at $A$ was \emph{exactly} equal to $g$, so there can be no forces acting upon the shell other than gravity.  In other words,
 			\beq
 				N_A = {\color{blue} 0}.
 			\eeq
@@ -523,16 +523,10 @@
 
 
 \clearpage
-\begin{figure}
+\begin{figure}[b]
 	\vspace{1.5in}
 	\caption{Free-body diagram for 10.76.}
 	\label{P10.76}
-\end{figure}
-
-\begin{figure}
-	\vspace{1.5in}
-	\caption{Schematic diagram for 10.76.}
-	\label{P10.76c}
 \end{figure}
 
 \paragraph{Problem 10.76}
@@ -545,7 +539,7 @@
 \end{problem}
 
 \begin{solution}
-	This problem is a lot like \textbf{10.30}, but with the addition of an external force acting upon the cylinder which helps move it uphill.  This changes the direction of the static friction force, because it is now resisting the force $F$, which is providing an overall acceleration \emph{up} the ramp.  A free-body diagram for one of the cylinders is shown in Fig.~\ref{P10.76}, which may be compared to Fig.~\ref{10.19}(b).
+	This problem is a lot like \textbf{10.30}, but with the addition of an external force acting upon the cylinder which pulls it uphill.  This changes the direction of the static friction force, because it is now resisting the force $F$, which is providing an overall acceleration \emph{uphill}.  A free-body diagram for one of the cylinders is shown in Fig.~\ref{P10.76}, which may be compared to Fig.~\ref{10.19}(b).
 	
 	Using Newton's second law, we can use Fig.~\ref{P10.76} to write two equations: one for translational motion, and one for rotational motion.  Let $f$ be the magnitude of the static friction force, $m$ the mass of the cylinder, and $\theta$ the inclination of the ramp.  For translational motion,
 	\beqn \label{trans}
@@ -585,11 +579,11 @@
 			\beqn \label{fric}
 				\frac{1}{2} m a = \mu_s m g \cos \theta.
 			\eeqn
-			We can also rewrite \refeq{trans} as
+			We can also use it to rewrite \refeq{trans} as
 			\beqn \label{frac}
-				ma = F - \frac{1}{2} m a - m g \sin{\theta}
+				ma = F - \frac{1}{2} m a - m g \sin{\theta}.
 			\eeqn
-			Now we have the system of two equations \refeq{fric} and \refeq{frac} in the two unknowns $F$ and $a$.  The solutions are
+			Now we have the system of two equations \refeq{fric} and \refeq{frac} with two unknowns, $F$ and $a$.  The solutions are
 			\begin{align}
 				a &= 2 \mu_s g \cos{\theta}, \label{acyl} \\
 				F &= 3 \mu_s m g \cos{\theta} + m g \sin{\theta}. \label{Fcyl}
@@ -601,20 +595,25 @@
 			
 		\item We know from (a) that the maximum possible acceleration up the ramp is given by \refeq{acyl}.  This is a constant acceleration in the $x$ direction, and the cylinder needs to travel the entire length $\ell$ of the ramp, as shown in Fig.~\ref{P10.76c}.
 		
-			We can use one-dimensional kinematics to describe the motion of the cylinder's center of mass.  Since the cylinder starts from rest,
+			We can use one-dimensional kinematics to describe the translation of the cylinder's center of mass.  Since the cylinder starts from rest,
 			\beqn \label{time}
-				\ell = \frac{1}{2} a t^2 \implies t = \sqrt{\frac{\ell}{a}}.
+				\ell = \frac{1}{2} a t^2 \implies t = \sqrt{\frac{2 \ell}{a}}.
 			\eeqn
 			Plugging numbers into \refeq{acyl},
 			\beq
-				a = 2 (0.120) (\sig) \cos{37.0^\circ} = \SI{865}{\meter\per\square\second},
+				a = 2 (0.120) (\sig) \cos{37.0^\circ} = \SI{1.88}{\meter\per\square\second}.
 			\eeq
-			and, finally, plugging numbers into \refeq{time},
+			Finally, plugging numbers into \refeq{time},
 			\beq
-				t = \sqrt{\frac{\SI{6.00}{\meter}}{\SI{865}{\meter\per\square\second}}} = {\color{blue} \SI{0.0833}{\second}}.
+				t = \sqrt{\frac{2 (\SI{6.00}{\meter})}{\SI{865}{\meter\per\square\second}}} = {\color{blue} \SI{2.53}{\second}}.
 			\eeq
 	\end{enumerate}
 \end{solution}
+
+\begin{figure}[b]
+	\caption{Schematic diagram for 10.76.}
+	\label{P10.76c}
+\end{figure}
 
 
 \clearpage
@@ -628,5 +627,42 @@
 \begin{problem}
 	A small block with mass \SI{0.130}{\kg} is attached to a string passing through a hole in a frictionless, horizontal surface (see Fig.~\ref{E10.42}).  The block is originally revolving in a circle with a radius of \SI{0.800}{\meter} about the hole with a tangential speed of \SI{4.00}{\meter\per\second}.  The string is then pulled slowly from below, shortening the radius of the circle in which the block revolves.  The breaking strength of the string is \SI{30.0}{\newton}.  What is the radius of the circle when the string breaks?
 \end{problem}
+
+\begin{solution}
+	This is another problem about conservation of angular momentum.  Since the block is small, we can treat it as a point mass.  For a point mass,
+	\beq
+		I = m R^2,
+	\eeq
+	where $m$ is the block's mass and $R$ its orbital radius.
+	
+	We are given the block's initial orbital radius $R_i$ and its initial tangential speed $v_i$.  Its initial angular velocity is then
+	\beq
+		\omega_i = \frac{v_i}{R_i},
+	\eeq
+	We can write the block's initial angular momentum in terms of known quantities:
+	\beqn \label{momi}
+		I_i \omega_i = m v_i R_i.
+	\eeqn
+	The final state of the system is the instant at which the string breaks.  Call its breaking force $T$.  Since the block is moving in a circle,
+	\beqn \label{brforce}
+		T = \frac{m v_f^2}{R_f}.
+	\eeqn
+	We can divide both sides of \refeq{brforce} by $R_f$ to get an expression for the final angular velocity:
+	\beq
+		\frac{T}{R_f} = m \frac{v_f^2}{R_f^2} = m \omega_f^2 \implies \omega_f = \sqrt{\frac{T}{m R_f}}.
+	\eeq
+	Now we can write the final angular momentum in \refeq{consmom2} in terms of known quantities and $R_f$:
+	\beqn \label{momf}
+		I_f \omega_f = m R_f^2 \sqrt{\frac{T}{m R_f}} = \sqrt{m R_f^3 T}.
+	\eeqn
+	Finally, we can equate \refeq{momi} and \refeq{momf} and solve for $R_f$:
+	\beq
+		m v_i R_i = \sqrt{m R_f^3 T} \implies R_f = \left( \frac{m R_i^2 v_i^2}{T} \right)^{1/3}.
+	\eeq
+	Plugging in numbers,
+	\beq
+		R_f = \left( \frac{(\SI{0.130}{\kg}) (\SI{0.800}{\meter})^2 (\SI{4.00}{\meter\per\second})^2}{\SI{30.0}{\newton}} \right)^{1/3} = {\color{blue} \SI{0.354}{\meter}}.
+	\eeq
+\end{solution}
 
 \end{document}
