@@ -7,6 +7,7 @@
 \usepackage{fancyhdr}
 \usepackage{enumitem}
 \usepackage{xcolor, soul}
+\usepackage{graphicx}
 \usepackage{siunitx}
 %\allowdisplaybreaks
 
@@ -77,8 +78,8 @@
 
 \begin{document}
 
-\begin{figure}
-	\vspace{1in}
+\begin{figure} \centering
+	\includegraphics{E10-2}
 	\caption{\textbf{E10.2}}
 	\label{E10.2}
 \end{figure}
@@ -134,7 +135,7 @@
 	Now for $\vtq$, define $\vrw$ as the vector from $O$ to where $\vFw$ acts on the rod.  Then
 		\begin{align*}
 		\vrw &= -\rw \ih, \\
-		\vFw &= -(\Fw \cos{30^\circ}) \ih + (\Fw \sin{30^\circ}) \jh = -\frac{\sqrt{3}}{2} \Fw \ih + \frac{1}{2} \Fw \jh,
+		\vFw &= -(\Fw \cos{30.0^\circ}) \ih + (\Fw \sin{30.0^\circ}) \jh = -\frac{\sqrt{3}}{2} \Fw \ih + \frac{1}{2} \Fw \jh,
 	\end{align*}
 	where $\rw = \SI{2.00}{\meter}$ and $\Fw = \SI{12.0}{\newton}$, and
 	\beq
@@ -183,8 +184,8 @@
 	\end{enumerate}
 \end{problem}
 
-\begin{figure}
-	\vspace{1in}
+\begin{figure} \centering
+	\includegraphics{E10-16}
 	\caption{\textbf{E10.16}}
 	\label{E10.16}
 \end{figure}
@@ -262,8 +263,8 @@
 
 
 \clearpage
-\begin{figure}
-	\vspace{1in}
+\begin{figure} \centering
+	\includegraphics{E10-22}
 	\caption{\textbf{E10.22}}
 	\label{E10.22}
 \end{figure}
@@ -280,21 +281,23 @@
 \end{problem}
 
 \begin{solution}
-	We can solve this problem using conservation of energy.  The ring starts from rest and then experiences both translational and rotational motion.  The change in its kinetic energy is given by
-	\beq
-		\Delta K = \frac{1}{2} m v^2 + \frac{1}{2} I \omega^2,
-	\eeq
+	We can solve this problem using conservation of energy.  The ring starts from rest and then experiences both translational and rotational motion.  In the initial and final states of the system, the hoop's kinetic energy is given by
+	\begin{align*}
+		K_i &= 0, &
+		K_f &= \frac{1}{2} m v^2 + \frac{1}{2} I \omega^2,
+	\end{align*}
 	where $v$ is the (translational) speed of its center, $I$ the moment of inertia about its center of mass, and $\omega$ is its angular speed.  For a hoop,
 	\beq
 		I = m r^2.
 	\eeq
-	Once the ring has descended $\Delta y = \SI{75.0}{\centi\meter}$, its gravitational potential energy $\Ug$ has decreased:
-	\beq
-		\Delta \Ug = -mg \,\Delta y.
-	\eeq
+	Once the hoop has descended $h = \SI{75.0}{\centi\meter}$, its gravitational potential energy has decreased.  This is the only source of potential energy for the hoop.  We will fix our zero point at \SI{75.0}{\cm} below the hoop, so
+	\begin{align*}
+		U_i &= mg h, &
+		U_f &= 0.
+	\end{align*}
 	Invoking conservation of energy,
 	\beqn \label{conse}
-		\Delta K + \Delta U = 0 \implies mg \,\Delta y = \frac{1}{2} m v^2 + \frac{1}{2} m r^2 \omega^2.
+		\Delta K + \Delta U = 0 \implies mg h = \frac{1}{2} m v^2 + \frac{1}{2} m r^2 \omega^2.
 	\eeqn
 	We need to invoke another condition in order to solve for the \emph{two} unknowns $v$ and $\omega$.  Once again, this is rolling without slipping: the edge of the hoop must be moving at the same rate that the string is unwinding.  This means
 	\beqn \label{roll}
@@ -308,7 +311,7 @@
 	\begin{enumerate}
 		\item Rearranging \refeq{conse2} and plugging in numbers,
 			\beq
-				\omega = \frac{\sqrt{g \,\Delta y}}{r} = \frac{\sqrt{(\sig) (\SI{0.750}{\meter})}}{\SI{8.00e-2}{\meter}} = {\color{blue} \SI{33.9}{\radian\per\second}}.
+				\omega = \frac{\sqrt{g h}}{r} = \frac{\sqrt{(\sig) (\SI{0.750}{\meter})}}{\SI{8.00e-2}{\meter}} = {\color{blue} \SI{33.9}{\radian\per\second}}.
 			\eeq
 			
 		\item Now plugging into \refeq{roll},
@@ -319,8 +322,8 @@
 \end{solution}
 
 \clearpage
-\begin{figure}
-	\vspace{1.5in}
+\begin{figure} \centering
+	\includegraphics{10-19}
 	\caption{\textbf{10.19}}
 	\label{10.19}
 \end{figure}
@@ -422,8 +425,8 @@
 
 
 \clearpage
-\begin{figure}
-	\vspace{1in}
+\begin{figure} \centering
+	\includegraphics{P10-72}
 	\caption{\textbf{P10.72}}
 	\label{P10.72}
 \end{figure}
@@ -441,7 +444,96 @@
 	\end{enumerate}
 \end{problem}
 
+\begin{solution}
+	This is another problem we can solve using conservation of energy.  We are concerned with three states of the system, all of which have the same energy.
+	
+	Let $U$ be the shell's gravitational potential energy, which is the only potential energy in this system.  At points $\ho$, $A$, and $B$, respectively, it is given by
+	\begin{align*}
+		U_0 &= m g \ho, \\
+		U_A &= 2 m g R, \\
+		U_B &= m g R.
+	\end{align*}
+	For kinetic energy,
+	\begin{align}
+		K_0 &= 0, \notag \\
+		K_A &= \frac{1}{2} m v_A^2 + \frac{1}{2} I \omega_A^2, \label{ka} \\
+		K_B &= \frac{1}{2} m v_B^2 + \frac{1}{2} I \omega_B^2, \label{kb}
+	\end{align}
+	where $v$ is the (translational) speed of the shell, $I$ the moment of inertia about its center of mass, and $\omega$ is its angular speed.
+	
+	For a spherical shell,
+	\beq
+		I = \frac{2}{3} m r^2,
+	\eeq
+	and for rolling without slipping, we have the constraint
+	\beq
+		\omega = \frac{v}{R}.
+	\eeq
+	Using these, we can rewrite \refeq{ka} and \refeq{kb}:
+	\begin{align}
+		K_A &= \frac{1}{2} m v_A^2 + \frac{1}{3} m v_A^2 = \frac{5}{6} m v_A^2, \label{ka2} \\
+		K_B &= \frac{5}{6} m v_B^2. \label{kb2}
+	\end{align}
+	
+	\begin{enumerate}
+		\item The shell will make a complete loop-the-loop when its speed at point $A$ is great enough to counteract the force of gravity.  The minimum condition is when the centripetal acceleration at $A$ is exactly equal to the gravitational acceleration,
+			\beqn \label{centr}
+				g = \frac{v_A^2}{R} \implies v_A^2 = g R.
+			\eeqn
+			This will give us our minimum $\ho$.  Feeding this into \refeq{ka2}, we can invoke conservation of energy between points $\ho$ and $A$:
+			\beq
+				\Delta K_{0,A} + \Delta U_{0,A} = 0 \implies mg (\ho - 2R) = \frac{5}{6} mg R \implies \ho = {\color{blue} \frac{17}{6} R}.
+			\eeq
+		
+		\item The track will be exerting a normal force $N_B$ on the sphere at point $B$, which acts in the horizontal direction.  It is responsible for the sphere's centripetal acceleration at $B$.  We can find the force by finding the centripetal acceleration, which will look similar to \refeq{centr}.
+		
+		Invoking conservation of energy between points $\ho$ and $B$, and plugging in our answer for $\ho$, we have
+			\beq
+				\Delta K_{0,B} + \Delta U_{0,B} = 0 \implies mg (\ho - R) = \frac{5}{6} m v_B^2 \implies \frac{v_B^2}{R} = \frac{11}{5} g.
+			\eeq
+			Now that we have the centripetal acceleration, we use Newton's second law to find the force:
+			\beq
+				N_b = {\color{blue} \frac{11}{5} m g}.
+			\eeq
+			
+		\item If the track has no friction, the sphere will have no rotational motion.  So the situation looks just like translational motion problems we have solved before using conservation of energy.  When the sphere does not rotate, the kinetic energy looks like
+			\beq
+				K_A = \frac{1}{2} m v_A^2.
+			\eeq
+			The potential energy is unchanged.
+			
+			The condition for making a complete loop-the-loop is the same, so we need to check whether the sphere's velocity still satisfies \refeq{centr} at a minimum.  Invoking conservation of energy between points $\ho$ and $A$ using the new $K_A$,
+			\beq
+				\Delta K_{0,A} + \Delta U_{0,A} = 0 \implies mg (\ho - 2R) = \frac{1}{2} m v_A^2 \implies \frac{v_A^2}{R} = \frac{5}{3} g.
+			\eeq
+			{color{blue} Yes}, the sphere will make a complete loop-the-loop, because its speed in this case is \emph{greater} than what is required to counteract the force of gravity at point $A$.
+			
+		\item As we did in (b) for point $B$, we can calculate the normal force exerted by the track at point $A$.
+			
+			In part (c), we know that the centripetal acceleration at $A$ is greater than $g$, so the normal force is balancing out the weight of the sphere:
+			\beq
+				N_A = \frac{5}{3} m g - m g = {\color{blue} \frac{2}{3} m g}.
+			\eeq
+			In part (a), the condition we enforced to find that minimum $\ho$ was that the centripetal acceleration at $A$ was \emph{exactly} equal to $g$, so there can be no forces acting upon the sphere other than gravity.  In other words,
+			\beq
+				N_A = {\color{blue} 0}.
+			\eeq
+	\end{enumerate}
+\end{solution}
 
+
+\clearpage
+\begin{figure}
+	\vspace{1.5in}
+	\caption{Free-body diagram for 10.76.}
+	\label{P10.76}
+\end{figure}
+
+\begin{figure}
+	\vspace{1.5in}
+	\caption{Schematic diagram for 10.76.}
+	\label{P10.76c}
+\end{figure}
 
 \paragraph{Problem 10.76}
 \begin{problem}
@@ -452,10 +544,89 @@
 	\end{enumerate}
 \end{problem}
 
+\begin{solution}
+	This problem is a lot like \textbf{10.30}, but with the addition of an external force acting upon the cylinder which helps move it uphill.  This changes the direction of the static friction force, because it is now resisting the force $F$, which is providing an overall acceleration \emph{up} the ramp.  A free-body diagram for one of the cylinders is shown in Fig.~\ref{P10.76}, which may be compared to Fig.~\ref{10.19}(b).
+	
+	Using Newton's second law, we can use Fig.~\ref{P10.76} to write two equations: one for translational motion, and one for rotational motion.  Let $f$ be the magnitude of the static friction force, $m$ the mass of the cylinder, and $\theta$ the inclination of the ramp.  For translational motion,
+	\beqn \label{trans}
+		F = f + m g \sin{\theta} \implies ma = F - f - m g \sin{\theta},
+	\eeqn
+	where $a$ is the cylinder's translational acceleration.
+	
+	Let $r$ be the radius of the cylinder.  For rotational motion, only $f$ exerts a torque on the cylinder, which has lever arm $r$.  This means
+	\beqn \label{rot0}
+		f r = I \alpha,
+	\eeqn
+	where $\alpha$ is the cylinder's rotational acceleration, and the moment of inertia
+	\beq
+		I = \frac{1}{2} m r^2
+	\eeq
+	for a cylinder, so \refeq{rot0} becomes
+	\beqn \label{rot}
+		f = \frac{1}{2} m r \alpha.
+	\eeqn
+	
+	\begin{enumerate}
+		\item From \refeq{trans}, $F$ will have its largest magnitude when $f$ is maximized.  In general, the static friction force is given by
+			\beqn \label{stat}
+				f \leq \mu_s N = \mu_s m g \cos \theta,
+			\eeqn
+			where $\mu_s$ is the coefficient of static friction, and the normal force $N$ is shown in Fig.~\ref{P10.76}.  We need to saturate this equality in order to find the largest possible $F$.
+		
+		Rolling without slipping imposes the constraint
+			\beq
+				\alpha = \frac{a}{r},
+			\eeq
+			which changes \refeq{rot} to
+			\beq
+				f = \frac{1}{2} m a.
+			\eeq
+			Equating this with \refeq{stat} gives us
+			\beqn \label{fric}
+				\frac{1}{2} m a = \mu_s m g \cos \theta.
+			\eeqn
+			We can also rewrite \refeq{trans} as
+			\beqn \label{frac}
+				ma = F - \frac{1}{2} m a - m g \sin{\theta}
+			\eeqn
+			Now we have the system of two equations \refeq{fric} and \refeq{frac} in the two unknowns $F$ and $a$.  The solutions are
+			\begin{align}
+				a &= 2 \mu_s g \cos{\theta}, \label{acyl} \\
+				F &= 3 \mu_s m g \cos{\theta} + m g \sin{\theta}. \label{Fcyl}
+			\end{align}
+			Plugging numbers into \refeq{Fcyl},
+			\beq
+				F = 3 (0.120) (\SI{460}{\kg}) (\sig) \cos{37.0^\circ} + (\SI{460}{\kg}) (\sig) \sin{37.0^\circ} = {\color{blue} \SI{4010}{\newton}}.
+			\eeq
+			
+		\item We know from (a) that the maximum possible acceleration up the ramp is given by \refeq{acyl}.  This is a constant acceleration in the $x$ direction, and the cylinder needs to travel the entire length $\ell$ of the ramp, as shown in Fig.~\ref{P10.76c}.
+		
+			We can use one-dimensional kinematics to describe the motion of the cylinder's center of mass.  Since the cylinder starts from rest,
+			\beqn \label{time}
+				\ell = \frac{1}{2} a t^2 \implies t = \sqrt{\frac{\ell}{a}}.
+			\eeqn
+			Plugging numbers into \refeq{acyl},
+			\beq
+				a = 2 (0.120) (\sig) \cos{37.0^\circ} = \SI{865}{\meter\per\square\second},
+			\eeq
+			and, finally, plugging numbers into \refeq{time},
+			\beq
+				t = \sqrt{\frac{\SI{6.00}{\meter}}{\SI{865}{\meter\per\square\second}}} = {\color{blue} \SI{0.0833}{\second}}.
+			\eeq
+	\end{enumerate}
+\end{solution}
 
-\paragraph{Problem 10.80}
+
+\clearpage
+\begin{figure} \centering
+	\includegraphics{E10-42}
+	\caption{\textbf{E10.42}}
+	\label{E10.42}
+\end{figure}
+
+\paragraph{Problem 10.86}
 \begin{problem}
-	A \SI{5.00}{\kg} ball is dropped from a height of \SI{12.0}{\meter} above one end of a uniform bar that pivots at its center.  The bar has mass \SI{8.00}{\kg} and is \SI{4.00}{\meter} in length.  At the other end of the bar sits another \SI{5.00}{\kg} ball, unattached to the bar.  The dropped ball sticks to the bar after the collision.  How high will the other ball go after the collision?
+	A small block with mass \SI{0.130}{\kg} is attached to a string passing through a hole in a frictionless, horizontal surface (see Fig.~\ref{E10.42}).  The block is originally revolving in a circle with a radius of \SI{0.800}{\meter} about the hole with a tangential speed of \SI{4.00}{\meter\per\second}.  The string is then pulled slowly from below, shortening the radius of the circle in which the block revolves.  The breaking strength of the string is \SI{30.0}{\newton}.  What is the radius of the circle when the string breaks?
 \end{problem}
 
 \end{document}
