@@ -125,31 +125,31 @@
 	\eeqn
 	Here, $\vtq$ is the~(vector) torque due to $\vFq$ relative to point $O$.  Let $\vrq$ be the vector from $O$ to where $\vFq$ acts on the rod.  Using the coordinate axes drawn in Fig.~\ref{E10.2}, we have
 	\begin{align*}
-		\vrq &= -\rrq \ih, \\
+		\vrq &= \rrq \ih, \\
 		\vFq &= -\Fq \jh,
 	\end{align*}
 	where $\rrq = \SI{5.00}{\meter}$ and $\Fw = \SI{8.00}{\newton}$.  Then
 	\beq
-		\vtq = \vrq \times \vFq = \rrq \Fq \kh.
+		\vtq = \vrq \times \vFq = -\rrq \Fq \kh.
 	\eeq
 	Now for $\vtw$, define $\vrw$ as the vector from $O$ to where $\vFw$ acts on the rod.  Then
 		\begin{align*}
-		\vrw &= -\rw \ih, \\
+		\vrw &= \rw \ih, \\
 		\vFw &= -(\Fw \cos{30.0^\circ}) \ih + (\Fw \sin{30.0^\circ}) \jh = -\frac{\sqrt{3}}{2} \Fw \ih + \frac{1}{2} \Fw \jh,
 	\end{align*}
 	where $\rw = \SI{2.00}{\meter}$ and $\Fw = \SI{12.0}{\newton}$, and
 	\beq
-		\vtw = \vrw \times \vFw = -\frac{1}{2} \rw \Fw \kh.
+		\vtw = \vrw \times \vFw = \frac{1}{2} \rw \Fw \kh.
 	\eeq
 	Feeding our results into \refeq{nett},
 	\beq
-		\vtnet = \left( \rrq \Fq - \frac{1}{2} \rw \Fw \right)\!\kh = \tnet \kh,
+		\vtnet = \left( \rrq \Fq - \frac{1}{2} \rw \Fw \right)\!\kh.
 	\eeq
-	where $\tnet$ is the magnitude of the net torque.  Plugging everything in,
+	Plugging everything in,
 	\beq
-		\tnet = \rrq \Fq - \frac{1}{2} \rw \Fw = (\SI{5.00}{\meter}) (\SI{8.00}{\newton}) - \frac{1}{2} (\SI{2.00}{\meter}) (\SI{12.0}{\newton}) = {\color{blue} \SI{28.0}{\newton\meter}},
+		\vtnet = \left( -\rrq \Fq + \frac{1}{2} \rw \Fw \right) \kh = \left( -(\SI{5.00}{\meter}) (\SI{8.00}{\newton}) + \frac{1}{2} (\SI{2.00}{\meter}) (\SI{12.0}{\newton}) \right) \kh = -(\SI{28.0}{\newton\meter}) \kh.
 	\eeq
-	and it is pointing {\color{blue} out of the page}.
+	So the torque has magnitude $\tnet = {\color{blue} \SI{28.0}{\newton\meter}}$ and is acting {\color{blue} clockwise}.
 \end{solution}
 
 \newcommand{\mb}{m_b}
