@@ -51,7 +51,7 @@
 
 \newenvironment{statement}
 {
-    \color{darkgray}
+    \color{gray}
     \ignorespaces
 }
 {
@@ -60,7 +60,7 @@
 
 \newenvironment{problem}
 {
-%    \color{darkgray}
+    \color{darkgray}
     \ignorespaces
 }
 
@@ -132,7 +132,7 @@
 	\beq
 		\vtq = \vrq \times \vFq = \rrq \Fq \kh.
 	\eeq
-	Now for $\vtq$, define $\vrw$ as the vector from $O$ to where $\vFw$ acts on the rod.  Then
+	Now for $\vtw$, define $\vrw$ as the vector from $O$ to where $\vFw$ acts on the rod.  Then
 		\begin{align*}
 		\vrw &= -\rw \ih, \\
 		\vFw &= -(\Fw \cos{30.0^\circ}) \ih + (\Fw \sin{30.0^\circ}) \jh = -\frac{\sqrt{3}}{2} \Fw \ih + \frac{1}{2} \Fw \jh,
@@ -226,7 +226,7 @@
 	\beqn \label{pulley}
 		(\Tw - \Tb) r = \frac{1}{2} \mmp r^2 \frac{a}{r} \implies \Tw - \Tb = \frac{1}{2} \mmp a.
 	\eeqn
-	Notice that this does not depend on the pulley's radius!  Notice also that if $\mp = 0$, we would have $\Tb = \Tw$; that is, equal tension in the wire on either side of the pulley.  This is the idealized case we studied in earlier problems involving \emph{massless} pulleys.
+	Notice that if $\mmp = 0$, we would have $\Tb = \Tw$; that is, equal tension in the wire on either side of the pulley.  This is the idealized case we studied in earlier problems involving \emph{massless} pulleys.
 
 	Getting back to the problem at hand, the system of three equations \refeq{box}, \refeq{weight}, and \refeq{pulley} has three unknowns.  The solutions are
 	\begin{align}
@@ -283,7 +283,7 @@
 \end{problem}
 
 \begin{solution}
-	We can solve this problem using conservation of energy.  The ring starts from rest and then experiences both translational and rotational motion.  In the initial and final states of the system, the hoop's kinetic energy is given by
+	We can solve this problem using conservation of energy.  The ring starts from rest and then experiences both translational and rotational motion.  In the initial and final states of the system, respectively, the hoop's kinetic energy is given by
 	\begin{align*}
 		K_i &= 0, &
 		K_f &= \frac{1}{2} m v^2 + \frac{1}{2} I \omega^2,
@@ -301,13 +301,13 @@
 	\beqn \label{conse}
 		\Delta K + \Delta U = 0 \implies mg h = \frac{1}{2} m v^2 + \frac{1}{2} m r^2 \omega^2.
 	\eeqn
-	We need to invoke another condition in order to solve for the \emph{two} unknowns $v$ and $\omega$.  Once again, this is rolling without slipping: the edge of the hoop must be moving at the same rate that the string is unwinding.  This means
+	We need to invoke another condition in order to solve for the \emph{two} unknowns $v$ and $\omega$.  Once again, this is rolling without slipping: the edge of the hoop must be moving at the same speed that the string is unwinding.  This means
 	\beqn \label{roll}
 		v = r \omega,
 	\eeqn
 	which we can substitute into \refeq{conse} to obtain
 	\beqn \label{conse2}
-		mg \,\Delta y = \frac{1}{2} m r^2 \omega^2 + \frac{1}{2} m r^2 \omega^2 \implies g \,\Delta y = r^2 \omega^2.
+		m g h = \frac{1}{2} m r^2 \omega^2 + \frac{1}{2} m r^2 \omega^2 \implies g \,h = r^2 \omega^2.
 	\eeqn
 	
 	\begin{enumerate}
@@ -419,7 +419,7 @@
 	\beq
 		I_f = \frac{\omega_i}{\omega_f} I_i = \frac{5}{4} I_i.
 	\eeq
-	Feeding in our results for the moments of inertia and solving for $m$, we find
+	Feeding our results for the moments of inertia into \refeq{consmom} and solving for the mass of the asteroid, $m$, we find
 	\beq
 		m = {\color{blue} \frac{M}{9}}.
 	\eeq
@@ -514,7 +514,7 @@
 			\beq
 				F_c = N_A + m g \implies N_A = \frac{5}{3} m g - m g = {\color{blue} \frac{2}{3} m g}.
 			\eeq
-			In part (a), the condition we enforced to find that minimum $\ho$ was that the centripetal acceleration at $A$ was \emph{exactly} equal to $g$, so there can be no forces acting upon the shell other than gravity.  In other words,
+			In part (a), the condition we enforced to find the minimum $\ho$ was that the centripetal acceleration at $A$ was \emph{exactly} equal to $g$, so there can be no forces acting upon the shell other than gravity.  In other words,
 			\beq
 				N_A = {\color{blue} 0}.
 			\eeq
@@ -539,7 +539,7 @@
 \end{problem}
 
 \begin{solution}
-	This problem is a lot like \textbf{10.30}, but with the addition of an external force acting upon the cylinder which pulls it uphill.  This changes the direction of the static friction force, because it is now resisting the force $F$, which is providing an overall acceleration \emph{uphill}.  A free-body diagram for one of the cylinders is shown in Fig.~\ref{P10.76}, which may be compared to Fig.~\ref{10.19}(b).
+	This problem is a lot like \textbf{10.30}, but with the addition of an external force acting upon the cylinder which pulls it uphill.  Here the net force is directed \emph{uphill}, and therefore the cylinder's translational acceleration points uphill.  This reverses the direction of the static friction force with respect to what we saw in \textbf{10.30}.  A free-body diagram for one of the cylinders is shown in Fig.~\ref{P10.76}, which may be compared to Fig.~\ref{10.19}(b).
 	
 	Using Newton's second law, we can use Fig.~\ref{P10.76} to write two equations: one for translational motion, and one for rotational motion.  Let $f$ be the magnitude of the static friction force, $m$ the mass of the cylinder, and $\theta$ the inclination of the ramp.  For translational motion,
 	\beqn \label{trans}
@@ -560,35 +560,36 @@
 		f = \frac{1}{2} m r \alpha.
 	\eeqn
 	
-	\begin{enumerate}
-		\item From \refeq{trans}, $F$ will have its largest magnitude when $f$ is maximized.  In general, the static friction force is given by
+	From \refeq{trans}, $F$ will have its largest magnitude when $f$ is maximized.  In general, the static friction force is given by
 			\beqn \label{stat}
 				f \leq \mu_s N = \mu_s m g \cos \theta,
 			\eeqn
 			where $\mu_s$ is the coefficient of static friction, and the normal force $N$ is shown in Fig.~\ref{P10.76}.  We need to saturate this equality in order to find the largest possible $F$.
 		
-		Rolling without slipping imposes the constraint
-			\beq
-				\alpha = \frac{a}{r},
-			\eeq
-			which changes \refeq{rot} to
-			\beq
-				f = \frac{1}{2} m a.
-			\eeq
-			Equating this with \refeq{stat} gives us
-			\beqn \label{fric}
-				\frac{1}{2} m a = \mu_s m g \cos \theta.
-			\eeqn
-			We can also use it to rewrite \refeq{trans} as
-			\beqn \label{frac}
-				ma = F - \frac{1}{2} m a - m g \sin{\theta}.
-			\eeqn
-			Now we have the system of two equations \refeq{fric} and \refeq{frac} with two unknowns, $F$ and $a$.  The solutions are
-			\begin{align}
-				a &= 2 \mu_s g \cos{\theta}, \label{acyl} \\
-				F &= 3 \mu_s m g \cos{\theta} + m g \sin{\theta}. \label{Fcyl}
-			\end{align}
-			Plugging numbers into \refeq{Fcyl},
+	Rolling without slipping imposes the constraint
+	\beq
+		\alpha = \frac{a}{r},
+	\eeq
+	which changes \refeq{rot} to
+	\beq
+		f = \frac{1}{2} m a.
+	\eeq
+	Equating this with \refeq{stat} gives us
+	\beqn \label{fric}
+		\frac{1}{2} m a = \mu_s m g \cos \theta.
+	\eeqn
+	We can also use it to rewrite \refeq{trans} as
+	\beqn \label{frac}
+			ma = F - \frac{1}{2} m a - m g \sin{\theta}.
+	\eeqn
+	Now we have the system of two equations \refeq{fric} and \refeq{frac} with two unknowns, $F$ and $a$.  The solutions are
+	\begin{align}
+		a &= 2 \mu_s g \cos{\theta}, \label{acyl} \\
+		F &= 3 \mu_s m g \cos{\theta} + m g \sin{\theta}. \label{Fcyl}
+	\end{align}
+			
+	\begin{enumerate}
+		\item Plugging numbers into \refeq{Fcyl},
 			\beq
 				F = 3 (0.120) (\SI{460}{\kg}) (\sig) \cos{37.0^\circ} + (\SI{460}{\kg}) (\sig) \sin{37.0^\circ} = {\color{blue} \SI{4010}{\newton}}.
 			\eeq
