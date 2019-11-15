@@ -106,22 +106,36 @@
 		\ad &= \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right),
 	\end{align*}
 	so
+	\beqn \label{ugh}
+		\bkxlam = \exp(-\frac{|\lam|^2}{2}) \bx \exp(\lam \ad) \ko = \exp(-\frac{|\lam|^2}{2}) \bx \exp{\lam \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right)} \ko.
+	\eeqn
+	Note that for two operators $A$ and $B$, $e^{A + B} = e^{-[A, B] / 2} e^A e^B$ if $[A, B]$ commutes with each $A$ and $B$.  Note also that
+	\beq
+		\left[ X, -\frac{i P}{m \omega} \right] = -\frac{i}{m \omega} [X, P] = \frac{\hbar}{m \omega}.	
+	\eeq
+	Thus,
+	\beq
+		\exp{\lam \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right)} = \exp(-\frac{\hbar \lambda}{2 m \omega} \sqrt{\frac{m\omega}{2\hbar}}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} X) \exp(-\frac{i \lambda}{m \omega} \sqrt{\frac{m\omega}{2\hbar}} P)
+	\eeq
+	so \refeq{ugh} becomes
 	\begin{align*}
-		\bkxlam &= \exp(-\frac{|\lam|^2}{2}) \bx \exp(\lam \ad) \ko \\
-		&= \exp(-\frac{|\lam|^2}{2}) \bx \exp{\lam \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right)} \ko \\
-		&= \exp(-\frac{|\lam|^2}{2}) \bx \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} X) \exp(-\lam \sqrt{\frac{m\omega}{2\hbar}} \frac{iP}{m\omega}) \ko \\
-		&= \exp(-\frac{|\lam|^2}{2}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} x) \bx \exp(-\frac{i \lam}{\sqrt{2\hbar m \omega}} P) \ko \\
-		&= \exp(-\frac{|\lam|^2}{2}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} x) \exp(-\frac{\hbar \lam}{\sqrt{2\hbar m \omega}} \pdv{}{x}) \bkxo.
+		\bkxlam &= \exp(-\frac{|\lam|^2}{2}) \exp(-\frac{\hbar \lambda}{2 m \omega}) \bx \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} X) \exp(-\frac{i \lambda}{m \omega} \sqrt{\frac{m\omega}{2\hbar}} P) \ko \\
+		&= \exp(-\frac{|\lam|^2}{2}) \exp(-\frac{\hbar \lambda}{2 m \omega}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} x) \exp(-\frac{\hbar \lambda}{m \omega} \sqrt{\frac{m\omega}{2\hbar}} \pdv{}{x}) \bkxo
 	\end{align*}
 	From (2.3.30) in Sakurai,
 	\beq
-		\bkxo = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega}{2 \hbar} x^2),
+		\bkxo = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega}{2 \hbar} x^2).
 	\eeq
-	so
-	\beq
-		\bkxlam = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} x) \exp(-\frac{\hbar \lam}{\sqrt{2\hbar m \omega}} \pdv{}{x}) \exp(-\frac{m \omega}{2 \hbar} x^2).
-	\eeq
-	\hl{???}
+%	
+%	$$ \exp(-\frac{|\lam|^2}{2}) \exp[\lam \sqrt{\frac{m\omega}{2\hbar}} \left( x - \frac{\hbar}{m\omega} \pdv{}{x} \right)] \bkxo$$
+%	\beq
+%		\exp[\lam \sqrt{\frac{m\omega}{2\hbar}} \left( x - \frac{\hbar}{m\omega} \pdv{}{x} \right)] = \exp(
+%	\eeq
+%	so \refeq{ugh} becomes
+%	\beq
+%		\bkxlam = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2}) \exp[\lam \sqrt{\frac{m\omega}{2\hbar}} \left( x - \frac{\hbar}{m\omega} \pdv{}{x} \right)] \exp(-\frac{m \omega}{2 \hbar} x^2).
+%	\eeq
+%	\hl{???}
 \end{solution}
 
 \begin{problem}
