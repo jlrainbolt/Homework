@@ -1,0 +1,137 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage{physics, amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+%\allowdisplaybreaks
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 341 Homework 3}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \subsection{}
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newcommand{\Schrodinger}{Schr\"{o}dinger}
+
+
+\begin{document}
+
+\newcommand{\lam}{\lambda}
+\newcommand{\klam}{\ket{\lam}}
+\newcommand{\ad}{a^\dagger}
+
+\newcommand{\ko}{\ket{0}}
+\newcommand{\bkxlam}{\braket{x}{\lam}}
+\newcommand{\bx}{\bra{x}}
+
+\newcommand{\ihb}{i\hbar}
+\newcommand{\bkxo}{\braket{x}{0}}
+
+\newcommand{\Dx}{\Delta x}
+\newcommand{\Dp}{\Delta p}
+	
+\section{Problem 1}
+\begin{statement}
+	Let's consider coherent states of a one-dimensional quantum particle with mass $m$ confined in a one-dimensional harmonic potential $V(x) = m \omega^2 x^2 / 2$:
+	\begin{align*}
+		a \klam &= \lam \klam, &
+		\klam &= \exp(-\frac{1}{2} |\lam|^2) \exp(\lam \ad) \ko.
+	\end{align*}
+	Here, $\lam$ is a complex paramter.
+\end{statement}
+
+\begin{problem}
+	Compute $\bkxlam$.
+\end{problem}
+
+\begin{solution}
+	In terms of the position and momentum operators $X$ and $P$,
+	\begin{align*}
+		a &= \sqrt{\frac{m\omega}{2\hbar}} \left( X + \frac{iP}{m\omega} \right), &
+		\ad &= \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right),
+	\end{align*}
+	so
+	\begin{align*}
+		\bkxlam &= \exp(-\frac{|\lam|^2}{2}) \bx \exp(\lam \ad) \ko \\
+		&= \exp(-\frac{|\lam|^2}{2}) \bx \exp{\lam \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right)} \ko \\
+		&= \exp(-\frac{|\lam|^2}{2}) \bx \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} X) \exp(-\lam \sqrt{\frac{m\omega}{2\hbar}} \frac{iP}{m\omega}) \ko \\
+		&= \exp(-\frac{|\lam|^2}{2}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} x) \bx \exp(-\frac{i \lam}{\sqrt{2\hbar m \omega}} P) \ko \\
+		&= \exp(-\frac{|\lam|^2}{2}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} x) \exp(-\frac{\hbar \lam}{\sqrt{2\hbar m \omega}} \pdv{}{x}) \bkxo.
+	\end{align*}
+	From (2.3.30) in Sakurai,
+	\beq
+		\bkxo = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega}{2 \hbar} x^2),
+	\eeq
+	so
+	\beq
+		\bkxlam = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} x) \exp(-\frac{\hbar \lam}{\sqrt{2\hbar m \omega}} \pdv{}{x}) \exp(-\frac{m \omega}{2 \hbar} x^2).
+	\eeq
+	\hl{???}
+\end{solution}
+
+\begin{problem}
+	Compute $\ev{x}{\lam}$, $\ev{p}{\lam}$, $\ev{x^2}{\lam}$, and $\ev{p^2}{\lam}$.  Also, compute $\ev{(\Dx)^2}_\lam \ev{(\Dp)^2}_\lam$ where $\Delta A = A \ev{A}$.
+\end{problem}
+
+\begin{solution}
+%	\begin{align*}
+%	
+%	\end{align*}
+\end{solution}
+	
+\end{document}
