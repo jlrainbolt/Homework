@@ -1,0 +1,145 @@
+\newcommand{\Xq}{X_1}
+\newcommand{\Pq}{P_1}
+\newcommand{\Xw}{X_2}
+\newcommand{\Pw}{P_2}
+\newcommand{\Hc}{H_c}
+
+\newcommand{\Xqo}{\Xq(0)}
+\newcommand{\Pqo}{\Pq(0)}
+\newcommand{\Xwo}{\Xw(0)}
+\newcommand{\Pwo}{\Pw(0)}
+
+\newcommand{\Xqt}{\Xq(t)}
+\newcommand{\Pqt}{\Pq(t)}
+\newcommand{\Xwt}{\Xw(t)}
+\newcommand{\Pwt}{\Pw(t)}
+
+\newcommand{\XqT}{\Xq(T)}
+\newcommand{\PqT}{\Pq(T)}
+\newcommand{\XwT}{\Xw(T)}
+\newcommand{\PwT}{\Pw(T)}
+
+\newcommand{\kPsio}{\ket{\Psi(0)}}
+\newcommand{\phio}{\phi_1(0) \,\phi_2(0)}
+\newcommand{\kphiqo}{\ket{\phi_1(0)}}
+\newcommand{\kphiwo}{\ket{\phi_2(0)}}
+
+\newcommand{\kphio}{\ket{\phio}}
+
+
+\newcommand{\Ot}{O(t)}
+%\newcommand{\Ut}{U(t)}
+\newcommand{\Udt}{U^\dagger(t)}
+
+\section{Problem 2}
+\begin{statement}
+	Consider a quantum system which has coordinate $\Xq$ and momentum $\Pq$, and another system which has coordinate $\Xw$ and momentum $\Pw$.  (An operator from the first system always commutes with an operator of the second system.)  We think of the second system as a ``probe'' which we can use to detect the properties of the first system.  For a short time $T$, the two systems are coupled by a coupling Hamiltonian $\Hc$, given by
+	\beq
+		\Hc = \frac{\Xq \Pw}{T}.
+	\eeq
+	The coupling between the two systems disturbs the momentum of the first system.  The disturbance operator is defined to be
+	\beqn \label{dist}
+		D \equiv \Pq(T) - \Pqo.
+	\eeqn
+	The probe introduces measurement error or ``noise'' into the system.  The noise operator is defined by
+	\beq
+		N \equiv \Xw(T) - \Xqo.
+	\eeq
+	The stste of the system at $t = 0$ is $\kPsio = \kphio$, and all expectation values are taken in this state.
+\end{statement}
+
+\begin{problem}
+	With $\Hc$ as the Hamiltonian, find the Heisenberg operators $\Xqt$, $\Pqt$, $\Xwt$, and $\Pwt$ in terms of $\Xqo$, $\Pqo$, $\Xwo$, and $\Pwo$.  Time is restricted to the range $t \in [0, T]$.
+\end{problem}
+
+\begin{solution}
+	In general, a Heisenberg operator $\Ot$ is defined by
+	\beq
+		\Ot = \Udt \, O(0) \, \Ut,
+	\eeq
+	where $\Ut$ is the time evolution operator.  For $\Hc$, it is given by
+	\beq
+		\Ut = \exp(-\frac{i \Hc t}{\hbar}) = \exp(-\frac{i t}{\hbar T} \, \Xqo \, \Pwo).
+	\eeq
+	(2.2.23b) in Sakurai gives the commutation relations
+	\begin{align*}
+		[X_i, F(\vec{P})] &= \ihb \pdv{F}{P_i} &
+		[P_i, G(\vec{X})] &= -\ihb \pdv{G}{X_i}.
+	\end{align*}
+	Using these, we have
+	\begin{align*}
+		[\Xqo, \Ut] &= 0, \\
+		[\Xwo, \Ut] &= \ihb \left( -\frac{i t}{\hbar T} \, \Xqo \right) \Ut = \frac{t}{T} \, \Xqo \, \Ut = \frac{t}{T} \, \Ut \, \Xqo, \\
+		[\Pqo, \Ut] &= -\ihb \left( -\frac{i t}{\hbar T} \, \Pwo \right) \Ut = -\frac{t}{T} \, \Pwo \, \Ut = -\frac{t}{T} \, \Ut \, \Pwo, \\
+		[\Pwo, \Ut] &= 0.
+	\end{align*}
+	Then
+	\begin{align}
+		\Xqt &= \Udt \, \Xqo \, \Ut = \Xqo, \label{Xqt} \\
+		\Pqt &= \Udt \, \Pqo \, \Ut = \Udt \left( \Ut \, \Pqo - \frac{t}{T} \Ut \, \Pwo \right) = \Pqo - \frac{t}{T} \, \Pwo, \label{Pqt} \\
+		\Xwt &= \Udt \, \Xwo \, \Ut = \Udt \left( \Ut \, \Xwo + \frac{t}{T} \, \Ut \, \Xqo  \right) = \Xwo + \frac{t}{T} \, \Xqo, \label{Xwt} \\
+		\Pwt &= \Udt \, \Pwo \, \Ut = \Pwo. \label{Pwt}
+	\end{align}
+\end{solution}
+
+\newcommand{\sigD}{\sigma(D)}
+\newcommand{\sigN}{\sigma(N)}
+
+\begin{problem}
+	Derive an expression for $\sigD$ which involves only the standard deviations of $\Xqo$, $\Pqo$, $\Xwo$, and $\Pwo$.  Here, we denote the standard deviation of an operator $O$ as $\sigma(O) = \sqrt{\ev{(O - \ev{O})^2}}$.
+\end{problem}
+
+\begin{solution}
+	Substituting \refeq{Pwt} into \refeq{dist},
+	\beq
+		D = \Pqo - \frac{T}{T} \Pwo - \Pwo = -\Pwo.
+	\eeq
+	Note that for an operator $O$,
+	\beq
+		\sigma(-O) = \sqrt{\ev{(-O - \ev{-O})^2}} = \sqrt{\ev{(\ev{O} - O)^2}} = \sigma(O),
+	\eeq
+	so
+	\beqn \label{sigD}
+		\sigD = \sigma\big( \Pwo \big).
+	\eeqn
+\end{solution}
+
+\begin{problem}
+	Derive an expression for $\sigN$ which involves only the standard deviations of $\Xqo$, $\Pqo$, $\Xwo$, and $\Pwo$.
+\end{problem}
+
+\begin{solution}
+	Substituting \refeq{Xwt} into \refeq{dist},
+	\beq
+		N = \Xwo + \frac{T}{T} \Xqo - \Xqo = \Xwo.
+	\eeq
+	which implies
+	\beqn \label{sigN}
+		\sigN = \sigma\big( \Xwo \big).
+	\eeqn
+\end{solution}
+
+\begin{problem}
+	Now consider the product $\sigN \, \sigD$.  Assume
+	\begin{align*}
+		\sigma\big( \Xqo \big) \, \sigma\big( \Pqo \big) &\geq \frac{\hbar}{2}, &
+		\sigma\big( \Xwo \big) \, \sigma\big( \Pwo \big) &\geq \frac{\hbar}{2}
+	\end{align*}
+	both hold.  Is $\sigN \, \sigD \geq \hbar / 2$ satisfied?  What conditions are required for equality?
+\end{problem}
+
+\begin{solution}
+	From \refeq{sigD} and \refeq{sigN},
+	\beq
+		\sigN \, \sigD = \sigma\big( \Pwo \big) \, \sigma\big( \Xwo \big) \geq \frac{\hbar}{2},
+	\eeq
+	where the final inequality is satisfied by assumption.  For equality, we would need
+	\beq
+		\sigma\big( \Xwo \big) \, \sigma\big( \Pwo \big) = \frac{\hbar}{2}.
+	\eeq
+%	\begin{align*}
+%		\frac{\hbar}{2} &= \sigma\big( \Xwo \big) \, \sigma\big( \Pwo \big) \\
+%		\frac{\hbar^2}{4} &= \ev{\big( \Xwo - \ev{\Xwo}\big)^2} \ev{\big( \Pwo - \ev{\Pwo}\big)^2} %= z \big( \ev{\Xwo^2} - \ev{\Xwo}^2 \big) \big( \ev{\Pwo^2} - \ev{\Pwo}^2 \big)
+%	\end{align*}
+	
+\end{solution}
