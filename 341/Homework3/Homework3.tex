@@ -40,6 +40,8 @@
 \newcommand{\beqn}{\begin{equation}}
 \newcommand{\eeqn}{\end{equation}}
 
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
 
 \newenvironment{statement}
 {
@@ -72,250 +74,120 @@
 
 \begin{document}
 
-\newcommand{\lam}{\lambda}
-\newcommand{\blam}{\bra{\lam}}
-\newcommand{\klam}{\ket{\lam}}
-\newcommand{\ad}{a^\dagger}
+\input{Problem1}
 
-\newcommand{\bo}{\bra{0}}
-\newcommand{\ko}{\ket{0}}
-\newcommand{\kn}{\ket{n}}
-\newcommand{\bkxlam}{\braket{x}{\lam}}
-\newcommand{\bx}{\bra{x}}
 
-\newcommand{\ihb}{i\hbar}
-\newcommand{\bkxo}{\braket{x}{0}}
-\newcommand{\bkxn}{\braket{x}{n}}
-\newcommand{\xo}{x_0}
+\newcommand{\Xq}{X_1}
+\newcommand{\Pq}{P_1}
+\newcommand{\Xw}{X_2}
+\newcommand{\Pw}{P_2}
+\newcommand{\Hc}{H_c}
 
-\newcommand{\DA}{\Delta A}
-\newcommand{\DX}{\Delta X}
-\newcommand{\DP}{\Delta P}
+\newcommand{\Xqo}{\Xq(0)}
+\newcommand{\Pqo}{\Pq(0)}
+\newcommand{\Xwo}{\Xw(0)}
+\newcommand{\Pwo}{\Pw(0)}
 
-\newcommand{\bkxbo}{\braket{x-b}{0}}
-	
-\section{Problem 1}
+\newcommand{\Xqt}{\Xq(t)}
+\newcommand{\Pqt}{\Pq(t)}
+\newcommand{\Xwt}{\Xw(t)}
+\newcommand{\Pwt}{\Pw(t)}
+
+\newcommand{\kPsio}{\ket{\Psi(0)}}
+\newcommand{\phio}{\phi_1(0) \,\phi_2(0)}
+\newcommand{\kphiqo}{\ket{\phi_1(0)}}
+\newcommand{\kphiwo}{\ket{\phi_2(0)}}
+
+\newcommand{\kphio}{\ket{\phio}}
+
+
+\newcommand{\Ot}{O(t)}
+%\newcommand{\Ut}{U(t)}
+\newcommand{\Udt}{U^\dagger(t)}
+
+\section{Problem 2}
 \begin{statement}
-	Let's consider coherent states of a one-dimensional quantum particle with mass $m$ confined in a one-dimensional harmonic potential $V(X) = m \omega^2 X^2 / 2$:
-	\begin{align*}
-		a \klam &= \lam \klam, &
-		\klam &= \exp(-\frac{1}{2} |\lam|^2) \exp(\lam \ad) \ko.
-	\end{align*}
-	Here, $\lam$ is a complex parameter.
+	Consider a quantum system which has coordinate $\Xq$ and momentum $\Pq$, and another system which has coordinate $\Xw$ and momentum $\Pw$.  We think of the second system as a ``probe'' which we can use to detect the properties of the first system.  For a short time $T$, the two systems are coupled by a coupling Hamiltonian $\Hc$, given by
+	\beq
+		\Hc = \frac{\Xq \Pw}{T}.
+	\eeq
+	The coupling between the two systems disturbs the momentum of the first system.  The disturbance operator is defined to be
+	\beqn \label{dist}
+		D \equiv \Pq(T) - \Pqo.
+	\eeqn
+	The probe introduces measurement error or ``noise'' into the system.  The noise operator is defined by
+	\beq
+		N \equiv \Xw(T) - \Xqo.
+	\eeq
+	The stste of the system at $t = 0$ is $\kPsio = \kphio$, and all expectation values are taken in this state.
 \end{statement}
 
 \begin{problem}
-	Compute $\bkxlam$.
+	With $\Hc$ as the Hamiltonian, find the Heisenberg operators $\Xqt$, $\Pqt$, $\Xwt$, and $\Pwt$ in terms of $\Xqo$, $\Pqo$, $\Xwo$, and $\Pwo$.  Time is restricted to the range $t \in [0, T]$.
 \end{problem}
 
 \begin{solution}
-%	Using the power series representation,
-%	\beqn \label{pow}
-%		\klam = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n {\ad}^n}{n!} \ko = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \kn.
-%	\eeqn
-%	From (2.3.32) in Sakurai,
-%	\beq
-%		\bkxn = \frac{1}{\pi^{1/4} \sqrt{2^n n!}} \frac{1}{\xo^{n + 1/2}} \left( x - \xo^2 \dv{}{x} \right)^n \exp(-\frac{1}{2} \frac{x^2}{\xo^2}),
-%	\eeq
-%	where $\xo = \sqrt{\hbar / (m \omega)}$.  Multiplying \refeq{pow} by $\bx$ on the left,
+	In general, a Heisenberg operator $\Ot$ is defined by
+	\beq
+		\Ot = \Udt \, O(0) \, \Ut,
+	\eeq
+	where $\Ut$ is the time evolution operator.  For a time-independent Hamiltonian like $\Hc$, it is given by
+	\beq
+		\Ut = \exp(-\frac{i \Hc t}{\hbar}) = \exp(-\frac{i \, \Xqo \, \Pwo \, t}{\hbar T}).
+	\eeq
+	(2.2.23b) in Sakurai gives the commutation relations
+	\begin{align*}
+		[X_i, F(\vec{P})] &= \ihb \pdv{F}{P_i} &
+		[P_i, G(\vec{X})] &= -\ihb \pdv{G}{X_i}.
+	\end{align*}
+	Using these, note that
+	\begin{align*}
+		[\Xqo, \Ut] &= 0, &
+		[\Xwo, \Ut] &= \ihb \left( -\frac{i \, \Xqo \, t}{\hbar T} \right) = \frac{\Xqo \, t}{T}, \\
+		[\Pqo, \Ut] &= -\ihb \left( -\frac{i \, \Pwo \, t}{\hbar T} \right) =  -\frac{\Pwo \, t}{T}, &
+		[\Pwo, \Ut] &= 0.
+	\end{align*}
+	Then
+	\begin{align}
+		\Xqt &= \Udt \, \Xqo \, \Ut = \Xqo, \label{Xqt} \\
+		\Pqt &= \Udt \, \Pqo \, \Ut = \Udt \left( \Ut \, \Pqo - \frac{\Pwo \, t}{T} \right) = \Pqo - \exp(-\frac{i \, \Xqo \, \Pwo \, t}{\hbar T}) \frac{\Pwo \, t}{T}, \label{Pqt} \\
+		\Xwt &= \Udt \, \Xwo \, \Ut = \Udt \left( \Ut \, \Xwo + \frac{\Xqo \, t}{T} \right) = \Xwo + \exp(-\frac{i \, \Xqo \, \Pwo \, t}{\hbar T}) \frac{\Xqo \, t}{T}, \label{Xwt} \\
+		\Pwt &= \Udt \, \Pwo \, \Ut = \Pwo. \label{Pwt}
+	\end{align}
+\end{solution}
+
+\newcommand{\sigD}{\sigma(D)}
+\newcommand{\xq}{x_1}
+\newcommand{\pq}{p_2}
+\newcommand{\pw}{p_2}
+
+\newcommand{\po}{p_1 \, p_2}
+
+\newcommand{\pwo}{p_2(0)}
+
+\begin{problem}
+	Derive an expression for $\sigD$, which involves only the standard deviations of $\Xqo$, $\Pqo$, $\Xwo$, and $\Pwo$.  Here, we denote the standard deviation of an operator $O$ as $\sigma(O) = \sqrt{\ev{(O - \ev{O})^2}}$.
+\end{problem}
+
+\begin{solution}
+%	Firstly, note that
 %	\begin{align*}
-%		\bkxlam &= \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \bkxn \\
-%		&= \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \frac{1}{\pi^{1/4} \sqrt{2^n n!}} \frac{1}{\xo^{n + 1/2}} \left( x - \xo^2 \dv{}{x} \right)^n \exp(-\frac{1}{2} \frac{x^2}{\xo^2}) \\
-%		&= \exp(-\frac{|\lam|^2}{2})  \exp[\lambda \left(x - \xo^2 \dv{}{x} \right)] \sum_{n=0}^\infty \frac{1}{\pi^{1/4} \sqrt{2^n n!}} \frac{1}{\xo^{n + 1/2}} \exp(-\frac{1}{2} \frac{x^2}{\xo^2})
+%		\ev{\Xqo} &= \ev{\Xqo}{\psio}, &
+%		\ev{\Pqo} &= \ev{\Pqo}
 %	\end{align*}
-	In terms of the position and momentum operators $X$ and $P$,
+
+	Substituting \refeq{Pwt} into \refeq{dist},
+	\beq
+		D = -\exp(-\frac{i \, \Xqo \, \Pwo}{\hbar}) \Pwo.
+	\eeq
+	Then
 	\begin{align*}
-		a &= \sqrt{\frac{m\omega}{2\hbar}} \left( X + \frac{iP}{m\omega} \right), &
-		\ad &= \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right),
+		\ev{D} &= \ev{-\exp(-\frac{i \, \Xqo \, \Pwo}{\hbar}) \Pwo}{\phio} \\
+		&= -\iint \mel{\phio}{\exp(-\frac{i \, \Xqo \, \Pwo \, t}{\hbar T})}{\po} \mel{\po}{\Pwo}{\phio} \dd{\pq} \dd{\pw} \\
+		&= - \pwo \frac{t}{T} \int \braket{\phio}{\pw} \exp(-\frac{i \, \Xqo \, \pwo \, t}{\hbar T}) \braket{\pw}{\phio} \dd{\pw}
 	\end{align*}
-	so
-	\beqn \label{ugh}
-		\bkxlam = \exp(-\frac{|\lam|^2}{2}) \bx \exp(\lam \ad) \ko = \exp(-\frac{|\lam|^2}{2}) \bx \exp{\lam \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right)} \ko.
-	\eeqn
-	Note that for two operators $A$ and $B$, $e^{A + B} = e^{-[A, B] / 2} e^A e^B$ if $[A, B]$ commutes with each $A$ and $B$.  Note also that
-	\beq
-		\left[ X, -\frac{i P}{m \omega} \right] = -\frac{i}{m \omega} [X, P] = \frac{\hbar}{m \omega}.	
-	\eeq
-	Thus,
-	\beq
-		\exp{\lam \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right)} = \exp(-\lam \frac{\hbar}{2 m \omega} \sqrt{\frac{m\omega}{2\hbar}}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} X) \exp(-\lam \frac{i}{m \omega} \sqrt{\frac{m\omega}{2\hbar}} P).
-	\eeq
-	Now, note that
-	\beqn \label{defb}
-		\exp(-\lam \frac{i}{m \omega} \sqrt{\frac{m\omega}{2\hbar}} P) = \exp(-\frac{i}{\hbar} \lam \frac{\hbar}{m \omega} \sqrt{\frac{m\omega}{2\hbar}} P) = U\!\left( \lam \sqrt{\frac{\hbar}{2 m \omega}} \right) \equiv U(b),
-	\eeqn
-	where $U(b)$ is the translation operator, and we have defined $b$.  So \refeq{ugh} becomes
-	\begin{align}
-		\bkxlam &= \exp(-\frac{|\lam|^2}{2}) \exp(-\lam \frac{\hbar}{2 m \omega} \sqrt{\frac{m\omega}{2\hbar}}) \bx \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} X) U(b) \ko \notag \\
-		&= \exp(-\frac{|\lam|^2}{2}) \exp(-\frac{b}{2}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} x) \bkxbo. \label{ugh2}
-	\end{align}
-	From (2.3.30) in Sakurai,
-	\beq
-		\bkxo = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega}{2 \hbar} x^2)
-		\implies
-		\bkxbo = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega}{2 \hbar} (x-b)^2).
-	\eeq
-	so \refeq{ugh2} becomes
-	\begin{align}
-		\bkxlam &= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} -\frac{b}{2} + \lam \sqrt{\frac{m\omega}{2\hbar}} x - \frac{m \omega}{2 \hbar} (x^2 - 2bx + b^2)) \notag \\
-%		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} -\frac{b}{2} + \lam \sqrt{\frac{m\omega}{2\hbar}} x - \frac{m \omega}{2 \hbar} x^2 + \frac{m \omega}{\hbar} bx - \frac{m \omega}{2 \hbar} b^2) \notag \\
-%		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} -\frac{b}{2} + \lam \sqrt{\frac{m\omega}{2\hbar}} x - \frac{m \omega}{2 \hbar} x^2 + \frac{m \omega}{\hbar} \lam \sqrt{\frac{\hbar}{2 m \omega}} x - \frac{m \omega}{2 \hbar} \lam^2 \frac{\hbar}{2 m \omega}) \notag \\
-		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} -\frac{b}{2} + \lam \sqrt{\frac{m\omega}{2\hbar}} x - \frac{m \omega}{2 \hbar} x^2 + \lam \sqrt{\frac{m \omega}{2 \hbar}} x - \frac{m \omega}{2 \hbar} \lam^2 \frac{\hbar}{2 m \omega}) \notag \\
-		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} - \frac{b}{2} - \frac{m \omega}{2 \hbar} x^2 + 2 \lam \sqrt{\frac{m \omega}{2 \hbar}} x - \frac{\lam^2}{4}) \notag \\
-		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} - \frac{m \omega}{2 \hbar} x^2 + \lam \sqrt{\frac{2 m \omega}{\hbar}} x), \label{wfnlam}
-	\end{align}
-	where we have dropped a constant phase.
 \end{solution}
 
-\begin{problem}
-	Compute $\ev{X}{\lam}$, $\ev{P}{\lam}$, $\ev{X^2}{\lam}$, and $\ev{P^2}{\lam}$.  Also, compute $\ev{(\DX)^2}{\lam} \ev{(\DP)^2}{\lam}$ where $\DA = A - \ev{A}$.
-\end{problem}
+\input{Problem3}
 
-\begin{solution}
-	Note that
-	\begin{align*}
-		X &= \sqrt{\frac{\hbar}{2 m \omega}} (a + \ad), &
-		P &= i \sqrt{\frac{\hbar m \omega}{2}} (\ad - a).
-	\end{align*}
-	Then for $\ev{X}{\lam}$,
-	\begin{align}
-		\ev{X}{\lam} &= \frac{1}{|\lam|^2} \ev{\ad X a}{\lam} \notag \\
-		&= \frac{1}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \ev{\ad (a + \ad) a}{\lam}
-		= \frac{1}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \ev{(\ad a^2 + {\ad}^2 a}{\lam}
-		= \frac{|\lam|^2 (\lam^* + \lam)}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \notag \\
-		&= 2 \Re(\lam) \sqrt{\frac{\hbar}{2 m \omega}}, \label{evX}
-	\end{align}
-	and for $\ev{P}{\lam}$,
-	\begin{align}
-		\ev{P}{\lam} &= \frac{1}{\lambda^2} \ev{\ad P a}{\lam} \notag \\
-		&= \frac{i}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \ev{\ad(\ad - a)a}{\lam} = \frac{i}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \ev{{\ad}^2 a - \ad a^2}{\lam}
-		= \frac{i |\lam|^2 (\lam^* - \lam)}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \notag \\
-		&= 2 \Im(\lam) \sqrt{\frac{\hbar m \omega}{2}}. \label{evP}
-	\end{align}
-	
-	Note also that
-	\begin{align*}
-		X^2 &= \frac{\hbar}{2 m \omega} (a^2 + a \ad + \ad a + {\ad}^2), &
-		P^2 &= -\frac{\hbar m \omega}{2} ({\ad}^2 - \ad a - a \ad + a^2).
-	\end{align*}
-	Then for $\ev{X^2}{\lam}$,
-	\begin{align}
-		\ev{X^2}{\lam} &= \frac{1}{|\lam|^2} \ev{\ad X^2 a}{\lam}
-		= \frac{1}{|\lam|^2} \frac{\hbar}{2 m \omega} \ev{\ad (a^2 + a \ad + \ad a + {\ad}^2) a}{\lam} \notag \\
-		&= \frac{1}{|\lam|^2} \frac{\hbar}{2 m \omega} \ev{(\ad a^3 + \ad a \ad a + {\ad}^2 a^2 + {\ad}^3 a)}{\lam}
-		= \frac{1}{|\lam|^2} \frac{\hbar}{2 m \omega} \ev{(\ad a^3 + \ad a + 2 {\ad}^2 a^2 + {\ad}^3 a)}{\lam} \notag \\
-		&= (\lam^2 + 1 + 2 |\lam|^2 + {\lam^*}^2) \frac{\hbar}{2 m \omega}
-		= \left( 1 + 2 \left[ \Re(\lam)^2 + \Im(\lam)^2 \right] + 2 \left[ \Re(\lam)^2 - \Im(\lam)^2 \right] \right) \frac{\hbar}{2 m \omega} \notag \\
-		&= [1 + 4 \Re(\lam)^2 ] \frac{\hbar}{2 m \omega} \label{evXsq},
-	\end{align}
-	where we have used $[a, \ad] = 1$.  For $\ev{P^2}{\lam}$,
-	\begin{align}
-		\ev{P^2}{\lam} &= \frac{1}{|\lam|^2} \ev{\ad P^2 a}{\lam}
-		= -\frac{1}{|\lam|^2} \frac{\hbar m \omega}{2} \ev{\ad ({\ad}^2 - \ad a - a \ad + a^2) a}{\lam} \notag \\
-		&= -\frac{1}{|\lam|^2} \frac{\hbar m \omega}{2} \ev{({\ad}^2 a - {\ad}^2 a^2 - \ad a \ad a + \ad a^3}{\lam}
-		= -\frac{1}{|\lam|^2} \frac{\hbar m \omega}{2} \ev{({\ad}^3 a - \ad a - 2 {\ad}^2 a^2 + \ad a^3}{\lam} \notag \\
-		&= -({\lam^*}^2 - 1 - 2 |\lam|^2 + \lam^2) \frac{\hbar m \omega}{2}
-		= \left( 1 + 2 \left[ \Re(\lam)^2 + \Im(\lam)^2 \right] - 2 [\Re(\lam)^2 - \Im(\lam)^2] 
-\right) \frac{\hbar m \omega}{2} \notag \\
-		&= [1 + 4 \Im(\lam)^2] \frac{\hbar m \omega}{2}. \label{evPsq}
-	\end{align}
-	
-	Note that $\ev{(\DA)^2} = \ev{A^2} - \ev{A}^2$.  Then
-	\beq
-		\ev{(\DX)^2}{\lam} = \ev{X^2}{\lam} - \ev{X}{\lam}^2 = [1 + 4 \Re(\lam)^2 ] \frac{\hbar}{2 m \omega} - 4 \Re(\lam)^2 \frac{\hbar}{2 m \omega} = \frac{\hbar}{2 m \omega},
-	\eeq
-	where we have used \refeq{evX} and \refeq{evXsq}, and
-	\beq
-		\ev{(\DP)^2}{\lam} = \ev{P^2}{\lam} - \ev{P}{\lam}^2 = [1 + 4 \Im(\lam)^2 ] \frac{\hbar m \omega}{2} - 4 \Im(\lam)^2 \frac{\hbar m \omega}{2} = \frac{\hbar m \omega}{2},
-	\eeq
-	where we have used \refeq{evP} and \refeq{evPsq}.  Finally,
-	\beq
-		\ev{(\DX)^2}{\lam} \ev{(\DP)^2}{\lam} = \frac{\hbar^2}{4},
-	\eeq
-	which shows that the coherent state $\klam$ satisfies the minimum uncertainty relation.
-\end{solution}
-
-
-\newcommand{\psit}{\psi(t)}
-\newcommand{\kpsit}{\ket{\psit}}
-\newcommand{\Ut}{U(t)}
-
-\begin{problem} \label{timeevo}
-	Starting from $\ket{\psi(0)} = \klam$ at $t = 0$, we let $\kpsit$ evolve in time.  What is the state $\kpsit$ for $t > 0$?
-\end{problem}
-
-\begin{solution}
-	From (2.3.43) in Sakurai,
-	\begin{align*}
-		a(t) &= a e^{-i \omega t}, &
-		\ad(t) &= \ad e^{i \omega t},
-	\end{align*}
-	where $a = a(0)$ and $\ad = \ad(0)$.  Equating the {\Schrodinger} and Heisenberg pictures,
-	\beq
-		\ket{\psi(0)} = \klam = \frac{1}{\lam} a \klam \implies \kpsit = \frac{1}{\lam} a(t) \klam,
-	\eeq
-	and so
-	\beq
-		\kpsit = \frac{1}{\lam} a e^{-i \omega t} \klam = e^{-i \omega t} \klam.
-	\eeq
-%	In terms of the oscillator ground state $\ko$,
-%	\beq
-%		\kpsit = e^{-i \omega t} \exp(-\frac{1}{2} |\lam|^2) \exp(\lam \ad) \ko.
-%	\eeq
-\end{solution}
-
-\begin{problem}
-	Compute $\ev{X}{\psit}$ and $\ev{P}{\psit}$, and their time derivatives $\dv*{\ev{X}}{t}$ and $\dv*{\ev{P}}{t}$.
-\end{problem}
-
-\begin{solution}
-	Firstly, we have
-	\begin{align*}
-		\ev{X}{\psit} &= \blam e^{i \omega t} X e^{-i \omega t} \klam = \ev{X}{\lam} = 2 \Re(\lam) \sqrt{\frac{\hbar}{2 m \omega}}, \\
-		\ev{P}{\psit} &= \blam e^{i \omega t} P e^{-i \omega t} \klam = \ev{P}{\lam} = 2 \Im(\lam) \sqrt{\frac{\hbar m \omega}{2}},
-	\end{align*}
-	where we have used \refeq{evX} and \refeq{evP}.
-	
-	For the time derivatives, note that the harmonic oscillator Hamiltonian is given by
-	\beq
-		H = \frac{P^2}{2 m} + \frac{m \omega^2 X^2}{2}.
-	\eeq
-	Then, using the Ehrenfest theorem and the other results of problem~4.1 of the previous homework,
-	\begin{align*}
-		\dv{\ev{X}}{t} &= -\frac{i}{\hbar} \ev{[X, H]}{\psit} = \frac{1}{m} \ev{P}{\psit} = 2 \Im(\lam) \sqrt{\frac{\hbar \omega}{2 m}}, \\
-		\dv{\ev{P}}{t} &= -\frac{i}{\hbar} \ev{[P, H]}{\psit} = - m \omega^2 \ev{X}{\psit} = -2 \Re(\lam) \sqrt{\frac{\hbar m \omega^3}{2}},
-	\end{align*}
-	which again are similar to the classical equations of motion.
-\end{solution}
-
-\newcommand{\klamp}{\ket{\lam'}}
-\newcommand{\bkll}{\braket*{\lam''}{\lam'}}
-
-\begin{problem}
-	Compute $\mel*{\lambda''}{\exp(-i H t / \hbar)}{\lambda'}$.
-\end{problem}
-
-\begin{solution}
-	Note that $\Ut = \exp(-i H t / \hbar)$ where $\Ut$ is the time evolution operator.  From problem \ref{timeevo},
-	\beq
-		\kpsit = \Ut \klam \implies \exp(-\frac{i H t}{\hbar}) \klamp = e^{-i \omega t} \klamp,
-	\eeq
-	so
-	\beq
-		\mel*{\lam''}{\exp(-\frac{i H t}{\hbar})}{\lam'} = e^{-i \omega t} \bkll.
-	\eeq
-	Using the power series representation,
-	\beq
-		\klam = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n {\ad}^n}{n!} \ko = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \kn,
-	\eeq
-	so
-	\beq
-		\bkll = \exp(-\frac{|\lam''|^2}{2}) \exp(-\frac{|\lam'|^2}{2}) \sum_{n=0}^\infty \frac{({\lam''}^* \lam')^n}{n!} \braket{n} = \exp(-\frac{|\lam''|^2}{2} + {\lam''}^* \lam' - \frac{|\lam'|^2}{2}).
-	\eeq
-	Finally,
-	\beq
-		\mel*{\lam''}{\exp(-\frac{i H t}{\hbar})}{\lam'} = \exp(-i \omega t - \frac{|\lam''|^2}{2} + {\lam''}^* \lam' - \frac{|\lam'|^2}{2}).
-	\eeq
-\end{solution}
-	
 \end{document}

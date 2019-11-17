@@ -1,0 +1,155 @@
+\newcommand{\vr}{\vec{r}}
+
+\newcommand{\Li}{L_i}
+\newcommand{\Lx}{L_x}
+\newcommand{\Ly}{L_y}
+\newcommand{\Lz}{L_z}
+\newcommand{\Lw}{L^2}
+
+\newcommand{\Px}{P_x}
+\newcommand{\Py}{P_y}
+\newcommand{\Pz}{P_z}
+
+\newcommand{\Ri}{R_i}
+\newcommand{\Rx}{R_x}
+\newcommand{\Ry}{R_y}
+\newcommand{\Rz}{R_z}
+
+\newcommand{\Rit}{\Ri(\theta)}
+\newcommand{\Rxt}{\Rx(\theta)}
+\newcommand{\Ryt}{\Ry(\theta)}
+\newcommand{\Rzt}{\Rz(\theta)}
+
+\newcommand{\cost}{\cos{\theta}}
+\newcommand{\sint}{\sin{\theta}}
+
+\newcommand{\Mi}{M_i}
+\newcommand{\Mx}{M_x}
+\newcommand{\My}{M_y}
+\newcommand{\Mz}{M_z}
+
+\newcommand{\Jpm}{J_\pm}
+\newcommand{\Jp}{J_+}
+\newcommand{\Jm}{J_-}
+
+\newcommand{\veps}{\varepsilon}
+\newcommand{\hbsqt}{\frac{\hbar}{\sqrt{2}}}
+
+\section{Problem 3}
+\begin{statement}
+	Answer the following questions about the angular momentum operator $\Li$.
+\end{statement}
+
+\begin{problem}
+	Calculate $[\Li, \vr]$ where $i = x, y, z$.
+\end{problem}
+
+\begin{solution}
+	Firstly, note that
+	\begin{align*}
+		\Lx &= Y \Pz - Z \Py, &
+		\Ly &= Z \Px - X \Pz, &
+		\Lz &= X \Py - Y \Px,
+	\end{align*}
+	where the expression for $\Lz$ was given in problem 2 of Homework 1, and $\Lx$ and $\Ly$ are cyclic permutations.  Then
+	\begin{align*}
+		[\Lx, X] &= (Y \Pz - Z \Py) X - X (Y \Pz - Z \Py) = 0, \\
+		[\Lx, Y] &= (Y \Pz - Z \Py) Y - Y (Y \Pz - Z \Py) = Y \Pz Y - Z \Py Y - Y Y \Pz + Y Z \Py = [Y, \Py] Z = \ihb Z, \\
+		[\Lx, Z] &= (Y \Pz - Z \Py) Z - Z (Y \Pz - Z \Py) = Y \Pz Z - Z \Py Z - Z Y \Pz + Z Z \Py = -[Z, \Pz] Y = -\ihb Y.
+	\end{align*}
+	Generalizing these results to $\Ly$ and $\Lz$,
+	\begin{align*}
+		[\Lx, \vr] &= \ihb \mqty[ 0 \\ Z \\ -Y ], &
+		[\Ly, \vr] &= \ihb \mqty[ -Z \\ 0 \\ X ], &
+		[\Lz, \vr] &= \ihb \mqty[ Y \\ -X \\ 0 ],
+	\end{align*}
+	where $\vr = \mqty[X & Y & Z]^T$.
+\end{solution}
+
+\begin{problem}
+	Let us now compare the above results with classical mechanics.  Rotations around the $x$, $y$, and $z$ axes by an angle $\theta$ in three-dimensional Cartesian space are represented by the following matrices:
+	\begin{align*}
+		\Rxt &= \mqty[ 1 & 0 & 0 \\ 0 & \cost & -\sint \\ 0 & \sint & \cost ], &
+		\Ryt &= \mqty[ \cost & 0 & \sint \\ 0 & 1 & 0 \\ -\sint & 0 & \cost ], &
+		\Rzt &= \mqty[ \cost & -\sint & 0 \\ \sint & \cost & 0 \\ 0 & 0 & 1 ].
+	\end{align*}
+	Calculate $\Rit \, \vr$.  Then expand $\Rit \, \vr$ for a small angle $\theta$ and consider $\vr - \Rit \, \vr$ to first order in $\theta$,
+	\beq
+		\vr - \Rit \, \vr = \theta \Mi \vr + \order{\theta^2}.
+	\eeq
+	Calculate the matrices $\Mi$.
+\end{problem}
+
+\begin{solution}
+	For $\Rit \, \vr$, we have
+	\begin{align*}
+		\Rxt \, \vr &= \mqty[ X \\ \cost Y - \sint Z \\ \sint Y + \cost Z ], &
+		\Ryt \, \vr &= \mqty[ \cost X + \sint Z \\ Y \\ \cost Z - \sint X ], &
+		\Rzt \, \vr &= \mqty[ \cost X - \sint Y \\ \sint X + \cost Y \\ Z ],
+	\end{align*}
+	In the small angle approximation, to first order $\cost \approx 1$ and $\sint \approx \theta$.  In this approximation,
+	\begin{align*}
+		\Rxt \, \vr &\approx \mqty[ X \\ Y - \theta Z \\ \theta Y + Z ], &
+		\Ryt \, \vr &\approx \mqty[ X + \theta Z \\ Y \\ Z - \theta X ], &
+		\Rzt \, \vr &\approx \mqty[ X - \theta Y \\ \theta X + Y \\ Z ],
+	\end{align*}
+	and so
+	\begin{align*}
+		\vr - \Rxt \, \vr &\approx \mqty[ 0 \\ \theta Z \\ -\theta Y ], &
+		\vr - \Ryt \, \vr &\approx \mqty[ -\theta Z \\ 0 \\ \theta X ], &
+		\vr - \Rzt \, \vr &\approx \mqty[ \theta Y \\ -\theta X \\ 0 ].
+	\end{align*}
+	These results suggest the matrices
+	\begin{align*}
+		\Mx &= \mqty[ 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 0 ], &
+		\My &= \mqty[ 0 & 0 & -1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 ], &
+		\Mz &= \mqty[ 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0 ].
+	\end{align*}
+\end{solution}
+
+\newcommand{\klm}{\ket{l, m}}
+
+\begin{problem}
+	Calculate the matrix elements of the angular momentum operator $\Li$ in the basis ket $\klm$ when $l = 1$ and $l = 2$.  Here, $\klm$ is the simultaneous eigenket of $\Lw$ and $\Lz$ with the eigenvalues $\hbar^2 l (l + 1)$ and $\hbar m$, respectively.
+\end{problem}
+
+\begin{solution}
+	The ladder operators are defined by (3.5.5) in Sakurai:
+	\beq
+		\Jpm = \Lx \pm i \Ly.
+	\eeq
+	Clearly,
+	\begin{align*}
+		\Lx &= \frac{\Jp + \Jm}{2}, &
+		\Ly &= \frac{\Jp - \Jm}{2 i}
+	\end{align*}
+	From (3.5.39) and (3.5.40),
+	\begin{align*}
+		\Jp \klm &= \sqrt{(l - m)(l + m + 1)} \hbar \ket{l, m+1}, &
+		\Jm \klm &= \sqrt{(l + m)(l - m + 1)} \hbar \ket{l, m-1}.
+	\end{align*}
+	
+	Then the matrix elements of $\Lx$ are given by
+	\begin{align*}
+		\mel*{1, m'}{\Lx}{1, m} &= \mel*{1, m'}{\frac{\Jp + \Jm}{2}}{1, m} = \frac{\hbar}{2} \left( \delta_{m+1, m'} \sqrt{2 - m - m^2} + \delta_{m-1, m'} \sqrt{2 + m - m^2} \right), \\
+		\mel*{1, m'}{\Lx}{2, m} &= 0, \\
+		\mel*{2, m'}{\Lx}{1, m} &= 0, \\
+		\mel*{2, m'}{\Lx}{2, m} &= \mel*{1, m'}{\frac{\Jp + \Jm}{2}}{1, m} = \frac{\hbar}{2} \left( \delta_{m+1, m'} \sqrt{6 - m - m^2} + \delta_{m-1, m'} \sqrt{6 + m - m^2} \right),
+	\end{align*}
+	where the integers $m, m' \in [-l, l]$.  For $l = l' = 1$, they are either $0$ or $\hbar/\sqrt{2}$.  For $l = l' = 2$, they are either $0$, $\hbar$, or $\hbar \sqrt{3/2}$.
+	
+	The matrix elements of $\Ly$ are given by
+	\begin{align*}
+		\mel*{1, m'}{\Ly}{1, m} &= \mel*{1, m'}{\frac{\Jp - \Jm}{2 i}}{1, m} = -\frac{\ihb}{2} \left( \delta_{m+1, m'} \sqrt{2 - m - m^2} - \delta_{m-1, m'} \sqrt{2 + m - m^2} \right), \\
+		\mel*{1, m'}{\Ly}{2, m} &= 0, \\
+		\mel*{2, m'}{\Ly}{1, m} &= 0, \\
+		\mel*{2, m'}{\Ly}{2, m} &= \mel*{1, m'}{\frac{\Jp - \Jm}{2 i}}{1, m} = -\frac{\ihb}{2} \left( \delta_{m+1, m'} \sqrt{6 -m - m^2} - \delta_{m-1, m'} \sqrt{6 + m - m^2} \right),
+	\end{align*}
+	where again $m, m' \in [-l, l]$.  For $l = l' = 1$, they are either $0$ or $-\ihb/\sqrt{2}$.  For $l = l' = 2$, they are either $0$, $-\ihb$, or $-\ihb \sqrt{3/2}$.
+		
+	Since $\klm$ are eigenkets of $\Lz$, its matrix elements are given by
+	\beq
+		\mel*{l', m'}{\Ly}{l, m} = \hbar m \, \delta_{m, m'} \, \delta_{l, l'},
+	\eeq
+	where $l, l' \in \{1, 2\}$ and $m, m' \in [-l, l]$.
+\end{solution}
