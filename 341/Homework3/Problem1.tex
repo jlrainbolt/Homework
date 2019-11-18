@@ -35,75 +35,45 @@
 \end{problem}
 
 \begin{solution}
-%	Using the power series representation,
-%	\beqn \label{pow}
-%		\klam = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n {\ad}^n}{n!} \ko = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \kn.
-%	\eeqn
-%	From (2.3.32) in Sakurai,
-%	\beq
-%		\bkxn = \frac{1}{\pi^{1/4} \sqrt{2^n n!}} \frac{1}{\xo^{n + 1/2}} \left( x - \xo^2 \dv{}{x} \right)^n \exp(-\frac{1}{2} \frac{x^2}{\xo^2}),
-%	\eeq
-%	where $\xo = \sqrt{\hbar / (m \omega)}$.  Multiplying \refeq{pow} by $\bx$ on the left,
-%	\begin{align*}
-%		\bkxlam &= \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \bkxn \\
-%		&= \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \frac{1}{\pi^{1/4} \sqrt{2^n n!}} \frac{1}{\xo^{n + 1/2}} \left( x - \xo^2 \dv{}{x} \right)^n \exp(-\frac{1}{2} \frac{x^2}{\xo^2}) \\
-%		&= \exp(-\frac{|\lam|^2}{2})  \exp[\lambda \left(x - \xo^2 \dv{}{x} \right)] \sum_{n=0}^\infty \frac{1}{\pi^{1/4} \sqrt{2^n n!}} \frac{1}{\xo^{n + 1/2}} \exp(-\frac{1}{2} \frac{x^2}{\xo^2})
-%	\end{align*}
-	In terms of the position and momentum operators $X$ and $P$,
-	\begin{align*}
-		a &= \sqrt{\frac{m\omega}{2\hbar}} \left( X + \frac{iP}{m\omega} \right), &
-		\ad &= \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right),
-	\end{align*}
+	Since $a \ko = 0 \ko$, $\exp(\lam a) \ko = \ko$ and therefore we can write
+	\beqn \label{ugh1}
+		\bkxlam = \exp(-\frac{1}{2} |\lam|^2) \bx \exp(\lam \ad) \exp(\lam a) \ko.
+	\eeqn
+	For two operators $A$ and $B$, $e^{A + B} = e^{-[A, B] / 2} e^A e^B$ if $[A, B]$ commutes with each $A$ and $B$.  Here, we have
+	\beq
+		\exp[\lam(\ad + a)] = \exp(\frac{\lam^2}{2}) \exp(\lam \ad) \exp(\lam a) \implies \exp(\lam \ad) \exp(\lam a) = \exp(-\frac{\lam^2}{2}) \exp[\lam(\ad + a)],
+	\eeq
+	where we have used $[a, \ad] = 1$.  From (2.3.24) in Sakurai,
+	\begin{align} \label{xpa}
+		X &= \sqrt{\frac{\hbar}{2 m \omega}} (a + \ad), &
+		P &= i \sqrt{\frac{\hbar m \omega}{2}} (\ad - a),
+	\end{align}
 	so
-	\beqn \label{ugh}
-		\bkxlam = \exp(-\frac{|\lam|^2}{2}) \bx \exp(\lam \ad) \ko = \exp(-\frac{|\lam|^2}{2}) \bx \exp{\lam \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right)} \ko.
-	\eeqn
-	Note that for two operators $A$ and $B$, $e^{A + B} = e^{-[A, B] / 2} e^A e^B$ if $[A, B]$ commutes with each $A$ and $B$.  Note also that
 	\beq
-		\left[ X, -\frac{i P}{m \omega} \right] = -\frac{i}{m \omega} [X, P] = \frac{\hbar}{m \omega}.	
+		\exp[\lam(\ad + a)] = \exp(\lam X \sqrt{\frac{2 m \omega}{\hbar}}).
 	\eeq
-	Thus,
-	\beq
-		\exp{\lam \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{iP}{m\omega} \right)} = \exp(-\lam \frac{\hbar}{2 m \omega} \sqrt{\frac{m\omega}{2\hbar}}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} X) \exp(-\lam \frac{i}{m \omega} \sqrt{\frac{m\omega}{2\hbar}} P).
-	\eeq
-	Now, note that
-	\beqn \label{defb}
-		\exp(-\lam \frac{i}{m \omega} \sqrt{\frac{m\omega}{2\hbar}} P) = \exp(-\frac{i}{\hbar} \lam \frac{\hbar}{m \omega} \sqrt{\frac{m\omega}{2\hbar}} P) = U\!\left( \lam \sqrt{\frac{\hbar}{2 m \omega}} \right) \equiv U(b),
-	\eeqn
-	where $U(b)$ is the translation operator, and we have defined $b$.  So \refeq{ugh} becomes
+	Making these substitutions into \refeq{ugh1} yields
 	\begin{align}
-		\bkxlam &= \exp(-\frac{|\lam|^2}{2}) \exp(-\lam \frac{\hbar}{2 m \omega} \sqrt{\frac{m\omega}{2\hbar}}) \bx \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} X) U(b) \ko \notag \\
-		&= \exp(-\frac{|\lam|^2}{2}) \exp(-\frac{b}{2}) \exp(\lam \sqrt{\frac{m\omega}{2\hbar}} x) \bkxbo. \label{ugh2}
+		\bkxlam &= \exp(-\frac{1}{2} |\lam|^2) \exp(-\frac{\lam^2}{2}) \bx \exp(\lam X \sqrt{\frac{2 m \omega}{\hbar}}) \ko \notag \\
+		&= \exp(-\frac{1}{2} |\lam|^2) \exp(-\frac{\lam^2}{2}) \exp(\lam x \sqrt{\frac{2 m \omega}{\hbar}}) \bkxo. \label{ugh2}
 	\end{align}
 	From (2.3.30) in Sakurai,
 	\beq
 		\bkxo = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega}{2 \hbar} x^2)
-		\implies
-		\bkxbo = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{m \omega}{2 \hbar} (x-b)^2).
 	\eeq
 	so \refeq{ugh2} becomes
-	\begin{align}
-		\bkxlam &= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} -\frac{b}{2} + \lam \sqrt{\frac{m\omega}{2\hbar}} x - \frac{m \omega}{2 \hbar} (x^2 - 2bx + b^2)) \notag \\
-%		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} -\frac{b}{2} + \lam \sqrt{\frac{m\omega}{2\hbar}} x - \frac{m \omega}{2 \hbar} x^2 + \frac{m \omega}{\hbar} bx - \frac{m \omega}{2 \hbar} b^2) \notag \\
-%		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} -\frac{b}{2} + \lam \sqrt{\frac{m\omega}{2\hbar}} x - \frac{m \omega}{2 \hbar} x^2 + \frac{m \omega}{\hbar} \lam \sqrt{\frac{\hbar}{2 m \omega}} x - \frac{m \omega}{2 \hbar} \lam^2 \frac{\hbar}{2 m \omega}) \notag \\
-		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} -\frac{b}{2} + \lam \sqrt{\frac{m\omega}{2\hbar}} x - \frac{m \omega}{2 \hbar} x^2 + \lam \sqrt{\frac{m \omega}{2 \hbar}} x - \frac{m \omega}{2 \hbar} \lam^2 \frac{\hbar}{2 m \omega}) \notag \\
-		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} - \frac{b}{2} - \frac{m \omega}{2 \hbar} x^2 + 2 \lam \sqrt{\frac{m \omega}{2 \hbar}} x - \frac{\lam^2}{4}) \notag \\
-		&= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{|\lam|^2}{2} - \frac{m \omega}{2 \hbar} x^2 + \lam \sqrt{\frac{2 m \omega}{\hbar}} x), \label{wfnlam}
-	\end{align}
-	where we have dropped a constant phase.
+	\beq
+		\bkxlam = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \exp(-\frac{1}{2} |\lam|^2 - \frac{\lam^2}{2} + \lam x \sqrt{\frac{2 m \omega}{\hbar}} - \frac{m \omega}{2 \hbar} x^2).
+	\eeq
 \end{solution}
 
+\clearpage
 \begin{problem}
 	Compute $\ev{X}{\lam}$, $\ev{P}{\lam}$, $\ev{X^2}{\lam}$, and $\ev{P^2}{\lam}$.  Also, compute $\ev{(\DX)^2}{\lam} \ev{(\DP)^2}{\lam}$ where $\DA = A - \ev{A}$.
 \end{problem}
 
 \begin{solution}
-	From (2.3.24) in Sakurai,
-	\begin{align} \label{xpa}
-		X &= \sqrt{\frac{\hbar}{2 m \omega}} (a + \ad), &
-		P &= i \sqrt{\frac{\hbar m \omega}{2}} (\ad - a).
-	\end{align}
-	Then for $\ev{X}{\lam}$,
+	For $\ev{X}{\lam}$,
 	\begin{align}
 		\ev{X}{\lam} &= \frac{1}{|\lam|^2} \ev{\ad X a}{\lam} \notag \\
 		&= \frac{1}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \ev{\ad (a + \ad) a}{\lam}
@@ -111,7 +81,7 @@
 		= \frac{|\lam|^2 (\lam^* + \lam)}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \notag \\
 		&= 2 \Re(\lam) \sqrt{\frac{\hbar}{2 m \omega}}, \label{evX}
 	\end{align}
-	and for $\ev{P}{\lam}$,
+	where we have again used \refeq{xpa}.  For $\ev{P}{\lam}$,
 	\begin{align}
 		\ev{P}{\lam} &= \frac{1}{\lambda^2} \ev{\ad P a}{\lam} \notag \\
 		&= \frac{i}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \ev{\ad(\ad - a)a}{\lam} = \frac{i}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \ev{{\ad}^2 a - \ad a^2}{\lam}
@@ -133,7 +103,7 @@
 		= \left( 1 + 2 \left[ \Re(\lam)^2 + \Im(\lam)^2 \right] + 2 \left[ \Re(\lam)^2 - \Im(\lam)^2 \right] \right) \frac{\hbar}{2 m \omega} \notag \\
 		&= [1 + 4 \Re(\lam)^2 ] \frac{\hbar}{2 m \omega} \label{evXsq},
 	\end{align}
-	where we have used $[a, \ad] = 1$.  For $\ev{P^2}{\lam}$,
+	where we have again used $[a, \ad] = 1$.  For $\ev{P^2}{\lam}$,
 	\begin{align}
 		\ev{P^2}{\lam} &= \frac{1}{|\lam|^2} \ev{\ad P^2 a}{\lam}
 		= -\frac{1}{|\lam|^2} \frac{\hbar m \omega}{2} \ev{\ad ({\ad}^2 - \ad a - a \ad + a^2) a}{\lam} \notag \\
@@ -164,29 +134,42 @@
 \newcommand{\psit}{\psi(t)}
 \newcommand{\kpsit}{\ket{\psit}}
 \newcommand{\Ut}{U(t)}
+\newcommand{\lamt}{\lam e^{-i \omega t}}
+\newcommand{\klamt}{\ket{\lamt}}
+\newcommand{\blamt}{\bra{\lamt}}
 
 \begin{problem} \label{timeevo}
 	Starting from $\ket{\psi(0)} = \klam$ at $t = 0$, we let $\kpsit$ evolve in time.  What is the state $\kpsit$ for $t > 0$?
 \end{problem}
 
 \begin{solution}
-	From (2.3.43) in Sakurai,
-	\begin{align*}
-		a(t) &= a e^{-i \omega t}, &
-		\ad(t) &= \ad e^{i \omega t},
-	\end{align*}
-	where $a = a(0)$ and $\ad = \ad(0)$.  Equating the {\Schrodinger} and Heisenberg pictures,
+	The Hamiltonian for the harmonic oscillator,
+	\beqn \label{ham}
+		H = \frac{P^2}{2 m} + \frac{m \omega^2 X^2}{2},
+	\eeqn
+	is time independent, so the time evolution operator $U(t)$ for the coherent state in general is given by
 	\beq
-		\ket{\psi(0)} = \klam = \frac{1}{\lam} a \klam \implies \kpsit = \frac{1}{\lam} a(t) \klam,
+		U(t) = \exp(-\frac{i H t}{\hbar}),
 	\eeq
-	and so
+	which is (2.1.28) in Sakurai.  Rewriting $\klam$ in the power series representation,
+	\beqn \label{pow}
+		\klam = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n {\ad}^n}{n!} \ko
+		= \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \kn.
+	\eeqn
+	The time evolution operator $U(t)$ for an energy eigenket $\kn$ of the harmonic oscillator is given by
 	\beq
-		\kpsit = \frac{1}{\lam} a e^{-i \omega t} \klam = e^{-i \omega t} \klam.
+		U(t) \kn = \exp(-\frac{i E_n t}{\hbar}) \kn
+		= \exp[-i \left( n + \frac{1}{2} \right) \omega t] \kn
+		= e^{-i n \omega t} e^{-i \omega t / 2},
 	\eeq
-%	In terms of the oscillator ground state $\ko$,
-%	\beq
-%		\kpsit = e^{-i \omega t} \exp(-\frac{1}{2} |\lam|^2) \exp(\lam \ad) \ko.
-%	\eeq
+	where $E_n$ are given by (2.3.9) in Sakurai.  Then, using \refeq{pow}, we have
+	\begin{align}
+		\kpsit &= \Ut \klam
+		= \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} e^{-i n \omega t} e^{-i \omega t / 2} \kn
+		= e^{-i \omega t / 2} \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{(\lambda e^{-i \omega t})^n}{n!} \kn \notag \\
+		&= e^{-i \omega t / 2} \klamt, \label{klamt}
+	\end{align}
+	where $\lambda e^{-i \omega t}$ is a complex number (albeit one that is changing in time).  Thus, $\klamt$ is another coherent state.
 \end{solution}
 
 \begin{problem}
@@ -194,18 +177,14 @@
 \end{problem}
 
 \begin{solution}
-	Firstly, we have
+	From \refeq{klamt}, we have
 	\begin{align*}
-		\ev{X}{\psit} &= \blam e^{i \omega t} X e^{-i \omega t} \klam = \ev{X}{\lam} = 2 \Re(\lam) \sqrt{\frac{\hbar}{2 m \omega}}, \\
+		\ev{X}{\psit} &= \blamt e^{i \omega t / 2} X e^{-i \omega t / 2} \klamt = \ev{X}{\lamt} = 2 \Re(\lam) \sqrt{\frac{\hbar}{2 m \omega}}, \\
 		\ev{P}{\psit} &= \blam e^{i \omega t} P e^{-i \omega t} \klam = \ev{P}{\lam} = 2 \Im(\lam) \sqrt{\frac{\hbar m \omega}{2}},
 	\end{align*}
 	where we have used \refeq{evX} and \refeq{evP}.
 	
-	For the time derivatives, note that the harmonic oscillator Hamiltonian is given by
-	\beq
-		H = \frac{P^2}{2 m} + \frac{m \omega^2 X^2}{2}.
-	\eeq
-	Then, using the Ehrenfest theorem and the other results of problem~4.1 of the previous homework,
+	For the time derivatives, the harmonic oscillator Hamiltonian is given by \refeq{ham}.  Using the Ehrenfest theorem and the other results of problem~4.1 of the previous homework,
 	\begin{align*}
 		\dv{\ev{X}}{t} &= -\frac{i}{\hbar} \ev{[X, H]}{\psit} = \frac{1}{m} \ev{P}{\psit} = 2 \Im(\lam) \sqrt{\frac{\hbar \omega}{2 m}}, \\
 		\dv{\ev{P}}{t} &= -\frac{i}{\hbar} \ev{[P, H]}{\psit} = - m \omega^2 \ev{X}{\psit} = -2 \Re(\lam) \sqrt{\frac{\hbar m \omega^3}{2}},
@@ -229,7 +208,7 @@
 	\beq
 		\mel*{\lam''}{\exp(-\frac{i H t}{\hbar})}{\lam'} = e^{-i \omega t} \bkll.
 	\eeq
-	Using the power series representation,
+	\hl{Using the power series representation,}
 	\beq
 		\klam = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n {\ad}^n}{n!} \ko = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \kn,
 	\eeq
