@@ -58,11 +58,11 @@
 		[\Lx, Z] &= (Y \Pz - Z \Py) Z - Z (Y \Pz - Z \Py) = Y \Pz Z - Z \Py Z - Z Y \Pz + Z Z \Py = -[Z, \Pz] Y = -\ihb Y.
 	\end{align*}
 	Generalizing these results to $\Ly$ and $\Lz$,
-	\begin{align*}
+	\begin{align} \label{mats}
 		[\Lx, \vr] &= \ihb \mqty[ 0 \\ Z \\ -Y ], &
 		[\Ly, \vr] &= \ihb \mqty[ -Z \\ 0 \\ X ], &
 		[\Lz, \vr] &= \ihb \mqty[ Y \\ -X \\ 0 ],
-	\end{align*}
+	\end{align}
 	where $\vr = \mqty[X & Y & Z]^T$.
 \end{solution}
 
@@ -95,11 +95,11 @@
 	\end{align*}
 	and so
 	\begin{align*}
-		\vr - \Rxt \, \vr &\approx \mqty[ 0 \\ \theta Z \\ -\theta Y ], &
-		\vr - \Ryt \, \vr &\approx \mqty[ -\theta Z \\ 0 \\ \theta X ], &
-		\vr - \Rzt \, \vr &\approx \mqty[ \theta Y \\ -\theta X \\ 0 ].
+		\vr - \Rxt \, \vr &\approx \theta \mqty[ 0 \\ Z \\ -Y ], &
+		\vr - \Ryt \, \vr &\approx \theta \mqty[ -Z \\ 0 \\ X ], &
+		\vr - \Rzt \, \vr &\approx \theta \mqty[ Y \\ -X \\ 0 ],
 	\end{align*}
-	These results suggest the matrices
+	which look similar to \refeq{mats}.  These results suggest the matrices
 	\begin{align*}
 		\Mx &= \mqty[ 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 0 ], &
 		\My &= \mqty[ 0 & 0 & -1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 ], &
@@ -121,7 +121,7 @@
 	Clearly,
 	\begin{align*}
 		\Lx &= \frac{\Jp + \Jm}{2}, &
-		\Ly &= \frac{\Jp - \Jm}{2 i}
+		\Ly &= \frac{\Jp - \Jm}{2 i}.
 	\end{align*}
 	From (3.5.39) and (3.5.40),
 	\begin{align*}
@@ -147,7 +147,7 @@
 	\end{align*}
 	where again $m, m' \in [-l, l]$.
 		
-	Since $\klm$ are eigenkets of $\Lz$, its matrix elements are given by
+	Since $\klm$ are eigenkets of $\Lz$, it is diagonal in this basis.  Its matrix elements are given by
 	\beq
 		\mel*{l', m'}{\Ly}{l, m} = \hbar m \, \delta_{m, m'} \, \delta_{l, l'},
 	\eeq

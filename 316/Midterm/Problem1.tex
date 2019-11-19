@@ -1,0 +1,152 @@
+\newcommand{\qd}{\dot{q}}
+\newcommand{\pd}{\dot{p}}
+\newcommand{\qs}{q^*}
+\newcommand{\ps}{p^*}
+
+\newcommand{\Vq}{V(q)}
+\newcommand{\fq}{f(q)}
+\newcommand{\gq}{g(q)}
+
+\section{Problem 1}
+\begin{statement}
+	The motion of a particle in a cubic potential is governed by the Hamiltonian
+	\beqn \label{ham1}
+		H(q, p) = \frac{p^2}{2m} + \frac{k^2}{2} q^2 - \frac{A}{3} q^3.
+	\eeqn
+	Here $m$ is the particle mass, $k$ is the spring constant, and $A$ is a positive dimensional constant.
+\end{statement}
+
+\begin{problem}
+	Sketch the potential and the contours of $H$.  Identify any fixed points (mechanical equilibrium states) that exist.  Classify them as stable (elliptic) or unstable (hyperbolic).
+\end{problem}
+
+\begin{solution}
+	Define the potential of \refeq{ham1} as
+	\beqn \label{pot1}
+		\Vq \equiv \frac{k^2}{2} q^2 - \frac{A}{3} q^3 \equiv \gq + \gq,
+	\eeqn
+	where we have defined $\fq = k^2 q^2 / 2$ and $\gq = -A q^3 / 3$.  Figures~\ref{f} and \ref{g} and show sketches of $\fq$ and $\gq$, respectively.  Their sum $\Vq$ may be obtained by summing them graphically, and is shown in figure~\ref{V}.
+	
+	Fixed points are located where $\dv*{V}{q} |_{\qs} = 0$.  They are stable where $\Vq$ has a local minimum ($\dv*[2]{V}{q} |_{\qs} > 0$) and unstable where $\Vq$ has a local maximum ($\dv*[2]{V}{q} |_{\qs} < 0$).  There are two fixed points, indicated by circles in figure~\ref{V}.  The stable~(unstable) fixed point is indicated by a closed~(open) circle.
+
+	Hamilton's equations for \refeq{ham1} are given by
+	\begin{align}
+		\qd &= \pdv{H}{p} = \frac{p}{m} \implies p = m \qd, \label{x1} \\
+		\pd &= -\pdv{H}{q} = k^2 q - A q^2. \notag
+	\end{align}
+	Fixed points occur where $\qd = \pd = 0$; that is, the solutions of the equation
+	\beq
+		\ps = k^2 \qs - A {\qs}^2.
+	\eeq
+	From \refeq{x1}, $\qd = 0 \implies \pd = 0$.  Thus, the stable fixed point is located at $(\qs, \ps) = 0$, and the unstable fixed point is located at $(\qs, \ps) = (k^2 / A, 0)$.
+	
+	Contours are curves in the phase plane for which $H$ is constant.  Several contours are shown in figure~\ref{contours}.
+\end{solution}
+
+\unitlength=.2in
+\begin{figure}[p] \centering
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-8,0){\vector(1,0){16.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$q$}}
+		\put(0,5.3){\makebox(0,1)[c]{$\fq$}}
+	\end{picture}
+	\caption{Sketch of $\fq$ as defined in \refeq{pot1}.}
+	\label{f}
+\end{figure}
+
+\unitlength=.2in
+\begin{figure} \centering
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-8,0){\vector(1,0){16.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$q$}}
+		\put(0,5.3){\makebox(0,1)[c]{$\gq$}}
+	\end{picture}
+	\caption{Sketch of $\gq$ as defined in \refeq{pot1}.}
+	\label{g}
+\end{figure}
+
+\unitlength=.2in
+\begin{figure} \centering
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-8,0){\vector(1,0){16.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$q$}}
+		\put(0,5.3){\makebox(0,1)[c]{$\Vq$}}
+	\end{picture}
+	\caption{Sketch of $\Vq$ obtained by summing $\fq$ and $\gq$.  The stable~(unstable) fixed point is represented by a closed~(open) circle.}
+	\label{V}
+\end{figure}
+
+\unitlength=.3in
+\begin{figure}[p] \centering
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-8,0){\vector(1,0){16.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$q$}}
+		\put(0,5.3){\makebox(0,1)[c]{$p$}}
+	\end{picture}
+	\caption{Contours of $H$.  The stable~(unstable) fixed point is represented by a closed~(open) circle.}
+	\label{contours}
+\end{figure}
+
+\unitlength=.3in
+\begin{figure} \centering
+	\begin{picture}(10.5,10.5)(-5,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-8,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(-7,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-8,0){\vector(1,0){16.2}}
+		\put(0,-5){\vector(0,1){10.2}}
+		\put(8.3,0){\makebox(1,0)[l]{$q$}}
+		\put(0,5.3){\makebox(0,1)[c]{$p$}}
+	\end{picture}
+	\caption{Trajectories of $H$, with the direction of time evolution indicated by arrows.  The stable~(unstable) fixed point is represented by a closed~(open) circle.  The separatrix is drawn in red.}
+	\label{trajectories}
+\end{figure}
+
+\begin{problem}
+	Sketch qualitatively both representative and interesting trajectories in the phase space.  If there is a separatrix, a trajectory separating qualitatively different types of motion, specify the equation governing its shape.
+\end{problem}
+
+\begin{solution}
+	Trajectories lie along contours of $H$.  The directions of the trajectories may be deduced by \refeq{x1}, which indicates that time evolution flows in the $+q$~($-q$) direction when $p > 0$~($< 0$).  This corresponds to the top~(bottom) half of the phase plane.  Representative trajectories corresponding to some of the contours in figure~\ref{contours} are shown in figure~\ref{trajectories}.
+	
+	There is a separatrix in figure~\ref{trajectories}, shown in red.  The separatrix passes through the unstable fixed point at $(\qs, \ps) = (k^2 / A, 0)$.  Feeding these values into \refeq{ham1}, we obtain
+	\beq
+		E \equiv \frac{k^2}{2} \left(\frac{k^2}{A}\right)^2 - \frac{A}{3} \left(\frac{k^2}{A}\right)^3 = \frac{1}{6} \frac{k^6}{A^2}
+	\eeq
+	as the constant energy of the separatrix.  Substituting once more into \refeq{ham1} yields
+	\beq
+		\frac{1}{6} \frac{k^6}{A^2} = \frac{p^2}{2m} + \frac{k^2}{2} q^2 - \frac{A}{3} q^3 \iff p^3 = m \left( \frac{1}{3} \frac{k^6}{A^2} - k^2 q^2 + \frac{2}{3} A q^3 \right)
+	\eeq
+	as the equation governing the shape of the separatrix.
+\end{solution}
