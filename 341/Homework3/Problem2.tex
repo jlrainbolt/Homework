@@ -61,7 +61,7 @@
 	\beq
 		\Ut = \exp(-\frac{i \Hc t}{\hbar}) = \exp(-\frac{i t}{\hbar T} \, \Xqo \, \Pwo).
 	\eeq
-	(2.2.23b) in Sakurai gives the commutation relations
+	(2.2.23) in Sakurai gives the commutation relations
 	\begin{align*}
 		[X_i, F(\vec{P})] &= \ihb \pdv{F}{P_i} &
 		[P_i, G(\vec{X})] &= -\ihb \pdv{G}{X_i}.
@@ -92,7 +92,7 @@
 \begin{solution}
 	Substituting \refeq{Pwt} into \refeq{dist},
 	\beq
-		D = \Pqo - \frac{T}{T} \Pwo - \Pwo = -\Pwo.
+		D = \Pqo - \frac{T}{T} \Pwo - \Pqo = -\Pwo.
 	\eeq
 	Note that for an operator $O$,
 	\beq
@@ -135,11 +135,7 @@
 	\eeq
 	where the final inequality is satisfied by assumption.  For equality, we would need
 	\beq
-		\sigma\big( \Xwo \big) \, \sigma\big( \Pwo \big) = \frac{\hbar}{2}.
+		\sigma\big( \Xwo \big) \, \sigma\big( \Pwo \big) = \frac{\hbar}{2},
 	\eeq
-%	\begin{align*}
-%		\frac{\hbar}{2} &= \sigma\big( \Xwo \big) \, \sigma\big( \Pwo \big) \\
-%		\frac{\hbar^2}{4} &= \ev{\big( \Xwo - \ev{\Xwo}\big)^2} \ev{\big( \Pwo - \ev{\Pwo}\big)^2} %= z \big( \ev{\Xwo^2} - \ev{\Xwo}^2 \big) \big( \ev{\Pwo^2} - \ev{\Pwo}^2 \big)
-%	\end{align*}
-	
+	which is satisfied if the ``probe'' system is a Gaussian wave packet.
 \end{solution}

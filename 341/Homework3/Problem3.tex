@@ -136,7 +136,7 @@
 		\mel*{2, m'}{\Lx}{1, m} &= 0, \\
 		\mel*{2, m'}{\Lx}{2, m} &= \mel*{1, m'}{\frac{\Jp + \Jm}{2}}{1, m} = \frac{\hbar}{2} \left( \delta_{m+1, m'} \sqrt{6 - m - m^2} + \delta_{m-1, m'} \sqrt{6 + m - m^2} \right),
 	\end{align*}
-	where the integers $m, m' \in [-l, l]$.  For $l = l' = 1$, they are either $0$ or $\hbar/\sqrt{2}$.  For $l = l' = 2$, they are either $0$, $\hbar$, or $\hbar \sqrt{3/2}$.
+	where the integers $m, m' \in [-l, l]$.
 	
 	The matrix elements of $\Ly$ are given by
 	\begin{align*}
@@ -145,11 +145,43 @@
 		\mel*{2, m'}{\Ly}{1, m} &= 0, \\
 		\mel*{2, m'}{\Ly}{2, m} &= \mel*{1, m'}{\frac{\Jp - \Jm}{2 i}}{1, m} = -\frac{\ihb}{2} \left( \delta_{m+1, m'} \sqrt{6 -m - m^2} - \delta_{m-1, m'} \sqrt{6 + m - m^2} \right),
 	\end{align*}
-	where again $m, m' \in [-l, l]$.  For $l = l' = 1$, they are either $0$ or $-\ihb/\sqrt{2}$.  For $l = l' = 2$, they are either $0$, $-\ihb$, or $-\ihb \sqrt{3/2}$.
+	where again $m, m' \in [-l, l]$.
 		
 	Since $\klm$ are eigenkets of $\Lz$, its matrix elements are given by
 	\beq
 		\mel*{l', m'}{\Ly}{l, m} = \hbar m \, \delta_{m, m'} \, \delta_{l, l'},
 	\eeq
 	where $l, l' \in \{1, 2\}$ and $m, m' \in [-l, l]$.
+	
+	Explicitly, let
+	\beq
+		R = \kbordermatrix{ & (1, -1) & (1, 0) & (1, 1) & (2, -2) & (2, -1) & (2, 0) & (2, 1) & (2, 2) \cr
+				(1, -1) & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \cr
+				(1, 0) & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \cr
+				(1, 1) & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \cr
+				(2, -2) & 0 & 0 & 0 & 0 & \sqrt{2} & 0 & 0 & 0 \cr
+				(2, -1) & 0 & 0 & 0 & \sqrt{2} & 0 & \sqrt{3} & 0 & 0 \cr
+				(2, 0) & 0 & 0 & 0 & 0 & \sqrt{3} & 0 & \sqrt{3} & 0 \cr
+				(2, 1) & 0 & 0 & 0 & 0 & 0 & \sqrt{3} & 0 & \sqrt{2} \cr
+				(2, 2) & 0 & 0 & 0 & 0 & 0 & 0 & \sqrt{2} & 0 \cr
+			},
+	\eeq
+	where the row labels represent $(l', m')$ and the column labels represent $(l, m)$.  Then
+	\begin{align*}
+		\Lx &= \frac{\hbar}{\sqrt{2}} R, &
+		\Ly &= -\frac{\ihb}{\sqrt{2}} R,
+	\end{align*}
+	and
+	\beq
+		\Lz = \hbar \kbordermatrix{ & (1, -1) & (1, 0) & (1, 1) & (2, -2) & (2, -1) & (2, 0) & (2, 1) & (2, 2) \cr
+				(1, -1) & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \cr
+				(1, 0) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \cr
+				(1, 1) & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \cr
+				(2, -2) & 0 & 0 & 0 & -2 & 0 & 0 & 0 & 0 \cr
+				(2, -1) & 0 & 0 & 0 & 0 & -1 & 0 & 0 & 0 \cr
+				(2, 0) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \cr
+				(2, 1) & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \cr
+				(2, 2) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 \cr
+			}.
+	\eeq
 \end{solution}

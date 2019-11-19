@@ -67,8 +67,11 @@
 	\eeq
 \end{solution}
 
+\newcommand{\Rel}{\Re(\lam)}
+\newcommand{\Iml}{\Im(\lam)}
+
 \clearpage
-\begin{problem}
+\begin{problem} \label{1.2}
 	Compute $\ev{X}{\lam}$, $\ev{P}{\lam}$, $\ev{X^2}{\lam}$, and $\ev{P^2}{\lam}$.  Also, compute $\ev{(\DX)^2}{\lam} \ev{(\DP)^2}{\lam}$ where $\DA = A - \ev{A}$.
 \end{problem}
 
@@ -77,16 +80,16 @@
 	\begin{align}
 		\ev{X}{\lam} &= \frac{1}{|\lam|^2} \ev{\ad X a}{\lam} \notag \\
 		&= \frac{1}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \ev{\ad (a + \ad) a}{\lam}
-		= \frac{1}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \ev{(\ad a^2 + {\ad}^2 a}{\lam}
+		= \frac{1}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \ev{(\ad a^2 + {\ad}^2 a)}{\lam}
 		= \frac{|\lam|^2 (\lam^* + \lam)}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \notag \\
-		&= 2 \Re(\lam) \sqrt{\frac{\hbar}{2 m \omega}}, \label{evX}
+		&= 2 \Rel \sqrt{\frac{\hbar}{2 m \omega}}, \label{evX}
 	\end{align}
 	where we have again used \refeq{xpa}.  For $\ev{P}{\lam}$,
 	\begin{align}
 		\ev{P}{\lam} &= \frac{1}{\lambda^2} \ev{\ad P a}{\lam} \notag \\
-		&= \frac{i}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \ev{\ad(\ad - a)a}{\lam} = \frac{i}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \ev{{\ad}^2 a - \ad a^2}{\lam}
+		&= \frac{i}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \ev{\ad(\ad - a)a}{\lam} = \frac{i}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \ev{({\ad}^2 a - \ad a^2)}{\lam}
 		= \frac{i |\lam|^2 (\lam^* - \lam)}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \notag \\
-		&= 2 \Im(\lam) \sqrt{\frac{\hbar m \omega}{2}}. \label{evP}
+		&= 2 \Iml \sqrt{\frac{\hbar m \omega}{2}}. \label{evP}
 	\end{align}
 	From \refeq{xpa}, note that
 	\begin{align*}
@@ -100,28 +103,28 @@
 		&= \frac{1}{|\lam|^2} \frac{\hbar}{2 m \omega} \ev{(\ad a^3 + \ad a \ad a + {\ad}^2 a^2 + {\ad}^3 a)}{\lam}
 		= \frac{1}{|\lam|^2} \frac{\hbar}{2 m \omega} \ev{(\ad a^3 + \ad a + 2 {\ad}^2 a^2 + {\ad}^3 a)}{\lam} \notag \\
 		&= (\lam^2 + 1 + 2 |\lam|^2 + {\lam^*}^2) \frac{\hbar}{2 m \omega}
-		= \left( 1 + 2 \left[ \Re(\lam)^2 + \Im(\lam)^2 \right] + 2 \left[ \Re(\lam)^2 - \Im(\lam)^2 \right] \right) \frac{\hbar}{2 m \omega} \notag \\
-		&= [1 + 4 \Re(\lam)^2 ] \frac{\hbar}{2 m \omega} \label{evXsq},
+		= \left( 1 + 2 \left[ \Rel^2 + \Iml^2 \right] + 2 \left[ \Rel^2 - \Iml^2 \right] \right) \frac{\hbar}{2 m \omega} \notag \\
+		&= [1 + 4 \Rel^2 ] \frac{\hbar}{2 m \omega} \label{evXsq},
 	\end{align}
 	where we have again used $[a, \ad] = 1$.  For $\ev{P^2}{\lam}$,
 	\begin{align}
 		\ev{P^2}{\lam} &= \frac{1}{|\lam|^2} \ev{\ad P^2 a}{\lam}
 		= -\frac{1}{|\lam|^2} \frac{\hbar m \omega}{2} \ev{\ad ({\ad}^2 - \ad a - a \ad + a^2) a}{\lam} \notag \\
-		&= -\frac{1}{|\lam|^2} \frac{\hbar m \omega}{2} \ev{({\ad}^2 a - {\ad}^2 a^2 - \ad a \ad a + \ad a^3}{\lam}
-		= -\frac{1}{|\lam|^2} \frac{\hbar m \omega}{2} \ev{({\ad}^3 a - \ad a - 2 {\ad}^2 a^2 + \ad a^3}{\lam} \notag \\
+		&= -\frac{1}{|\lam|^2} \frac{\hbar m \omega}{2} \ev{({\ad}^2 a - {\ad}^2 a^2 - \ad a \ad a + \ad a^3)}{\lam}
+		= -\frac{1}{|\lam|^2} \frac{\hbar m \omega}{2} \ev{({\ad}^3 a - \ad a - 2 {\ad}^2 a^2 + \ad a^3}{\lam)} \notag \\
 		&= -({\lam^*}^2 - 1 - 2 |\lam|^2 + \lam^2) \frac{\hbar m \omega}{2}
-		= \left( 1 + 2 \left[ \Re(\lam)^2 + \Im(\lam)^2 \right] - 2 [\Re(\lam)^2 - \Im(\lam)^2] 
+		= \left( 1 + 2 \left[ \Rel^2 + \Iml^2 \right] - 2 [\Rel^2 - \Iml^2] 
 \right) \frac{\hbar m \omega}{2} \notag \\
-		&= [1 + 4 \Im(\lam)^2] \frac{\hbar m \omega}{2}. \label{evPsq}
+		&= [1 + 4 \Iml^2] \frac{\hbar m \omega}{2}. \label{evPsq}
 	\end{align}
 	
 	From (1.4.51) in Sakurai, $\ev{(\DA)^2} = \ev{A^2} - \ev{A}^2$.  Then
 	\beq
-		\ev{(\DX)^2}{\lam} = \ev{X^2}{\lam} - \ev{X}{\lam}^2 = [1 + 4 \Re(\lam)^2 ] \frac{\hbar}{2 m \omega} - 4 \Re(\lam)^2 \frac{\hbar}{2 m \omega} = \frac{\hbar}{2 m \omega},
+		\ev{(\DX)^2}{\lam} = \ev{X^2}{\lam} - \ev{X}{\lam}^2 = [1 + 4 \Rel^2 ] \frac{\hbar}{2 m \omega} - 4 \Rel^2 \frac{\hbar}{2 m \omega} = \frac{\hbar}{2 m \omega},
 	\eeq
 	where we have used \refeq{evX} and \refeq{evXsq}, and
 	\beq
-		\ev{(\DP)^2}{\lam} = \ev{P^2}{\lam} - \ev{P}{\lam}^2 = [1 + 4 \Im(\lam)^2 ] \frac{\hbar m \omega}{2} - 4 \Im(\lam)^2 \frac{\hbar m \omega}{2} = \frac{\hbar m \omega}{2},
+		\ev{(\DP)^2}{\lam} = \ev{P^2}{\lam} - \ev{P}{\lam}^2 = [1 + 4 \Iml^2 ] \frac{\hbar m \omega}{2} - 4 \Iml^2 \frac{\hbar m \omega}{2} = \frac{\hbar m \omega}{2},
 	\eeq
 	where we have used \refeq{evP} and \refeq{evPsq}.  Finally,
 	\beq
@@ -134,11 +137,18 @@
 \newcommand{\psit}{\psi(t)}
 \newcommand{\kpsit}{\ket{\psit}}
 \newcommand{\Ut}{U(t)}
-\newcommand{\lamt}{\lam e^{-i \omega t}}
+
+\newcommand{\eiwt}{e^{i \omega t}}
+\newcommand{\emiwt}{e^{-i \omega t}}
+
+\newcommand{\eiwtf}{e^{i \omega t / 2}}
+\newcommand{\emiwtf}{e^{-i \omega t / 2}}
+
+\newcommand{\lamt}{\lam \emiwt}
 \newcommand{\klamt}{\ket{\lamt}}
 \newcommand{\blamt}{\bra{\lamt}}
 
-\begin{problem} \label{timeevo}
+\begin{problem}
 	Starting from $\ket{\psi(0)} = \klam$ at $t = 0$, we let $\kpsit$ evolve in time.  What is the state $\kpsit$ for $t > 0$?
 \end{problem}
 
@@ -148,9 +158,9 @@
 		H = \frac{P^2}{2 m} + \frac{m \omega^2 X^2}{2},
 	\eeqn
 	is time independent, so the time evolution operator $U(t)$ for the coherent state in general is given by
-	\beq
+	\beqn \label{timeevo}
 		U(t) = \exp(-\frac{i H t}{\hbar}),
-	\eeq
+	\eeqn
 	which is (2.1.28) in Sakurai.  Rewriting $\klam$ in the power series representation,
 	\beqn \label{pow}
 		\klam = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n {\ad}^n}{n!} \ko
@@ -165,59 +175,90 @@
 	where $E_n$ are given by (2.3.9) in Sakurai.  Then, using \refeq{pow}, we have
 	\begin{align}
 		\kpsit &= \Ut \klam
-		= \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} e^{-i n \omega t} e^{-i \omega t / 2} \kn
-		= e^{-i \omega t / 2} \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{(\lambda e^{-i \omega t})^n}{n!} \kn \notag \\
-		&= e^{-i \omega t / 2} \klamt, \label{klamt}
+		= \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} e^{-i n \omega t} \emiwtf \kn
+		= \emiwtf \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{(\lamt)^n}{n!} \kn \notag \\
+		&= \emiwtf \klamt, \label{klamt}
 	\end{align}
-	where $\lambda e^{-i \omega t}$ is a complex number (albeit one that is changing in time).  Thus, $\klamt$ is another coherent state.
+	where $\lamt$ is a complex number (albeit one that is changing in time).  Thus, $\klamt$ is another coherent state.
 \end{solution}
+
+
+\newcommand{\coswt}{\cos(\omega t)}
+\newcommand{\sinwt}{\sin(\omega t)}
 
 \begin{problem}
 	Compute $\ev{X}{\psit}$ and $\ev{P}{\psit}$, and their time derivatives $\dv*{\ev{X}}{t}$ and $\dv*{\ev{P}}{t}$.
 \end{problem}
 
 \begin{solution}
-	From \refeq{klamt}, we have
+	Proceeding similarly to \ref{1.2} and using \refeq{klamt}, we have
+	\begin{align}
+		\ev{X}{\psit} &= \blamt \eiwtf X \emiwtf \klamt
+		= \ev{X}{\lamt} \notag \\
+		&= \frac{1}{|\lamt|^2} \sqrt{\frac{\hbar}{2 m \omega}} \ev{(\ad a^2 + {\ad}^2 a)}{\lamt}
+		= \frac{|\lam|^2 (\lam^* \eiwt + \lamt \emiwt)}{|\lam|^2} \sqrt{\frac{\hbar}{2 m \omega}} \notag \\
+		&= \left\{ [\Rel - i \Iml] \eiwt + [\Rel + i \Iml] \emiwt \right\} \sqrt{\frac{\hbar}{2 m \omega}} \notag \\
+		&= \left[ \Rel (\eiwt + \emiwt) - \frac{\Iml}{i} (\eiwt - \emiwt) \right] \sqrt{\frac{\hbar}{2 m \omega}} \notag \\
+		&= 2 [\Rel \coswt + \Iml \sinwt] \sqrt{\frac{\hbar}{2 m \omega}}. \label{evXt}
+	\end{align}
+	Likewise,
+	\begin{align}
+		\ev{P}{\psit} &= \blamt \eiwtf P \emiwtf \klamt
+		= \ev{P}{\lamt} \notag \\
+		&=  \frac{i}{|\lamt|^2} \sqrt{\frac{\hbar m \omega}{2}} \ev{({\ad}^2 a - \ad a^2)}{\lamt}
+		= i \frac{|\lam|^2 (\lam^* \eiwt - \lamt \emiwt)}{|\lam|^2} \sqrt{\frac{\hbar m \omega}{2}} \notag \\
+		&= i \left\{ [\Rel - i \Iml] \eiwt - [\Rel + i \Iml] \emiwt \right\} \sqrt{\frac{\hbar m \omega}{2}} \notag \\
+		&= \left[ \Iml (\eiwt + \emiwt) - \frac{\Rel}{i} (\eiwt - \emiwt) \right] \sqrt{\frac{\hbar m \omega}{2}} \notag \\
+		&= 2 [\Iml \coswt - \Rel \sinwt] \sqrt{\frac{\hbar m \omega}{2}}. \label{evPt}
+	\end{align}
+	For the time derivatives, the harmonic oscillator Hamiltonian is given by \refeq{ham}.  Note that
 	\begin{align*}
-		\ev{X}{\psit} &= \blamt e^{i \omega t / 2} X e^{-i \omega t / 2} \klamt = \ev{X}{\lamt} = 2 \Re(\lam) \sqrt{\frac{\hbar}{2 m \omega}}, \\
-		\ev{P}{\psit} &= \blam e^{i \omega t} P e^{-i \omega t} \klam = \ev{P}{\lam} = 2 \Im(\lam) \sqrt{\frac{\hbar m \omega}{2}},
+		[X, H] &= \ihb \frac{P}{m}, &
+		[X, P] &= -\ihb m \omega^2 X,
 	\end{align*}
-	where we have used \refeq{evX} and \refeq{evP}.
-	
-	For the time derivatives, the harmonic oscillator Hamiltonian is given by \refeq{ham}.  Using the Ehrenfest theorem and the other results of problem~4.1 of the previous homework,
+	where we have used the results of problem~2.1 on the previous homework.  Then, using the Ehrenfest theorem,
 	\begin{align*}
-		\dv{\ev{X}}{t} &= -\frac{i}{\hbar} \ev{[X, H]}{\psit} = \frac{1}{m} \ev{P}{\psit} = 2 \Im(\lam) \sqrt{\frac{\hbar \omega}{2 m}}, \\
-		\dv{\ev{P}}{t} &= -\frac{i}{\hbar} \ev{[P, H]}{\psit} = - m \omega^2 \ev{X}{\psit} = -2 \Re(\lam) \sqrt{\frac{\hbar m \omega^3}{2}},
+		\dv{\ev{X}}{t} &= -\frac{i}{\hbar} \ev{[X, H]}{\psit}
+		= \frac{1}{m} \ev{P}{\psit}
+		= \frac{2}{m} [\Iml \coswt - \Rel \sinwt] \sqrt{\frac{\hbar \omega}{2}}, \\
+		&= 2 \omega [\Iml \coswt - \Rel \sinwt] \sqrt{\frac{\hbar}{2 m \omega}}
 	\end{align*}
-	which again are similar to the classical equations of motion.
+	and
+	\begin{align*}
+		\dv{\ev{P}}{t} &= -\frac{i}{\hbar} \ev{[P, H]}{\psit}
+		= - m \omega^2 \ev{X}{\psit}
+		= -2 m \omega^2 [\Rel \coswt + \Iml \sinwt] \sqrt{\frac{\hbar}{2 m \omega}} \\
+		&= -2 \omega [\Rel \coswt + \Iml \sinwt] \sqrt{\frac{\hbar m \omega}{2}},
+	\end{align*}
+	which are what we would get by differentiating \refeq{evXt} and \refeq{evPt}, respectively.
 \end{solution}
 
 \newcommand{\klamp}{\ket{\lam'}}
 \newcommand{\bkll}{\braket*{\lam''}{\lam'}}
 
 \begin{problem}
-	Compute $\mel*{\lambda''}{\exp(-i H t / \hbar)}{\lambda'}$.
+	Compute $\mel*{\lambda''}{\exp(-i H t / \hbar)}{\lam'}$.
 \end{problem}
 
 \begin{solution}
-	Note that $\Ut = \exp(-i H t / \hbar)$ where $\Ut$ is the time evolution operator.  From problem \ref{timeevo},
+	From \refeq{timeevo}, we are looking for $\mel*{\lambda''}{\Ut}{\lam'}$.  From \refeq{klamt},
 	\beq
-		\kpsit = \Ut \klam \implies \exp(-\frac{i H t}{\hbar}) \klamp = e^{-i \omega t} \klamp,
+		\Ut \klam = \emiwtf \klamt \implies \Ut \klamp = \emiwtf \ket{\lam' \emiwt},
 	\eeq
 	so
 	\beq
-		\mel*{\lam''}{\exp(-\frac{i H t}{\hbar})}{\lam'} = e^{-i \omega t} \bkll.
+		\mel*{\lam''}{\Ut}{\lam'} = \emiwtf \braket{\lam''}{\lam' \emiwt}.
 	\eeq
-	\hl{Using the power series representation,}
+	Using the power series representation as in \refeq{pow},
 	\beq
-		\klam = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n {\ad}^n}{n!} \ko = \exp(-\frac{|\lam|^2}{2}) \sum_{n=0}^\infty \frac{\lambda^n}{n!} \kn,
+		\ket{\lam' \emiwt} = \exp(-\frac{|\lam'|^2}{2}) \sum_{n=0}^\infty \frac{(\lam' \emiwt)^n}{n!} \kn,
 	\eeq
 	so
 	\beq
-		\bkll = \exp(-\frac{|\lam''|^2}{2}) \exp(-\frac{|\lam'|^2}{2}) \sum_{n=0}^\infty \frac{({\lam''}^* \lam')^n}{n!} \braket{n} = \exp(-\frac{|\lam''|^2}{2} + {\lam''}^* \lam' - \frac{|\lam'|^2}{2}).
+		\braket{\lam''}{\lam' \emiwt} = \exp(-\frac{|\lam''|^2}{2}) \exp(-\frac{|\lam'|^2}{2}) \sum_{n=0}^\infty \frac{({\lam''}^* \lam' \emiwt)^n}{n!} \braket{n} = \exp(-\frac{|\lam''|^2}{2} + {\lam''}^* \lam' \emiwt - \frac{|\lam'|^2}{2}).
 	\eeq
-	Finally,
+	Finally, we have
 	\beq
-		\mel*{\lam''}{\exp(-\frac{i H t}{\hbar})}{\lam'} = \exp(-i \omega t - \frac{|\lam''|^2}{2} + {\lam''}^* \lam' - \frac{|\lam'|^2}{2}).
+		\mel*{\lam''}{\exp(-\frac{i H t}{\hbar})}{\lam'} = \exp(- \frac{i \omega t}{2} - \frac{|\lam''|^2}{2} + {\lam''}^* \lam' \emiwt - \frac{|\lam'|^2}{2}).
 	\eeq
 \end{solution}
