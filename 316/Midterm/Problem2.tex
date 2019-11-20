@@ -1,0 +1,112 @@
+\newcommand{\Ur}{U(r)}
+\newcommand{\vrh}{\vec{\hat{r}}}
+\newcommand{\Ueff}{U_\text{eff}}
+
+\newcommand{\vF}{\vec{F}}
+\newcommand{\vJ}{\vec{J}}
+\newcommand{\vtau}{\boldsymbol{\tau}}
+\newcommand{\vr}{\vec{r}}
+
+\newcommand{\rd}{\dot{r}}
+\newcommand{\rdd}{\ddot{r}}
+\newcommand{\phid}{\dot{\phi}}
+\newcommand{\thd}{\dot{\theta}}
+
+\newcommand{\rs}{r^*}
+\newcommand{\Js}{{J^*}^2}
+
+\newcommand{\ro}{r_0}
+\newcommand{\rss}{\rs_s}
+\newcommand{\rsu}{\rs_u}
+
+\section{Problem 2}
+\begin{statement}
+	A particle in three spatial dimensions moves in a force field give by the Yukawa potential
+	\beq
+		\Ur = -\frac{k}{r} e^{-r / a},
+	\eeq
+	where $k$ and $a$ are positive, and $r$ is the radial distance between the particle and the origin.
+\end{statement}
+
+\begin{problem}
+	Show that this central force problem can be reduced to an equivalent one-dimensional problem with an effective potential.  Specify the effective potential.
+\end{problem}
+
+\begin{solution}
+	$\Ur$ is a central potential, so it has a corresponding central force
+	\beqn \label{force}
+		\vF = -\nabla U(r) = -\frac{k e^{-r / a}}{a} \left( \frac{a}{r^2} + \frac{1}{r} \right) \, \vrh,
+	\eeqn
+	which is radially symmetric.  This means that the particle's torque $\vtau$ is zero, and therefore
+	\beq
+		0 = \vtau = \dv{\vJ}{t},
+	\eeq
+	where $\vJ$ is the particle's angular momentum.  This shows that $\vJ$ is constant over time; that is, it is a conserved quantity.  Notably, the \textit{direction} of $\vJ$ does not change over time.  $\vJ$ is defined by
+	\beq
+		\vJ = \vr \times \vec{p}.
+	\eeq
+	Because $\vr$ is perpendicular to $\vJ$ by definition, $\vJ$'s not changing direction implies that $\vr$ is confined to a plane perpendicular to $\vJ$ for all time.
+		
+	Confining ourselves to such a plane, we may write the Lagrangian for the system in the polar coordinates $(r, \theta)$.  We note that $r$ retains its definition as the particle's distance from the origin.  The Lagrangian is given by
+	\beq
+		L(r, \theta, \rd, \thd) = T - U = \frac{m}{2} (\rd^2 + r^2 \thd^2) + \frac{k}{r} e^{-r / a},
+	\eeq
+	which has no explicit $\theta$ dependence.  From Noether's theorem, this implies a conserved quantity, given by
+	\beq
+		\pdv{L}{\thd} = m r^2 \thd \equiv J.
+	\eeq
+	Here we have defined $J$, which is the magnitude of the angular momentum $\vJ$.
+	
+	The Euler-Lagrange equation for $\theta$ is redundant.  The Euler-Lagrange equation for $r$ is
+	\beq
+		0 = \pdv{L}{r} - \dv{}{t} \pdv{L}{\rd}
+		= m r \thd^2 - \frac{k e^{-r / a}}{a} \left( \frac{a}{r^2} + \frac{1}{r} \right) - m \rdd,
+	\eeq
+	which can be rewritten in terms of $J$:
+	\beq
+		m \rdd = \frac{J^2}{m r^3} - \frac{k e^{-r / a}}{a} \left( \frac{a}{r^2} + \frac{1}{r} \right) \equiv -\pdv{\Ueff}{r}.
+	\eeq
+	This equation describes the complete motion of the system and depends on only $r$ and its time derivatives, so this is a problem in only one dimension.  Here, we have defined the effective potential $\Ueff(r)$ by
+	\beq
+		\Ueff(r) = \frac{1}{2} \frac{J^2}{m r^2} - \frac{k}{r} e^{-r / a}.
+	\eeq
+\end{solution}
+
+\unitlength=.3in
+\begin{figure}[t] \centering
+	\begin{picture}(10.5,10.5)(2,-5)
+		{\color{lightgray}
+		\thinlines
+		\multiput(-1,-4)(0,1){9}{\line(1,0){16}}
+		\multiput(0,-5)(1,0){15}{\line(0,1){10}}
+		}
+		\thicklines
+		\put(-1,-4){\vector(1,0){16.2}}
+		\put(-0,-5){\vector(0,1){10.2}}
+		\put(15.3,-4){\makebox(1,0)[l]{$J$}}
+		\put(0,5.3){\makebox(0,1)[b]{$r$}}
+	\end{picture}
+	\caption{Bifurcation diagram for the Yukawa potential, indicating the number and stability of the fixed points of the system as $J^2$ is varied.  The unstable fixed point is indicated by a dashed line and the stable fixed point by a solid line.}
+	\label{bifurcation}
+\end{figure}
+
+\begin{problem}
+	Describe qualitatively the different types of motion possible as the system parameters are varied.  If you think a sketch clarifies your answer, include it.
+\end{problem}
+
+\begin{solution}
+	Since $r$ is the particle's distance from the origin, it is positive definite.  The system will have a fixed point at $r = \rs$ when
+	\beqn \label{fp}
+		0 = \left. \pdv{\Ueff}{r} \right|_{\rs}
+		= -\frac{J^2}{m {\rs}^3} + \frac{k e^{-\rs / a}}{a} \left( \frac{a}{{\rs}^2} + \frac{1}{\rs} \right)
+		\implies
+		J^2 = \frac{m k e^{-\rs / a}}{a} (a \rs + {\rs}^2).
+	\eeqn
+	The roots of the right-hand side of \refeq{fp} are determined by the polynomial $a r + r^2$.  So there are at most two fixed points, and only for a certain range of $J^2$ values.  The system cannot have a fixed point if $J = 0$, because this would require $\rs = 0$ and $\Ueff$ has a singularity there.  If $J^2$ is too large, the right-hand side of \refeq{fp} decays too quickly to ever reach equality.
+	
+	Denote the maximal value of $J^2$ by $\Js$.  In mathematical terms, $\Js$ is a bifurcation point (corresponding to a saddle-node bifurcation).  If $J^2 > \Js$, there are no fixed points, and the particle will always have a hyperbolic orbit. A bifurcation diagram is shown in figure~\ref{bifurcation}, indicating the existence and stability of the fixed points as $J^2$ is varied.
+	
+	There are two fixed points in the regime $J^2 \in (0, \Js)$.  The stable fixed point is closer to the origin because $\Ueff \to \infty$ as $r \to 0$.  Call the stable and unstable fixed points $\rss$ and $\rsu$, respectively.  Then $\rss < \rs < \rsu$.  The particle will have a closed (elliptic) orbit if $\ro < \rsu$ and its energy is smaller than $\Ueff(\rsu)$.  A circular orbit is stable for some specific energy.  However, if the particle's energy is larger than $\Ueff(\rsu)$, or it has $\ro > \rsu$, it will have a hyperbolic orbit.
+
+	If the system has exactly one fixed point, it is an inflection point and not a local maximum or minimum of $\Ueff$.  Thus it is only accessible at precisely $\Js$, and is located at $r = \rs$.  Essentially, the two fixed points in the above case are overlapping.  The particle will have a closed orbit if $\ro < \rs$ and its energy is smaller $\Ueff(\rs)$, and a hyperbolic orbit otherwise.
+\end{solution}

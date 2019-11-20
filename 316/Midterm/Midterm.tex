@@ -41,9 +41,6 @@
 \newcommand{\beqn}{\begin{equation}}
 \newcommand{\eeqn}{\end{equation}}
 
-\newcommand{\blg}{\begin{align*}}
-\newcommand{\elg}{\end{align*}}
-
 
 \newenvironment{statement}
 {
@@ -70,67 +67,16 @@
 %    \bigskip
 }
 
-
+\renewcommand{\vec}[1]{\mathbf{#1}}
 
 \begin{document}
 
 \input{Problem1}
 
+\input{Problem2}
 
-\newcommand{\Ur}{U(r)}
-\newcommand{\Urho}{U(r)}
-\newcommand{\Ueff}{U_\text{eff}}
-
-\newcommand{\rd}{\dot{r}}
-\newcommand{\phid}{\dot{\phi}}
-\newcommand{\thd}{\dot{\theta}}
-
-\section{Problem 2}
-\begin{statement}
-	A particle in three spatial dimensions moves in a force field give by the Yukawa potential
-	\beq
-		\Ur = -\frac{k}{r} \exp(-\frac{r}{a}),
-	\eeq
-	where $k$ and $a$ are positive, and $r$ is the radial distance between the particle and the origin.
-\end{statement}
-
-\begin{problem}
-	Show that this central force problem can be reduced to an equivalent one-dimensional problem with an effective potential.  Specify the effective potential.
-\end{problem}
-
-\begin{solution}
-	We will show that the problem can be reduced to one dimension by showing that the system has two independent conserved quantities.
-
-	$\Ur$ is easily written in the spherical coordinates $(r, \theta, \phi)$ where $\phi$ is the azimuthal.  In these coordinates, the Lagrangian is given by
-	\beqn \label{lag2}
-		L = T - U = \frac{m}{2} (\rd^2 + r^2 \sin^2{\!\theta} \, \phid^2 + r^2 \thd^2) + \frac{k}{r} \exp(-\frac{r}{a}).
-	\eeqn
-	Firstly, $L$ has no explicit time dependence, so the total energy of the system $H = T + U$ is conserved.
-	
-	Secondly, $L$ has no explicit $\phi$ dependence.  \hl{From Noether's theorem, this implies a second conserved quantity, given by}
-	\beq
-		m r^2 (\sin^2{\!\theta} \, \phid + \thd) \equiv J
-	\eeq
-%	\beq
-%		\pdv{L}{\phid} = m r^2 \sin^2{\!\theta} \, \phid \equiv J
-%	\eeq
-%	where we have defined $J$, which is the angular momentum of the system.
-	
-	$L$ can be rewritten in terms of $J$ as
-	\beq
-		L = \frac{m r^2}{2} \thd^2 + \frac{1}{2} \frac{J^2}{m r^2 \sin^2{\!\theta}} + \frac{k}{r} \exp(-\frac{r}{a}) \equiv \frac{m r^2}{2} \thd^2 - \Ueff,
-	\eeq
-	where we have defined the effective potential $\Ueff$ by
-	\beq
-		\Ueff(r) = -\frac{1}{2} \frac{J^2}{m r^2 \sin^2{\!\theta}} - \frac{k}{r} \exp(-\frac{r}{a}).
-	\eeq
-\end{solution}
-
-\begin{problem}
-	Describe qualitatively the different types of motion possible as the system parameters are varied.  If you think a sketch clarifies your answer, include it.
-\end{problem}
-
+\input{Problem3}
 
 %\vfill
-%In writing up these solutions, I consulted my previous homeworks.
+%In writing up these solutions, I consulted my previous homework solutions.
 \end{document}

@@ -1,0 +1,49 @@
+\newcommand{\phixy}{\phi(x, y)}
+\newcommand{\phio}{\phi_0}
+\newcommand{\phioxy}{\phi^0(x, y)}
+
+\newcommand{\dU}{\partial U}
+\newcommand{\Ld}{\mathcal{L}}
+
+\newcommand{\phit}{\phi_t}
+\newcommand{\phix}{\phi_x}
+\newcommand{\phiy}{\phi_y}
+
+\section{Problem 3}
+\begin{statement}
+	A physical process described by a multivariable function $\phixy$ satisfies a variational principle:
+	\beq
+		S[\phixy] = \frac{1}{2} \int_U \left[ \left( \pdv{\phi}{x} \right)^2 + \left( \pdv{\phi}{y} \right)^2 \right] \dd{x} \dd{y}.
+	\eeq
+	The solution $\phioxy$ that gives an extremum value of $S[\phi]$ obtains in the units disk $U : x^2 + y^2 < 1$ bounded by the curve $\dU : x^2 + y^2 = 1$ and satisfies the boundary condition $\phixy |_{\dU} = \phio$, where $\phio$ is a constant.
+	
+	Derive the corresponding Euler-Lagrange partial differential equation.  Indentify one (or more) physical process that is described by this variational principle.
+\end{statement}
+
+\begin{solution}
+	The Lagrangian density $\Ld$ is defined by $S[\phi] = \int \Ld \dd{x} \dd{y}$, so
+	\beq
+		\Ld = \frac{1}{2} \left[ \left( \pdv{\phi}{x} \right)^2 + \left( \pdv{\phi}{y} \right)^2 \right].
+	\eeq
+	In general, the Euler-Lagrange equation is given by
+	\beq
+		0 = \pdv{\Ld}{\phi} - \pdv{}{t} \pdv{\Ld}{\phit} - \pdv{}{x} \pdv{\Ld}{\phix} - \pdv{}{y} \pdv{\Ld}{\phiy}.
+	\eeq
+	Note that
+	\begin{align*}
+		\pdv{\Ld}{\phi} &= 0, &
+		\pdv{\Ld}{\phit} &= 0, &
+		\pdv{\Ld}{\phix} &= \phix, &
+		\pdv{\Ld}{\phiy} &= \phiy,
+	\end{align*}
+	and that
+	\begin{align*}
+		\pdv{}{x} \pdv{\Ld}{\phix} &= \pdv[2]{\phi}{x}, &
+		\pdv{}{y} \pdv{\Ld}{\phiy} &= \pdv[2]{\phi}{y}.
+	\end{align*}
+	So the Euler-Lagrange equation is
+	\beq
+		0 = \pdv[2]{\phi}{x} + \pdv[2]{\phi}{y} = \nabla^2 \phi.
+	\eeq
+	This is Laplace's equation in two dimensions.  Therefore, this variational principle describes a two-dimensional electric field $\phixy$ in the absence of external charge.  It also describes the flow of an incompressible, irrotational (that is, curl free) fluid in two dimensions.
+\end{solution}
