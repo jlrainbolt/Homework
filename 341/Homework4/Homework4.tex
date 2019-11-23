@@ -1,0 +1,137 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{kbordermatrix}
+\allowdisplaybreaks
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 341 Homework 4}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \subsection{}
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newcommand{\Schrodinger}{Schr\"{o}dinger}
+
+
+\begin{document}
+
+\input{Problem1}
+
+\newcommand{\up}{\uparrow}
+\newcommand{\dn}{\downarrow}
+\newcommand{\kpsi}{\ket{\psi}}
+\newcommand{\kup}{\ket{\uparrow}}
+\newcommand{\kdn}{\ket{\downarrow}}
+\newcommand{\cq}{c_1}
+\newcommand{\cw}{c_2}
+\newcommand{\cqs}{c_1^*}
+\newcommand{\cws}{c_2^*}
+\newcommand{\Sz}{S_z}
+
+\section{Problem 3}
+\begin{statement}
+	Consider a spin $1/2$ state $\kpsi = \cq \kup + \cw \kdn$, where $\kup$ and $\kdn$ are the $\Sz$ eigenstates with eigenvalues $+\hbar/2$ and $-\hbar/2$, respectively.
+\end{statement}
+
+\begin{problem}
+	Consider the operator $\rho = \ketbra{\psi}$.  Write down the matrix elements of $\rho$ is the basis $\{ \kup, \kdn \}$.
+\end{problem}
+
+\begin{solution}
+	From the definition of $\kpsi$,
+	\begin{align*}
+		\braket{\up}{\psi} &= \cq, &
+		\braket{\psi}{\up} &= \cqs, &
+		\braket{\dn}{\psi} &= \cw, &
+		\braket{\psi}{\dn} &= \cws.
+	\end{align*}
+	Using these,
+	\begin{align*}
+		\mel{\up}{\rho}{\up} &= \braket{\up}{\psi} \braket{\psi}{\up} = \cq \cqs = |\cq|^2, &
+		\mel{\up}{\rho}{\dn} &= \braket{\up}{\psi} \braket{\psi}{\dn} = \cq \cws, \\
+		\mel{\dn}{\rho}{\up} &= \braket{\dn}{\psi} \braket{\psi}{\up} = \cqs \cw, &
+		\mel{\dn}{\rho}{\dn} &= \braket{\dn}{\psi} \braket{\psi}{\dn} = \cw \cws = |\cw|^2.
+	\end{align*}
+\end{solution}
+
+\newcommand{\soo}{s_0}
+\newcommand{\sq}{s_1}
+\newcommand{\sw}{s_2}
+\newcommand{\se}{s_3}
+\newcommand{\vs}{\vec{s}}
+\newcommand{\vsig}{\boldsymbol{\sigma}}
+
+\begin{problem}
+	In the $\Sz$ eigenbasis, express $\rho$ by using the Pauli matrices.  That is, write $\rho$ as
+	\beq
+		\rho = \frac{\soo}{2} I + \frac{1}{2} \vs \cdot \vsig,
+	\eeq
+	and express $\soo, \sq, \sw, \se$ in terms of $\cq$ and $\cw$.
+\end{problem}
+
+
+
+\vfill
+In writing up these solutions, I consulted Sakurai's \emph{Modern Quantum Mechanics} and Shankar's \emph{Principles of Quantum Mechanics}.
+
+\end{document}

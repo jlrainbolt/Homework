@@ -1,0 +1,190 @@
+\newcommand{\tht}{\theta}
+\newcommand{\sint}{\sin{\tht}}
+\newcommand{\cost}{\cos{\tht}}
+\newcommand{\sinwt}{\sin^2{\tht}}
+\newcommand{\coswt}{\cos^2{\tht}}
+\newcommand{\sinp}{\sin{\phi}}
+\newcommand{\cosp}{\cos{\phi}}
+\newcommand{\sinwp}{\sin^2{\phi}}
+\newcommand{\coswp}{\cos^2{\phi}}
+
+\newcommand{\vL}{\vec{L}}
+\newcommand{\vLw}{\vL^2}
+
+\newcommand{\Ylm}{Y^l_m}
+\newcommand{\Ylmtp}{\Ylm(\tp)}
+\newcommand{\alm}{a^l_m}
+\newcommand{\dOmega}{\sint \dd{\tht} \dd{\phi}}
+
+\newcommand{\tp}{\tht, \phi}
+\newcommand{\psitpo}{\psi(\tp, 0)}
+\newcommand{\psitpt}{\psi(\tp, t)}
+
+\section{Problem 1}
+\begin{statement}
+	A particle of mass $m$ is moving on a sphere of radius $a$.  Its wave function is given by $\psi(\tp)$ where $\tht$ and $\phi$ parameterize the sphere $(x, y, z) = a(\sint \, \cosp, \sint \, \sinp, \cost)$.  The Hamiltonian of the system is ${H = \vLw / 2 m a^2}$, where $\vLw$ is the square of the angular momentum operator, and is given by
+	\beq
+		\vLw = -\hbar^2 \left( \frac{1}{\sint} \pdv{}{\tht} \sint \pdv{}{\tht} + \frac{1}{\sinwt} \pdv[2]{}{\phi} \right).
+	\eeq
+	The eigenfunctions of $H$ are spherical harmonics $\Ylm$ with energies
+	\beqn \label{eigene}
+		E_l = \frac{\hbar^2 l (l + 1)}{2 m a^2}.
+	\eeqn
+\end{statement}
+
+\begin{problem} \label{1}
+	The wave function of the system at $t = 0$ is given by
+	\beq
+		\psi(\tp, 0) = A \sinwt \, \coswp,
+	\eeq
+	where $A$ is a constant.  This wave function can be expanded in spherical harmonics:
+	\beq
+		\psitpo = \sum_{l, m} \alm \Ylmtp.
+	\eeq
+	Find all nonzero $\alm$.
+\end{problem}
+
+\begin{solution}
+	We will look for nonzero $\alm$ by comparing the $\tht$ and $\phi$ dependence of $\Ylm$ and $\psitpo$.  From (3.6.36) in Sakurai, the spherical harmonic functions are given by
+	\beq
+		\Ylmtp = \frac{(-1)^l}{2^l l!} \sqrt{\frac{(2l + 1)}{4\pi} \frac{(l + m)!}{(l - m)!}} \frac{e^{i m \phi}}{sin^m{\tht}} \dv[l - m]{}{(\cost)} (\sint)^{2l}
+	\eeq
+	for $m \geq 0$.  From (3.6.37),
+	\beq
+		Y^l_{-m}(\tp) = (-1)^m \, {\Ylm}^*(\tp)
+	\eeq
+	for $m < 0$.  Beginning with the $\phi$ dependence of $\psitpo$, note that
+	\beqn \label{cos}
+		\psitpo \propto \coswp = \left( \frac{e^{i \phi} + e^{-i \phi}}{2} \right)^2 = \frac{1}{2} + \frac{e^{i 2 \phi}}{4} + \frac{e^{-i 2 \phi}}{4},
+	\eeqn
+	which implies that the only nonzero $\alm$ correspond to $m \in \{ 0, \pm 2 \}$.
+	
+	For the $\tht$ dependence, we have $\psitpo \propto \sinwt$.  Looking at $\Ylm$, note that $(\sint)^{2l} = (1 - \coswt)^l$, so
+	\beq
+		\Ylm \propto \frac{1}{\sin^m{\tht}} \dv[l - m]{}{(\cost)} (1 - \coswt)^l.
+	\eeq
+	For $m = 0$,
+	\beq
+		Y^l_0 \propto \dv[l]{}{(\cost)} (1 - \coswt)^l.
+	\eeq
+	Plugging in the first few values of $l$,
+	\begin{align*}
+		Y^0_0 &\propto \dv[0]{}{(\cost)} (1 - \coswt)^0 = 1, \\
+		Y^1_0 &\propto \dv{}{(\cost)} (1 - \coswt) = -2\cost, \\
+		Y^2_0 &\propto \dv[2]{}{(\cost)} (1 - 2\coswt + \cos^4{\tht}) = \dv{}{(\cost)} (-4 \cost + 4 \cos^3{\tht}) = -4 + 12 \coswt = 8 - 12 \sinwt,
+	\end{align*}
+	so we know $a^1_0 = 0$.  Inspecting the above, we deduce that $Y^l_0$ with $l > 2$ contain mixed terms of $\sint$ and $\cost$ and higher powers of $\sint$, so $a^l_0 = 0$ for $l > 2$.
+	
+	For $m = \pm 2$,
+	\beq
+		Y^l_{\pm 2} \propto \frac{1}{\sinwt} \sinwt \dv[l -2]{}{(\cost)} (1 - \coswt)^l.
+	\eeq
+	Plugging in $l = 2$,
+	\beq
+		Y^2_{\pm 2} \propto \frac{1}{\sinwt} \dv[0]{}{(\cost)} (1 - \coswt)^2 = \frac{\sin^4{\tht}}{\sinwt} = \sinwt.
+	\eeq
+	Again, by inspection $Y^l_{\pm2}$ with $l > 2$ contain terms that are not in $\psitpo$, so $a^l_{\pm2} = 0$ for $l > 2$ as well.
+	
+	Thus, only $a^0_0$, $a^2_0$, and $a^2_{\pm2}$ are nonzero; that is,
+	\beq
+		\psitpo = a^0_0 Y^0_0 + a^2_0 Y^2_0 + a^2_2 Y^2_2 + a^2_{-2} Y^2_{-2}.
+	\eeq
+	The relevant spherical harmonics are
+	\begin{align} \label{shar}
+		Y^0_0 &= \sqrt{\frac{1}{4 \pi}}, &
+		Y^2_0 &= \sqrt{\frac{5}{16 \pi}} (2 - 3 \sinwt), &
+		Y^2_{\pm2} &= \sqrt{\frac{15}{32 \pi}} \sinwt e^{\pm2 i \phi}.
+	\end{align}
+	Expanding out $\psitpo$ as in \refeq{cos},
+	\beq
+		\psitpo = \frac{A}{2} \sinwt + \frac{A}{4} \sinwt e^{i 2 \phi} + \frac{A}{4} \sinwt e^{-i 2 \phi}.
+	\eeq
+	Then we can deduce the nonzero $\alm$:
+	\begin{align*}
+		\frac{A}{4} \sinwt e^{\pm i 2 \phi} = a^2_{\pm2} \sqrt{\frac{15}{32 \pi}} \sinwt e^{\pm2 i \phi}
+		& \implies a^2_{\pm2} = A \sqrt{\frac{2\pi}{15}}, \\
+		\frac{A}{2} \sinwt = a^0_0 \sqrt{\frac{1}{4 \pi}} + a^2_0 \sqrt{\frac{5}{16 \pi}} (2 - 3 \sinwt)
+		&\implies a^2_0 = -\frac{2}{3} A \sqrt{\frac{\pi}{5}},\ a^0_0 = \frac{2}{3} A \sqrt{\pi}.
+	\end{align*}
+\end{solution}
+
+\newcommand{\Ut}{U(t)}
+
+%\clearpage
+\begin{problem} \label{2}
+	Now consider the wave function at nonzero time $t$.  Use your results from \ref{1} and the expressions for spherical harmonics to derive an explicit expression in terms of sines and cosines of $\tht$ and $\phi$ for $\psitpt$.
+\end{problem}
+
+\begin{solution}
+	From \ref{1}, we have
+	\beqn \label{expand}
+		\psitpo = \frac{2}{3} A \sqrt{\pi} \, Y^0_0 - \frac{2}{3} A \sqrt{\frac{\pi}{5}} \, Y^2_0 + A \sqrt{\frac{2\pi}{15}} \, Y^2_2 + A \sqrt{\frac{2\pi}{15}} \, Y^2_{-2}.
+	\eeqn
+	We can evaluate the time evolution for each spherical harmonic term in \refeq{expand} individually, and sum them up to find $\psitpt$:
+	\beq
+		\psitpt = \Ut \psitpo = \frac{2}{3} A \sqrt{\pi} \, \Ut Y^0_0 - \frac{2}{3} A \sqrt{\frac{\pi}{5}} \, \Ut Y^2_0 + A \sqrt{\frac{2\pi}{15}} \, \Ut Y^2_2 + A \sqrt{\frac{2\pi}{15}} \, \Ut Y^2_{-2}
+	\eeq
+	  The time evolution operator is given by $\Ut = e^{-i H t / \hbar}$.  From \refeq{eigene}, the relevant eigenvalues are
+	\begin{align*}
+		E_0 &= 0, &
+		E_2 &= 3 \frac{\hbar^2}{m a^2},
+	\end{align*}
+	so
+	\begin{align*}
+		\Ut Y^0_0 &= \exp(-\frac{i}{\hbar} E_0 t) Y^0_0 = Y^0_0, &
+		\Ut Y^2_m &= \exp(-\frac{i}{\hbar} E_2 t) Y^2_m = \exp(-3 i \frac{\hbar}{m a^2} t) Y^2_m.
+	\end{align*}
+	Then, using the explicit $\Ylm$ from \refeq{shar},
+	\begin{align}
+		\psitpt &= \frac{2}{3} A \sqrt{\pi} \sqrt{\frac{1}{4 \pi}} - \frac{2}{3} A \sqrt{\frac{\pi}{5}} \exp(-3 i \frac{\hbar}{m a^2} t) \sqrt{\frac{5}{16 \pi}} (2 - 3 \sinwt) + A \sqrt{\frac{2\pi}{15}} \exp(-3 i \frac{\hbar}{m a^2} t) \sqrt{\frac{15}{32 \pi}} \sinwt e^{2 i \phi} \notag \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmmmmmmmmm} + A \sqrt{\frac{2\pi}{15}} \exp(-3 i \frac{\hbar}{m a^2} t) \sqrt{\frac{15}{32 \pi}} \sinwt e^{-2 i \phi} \notag \\
+		&= \frac{A}{3} - \frac{A}{6} \exp(-3 i \frac{\hbar}{m a^2} t) (2 - 3 \sinwt) + \frac{A}{4} \exp(-3 i \frac{\hbar}{m a^2} t) \sinwt e^{2 i \phi} + \frac{A}{4} \exp(-3 i \frac{\hbar}{m a^2} t) \sinwt e^{-2 i \phi} \notag \\
+		&= \frac{A}{3} - \frac{A}{3} \exp(-3 i \frac{\hbar}{m a^2} t) + \frac{A}{2} \exp(-3 i \frac{\hbar}{m a^2} t) \sinwt + \frac{A}{2} \exp(-3 i \frac{\hbar}{m a^2} t) \sinwt \cos{2\phi} \notag \\
+		&= \frac{A}{3} \left[ 1 - \exp(-3 i \frac{\hbar}{m a^2} t) \right] + A \exp(-3 i \frac{\hbar}{m a^2} t) \sinwt \coswp. \label{psitpt}
+	\end{align}
+\end{solution}
+
+\newcommand{\Li}{L_i}
+\newcommand{\Lx}{L_x}
+\newcommand{\Ly}{L_y}
+\newcommand{\Lz}{L_z}
+
+\newcommand{\Udt}{U^\dagger(t)}
+
+\newcommand{\psit}{\psi(t)}
+
+\begin{problem}
+	Use your results from \ref{2} to derive expressions for the expected values of $\Lx$, $\Ly$, and $\Lz$ as functions of time.
+\end{problem}
+
+\begin{solution}
+	From (3.6.23) in Sakurai, $\braket{\tp}{l, m} = \Ylmtp$ and therefore $\psitpt = \braket{\tp}{\psit}$.  Using the result of \ref{2}, this implies
+	\beq
+		\ket{\psit} = a^0_0 \ket{0, 0} + a^2_0 \exp(-3 i \frac{\hbar}{m a^2} t) \ket{2, 0} + a^2_2 \exp(-3 i \frac{\hbar}{m a^2} t) \ket{2, 2} + a^2_{-2} \exp(-3 i \frac{\hbar}{m a^2} t) \ket{2, -2}.
+	\eeq
+	Then the time-dependent expectation value of an operator $O$ is given by
+	\begin{align*}
+		\ev{O}{\psit} &= {a^0_0}^2 \ev{O}{0, 0} + a^0_0 a^2_0 \Ut \mel{0, 0}{O}{2, 0} + a^0_0 a^2_2 \Ut \mel{0, 0}{O}{2, 2} + a^0_0 a^2_{-2} \Ut \mel{0, 0}{O}{2, -2} \\
+		&\phantom{=\ } + a^0_0 a^2_0 \Udt \mel{2, 0}{O}{0, 0} + {a^2_0}^2 \ev{O}{2, 0} + a^2_0 a^2_2 \mel{2, 0}{O}{2, 2} + a^2_0 a^2_{-2} \mel{2, 0}{O}{2, -2} \\
+		&\phantom{=\ } + a^0_0 a^2_2 \Udt \mel{2, 2}{O}{0, 0} + a^2_0 a^2_2 \mel{2, 2}{O}{2, 0} + {a^2_2}^2 \ev{O}{2, 2} + a^2_2 a^2_{-2} \mel{2, 2}{O}{2, -2} \\
+		&\phantom{=\ } + a^0_0 a^2_{-2} \Udt \mel{2, -2}{O}{0, 0} + a^2_0 a^2_{-2} \mel{2, -2}{O}{2, 0} + a^2_2 a^2_{-2} \mel{2, -2}{O}{2, 2} + {a^2_{-2}}^2 \ev{O}{2, -2},
+	\end{align*}
+	where $\Ut = e^{-3i \hbar t / m a^2}$ and $\Udt = e^{3i \hbar t / m a^2}$.
+	
+	From the results of 3.3 on the previous homework,
+	\begin{align*}
+		0 &= \mel{2, -2}{\Li}{2, -2} = \mel{2, -2}{\Li}{2, 0} = \mel{2, -2}{\Li}{2, 2} \\
+		&= \mel{2, 0}{\Li}{2, -2} = \mel{2, 0}{\Li}{2, 0} = \mel{2, 0}{\Li}{2, 2} \\
+		&= \mel{2, 2}{\Li}{2, -2} = \mel{2, 2}{\Li}{2, 0} = \mel{2, 2}{\Li}{2, 2}
+	\end{align*}
+	for $i \in \{ x, y, z \}$.  For $(l, m) = (0, 0)$, a similar procedure to the one used for 3.3 yields
+	\begin{align*}
+		\mel{l', m'}{\Lx}{0, 0} &= \mel{0, 0}{\Lx}{l', m'} = \frac{\hbar}{2} \delta_{0, l'} \, \delta_{1, m'} \sqrt{l^2 + l} = 0, \\
+		\mel{l', m'}{\Ly}{0, 0} &= \mel{0, 0}{\Ly}{l', m'} = -\frac{i \hbar}{2} \delta_{0, l'} \, \delta_{1, m'} \sqrt{l^2 + l} = 0, \\
+		\mel{l', m'}{\Lz}{0, 0} &= \mel{0, 0}{\Lz}{l', m'} = 0,
+	\end{align*}
+	where the last result comes from the eigenvalues of $\Lz$ being $\hbar m$.  Thus, we find
+	\beq
+		\ev{\Lx}{\psit} = \ev{\Ly}{\psit} = \ev{\Lz}{\psit} = 0.
+	\eeq
+\end{solution}
