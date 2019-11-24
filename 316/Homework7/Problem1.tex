@@ -12,9 +12,9 @@
 \newcommand{\sinwe}{\sin^2{\eps}}
 \newcommand{\coswe}{\cos^2{\eps}}
 
-\begin{problem}
+\begin{statement}
 	Verify that the functional
-	\beqn \label{fun_{x_0}^{x_1}c1}
+	\beqn \label{func1}
 		J[u] = \intR \left[ \left( \pdv{u}{x} \right)^2 + \left( \pdv{u}{y} \right)^2 \right] \dxdy
 	\eeqn
 	is invariant under a rotation of the coordinate axis:
@@ -22,7 +22,8 @@
 		\xt &= x \cosep + y \sinep, &
 		\yt = -x \sinep + y \cosep.
 	\end{align}
-\end{problem}
+	\vspace{-1.5\baselineskip}
+\end{statement}
 
 \begin{solution}
 	The functional is invariant if $J[u(x, y)] = J[u(\xt, \yt)]$.  By the chain rule,
@@ -50,5 +51,5 @@
 		= \intRt \left[ \left( \pdv{u}{\xt} \right)^2 + \left( \pdv{u}{\yt} \right)^2 \right] \dxtdyt \\
 		&= J[u(\xt, \yt)]
 	\end{align*}
-	as desired.
+	as desired. \qed
 \end{solution}

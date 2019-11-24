@@ -1,0 +1,64 @@
+\newcommand{\tht}{\theta}
+\newcommand{\thtxx}{\tht_{xx}}
+\newcommand{\thtyy}{\tht_{yy}}
+\newcommand{\thttt}{\tht_{tt}}
+\newcommand{\thtt}{\tht_t}
+\newcommand{\thtx}{\tht_x}
+\newcommand{\thty}{\tht_y}
+\newcommand{\sint}{\sin{\tht}}
+\newcommand{\dxdydt}{\dxdy \dd{t}}
+
+\begin{statement}
+	The nondimensionalized, multidimensional Sine-Gordon equation,
+	\beq
+		\thtxx + \thtyy - \thttt = \sint
+	\eeq
+	for $\tht(x, y, t)$, is the Euler-Lagrange equation for the action integral
+	\beq
+		S[\tht] = \intR \left\{ \frac{1}{2} \left[ \thtt^2 - (\nabla\tht)^2 \right] - \sint \right\} \dxdydt
+	\eeq
+	with $\nabla\tht = (\pdv*{\tht}{x}, \pdv*{\tht}{y})$.  The functional $S[\tht]$ is invariant under translation of $x$, $y$, and $t$.  Find the associated energy-momentum tensor and energy-momentum vector.
+\end{statement}
+
+\begin{solution}
+	Expanding out $(\nabla\tht)^2$, the Lagrangian density is
+	\beqn \label{lagr3}
+		\Ld = \frac{1}{2} (\thtt^2 - \thtx^2 - \thty^2) - \sint.
+	\eeqn
+	The energy-momentum tensor is defined by
+	\beq
+		T_{ij} = \pdv{\Ld}{\tht_{x_i}} \pdv{\tht}{x_j} - \Ld \, \delta_{ij},
+	\eeq
+	where $x_i \in \{ x_0, x_1, x_2 \} = \{ t, x, y \}$.  The diagonal elements of $T$ are then
+	\begin{align*}
+		T_{00} &= \pdv{\Ld}{\thtt} \pdv{\tht}{t} - \Ld = \thtt^2 - \frac{1}{2} (\thtt^2 - \thtx^2 - \thty^2) + \sint = \frac{1}{2} (\thtt^2 + \thtx^2 + \thty^2) + \sint, \\
+		T_{11} &= \pdv{\Ld}{\thtx} \pdv{\tht}{x} - \Ld = -\thtx^2 - \frac{1}{2} (\thtt^2 - \thtx^2 - \thty^2) + \sint = -\frac{1}{2} (\thtt^2 + \thtx^2 - \thty^2) + \sint, \\
+		T_{22} &= \pdv{\Ld}{\thty} \pdv{\tht}{y} - \Ld = -\thty^2 - \frac{1}{2} (\thtt^2 - \thtx^2 - \thty^2) + \sint = -\frac{1}{2} (\thtt^2 - \thtx^2 + \thty^2) + \sint,
+	\end{align*}
+	and the nondiagonal elements are
+	\begin{align*}
+		T_{01} &= \pdv{\Ld}{\thtt} \pdv{\tht}{x} = \thtt \thtx, &
+		T_{02} &= \pdv{\Ld}{\thtt} \pdv{\tht}{y} = \thtt \thty, &
+		T_{12} &= \pdv{\Ld}{\thtx} \pdv{\tht}{y} = -\thtx \thty, \\
+		T_{10} &= \pdv{\Ld}{\thtx} \pdv{\tht}{t} = -\thtt \thtx, &
+		T_{20} &= \pdv{\Ld}{\thty} \pdv{\tht}{t} = -\thtt \thty, &
+		T_{21} &= \pdv{\Ld}{\thty} \pdv{\tht}{x} = -\thtx \thty.
+	\end{align*}
+	In matrix form, we have
+	\beq
+		T = \mqty[(\thtt^2 + \thtx^2 + \thty^2) / 2 + \sint & \thtt \thtx & \thtt \thty \\
+				-\thtt \thtx & -(\thtt^2 + \thtx^2 - \thty^2) / 2 + \sint & -\thtx \thty \\
+				-\thtt \thty & -\thtx \thty & -(\thtt^2 - \thtx^2 + \thty^2) / 2 + \sint ].
+	\eeq
+	
+	The energy-momentum vector is defined by
+	\beq
+		P_j = \int T_{0j} \dd{x_1} \dd{x_2}.
+	\eeq
+	Its components are then
+	\begin{align*}
+		P_0 &= \int \left[ \frac{1}{2} (\thtt^2 + \thtx^2 + \thty^2) + \sint \right] \dxdy, &
+		P_1 &= \int \thtt \thtx \dxdy, &
+		P_2 &= \int \thtt \thty \dxdy.
+	\end{align*}
+\end{solution}
