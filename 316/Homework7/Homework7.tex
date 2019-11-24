@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+%\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 316 Homework 7}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\blg}{\begin{align*}}
+\newcommand{\elg}{\end{align*}}
+
+
+\newenvironment{statement}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+	\section{}
+	\color{darkgray}
+%	\paragraph{Problem.}
+    \ignorespaces
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+%    \bigskip
+}
+
+
+
+\begin{document}
+
+\input{Problem1}
+
+\input{Problem2}
+
+\newcommand{\tht}{\theta}
+\newcommand{\thtxx}{\tht_{xx}}
+\newcommand{\thtyy}{\tht_{yy}}
+\newcommand{\thttt}{\tht_{tt}}
+\newcommand{\thtt}{\tht_t}
+\newcommand{\thtx}{\tht_x}
+\newcommand{\thty}{\tht_y}
+\newcommand{\sint}{\sin{\tht}}
+\newcommand{\dxdt}{\dd{x} \dd{t}}
+
+\begin{problem}
+	The nondimensionalized, multidimensional Sine-Gordon equation,
+	\beq
+		\thtxx + \thtyy - \thttt = \sint
+	\eeq
+	for $\tht(x, y, t)$, is the Euler-Lagrange equation for the action integral
+	\beqn \label{act3}
+		S[\tht] = \intR \left\{ \frac{1}{2} \left[ \thtt^2 - (\nabla\tht)^2 \right] - \sint \right\} \dxdt
+	\eeqn
+	with $\nabla\tht = (\pdv*{\tht}{x}, \pdv*{\tht}{y})$.  The functional $S[\tht]$ is invariant under translation of $x$, $y$, and $t$.  Find the associated energy-momentum tensor and energy-momentum vector.
+\end{problem}
+
+\begin{solution}
+	The  energy-momentum tensor is defined by
+	\beq
+		T_{ij} = \pdv{\Ld}{\tht_{x_i}} \pdv{\tht}{x_j} - \Ld \, \delta_{ij},
+	\eeq
+	where $x_i \in \{ x_1, x_2, x_3 \} = \{ x, y, t \}$, and
+	\beq
+		\Ld = \frac{1}{2} (\thtt^2 - \thtx^2 - \thty^2) - \sint.
+	\eeq
+	The diagonal elements of $T$ are then
+	\begin{align*}
+		T_{11} &= \pdv{\Ld}{\thtx} \pdv{\tht}{x} - \Ld = -\thtx^2 - \frac{1}{2} (\thtt^2 - \thtx^2 - \thty^2) + \sint = -\frac{1}{2} (\thtt^2 + \thtx^2 - \thty^2) + \sint, \\
+		T_{22} &= \pdv{\Ld}{\thty} \pdv{\tht}{y} - \Ld = -\thty^2 - \frac{1}{2} (\thtt^2 - \thtx^2 - \thty^2) + \sint = -\frac{1}{2} (\thtt^2 - \thtx^2 + \thty^2) + \sint, \\
+		T_{33} &= \pdv{\Ld}{\thtt} \pdv{\tht}{t} - \Ld = \thtt^2 - \frac{1}{2} (\thtt^2 - \thtx^2 - \thty^2) + \sint = \frac{1}{2} (\thtt^2 + \thtx^2 + \thty^2) + \sint,
+	\end{align*}
+	and the nondiagonal elements are
+	\begin{align*}
+		T_{12} &= \pdv{\Ld}{\thtx} \pdv{\tht}{y} = -\thtx \thty, &
+		T_{21} &= \pdv{\Ld}{\thty} \pdv{\tht}{x} = -\thtx \thty, &
+		T_{31} &= \pdv{\Ld}{\thtt} \pdv{\tht}{x} = \thtx \thtt, \\
+		T_{13} &= \pdv{\Ld}{\thtx} \pdv{\tht}{t} = -\thtx \thtt, &
+		T_{23} &= \pdv{\Ld}{\thty} \pdv{\tht}{t} = -\thty \thtt, &
+		T_{32} &= \pdv{\Ld}{\thtt} \pdv{\tht}{y} = \thty \thtt.
+	\end{align*}
+\end{solution}
+
+
+\vfill
+While writing up these solutions, I consulted Gelfand and Fomin's \emph{Calculus of Variations}.
+\end{document}

@@ -1,0 +1,61 @@
+\newcommand{\lap}{\nabla^2}
+\newcommand{\Ld}{\mathcal{L}}
+\newcommand{\phis}{\phi^*}
+
+\newcommand{\phit}{\phi_t}
+\newcommand{\phix}{\phi_x}
+\newcommand{\phiy}{\phi_y}
+
+\newcommand{\phist}{\phis_t}
+\newcommand{\phisx}{\phis_x}
+\newcommand{\phisy}{\phis_y}
+
+\begin{problem}
+	Consider the real-valued Lagrangian density $\Ld$ depending on a complex-valued function $\phi(t, x, y)$:
+	\beqn \label{lagr2}
+		\Ld = \frac{i}{2} \left( \phis \dv{\phi}{t} - \dv{\phis}{t} \phi \right) - \nabla \phis \cdot \nabla \phi - m \phis \phi,
+	\eeqn
+	where $^*$ is complex conjugation, and $\nabla \phi = (\pdv*{\phi}{x}, \pdv*{\phi}{y})$.  Treating $\phi$ and $\phis$ as independent objects, derive the Euler-Lagrange equations.
+\end{problem}
+
+\begin{solution}
+	We will have two Euler-Lagrange equations; one for $\phi$ and one for $\phis$.  In general, they are given by
+	\begin{align*}
+		0 &= \pdv{\Ld}{\phi} - \dv{}{t} \pdv{\Ld}{\phit} - \dv{}{x} \pdv{\Ld}{\phix} - \dv{}{y} \pdv{\Ld}{\phiy}, &
+		0 &= \pdv{\Ld}{\phis} - \dv{}{t} \pdv{\Ld}{\phist} - \dv{}{x} \pdv{\Ld}{\phisx} - \dv{}{y} \pdv{\Ld}{\phisy}.
+	\end{align*}
+	Expanding out $\nabla \phis \cdot \nabla \phi$, \refeq{lagr2} becomes
+	\beq
+		\Ld = \frac{i}{2} \left( \phis \dv{\phi}{t} - \dv{\phis}{t} \phi \right) - \pdv{\phis}{x} \pdv{\phi}{x} - \pdv{\phis}{y} \pdv{\phi}{y} - m \phis \phi.
+	\eeq
+	Then
+	\begin{align*}
+		\pdv{\Ld}{\phi} &= -\frac{i}{2} \dv{\phis}{t} - m \phis, &
+		\pdv{\Ld}{\phit} &= \frac{i}{2} \phis, &
+		\pdv{\Ld}{\phix} &= -\pdv{\phis}{x}, &
+		\pdv{\Ld}{\phiy} &= -\pdv{\phis}{y}, \\
+		\pdv{\Ld}{\phis} &= \frac{i}{2} \dv{\phi}{t} - m \phi, &
+		\pdv{\Ld}{\phist} &= -\frac{i}{2} \phi, &
+		\pdv{\Ld}{\phisx} &= -\pdv{\phi}{x}, &
+		\pdv{\Ld}{\phisy} &= -\pdv{\phi}{y},
+	\end{align*}
+	and
+	\begin{align*}
+		\dv{}{t} \pdv{\Ld}{\phit} &= \frac{i}{2} \dv{\phis}{t}, &
+		\dv{}{x} \pdv{\Ld}{\phix} &= -\pdv[2]{\phis}{x}, &
+		\dv{}{y} \pdv{\Ld}{\phiy} &= -\pdv[2]{\phis}{y}, \\
+		\dv{}{t} \pdv{\Ld}{\phist} &= -\frac{i}{2} \dv{\phi}{t}, &
+		\dv{}{x} \pdv{\Ld}{\phisx} &= -\pdv[2]{\phi}{x}, &
+		\dv{}{y} \pdv{\Ld}{\phisy} &= -\pdv[2]{\phi}{y}.
+	\end{align*}
+	Then the Euler-Lagrange equations are
+	\begin{align*}
+		0 &= -\frac{i}{2} \dv{\phis}{t} - m \phis - \frac{i}{2} \dv{\phis}{t} + \pdv[2]{\phis}{x} + \pdv[2]{\phis}{y}, &
+		0 &= \frac{i}{2} \dv{\phi}{t} - m \phi + \frac{i}{2} \dv{\phi}{t} + \pdv[2]{\phi}{x} + \pdv[2]{\phi}{y},
+	\end{align*}
+	which simplify to
+	\begin{align*}
+		0 &= i \dv{\phis}{t} - \lap \phis + m \phis, &
+		0 &= i \dv{\phi}{t} + \lap \phis - m \phis.
+	\end{align*}
+\end{solution}

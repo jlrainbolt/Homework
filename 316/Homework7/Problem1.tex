@@ -1,0 +1,54 @@
+\newcommand{\intR}{\int_R}
+\newcommand{\dxdy}{\dd{x} \dd{y}}
+\newcommand{\intRt}{\int_{\tilde{R}}}
+\newcommand{\xt}{\tilde{x}}
+\newcommand{\yt}{\tilde{y}}
+\newcommand{\dxtdyt}{\dd{\xt} \dd{\yt}}
+\newcommand{\ut}{\tilde{u}}
+
+\newcommand{\eps}{\epsilon}
+\newcommand{\sinep}{\sin{\eps}}
+\newcommand{\cosep}{\cos{\eps}}
+\newcommand{\sinwe}{\sin^2{\eps}}
+\newcommand{\coswe}{\cos^2{\eps}}
+
+\begin{problem}
+	Verify that the functional
+	\beqn \label{fun_{x_0}^{x_1}c1}
+		J[u] = \intR \left[ \left( \pdv{u}{x} \right)^2 + \left( \pdv{u}{y} \right)^2 \right] \dxdy
+	\eeqn
+	is invariant under a rotation of the coordinate axis:
+	\begin{align} \label{trans1}
+		\xt &= x \cosep + y \sinep, &
+		\yt = -x \sinep + y \cosep.
+	\end{align}
+\end{problem}
+
+\begin{solution}
+	The functional is invariant if $J[u(x, y)] = J[u(\xt, \yt)]$.  By the chain rule,
+	\begin{align*}
+		\pdv{}{x} &= \pdv{}{\xt} \pdv{\xt}{x} + \pdv{}{\yt} \pdv{\yt}{x} = \cosep \pdv{}{\xt} - \sinep \pdv{}{\yt}, &
+		\pdv{}{y} &= \pdv{}{\xt} \pdv{\xt}{y} + \pdv{}{\yt} \pdv{\yt}{y} = \sinep \pdv{}{\xt} + \cosep \pdv{}{\yt}.
+	\end{align*}
+	The Jacobian for \refeq{trans1} is
+	\beq
+		A = \mqty[ \pdv*{\xt}{x} & \pdv*{\xt}{y} \\
+					\pdv*{\yt}{x} & \pdv*{\yt}{y} ]
+		= \mqty[ \cosep & \sinep \\
+					-\sinep & \cosep ]
+		\implies \det(A) = \coswe + \sinwe = 1,
+	\eeq
+	and therefore
+	\beq
+		\intR \dxdy \mapsto \intRt \dxtdyt.
+	\eeq
+	Making these substitutions into \refeq{func1}, we have
+	\begin{align*}
+		J[u(x, y)] &= \intR \left[ \left( \cosep \pdv{u}{\xt} - \sinep \pdv{u}{\yt} \right)^2 + \left( \sinep \pdv{u}{\xt} + \cosep \pdv{u}{\yt} \right)^2 \right] \dxdy \\
+		&= \intR \left(\coswe \pdv[2]{u}{\xt} - 2 \cosep \sinep \pdv{u}{\xt}{\yt} + \sinwe \pdv[2]{u}{\yt} + \sinwe \pdv[2]{u}{\xt} + 2 \cosep \sinep \pdv{u}{\xt}{\yt} + \coswe \pdv[2]{u}{\yt} \right) \dxdy \\
+		&= \intR \left[ \left( \pdv{u}{\xt} \right)^2 + \left( \pdv{u}{\yt} \right)^2 \right] \dxdy
+		= \intRt \left[ \left( \pdv{u}{\xt} \right)^2 + \left( \pdv{u}{\yt} \right)^2 \right] \dxtdyt \\
+		&= J[u(\xt, \yt)]
+	\end{align*}
+	as desired.
+\end{solution}
