@@ -128,7 +128,17 @@
 	which is equivalent to the system of equations
 	\begin{align*}
 		\nz \lampmq + (\nx - i \ny) \lampmw &= \pm\lampmq, &
-		(\nx + i \ny) \lampmq - \nz \lampmw &= \pm\lampmw
+		(\nx + i \ny) \lampmq - \nz \lampmw &= \pm\lampmw.
+	\end{align*}
+%	We may let $\lampmw = 1$ without loss of generality.  Then $\lampmq = (\nz \pm 1) / (\nx + i \ny)$, so
+%	\begin{align*}
+%		\klamq &= \mqty[ (\nz + 1) / (\nx + i \ny) \\ 1 ], &
+%		\klamw &= \mqty[ (\nz - 1) / (\nx + i \ny) \\ 1 ].
+%	\end{align*}
+	We may let $\lampmw = \nx + i \ny$ without loss of generality.  Then $\lampmq = \nz \pm 1$, so
+	\begin{align*}
+		\klamq &= \mqty[ \nz + 1 \\ \nx + i \ny ], &
+		\klamw &= \mqty[ \nz - 1 \\ \nx + i \ny ].
 	\end{align*}
 \end{solution}
 
