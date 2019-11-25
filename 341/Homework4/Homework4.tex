@@ -77,6 +77,63 @@
 
 \input{Problem1}
 
+
+\newcommand{\vn}{\vec{n}}
+\newcommand{\nx}{n_x}
+\newcommand{\ny}{n_y}
+\newcommand{\nz}{n_z}
+
+\newcommand{\sig}{\sigma}
+\newcommand{\vsig}{\boldsymbol{\sig}}
+\newcommand{\sigx}{\sig_x}
+\newcommand{\sigy}{\sig_y}
+\newcommand{\sigz}{\sig_z}
+\newcommand{\nds}{\vn \cdot \vsig}
+
+\newcommand{\lam}{\lambda}
+\newcommand{\lamq}{\lam_1}
+\newcommand{\lamw}{\lam_2}
+\newcommand{\lampmq}{\lam_{\pm1}}
+\newcommand{\lampmw}{\lam_{\pm2}}
+\newcommand{\klamq}{\ket{\lamq}}
+\newcommand{\klamw}{\ket{\lamw}}
+
+\section{Problem 2}
+\begin{problem}
+	Consider $\nds$, where $\vn$ is a three-dimensional unit vector and $\vsig = (\sigx, \sigy, \sigz)$ represents the Pauli matrices.  Compute the eigenvalues $\lamq, \lamw$ and the corresponding eigenvectors $\klamq, \klamw$ of $\nds$.  Use them to obtain the spectrum decomposition of $\nds$.
+\end{problem}
+
+\begin{solution}
+	From (3.2.32) in Sakurai, the Pauli matrices are
+	\begin{align*}
+		\sigx &= \mqty[ 0 & 1 \\ 1 & 0 ], &
+		\sigy &= \mqty[ 0 & -i \\ i & 0 ], &
+		\sigz &= \mqty[ 1 & 0 \\ 0 & -1 ].
+	\end{align*}
+	Let $\vn = (\nx, \ny, \nz)$.  Then
+	\beq
+		\nds = \mqty[ 0 & \nx \\ \nx & 0 ] + i \mqty[ 0 & -\ny \\ \ny & 0 ] + \mqty[ \nz & 0 \\ 0 & -\nz ]
+		= \mqty[ \nz & \nx - i \ny \\ \nx + i \ny & -\nz ].
+	\eeq
+	The eigenvalues of $\nds$ are the solutions to the characteristic polynomial equation
+	\beq
+		0 = \det(\nds - \lam I) = \mdet{\nz - \lam & \nx - i \ny \\ \nx + i \ny & -(\nz + \lam)} = -(\nz - \lam) (\nz + \lam) - (\nx - i \ny) (\nx + i \ny) = \lam^2 - \nx^2 - \ny^2 - \nz^2.
+	\eeq
+	Since $|\vn|^2 = \nx^2 + \ny^2 + \nz^2$, we have $\lam = \pm |\vn| = \pm 1$.  Let $\lamq = 1$ and $\lamw = -1$.
+	
+	For the eigenvectors, let the elements of $\klamq$ be $\lam_{+1}, \lam_{+2}$ and the elements of $\klamw$ be $\lam_{-1}, \lam_{-2}$.  Then
+	\beq
+		\mqty[ \nz & \nx - i \ny \\ \nx + i \ny & -\nz ] \mqty[ \lampmq \\ \lampmw ] = \pm \mqty[ \lampmq \\ \lampmw ],
+	\eeq
+	which is equivalent to the system of equations
+	\begin{align*}
+		\nz \lampmq + (\nx - i \ny) \lampmw &= \pm\lampmq, &
+		(\nx + i \ny) \lampmq - \nz \lampmw &= \pm\lampmw
+	\end{align*}
+\end{solution}
+
+
+
 \newcommand{\up}{\uparrow}
 \newcommand{\dn}{\downarrow}
 \newcommand{\kpsi}{\ket{\psi}}
@@ -119,7 +176,6 @@
 \newcommand{\sw}{s_2}
 \newcommand{\se}{s_3}
 \newcommand{\vs}{\vec{s}}
-\newcommand{\vsig}{\boldsymbol{\sigma}}
 
 \begin{problem}
 	In the $\Sz$ eigenbasis, express $\rho$ by using the Pauli matrices.  That is, write $\rho$ as
@@ -132,6 +188,6 @@
 
 
 \vfill
-In writing up these solutions, I consulted Sakurai's \emph{Modern Quantum Mechanics} and Shankar's \emph{Principles of Quantum Mechanics}.
+While writing up these solutions, I consulted Sakurai's \emph{Modern Quantum Mechanics} and Shankar's \emph{Principles of Quantum Mechanics}.
 
 \end{document}
