@@ -30,6 +30,7 @@
 	\beqn \label{eigene}
 		E_l = \frac{\hbar^2 l (l + 1)}{2 m a^2}.
 	\eeqn
+\vfix
 \end{statement}
 
 \begin{problem} \label{1}
@@ -45,15 +46,12 @@
 \end{problem}
 
 \begin{solution}
-	We will look for nonzero $\alm$ by comparing the $\tht$ and $\phi$ dependence of $\Ylm$ and $\psitpo$.  From (3.6.36) in Sakurai, the spherical harmonic functions are given by
-	\beq
-		\Ylmtp = \frac{(-1)^l}{2^l l!} \sqrt{\frac{(2l + 1)}{4\pi} \frac{(l + m)!}{(l - m)!}} \frac{e^{i m \phi}}{sin^m{\tht}} \dv[l - m]{}{(\cost)} (\sint)^{2l}
-	\eeq
-	for $m \geq 0$.  From (3.6.37),
-	\beq
-		Y^l_{-m}(\tp) = (-1)^m \, {\Ylm}^*(\tp)
-	\eeq
-	for $m < 0$.  Beginning with the $\phi$ dependence of $\psitpo$, note that
+	We will look for nonzero $\alm$ by comparing the $\tht$ and $\phi$ dependence of $\Ylm$ and $\psitpo$.  From (3.6.36) and (3.6.37) in Sakurai, the spherical harmonic functions are given by
+	\begin{align*}
+		\Ylmtp &= \frac{(-1)^l}{2^l l!} \sqrt{\frac{(2l + 1)}{4\pi} \frac{(l + m)!}{(l - m)!}} \frac{e^{i m \phi}}{sin^m{\tht}} \dv[l - m]{}{(\cost)} (\sint)^{2l}, &
+		Y^l_{-m}(\tp) &= (-1)^m \, {\Ylm}^*(\tp)
+	\end{align*}
+	for $m \geq 0$.  Beginning with the $\phi$ dependence of $\psitpo$, note that
 	\beqn \label{cos}
 		\psitpo \propto \coswp = \left( \frac{e^{i \phi} + e^{-i \phi}}{2} \right)^2 = \frac{1}{2} + \frac{e^{i 2 \phi}}{4} + \frac{e^{-i 2 \phi}}{4},
 	\eeqn
@@ -63,11 +61,11 @@
 	\beq
 		\Ylm \propto \frac{1}{\sin^m{\tht}} \dv[l - m]{}{(\cost)} (1 - \coswt)^l.
 	\eeq
-	For $m = 0$,
-	\beq
-		Y^l_0 \propto \dv[l]{}{(\cost)} (1 - \coswt)^l.
-	\eeq
-	Plugging in the first few values of $l$,
+%	For $m = 0$,
+%	\beq
+%		Y^l_0 \propto \dv[l]{}{(\cost)} (1 - \coswt)^l.
+%	\eeq
+	Plugging in $m = 0$ and the first few values of $l$,
 	\begin{align*}
 		Y^0_0 &\propto \dv[0]{}{(\cost)} (1 - \coswt)^0 = 1, \\
 		Y^1_0 &\propto \dv{}{(\cost)} (1 - \coswt) = -2\cost, \\
@@ -75,11 +73,11 @@
 	\end{align*}
 	so we know $a^1_0 = 0$.  Inspecting the above, we deduce that $Y^l_0$ with $l > 2$ contain mixed terms of $\sint$ and $\cost$ and higher powers of $\sint$, so $a^l_0 = 0$ for $l > 2$.
 	
-	For $m = \pm 2$,
-	\beq
-		Y^l_{\pm 2} \propto \frac{1}{\sinwt} \sinwt \dv[l -2]{}{(\cost)} (1 - \coswt)^l.
-	\eeq
-	Plugging in $l = 2$,
+%	For $m = \pm 2$,
+%	\beq
+%		Y^l_{\pm 2} \propto \frac{1}{\sinwt} \sinwt \dv[l -2]{}{(\cost)} (1 - \coswt)^l.
+%	\eeq
+	Plugging in $m = \pm 2$ and $l = 2$,
 	\beq
 		Y^2_{\pm 2} \propto \frac{1}{\sinwt} \dv[0]{}{(\cost)} (1 - \coswt)^2 = \frac{\sin^4{\tht}}{\sinwt} = \sinwt.
 	\eeq

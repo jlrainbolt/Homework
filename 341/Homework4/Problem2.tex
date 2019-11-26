@@ -1,0 +1,217 @@
+\newcommand{\vn}{\vec{n}}
+\newcommand{\nx}{n_x}
+\newcommand{\ny}{n_y}
+\newcommand{\nz}{n_z}
+
+\newcommand{\sig}{\sigma}
+\newcommand{\vsig}{\boldsymbol{\sig}}
+\newcommand{\sigx}{\sig_x}
+\newcommand{\sigy}{\sig_y}
+\newcommand{\sigz}{\sig_z}
+\newcommand{\nds}{\vn \cdot \vsig}
+
+\newcommand{\lam}{\lambda}
+\newcommand{\lamq}{\lam_1}
+\newcommand{\lamw}{\lam_2}
+\newcommand{\lampmq}{\lam_{\pm1}}
+\newcommand{\lampmw}{\lam_{\pm2}}
+\newcommand{\klamq}{\ket{\lamq}}
+\newcommand{\klamw}{\ket{\lamw}}
+
+\newcommand{\lamp}{\lam_+}
+\newcommand{\lamm}{\lam_-}
+\newcommand{\klamp}{\ket{\lamp}}
+\newcommand{\klamm}{\ket{\lamm}}
+
+\section{Problem 2}
+\begin{statement}
+	In this problem, we are working in the basis that diagonalizes the $z$ component of the spin.
+\end{statement}
+
+\begin{problem}
+	Consider $\nds$, where $\vn$ is a three-dimensional unit vector and $\vsig = (\sigx, \sigy, \sigz)$ represents the Pauli matrices.  Compute the eigenvalues $\lamq, \lamw$ and the corresponding eigenvectors $\klamq, \klamw$ of $\nds$.  Use them to obtain the spectrum decomposition of $\nds$.
+\end{problem}
+
+\begin{solution}
+	From (3.2.32) in Sakurai, the Pauli matrices are
+	\begin{align} \label{pauli}
+		\sigx &= \mqty[ 0 & 1 \\ 1 & 0 ], &
+		\sigy &= \mqty[ 0 & -i \\ i & 0 ], &
+		\sigz &= \mqty[ 1 & 0 \\ 0 & -1 ].
+	\end{align}
+	Let $\vn = (\nx, \ny, \nz)$.  Then
+	\beqn \label{ndsmat}
+		\nds = \mqty[ 0 & \nx \\ \nx & 0 ] + i \mqty[ 0 & -\ny \\ \ny & 0 ] + \mqty[ \nz & 0 \\ 0 & -\nz ]
+		= \mqty[ \nz & \nx - i \ny \\ \nx + i \ny & -\nz ].
+	\eeqn
+	The eigenvalues of $\nds$ are the solutions to the characteristic polynomial equation
+	\beq
+		0 = \det(\nds - \lam I)
+		= \mdet{\nz - \lam & \nx - i \ny \\ \nx + i \ny & -(\nz + \lam)}
+		= -(\nz - \lam) (\nz + \lam) - (\nx - i \ny) (\nx + i \ny)
+		= \lam^2 - \nx^2 - \ny^2 - \nz^2.
+	\eeq
+	Since $|\vn|^2 = \nx^2 + \ny^2 + \nz^2$, we have $\lam = \pm |\vn| = \pm 1$.  Let $\lamq = 1$ and $\lamw = -1$.
+	
+	For the eigenvectors, let $\klamp$ and $\klamm$ be the non-normalized eigenkets corresponding to $\klamq$ and $\klamw$, respectively.  Let the elements of $\klamp$ be $\lam_{+1}, \lam_{+2}$ and the elements of $\klamm$ be $\lam_{-1}, \lam_{-2}$.  Then
+	\beq
+		\mqty[ \nz & \nx - i \ny \\ \nx + i \ny & -\nz ] \mqty[ \lampmq \\ \lampmw ] = \pm \mqty[ \lampmq \\ \lampmw ],
+	\eeq
+	which is equivalent to the system of equations
+	\begin{align*}
+		\nz \lampmq + (\nx - i \ny) \lampmw &= \pm\lampmq, &
+		(\nx + i \ny) \lampmq - \nz \lampmw &= \pm\lampmw.
+	\end{align*}
+	We may fix $\lampmw = \nx + i \ny$ without loss of generality.  Then $\lampmq = \nz \pm 1$, so
+	\begin{align*}
+		\klamp &= \mqty[ \nz + 1 \\ \nx + i \ny ], &
+		\klamm &= \mqty[ \nz - 1 \\ \nx + i \ny ].
+	\end{align*}
+	For the normalization,
+	\begin{align*}
+		\braket{\lamp} &= (\nz + 1)^2 + (\nx - i \ny)(\nx + i \ny)
+		= \nz^2 + 2 \nz + 1 + \nx^2 + \ny^2
+		= 2 (1 + \nz), \\
+		\braket{\lamm} &= (\nz - 1)^2 + (\nx - i \ny)(\nx + i \ny)
+		= \nz^2 - 2 \nz + 1 + \nx^2 + \ny^2
+		= 2 (1 - \nz),
+	\end{align*}
+	so the normalized eigenkets are
+	\begin{align*}
+		\klamq &= \frac{1}{\sqrt{2 (1 + \nz)}} \mqty[ \nz + 1 \\ \nx + i \ny ], &
+		\klamw &= \frac{1}{\sqrt{2 (1 - \nz)}} \mqty[ \nz - 1 \\ \nx + i \ny ].
+	\end{align*}
+	Finally, the \hl{spectrum decomposition} of $\nds$ is
+	\begin{align}
+		\nds &= \sum_{i} \lam_i \ketbra{\lam_i}
+		= \ketbra{\lamq} - \ketbra{\lamw} \notag \\
+		&= \frac{1}{2 (1 + \nz)} \mqty[ \nz + 1 \\ \nx + i \ny ] \mqty[ \nz + 1 & \nx - i \ny ] - \frac{1}{2 (1 - \nz)} \mqty[ \nz - 1 \\ \nx + i \ny ] \mqty[ \nz - 1 & \nx - i \ny ]. \label{spec}
+	\end{align}
+\vfix
+\end{solution}
+
+\newcommand{\alp}{\alpha}
+\newcommand{\eiands}{e^{i \alp \nds}}
+\newcommand{\sumni}{\sum_{n = 0}^\infty}
+\newcommand{\sina}{\sin{\alp}}
+\newcommand{\cosa}{\cos{\alp}}
+
+\begin{problem} \label{2.2}
+	Express the matrix $\eiands$ in terms of $\sigx$, $\sigy$, and $\sigz$ and the $2 \times 2$ unit matrix.
+\end{problem}
+
+\begin{solution}
+	Denote the $2 \times 2$ unit matrix as $I$.  From \refeq{ndsmat}, note that
+	\beq
+		(\nds)^2 = \mqty[ \nz & \nx - i \ny \\ \nx + i \ny & -\nz ]^2
+		= \mqty[ \nx^2 + \ny^2 + \nz^2 & (\nz - \nz) (\nx - i \ny) \\
+				(\nz - \nz) (\nx + i \ny) & \nx^2 + \ny^2 + \nz^2]
+		= \mqty[ 1 & 0 \\ 0 & 1 ]
+		= I.
+	\eeq
+	Using the power series expansion,
+	\begin{align*}
+		\eiands &= \sumni \frac{(i \alp \nds)^n}{n!}
+		= i \alp \ \nds - \frac{\alp^2}{2} I - \frac{i \alp^3}{6} \nds + \frac{\alp^4}{24} I + \cdots
+		= i \nds \sum_{n = 1}^\infty \frac{(-1)^{n-1} \alp^{2n - 1}}{(2n - 1)!} + I \sumni \frac{(-1)^n \alp^{2n}}{(2n)!} \\
+		&= i \sina \, \nds + \cosa \, I = i \sina (\nx \sigx + \ny \sigy + \nz \sigz) + \cosa \, I.
+	\end{align*}
+\vfix
+\end{solution}
+
+\newcommand{\Sy}{S_y}
+\newcommand{\Sz}{S_z}
+\newcommand{\vS}{\vec{S}}
+\newcommand{\vSq}{\vS_1}
+\newcommand{\vSw}{\vS_2}
+\newcommand{\eitsyh}{e^{i \tht \Sy / \hbar}}
+
+\newcommand{\kjm}{\ket{j, m}}
+\newcommand{\kqq}{\ket{1, 1}}
+\newcommand{\koo}{\ket{0, 0}}
+\newcommand{\kqo}{\ket{1, 0}}
+\newcommand{\kqnq}{\ket{1, -1}}
+
+\newcommand{\Syq}{{\Sy}_1}
+\newcommand{\Syw}{{\Sy}_2}
+\newcommand{\sz}{s_z}
+\newcommand{\ksz}{\ket{\sz}}
+\newcommand{\szq}{{\sz}_1}
+\newcommand{\szw}{{\sz}_2}
+\newcommand{\kszsz}{\ket{\szq \, \szw}}
+
+\newcommand{\up}{\uparrow}
+\newcommand{\dn}{\downarrow}
+\newcommand{\kuu}{\ket{\up \up}}
+\newcommand{\kdd}{\ket{\dn \dn}}
+\newcommand{\kud}{\ket{\up \dn}}
+\newcommand{\kdu}{\ket{\dn \up}}
+
+\begin{problem}
+	Consider two spin $1/2$ degrees of freedom.  The total spin is $\vS = \vSq + \vSw$.  Consider the state $\kjm = \kqq$, where $j$ is the total spin and $m$ is the $z$ component of the total spin.  Compute $\eitsyh \kqq$ and express it as a linear superposition of $\kjm$.
+\end{problem}
+
+\begin{solution}
+	In the $\Sz$ eigenbasis, which we will call $\{ \ksz \}$ where $\sz \in \{ \up\ = 1/2, \dn\ = -1/2 \}$,
+	\beq
+		\Syq \sim \Syw = \frac{\hbar}{2} \sigy = \frac{\hbar}{2} \mqty[ 0 & -i \\ i & 0 ].
+	\eeq
+	In the basis $\{ \kszsz \}$,
+	\vspace{-.5\baselineskip}
+	\beq
+		\Sy = \Syw \otimes I + I \otimes \Syw
+		= \frac{\hbar}{2} \mqty[ 0 & 0 & -i & 0 \\ 0 & 0 & 0 & -i \\ i & 0 & 0 & 0 \\ 0 & i & 0 & 0 ] + \frac{\hbar}{2} \mqty[ 0 & -i & 0 & 0 \\ i & 0 & 0 & 0 \\ 0 & 0 & 0 & -i \\ 0 & 0 & i & 0 ]
+		=  \frac{\hbar}{2} \!\!\!\! \kbordermatrix{ & \up \up & \up \dn & \dn \up & \dn \dn \\ & 0 & -i & -i & 0 \\ & i & 0 & 0 & -i \\ & i & 0 & 0 & -i \\ & 0 & i & i & 0 },
+	\eeq
+	where we have labeled the columns corresponding to $(\szq, \szw)$.
+	
+	We will solve the problem in the basis $\{ \kszsz \}$, and then express it in terms of $\kjm$.  Proceeding similarly to \ref{2.2}, note that
+	\begin{align*}
+		\Sy^2 &= \frac{\hbar^2}{4} \mqty[ 0 & -i & -i & 0 \\ i & 0 & 0 & -i \\ i & 0 & 0 & -i \\ 0 & i & i & 0 ]^2
+		= \frac{\hbar^2}{2} \mqty[ 1 & 0 & 0 & -1 \\ 0 & 1 & 1 & 0 \\ 0 & 1 & 1 & 0 \\ 1 & 0 & 0 & -1 ]
+		\equiv \hbar K, \\
+		\Sy^3 &= \frac{\hbar^3}{8} \mqty[ 0 & -i & -i & 0 \\ i & 0 & 0 & -i \\ i & 0 & 0 & -i \\ 0 & i & i & 0 ]^3
+		= \frac{\hbar^3}{2} \mqty[ 0 & -i & -i & 0 \\ i & 0 & 0 & -i \\ i & 0 & 0 & -i \\ 0 & i & i & 0 ]
+		= \hbar^2 \Sy, \\
+		\Sy^4 &= \frac{\hbar^4}{16} \mqty[ 0 & -i & -i & 0 \\ i & 0 & 0 & -i \\ i & 0 & 0 & -i \\ 0 & i & i & 0 ]^4
+		= \frac{\hbar^4}{2} \mqty[ 1 & 0 & 0 & -1 \\ 0 & 1 & 1 & 0 \\ 0 & 1 & 1 & 0 \\ 1 & 0 & 0 & -1 ]
+		= \hbar^3 K,
+	\end{align*}
+	where we have defined $K$.
+	
+	Then, once more using the power series expansion,
+	\begin{align*}
+		\eitsyh &= \sumni \frac{1}{n!} \left( \frac{i \tht \Sy}{\hbar} \right)^n
+		= \frac{i \tht}{\hbar} \Sy - \frac{\tht^2}{2 \hbar} K - \frac{i \tht^3}{6 \hbar} \Sy + \frac{\tht^4}{24 \hbar} K + \cdots
+		= \frac{i}{\hbar} \Sy \sum_{n = 1}^\infty \frac{(-1)^{n-1} \tht^{2n - 1}}{(2n - 1)!} + \frac{1}{\hbar} K \sumni \frac{(-1)^n \tht^{2n}}{(2n)!} \\
+		&= \frac{1}{\hbar} \left( i \sint \, \Sy + \cost \, K \right).
+	\end{align*}
+	Now we will find the expressions for $\kjm$ in the $\{ \kszsz \}$ basis.  The relevant $\kjm$ have $m \in \{ -1, 0, 1 \}$ and $j \in \{ 0, 1 \}$.  This gives us four possible combinations:
+	\begin{itemize}
+		\item $j = 1$, $m = 1$ where $m = 1$ implies $\szq = \szw = 1/2$;
+		\item $j = 1$, $m = -1$ where $m = -1$ implies $\szq = \szw = -1/2$;
+		\item $j = 1$, $m = 0$ where $m = 0$ implies $\szq = -\szw$ and $j = 1$ implies a sum; and
+		\item $j = 0$, $m = 0$ where $m = 0$ implies $\szq = -\szw$ and $j = 1$ implies a difference.
+	\end{itemize}
+	In summary, we have
+	\begin{align*}
+		\kqq &= \kuu = \mqty[ 1 \\ 0 \\ 0 \\ 0 ], &
+		\kqo &= \frac{\kud + \kdu}{\sqrt{2}} = \frac{1}{\sqrt{2}} \mqty[ 0 \\ 1 \\ 1 \\ 0 ], &
+		\koo &= \frac{\kud - \kdu}{\sqrt{2}} = \frac{1}{\sqrt{2}} \mqty[ 0 \\ 1 \\ -1 \\ 0 ], &
+		\kqnq &= \kdd = \mqty[ 0 \\ 0 \\ 0 \\ 1 ].
+	\end{align*}
+	Note also that
+	\begin{align*}
+		\kud &= \mqty[ 0 \\ 1 \\ 0 \\ 0 ] = \frac{1}{2} \mqty[ 0 \\ 1 \\ 1 \\ 0 ] + \frac{1}{2} \mqty[ 0 \\ 1 \\ -1 \\ 0 ] = \frac{\kqo + \koo}{\sqrt{2}}, &
+		\kdu &= \mqty[ 0 \\ 0 \\ 1 \\ 0 ] = \frac{1}{2} \mqty[ 0 \\ 1 \\ 1 \\ 0 ] - \frac{1}{2} \mqty[ 0 \\ 1 \\ -1 \\ 0 ] = \frac{\kqo - \koo}{\sqrt{2}}.
+	\end{align*}
+	Finally,
+	\begin{align*}
+		\eitsyh \kqq &= \frac{i}{\hbar} \sint \, \Sy \kqq + \frac{1}{\hbar} \cost \, K \kqq \\
+		&= \frac{i}{2} \sint \mqty[ 0 & -i & -i & 0 \\ i & 0 & 0 & -i \\ i & 0 & 0 & -i \\ 0 & i & i & 0 ] \mqty[ 1 \\ 0 \\ 0 \\ 0 ] + \frac{1}{2} \cost \mqty[ 1 & 0 & 0 & -1 \\ 0 & 1 & 1 & 0 \\ 0 & 1 & 1 & 0 \\ 1 & 0 & 0 & -1 ] \mqty[ 1 \\ 0 \\ 0 \\ 0 ] = \frac{i}{2} \sint \mqty[ 0 \\ i \\ i \\ 0 ] + \frac{1}{2} \cost \mqty[ 1 \\ 0 \\ 0 \\ -1 ] \\
+		&= \frac{1}{2} \mqty[ \cost \\ -\sint \\ -\sint \\ -\cost ]
+		= \frac{1}{2} \left( \cost \kqq - \sint \frac{\kqo + \koo}{\sqrt{2}} - \sint \frac{\kqo - \koo}{\sqrt{2}} - \cost \kqnq \right) \\
+		&= \frac{\cost}{2} \kqq - \frac{\sint}{\sqrt{2}} \kqo - \frac{\cost}{2} \kqnq.
+	\end{align*}
+\vfix
+\end{solution}

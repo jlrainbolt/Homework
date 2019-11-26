@@ -18,7 +18,7 @@
   \array{@{}l@{\quad}l@{}}%
 }
 \makeatother
- 
+
  
 \renewcommand{\footrulewidth}{.2pt}
 %\setlist[enumerate]{leftmargin=*}
@@ -40,6 +40,7 @@
 
 \newcommand{\beqn}{\begin{equation}}
 \newcommand{\eeqn}{\end{equation}}
+\newcommand{\vfix}{\vspace{-\baselineskip}}
 
 \renewcommand{\vec}[1]{\mathbf{#1}}
 
@@ -77,75 +78,9 @@
 
 \input{Problem1}
 
-
-\newcommand{\vn}{\vec{n}}
-\newcommand{\nx}{n_x}
-\newcommand{\ny}{n_y}
-\newcommand{\nz}{n_z}
-
-\newcommand{\sig}{\sigma}
-\newcommand{\vsig}{\boldsymbol{\sig}}
-\newcommand{\sigx}{\sig_x}
-\newcommand{\sigy}{\sig_y}
-\newcommand{\sigz}{\sig_z}
-\newcommand{\nds}{\vn \cdot \vsig}
-
-\newcommand{\lam}{\lambda}
-\newcommand{\lamq}{\lam_1}
-\newcommand{\lamw}{\lam_2}
-\newcommand{\lampmq}{\lam_{\pm1}}
-\newcommand{\lampmw}{\lam_{\pm2}}
-\newcommand{\klamq}{\ket{\lamq}}
-\newcommand{\klamw}{\ket{\lamw}}
-
-\section{Problem 2}
-\begin{problem}
-	Consider $\nds$, where $\vn$ is a three-dimensional unit vector and $\vsig = (\sigx, \sigy, \sigz)$ represents the Pauli matrices.  Compute the eigenvalues $\lamq, \lamw$ and the corresponding eigenvectors $\klamq, \klamw$ of $\nds$.  Use them to obtain the spectrum decomposition of $\nds$.
-\end{problem}
-
-\begin{solution}
-	From (3.2.32) in Sakurai, the Pauli matrices are
-	\begin{align*}
-		\sigx &= \mqty[ 0 & 1 \\ 1 & 0 ], &
-		\sigy &= \mqty[ 0 & -i \\ i & 0 ], &
-		\sigz &= \mqty[ 1 & 0 \\ 0 & -1 ].
-	\end{align*}
-	Let $\vn = (\nx, \ny, \nz)$.  Then
-	\beq
-		\nds = \mqty[ 0 & \nx \\ \nx & 0 ] + i \mqty[ 0 & -\ny \\ \ny & 0 ] + \mqty[ \nz & 0 \\ 0 & -\nz ]
-		= \mqty[ \nz & \nx - i \ny \\ \nx + i \ny & -\nz ].
-	\eeq
-	The eigenvalues of $\nds$ are the solutions to the characteristic polynomial equation
-	\beq
-		0 = \det(\nds - \lam I) = \mdet{\nz - \lam & \nx - i \ny \\ \nx + i \ny & -(\nz + \lam)} = -(\nz - \lam) (\nz + \lam) - (\nx - i \ny) (\nx + i \ny) = \lam^2 - \nx^2 - \ny^2 - \nz^2.
-	\eeq
-	Since $|\vn|^2 = \nx^2 + \ny^2 + \nz^2$, we have $\lam = \pm |\vn| = \pm 1$.  Let $\lamq = 1$ and $\lamw = -1$.
-	
-	For the eigenvectors, let the elements of $\klamq$ be $\lam_{+1}, \lam_{+2}$ and the elements of $\klamw$ be $\lam_{-1}, \lam_{-2}$.  Then
-	\beq
-		\mqty[ \nz & \nx - i \ny \\ \nx + i \ny & -\nz ] \mqty[ \lampmq \\ \lampmw ] = \pm \mqty[ \lampmq \\ \lampmw ],
-	\eeq
-	which is equivalent to the system of equations
-	\begin{align*}
-		\nz \lampmq + (\nx - i \ny) \lampmw &= \pm\lampmq, &
-		(\nx + i \ny) \lampmq - \nz \lampmw &= \pm\lampmw.
-	\end{align*}
-%	We may let $\lampmw = 1$ without loss of generality.  Then $\lampmq = (\nz \pm 1) / (\nx + i \ny)$, so
-%	\begin{align*}
-%		\klamq &= \mqty[ (\nz + 1) / (\nx + i \ny) \\ 1 ], &
-%		\klamw &= \mqty[ (\nz - 1) / (\nx + i \ny) \\ 1 ].
-%	\end{align*}
-	We may let $\lampmw = \nx + i \ny$ without loss of generality.  Then $\lampmq = \nz \pm 1$, so
-	\begin{align*}
-		\klamq &= \mqty[ \nz + 1 \\ \nx + i \ny ], &
-		\klamw &= \mqty[ \nz - 1 \\ \nx + i \ny ].
-	\end{align*}
-\end{solution}
+\input{Problem2}
 
 
-
-\newcommand{\up}{\uparrow}
-\newcommand{\dn}{\downarrow}
 \newcommand{\kpsi}{\ket{\psi}}
 \newcommand{\kup}{\ket{\uparrow}}
 \newcommand{\kdn}{\ket{\downarrow}}
@@ -153,15 +88,15 @@
 \newcommand{\cw}{c_2}
 \newcommand{\cqs}{c_1^*}
 \newcommand{\cws}{c_2^*}
-\newcommand{\Sz}{S_z}
 
+\clearpage
 \section{Problem 3}
 \begin{statement}
 	Consider a spin $1/2$ state $\kpsi = \cq \kup + \cw \kdn$, where $\kup$ and $\kdn$ are the $\Sz$ eigenstates with eigenvalues $+\hbar/2$ and $-\hbar/2$, respectively.
 \end{statement}
 
 \begin{problem}
-	Consider the operator $\rho = \ketbra{\psi}$.  Write down the matrix elements of $\rho$ is the basis $\{ \kup, \kdn \}$.
+	Consider the operator $\rho = \ketbra{\psi}$.  Write down the matrix elements of $\rho$ in the basis $\{ \kup, \kdn \}$.
 \end{problem}
 
 \begin{solution}
@@ -179,6 +114,11 @@
 		\mel{\dn}{\rho}{\up} &= \braket{\dn}{\psi} \braket{\psi}{\up} = \cqs \cw, &
 		\mel{\dn}{\rho}{\dn} &= \braket{\dn}{\psi} \braket{\psi}{\dn} = \cw \cws = |\cw|^2.
 	\end{align*}
+	In matrix form,
+	\beq
+		\rho = \mqty[ |\cq|^2 & \cq \cws \\ \cqs \cw & |\cw|^2 ].
+	\eeq
+\vfix
 \end{solution}
 
 \newcommand{\soo}{s_0}
