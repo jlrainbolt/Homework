@@ -102,20 +102,20 @@
 
 \begin{solution}
 	Denote the $2 \times 2$ unit matrix as $I$.  From \refeq{ndsmat}, note that
-	\beq
+	\beqn \label{paulisq}
 		(\nds)^2 = \mqty[ \nz & \nx - i \ny \\ \nx + i \ny & -\nz ]^2
 		= \mqty[ \nx^2 + \ny^2 + \nz^2 & (\nz - \nz) (\nx - i \ny) \\
 				(\nz - \nz) (\nx + i \ny) & \nx^2 + \ny^2 + \nz^2]
 		= \mqty[ 1 & 0 \\ 0 & 1 ]
 		= I.
-	\eeq
+	\eeqn
 	Using the power series expansion,
-	\begin{align*}
+	\begin{align}
 		\eiands &= \sumni \frac{(i \alp \nds)^n}{n!}
 		= i \alp \ \nds - \frac{\alp^2}{2} I - \frac{i \alp^3}{6} \nds + \frac{\alp^4}{24} I + \cdots
-		= i \nds \sum_{n = 1}^\infty \frac{(-1)^{n-1} \alp^{2n - 1}}{(2n - 1)!} + I \sumni \frac{(-1)^n \alp^{2n}}{(2n)!} \\
-		&= i \sina \, \nds + \cosa \, I = i \sina (\nx \sigx + \ny \sigy + \nz \sigz) + \cosa \, I.
-	\end{align*}
+		= i \nds \sum_{n = 1}^\infty \frac{(-1)^{n-1} \alp^{2n - 1}}{(2n - 1)!} + I \sumni \frac{(-1)^n \alp^{2n}}{(2n)!} \notag \\
+		&= i \sina \, \nds + \cosa \, I = i \sina (\nx \sigx + \ny \sigy + \nz \sigz) + \cosa \, I. \label{eiands}
+	\end{align}
 \vfix
 \end{solution}
 

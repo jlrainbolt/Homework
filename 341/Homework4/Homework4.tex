@@ -95,7 +95,7 @@
 	Consider a spin $1/2$ state $\kpsi = \cq \kup + \cw \kdn$, where $\kup$ and $\kdn$ are the $\Sz$ eigenstates with eigenvalues $+\hbar/2$ and $-\hbar/2$, respectively.
 \end{statement}
 
-\begin{problem}
+\begin{problem} \label{3.1}
 	Consider the operator $\rho = \ketbra{\psi}$.  Write down the matrix elements of $\rho$ in the basis $\{ \kup, \kdn \}$.
 \end{problem}
 
@@ -115,9 +115,9 @@
 		\mel{\dn}{\rho}{\dn} &= \braket{\dn}{\psi} \braket{\psi}{\dn} = \cw \cws = |\cw|^2.
 	\end{align*}
 	In matrix form,
-	\beq
+	\beqn \label{matrho}
 		\rho = \mqty[ |\cq|^2 & \cq \cws \\ \cqs \cw & |\cw|^2 ].
-	\eeq
+	\eeqn
 \vfix
 \end{solution}
 
@@ -127,14 +127,163 @@
 \newcommand{\se}{s_3}
 \newcommand{\vs}{\vec{s}}
 
+\newcommand{\Recq}{\Re(\cq)}
+\newcommand{\Imcq}{\Im(\cq)}
+\newcommand{\Recw}{\Re(\cw)}
+\newcommand{\Imcw}{\Im(\cw)}
+
+\newcommand{\sds}{\vs \cdot \vsig}
+
 \begin{problem}
 	In the $\Sz$ eigenbasis, express $\rho$ by using the Pauli matrices.  That is, write $\rho$ as
-	\beq
-		\rho = \frac{\soo}{2} I + \frac{1}{2} \vs \cdot \vsig,
-	\eeq
+	\beqn \label{exprho}
+		\rho = \frac{\soo}{2} I + \frac{1}{2} \sds,
+	\eeqn
 	and express $\soo, \sq, \sw, \se$ in terms of $\cq$ and $\cw$.
 \end{problem}
 
+\begin{solution}
+	Expanding \refeq{exprho} using the Pauli matrices given by \refeq{pauli},
+	\beq
+		\rho = \frac{1}{2} \mqty[ \soo & 0 \\ 0 & \soo ] + \frac{1}{2} \mqty[ 0 & \sq \\ \sq & 0 ] + \frac{i}{2} \mqty[ 0 & -\sw \\ \sw & 0 ] + \frac{1}{2} \mqty[ \se & 0 \\ 0 & -\se ]
+		= \frac{1}{2} \mqty[ \soo + \se & \sq - i \sw \\ \sq + i \sw & \soo - \se ].
+	\eeq
+	Matching up the matrix elements with those in \refeq{matrho}, we have a system of four equations:
+	\begin{align*}
+		\frac{\soo + \se}{2} &= |\cq|^2 &
+		\frac{\sq - i \sw}{2} &= \cq \cws &
+		\frac{\sq + i \sw}{2} &= \cqs \cw &
+		\frac{\soo - \se}{2} &= |\cw|^2.
+	\end{align*}
+	Solving these for $\soo, \sq, \sw, \se$,
+	\begin{align}
+		\soo &= \frac{\soo + \se}{2} + \frac{\soo - \se}{2}
+		= |\cq|^2 + |\cw|^2, &
+		\sq &= \frac{\sq - i \sw}{2} + \frac{\sq + i \sw}{2}
+		= \cq \cws + \cqs \cw, \label{scomp} \\
+		\sw &= i \left( \frac{\sq - i \sw}{2} - \frac{\sq + i \sw}{2} \right)
+		= i (\cq \cws - \cqs \cw), &
+		\se &= \frac{\soo + \se}{2} - \frac{\soo - \se}{2}
+		= |\cq|^2 - |\cw|^2. \label{scomp2}
+	\end{align}
+	Then \refeq{exprho} can be written
+	\beq
+		\rho = \frac{|\cq|^2 + |\cw|^2}{2} I + \frac{\cq \cws + \cqs \cw}{2} \sigx + i \frac{\cq \cws - \cqs \cw}{2} \sigy + \frac{|\cq|^2 - |\cw|^2}{2} \sigz.
+	\eeq
+\vfix
+\end{solution}
+
+\begin{problem}
+	Compute $\rho^2$ and $\vs^2$.
+\end{problem}
+
+\begin{solution}
+	Using the representation of $\rho$ in \refeq{exprho},
+	\beq
+		\rho^2 = \frac{\soo^2}{4} I^2 + \frac{\soo}{4} I (\sds) + \frac{\soo}{4} (\sds) I + \frac{1}{4} (\sds)^2
+		= \frac{1}{4} (\soo^2 + |\vs|^2) I + \frac{\soo}{2} \sds,
+	\eeq
+	where we have used \refeq{paulisq}, and where $\vs = (\sq, \sw, \se)$.
+	
+	Using \refeq{scomp} and \refeq{scomp2},
+	\begin{align*}
+		\vs^2 &= \vs \cdot \vs = \sq^2 + \sw^2 + \se^2
+		= \left( \cq \cws + \cqs \cw \right)^2 - \left( \cq \cws - \cqs \cw \right)^2 + \left( |\cq|^2 - |\cw|^2 \right)^2 \\
+		&= \cq^2 {\cws}^2 + 2 |\cq|^2 |\cw|^2 + {\cqs}^2 \cw^2 - \cq^2 {\cws}^2 + 2 |\cq|^2 |\cw|^2 - {\cqs}^2 \cw^2 + |\cq|^4 - 2 |\cq|^2 |\cw|^2 + |\cw|^4 \\
+		&= |\cq|^4 + 2 |\cq|^2 |\cw|^2 + |\cw|^4
+		= \left( |\cq|^2 + |\cw|^2 \right)^2 \\
+		&= \soo^2.
+	\end{align*}
+\vfix
+\end{solution}
+
+\newcommand{\bpsi}{\bra{\psi}}
+\newcommand{\rhot}{\rho(t)}
+
+\begin{problem}
+	Using the {\Schrodinger} equation
+	\beqn \label{schro}
+		i \hbar \dv{}{t} \kpsi = H \kpsi,
+	\eeqn
+	derive the equation of motion obeyed by $\rho$.
+\end{problem}
+
+\begin{solution}
+	Multiplying both sides of \refeq{schro} by $\bpsi$ on the right,
+	\beqn \label{schrho}
+		i \hbar \dv{}{t} \ketbra{\psi} = H \ketbra{\psi}
+		\iff
+		i \hbar \dv{}{t} \rho = H \rho.
+	\eeqn
+	The equation of motion obeyed by $\rho$ is
+	\beq
+		\rhot = \Ut \, \rho,
+	\eeq
+	where $\Ut$ is the time-evolution operator corresponding to the Hamiltonian $H$.
+\end{solution}
+
+\newcommand{\vOme}{\boldsymbol{\Omega}}
+\newcommand{\psiu}{\psi_\up}
+\newcommand{\psid}{\psi_\dn}
+\newcommand{\psiut}{\psiu(t)}
+\newcommand{\psidt}{\psid(t)}
+\newcommand{\kpsit}{\ket{\psit}}
+\newcommand{\Ods}{\vOme \cdot \vsig}
+
+\newcommand{\vaa}{\vec{a}}
+\newcommand{\vbb}{\vec{b}}
+\newcommand{\costt}{\cos{\frac{t}{2}}}
+\newcommand{\sintt}{\cos{\frac{t}{2}}}
+
+\begin{problem}
+	When the Hamiltonian is given by
+	\beqn \label{ham3}
+		H = \frac{\hbar}{2} \Ods,
+	\eeqn
+	write down the equation of motion obeyed by $\psiut, \psidt$, which are the (complex) expansion coefficients of the state ket
+	\beq
+		\kpsit = \psiut \kup + \psidt \kdn.
+	\eeq
+\vfix
+\end{problem}
+
+\begin{solution}
+	$H$ is time independent, so
+	\beq
+		\Ut = \exp(-\frac{i H t}{\hbar}) = \exp[-\frac{i t (\Ods)}{2}] = \costt \, I - i \sintt \, \Ods
+	\eeq
+	where we have used the result of \ref{2.2}, \refeq{eiands}.
+
+%	From the definitions of $\rho$ and $\psi$ in problem 3.1,
+%	\begin{align*}
+%		\rho = \ketbra{\psi}
+%		&\mapsto
+%		\rhot = \ketbra{\psit}, \\
+%		\kpsi = \cq \kup + \cw \kdn
+%		&\mapsto
+%		\kpsit = \psiut \kup + \psidt \kdn.
+%	\end{align*}
+%
+%	From (3.2.40) in Sakurai,
+%	\beq
+%		(\vsig \cdot \vaa) (\vsig \cdot \vbb) = \vaa \cdot \vbb + i \vsig \cdot (\vaa \times \vbb).
+%	\eeq
+%	Once more using the representation of $\rho$ in \refeq{exprho}, the right-hand side of \refeq{schrho} is
+%	\begin{align*}
+%		\rho H = \frac{\hbar}{4} \left( \soo I + \sds \right) \Ods = \frac{\hbar}{4} \left[ \soo (\Ods) + (\vs \cdot \vOme) I + i(\vs \times \vOme) \cdot \vsig \right]
+%	\end{align*}
+\end{solution}
+
+\begin{problem}
+	When the Hamiltonian is given by \refeq{ham3}, write down the (Heisenberg) equation of motion obeyed by the spin operators $\vS$.
+\end{problem}
+
+\begin{solution}
+	Since $\vS = (\hbar / 2) \vsig$, $H = \vOme \cdot \vS$.  Then the Heisenberg equation of motion is
+	\beq
+		\dv{\vS}{t} = -\frac{i}{\hbar} [\vS, H] = 0.
+	\eeq
+\end{solution}
 
 
 \vfill
