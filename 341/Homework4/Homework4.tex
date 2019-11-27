@@ -88,15 +88,15 @@
 \newcommand{\cw}{c_2}
 \newcommand{\cqs}{c_1^*}
 \newcommand{\cws}{c_2^*}
+\newcommand{\kbpsi}{\ketbra{\psi}}
 
-\clearpage
 \section{Problem 3}
 \begin{statement}
 	Consider a spin $1/2$ state $\kpsi = \cq \kup + \cw \kdn$, where $\kup$ and $\kdn$ are the $\Sz$ eigenstates with eigenvalues $+\hbar/2$ and $-\hbar/2$, respectively.
 \end{statement}
 
 \begin{problem} \label{3.1}
-	Consider the operator $\rho = \ketbra{\psi}$.  Write down the matrix elements of $\rho$ in the basis $\{ \kup, \kdn \}$.
+	Consider the operator $\rho = \kbpsi$.  Write down the matrix elements of $\rho$ in the basis $\{ \kup, \kdn \}$.
 \end{problem}
 
 \begin{solution}
@@ -166,10 +166,11 @@
 		\se &= \frac{\soo + \se}{2} - \frac{\soo - \se}{2}
 		= |\cq|^2 - |\cw|^2. \label{scomp2}
 	\end{align}
-	Then \refeq{exprho} can be written
-	\beq
-		\rho = \frac{|\cq|^2 + |\cw|^2}{2} I + \frac{\cq \cws + \cqs \cw}{2} \sigx + i \frac{\cq \cws - \cqs \cw}{2} \sigy + \frac{|\cq|^2 - |\cw|^2}{2} \sigz.
-	\eeq
+	Note that $\soo$ is the norm of $\kpsi$, so $\soo = 1$ assuming $\kpsi$ is normalized.  Then \refeq{exprho} can be written
+	\begin{align*}
+		\rho &= \frac{|\cq|^2 + |\cw|^2}{2} I + \frac{\cq \cws + \cqs \cw}{2} \sigx + i \frac{\cq \cws - \cqs \cw}{2} \sigy + \frac{|\cq|^2 - |\cw|^2}{2} \sigz \\
+		&= \frac{1}{2} I + \frac{\cq \cws + \cqs \cw}{2} \sigx + i \frac{\cq \cws - \cqs \cw}{2} \sigy + \frac{|\cq|^2 - |\cw|^2}{2} \sigz.
+	\end{align*}
 \vfix
 \end{solution}
 
@@ -181,19 +182,22 @@
 	Using the representation of $\rho$ in \refeq{exprho},
 	\beq
 		\rho^2 = \frac{\soo^2}{4} I^2 + \frac{\soo}{4} I (\sds) + \frac{\soo}{4} (\sds) I + \frac{1}{4} (\sds)^2
-		= \frac{1}{4} (\soo^2 + |\vs|^2) I + \frac{\soo}{2} \sds,
+		= \frac{1}{4} (\soo^2 + |\vs|^2) I + \frac{\soo}{2} \sds
+		= \frac{1}{4} (1 + |\vs|^2) I + \frac{1}{2} \sds,
 	\eeq
-	where we have used \refeq{paulisq}, and where $\vs = (\sq, \sw, \se)$.
-	
-	Using \refeq{scomp} and \refeq{scomp2},
+	where $\vs = (\sq, \sw, \se)$, and in the final equality we have assumed $\kpsi$ is normalized.  Using \refeq{scomp} and \refeq{scomp2},
 	\begin{align*}
 		\vs^2 &= \vs \cdot \vs = \sq^2 + \sw^2 + \se^2
 		= \left( \cq \cws + \cqs \cw \right)^2 - \left( \cq \cws - \cqs \cw \right)^2 + \left( |\cq|^2 - |\cw|^2 \right)^2 \\
 		&= \cq^2 {\cws}^2 + 2 |\cq|^2 |\cw|^2 + {\cqs}^2 \cw^2 - \cq^2 {\cws}^2 + 2 |\cq|^2 |\cw|^2 - {\cqs}^2 \cw^2 + |\cq|^4 - 2 |\cq|^2 |\cw|^2 + |\cw|^4 \\
 		&= |\cq|^4 + 2 |\cq|^2 |\cw|^2 + |\cw|^4
 		= \left( |\cq|^2 + |\cw|^2 \right)^2 \\
-		&= \soo^2.
+		&= \soo^2 = 1.
 	\end{align*}
+	We can use this result to simplify the expression for $\rho^2$:
+	\beq
+		\rho^2 = \frac{1}{2} \soo^2 I + \frac{\soo}{2} \sds = \rho.
+	\eeq
 \vfix
 \end{solution}
 
@@ -209,17 +213,24 @@
 \end{problem}
 
 \begin{solution}
-	Multiplying both sides of \refeq{schro} by $\bpsi$ on the right,
-	\beqn \label{schrho}
-		i \hbar \dv{}{t} \ketbra{\psi} = H \ketbra{\psi}
-		\iff
-		i \hbar \dv{}{t} \rho = H \rho.
-	\eeqn
-	The equation of motion obeyed by $\rho$ is
+	The adjoint of \refeq{schro} is
 	\beq
-		\rhot = \Ut \, \rho,
+		-i \hbar \pdv{}{t} \bpsi = \bpsi H
+		\iff
+		i \hbar \pdv{}{t} \bpsi = -\bpsi H.
 	\eeq
-	where $\Ut$ is the time-evolution operator corresponding to the Hamiltonian $H$.
+	Then
+	\begin{align*}
+		i \hbar \dv{\rho}{t} = i \hbar \dv{}{t} \kbpsi
+		= H \kbpsi - \kbpsi H
+		= H \rho - \rho H
+		= [H, \rho],
+	\end{align*}
+	so the equation of motion is
+	\beq
+		\dv{\rho}{t} = \frac{i}{\hbar} [\rho, H].
+	\eeq
+\vfix
 \end{solution}
 
 \newcommand{\vOme}{\boldsymbol{\Omega}}
@@ -229,18 +240,21 @@
 \newcommand{\psidt}{\psid(t)}
 \newcommand{\kpsit}{\ket{\psit}}
 \newcommand{\Ods}{\vOme \cdot \vsig}
+\newcommand{\Omx}{\Omega_x}
+\newcommand{\Omy}{\Omega_y}
+\newcommand{\Omz}{\Omega_z}
 
 \newcommand{\vaa}{\vec{a}}
 \newcommand{\vbb}{\vec{b}}
 \newcommand{\costt}{\cos{\frac{t}{2}}}
-\newcommand{\sintt}{\cos{\frac{t}{2}}}
+\newcommand{\sintt}{\sin{\frac{t}{2}}}
 
 \begin{problem}
 	When the Hamiltonian is given by
 	\beqn \label{ham3}
 		H = \frac{\hbar}{2} \Ods,
 	\eeqn
-	write down the equation of motion obeyed by $\psiut, \psidt$, which are the (complex) expansion coefficients of the state ket
+	write down the equation of motion obeyed by $(\psiut, \psidt)$, where $\psiut, \psidt$ are the (complex) expansion coefficients of the state ket
 	\beq
 		\kpsit = \psiut \kup + \psidt \kdn.
 	\eeq
@@ -248,41 +262,64 @@
 \end{problem}
 
 \begin{solution}
-	$H$ is time independent, so
+	Using \refeq{schro},
 	\beq
-		\Ut = \exp(-\frac{i H t}{\hbar}) = \exp[-\frac{i t (\Ods)}{2}] = \costt \, I - i \sintt \, \Ods
+		i \hbar \dv{}{t} \kpsit = \frac{\hbar}{2} \Ods \kpsit
+		\iff
+		i \hbar \dv{}{t} \left( \psiut \kup + \psidt \kdn \right) = \frac{\hbar}{2} \Ods \left( \psiut \kup + \psidt \kdn \right),
 	\eeq
-	where we have used the result of \ref{2.2}, \refeq{eiands}.
-
-%	From the definitions of $\rho$ and $\psi$ in problem 3.1,
-%	\begin{align*}
-%		\rho = \ketbra{\psi}
-%		&\mapsto
-%		\rhot = \ketbra{\psit}, \\
-%		\kpsi = \cq \kup + \cw \kdn
-%		&\mapsto
-%		\kpsit = \psiut \kup + \psidt \kdn.
-%	\end{align*}
-%
-%	From (3.2.40) in Sakurai,
-%	\beq
-%		(\vsig \cdot \vaa) (\vsig \cdot \vbb) = \vaa \cdot \vbb + i \vsig \cdot (\vaa \times \vbb).
-%	\eeq
-%	Once more using the representation of $\rho$ in \refeq{exprho}, the right-hand side of \refeq{schrho} is
-%	\begin{align*}
-%		\rho H = \frac{\hbar}{4} \left( \soo I + \sds \right) \Ods = \frac{\hbar}{4} \left[ \soo (\Ods) + (\vs \cdot \vOme) I + i(\vs \times \vOme) \cdot \vsig \right]
-%	\end{align*}
+	which can be separated into two equations:
+	\begin{align}
+		\dv{}{t} \psiut \kup &= -\frac{i}{2} \psiut \, \Ods \kup, &
+		\dv{}{t} \psidt \kdn &= -\frac{i}{2} \psidt \, \Ods \kdn.
+	\end{align}
+	Generalizing the results of \ref{2.1}, let $\vOme = \Omega \, \vn$ where $\vn$ is a unit vector.  Using \refeq{ndsmat},
+	\begin{align*}
+		\Ods \kup &= \Omega \mqty[ \nz \\ \nx + i \ny ] = \Omz \kup + (\Omx + i \Omy) \kdn, &
+		\Ods \kdn &= \Omega \mqty[ \nx - i \ny \\ -\nz ] = (\Omx - i \Omy) \kup - \Omz \kdn,
+	\end{align*}
+	where $\vOme = (\Omx, \Omy, \Omz)$.  Then, explicitly, we have the equations of motion
+	\begin{align}
+		\dv{}{t} \psiut \kup &= -\frac{i}{2} \psiut \left[ \Omz \kup + (\Omx + i \Omy) \kdn \right], &
+		\dv{}{t} \psidt \kdn &= -\frac{i}{2} \psidt \left[ (\Omx - i \Omy) \kup - \Omz \kdn \right].
+	\end{align}
+\vfix
 \end{solution}
+
+\newcommand{\sigi}{\sig_i}
+\newcommand{\sigj}{\sig_j}
+\newcommand{\sigk}{\sig_k}
+\newcommand{\lct}{\varepsilon_{ijk}}
+\newcommand{\Sq}{S_1}
+\newcommand{\Sw}{S_2}
+\newcommand{\Se}{S_3}
+\newcommand{\Si}{S_i}
+\newcommand{\Omq}{\Omega_1}
+\newcommand{\Omw}{\Omega_2}
+\newcommand{\Ome}{\Omega_3}
+\newcommand{\Omj}{\Omega_j}
+
+\newcommand{\Sx}{S_x}
 
 \begin{problem}
 	When the Hamiltonian is given by \refeq{ham3}, write down the (Heisenberg) equation of motion obeyed by the spin operators $\vS$.
 \end{problem}
 
 \begin{solution}
-	Since $\vS = (\hbar / 2) \vsig$, $H = \vOme \cdot \vS$.  Then the Heisenberg equation of motion is
+	From (3.2.35) in Sakurai,
 	\beq
-		\dv{\vS}{t} = -\frac{i}{\hbar} [\vS, H] = 0.
+		[\sigi, \sigj] = 2 i \lct \sigk
 	\eeq
+	Let $\vS = (\Sq, \Sw, \Se)$ and $\vOme = (\Omq, \Omw, \Ome)$.  Then the Heisenberg equation of motion is
+	\beq
+		\dv{\Si}{t} = -\frac{i}{\hbar} [\Si, H] = -\frac{i \hbar}{4} [\sigi, \Ods] = -\frac{i \hbar}{4} \sum_{j = 1}^3 \Omj [\sigi, \sigj] = \frac{\hbar}{2} \sum_{j = 1}^3 \Omj \lct \sigk.
+	\eeq
+	Explicitly, the equations of motion are
+	\begin{align*}
+		\dv{\Sx}{t} &= \frac{\hbar}{2} (\Omy \sigz - \Omz \sigy), &
+		\dv{\Sy}{t} &= \frac{\hbar}{2} (\Omz \sigx - \Omx \sigz), &
+		\dv{\Sz}{t} &= \frac{\hbar}{2} (\Omx \sigy - \Omy \sigx).
+	\end{align*}
 \end{solution}
 
 

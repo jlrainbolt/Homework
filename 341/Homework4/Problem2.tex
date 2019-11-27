@@ -28,7 +28,7 @@
 	In this problem, we are working in the basis that diagonalizes the $z$ component of the spin.
 \end{statement}
 
-\begin{problem}
+\begin{problem} \label{2.1}
 	Consider $\nds$, where $\vn$ is a three-dimensional unit vector and $\vsig = (\sigx, \sigy, \sigz)$ represents the Pauli matrices.  Compute the eigenvalues $\lamq, \lamw$ and the corresponding eigenvectors $\klamq, \klamw$ of $\nds$.  Use them to obtain the spectrum decomposition of $\nds$.
 \end{problem}
 
@@ -81,7 +81,7 @@
 		\klamq &= \frac{1}{\sqrt{2 (1 + \nz)}} \mqty[ \nz + 1 \\ \nx + i \ny ], &
 		\klamw &= \frac{1}{\sqrt{2 (1 - \nz)}} \mqty[ \nz - 1 \\ \nx + i \ny ].
 	\end{align*}
-	Finally, the \hl{spectrum decomposition} of $\nds$ is
+	Finally, the spectrum decomposition of $\nds$ is
 	\begin{align}
 		\nds &= \sum_{i} \lam_i \ketbra{\lam_i}
 		= \ketbra{\lamq} - \ketbra{\lamw} \notag \\
@@ -110,12 +110,12 @@
 		= I.
 	\eeqn
 	Using the power series expansion,
-	\begin{align}
+	\begin{align*}
 		\eiands &= \sumni \frac{(i \alp \nds)^n}{n!}
 		= i \alp \ \nds - \frac{\alp^2}{2} I - \frac{i \alp^3}{6} \nds + \frac{\alp^4}{24} I + \cdots
-		= i \nds \sum_{n = 1}^\infty \frac{(-1)^{n-1} \alp^{2n - 1}}{(2n - 1)!} + I \sumni \frac{(-1)^n \alp^{2n}}{(2n)!} \notag \\
-		&= i \sina \, \nds + \cosa \, I = i \sina (\nx \sigx + \ny \sigy + \nz \sigz) + \cosa \, I. \label{eiands}
-	\end{align}
+		= i \nds \sum_{n = 1}^\infty \frac{(-1)^{n-1} \alp^{2n - 1}}{(2n - 1)!} + I \sumni \frac{(-1)^n \alp^{2n}}{(2n)!} \\
+		&= i \sina \, \nds + \cosa \, I = i \sina (\nx \sigx + \ny \sigy + \nz \sigz) + \cosa \, I.
+	\end{align*}
 \vfix
 \end{solution}
 
@@ -186,14 +186,7 @@
 		= \frac{i}{\hbar} \Sy \sum_{n = 1}^\infty \frac{(-1)^{n-1} \tht^{2n - 1}}{(2n - 1)!} + \frac{1}{\hbar} K \sumni \frac{(-1)^n \tht^{2n}}{(2n)!} \\
 		&= \frac{1}{\hbar} \left( i \sint \, \Sy + \cost \, K \right).
 	\end{align*}
-	Now we will find the expressions for $\kjm$ in the $\{ \kszsz \}$ basis.  The relevant $\kjm$ have $m \in \{ -1, 0, 1 \}$ and $j \in \{ 0, 1 \}$.  This gives us four possible combinations:
-	\begin{itemize}
-		\item $j = 1$, $m = 1$ where $m = 1$ implies $\szq = \szw = 1/2$;
-		\item $j = 1$, $m = -1$ where $m = -1$ implies $\szq = \szw = -1/2$;
-		\item $j = 1$, $m = 0$ where $m = 0$ implies $\szq = -\szw$ and $j = 1$ implies a sum; and
-		\item $j = 0$, $m = 0$ where $m = 0$ implies $\szq = -\szw$ and $j = 1$ implies a difference.
-	\end{itemize}
-	In summary, we have
+	From (3.7.15) in Sakurai,
 	\begin{align*}
 		\kqq &= \kuu = \mqty[ 1 \\ 0 \\ 0 \\ 0 ], &
 		\kqo &= \frac{\kud + \kdu}{\sqrt{2}} = \frac{1}{\sqrt{2}} \mqty[ 0 \\ 1 \\ 1 \\ 0 ], &
