@@ -1,0 +1,171 @@
+%\newcommand{\gam}{\gamma}
+\newcommand{\gami}{\gam^{(i)}}
+\newcommand{\gamj}{\gam^{(j)}}
+\newcommand{\vr}{\vec{r}}
+\newcommand{\vri}{\vr_i}
+\newcommand{\vrj}{\vr_j}
+\renewcommand{\xi}{x_i}
+\newcommand{\yi}{y_i}
+\newcommand{\xj}{x_j}
+\newcommand{\yj}{y_j}
+
+\newcommand{\xd}{\dot{x}}
+\newcommand{\yd}{\dot{y}}
+\newcommand{\xdi}{\xd_i}
+\newcommand{\ydi}{\yd_i}
+
+\newcommand{\gamq}{\gam^{(1)}}
+\newcommand{\gamw}{\gam^{(2)}}
+\newcommand{\vrq}{\vr_1}
+\newcommand{\vrw}{\vr_2}
+
+%\newcommand{\xq}{x_q}
+\newcommand{\yq}{y_1}
+\newcommand{\xw}{x_2}
+\newcommand{\yw}{y_2}
+
+\newcommand{\xdq}{\xd_1}
+\newcommand{\ydq}{\yd_1}
+\newcommand{\xdw}{\xd_2}
+\newcommand{\ydw}{\yd_2}
+
+\newcommand{\vR}{\vec{R}}
+\newcommand{\Xd}{\dot{X}}
+\newcommand{\Xdd}{\ddot{X}}
+\newcommand{\Yd}{\dot{Y}}
+\newcommand{\Ydd}{\ddot{Y}}
+
+\newcommand{\Cq}{C_1}
+\newcommand{\Cw}{C_2}
+\newcommand{\Dq}{D_1}
+\newcommand{\Dw}{D_2}
+
+\newcommand{\omg}{\omega}
+
+\begin{statement}{Interacting line vortices} \label{vort1}
+\subparagraph{}
+	A system of $n$ vortices moving on a two-dimensional plane has the Hamiltonian
+	\beq
+		H = \sum_{j = 1}^n \sum_{i = 1}^{j - 1} -\gami \gamj \ln|\vri - \vrj|,
+	\eeq
+	where $\gami$ is the strength of the $i$th line vortex, and $\vri = (\xi, \yi)$ its position in the plane.  Using the Poisson bracket structure
+	\beq
+		[f, g] = \sum_{i = 1}^n \frac{1}{\gami} \left( \pdv{f}{\xi} \pdv{g}{\yi} - \pdv{f}{\yi} \pdv{g}{\xi} \right),
+	\eeq
+	Hamilton's equations for the vortex system simplify to
+	\begin{align*}
+		\xdi &= [\xi, H], &
+		\ydi = [\yi, H].
+	\end{align*}
+	Consider two vortices.  Show that the equations of motion can be solved explicitly.  Most importantly, show that the solution tells us the two vortices orbit each other with a frequency that is inversely proportional to the square of their separation.
+\end{statement}
+
+\begin{solution}
+	For two vortices, the Hamiltonian reduces to
+	\beq
+		H = -\gamq \gamw \ln|\vrq - \vrw|.
+	\eeq
+	For $i, j \in \{ 1, 2 \}$, note that
+	\begin{align*}
+		\pdv{\xi}{\xj} &= \pdv{\yi}{\yj} = \delta_{ij}, &
+		\pdv{\xi}{\yj} &= \pdv{\yi}{\xj} = 0.
+	\end{align*}
+	Note also that
+	\beq
+		|\vrq - \vrw| = \sqrt{(\xq - \xw)^2 + (\yq - \yw)^2}
+		= \sqrt{\xq^2 - 2 \xq \xw + \xw^2 + \yq^2 - 2 \yq \yw + \yw^2},
+	\eeq
+	and define $R \equiv |\vrq - \vrw|$ as the separation of the vortices.  Define also
+	\begin{align*}
+		u &\equiv \ln{R}, &
+		v &\equiv (\xq - \xw)^2 + (\yq - \yw)^2 = R^2.
+	\end{align*}
+	 Then
+	\begin{align*}
+		\pdv{H}{\xi} &= \pdv{H}{u} \pdv{u}{R} \pdv{R}{v} \pdv{v}{\xi}
+		= -\gami \gamj \frac{1}{R} \frac{1}{2R} (2 \xi - 2 \xj)
+		= -\gami \gamj \frac{\xi - \xj}{(\xq - \xw)^2 + (\yq - \yw)^2}
+		= -\gami \gamj \frac{\xi - \xj}{R^2}, \\
+		\pdv{H}{\yi} &= \pdv{H}{u} \pdv{u}{R} \pdv{R}{v} \pdv{v}{\yi}
+		= -\gami \gamj \frac{\yi - \yj}{R^2},
+	\end{align*}
+	where $i \neq j$.
+	
+	Combining the above, and again fixing $i \neq j$,
+	\begin{align*}
+		\xdi &= \frac{1}{\gami} \left( \pdv{\xi}{\xi} \pdv{H}{\yi} - \pdv{\xi}{\yi} \pdv{H}{\xi} \right) + \frac{1}{\gamj} \left( \pdv{\xi}{\xj} \pdv{H}{\yj} - \pdv{\xi}{\yj} \pdv{H}{\xj} \right)
+		= \frac{1}{\gami} \pdv{H}{\yi}
+		= -\gamj \frac{\yi - \yj}{R^2}, \\
+		\ydi &= \frac{1}{\gami} \left( \pdv{\yi}{\xi} \pdv{H}{\yi} - \pdv{\yi}{\yi} \pdv{H}{\xi} \right) + \frac{1}{\gamj} \left( \pdv{\yi}{\xj} \pdv{H}{\yj} - \pdv{\yi}{\yj} \pdv{H}{\xj} \right)
+		= -\frac{1}{\gami} \pdv{H}{\xi}
+		= \gamj \frac{\xi - \xj}{R^2}.
+	\end{align*}
+	Explicitly, the four equations of motion are
+	\begin{align} \label{4eqns}
+		\xdq &= -\gamw \frac{\yq - \yw}{R^2}, &
+		\xdw &= \gamq \frac{\yq - \yw}{R^2}, &
+		\ydq &= \gamw \frac{\xq - \xw}{R^2}, &
+		\ydw &= -\gamq \frac{\xq - \xw}{R^2}.
+	\end{align}
+	Note that
+	\begin{align*}
+		\pdv{R}{\xi} &= \pdv{R}{v} \pdv{v}{\xi}
+		= \frac{\xi - \xj}{R^2}, &
+		\pdv{R}{\yi} &= \frac{\yi - \yj}{R^2}
+	\end{align*}
+	so
+	\beq
+		[H, R] = \sum_{i = 1}^n \frac{1}{\gami} \left( \pdv{H}{\xi} \pdv{v}{\yi} - \pdv{H}{\yi} \pdv{v}{\xi} \right)
+		= \sum_{i = 1}^n \frac{1}{\gami} \left( -\gami \gamj \frac{\xi - \xj}{R^2} \frac{\yi - \yj}{R^2} + \gami \gamj \frac{\yi - \yj}{R^2} \frac{\xi - \xj}{R^2} \right)
+		= 0.
+	\eeq
+	This means $R$ is a constant.
+
+	Define $\vR \equiv \vrq - \vrw = (X, Y)$, where $|\vR| = R$.  Now we have two generalized coordinates $X$ and $Y$, where $X = \xq - \xw$ and $Y = \yq - \yw$.  This gives us the two equations of motion
+	\begin{align}
+		\Xd &= \xdq - \xdw
+		= -(\gamq + \gamw) \frac{\yq - \yw}{R^2}
+		= -\frac{\gamq + \gamw}{R^2} Y, \label{eqnX} \\
+		\Yd &= \ydq - \ydw
+		= (\gamq + \gamw) \frac{\xq - \xw}{R^2}
+		= \frac{\gamq + \gamw}{R^2} X. \label{eqnY}
+	\end{align}
+	We can differentiate these to obtain two uncoupled second-order equations:
+	\begin{align*}
+		\Xdd &= -\frac{\gamq + \gamw}{R^2} \Yd
+		= -\frac{(\gamq + \gamw)^2}{R^4} X, &
+		\Ydd &= \frac{\gamq + \gamw}{R^2} \Xd
+		= -\frac{(\gamq + \gamw)^2}{R^4} Y.
+	\end{align*}
+	These equations have the solutions
+	\begin{align*}
+		X(t) &= \Cq \cos(\frac{\gamq + \gamw}{R^2} t) + \Cw \sin(\frac{\gamq + \gamw}{R^2} t), &
+		Y(t) &= \Dq \cos(\frac{\gamq + \gamw}{R^2} t) + \Dw \sin(\frac{\gamq + \gamw}{R^2} t),
+	\end{align*}
+	where $\Cq, \Cw, \Dq, \Dw$ are constants.  Define
+	\beq
+		\omg = \frac{\gamq + \gamw}{R^2}
+	\eeq
+	as the angular frequency.  Then
+	\begin{align*}
+		\Xd(t) &= -\Cq \omg \sin{\omg t} + \Cw \omg \cos{\omg t} = -\omg Y, &
+		\Yd(t) &= -\Dq \omg \sin{\omg t} + \Dw \omg \cos{\omg t} = \omg X,
+	\end{align*}
+	where we have used \refeq{eqnX} and \refeq{eqnY}.  This fixes
+	\begin{align*}
+		\Cq &= \Dw, &
+		\Cw &= -\Dq, &
+		-\Dq &= \Cw, &
+		\Dw &= \Cq
+	\end{align*}
+	which implies $\Cq = \Dw = 0$ and $\Cw = \Dq \equiv K$, where we have defined some new constant $K$.  Finally, we have
+	\begin{align*}
+		X(t) &= K \sin{\omg t} = \xq(t) - \xw(t), &
+		Y(t) &= K \cos{\omg t} = \yq(t) - \yw(t).
+	\end{align*}
+	Thus, we have shown that the equations of motion \refeq{4eqns} can be solved explicitly.  Since $\vR = (X, Y)$ is the vector separating the vortices, we have also shown that they orbit each other.  The orbital frequency
+	\beq
+		\omg = \frac{\gamq + \gamw}{R^2}
+	\eeq
+	is clearly inversely proportional to $R^2$, where $R = |\vR|$ is the magnitude of the vortices' separation.
+\end{solution}

@@ -93,105 +93,7 @@
 
 \input{Problem4}
 
-
-%\newcommand{\gam}{\gamma}
-\newcommand{\gami}{\gam^{(i)}}
-\newcommand{\gamj}{\gam^{(j)}}
-\newcommand{\vr}{\vec{r}}
-\newcommand{\vri}{\vr_i}
-\newcommand{\vrj}{\vr_j}
-\renewcommand{\xi}{x_i}
-\newcommand{\yi}{y_i}
-\newcommand{\xj}{x_j}
-\newcommand{\yj}{y_j}
-
-\newcommand{\xd}{\dot{x}}
-\newcommand{\yd}{\dot{y}}
-\newcommand{\xdi}{\xd_i}
-\newcommand{\ydi}{\yd_i}
-
-\newcommand{\gamq}{\gam^{(1)}}
-\newcommand{\gamw}{\gam^{(2)}}
-\newcommand{\vrq}{\vr_1}
-\newcommand{\vrw}{\vr_2}
-
-%\newcommand{\xq}{x_q}
-\newcommand{\yq}{y_1}
-\newcommand{\xw}{x_2}
-\newcommand{\yw}{y_2}
-
-\newcommand{\xdq}{\xd_1}
-\newcommand{\ydq}{\yd_1}
-\newcommand{\xdw}{\xd_2}
-\newcommand{\ydw}{\yd_2}
-
-\begin{statement}{Interacting line vortices} \label{vort1}
-\subparagraph{}
-	A system of $n$ vortices moving on a two-dimensional plane has the Hamiltonian
-	\beq
-		H = \sum_{j = 1}^n \sum_{i = 1}^{j - 1} -\gami \gamj \ln|\vri - \vrj|,
-	\eeq
-	where $\gami$ is the strength of the $i$th line vortex, and $\vri = (\xi, \yi)$ its position in the plane.  Using the Poisson bracket structure
-	\beq
-		[f, g] = \sum_{i = 1}^n \frac{1}{\gami} \left( \pdv{f}{\xi} \pdv{g}{\yi} - \pdv{f}{\yi} \pdv{g}{\yi} \right),
-	\eeq
-	Hamilton's equations for the vortex system simplify to
-	\begin{align*}
-		\xdi &= [\xi, H], &
-		\ydi = [\yi, H].
-	\end{align*}
-	Consider two vortices.  Show that the equations of motion can be solved explicitly.  Most importantly, show that the solution tells us the two vortices orbit each other with a frequency that is inversely proportional to the square of their separation.
-\end{statement}
-
-\begin{solution}
-	For two vortices, the Hamiltonian reduces to
-	\beq
-		H = -\gamq \gamw \ln|\vrq - \vrw|.
-	\eeq
-	For $i, j \in \{ 1, 2 \}$, note that
-	\begin{align*}
-		\pdv{\xi}{\xj} &= \pdv{\yi}{\yj} = \delta_{ij}, &
-		\pdv{\xi}{\yj} &= \pdv{\yi}{\xj} = 0.
-	\end{align*}
-	Note also that
-	\beq
-		|\vrq - \vrw| = \sqrt{(\xq - \xw)^2 + (\yq - \yw)^2}
-		= \sqrt{\xq^2 - 2 \xq \xw + \xw^2 + \yq^2 - 2 \yq \yw + \yw^2}.
-	\eeq
-	Define
-	\begin{align*}
-		w &\equiv (\xq - \xw)^2 + (\yq - \yw)^2, &
-		v &\equiv \sqrt{w}, &
-		u &\equiv \ln{v}.
-	\end{align*}
-	Then
-	\begin{align*}
-		\pdv{H}{\xi} &= \pdv{H}{u} \pdv{u}{v} \pdv{v}{w} \pdv{w}{\xi}
-		= -\gami \gamj \frac{1}{v} \frac{1}{2v} (2 \xi - 2 \xj)
-		= -\gami \gamj \frac{\xi - \xj}{(\xq - \xw)^2 + (\yq - \yw)^2}
-		= -\gami \gamj \frac{\xi - \xj}{|\vrq - \vrw|^2}, \\
-		\pdv{H}{\yi} &= \pdv{H}{u} \pdv{u}{v} \pdv{v}{w} \pdv{w}{\yi}
-		= -\gami \gamj \frac{\yi - \yj}{|\vrq - \vrw|^2},
-	\end{align*}
-	where $i \neq j$.
-	
-	Combining the above, and again fixing $i \neq j$,
-	\begin{align*}
-		\xdi &= \frac{1}{\gami} \left( \pdv{\xi}{\xi} \pdv{H}{\yi} - \pdv{\xi}{\yi} \pdv{H}{\xi} \right) + \frac{1}{\gamj} \left( \pdv{\xi}{\xj} \pdv{H}{\yj} - \pdv{\xi}{\yj} \pdv{H}{\xj} \right)
-		= \frac{1}{\gami} \pdv{H}{\yi}
-		= -\gamj \frac{\yi - \yj}{|\vrq - \vrw|^2}, \\
-		\ydi &= \frac{1}{\gami} \left( \pdv{\yi}{\xi} \pdv{H}{\yi} - \pdv{\yi}{\yi} \pdv{H}{\xi} \right) + \frac{1}{\gamj} \left( \pdv{\yi}{\xj} \pdv{H}{\yj} - \pdv{\yi}{\yj} \pdv{H}{\xj} \right)
-		= -\frac{1}{\gami} \pdv{H}{\xi}
-		= \gamj \frac{\xi - \xj}{|\vrq - \vrw|^2}.
-	\end{align*}
-	Explicitly, the four equations of motion are
-	\begin{align*}
-		\xdq &= -\gamw \frac{\yq - \yw}{|\vrq - \vrw|^2}, &
-		\xdw &= \gamq \frac{\yq - \yw}{|\vrq - \vrw|^2}, &
-		\ydq &= \gamw \frac{\xq - \xw}{|\vrq - \vrw|^2}, &
-		\ydw &= -\gamq \frac{\xq - \xw}{|\vrq - \vrw|^2}.
-	\end{align*}
-\end{solution}
+\input{Problem5}
 
 
 \newcommand{\Px}{P_x}
@@ -286,7 +188,6 @@
 	as desired. \qed
 \end{solution}
 
-\newcommand{\omg}{\omega}
 \newcommand{\xdd}{\ddot{x}}
 \newcommand{\ydd}{\ddot{y}}
 
@@ -302,11 +203,6 @@
 \newcommand{\xpt}{x_p(t)}
 \newcommand{\ypt}{y_p(t)}
 
-\newcommand{\Cq}{C_1}
-\newcommand{\Cw}{C_2}
-\newcommand{\Dq}{D_1}
-\newcommand{\Dw}{D_2}
-
 \begin{problem}
 	Using the relations above and the equations of motion, verify that the charged particle moves in a circle in the $(x, y)$ plane and that the circling frequency $\omg$ is given by
 	\beq
@@ -318,43 +214,74 @@ This is called the \emph{Larmor frequency}.
 \begin{solution}
 	Substituting \refeq{b} into \refeq{xd} yields
 	\beqn \label{xd2}
-		\xd = \frac{1}{m} \left( b + \frac{e B}{c} y \right).
+		\xd = \frac{1}{m} \left( b + \frac{e B}{c} y \right)
+		= \frac{e B}{m c} \left( \frac{c}{e B} b + y \right).
 	\eeqn
 	Similarly, solving \refeq{a} for $\py$ and substituting into \refeq{yd} gives us
 	\beqn \label{yd2}
-		\yd = \frac{1}{m} \left( a - \frac{e B}{c} x \right).
+		\yd = \frac{1}{m} \left( a - \frac{e B}{c} x \right)
+		= \frac{e B}{m c} \left( \frac{c}{e B} a - x \right).
 	\eeqn
 	\refeq{xd2} and \refeq{yd2} are a system of two coupled first-order equations.  Differentiating each by $t$, we obtain two uncoupled second-order equations:
+	\begin{align} \label{sys}
+		\xdd &= \frac{e B}{m c} \yd
+		= -\frac{e^2 B^2}{m^2 c^2} \left( x - \frac{c}{e B} a \right), &
+		\ydd &= -\frac{e B}{m c} \xd
+		= -\frac{e^2 B^2}{m^2 c^2} \left( y + \frac{c}{e B} b \right).
+	\end{align}
+	Define
 	\begin{align*}
-		\xdd &= \frac{1}{m} \frac{e B}{c} \yd
-		= \frac{1}{m^2} \frac{e B}{c} \left( a - \frac{e B}{c} x \right), &
-		\ydd &= -\frac{1}{m} \frac{e B}{c} \xd
-		= -\frac{1}{m^2} \frac{e B}{c} \left( b + \frac{e B}{c} y \right).
+		\xt &\equiv x - \frac{c}{e B} a, &
+		\yt &\equiv y + \frac{c}{e B} b.
 	\end{align*}
-	These are inhomogeneous equations, meaning that their general solutions are each the sum of a complementary solution and a particular solution.  That is,
+	Then
 	\begin{align*}
-		\xxt &= \xct + \xpt, &
-		\yyt &= \yct + \ypt,
+		\dv{\xt}{t} &= \xd, &
+		\dv[2]{\xt}{t} &= \xdd, &
+		\dv{\yt}{t} &= \yd, &
+		\dv[2]{\yt}{t} &= \ydd,
 	\end{align*}
-	where $\xct$ and $\yct$ are the complementary solutions, and $\xpt$ and $\ypt$ are the particular solutions.
-	
-	In order to show circular motion, it is sufficient to show that the complementary solutions $\xct$ and $\yct$ respresent circular motion.  (The particular solutions have the same form as the complementary solutions, but with coefficients determined by the constants $a$ and $b$.)  The complementary solutions satisfy
+	and the equations \refeq{sys} can be rewritten in terms of $\xt$ and $\yt$:
 	\begin{align*}
-		\xddc &= -\frac{1}{m^2} \frac{e^2 B^2}{c^2} \xc, &
-		\yddc &= -\frac{1}{m^2} \frac{e^2 B^2}{c^2} \yc,
+		\dv[2]{\xt}{t} &= -\frac{e^2 B^2}{m^2 c^2} \xt, &
+		\dv[2]{\yt}{t} &= -\frac{e^2 B^2}{m^2 c^2} \yt.
 	\end{align*}
-	which have solutions
+	These equations have the solutions
 	\begin{align*}
-		\xct &= \Cq \cos(\frac{e B}{m c} t) + \Cw \sin(\frac{e B}{m c} t)
-		= \Cq \cos(\omg t) + \Cw \sin(\omg t), \\
-		\yct &= \Dq \cos(\frac{e B}{m c} t) + \Dw \sin(\frac{e B}{m c} t)
-		= \Dq \cos(\omg t) + \Cw \sin(\omg t),
+		\xt(t) &= \Cq \cos(\frac{e B}{m c} t) + \Cw \sin(\frac{e B}{m c} t)
+		\equiv \Cq \cos(\omg t) + \Cw \sin(\omg t), \\
+		\yt(t) &= \Dq \cos(\frac{e B}{m c} t) + \Dw \sin(\frac{e B}{m c} t)
+		\equiv \Dq \cos(\omg t) + \Dw \sin(\omg t),
 	\end{align*}
 	where $\Cq, \Cw, \Dq, \Dw$ are constants, and we have defined
 	\beq
-		\omg = \frac{e B}{m c}.
+		\omg \equiv \frac{e B}{m c}.
 	\eeq
-	These solutions show that the particle moves in a circle with angular frequency $\omg$, as desired. \qed
+	Note that
+	\begin{align*}
+		\dv{\xt}{t} &= -\Cq \omg \sin(\omg t) + \Cw \omg \cos(\omg t), &
+		\dv{\yt}{t} &= -\Dq \omg \sin(\omg t) + \Dw \omg \cos(\omg t).
+	\end{align*}
+	Applying \refeq{xd2} and \refeq{yd2},
+	\begin{align*}
+		-\Cq \omg \sin(\omg t) + \Cw \omg \cos(\omg t) &= \omg \left[ \Dq \cos(\omg t) + \Dw \sin(\omg t) \right], \\
+		-\Dq \omg \sin(\omg t) + \Dw \omg \cos(\omg t) &= \omg \left[ \Cq \cos(\omg t) + \Cw \sin(\omg t) \right]
+	\end{align*}
+	which imply
+	\begin{align*}
+		-\Cq &= \Dw, &
+		\Cw &= \Dq, &
+		-\Dq &= \Cw, &
+		\Dw &= \Cq
+	\end{align*}
+	
+%	Transforming back to the original coordinates, we have
+%	\begin{align*}
+%		\xxt &= \Cq \cos(\omg t) + \Cw \sin(\omg t) + \frac{c}{e B} a, &
+%		\yyt &= \Dq \cos(\omg t) + \Cw \sin(\omg t) - \frac{c}{e B} b,
+%	\end{align*}
+%	where 
+%	These solutions show that the particle moves in a circle with angular frequency $\omg$, as desired. \qed
 \end{solution}
 
 \begin{problem}
@@ -386,5 +313,5 @@ This is called the \emph{Larmor frequency}.
 
 
 \vfill
-While writing up these solutions, I consulted Gelfand and Fomin's \emph{Calculus of Variations}, Goldstein's \emph{Classical Mechanics}, and Riley, Hobson, and Bence's \emph{Mathematical Methods for Physics and Engineering}.
+While writing up these solutions, I consulted Gelfand and Fomin's \emph{Calculus of Variations}, Goldstein's \emph{Classical Mechanics}, Tong's \emph{Classical Dynamics}, and Riley, Hobson, and Bence's \emph{Mathematical Methods for Physics and Engineering}.
 \end{document}
