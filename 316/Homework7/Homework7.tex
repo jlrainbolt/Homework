@@ -99,6 +99,7 @@
 \newcommand{\Px}{P_x}
 \newcommand{\Py}{P_y}
 
+\clearpage
 \begin{statement}{Conserved quantities for a system of line vortices} \label{vort2}
 \subparagraph{}
 	Now consider the general case of $n$ vortices.
@@ -222,14 +223,14 @@ This is called the \emph{Larmor frequency}.
 		\yd = \frac{1}{m} \left( a - \frac{e B}{c} x \right)
 		= \frac{e B}{m c} \left( \frac{c}{e B} a - x \right).
 	\eeqn
-	\refeq{xd2} and \refeq{yd2} are a system of two coupled first-order equations.  Differentiating each by $t$, we obtain two uncoupled second-order equations:
+	Differentiating \refeq{xd2} and \refeq{yd2} by $t$, we obtain two uncoupled second-order equations:
 	\begin{align} \label{sys}
 		\xdd &= \frac{e B}{m c} \yd
 		= -\frac{e^2 B^2}{m^2 c^2} \left( x - \frac{c}{e B} a \right), &
 		\ydd &= -\frac{e B}{m c} \xd
 		= -\frac{e^2 B^2}{m^2 c^2} \left( y + \frac{c}{e B} b \right).
 	\end{align}
-	Define
+	Let $\xt$ and $\yt$ be new coordinates such that
 	\begin{align*}
 		\xt &\equiv x - \frac{c}{e B} a, &
 		\yt &\equiv y + \frac{c}{e B} b.
@@ -254,34 +255,21 @@ This is called the \emph{Larmor frequency}.
 		\equiv \Dq \cos(\omg t) + \Dw \sin(\omg t),
 	\end{align*}
 	where $\Cq, \Cw, \Dq, \Dw$ are constants, and we have defined
-	\beq
+	\beqn \label{omg2}
 		\omg \equiv \frac{e B}{m c}.
-	\eeq
-	Note that
+	\eeqn
+	Applying \refeq{xd2} and \refeq{yd2}, we have
 	\begin{align*}
-		\dv{\xt}{t} &= -\Cq \omg \sin(\omg t) + \Cw \omg \cos(\omg t), &
-		\dv{\yt}{t} &= -\Dq \omg \sin(\omg t) + \Dw \omg \cos(\omg t).
+		\dv{\xt}{t} &= -\Cq \omg \sin(\omg t) + \Cw \omg \cos(\omg t) = \omg \yt, &
+		\dv{\yt}{t} &= -\Dq \omg \sin(\omg t) + \Dw \omg \cos(\omg t) = -\omg \xt.
 	\end{align*}
-	Applying \refeq{xd2} and \refeq{yd2},
+	This implies $\Cq = -\Dw$ and $\Cw = \Dq$.  We may fix $\Cq = \Dw = 0$ and $\Cw = \Dq = R$ without loss of generality, where $R$ is some constant.
+	Transforming back to the original coordinates, we have
 	\begin{align*}
-		-\Cq \omg \sin(\omg t) + \Cw \omg \cos(\omg t) &= \omg \left[ \Dq \cos(\omg t) + \Dw \sin(\omg t) \right], \\
-		-\Dq \omg \sin(\omg t) + \Dw \omg \cos(\omg t) &= \omg \left[ \Cq \cos(\omg t) + \Cw \sin(\omg t) \right]
+		\xxt &= R \sin(\omg t) + \frac{c}{e B} a, &
+		\yyt &= R \cos(\omg t) - \frac{c}{e B} b.
 	\end{align*}
-	which imply
-	\begin{align*}
-		-\Cq &= \Dw, &
-		\Cw &= \Dq, &
-		-\Dq &= \Cw, &
-		\Dw &= \Cq
-	\end{align*}
-	
-%	Transforming back to the original coordinates, we have
-%	\begin{align*}
-%		\xxt &= \Cq \cos(\omg t) + \Cw \sin(\omg t) + \frac{c}{e B} a, &
-%		\yyt &= \Dq \cos(\omg t) + \Cw \sin(\omg t) - \frac{c}{e B} b,
-%	\end{align*}
-%	where 
-%	These solutions show that the particle moves in a circle with angular frequency $\omg$, as desired. \qed
+	These solutions show that the particle moves in a circle with angular frequency $\omg$ defined by \refeq{omg2}, as desired. \qed
 \end{solution}
 
 \begin{problem}

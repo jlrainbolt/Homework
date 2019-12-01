@@ -143,29 +143,32 @@
 		Y(t) &= \Dq \cos(\frac{\gamq + \gamw}{R^2} t) + \Dw \sin(\frac{\gamq + \gamw}{R^2} t),
 	\end{align*}
 	where $\Cq, \Cw, \Dq, \Dw$ are constants.  Define
-	\beq
-		\omg = \frac{\gamq + \gamw}{R^2}
-	\eeq
-	as the angular frequency.  Then
+	\beqn \label{omg}
+		\omg \equiv \frac{\gamq + \gamw}{R^2}
+	\eeqn
+	as the angular frequency.  To solve for the constants, we apply \refeq{eqnX} and \refeq{eqnY}:
 	\begin{align*}
-		\Xd(t) &= -\Cq \omg \sin{\omg t} + \Cw \omg \cos{\omg t} = -\omg Y, &
-		\Yd(t) &= -\Dq \omg \sin{\omg t} + \Dw \omg \cos{\omg t} = \omg X,
+		\Xd(t) &= -\Cq \omg \sin(\omg t) + \Cw \omg \cos(\omg t) = -\omg Y, &
+		\Yd(t) &= -\Dq \omg \sin(\omg t) + \Dw \omg \cos(\omg t) = \omg X.
 	\end{align*}
-	where we have used \refeq{eqnX} and \refeq{eqnY}.  This fixes
+	This implies $\Cq = \Dw$ and $\Cw = -\Dq$.  We can fix $\Cq = \Dw = 0$ without loss of generality, which implies $\Cw = R$ and $\Dq = -R$.  We now have
+	\begin{align} \label{2eqns}
+		X(t) &= R \sin(\omg t) = \xq(t) - \xw(t), &
+		Y(t) &= -R \cos(\omg t) = \yq(t) - \yw(t).
+	\end{align}
+	We can now find the solutions to the original four equations by integrating \refeq{4eqns} with respect to $t$:
 	\begin{align*}
-		\Cq &= \Dw, &
-		\Cw &= -\Dq, &
-		-\Dq &= \Cw, &
-		\Dw &= \Cq
+		\xq(t) &= \frac{\gamw}{R} \int \cos(\omg t) \dd{t}
+		= \frac{\gamw}{\omg R} \sin(\omg t)
+		= \frac{\gamw}{\gamq + \gamw} R \sin(\omg t), \\
+		\xw(t) &= -\frac{\gamq}{R} \int \cos(\omg t)
+		= -\frac{\gamq}{\gamq + \gamw} R \sin(\omg t), \\
+		\yq(t) &= \gamw \int \sin(\omg t) \dd{t}
+		= -\frac{\gamw}{\gamq + \gamw} R \cos(\omg t), \\
+		\yw(t) &= -\gamq \int \sin(\omg t) \dd{t}
+		= \frac{\gamq}{\gamq + \gamw} R \cos(\omg t),
 	\end{align*}
-	which implies $\Cq = \Dw = 0$ and $\Cw = \Dq \equiv K$, where we have defined some new constant $K$.  Finally, we have
-	\begin{align*}
-		X(t) &= K \sin{\omg t} = \xq(t) - \xw(t), &
-		Y(t) &= K \cos{\omg t} = \yq(t) - \yw(t).
-	\end{align*}
-	Thus, we have shown that the equations of motion \refeq{4eqns} can be solved explicitly.  Since $\vR = (X, Y)$ is the vector separating the vortices, we have also shown that they orbit each other.  The orbital frequency
-	\beq
-		\omg = \frac{\gamq + \gamw}{R^2}
-	\eeq
-	is clearly inversely proportional to $R^2$, where $R = |\vR|$ is the magnitude of the vortices' separation.
+	where we have taken the constants of integration to be zero without loss of generality.
+
+	Thus, we have shown that the equations of motion can be solved explicitly.  Since $\vR = (X, Y)$ is the vector separating the vortices, and \refeq{2eqns} show that it rotates in a circle, we have also shown that the vortices orbit each other.  The orbital frequency $\omg$ given by \refeq{omg} is clearly inversely proportional to $R^2$, where $R = |\vR|$ is the magnitude of the vortices' separation.
 \end{solution}
