@@ -11,6 +11,8 @@
 %\allowdisplaybreaks
 
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\vfix}{\vspace{-\baselineskip}}
 
 \makeatletter
 \renewcommand*\env@cases[1][1.2]{%
@@ -35,6 +37,8 @@
 
 \titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
 \titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+
 \newcommand{\refeq}[1]{(\ref{#1})}
 
 \newcommand{\beq}{\begin{equation*}}
@@ -47,9 +51,9 @@
 \newcommand{\elg}{\end{align*}}
 
 
-\newenvironment{statement}
+\newenvironment{statement}[1]
 {
-	\section{}
+	\section{#1}
 	\color{darkgray}
 	\ignorespaces
 }
@@ -87,83 +91,300 @@
 
 \input{Problem3}
 
+\input{Problem4}
 
-\newcommand{\gam}{\gamma}
-\newcommand{\xo}{x_0}
-\newcommand{\xq}{x_1}
-\newcommand{\tlt}{\tilde{t}}
 
-\section{Extra credit}
-\begin{problem}
-	Verify that the nondimensionalized, one-dimensional Sine-Gordon equation,
-	\beqn \label{sg}
-		\thtxx - \thttt = \sint,
-	\eeqn
-	is also invariant under a Lorentz transformation on $(\xo = t, \xq = x)$.  The transformation is given by
+%\newcommand{\gam}{\gamma}
+\newcommand{\gami}{\gam^{(i)}}
+\newcommand{\gamj}{\gam^{(j)}}
+\newcommand{\vr}{\vec{r}}
+\newcommand{\vri}{\vr_i}
+\newcommand{\vrj}{\vr_j}
+\renewcommand{\xi}{x_i}
+\newcommand{\yi}{y_i}
+\newcommand{\xj}{x_j}
+\newcommand{\yj}{y_j}
+
+\newcommand{\xd}{\dot{x}}
+\newcommand{\yd}{\dot{y}}
+\newcommand{\xdi}{\xd_i}
+\newcommand{\ydi}{\yd_i}
+
+\newcommand{\gamq}{\gam^{(1)}}
+\newcommand{\gamw}{\gam^{(2)}}
+\newcommand{\vrq}{\vr_1}
+\newcommand{\vrw}{\vr_2}
+
+%\newcommand{\xq}{x_q}
+\newcommand{\yq}{y_1}
+\newcommand{\xw}{x_2}
+\newcommand{\yw}{y_2}
+
+\newcommand{\xdq}{\xd_1}
+\newcommand{\ydq}{\yd_1}
+\newcommand{\xdw}{\xd_2}
+\newcommand{\ydw}{\yd_2}
+
+\begin{statement}{Interacting line vortices} \label{vort1}
+\subparagraph{}
+	A system of $n$ vortices moving on a two-dimensional plane has the Hamiltonian
 	\beq
-		\mqty[	\gam & -\gam \nu \\
-				-\gam \nu & \gam ],
+		H = \sum_{j = 1}^n \sum_{i = 1}^{j - 1} -\gami \gamj \ln|\vri - \vrj|,
 	\eeq
-	where $\gam = 1 / \sqrt{1 - \nu^2}$.
+	where $\gami$ is the strength of the $i$th line vortex, and $\vri = (\xi, \yi)$ its position in the plane.  Using the Poisson bracket structure
+	\beq
+		[f, g] = \sum_{i = 1}^n \frac{1}{\gami} \left( \pdv{f}{\xi} \pdv{g}{\yi} - \pdv{f}{\yi} \pdv{g}{\yi} \right),
+	\eeq
+	Hamilton's equations for the vortex system simplify to
+	\begin{align*}
+		\xdi &= [\xi, H], &
+		\ydi = [\yi, H].
+	\end{align*}
+	Consider two vortices.  Show that the equations of motion can be solved explicitly.  Most importantly, show that the solution tells us the two vortices orbit each other with a frequency that is inversely proportional to the square of their separation.
+\end{statement}
+
+\begin{solution}
+	For two vortices, the Hamiltonian reduces to
+	\beq
+		H = -\gamq \gamw \ln|\vrq - \vrw|.
+	\eeq
+	For $i, j \in \{ 1, 2 \}$, note that
+	\begin{align*}
+		\pdv{\xi}{\xj} &= \pdv{\yi}{\yj} = \delta_{ij}, &
+		\pdv{\xi}{\yj} &= \pdv{\yi}{\xj} = 0.
+	\end{align*}
+	Note also that
+	\beq
+		|\vrq - \vrw| = \sqrt{(\xq - \xw)^2 + (\yq - \yw)^2}
+		= \sqrt{\xq^2 - 2 \xq \xw + \xw^2 + \yq^2 - 2 \yq \yw + \yw^2}.
+	\eeq
+	Define
+	\begin{align*}
+		w &\equiv (\xq - \xw)^2 + (\yq - \yw)^2, &
+		v &\equiv \sqrt{w}, &
+		u &\equiv \ln{v}.
+	\end{align*}
+	Then
+	\begin{align*}
+		\pdv{H}{\xi} &= \pdv{H}{u} \pdv{u}{v} \pdv{v}{w} \pdv{w}{\xi}
+		= -\gami \gamj \frac{1}{v} \frac{1}{2v} (2 \xi - 2 \xj)
+		= -\gami \gamj \frac{\xi - \xj}{(\xq - \xw)^2 + (\yq - \yw)^2}
+		= -\gami \gamj \frac{\xi - \xj}{|\vrq - \vrw|^2}, \\
+		\pdv{H}{\yi} &= \pdv{H}{u} \pdv{u}{v} \pdv{v}{w} \pdv{w}{\yi}
+		= -\gami \gamj \frac{\yi - \yj}{|\vrq - \vrw|^2},
+	\end{align*}
+	where $i \neq j$.
+	
+	Combining the above, and again fixing $i \neq j$,
+	\begin{align*}
+		\xdi &= \frac{1}{\gami} \left( \pdv{\xi}{\xi} \pdv{H}{\yi} - \pdv{\xi}{\yi} \pdv{H}{\xi} \right) + \frac{1}{\gamj} \left( \pdv{\xi}{\xj} \pdv{H}{\yj} - \pdv{\xi}{\yj} \pdv{H}{\xj} \right)
+		= \frac{1}{\gami} \pdv{H}{\yi}
+		= -\gamj \frac{\yi - \yj}{|\vrq - \vrw|^2}, \\
+		\ydi &= \frac{1}{\gami} \left( \pdv{\yi}{\xi} \pdv{H}{\yi} - \pdv{\yi}{\yi} \pdv{H}{\xi} \right) + \frac{1}{\gamj} \left( \pdv{\yi}{\xj} \pdv{H}{\yj} - \pdv{\yi}{\yj} \pdv{H}{\xj} \right)
+		= -\frac{1}{\gami} \pdv{H}{\xi}
+		= \gamj \frac{\xi - \xj}{|\vrq - \vrw|^2}.
+	\end{align*}
+	Explicitly, the four equations of motion are
+	\begin{align*}
+		\xdq &= -\gamw \frac{\yq - \yw}{|\vrq - \vrw|^2}, &
+		\xdw &= \gamq \frac{\yq - \yw}{|\vrq - \vrw|^2}, &
+		\ydq &= \gamw \frac{\xq - \xw}{|\vrq - \vrw|^2}, &
+		\ydw &= -\gamq \frac{\xq - \xw}{|\vrq - \vrw|^2}.
+	\end{align*}
+\end{solution}
+
+
+\newcommand{\Px}{P_x}
+\newcommand{\Py}{P_y}
+
+\begin{statement}{Conserved quantities for a system of line vortices} \label{vort2}
+\subparagraph{}
+	Now consider the general case of $n$ vortices.
+\end{statement}
+
+\begin{problem}
+	Verify that the ``total linear momentum along $x$'' and the ``total linear momentum along $y$,''
+	\begin{align*}
+		\Px &= \sum_{i = 1}^n \gami \yi, &
+		\Py &= \sum_{i = 1}^n -\gami \xi,
+	\end{align*}
+	are conserved.
+\end{problem}
+
+\begin{problem}
+	Verify that $[\Px, \Py]$ gives a conserved quantity.
+\end{problem}
+
+
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vA}{\vec{A}}
+\newcommand{\px}{p_x}
+\newcommand{\py}{p_y}
+\newcommand{\pdx}{\dot{p}_x}
+\newcommand{\pdy}{\dot{p}_y}
+
+\begin{statement}{Charged particle in a magnetic field}
+\subparagraph{}
+	Suppose a charged particle moves in a two-dimensional plane while experiencing a magnetic field $\vB = (0, 0, B)$.  Use the vector potential $\vA = (-By, 0, 0)$.  The Hamiltonian for the particle is
+	\beq
+		H = \frac{1}{2m} \left( \px + \frac{e B}{c} y \right)^2 + \frac{\py^2}{2m}.
+	\eeq
+\vfix
+\end{statement}
+
+\begin{problem}
+	Write down Hamilton's equations.  Verify that by appropriate manipulation we have
+	\begin{align*}
+		\py + \frac{e B}{c} x &= a, &
+		\px &= m \xd - \frac{e B}{c} y = b,
+	\end{align*}
+	where $a$ and $b$ are constants.
 \end{problem}
 
 \begin{solution}
-	Define $(\tlt, \xt)$ as the transformed coordinates.  \refeq{sg} is invariant if it has the same form under the substitution $\tht(t, x) \mapsto \tht(\tlt, \xt)$.  The new coordinates are given by
+	Note that
 	\beq
-		\mqty[	\tlt \\ \xt ]
-		= \mqty[	\gam & -\gam \nu \\
-				-\gam \nu & \gam ]
-		\mqty[	t \\ x ]
-		= \mqty[	\gam (t - \nu x) \\
-					\gam (x - \nu t) ],
+		H = \frac{1}{2m} \left( \px^2 + 2 \frac{e B}{c} \px y + \frac{e^2 B^2}{c^2} y^2 \right) + \frac{\py^2}{2m}
+		= \frac{\px^2}{2m} + \frac{e B}{c} \frac{\px y}{m} + \frac{e^2 B^2}{c^2} \frac{y^2}{2m} + \frac{\py^2}{2m}
 	\eeq
-	or
+	Hamilton's equations are
+	\begin{align}
+		\xd &= \pdv{H}{\px} = \frac{1}{m} \left( \px + \frac{e B}{c} y \right), \label{xd} \\
+		\pdx &= -\pdv{H}{x} = 0, \label{pdx} \\
+		\yd &= \pdv{H}{\py} = \frac{\py}{m}, \label{yd} \\
+		\pdy &= -\pdv{H}{y} = -\frac{e B}{c} \frac{1}{m} \left( \px + \frac{e B}{c} y \right). \label{pdy}
+	\end{align}
+	
+	Substituting \refeq{xd} into \refeq{pdy},
+	\beq
+		\pdy = -\frac{e B}{c} \xd.
+	\eeq
+	By integrating with respect to $t$, we obtain
+	\beq
+		\py = -\frac{e B}{c} \int \xd \dd{t} = -\frac{e B}{c} x + a,
+	\eeq 
+	where $a$ is some constant.  Therefore, we have
+	\beqn \label{a}
+		\py + \frac{e B}{c} x = a,
+	\eeqn
+	as desired.
+	
+	From \refeq{xd},
+	\beq
+		m \xd = \px + \frac{e B}{c} y
+		\iff
+		\px = m \xd - \frac{e B}{c} y,
+	\eeq
+	and from \refeq{pdx},
+	\beq
+		\px = \int 0 \dd{t} = b,
+	\eeq
+	where $b$ is some constant.  Combining these, we have
+	\beqn \label{b}
+		\px = m \xd - \frac{e B}{c} y = b
+	\eeqn
+	as desired. \qed
+\end{solution}
+
+\newcommand{\omg}{\omega}
+\newcommand{\xdd}{\ddot{x}}
+\newcommand{\ydd}{\ddot{y}}
+
+\newcommand{\xc}{x_c}
+\newcommand{\yc}{y_c}
+\newcommand{\xddc}{\ddot{x}_c}
+\newcommand{\yddc}{\ddot{y}_c}
+
+\newcommand{\xxt}{x(t)}
+\newcommand{\yyt}{y(t)}
+\newcommand{\xct}{\xc(t)}
+\newcommand{\yct}{\yc(t)}
+\newcommand{\xpt}{x_p(t)}
+\newcommand{\ypt}{y_p(t)}
+
+\newcommand{\Cq}{C_1}
+\newcommand{\Cw}{C_2}
+\newcommand{\Dq}{D_1}
+\newcommand{\Dw}{D_2}
+
+\begin{problem}
+	Using the relations above and the equations of motion, verify that the charged particle moves in a circle in the $(x, y)$ plane and that the circling frequency $\omg$ is given by
+	\beq
+		\omg = \frac{e B}{m c}.
+	\eeq
+This is called the \emph{Larmor frequency}.
+\end{problem}
+
+\begin{solution}
+	Substituting \refeq{b} into \refeq{xd} yields
+	\beqn \label{xd2}
+		\xd = \frac{1}{m} \left( b + \frac{e B}{c} y \right).
+	\eeqn
+	Similarly, solving \refeq{a} for $\py$ and substituting into \refeq{yd} gives us
+	\beqn \label{yd2}
+		\yd = \frac{1}{m} \left( a - \frac{e B}{c} x \right).
+	\eeqn
+	\refeq{xd2} and \refeq{yd2} are a system of two coupled first-order equations.  Differentiating each by $t$, we obtain two uncoupled second-order equations:
 	\begin{align*}
-		\tlt &= \gam (t - \nu x), &
-		\xt &= \gam (x - \nu t).
+		\xdd &= \frac{1}{m} \frac{e B}{c} \yd
+		= \frac{1}{m^2} \frac{e B}{c} \left( a - \frac{e B}{c} x \right), &
+		\ydd &= -\frac{1}{m} \frac{e B}{c} \xd
+		= -\frac{1}{m^2} \frac{e B}{c} \left( b + \frac{e B}{c} y \right).
 	\end{align*}
-	Proceeding similarly to problem 1, the chain rule gives us
+	These are inhomogeneous equations, meaning that their general solutions are each the sum of a complementary solution and a particular solution.  That is,
 	\begin{align*}
-		\pdv{}{t} &= \pdv{}{\tlt} \pdv{\tlt}{t} + \pdv{}{\xt} \pdv{\xt}{t}
-		= \gam \left( \pdv{}{\tlt} - \nu \pdv{}{\xt} \right), &
-		\pdv{}{x} &= \pdv{}{\tlt} \pdv{\tlt}{x} + \pdv{}{\xt} \pdv{\xt}{x}
-		= \gam \left( \pdv{}{\xt} - \nu \pdv{}{\tlt} \right).
+		\xxt &= \xct + \xpt, &
+		\yyt &= \yct + \ypt,
 	\end{align*}
-	For the second derivatives,
+	where $\xct$ and $\yct$ are the complementary solutions, and $\xpt$ and $\ypt$ are the particular solutions.
+	
+	In order to show circular motion, it is sufficient to show that the complementary solutions $\xct$ and $\yct$ respresent circular motion.  (The particular solutions have the same form as the complementary solutions, but with coefficients determined by the constants $a$ and $b$.)  The complementary solutions satisfy
 	\begin{align*}
-		\pdv[2]{}{t} &= \gam^2 \left( \pdv{}{\tlt} - \nu \pdv{}{\xt} \right)^2
-		= \gam^2 \left( \pdv[2]{}{\tlt} - 2 \nu \pdv{}{\tlt}{\xt} + \nu^2 \pdv[2]{}{\xt} \right), \\
-		\pdv[2]{}{x} &= \gam^2 \left( \pdv{}{\xt} - \nu \pdv{}{\tlt} \right)^2
-		= \gam^2 \left( \pdv[2]{}{\xt} - 2 \nu \pdv{}{\tlt}{\xt} + \nu^2 \pdv[2]{}{\tlt} \right).
+		\xddc &= -\frac{1}{m^2} \frac{e^2 B^2}{c^2} \xc, &
+		\yddc &= -\frac{1}{m^2} \frac{e^2 B^2}{c^2} \yc,
 	\end{align*}
-	Making these substitutions, \refeq{sg} becomes
+	which have solutions
 	\begin{align*}
-		\sint &= \pdv[2]{\tht}{x} - \pdv[2]{\tht}{t} \\
-		&= \gam^2 \left( \pdv[2]{\tht}{\xt} - 2 \nu \pdv{\tht}{\tlt}{\xt} + \nu^2 \pdv[2]{\tht}{\tlt} \right) - \gam^2 \left( \pdv[2]{\tht}{\tlt} - 2 \nu \pdv{\tht}{\tlt}{\xt} + \nu^2 \pdv[2]{\tht}{\xt} \right) \\
-		&= \gam^2 \left[ (1 - \nu^2) \pdv[2]{\tht}{\xt} - (1 - \nu^2) \pdv[2]{\tht}{\tlt} \right] \\
-		&= \pdv[2]{\tht}{\xt} - \pdv[2]{\tht}{\tt},
+		\xct &= \Cq \cos(\frac{e B}{m c} t) + \Cw \sin(\frac{e B}{m c} t)
+		= \Cq \cos(\omg t) + \Cw \sin(\omg t), \\
+		\yct &= \Dq \cos(\frac{e B}{m c} t) + \Dw \sin(\frac{e B}{m c} t)
+		= \Dq \cos(\omg t) + \Cw \sin(\omg t),
 	\end{align*}
-	because $\gam^2 = 1 / (1 - \nu^2)$.  Thus, we have demonstrated the invariance of \refeq{sg}. \qed
+	where $\Cq, \Cw, \Dq, \Dw$ are constants, and we have defined
+	\beq
+		\omg = \frac{e B}{m c}.
+	\eeq
+	These solutions show that the particle moves in a circle with angular frequency $\omg$, as desired. \qed
 \end{solution}
 
 \begin{problem}
-	Find the associated conserved quantity.  Is it analogous to a common conserved quantity in classical mechanics?
+	Now consider the limit where the $B$ field can be made arbitrarily strong.  Compare the Poisson bracket $[x, \px]$ for the charged particle with the Poisson bracket relation
+	\beq
+		[\xi, \yi] = \frac{\delta_{ij}}{\gami}
+	\eeq
+	for the system of line vortices described in problems~\ref{vort1} and \ref{vort2}.
 \end{problem}
 
 \begin{solution}
-	By analogy to problem 3, the Lagrangian for this system is given by
+	The Poisson bracket for the charged particle is given by
 	\beq
-		\Ld = \frac{1}{2} (\thtt^2 - \thtx^2) - \sint
+		[x, \px] = \pdv{x}{x} \pdv{\px}{\px} - \pdv{x}{\px} \pdv{\px}{x} + \pdv{x}{y} \pdv{\px}{\py} - \pdv{x}{\py} \pdv{\px}{y}.
 	\eeq
-	which is like \refeq{lagr3}, but with only one spatial dimension.  Continuing the analogy, the components of the energy-momentum vector are
+	Note that
 	\begin{align*}
-		P_0 &= \int \left[ \frac{1}{2} (\thtt^2 + \thtx^2) + \sint \right] \dd{x}, &
-		P_1 &= \int \thtt \thtx \dd{x}. &
+		\pdv{x}{x} &= \pdv{\px}{\px} = 1, &
+		\pdv{x}{\px} &= \pdv{\px}{x} = \pdv{x}{y} = \pdv{\px}{\py} = 0, &
+		\pdv{x}{\py} &= -\frac{c}{e B}, &
+		\pdv{\px}{y} &= -\frac{e B}{c}.
 	\end{align*}
-	These are the conserved quantitites, or ``currents.''  The component $P_0$ is analagous to the calssical Hamiltonian, or the total energy of the system.  This corresponds to $\Ld$'s having no explicit $t$ dependence.  The component $P_1$ is like the momentum conjugate to $x$, since it corresponds to $\Ld$'s having no explicit $x$ dependence.  Since we are concerned with only one spatial dimension, $P_1$ is analogous to the classical total (linear) momentum of the system.
+	Then
+	\beq
+		[x, \px] = 1 - 1 = 0.
+	\eeq
+	\hl{It's different?}
 \end{solution}
 
 
 \vfill
-While writing up these solutions, I consulted Gelfand and Fomin's \emph{Calculus of Variations} and Goldstein's \emph{Classical Mechanics}.
+While writing up these solutions, I consulted Gelfand and Fomin's \emph{Calculus of Variations}, Goldstein's \emph{Classical Mechanics}, and Riley, Hobson, and Bence's \emph{Mathematical Methods for Physics and Engineering}.
 \end{document}
