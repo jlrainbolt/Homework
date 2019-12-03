@@ -26,7 +26,7 @@
 \end{statement}
 
 \begin{solution}
-	The functional is invariant if $J[u(x, y)] = J[u(\xt, \yt)]$.  By the chain rule,
+	The functional is invariant if $J[u(x, y)] = J[\ut(\xt, \yt)]$.  By the chain rule,
 	\begin{align*}
 		\pdv{}{x} &= \pdv{}{\xt} \pdv{\xt}{x} + \pdv{}{\yt} \pdv{\yt}{x} = \cosep \pdv{}{\xt} - \sinep \pdv{}{\yt}, &
 		\pdv{}{y} &= \pdv{}{\xt} \pdv{\xt}{y} + \pdv{}{\yt} \pdv{\yt}{y} = \sinep \pdv{}{\xt} + \cosep \pdv{}{\yt}.
@@ -41,15 +41,15 @@
 	\eeq
 	and therefore
 	\beq
-		\intR \dxdy \mapsto \intRt \dxtdyt.
+		\intR f(u) \dxdy \mapsto \intRt f(\ut) \dxtdyt,
 	\eeq
-	Making these substitutions into \refeq{func1}, we have
+	for an arbitrary function $f$.  Making these substitutions into \refeq{func1}, we have
 	\begin{align*}
 		J[u(x, y)] &= \intR \left[ \left( \cosep \pdv{u}{\xt} - \sinep \pdv{u}{\yt} \right)^2 + \left( \sinep \pdv{u}{\xt} + \cosep \pdv{u}{\yt} \right)^2 \right] \dxdy \\
 		&= \intR \left(\coswe \pdv[2]{u}{\xt} - 2 \cosep \sinep \pdv{u}{\xt}{\yt} + \sinwe \pdv[2]{u}{\yt} + \sinwe \pdv[2]{u}{\xt} + 2 \cosep \sinep \pdv{u}{\xt}{\yt} + \coswe \pdv[2]{u}{\yt} \right) \dxdy \\
 		&= \intR \left[ \left( \pdv{u}{\xt} \right)^2 + \left( \pdv{u}{\yt} \right)^2 \right] \dxdy
-		= \intRt \left[ \left( \pdv{u}{\xt} \right)^2 + \left( \pdv{u}{\yt} \right)^2 \right] \dxtdyt \\
-		&= J[u(\xt, \yt)]
+		= \intRt \left[ \left( \pdv{\ut}{\xt} \right)^2 + \left( \pdv{\ut}{\yt} \right)^2 \right] \dxtdyt \\
+		&= J[\ut(\xt, \yt)], 
 	\end{align*}
 	as desired. \qed
 \end{solution}
