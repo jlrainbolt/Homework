@@ -45,13 +45,13 @@
 \begin{statement}{Interacting line vortices} \label{vort1}
 \subparagraph{}
 	A system of $n$ vortices moving on a two-dimensional plane has the Hamiltonian
-	\beq
+	\beqn \label{ham5}
 		H = \sum_{j = 1}^n \sum_{i = 1}^{j - 1} -\gami \gamj \ln|\vri - \vrj|,
-	\eeq
+	\eeqn
 	where $\gami$ is the strength of the $i$th line vortex, and $\vri = (\xi, \yi)$ its position in the plane.  Using the Poisson bracket structure
-	\beq
+	\beqn \label{poiss}
 		[f, g] = \sum_{i = 1}^n \frac{1}{\gami} \left( \pdv{f}{\xi} \pdv{g}{\yi} - \pdv{f}{\yi} \pdv{g}{\xi} \right),
-	\eeq
+	\eeqn
 	Hamilton's equations for the vortex system simplify to
 	\begin{align*}
 		\xdi &= [\xi, H], &
@@ -61,7 +61,7 @@
 \end{statement}
 
 \begin{solution}
-	For two vortices, the Hamiltonian reduces to
+	For two vortices, \refeq{ham5} reduces to
 	\beq
 		H = -\gamq \gamw \ln|\vrq - \vrw|.
 	\eeq
@@ -81,31 +81,32 @@
 		v &\equiv (\xq - \xw)^2 + (\yq - \yw)^2 = R^2.
 	\end{align*}
 	 Then
+	\beq
+		\pdv{H}{\xq} = \pdv{H}{u} \pdv{u}{R} \pdv{R}{v} \pdv{v}{\xq}
+		= -\gamq \gamw \frac{1}{R} \frac{1}{2R} (2 \xq - 2 \xw)
+		= -\gamq \gamw \frac{\xq - \xw}{(\xq - \xw)^2 + (\yq - \yw)^2}
+		= -\gamq \gamw \frac{\xq - \xw}{R^2},
+	\eeq
+	and, likewise,
 	\begin{align*}
-		\pdv{H}{\xi} &= \pdv{H}{u} \pdv{u}{R} \pdv{R}{v} \pdv{v}{\xi}
-		= -\gami \gamj \frac{1}{R} \frac{1}{2R} (2 \xi - 2 \xj)
-		= -\gami \gamj \frac{\xi - \xj}{(\xq - \xw)^2 + (\yq - \yw)^2}
-		= -\gami \gamj \frac{\xi - \xj}{R^2}, \\
-		\pdv{H}{\yi} &= \pdv{H}{u} \pdv{u}{R} \pdv{R}{v} \pdv{v}{\yi}
-		= -\gami \gamj \frac{\yi - \yj}{R^2},
+		\pdv{H}{\xw} &= \gamq \gamw \frac{\xq - \xw}{R^2}, &
+		\pdv{H}{\yq} &= -\gamq \gamw \frac{\yq - \yw}{R^2}, &
+		\pdv{H}{\yw} &= \gamq \gamw \frac{\yq - \yw}{R^2}.
 	\end{align*}
-	where $i \neq j$.
-	
-	Combining the above, and again fixing $i \neq j$,
-	\begin{align*}
-		\xdi &= \frac{1}{\gami} \left( \pdv{\xi}{\xi} \pdv{H}{\yi} - \pdv{\xi}{\yi} \pdv{H}{\xi} \right) + \frac{1}{\gamj} \left( \pdv{\xi}{\xj} \pdv{H}{\yj} - \pdv{\xi}{\yj} \pdv{H}{\xj} \right)
-		= \frac{1}{\gami} \pdv{H}{\yi}
-		= -\gamj \frac{\yi - \yj}{R^2}, \\
-		\ydi &= \frac{1}{\gami} \left( \pdv{\yi}{\xi} \pdv{H}{\yi} - \pdv{\yi}{\yi} \pdv{H}{\xi} \right) + \frac{1}{\gamj} \left( \pdv{\yi}{\xj} \pdv{H}{\yj} - \pdv{\yi}{\yj} \pdv{H}{\xj} \right)
-		= -\frac{1}{\gami} \pdv{H}{\xi}
-		= \gamj \frac{\xi - \xj}{R^2}.
-	\end{align*}
-	Explicitly, the four equations of motion are
-	\begin{align} \label{4eqns}
-		\xdq &= -\gamw \frac{\yq - \yw}{R^2}, &
-		\xdw &= \gamq \frac{\yq - \yw}{R^2}, &
-		\ydq &= \gamw \frac{\xq - \xw}{R^2}, &
-		\ydw &= -\gamq \frac{\xq - \xw}{R^2}.
+	Combining the above, we use \refeq{poiss} to find
+	\begin{align}
+		\xdq &= \frac{1}{\gamq} \left( \pdv{\xq}{\xq} \pdv{H}{\yq} - \pdv{\xq}{\yq} \pdv{H}{\xq} \right) + \frac{1}{\gamw} \left( \pdv{\xq}{\xw} \pdv{H}{\yw} - \pdv{\xq}{\yw} \pdv{H}{\xw} \right)
+		= \frac{1}{\gamq} \pdv{H}{\yq}
+		= -\gamw \frac{\yq - \yw}{R^2}, \label{4eqns1} \\
+		\xdw &= \frac{1}{\gamq} \left( \pdv{\xw}{\xq} \pdv{H}{\yq} - \pdv{\xw}{\yq} \pdv{H}{\xq} \right) + \frac{1}{\gamw} \left( \pdv{\xw}{\xw} \pdv{H}{\yw} - \pdv{\xw}{\yw} \pdv{H}{\xw} \right)
+		= \frac{1}{\gamw} \pdv{H}{\yw}
+		= \gamq \frac{\yq - \yw}{R^2},  \label{4eqns2} \\
+		\ydq &= \frac{1}{\gamq} \left( \pdv{\yq}{\xq} \pdv{H}{\yq} - \pdv{\yq}{\yq} \pdv{H}{\xq} \right) + \frac{1}{\gamw} \left( \pdv{\yq}{\xw} \pdv{H}{\yw} - \pdv{\yw}{\yw} \pdv{H}{\xw} \right)
+		= -\frac{1}{\gamq} \pdv{H}{\xq}
+		= \gamw \frac{\xq - \xw}{R^2},  \label{4eqns3} \\
+		\ydw &= -\frac{1}{\gamq} \left( \pdv{\yw}{\xq} \pdv{H}{\yq} - \pdv{\yw}{\yq} \pdv{H}{\xq} \right) + \frac{1}{\gamw} \left( \pdv{\yw}{\xw} \pdv{H}{\yw} - \pdv{\yw}{\yw} \pdv{H}{\xw} \right)
+		= -\frac{1}{\gamw} \pdv{H}{\xw}
+		= -\gamw \frac{\xq - \xw}{R^2}. \label{4eqns4}
 	\end{align}
 	Note that
 	\begin{align*}
@@ -119,7 +120,7 @@
 		= \sum_{i = 1}^n \frac{1}{\gami} \left( -\gami \gamj \frac{\xi - \xj}{R^2} \frac{\yi - \yj}{R^2} + \gami \gamj \frac{\yi - \yj}{R^2} \frac{\xi - \xj}{R^2} \right)
 		= 0.
 	\eeq
-	This means $R$ is a constant.
+	This means $R$ is a conserved quantity and therefore constant.
 
 	Define $\vR \equiv \vrq - \vrw = (X, Y)$, where $|\vR| = R$.  Now we have two generalized coordinates $X$ and $Y$, where $X = \xq - \xw$ and $Y = \yq - \yw$.  This gives us the two equations of motion
 	\begin{align}
@@ -151,22 +152,22 @@
 		\Xd(t) &= -\Cq \omg \sin(\omg t) + \Cw \omg \cos(\omg t) = -\omg Y, &
 		\Yd(t) &= -\Dq \omg \sin(\omg t) + \Dw \omg \cos(\omg t) = \omg X.
 	\end{align*}
-	This implies $\Cq = \Dw$ and $\Cw = -\Dq$.  We can fix $\Cq = \Dw = 0$ without loss of generality, which implies $\Cw = R$ and $\Dq = -R$.  We now have
+	This implies $\Cq = \Dw$ and $\Cw = -\Dq$.  We can fix $\Cw = \Dq = 0$ without loss of generality, which implies $\Cq = \Dq = R$.  We now have
 	\begin{align} \label{2eqns}
-		X(t) &= R \sin(\omg t) = \xq(t) - \xw(t), &
-		Y(t) &= -R \cos(\omg t) = \yq(t) - \yw(t).
+		X(t) &= R \cos(\omg t) = \xq(t) - \xw(t), &
+		Y(t) &= R \sin(\omg t) = \yq(t) - \yw(t).
 	\end{align}
-	We can now find the solutions to the original four equations by integrating \refeq{4eqns} with respect to $t$:
+	We can now find the solutions to the original four equations by integrating \refeq{4eqns1}--\refeq{4eqns4} with respect to $t$:
 	\begin{align*}
-		\xq(t) &= \frac{\gamw}{R} \int \cos(\omg t) \dd{t}
-		= \frac{\gamw}{\omg R} \sin(\omg t)
+		\xq(t) &= -\frac{\gamw}{R^2} \int Y(t) \dd{t}
+		= \frac{\gamw}{\omg R} \cos(\omg t)
+		= \frac{\gamw}{\gamq + \gamw} R \cos(\omg t), \\
+		\xw(t) &= \frac{\gamq}{R^2} \int Y(t) \dd{t}
+		= -\frac{\gamq}{\gamq + \gamw} R \cos(\omg t), \\
+		\yq(t) &= \frac{\gamw}{R^2} \int X(t) \dd{t}
 		= \frac{\gamw}{\gamq + \gamw} R \sin(\omg t), \\
-		\xw(t) &= -\frac{\gamq}{R} \int \cos(\omg t)
-		= -\frac{\gamq}{\gamq + \gamw} R \sin(\omg t), \\
-		\yq(t) &= \gamw \int \sin(\omg t) \dd{t}
-		= -\frac{\gamw}{\gamq + \gamw} R \cos(\omg t), \\
-		\yw(t) &= -\gamq \int \sin(\omg t) \dd{t}
-		= \frac{\gamq}{\gamq + \gamw} R \cos(\omg t),
+		\yw(t) &= -\frac{\gamq}{R^2} \int X(t) \dd{t}
+		= -\frac{\gamq}{\gamq + \gamw} R \sin(\omg t),
 	\end{align*}
 	where we have taken the constants of integration to be zero without loss of generality.
 

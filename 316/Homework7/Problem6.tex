@@ -1,0 +1,65 @@
+\newcommand{\Px}{P_x}
+\newcommand{\Py}{P_y}
+
+\begin{statement}{Conserved quantities for a system of line vortices} \label{vort2}
+\subparagraph{}
+	Now consider the general case of $n$ vortices.
+\end{statement}
+
+\begin{problem} \label{6a}
+	Verify that the ``total linear momentum along $x$'' and the ``total linear momentum along $y$,''
+	\begin{align*}
+		\Px &= \sum_{i = 1}^n \gami \yi, &
+		\Py &= \sum_{i = 1}^n -\gami \xi,
+	\end{align*}
+	are conserved.
+\end{problem}
+
+\begin{solution}
+	In order to show that $\Px$ and $\Py$ are conserved, we will show that $[H, \Px] = [H, \Py] = 0$, where $H$ is given by \refeq{ham5}.  For all $i, j$,
+	\begin{align*}
+		\pdv{\Px}{\xi} &= 0, &
+		\pdv{\Px}{\yi} &= \gami, &
+		\pdv{\Py}{\xi} &= -\gami, &
+		\pdv{\Py}{\yi} &= 0,
+	\end{align*}
+	and
+	\begin{align*}
+		\pdv{H}{\xi} &= \sum_{j \neq i} - \gami \gamj \frac{\xi - \xj}{|\vri - \vrj|^2}, &
+		\pdv{H}{\yi} &= \sum_{j \neq i} - \gami \gamj \frac{\yi - \yj}{|\vri - \vrj|^2}.
+	\end{align*}
+	Applying \refeq{poiss},
+	\begin{align*}
+		[H, \Px] &= \sum_{i = 1}^n \frac{1}{\gami} \left( \pdv{H}{\xi} \pdv{\Px}{\yi} - \pdv{H}{\yi} \pdv{\Px}{\xi} \right)
+		= \sum_{i = 1}^n \frac{1}{\gami} \pdv{H}{\xi} \pdv{\Px}{\yi}
+		= \sum_{i = 1}^n \sum_{j \neq i} -\gami \gamj \frac{\xi - \xj}{|\vri - \vrj|^2}
+		= 0, \\
+		[H, \Py] &= \sum_{i = 1}^n \frac{1}{\gami} \left( \pdv{H}{\xi} \pdv{\Py}{\yi} - \pdv{H}{\yi} \pdv{\Py}{\xi} \right)
+		= \sum_{i = 1}^n -\frac{1}{\gami} \pdv{H}{\yi} \pdv{\Py}{\xi}
+		= \sum_{i = 1}^n \sum_{j \neq i} \gami \gamj \frac{\yi - \yj}{|\vri - \vrj|^2}
+		= 0,
+	\end{align*}
+	as desired. \qed
+\end{solution}
+
+\begin{problem}
+	Verify that $[\Px, \Py]$ gives a conserved quantity.
+\end{problem}
+
+\begin{solution}
+	As in \ref{6a}, we will show that $[H, [\Px, \Py]] = 0$.  Firstly, note that
+	\beq
+		[\Px, \Py] = \sum_{i = 1}^n \frac{1}{\gami} \left( \pdv{\Px}{\xi} \pdv{\Py}{\yi} - \pdv{\Px}{\yi} \pdv{\Py}{\xi} \right)
+		= \sum_{i = 1}^n -\frac{1}{\gami} \pdv{\Px}{\yi} \pdv{\Py}{\xi}
+		= \sum_{i = 1}^n \gami.
+	\eeq
+	It is obvious that
+	\beq
+		\pdv{[\Px, \Py]}{\xi} = \pdv{[\Px, \Py]}{\yi} = 0,
+	\eeq
+	for all $i, j$, so it follows trivially that
+	\beq
+		[H, [\Px, \Py]] = \sum_{i = 1}^n \frac{1}{\gami} \left( \pdv{H}{\xi} \pdv{[\Px, \Py]}{\yi} - \pdv{H}{\yi} \pdv{[\Px, \Py]}{\xi} \right) = 0
+	\eeq
+	as desired. \qed
+\end{solution}
