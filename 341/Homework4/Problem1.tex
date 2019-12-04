@@ -48,7 +48,7 @@
 \begin{solution}
 	We will look for nonzero $\alm$ by comparing the $\tht$ and $\phi$ dependence of $\Ylm$ and $\psitpo$.  From (3.6.36) and (3.6.37) in Sakurai, the spherical harmonic functions are given by
 	\begin{align*}
-		\Ylmtp &= \frac{(-1)^l}{2^l l!} \sqrt{\frac{(2l + 1)}{4\pi} \frac{(l + m)!}{(l - m)!}} \frac{e^{i m \phi}}{sin^m{\tht}} \dv[l - m]{}{(\cost)} (\sint)^{2l}, &
+		\Ylmtp &= \frac{(-1)^l}{2^l l!} \sqrt{\frac{(2l + 1)}{4\pi} \frac{(l + m)!}{(l - m)!}} \frac{e^{i m \phi}}{\sin^m{\tht}} \dv[l - m]{(\sint)^{2l}}{(\cost)}, &
 		Y^l_{-m}(\tp) &= (-1)^m \, {\Ylm}^*(\tp)
 	\end{align*}
 	for $m \geq 0$.  Beginning with the $\phi$ dependence of $\psitpo$, note that
@@ -59,27 +59,19 @@
 	
 	For the $\tht$ dependence, we have $\psitpo \propto \sinwt$.  Looking at $\Ylm$, note that $(\sint)^{2l} = (1 - \coswt)^l$, so
 	\beq
-		\Ylm \propto \frac{1}{\sin^m{\tht}} \dv[l - m]{}{(\cost)} (1 - \coswt)^l.
+		\Ylm \propto \frac{1}{\sin^m{\tht}} \dv[l - m]{(1 - \coswt)^l}{(\cost)}.
 	\eeq
-%	For $m = 0$,
-%	\beq
-%		Y^l_0 \propto \dv[l]{}{(\cost)} (1 - \coswt)^l.
-%	\eeq
 	Plugging in $m = 0$ and the first few values of $l$,
 	\begin{align*}
-		Y^0_0 &\propto \dv[0]{}{(\cost)} (1 - \coswt)^0 = 1, \\
-		Y^1_0 &\propto \dv{}{(\cost)} (1 - \coswt) = -2\cost, \\
-		Y^2_0 &\propto \dv[2]{}{(\cost)} (1 - 2\coswt + \cos^4{\tht}) = \dv{}{(\cost)} (-4 \cost + 4 \cos^3{\tht}) = -4 + 12 \coswt = 8 - 12 \sinwt,
+		Y^0_0 &\propto \dv[0]{(1 - \coswt)^0}{(\cost)} = 1, \\
+		Y^1_0 &\propto \dv{(1 - \coswt)}{(\cost)} = -2\cost, \\
+		Y^2_0 &\propto \dv[2]{(1 - 2\coswt + \cos^4{\tht})}{(\cost)} = \dv{(-4 \cost + 4 \cos^3{\tht})}{(\cost)} = -4 + 12 \coswt = 8 - 12 \sinwt,
 	\end{align*}
 	so we know $a^1_0 = 0$.  Inspecting the above, we deduce that $Y^l_0$ with $l > 2$ contain mixed terms of $\sint$ and $\cost$ and higher powers of $\sint$, so $a^l_0 = 0$ for $l > 2$.
 	
-%	For $m = \pm 2$,
-%	\beq
-%		Y^l_{\pm 2} \propto \frac{1}{\sinwt} \sinwt \dv[l -2]{}{(\cost)} (1 - \coswt)^l.
-%	\eeq
 	Plugging in $m = \pm 2$ and $l = 2$,
 	\beq
-		Y^2_{\pm 2} \propto \frac{1}{\sinwt} \dv[0]{}{(\cost)} (1 - \coswt)^2 = \frac{\sin^4{\tht}}{\sinwt} = \sinwt.
+		Y^2_{\pm 2} \propto \frac{1}{\sinwt} \dv[0]{(1 - \coswt)^2}{(\cost)} = \frac{\sin^4{\tht}}{\sinwt} = \sinwt.
 	\eeq
 	Again, by inspection $Y^l_{\pm2}$ with $l > 2$ contain terms that are not in $\psitpo$, so $a^l_{\pm2} = 0$ for $l > 2$ as well.
 	
@@ -108,7 +100,6 @@
 
 \newcommand{\Ut}{U(t)}
 
-%\clearpage
 \begin{problem} \label{2}
 	Now consider the wave function at nonzero time $t$.  Use your results from \ref{1} and the expressions for spherical harmonics to derive an explicit expression in terms of sines and cosines of $\tht$ and $\phi$ for $\psitpt$.
 \end{problem}

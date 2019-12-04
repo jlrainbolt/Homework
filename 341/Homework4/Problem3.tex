@@ -121,6 +121,7 @@
 \newcommand{\bpsi}{\bra{\psi}}
 \newcommand{\rhot}{\rho(t)}
 
+\clearpage
 \begin{problem}
 	Using the {\Schrodinger} equation
 	\beqn \label{schro}
@@ -200,6 +201,10 @@
 		\dv{}{t} \psiut \kup &= -\frac{i}{2} \psiut \left[ \Omz \kup + (\Omx + i \Omy) \kdn \right], &
 		\dv{}{t} \psidt \kdn &= -\frac{i}{2} \psidt \left[ (\Omx - i \Omy) \kup - \Omz \kdn \right].
 	\end{align}
+	This can also be written in matrix form in the $\{ \kup, \kdn \}$ basis:
+	\beq
+		\dv{}{t} \mqty[ \psiut \\ \psidt ] = -\frac{i}{2} \mqty[ \Omz & \Omx - i \Omy \\ \Omx + i \Omy & -\Omz ] \mqty[ \psiut \\ \psidt ].
+	\eeq
 \vfix
 \end{solution}
 
@@ -218,6 +223,7 @@
 
 \newcommand{\Sx}{S_x}
 
+\clearpage
 \begin{problem}
 	When the Hamiltonian is given by \refeq{ham3}, write down the (Heisenberg) equation of motion obeyed by the spin operators $\vS$.
 \end{problem}
@@ -225,7 +231,7 @@
 \begin{solution}
 	From (3.2.35) in Sakurai,
 	\beq
-		[\sigi, \sigj] = 2 i \lct \sigk
+		[\sigi, \sigj] = 2 i \lct \sigk.
 	\eeq
 	Let $\vS = (\Sq, \Sw, \Se)$ and $\vOme = (\Omq, \Omw, \Ome)$.  Then the Heisenberg equation of motion is
 	\beq

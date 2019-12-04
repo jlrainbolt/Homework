@@ -24,7 +24,7 @@
 \newcommand{\klamm}{\ket{\lamm}}
 
 \section{Problem 2}
-\begin{statement}
+\begin{statement} 
 	In this problem, we are working in the basis that diagonalizes the $z$ component of the spin.
 \end{statement}
 
@@ -124,7 +124,7 @@
 \newcommand{\vS}{\vec{S}}
 \newcommand{\vSq}{\vS_1}
 \newcommand{\vSw}{\vS_2}
-\newcommand{\eitsyh}{e^{i \tht \Sy / \hbar}}
+\newcommand{\eitsyh}{e^{-i \tht \Sy / \hbar}}
 
 \newcommand{\kjm}{\ket{j, m}}
 \newcommand{\kqq}{\ket{1, 1}}
@@ -181,10 +181,10 @@
 	
 	Then, once more using the power series expansion,
 	\begin{align*}
-		\eitsyh &= \sumni \frac{1}{n!} \left( \frac{i \tht \Sy}{\hbar} \right)^n
-		= \frac{i \tht}{\hbar} \Sy - \frac{\tht^2}{2 \hbar} K - \frac{i \tht^3}{6 \hbar} \Sy + \frac{\tht^4}{24 \hbar} K + \cdots
-		= \frac{i}{\hbar} \Sy \sum_{n = 1}^\infty \frac{(-1)^{n-1} \tht^{2n - 1}}{(2n - 1)!} + \frac{1}{\hbar} K \sumni \frac{(-1)^n \tht^{2n}}{(2n)!} \\
-		&= \frac{1}{\hbar} \left( i \sint \, \Sy + \cost \, K \right).
+		\eitsyh &= \sumni \frac{1}{n!} \left( -\frac{i \tht \Sy}{\hbar} \right)^n
+		= -\frac{i \tht}{\hbar} \Sy - \frac{\tht^2}{2 \hbar} K + \frac{i \tht^3}{6 \hbar} \Sy + \frac{\tht^4}{24 \hbar} K + \cdots \\
+		&= -\frac{i}{\hbar} \Sy \sum_{n = 1}^\infty \frac{(-1)^{n-1} \tht^{2n - 1}}{(2n - 1)!} + \frac{1}{\hbar} K \sumni \frac{(-1)^n \tht^{2n}}{(2n)!}
+		= \frac{1}{\hbar} \left( -i \sint \, \Sy + \cost \, K \right).
 	\end{align*}
 	From (3.7.15) in Sakurai,
 	\begin{align*}
@@ -200,11 +200,12 @@
 	\end{align*}
 	Finally,
 	\begin{align*}
-		\eitsyh \kqq &= \frac{i}{\hbar} \sint \, \Sy \kqq + \frac{1}{\hbar} \cost \, K \kqq \\
-		&= \frac{i}{2} \sint \mqty[ 0 & -i & -i & 0 \\ i & 0 & 0 & -i \\ i & 0 & 0 & -i \\ 0 & i & i & 0 ] \mqty[ 1 \\ 0 \\ 0 \\ 0 ] + \frac{1}{2} \cost \mqty[ 1 & 0 & 0 & -1 \\ 0 & 1 & 1 & 0 \\ 0 & 1 & 1 & 0 \\ 1 & 0 & 0 & -1 ] \mqty[ 1 \\ 0 \\ 0 \\ 0 ] = \frac{i}{2} \sint \mqty[ 0 \\ i \\ i \\ 0 ] + \frac{1}{2} \cost \mqty[ 1 \\ 0 \\ 0 \\ -1 ] \\
-		&= \frac{1}{2} \mqty[ \cost \\ -\sint \\ -\sint \\ -\cost ]
-		= \frac{1}{2} \left( \cost \kqq - \sint \frac{\kqo + \koo}{\sqrt{2}} - \sint \frac{\kqo - \koo}{\sqrt{2}} - \cost \kqnq \right) \\
-		&= \frac{\cost}{2} \kqq - \frac{\sint}{\sqrt{2}} \kqo - \frac{\cost}{2} \kqnq.
+		\eitsyh \kqq &= -\frac{i}{\hbar} \sint \, \Sy \kqq + \frac{1}{\hbar} \cost \, K \kqq \\
+		&= -\frac{i}{2} \sint \mqty[ 0 & -i & -i & 0 \\ i & 0 & 0 & -i \\ i & 0 & 0 & -i \\ 0 & i & i & 0 ] \mqty[ 1 \\ 0 \\ 0 \\ 0 ] + \frac{1}{2} \cost \mqty[ 1 & 0 & 0 & -1 \\ 0 & 1 & 1 & 0 \\ 0 & 1 & 1 & 0 \\ 1 & 0 & 0 & -1 ] \mqty[ 1 \\ 0 \\ 0 \\ 0 ]
+		= -\frac{i}{2} \sint \mqty[ 0 \\ i \\ i \\ 0 ] + \frac{1}{2} \cost \mqty[ 1 \\ 0 \\ 0 \\ -1 ] \\
+		&= \frac{1}{2} \mqty[ \cost \\ \sint \\ \sint \\ -\cost ]
+		= \frac{1}{2} \left( \cost \kqq + \sint \frac{\kqo + \koo}{\sqrt{2}} + \sint \frac{\kqo - \koo}{\sqrt{2}} - \cost \kqnq \right) \\
+		&= \frac{\cost}{2} \kqq + \frac{\sint}{\sqrt{2}} \kqo - \frac{\cost}{2} \kqnq.
 	\end{align*}
 \vfix
 \end{solution}
