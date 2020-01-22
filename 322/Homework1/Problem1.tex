@@ -1,0 +1,50 @@
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\dV}{\partial \cV}
+\newcommand{\nh}{\vec{\hat{n}}}
+\newcommand{\dcx}{\dd[3]{x}}
+\newcommand{\vE}{\vec{E}}
+\newcommand{\En}{E_n}
+\newcommand{\dS}{\dd{S}}
+
+\begin{statement}{}
+	Let $\cV$ be a bounded region of space and let $\phi$ be an electrostatic potential that is source free in this region, so that $\lap\phi = 0$ throughout $\cV$.  Suppose that for all $\vx$ lying on the boundary $S = \dV$, we have
+	\beqn \label{given}
+		\phi(\vx) = -f(\vx) \nh \cdot \nabla \psi(\vx),
+	\eeqn
+	where $f$ is a positive function ($f(\vx) \geq 0$) and $\nh$ is the outward pointing normal.  Show that $\phi = 0$ throughout $\cV$.
+\end{statement}
+
+\begin{solution}
+	Clearly $\phi = 0$ trivially satisfies the Laplace equation $\lap\phi = 0$ and the boundary condition \refeq{given}.  We will show that this solution is unique.
+	
+	Suppose to the contrary that there exists another solution $\psi$.  This means $\lap\psi = 0$, that $\psi$ satisfies the boundary condition
+	\beqn \label{psibound}
+		\psi(\vx) = -f(\vx) \nh \cdot \nabla \psi(\vx),
+	\eeqn
+	and that $\psi(\vx) \to 0$ as $|\vx| \to \infty$.  Multiplying both sides of $\lap\psi = 0$ by $\psi$ and integrating over $\cV$,
+	\begin{align}
+		0 &= \int_\cV \psi \lap \psi \dcx
+		= \int_\cV \left( \nabla \cdot (\psi \nabla \psi) - |\nabla \psi|^2 \right) \dcx \notag \\
+		&= \int_\cV \nabla \cdot (\psi \nabla \psi) \dcx - \int_\cV |\nabla \psi|^2 \dcx, \label{thing}
+	\end{align}
+	where we have factored out the divergence.  Applying Gauss's theorem, Eq.~(2.6) in the course notes, to the first integral on the right-hand side of \refeq{thing}, we have
+	\beq
+		\int_\cV \nabla \cdot (\psi \nabla \psi) \dcx = \int_S \psi \nh \cdot \nabla\psi \dS.
+	\eeq
+	Multiplying both sides by $-f(\vx)$, we obtain
+	\beq
+		-f(\vx) \int_\cV \nabla \cdot (\psi \nabla \psi) \dcx = \int_S \psi (-f(\vx) \nh \cdot \nabla\psi) \dS
+		= \int_S \psi^2 \dS = 0,
+	\eeq
+	where we have made the substitution \refeq{psibound}.  Additionally, we are assuming that $\psi$ is continuous on the boundary, meaning $\lap\psi = 0$ holds on $S$.  Since $f(\vx)$ is positive, we conclude that
+	\beq
+		\int_\cV \nabla \cdot (\psi \nabla \psi) \dcx = 0.
+	\eeq
+	Now \refeq{thing} reduces to
+	\beq
+		0 = \int_\cV |\nabla \psi|^2 \dcx,
+	\eeq
+	which implies that $\nabla\psi = 0$ and hence that $\psi$ is constant.  Since we know $\psi \to 0$ at infinity, we conclude that $\psi = 0$.  Therefore, we have shown that $\phi = 0$ is indeed the only solution to the Laplace equation subject to the boundary condition \refeq{given}. \qed
+\end{solution}

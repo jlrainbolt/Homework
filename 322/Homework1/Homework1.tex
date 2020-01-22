@@ -87,89 +87,13 @@
 
 \begin{document}
 
-\newcommand{\cV}{\mathcal{V}}
-\newcommand{\lap}{\nabla^2}
-\newcommand{\vx}{\vec{x}}
-\newcommand{\dV}{\partial \cV}
-\newcommand{\nh}{\vec{\hat{n}}}
-\newcommand{\dcx}{\dd[3]{x}}
-\newcommand{\vE}{\vec{E}}
-\newcommand{\En}{E_n}
+\input{Problem1}
 
-\newcommand{\dS}{\dd{S}}
-
-\begin{statement}{}
-	Let $\cV$ be a bounded region of space and let $\phi$ be an electrostatic potential that is source free in this region, so that $\lap\phi = 0$ throughout $\cV$.  Suppose that for all $\vx$ lying on the boundary $S = \dV$, we have
-	\beqn \label{given}
-		\phi(\vx) = -f(\vx) \nh \cdot \nabla \phi(\vx),
-	\eeqn
-	where $f$ is a positive function ($f(\vx) \geq 0$) and $\nh$ is the outward pointing normal.  Show that $\phi = 0$ throughout $\cV$.
-\end{statement}
-
-\begin{solution}
-%	Integrating both sides of \refeq{given} over the surface $S$ gives us
-%	\beq
-%		\int_S \phi(\vx) \dS = -\int_S f(\vx) \nabla \phi(\vx) \cdot \nh \dS
-%		= -\int_\cV \nabla \cdot f(\vx) \nabla\phi(\vx) \dcx,
-%	\eeq
-%	where we have applied Gauss's theorem, Eq.~(2.6) in the course notes, to obtain the second equality.  For the third integrand, note that
-%	\beq
-%		\nabla \cdot f(\vx) \nabla\phi(\vx) = f(\vx) \lap \phi(\vx) + \nabla f(\vx) \cdot \nabla\phi(\vx) = \nabla f(\vx) \cdot \nabla\phi(\vx),
-%	\eeq
-%	where in going to the third equality we have applied $\lap\phi = 0$.  Then
-%	\beq
-%		\int_S f(\vx) \nabla \phi(\vx) \cdot \nh \dS = \int_\cV \nabla f(\vx) \cdot \nabla\phi(\vx) \dcx
-%	\eeq
-
-	Maxwell's equations for electrostatics are
-	\begin{align}
-		\nabla \cdot \vE &= 4\pi\rho, \label{me1} \\
-		\vE &= -\nabla \phi. \label{me2}
-	\end{align}
-	Substituting \refeq{me2} into \refeq{given}, we have
-	\beq
-		\phi(\vx) = f(\vx) \nh \cdot \vE(\vx).
-	\eeq
-	Then, taking the gradient of both sides,
-	\begin{align*}
-		\nabla \phi(\vx) &= (\nabla f) (\nh \cdot \vE) + f \nabla(\nh \cdot \vE) \\
-		&= (\nabla f) (\nh \cdot \vE)+ f [(\nh \cdot \nabla) \vE + (\vE \cdot \nabla) \nh + \nh \times (\nabla \times \vE) + \vE \times (\nabla \times \nh)] \\
-		&= (\nabla f) (\nh \cdot \vE)+ f (\nh \cdot \nabla) \vE + f (\vE \cdot \nabla) \nh,
-	\end{align*}
-	where we have used the fact that the curl of $\vE$ is zero \hl{(ME)} and that the curl of the outward-pointing normal vector must also be zero for a closed boundary.  Then taking the divergence of both sides,
-	\begin{align*}
-		\nabla^2 \phi &= \nabla \cdot [(\nabla f) (\nh \cdot \vE)+ f (\nh \cdot \nabla) \vE + f (\vE \cdot \nabla) \nh] \\
-		&= 0
-	\end{align*}
-%Once again applying \refeq{me2}, we obtain
-%	\begin{align*}
-%		\vE &= -\nabla \big( f(\vx) \En(\vx) \big)
-%		= -\En(\vx) \nabla f(\vx) - f(\vx) \nabla \En(\vx)
-%		= -(\nh \cdot \vE) \nabla f(\vx) - f(\vx) \nabla(\nh \cdot \vE)
-%	\end{align*}
-%	Plugging back in...
-%	\begin{align*}
-%		\phi(\vx) &= -f(\vx) \nh \cdot [(\nh \cdot \vE) \nabla f(\vx) + f(\vx) \nabla(\nh \cdot \vE)] \\
-%		&= -f(\vx) \En \nh \cdot \nabla f(\vx) - f^2(\vx) \nh \cdot \nabla \En
-%	\end{align*}
-%	
-%	
-%	Integrating both sides of this expression, we have
-%	\beq
-%		\int_S \phi(\vx) \dS = \int_S f(\vx) \vE \cdot \nh \dS = \int_\cV \nabla \cdot f(\vx) \vE \dcx,
-%	\eeq
-%	where we have used Gauss's theorem, Eq.~(2.6), to obtain the second equality.
-%	
-%	\beq 
-%		\int_S \phi(\vx) \dS = \int_S f(\vx) \vE \cdot \nh \dS = \int_\cV \nabla \cdot f(\vx) \vE \dcx,
-%	\eeq
-\end{solution}
-
-
+\clearpage
 \input{Problem2}
 
 \input{Problem3}
 
 \vfill
-In writing up these solutions, I consulted Griffiths's \emph{Introduction to Electrodynamics} and David Tong's lecture notes on electrodynamics.
+In addition to the course lecture notes, I consulted Griffiths's \emph{Introduction to Electrodynamics} and David Tong's lecture notes on electrodynamics while writing up these solutions.
 \end{document}
