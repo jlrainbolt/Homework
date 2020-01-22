@@ -1,0 +1,74 @@
+\newcommand{\vp}{\vec{p}}
+\newcommand{\vpq}{\vp_1}
+\newcommand{\vpw}{\vp_2}
+\newcommand{\vxq}{\vx_1}
+\newcommand{\vxw}{\vx_2}
+\newcommand{\phiq}{\phi_1}
+\newcommand{\phiw}{\phi_2}
+\newcommand{\Qq}{Q_1}
+\newcommand{\Qw}{Q_2}
+\newcommand{\vdq}{\vec{d}_1}
+\newcommand{\vdw}{\vec{d}_2}
+\newcommand{\vF}{\vec{F}}
+
+\begin{statement}{}
+	The potential of an electrostatic dipole of dipole moment $\vp$ located at $\vx'$ is given by
+	\beq
+		\phi(\vx) = \frac{\vp \cdot (\vx - \vx')}{|\vx - \vx'|^3}.
+	\eeq
+	Suppose a dipole $\vpq$ is located at $\vxq$ and another dipole $\vpw$ is located at $\vxw$.
+\end{statement}
+
+\begin{problem}
+	What is the electrostatic force on the second dipole?
+\end{problem}
+
+\begin{solution}
+	Let $\Qq, \Qw$ be the charges of the dipoles and let $\vdq, \vdw$ be their displacement vectors, so $\vpq = \Qq \vdq$ and $\vpw = \Qw \vdw$.  Let $\vr = \vxw - \vxq$ and assume $d_1, d_2 \ll r$.  Let $\phiq$ be the potential of $\vpq$; that is,
+	\beqn \label{phi1}
+		\phiq(\vx) = \frac{\vpq \cdot (\vx - \vxq)}{|\vx - \vxq|^3}.
+	\eeqn
+	The potential energy of $\vpw$ due to the field of $\vpq$ is then
+	\begin{align}
+		U &= \Qw \phiq(\vr) - \Qw \phiq(\vr - \vdw) \notag \\
+		&= \Qw \left(\frac{\vpq \cdot \vr}{r^3} - \frac{\vpq \cdot (\vr - \vdw)}{|r - d|^3}\right)
+		\approx \Qw \left[ \frac{\vpq \cdot \vr}{r^3} - \vpq \cdot (\vr - \vdw) \left( \frac{1}{r^3} + \frac{3 \vdw \cdot \vr}{r^5} \right) \right] \notag \\
+		&= \Qw \left( \frac{\vpq \cdot \vr}{r^3} - \frac{\vpq \cdot (\vr - \vdw)}{r^3} + \frac{3 \vpq \cdot (\vr - \vdw) (\vdw \cdot \vr)}{r^5} \right)
+		\approx \Qw \left( \frac{\vpq \cdot \vdw}{r^3} - \frac{3(\vpq \cdot \vr)(\vdw \cdot \vr)}{r^5} \right) \notag \\
+		&= \left( \frac{\vpq \cdot \vpw}{r^3} - \frac{3(\vpq \cdot \vr)(\vpw \cdot \vr)}{r^5} \right), \label{U}
+	\end{align}
+	where we have used the Taylor series expansion
+	\beq
+		\frac{1}{|\vr - \vdw|^3} = \frac{1}{r^3} + \frac{3 \vdw \cdot \vr}{r^5} + \cdots
+	\eeq
+	and neglected terms of $\order{d^2}$.  The electrostatic force on the second dipole is then given by
+	\beq
+		\vF = -\nabla U
+		= -\nabla \left( \frac{\vpq \cdot \vpw}{|\vxw - \vxq|^3} - \frac{3[\vpq \cdot (\vxw - \vxq)][\vpw \cdot (\vxw - \vxq)]}{|\vxw - \vxq|^5} \right).
+	\eeq
+\end{solution}
+\vfix
+
+\newcommand{\rhow}{\rho_2}
+
+\begin{problem}
+	What is the electrostatic interaction energy of the two dipoles?
+\end{problem}
+
+\begin{solution}
+	Equation~(2.30) in the course notes gives the interaction energy of two charge distributions:
+	\beqn \label{Eint}
+		\sEint = \int \rhow \phiq \dcx,
+	\eeqn
+	where $\rhow$ is the charge distribution of $\vpw$ and $\phiq$ is given by \refeq{phi1}.  Since $\vpw$ consists of two point charges,
+	\beq
+		\rhow(\vx) = \Qw [\delta(\vxw) - \delta(\vxw - \vdw)],
+	\eeq
+	where we are placing the positive end of $\vpw$ at $\vxw$ and the negative end at $\vxw - \vdw$.  Then \refeq{Eint} becomes
+	\beq
+		\sEint = \Qw \int [\delta(\vxw) - \delta(\vxw - \vdw)] \frac{\vpq \cdot (\vx - \vxq)}{|\vx - \vxq|^3} \dcx
+		= \Qw \left( \frac{\vpq \cdot (\vxw - \vxq)}{|\vxw - \vxq|^3} - \frac{\vpq \cdot (\vxw - \vdw - \vxq)}{|\vxw - \vdq - \vxq|^3} \right)
+		= U,
+	\eeq
+	where $U$ is the potential energy in \refeq{U}.  So the force on the second dipole may be found by $F = -\nabla \sEint$.
+\end{solution}

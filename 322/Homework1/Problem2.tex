@@ -1,0 +1,92 @@
+\newcommand{\rhop}{\rho_p}
+\newcommand{\vr}{\vec{r}}
+\newcommand{\rh}{\vec{\hat{r}}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\dr}{\dd{r}}
+\newcommand{\mpp}{m_p}
+
+\begin{statement}{}
+	Consider the following classical model of a hydrogen atom.  The proton is taken to be a uniformly charged ball of radius $R = \SI{10e-13}{\cm}$ and total charge $e = \SI{4.8e-10}{\esu}$.  The electron is taken to have charge density $\rho = -e |\psi|^2$, where $\psi$ is the ground state wave function, $\psi(r) = e^{-r/a} / \sqrt{\pi a^3}$, with $a = \hbar / m e^2 = \SI{5.3e-9}{\cm}$.
+\end{statement}
+
+\begin{problem}
+	What is the electromagnetic energy of the proton?  Compare this with the mass of the proton.
+\end{problem}
+
+\begin{solution}
+	From elementary electrostatics, the electric field due to the proton is given by
+	\beq
+		\vE(\vx) = \begin{cases}
+			\dfrac{e r}{R^3} \,\rh & r < R, \\[10pt]
+			\dfrac{e}{r^2} \,\rh & r > R,
+		\end{cases}
+	\eeq
+	where $\rh$ is the unit vector in the radial direction and $r$ is the radial spherical coordinate.  Then the electrostatic potential is given by
+	\beq
+		\phi(\vx) = -\int_\infty^\vr \vE \cdot \dd{\vr'}
+		= \begin{cases}
+			\dfrac{e}{2 R^3} (3R^2 - r^2) & r < R, \\[10pt]
+			\dfrac{e}{r} & r > R.
+		\end{cases}
+	\eeq
+	Let $\rhop$ be the charge density, which is given by
+	\beq
+		\rho(\vx) = \begin{cases}
+			\dfrac{3e}{4\pi R^3} & r < R, \\[10pt]
+			0 & r > R.
+		\end{cases}
+	\eeq
+	The total electrostatic energy is then given by Eq.~(2.25) in the lecture notes.  For the proton,
+	\begin{align*}
+		\sE &= \frac{1}{2} \int \phi(\vx) \, \rhop(\vx) \dcx \\
+		&= \frac{1}{2} \int_0^R \frac{3e}{4\pi R^3} \frac{e}{2 R^3} (3R^2 - r^2) 4\pi r^2 \dr
+		= \frac{3 e^2}{4 R^6} \int_0^R (3R^2 r^2 - r^4) \dr
+		= \frac{3 e^2}{4 R^6} \bigg[ R^2 r^3 - \frac{1}{5} r^5 \bigg]_0^R
+		= \frac{3 e^2}{4 R^6} \left( R^5 - \frac{R^5}{5} \right) \\
+		&= \frac{3 e^2}{5 R}.
+	\end{align*}
+	Plugging in numbers, we have
+	\beq
+		\sE = \frac{3 (\SI{4.8e-10}{\esu})^2}{5 (\SI{10e-13}{\cm})}
+		= \SI{1.4e-7}{\erg}.
+	\eeq
+	The mass of the proton is $\mpp = \SI{1.673e-24}{\gram}$, so the fraction of the proton mass due to electromagnetic energy is
+	\beq
+		\frac{\sE}{\mpp c^2} = \frac{\SI{1.4e-7}{\erg}}{(\SI{1.673e-24}{\gram}) (\SI{3.00e10}{\cm\per\second})^2}
+		= \num{9e-5}.
+	\eeq
+	This makes sense, because the proton's mass is primarily due to the strong interactions that bind its constituent quarks.
+\end{solution}
+
+\newcommand{\rhoe}{\rho_e}
+\newcommand{\phip}{\phi_p}
+\newcommand{\sEint}{\sE_\text{int}}
+
+
+\begin{problem}
+	What is the electromagnetic interaction energy of the proton and electron?  (Since $R \ll a$, you may treat the proton as a point charge located at the origin.)  Compare this with the ground state energy of hydrogen.
+\end{problem}
+
+\begin{solution}
+	For this model, the electrostatic potential due to the proton is simply
+	\beq
+		\phip(\vx) = \frac{e}{r}.
+	\eeq
+	Let $\rhoe$ denote the charge density of the electron.  The electromagnetic interaction energy between two charged bodies is given by Eq.~(2.30) in the course notes.  For the proton and electron, this is
+	\begin{align*}
+		\sEint &= \int \rhoe \phip \dcx \\
+		&= \int_0^\infty -e \left| \frac{e^{-r/a}}{\sqrt{\pi a^3}} \right|^2 \frac{e}{r} 4\pi r^2 \dr
+		= -\frac{4 e^2}{a^3} \int_0^\infty r e^{-2r/a} \dr
+		= -\frac{4 e^2}{a^3} \frac{a^2}{4} \bigg[ e^{-2r/a} \bigg]_0^\infty \\
+		&= -\frac{e^2}{a}.
+	\end{align*}
+	Plugging in numbers, we have
+	\beq
+		\sEint = -\frac{(\SI{4.8e-10}{\esu})^2}{\SI{5.3e-9}{\cm}} = \SI{-4.35e-11}{\erg}.
+	\eeq
+	The ground state energy of hydrogen is $E = \SI{13.6}{\electronvolt}$, which is equivalent to $\SI{2.18e-11}{\erg}$.  Then the fraction of the ground state energy due to the electromagnetic interaction is
+	\beq
+		\frac{\sEint}{E} = \frac{\SI{-4.35e-11}{\erg}}{\SI{2.18e-11}{\erg}} = -2,
+	\eeq
+	so we see that the interaction energy has twice the magnitude of the ground state energy.  This makes sense when we consider the virial theorem $T = -U/2$, where $T$ is the electron's kinetic energy and $U$ its potential energy.  If we consider $\sEint$ as the electron's potential energy, then its kinetic energy is equal in magnitude to the ground state energy of hydrogen.
+\end{solution}
