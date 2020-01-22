@@ -1,0 +1,224 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{kbordermatrix}
+\allowdisplaybreaks
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 342 Homework 1}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\vfix}{\vspace{-\baselineskip}}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\color{darkgray}
+	\ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \subsection{}
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newcommand{\Schrodinger}{Schr\"{o}dinger}
+
+
+\begin{document}
+
+\newcommand{\Ho}{H_0}
+\newcommand{\Sx}{S_x}
+\newcommand{\Sy}{S_y}
+\newcommand{\Sz}{S_z}
+
+\newcommand{\lam}{\lambda}
+
+\newcommand{\kq}{\ket{1}}
+\newcommand{\kw}{\ket{2}}
+\newcommand{\ke}{\ket{3}}
+
+\newcommand{\suo}{^{(0)}}
+
+\newcommand{\Eon}{E\suo_n}
+\newcommand{\Eoq}{E\suo_1}
+\newcommand{\Eow}{E\suo_2}
+\newcommand{\Eoe}{E\suo_3}
+
+\newcommand{\Eqn}{E^{(1)}_n}
+\newcommand{\Eqq}{E^{(1)}_1}
+\newcommand{\Eqw}{E^{(1)}_2}
+\newcommand{\Eqe}{E^{(1)}_3}
+
+\newcommand{\kon}{\ket*{n\suo}}
+\newcommand{\koq}{\ket*{1\suo}}
+\newcommand{\kow}{\ket*{2\suo}}
+\newcommand{\koe}{\ket*{3\suo}}
+
+\newcommand{\Deln}{\Delta^{(1)}_n}
+\newcommand{\Delq}{\Delta^{(1)}_1}
+\newcommand{\Delw}{\Delta^{(1)}_2}
+\newcommand{\Dele}{\Delta^{(1)}_3}
+
+\newcommand{\Po}{P_0}
+\newcommand{\Vo}{V_0}
+\newcommand{\sigx}{\sigma_x}
+
+\begin{statement}{}
+	Consider a spin-1 particle.  The unperturbed Hamiltonian is $\Ho = A \Sz^2$, where $A$ is a constant.  Consider the perturbation $V = B(\Sx^2 - \Sy^2)$, where $|A| \gg |B|$.  Note that $S_i$ are the $3 \times 3$ spin matrices.
+\end{statement}
+
+\begin{problem}
+	Calculate the first-order correction to the energies.
+\end{problem}
+
+\begin{solution}
+	Firstly, note that
+	\begin{align*}
+		\Sx &= \frac{\hbar}{\sqrt{2}} \mqty[ 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 ], &
+		\Sy &= \frac{\hbar}{\sqrt{2}} \mqty[ 0 & -i & 0 \\ i & 0 & -i \\ 0 & i & 0 ], &
+		\Sz &= \hbar \mqty[ 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1 ].
+	\end{align*}
+	Then
+	\begin{align*}
+		\Ho &= A \hbar^2 \mqty[ 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 ], &
+		V &= B \frac{\hbar^2}{2} \left( \mqty[ 1 & 0 & 1 \\ 0 & 2 & 0 \\ 1 & 0 & 1 ] - \mqty[ 1 & 0 & -1 \\ 0 & 2 & 0 \\ -1 & 0 & 1 ] \right)
+		= B \hbar^2 \mqty[ 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 ].
+	\end{align*}
+%	The perturbed Hamiltonian is given by
+%	\beq
+%		H = \Ho + \lam V = \hbar^2 \mqty[ A & 0 & \lam B \\ 0 & 0 & 0 \\ \lam B & 0 & A ].
+%	\eeq
+	The eigenvalues of $\Ho$ are $\Eoq = \Eoe = A \hbar^2$ and $\Eow = 0$, so the problem is degenerate.  The eigenkets are the $\Sz$ basis kets:
+	\begin{align*}
+		\koq &= \kq = \mqty[ 1 \\ 0 \\ 0 ], &
+		\kow &= \kw = \mqty[ 0 \\ 1 \\ 0 ], &
+		\koe &= \ke = \mqty[ 0 \\ 0 \\ 1 ].
+	\end{align*}
+	
+	We will begin with the correction to $\Eow$, which is nondegenerate.  From (5.1.20) and (5.1.37) in Sakurai, the first-order energy corrections in the unperturbed case are given by
+	\beq
+		\Deln \equiv \Eqn - \Eon = \mel*{n\suo}{V}{n\suo}.
+	\eeq
+	This gives us
+	\beq
+		\Delw = \mel*{2\suo}{V}{2\suo} = \mel{2}{V}{2} = 0.
+	\eeq
+	
+	For $\Eoq$ and $\Eow$, consider the degenerate subspace spanned by $\{\kq, \ke\}$.  Let $\Po$ be a projection onto this subspace, and let
+	\beq
+		\Vo = \Po V \Po = B \hbar^2 \mqty[ 0 & 1 \\ 1 & 0 ] = B \hbar^2 \sigx,
+	\eeq
+	where $\sigx$ is the Pauli matrix.  Therefore, we know that $\Vo$ has eigenvalues $v_\pm = \pm B \hbar^2$ and eigenvectors
+	\begin{align*}
+		\ket{v_+} &= \frac{B \hbar^2}{\sqrt{2}} \mqty[ 1 \\ 1 ] = \frac{B \hbar^2}{\sqrt{2}} (\kq + \ke), &
+		\ket{v_-} &= \frac{B \hbar^2}{\sqrt{2}} \mqty[ -1 \\ 1 ] = \frac{B \hbar^2}{\sqrt{2}} (\ke - \kq).
+	\end{align*}
+	In this basis, $\Vo$ is diagonal.
+\end{solution}
+
+\begin{problem}
+	Solve the problem exactly, and compare your result to the perturbation theory result.
+\end{problem}
+
+
+
+\newcommand{\Eii}{E^{(1)}}
+
+\begin{statement}{}
+	Consider the Stark effect for the $n = 3$ states of hydrogen.  There are initially nine degenerate states $\ket{3, l, m}$ (neglect spin), and an electric field $E$ is turned on in the $z$ direction.
+\end{statement}
+
+\begin{problem}
+	Construct the $9 \times 9$ matrix representing the perturbing Hamiltonian in this case.  Show your work when deriving the nonzero matrix elements, and provide an explanation as to why the other elements are zero.
+\end{problem}
+
+\begin{problem}
+	Determine the first order corrections, $\Eii$, to the energies due to this perturbation, and write down the degeneracies of these energies.
+\end{problem}
+
+
+
+\newcommand{\Eq}{E_1}
+\newcommand{\Ew}{E_2}
+\newcommand{\Ee}{E_3}
+
+\newcommand{\vq}{v_1}
+\newcommand{\vw}{v_2}
+\newcommand{\ve}{v_3}
+
+\begin{statement}{}
+	Consider the Hamiltonian $\Ho$ acting on a three-dimensional Hilbert space spanned by the orthonormal basis $\{\kq, \kw, \ke\}$.  $\Ho = \sum_{i = 3}^3 E_i \ketbra{i}$, with energy eigenvalues $\Eq, \Ew, \Ee$.  Assume $\Eq = \Ew = E$.  To $\Ho$, we add a perturbation
+	\beq
+		V = \vq \ketbra{1}{3} + \vq^* \ketbra{3}{1} + \vw \ketbra{2}{3} + \vw^* \ketbra{3}{2}.
+	\eeq
+	Here, $\vq$ and $\vw$ are complex constants and small compared to $\Ee$.
+\end{statement}
+
+\begin{problem}
+	To second order in $V$, write down the explicit form of the effective Hamiltonian acting on the subspace spanned by $\{\kq, \kw\}$.
+\end{problem}
+
+\begin{problem}
+	By solving the effective Hamiltonian, construct the approximate solution for the eigenvalues and eigenfunctions of $\Ho + V$.  (The eigenkets only need to be constructed within the degenerate subspace.)
+\end{problem}
+
+
+\vfill
+While writing up these solutions, I consulted Sakurai's \emph{Modern Quantum Mechanics} and Shankar's \emph{Principles of Quantum Mechanics}.
+
+\end{document}
