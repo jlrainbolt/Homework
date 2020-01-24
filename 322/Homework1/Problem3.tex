@@ -15,9 +15,8 @@
 \newcommand{\rhow}{\rho_2}
 \newcommand{\vEq}{\vE_1}
 \newcommand{\pq}{p_1}
-\newcommand{\rhh}{\vec{\hat{r}}}
-\newcommand{\phh}{\boldsymbol{\hat{\varphi}}}
-\newcommand{\thh}{\boldsymbol{\hat{\theta}}}
+\newcommand{\pw}{p_2}
+
 
 \begin{statement}{}
 	The potential of an electrostatic dipole of dipole moment $\vp$ located at $\vx'$ is given by
@@ -42,7 +41,7 @@
 	\eeq
 	Since $\vpw$ consists of two point charges,
 	\beqn \label{rho1}
-		\rhow(\vx) = \Qw [\delta(\vxw) - \delta(\vxw - \vdw)],
+		\rhow(\vx) = \Qw [\delta(\vx - \vxw) - \delta(\vx - \vxw + \vdw)],
 	\eeqn
 	where we have defined the displacement vector of $\vpw$ as $\vdw$.  Let $\phiq$ be the potential of $\vpq$; that is,
 	\beqn \label{phi1}
@@ -50,22 +49,27 @@
 	\eeqn
 	Let $\vr = \vxw - \vxq$, and assume $d_2 \ll r$.  The force on $\vpw$ is given by
 	\begin{align*}
-		\vF &= -\int \Qw [\delta(\vxw) - \delta(\vxw - \vdw)] \nabla \phiq \dcx \\
+		\vF &= -\int \Qw [\delta(\vx - \vxw) - \delta(\vx - \vxw + \vdw)] \nabla \phiq \dcx \\
 		&= \Qw \left[ \nabla \left( \frac{\vpq \cdot (\vxw - \vdw - \vxq)}{|\vxw - \vdw - \vxq|^3} \right) - \nabla \left( \frac{\vpq \cdot (\vxw - \vxq)}{|\vxw - \vxq|^3} \right) \right]
 		= \Qw \nabla \left( \frac{\vpq \cdot (\vr - \vdw)}{|\vr - \vdw|^3} - \frac{\vpq \cdot \vr}{r^3} \right) \\
-		&\approx \Qw \nabla \left[ \frac{\vpq \cdot \vr}{r^3} - \vpq \cdot (\vr - \vdw) \left( \frac{1}{r^3} + \frac{3 \vdw \cdot \vr}{r^5} \right) \right]
-		= \Qw \nabla \left( \frac{\vpq \cdot \vr}{r^3} - \frac{\vpq \cdot (\vr - \vdw)}{r^3} + \frac{3 \vpq \cdot (\vr - \vdw) (\vdw \cdot \vr)}{r^5} \right) \\
-		&\approx \Qw \nabla \left( \frac{\vpq \cdot \vdw}{r^3} - \frac{3(\vpq \cdot \vr)(\vdw \cdot \vr)}{r^5} \right)
-		= \nabla \left( \frac{\vpq \cdot \vpw}{r^3} - \frac{3(\vpq \cdot \vr)(\vpw \cdot \vr)}{r^5} \right) \\
-		&= \nabla \left( \frac{3[\vpq \cdot (\vxw - \vxq)][\vpw \cdot (\vxw - \vxq)]}{|\vxw - \vxq|^5} - \frac{\vpq \cdot \vpw}{|\vxw - \vxq|^3} \right),
+		&\approx \Qw \nabla \left[ \vpq \cdot (\vr - \vdw) \left( \frac{1}{r^3} + \frac{3 \vdw \cdot \vr}{r^5} \right) - \frac{\vpq \cdot \vr}{r^3} \right]
+		= \Qw \nabla \left( \frac{\vpq \cdot (\vr - \vdw)}{r^3} + \frac{3 \vpq \cdot (\vr - \vdw) (\vdw \cdot \vr)}{r^5} - \frac{\vpq \cdot \vr}{r^3} \right) \\
+		&\approx \Qw \nabla \left( \frac{3(\vpq \cdot \vr)(\vdw \cdot \vr)}{r^5} - \frac{\vpq \cdot \vdw}{r^3} \right)
+		= \nabla \left( \frac{3(\vpq \cdot \vr)(\vpw \cdot \vr)}{r^5} - \frac{\vpq \cdot \vpw}{r^3} \right) \\
+		&= \nabla \left( \frac{\vpq \cdot \vpw}{|\vxw - \vxq|^3} - \frac{3[\vpq \cdot (\vxw - \vxq)][\vpw \cdot (\vxw - \vxq)]}{|\vxw - \vxq|^5} \right),
 	\end{align*}
 	where we have used the Taylor series expansion
 	\beq
 		\frac{1}{|\vr - \vdw|^3} = \frac{1}{r^3} + \frac{3 \vdw \cdot \vr}{r^5} + \cdots
 	\eeq
-	and neglected terms of $\order{d^2}$.
+	and neglected terms of $\order{d^2}$.  Evaluating the gradient,
+	\begin{align*}
+		\vF &= \frac{3 \nabla(\vpq \cdot \vr) (\vpw \cdot \vr)}{r^5} + 3 \frac{(\vpq \cdot \vr) \nabla(\vpw \cdot \vr)}{r^5} + \nabla(r^{-5}) (\vpq \cdot \vr)(\vpw \cdot \vr) - \nabla(r^{-3}) (\vpq \cdot \vpw) \\
+		&= \frac{3 \pq (\vpw \cdot \vr)}{r^5} + \frac{3 \pw (\vpq \cdot \vr)}{r^5} - \frac{15 \vr (\vpq \cdot \vr) (\vpw \cdot \vr)}{r^7} + \frac{3 (\vpq \cdot \vpw)}{r^5} \\
+		&= \frac{3}{r^4} [ \pq (\vpw \cdot \rh) + \pw (\vpq \cdot \rh) + \vpq \cdot \vpw - 5 (\vpq \cdot \rh) (\vpw \cdot \rh) ].
+	\end{align*}
 \end{solution}
-
+\vfix
 
 \begin{problem}
 	What is the electrostatic interaction energy of the two dipoles?
@@ -78,7 +82,7 @@
 	\eeqn
 	where $\rhow$ is the charge density of $\vpw$ and $\phiq$ is given by \refeq{phi1}.  Applying \refeq{rho1}, \refeq{Eint} becomes
 	\begin{align*}
-		\sEint &= \Qw \int [\delta(\vxw) - \delta(\vxw - \vdw)] \phiq \dcx
+		\sEint &= \Qw \int [\delta(\vx - \vxw) - \delta(\vx - \vxw + \vdw)] \phiq \dcx
 		= \Qw \left( \frac{\vpq \cdot \vr}{r^3} - \frac{\vpq \cdot (\vr - \vdw)}{|\vr - \vdw|^3} \right) \\
 		&= \Qw \left( \frac{3[\vpq \cdot (\vxw - \vxq)][\vpw \cdot (\vxw - \vxq)]}{|\vxw - \vxq|^5} - \frac{\vpq \cdot \vpw}{|\vxw - \vxq|^3} \right),
 	\end{align*}
