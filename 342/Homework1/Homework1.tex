@@ -177,9 +177,9 @@
 		= 24 (-4 + \rho)
 		= 2^3 3 (-4 + \rho), \\
 		L_5^5(\rho) &= \dv[5]{L_5(\rho)}{\rho}
-		= 5!
-		= 120
-		= 2^3 3^1 5.
+		= -5!
+		= -120
+		= -2^3 3^1 5.
 	\end{align*}
 	\clearpage
 	Substituting into \refeq{harm}, the relevant $Y_l^m$ are
@@ -231,11 +231,10 @@
 		= 3 \sqrt{6} e |\vE| \ao
 		= \mel{3 0 0}{V}{3 1 0}.
 	\eeq
-	\hl{MINUS SIGN}
 	
 	Secondly,
 	\beqn \label{v2}
-		\mel{3 2 \pm1}{V}{3 1 \pm1} = -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_{-1}^1 {Y_2^{\pm1}}^*(\tht, \phi) Y_1^{\pm1}(\tht, \phi) \cos\tht \dcost \dphi \int_0^\infty R_{3 2}(r) R_{3 1}(r) \rho^3 \drho,
+		\mel{3 2 {\pm1}}{V}{3 1 {\pm1}} = -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_{-1}^1 {Y_2^{\pm1}}^*(\tht, \phi) Y_1^{\pm1}(\tht, \phi) \cos\tht \dcost \dphi \int_0^\infty R_{3 2}(r) R_{3 1}(r) \rho^3 \drho,
 	\eeqn
 	where
 	\begin{align*}
@@ -251,18 +250,18 @@
 	\begin{align*}
 		\int_0^\infty &R_{3 2}(r) R_{3 1}(r) \rho^3 \drho
 		= \int_0^\infty \sqrt{\frac{e^{-\rho}}{2^7 3^7 5^3 \ao^3}} \rho^2 L_5^5(\rho) \sqrt{\frac{e^{-\rho}}{2^7 3^7 \ao^3}} \rho L_4^3(\rho) \rho^3 \drho
-		= \frac{1}{2^7 3^7 \sqrt{5^3} \ao^3} \int_0^\infty e^{-\rho} L_5^5(\rho) \rho L_4^3(\rho) \rho^5 \drho \\
-		&= \frac{1}{2^1 3^5 \sqrt{5} \ao^3} \int_0^\infty e^{-\rho} (-4 + \rho) \rho^6 \drho
-		= \frac{1}{2^1 3^5 \sqrt{5} \ao^3} \int_0^\infty e^{-\rho} (-4 \rho^6 + \rho^7) \drho
-		= \frac{1}{2^1 3^5 \sqrt{5} \ao^3} (-4 (6!) + 7!) \\
-		&= \frac{2^3 \sqrt{5}}{3^2 \ao^3}.
+		= \frac{1}{2^7 3^7 \sqrt{5^3} \ao^3} \int_0^\infty e^{-\rho} L_5^5(\rho) L_4^3(\rho) \rho^6 \drho \\
+		&= -\frac{1}{2^1 3^5 \sqrt{5} \ao^3} \int_0^\infty e^{-\rho} (-4 + \rho) \rho^6 \drho
+		= -\frac{1}{2^1 3^5 \sqrt{5} \ao^3} \int_0^\infty e^{-\rho} (-4 \rho^6 + \rho^7) \drho
+		= -\frac{1}{2^1 3^5 \sqrt{5} \ao^3} (-4 (6!) + 7!) \\
+		&= -\frac{2^3 \sqrt{5}}{3^2 \ao^3}.
 	\end{align*}
 	Then \refeq{v2} becomes
 	\beq
-		\mel{3 2 \pm1}{V}{3 1 \pm1} = -\frac{3^4 \ao^4 e |\vE|}{2^4} \frac{1}{\sqrt{5}} \frac{2^3 \sqrt{5}}{3^2 \ao^3}
-		= -\frac{3^2 \ao e |\vE|}{2}
-		= -\frac{9}{2} e |\vE| \ao
-		= \mel{3 1 \pm1}{V}{3 2 \pm1}.
+		\mel{3 2 {\pm1}}{V}{3 1 {\pm1}} = \frac{3^4 \ao^4 e |\vE|}{2^4} \frac{1}{\sqrt{5}} \frac{2^3 \sqrt{5}}{3^2 \ao^3}
+		= \frac{3^2 \ao e |\vE|}{2}
+		= \frac{9}{2} e |\vE| \ao
+		= \mel{3 1 {\pm1}}{V}{3 2 {\pm1}}.
 	\eeq
 	
 	Thirdly,
@@ -279,44 +278,52 @@
 		&= \frac{2}{\sqrt{3} \sqrt{5}},
 	\end{align*}
 	and
-	\begin{align*}
-		\int_0^\infty &R_{3 2}(r) R_{3 1}(r) \rho^3 \drho
-		= \int_0^\infty \sqrt{\frac{e^{-\rho}}{2^7 3^7 5^3 \ao^3}} \rho^2 L_5^5(\rho) \sqrt{\frac{e^{-\rho}}{2^7 3^7 \ao^3}} \rho L_4^3(\rho) \rho^3 \drho
-		= \frac{1}{2^7 3^7 \sqrt{5^3} \ao^3} \int_0^\infty e^{-\rho} L_5^5(\rho) L_4^3(\rho) \rho^6 \drho \\
-		&= \frac{1}{2 3^5 \sqrt{5} \ao^3} \int_0^\infty e^{-\rho} (-4 + \rho) \rho^6 \drho
-		= \frac{1}{2 3^5 \sqrt{5} \ao^3} (-4 (6!) + 7!)
-		= \frac{2^3 \sqrt{5}}{3^2 \ao^3}.
-	\end{align*}
+	\beq
+		\int_0^\infty R_{3 2}(r) R_{3 1}(r) \rho^3 \drho = -\frac{2^3 \sqrt{5}}{3^2 \ao^3}.
+	\eeq
 	Then \refeq{v3} becomes
 	\beq
-		\mel{3 2 0}{V}{3 1 0} = -\frac{3^4 \ao^4 e |\vE|}{2^4} \frac{2}{\sqrt{3} \sqrt{5}} \frac{2^3 \sqrt{5}}{3^2 \ao^3}
-		= -3 \sqrt{3} e |\vE| \ao
+		\mel{3 2 0}{V}{3 1 0} = \frac{3^4 \ao^4 e |\vE|}{2^4} \frac{2}{\sqrt{3} \sqrt{5}} \frac{2^3 \sqrt{5}}{3^2 \ao^3}
+		= 3 \sqrt{3} e |\vE| \ao
 		= \mel{3 1 0}{V}{3 2 0}.
 	\eeq
 	
 	In summary, we have
-	\begin{align*}
-		\kbordermatrix{
-			nlm & 3 0 0 & 3 1 -1 & 3 1 0 & 3 1 1 & 3 2 -2 & 3 2 -1 & 3 2 0 & 3 2 1 & 3 2 2 \\
-			3 0 0 & 0 & 0 & 3 \sqrt{6} & 0 & 0 & 0 & 0 & 0 & 0 \\
-			3 1 -1 & 0 & 0 & 0 & 0 & 0 & -9/2 & 0 & 0 & 0 \\
-			3 1 0 & 3 \sqrt{6} & 0 & 0 & 0 & 0 & 0 & -3 \sqrt{3} & 0 & 0 \\
-			3 1 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -9/2 & 0 \\
-			3 2 -2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-			3 2 -1 & 0 & -9/2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-			3 2 0 & 0 & 0 & -3 \sqrt{3} & 0 & 0 & 0 & 0 & 0 & 0 \\
-			3 2 1 & 0 & 0 & 0 & -9/2 & 0 & 0 & 0 & 0 & 0 \\
-			3 2 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-		} e |\vE| \ao = V.
-	\end{align*}
-	
+	\beqn \label{V2}
+		V = e |\vE| \ao \!\!\! \kbordermatrix{
+			& 3 0 0 & 3 1 -1 & 3 1 0 & 3 1 1 & 3 2 -2 & 3 2 -1 & 3 2 0 & 3 2 1 & 3 2 2 \\
+			& 0 & 0 & 3 \sqrt{6} & 0 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 0 & 0 & 0 & 0 & 9/2 & 0 & 0 & 0 \\
+			& 3 \sqrt{6} & 0 & 0 & 0 & 0 & 0 & 3 \sqrt{3} & 0 & 0 \\
+			& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 9/2 & 0 \\
+			& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 9/2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 0 & 3 \sqrt{3} & 0 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 0 & 0 & 9/2 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		}.
+	\eeqn
 \end{solution}
+\vfix
 
 
+\newcommand{\Del}{\Delta^{(1)}}
+\newcommand{\Deli}{\Delta^{(1)}_i}
 
 \begin{problem}
-	Determine the first order corrections, $\Eii$, to the energies due to this perturbation, and write down the degeneracies of these energies.
+	Determine the first order corrections, $\Del$, to the energies due to this perturbation, and write down the degeneracies of these energies.
 \end{problem}
+
+\begin{solution}
+	We have the perturbed Hamiltonian
+	\beq
+		H = \Ho + \lambda V.
+	\eeq
+	For the hydrogen atom, $\Ho$ is ninefold degenerate, so we need to find the eigenvalues of the full matrix $V$ given by \refeq{V2}.  Let $\Deli = e |\vE| \ao \mui$ denote the eigenvalues of $V$, where $\mu$ are the roots of the equation
+	\beq
+		0 = \det(V - \mu I) = 
+	\eeq
+\end{solution}
 
 
 
