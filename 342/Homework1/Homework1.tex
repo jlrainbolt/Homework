@@ -92,6 +92,7 @@
 \newcommand{\vr}{\vec{r}}
 \newcommand{\drho}{\dd{\rho}}
 \newcommand{\dtht}{\dd{\tht}}
+\newcommand{\dcost}{\dd{(\cos\tht)}}
 \newcommand{\dphi}{\dd{\phi}}
 
 \begin{statement}{}
@@ -107,13 +108,13 @@
 	\beq
 		V = -e Z |\vE|.
 	\eeq
-	$V$ is a dipole interaction because the hydrogen atom can be thought of as behaving like a dipole when subjected to an external electric field.  Therefore $V$ obeys the dipole selection rule, which is given by (17.2.21) in Shankar:
+	$V$ is a dipole interaction because the hydrogen atom can be thought of as behaving like a dipole when subject to an external electric field.  Therefore $V$ obeys the dipole selection rule, which is given by (17.2.21) in Shankar:
 	\beq
-		\mel{n l m}{Z}{n' l' m'} = 0 \qq{unless} \begin{cases} l' = l \pm 1 \\ m' = m \end{cases}.
+		\mel{n l m}{Z}{n' l' m'} = 0 \qq{unless} \begin{cases} l' = l \pm 1, \\ m' = m. \end{cases}
 	\eeq
 	The dipole selection rule is a combination of the angular momentum and parity selection rules.  The angular momentum selection rule stipulates that $\mel{n l m}{Z}{n' l' m'} = 0$ unless $l' = l, l \pm 1$ and $m' = m + q$ where $q = 0$ is the magnetic quantum number of the tensor operator $Z$.  The parity selection rule eliminates $l = l'$ because $\mel{n l m}{Z}{n' l' m'} = 0$ unless $l$ and $l'$ have opposite parity.
 	
-	For the nonzero elements, the hydrogen atom wavefunctions are given by (A.6.3) in Sakurai:
+	For the nonzero elements, the hydrogen atom wave functions are given by (A.6.3) in Sakurai:
 	\beq
 		\braket{\vr}{n l m} = \psi_{n l m}(r, \tht, \phi) = R_{n l}(r) Y_l^m(\tht, \phi),
 	\eeq
@@ -138,15 +139,15 @@
 	
 	The nonzero elements all have $l \in \{0, 1, 2\}$ and $m \in \{-1, 0, 1\}$.  Substituting into \refeq{R}, the relevant $R_{n l}$ are
 	\begin{align*}
-		R_{3 0}(r) &= -\sqrt{\left( \frac{2}{3 \ao} \right)^3 \frac{(3 - 1)!}{2 (3) 3!^3}} e^{-\rho / 2} L_{3}^{1}(\rho)
-		= -\sqrt{\frac{2^3}{3^3 \ao^3} \frac{2}{2^4 3^4}} e^{-\rho / 2} L_{3}^{1}(\rho)
-		= -\sqrt{\frac{e^{-\rho}}{3^7 \ao^3}} L_{3}^{1}(\rho), \\
+		R_{3 0}(r) &= -\sqrt{\left( \frac{2}{3 \ao} \right)^3 \frac{(3 - 1)!}{2 (3) 3!^3}} e^{-\rho / 2} L_3^1(\rho)
+		= -\sqrt{\frac{2^3}{3^3 \ao^3} \frac{2}{2^4 3^4}} e^{-\rho / 2} L_3^1(\rho)
+		= -\sqrt{\frac{e^{-\rho}}{3^7 \ao^3}} L_3^1(\rho), \\
 		R_{3 1}(r) &= -\sqrt{\left( \frac{2}{3 \ao} \right)^3 \frac{(3 - 1 - 1)!}{2 (3) (3 + 1)!^3}} e^{-\rho / 2} \rho L_{3 + 1}^{2 + 1}(\rho)
-		= -\sqrt{\frac{2^3}{3^3 \ao^3} \frac{1}{2^{10} 3^4}} e^{-\rho / 2} \rho L_{4}^{3}(\rho)
-		= -\sqrt{\frac{e^{-\rho}}{2^7 3^7 \ao^3}} \rho L_{4}^{3}(\rho), \\
+		= -\sqrt{\frac{2^3}{3^3 \ao^3} \frac{1}{2^{10} 3^4}} e^{-\rho / 2} \rho L_4^3(\rho)
+		= -\sqrt{\frac{e^{-\rho}}{2^7 3^7 \ao^3}} \rho L_4^3(\rho), \\
 		R_{3 2}(r) &= -\sqrt{\left( \frac{2}{3 \ao} \right)^3 \frac{(3 - 2 - 1)!}{2 (3) (3 + 2)!^3}} e^{-\rho / 2} \rho^2 L_{3 + 2}^{4 + 1}(\rho)
-		= -\sqrt{\frac{2^3}{3^3 \ao^3} \frac{1}{2^{10} 3^4 5^3}} e^{-\rho / 2} \rho^2 L_{5}^{5}(\rho)
-		= -\sqrt{\frac{e^{-\rho}}{2^7 3^7 5^3 \ao^3}} \rho^2 L_{5}^{5}(\rho).
+		= -\sqrt{\frac{2^3}{3^3 \ao^3} \frac{1}{2^{10} 3^4 5^3}} e^{-\rho / 2} \rho^2 L_5^5(\rho)
+		= -\sqrt{\frac{e^{-\rho}}{2^7 3^7 5^3 \ao^3}} \rho^2 L_5^5(\rho).
 	\end{align*}
 	From \refeq{laguerre}, the relevant $L_p$ are
 	\begin{align*}
@@ -170,13 +171,13 @@
 	\begin{align*}
 		L_3^1(\rho) &= \dv{L_3(\rho)}{\rho} 
 		= -18 + 18 \rho - 3 \rho^2
-		= -3 (2^1 3 - 2^1 3 \rho + \rho^2), \\
+		= -3 (6 - 6 \rho + \rho^2), \\
 		L_4^3(\rho) &= \dv[3]{L_4(\rho)}{\rho}
 		= -(3!) 16 + \left( \frac{4!}{1!} \right) \rho
-		= 2^3 3 (-2^2 + \rho), \\
+		= 24 (-4 + \rho), \\
 		L_5^5(\rho) &= \dv[5]{L_5(\rho)}{\rho}
 		= 5!
-		= 2^3 3^1 5.
+		= 120.
 	\end{align*}
 	\clearpage
 	Substituting into \refeq{harm}, the relevant $Y_l^m$ are
@@ -191,24 +192,69 @@
 	Note that $Z = r \cos\tht$ in polar coordinates.  In general, the nonzero matrix elements are then
 	\begin{align*}
 		\mel{3 l m}{V}{3 l' m'} &= -e |\vE| \int_0^{2\pi} \int_0^\pi \int_0^\infty \psi_{3 l m}^*(r, \tht, \phi) r \cos\tht \psi_{3 l' m'}(r, \tht, \phi) r^2 \sin\tht \dd{r} \dd{\tht} \dphi \\
-		&= -e |\vE| \left( \frac{3 \ao}{2} \right)^4 \int_0^{2\pi} \int_0^\pi \int_0^\infty \psi_{3 l m}^*(r, \tht, \phi) \psi_{3 l' m'}(r, \tht, \phi) \rho^3 \cos\tht \sin\tht \drho \dtht \dphi \\
-		&= -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_0^\pi {Y_l^m}^*(\tht, \phi) Y_{l'}^{m'}(\tht, \phi) \cos\tht \sin\tht \dtht \dphi \int_0^\infty R_{3 l}(r) R_{3 l'}(r) \rho^3 \drho.
+		&= -e |\vE| \left( \frac{3 \ao}{2} \right)^4 \int_0^{2\pi} \int_{-1}^1 \int_0^\infty \psi_{3 l m}^*(r, \tht, \phi) \psi_{3 l' m'}(r, \tht, \phi) \rho^3 \cos\tht \drho \dcost \dphi \\
+		&= -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_{-1}^1 {Y_l^m}^*(\tht, \phi) Y_{l'}^{m'}(\tht, \phi) \cos\tht \dcost \dphi \int_0^\infty R_{3 l}(r) R_{3 l'}(r) \rho^3 \drho.
 	\end{align*}
 	
-	Firstly
-	\beq
+	Firstly,
+	\beqn \label{v1}
 		V_{3 1 0}^{3 0 0} = \mel{3 1 0}{V}{3 0 0}
-		= -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_0^\pi {Y_1^0}^*(\tht, \phi) Y_0^0(\tht, \phi) \cos\tht \sin\tht \dtht \dphi \int_0^\infty R_{3 1}(r) R_{3 0}(r) \rho^3 \drho
-	\eeq
+		= -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_{-1}^1 {Y_1^0}^*(\tht, \phi) Y_0^0(\tht, \phi) \cos\tht \dcost \dphi \int_0^\infty R_{3 1}(r) R_{3 0}(r) \rho^3 \drho,
+	\eeqn
 	where
 	\begin{align*}
-		\int_0^{2\pi} &\int_0^\pi {Y_1^0}^*(\tht, \phi) Y_0^0(\tht, \phi) \cos\tht \sin\tht \dtht \dphi
-		= \int_0^{2\pi} \int_0^\pi \sqrt{\frac{3}{2^2 \pi}} \cos\tht \sqrt{\frac{1}{2^2 \pi}} \cos\tht \sin\tht \dtht \dphi \\
-		&= \frac{\sqrt{3}}{2^2 \pi} \int_0^\pi \dphi \int_0^{2\pi} \cos^2\tht \sin\tht \dtht
+		\int_0^{2\pi} &\int_{-1}^1 {Y_1^0}^*(\tht, \phi) Y_0^0(\tht, \phi) \cos\tht \dcost \dphi
+		= \int_0^{2\pi} \int_{-1}^1 \sqrt{\frac{3}{2^2 \pi}} \cos\tht \sqrt{\frac{1}{2^2 \pi}} \cos\tht \dcost \dphi \\
+		&= \frac{\sqrt{3}}{2^2 \pi} \int_0^{2\pi} \dphi \int_{-1}^1 \cos^2\tht \dcost
+		= \frac{\sqrt{3}}{2^2 \pi} \bigg[ \phi \bigg]_0^{2\pi} \left[ \frac{\cos^3\tht}{3} \right]_{-1}^1
+		= \frac{\sqrt{3}}{2^2 \pi} (2 \pi) \frac{2}{3}
+		= \frac{1}{\sqrt{3}},
 	\end{align*}
-%	\begin{align*}
-%		V_{3 2 \pm1}^{3 1 \pm 1} &= \mel{3 2 \pm1}{V}{3 1 \pm1}
-%	\end{align*}
+	and
+	\begin{align*}
+		\int_0^\infty &R_{3 1}(r) R_{3 0}(r) \rho^3 \drho
+		= \int_0^\infty \sqrt{\frac{e^{-\rho}}{2^7 3^7 \ao^3}} \rho L_4^3(\rho) \sqrt{\frac{e^{-\rho}}{3^7 \ao^3}} L_3^1(\rho) \rho^3 \drho \\
+		&= \frac{1}{\sqrt{2^7} 3^7 \ao^3} \int_0^\infty e^{-\rho} L_4^3(\rho) L_3^1(\rho) \rho^4 \drho
+		= -\frac{1}{\sqrt{2^7} 3^7 \ao^3} \int_0^\infty e^{-\rho} 2^3 3 (-4 + \rho) 3 (6 - 6 \rho + \rho^2) \rho^4 \drho \\
+		&= -\frac{1}{\sqrt{2} 3^5 \ao^3} \int_0^\infty e^{-\rho} (-24 \rho^4 + 30 \rho^5 - 10 \rho^6 + \rho^7) \drho
+		= -\frac{1}{\sqrt{2} 3^5 \ao^3} (-24 (4!) + 30 (5!) - 10 (6!) + 7!) \\
+		&= -\frac{1}{\sqrt{2} 3^5 \ao^3} (-576 + 3600 - 7200 + 5040)
+		= -\frac{864}{\sqrt{2} 3^5 \ao^3}
+		= -\frac{2^5}{\sqrt{2} 3^2 \ao^3},
+	\end{align*}
+	where we have used
+	\beq
+		\int_0^\infty x^n e^{-x} \dd{x} = n!.
+	\eeq
+	Combining these results, \refeq{v1} becomes
+	\beq
+		V_{3 1 0}^{3 0 0} = \mel{3 1 0}{V}{3 0 0}
+		= \frac{3^4 \ao^4 e |\vE|}{2^4} \frac{1}{\sqrt{3}} \frac{2^5}{\sqrt{2} 3^2 \ao^3}
+		= e |\vE| \ao \frac{3^2 2}{\sqrt{6}}
+		= 3 \sqrt{6} e |\vE| \ao
+		= \mel{3 0 0}{V}{3 1 0}.
+	\eeq
+	
+	Secondly,
+	\beqn \label{v2}
+		V_{3 2 \pm1}^{3 1 \pm 1} = \mel{3 2 \pm1}{V}{3 1 \pm1}
+		= -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_{-1}^1 {Y_2^{\pm1}}^*(\tht, \phi) Y_1^{\pm1}(\tht, \phi) \cos\tht \dcost \dphi \int_0^\infty R_{3 2}(r) R_{3 1}(r) \rho^3 \drho,
+	\eeqn
+	where
+	\begin{align*}
+		\int_0^{2\pi} &\int_{-1}^1 {Y_2^{\pm1}}^*(\tht, \phi) Y_1^{\pm1}(\tht, \phi) \cos\tht \dcost \dphi
+		= \int_0^{2\pi} \int_{-1}^1 \sqrt{\frac{3^1 5}{2^3 \pi}} e^{\mp i \phi} \cos\tht \sin\tht \sqrt{\frac{3}{2^3 \pi}} e^{\pm i \phi} \sin\tht \cos\tht \dcost \dphi \\
+		&= \frac{3 \sqrt{5}}{2^3 \pi} \int_0^{2\pi} \dphi \int_{-1}^1 \cos^2\tht \sin^2\tht \dcost
+		= \frac{3 \sqrt{5}}{2^3 \pi} \int_0^{2\pi} \dphi \int_{-1}^1 \cos^2\tht (1 - \cos^2\tht) \dcost \\
+		&= \frac{3 \sqrt{5}}{2^3 \pi} \bigg[ \phi \bigg]_0^{2\pi} \left[ \frac{\cos^3\tht}{3} - \frac{\cos^5\tht}{5} \right]_{-1}^1
+		= \frac{3 \sqrt{5}}{2^3 \pi} (2\pi) \frac{2^2}{3^1 5}
+		= \frac{1}{\sqrt{5}},
+	\end{align*}
+	and
+	\begin{align*}
+		\int_0^\infty &R_{3 2}(r) R_{3 1}(r) \rho^3 \drho
+		= \int_0^\infty \sqrt{\frac{e^{-\rho}}{2^7 3^7 5^3 \ao^3}} \rho^2 L_5^5(\rho) \sqrt{\frac{e^{-\rho}}{2^7 3^7 \ao^3}} \rho L_4^3(\rho) \rho^3 \drho
+	\end{align*}
 	
 %	Therefore,
 %	\begin{align*}
