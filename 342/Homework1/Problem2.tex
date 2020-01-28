@@ -1,0 +1,266 @@
+\newcommand{\Eii}{E^{(1)}}
+\newcommand{\vE}{\vec{E}}
+\newcommand{\ao}{a_0}
+\newcommand{\tht}{\theta}
+\newcommand{\vr}{\vec{r}}
+\newcommand{\drho}{\dd{\rho}}
+\newcommand{\dtht}{\dd{\tht}}
+\newcommand{\dcost}{\dd{(\cos\tht)}}
+\newcommand{\dphi}{\dd{\phi}}
+
+\begin{statement}{}
+	Consider the Stark effect for the $n = 3$ states of hydrogen.  There are initially nine degenerate states $\ket{3, l, m}$ (neglect spin), and an electric field $E$ is turned on in the $z$ direction.
+\end{statement}
+
+\begin{problem}
+	Construct the $9 \times 9$ matrix representing the perturbed Hamiltonian in this case.  Show your work when deriving the nonzero matrix elements, and provide an explanation as to why the other elements are zero.
+\end{problem}
+
+\begin{solution}
+	The perturbation operator for the $\vE$ field is given by (5.2.17) in Sakurai:
+	\beq
+		V = -e Z |\vE|.
+	\eeq
+	$V$ is a dipole interaction and therefore obeys the dipole selection rule, which is given by (17.2.21) in Shankar:
+	\beq
+		\mel{n l m}{Z}{n' l' m'} = 0 \qq{unless} \begin{cases} l' = l \pm 1, \\ m' = m. \end{cases}
+	\eeq
+	The dipole selection rule is a combination of the angular momentum and parity selection rules.  The angular momentum selection rule stipulates that $\mel{n l m}{Z}{n' l' m'} = 0$ unless $l' = l, l \pm 1$ and $m' = m + q$ where $q = 0$ is the magnetic quantum number of the tensor operator $Z$.  The parity selection rule eliminates $l = l'$ because $\mel{n l m}{Z}{n' l' m'} = 0$ unless $l$ and $l'$ have opposite parity.
+	
+	For the nonzero elements, the hydrogen atom wave functions are given by (A.6.3) in Sakurai:
+	\beq
+		\braket{\vr}{n l m} = \psi_{n l m}(r, \tht, \phi) = R_{n l}(r) Y_l^m(\tht, \phi),
+	\eeq
+	where
+	\beqn \label{R}
+		R_{n l}(r) = -\sqrt{\left( \frac{2}{n \ao} \right)^3 \frac{(n - l - 1)!}{2n (n + l)!^3}} e^{-\rho / 2} \rho^l L_{n + l}^{2l + 1}(\rho)
+		\qq{where}
+		\rho = \frac{2 r}{n \ao}.
+	\eeqn
+	The associated Laguerre polynomials $L_p^q$ are given by (A.6.4) and (A.6.5),
+	\beqn \label{laguerre}
+		L_p^q(\rho) = \dv[q]{L_p(\rho)}{\rho}
+		\qq{where}
+		L_p(\rho) = e^\rho \dv[p]{}{\rho} (\rho^p e^{-\rho}).
+	\eeqn
+	The spherical harmonics $Y_l^m$ are given by (3.6.37) and (3.6.38),
+	\begin{align} \label{harm}
+		Y_l^m(\tht, \phi) &= \frac{(-1)^l}{2^l l!} \sqrt{\frac{2l + 1}{4\pi} \frac{(l + m)!}{(l - m)!}} e^{i m \phi} \frac{1}{\sin^m{\tht}} \dv[{l - m}]{}{(\cos\tht)} (\sin\tht)^{2l}, &
+		Y_l^{-m}(\tht, \phi) &= (-1)^m {Y_l^m}^*(\tht, \phi)
+	\end{align}
+	for $m \geq 0$.
+	
+	The nonzero elements all have $l \in \{0, 1, 2\}$ and $m \in \{-1, 0, 1\}$.  Substituting into \refeq{R}, the relevant $R_{n l}$ are
+	\begin{align*}
+		R_{3 0}(r) &= -\sqrt{\left( \frac{2}{3 \ao} \right)^3 \frac{(3 - 1)!}{2 (3) 3!^3}} e^{-\rho / 2} L_3^1(\rho)
+		= -\sqrt{\frac{2^3}{3^3 \ao^3} \frac{2}{2^4 3^4}} e^{-\rho / 2} L_3^1(\rho)
+		= -\sqrt{\frac{e^{-\rho}}{3^7 \ao^3}} L_3^1(\rho), \\
+		R_{3 1}(r) &= -\sqrt{\left( \frac{2}{3 \ao} \right)^3 \frac{(3 - 1 - 1)!}{2 (3) (3 + 1)!^3}} e^{-\rho / 2} \rho L_{3 + 1}^{2 + 1}(\rho)
+		= -\sqrt{\frac{2^3}{3^3 \ao^3} \frac{1}{2^{10} 3^4}} e^{-\rho / 2} \rho L_4^3(\rho)
+		= -\sqrt{\frac{e^{-\rho}}{2^7 3^7 \ao^3}} \rho L_4^3(\rho), \\
+		R_{3 2}(r) &= -\sqrt{\left( \frac{2}{3 \ao} \right)^3 \frac{(3 - 2 - 1)!}{2 (3) (3 + 2)!^3}} e^{-\rho / 2} \rho^2 L_{3 + 2}^{4 + 1}(\rho)
+		= -\sqrt{\frac{2^3}{3^3 \ao^3} \frac{1}{2^{10} 3^4 5^3}} e^{-\rho / 2} \rho^2 L_5^5(\rho)
+		= -\sqrt{\frac{e^{-\rho}}{2^7 3^7 5^3 \ao^3}} \rho^2 L_5^5(\rho).
+	\end{align*}
+	From \refeq{laguerre}, the relevant $L_p$ are
+	\begin{align*}
+		L_3(\rho) &= e^\rho \dv[3]{}{\rho} (\rho^3 e^{-\rho})
+		= e^\rho \dv[2]{}{\rho} (3 \rho^2 e^{-\rho} - \rho^3 e^{-\rho})
+		= e^\rho \dv{}{\rho} (6 \rho e^{-\rho} - 6 \rho^2 e^{-\rho} + \rho^3 e^{-\rho})
+		= 6 - 18 \rho + 9 \rho^2 - \rho^3, \\[1ex]
+		L_4(\rho) &= e^\rho \dv[4]{}{\rho} (\rho^4 e^{-\rho})
+		= e^\rho \dv[3]{}{\rho} (4 \rho^3 e^{-\rho} - \rho^4 e^{-\rho})
+		= e^\rho \dv[2]{}{\rho} (12 \rho^2 e^{-\rho} - 8 \rho^3 e^{-\rho} + \rho^4 e^{-\rho}) \\
+		&= e^\rho \dv{}{\rho} (24 \rho e^{-\rho} - 36 \rho^2 e^{-\rho} + 12 \rho^3 e^{-\rho} - \rho^4 e^{-\rho})
+		= 24 - 96 \rho + 72 \rho^2 - 16 \rho^3 + \rho^4, \\[1ex]
+		L_5(\rho) &= e^\rho \dv[5]{}{\rho} (\rho^5 e^{-\rho})
+		= e^\rho \dv[4]{}{\rho} (5 \rho^4 e^{-\rho} - \rho^5 e^{-\rho})
+		= e^\rho \dv[3]{}{\rho} (20 \rho^3 e^{-\rho} - 10 \rho^4 e^{-\rho} + \rho^5 e^{-\rho}) \\
+		&= e^\rho \dv[2]{}{\rho} (60 \rho^2 e^{-\rho} - 60 \rho^3 e^{-\rho} + 15 \rho^4 e^{-\rho} - \rho^5 e^{-\rho}) \\
+		&= e^\rho \dv{}{\rho} (120 \rho e^{-\rho} - 240 \rho^2 e^{-\rho} + 120 \rho^3 e^{-\rho} - 20 \rho^4 e^{-\rho} + \rho^5 e^{-\rho})
+		= 120 - 600 \rho + 600 \rho^2 - 200 \rho^3 + 25 \rho^4 - \rho^5
+	\end{align*}
+	and then the relevant $L_p^q$ are
+	\begin{align*}
+		L_3^1(\rho) &= \dv{L_3(\rho)}{\rho} 
+		= -18 + 18 \rho - 3 \rho^2
+		= -3 (6 - 6 \rho + \rho^2), \\
+		L_4^3(\rho) &= \dv[3]{L_4(\rho)}{\rho}
+		= -(3!) 16 + \left( \frac{4!}{1!} \right) \rho
+		= 24 (-4 + \rho)
+		= 2^3 3 (-4 + \rho), \\
+		L_5^5(\rho) &= \dv[5]{L_5(\rho)}{\rho}
+		= -5!
+		= -120
+		= -2^3 3^1 5.
+	\end{align*}
+	Substituting into \refeq{harm}, the relevant $Y_l^m$ are
+	\begin{align*}
+		Y_0^0(\tht, \phi) &= \sqrt{\frac{1}{2^2 \pi}}, \\
+		Y_1^0(\tht, \phi) &= \sqrt{\frac{3}{2^2 \pi}} \cos\tht, &
+		Y_1^{\pm 1}(\tht, \phi) &= \mp \sqrt{\frac{3}{2^3 \pi}} e^{\pm i \phi} \sin\tht, \\
+		Y_2^0(\tht, \phi) &= \sqrt{\frac{5}{2^4 \pi}} (3 \cos^2\tht - 1), &
+		Y_2^{\pm1}(\tht, \phi) &= \mp \sqrt{\frac{3^1 5}{2^3 \pi}} e^{\pm i \phi} \cos\tht \sin\tht.
+	\end{align*}
+	
+	Note that $Z = r \cos\tht$ in polar coordinates.  In general, the nonzero matrix elements are then
+	\begin{align*}
+		\mel{3 l m}{V}{3 l' m'} &= -e |\vE| \int_0^{2\pi} \int_0^\pi \int_0^\infty \psi_{3 l m}^*(r, \tht, \phi) r \cos\tht \psi_{3 l' m'}(r, \tht, \phi) r^2 \sin\tht \dd{r} \dd{\tht} \dphi \\
+		&= -e |\vE| \left( \frac{3 \ao}{2} \right)^4 \int_0^{2\pi} \int_{-1}^1 \int_0^\infty \psi_{3 l m}^*(r, \tht, \phi) \psi_{3 l' m'}(r, \tht, \phi) \rho^3 \cos\tht \drho \dcost \dphi \\
+		&= -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_{-1}^1 {Y_l^m}^*(\tht, \phi) Y_{l'}^{m'}(\tht, \phi) \cos\tht \dcost \dphi \int_0^\infty R_{3 l}(r) R_{3 l'}(r) \rho^3 \drho.
+	\end{align*}
+	
+	Firstly,
+	\beqn \label{v1}
+		\mel{3 1 0}{V}{3 0 0} = -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_{-1}^1 {Y_1^0}^*(\tht, \phi) Y_0^0(\tht, \phi) \cos\tht \dcost \dphi \int_0^\infty R_{3 1}(r) R_{3 0}(r) \rho^3 \drho,
+	\eeqn
+	where
+	\begin{align*}
+		\int_0^{2\pi} &\int_{-1}^1 {Y_1^0}^*(\tht, \phi) Y_0^0(\tht, \phi) \cos\tht \dcost \dphi
+		= \int_0^{2\pi} \int_{-1}^1 \sqrt{\frac{3}{2^2 \pi}} \cos\tht \sqrt{\frac{1}{2^2 \pi}} \cos\tht \dcost \dphi \\
+		&= \frac{\sqrt{3}}{2^2 \pi} \int_0^{2\pi} \dphi \int_{-1}^1 \cos^2\tht \dcost
+		= \frac{\sqrt{3}}{2^2 \pi} \bigg[ \phi \bigg]_0^{2\pi} \left[ \frac{\cos^3\tht}{3} \right]_{-1}^1
+		= \frac{\sqrt{3}}{2^2 \pi} (2 \pi) \frac{2}{3}
+		= \frac{1}{\sqrt{3}},
+	\end{align*}
+	and
+	\begin{align*}
+		\int_0^\infty &R_{3 1}(r) R_{3 0}(r) \rho^3 \drho
+		= \int_0^\infty \sqrt{\frac{e^{-\rho}}{2^7 3^7 \ao^3}} \rho L_4^3(\rho) \sqrt{\frac{e^{-\rho}}{3^7 \ao^3}} L_3^1(\rho) \rho^3 \drho
+		= \frac{1}{\sqrt{2^7} 3^7 \ao^3} \int_0^\infty e^{-\rho} L_4^3(\rho) L_3^1(\rho) \rho^4 \drho \\
+		&= -\frac{1}{\sqrt{2} 3^5 \ao^3} \int_0^\infty e^{-\rho} (-24 \rho^4 + 30 \rho^5 - 10 \rho^6 + \rho^7) \drho
+		= -\frac{1}{\sqrt{2} 3^5 \ao^3} (-24 (4!) + 30 (5!) - 10 (6!) + 7!) \\
+		&= -\frac{2^5}{\sqrt{2} 3^2 \ao^3},
+	\end{align*}
+	where we have used
+	\beq
+		\int_0^\infty x^n e^{-x} \dd{x} = n!.
+	\eeq
+	Combining these results, \refeq{v1} becomes
+	\beq
+		\mel{3 1 0}{V}{3 0 0} = \frac{3^4 \ao^4 e |\vE|}{2^4} \frac{1}{\sqrt{3}} \frac{2^5}{\sqrt{2} 3^2 \ao^3}
+		= e |\vE| \ao \frac{3^2 2}{\sqrt{6}}
+		= 3 \sqrt{6} e |\vE| \ao
+		= \mel{3 0 0}{V}{3 1 0}.
+	\eeq
+	
+	Secondly,
+	\beqn \label{v2}
+		\mel{3 2 {\pm1}}{V}{3 1 {\pm1}} = -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_{-1}^1 {Y_2^{\pm1}}^*(\tht, \phi) Y_1^{\pm1}(\tht, \phi) \cos\tht \dcost \dphi \int_0^\infty R_{3 2}(r) R_{3 1}(r) \rho^3 \drho,
+	\eeqn
+	where
+	\begin{align*}
+		\int_0^{2\pi} &\int_{-1}^1 {Y_2^{\pm1}}^*(\tht, \phi) Y_1^{\pm1}(\tht, \phi) \cos\tht \dcost \dphi
+		= \int_0^{2\pi} \int_{-1}^1 \sqrt{\frac{3^1 5}{2^3 \pi}} e^{\mp i \phi} \cos\tht \sin\tht \sqrt{\frac{3}{2^3 \pi}} e^{\pm i \phi} \sin\tht \cos\tht \dcost \dphi \\
+		&= \frac{3 \sqrt{5}}{2^3 \pi} \int_0^{2\pi} \dphi \int_{-1}^1 \cos^2\tht \sin^2\tht \dcost
+		= \frac{3 \sqrt{5}}{2^3 \pi} \int_0^{2\pi} \dphi \int_{-1}^1 \cos^2\tht (1 - \cos^2\tht) \dcost \\
+		&= \frac{3 \sqrt{5}}{2^3 \pi} \bigg[ \phi \bigg]_0^{2\pi} \left[ \frac{\cos^3\tht}{3} - \frac{\cos^5\tht}{5} \right]_{-1}^1
+		= \frac{3 \sqrt{5}}{2^3 \pi} (2\pi) \frac{2^2}{3^1 5}
+		= \frac{1}{\sqrt{5}},
+	\end{align*}
+	and
+	\begin{align*}
+		\int_0^\infty &R_{3 2}(r) R_{3 1}(r) \rho^3 \drho
+		= \int_0^\infty \sqrt{\frac{e^{-\rho}}{2^7 3^7 5^3 \ao^3}} \rho^2 L_5^5(\rho) \sqrt{\frac{e^{-\rho}}{2^7 3^7 \ao^3}} \rho L_4^3(\rho) \rho^3 \drho
+		= \frac{1}{2^7 3^7 \sqrt{5^3} \ao^3} \int_0^\infty e^{-\rho} L_5^5(\rho) L_4^3(\rho) \rho^6 \drho \\
+		&= -\frac{1}{2^1 3^5 \sqrt{5} \ao^3} \int_0^\infty e^{-\rho} (-4 + \rho) \rho^6 \drho
+		= -\frac{1}{2^1 3^5 \sqrt{5} \ao^3} \int_0^\infty e^{-\rho} (-4 \rho^6 + \rho^7) \drho
+		= -\frac{1}{2^1 3^5 \sqrt{5} \ao^3} (-4 (6!) + 7!) \\
+		&= -\frac{2^3 \sqrt{5}}{3^2 \ao^3}.
+	\end{align*}
+	Then \refeq{v2} becomes
+	\beq
+		\mel{3 2 {\pm1}}{V}{3 1 {\pm1}} = \frac{3^4 \ao^4 e |\vE|}{2^4} \frac{1}{\sqrt{5}} \frac{2^3 \sqrt{5}}{3^2 \ao^3}
+		= \frac{3^2 \ao e |\vE|}{2}
+		= \frac{9}{2} e |\vE| \ao
+		= \mel{3 1 {\pm1}}{V}{3 2 {\pm1}}.
+	\eeq
+	
+	Thirdly,
+	\beqn \label{v3}
+		\mel{3 2 0}{V}{3 1 0} = -\frac{3^4 \ao^4 e |\vE|}{2^4} \int_0^{2\pi} \int_{-1}^1 {Y_2^0}^*(\tht, \phi) Y_{1}^{0}(\tht, \phi) \cos\tht \dcost \dphi \int_0^\infty R_{3 2}(r) R_{3 1}(r) \rho^3 \drho,
+	\eeqn
+	where
+	\begin{align*}
+		\int_0^{2\pi} &\int_{-1}^1 {Y_2^0}^*(\tht, \phi) Y_{1}^{0}(\tht, \phi) \cos\tht \dcost \dphi
+		= \int_0^{2\pi} \int_{-1}^1 \sqrt{\frac{5}{2^4 \pi}} (3 \cos^2\tht - 1) \sqrt{\frac{3}{2^2 \pi}} \cos\tht \cos\tht \dcost \dphi \\
+		&= \frac{\sqrt{3} \sqrt{5}}{2^3 \pi} \int_0^{2\pi} \dphi \int_{-1}^1 (3 \cos^4\tht - \cos^2\tht) \dcost
+		= \frac{\sqrt{3} \sqrt{5}}{2^3 \pi} \bigg[ \phi \bigg]_0^{2\pi} \left[ \frac{3 \cos^5\tht}{5} - \frac{\cos^3\tht}{3} \right]_{-1}^1
+		= \frac{\sqrt{3} \sqrt{5}}{2^3 \pi} (2\pi) \frac{2^3}{3^1 5} \\
+		&= \frac{2}{\sqrt{3} \sqrt{5}},
+	\end{align*}
+	and
+	\beq
+		\int_0^\infty R_{3 2}(r) R_{3 1}(r) \rho^3 \drho = -\frac{2^3 \sqrt{5}}{3^2 \ao^3}.
+	\eeq
+	Then \refeq{v3} becomes
+	\beq
+		\mel{3 2 0}{V}{3 1 0} = \frac{3^4 \ao^4 e |\vE|}{2^4} \frac{2}{\sqrt{3} \sqrt{5}} \frac{2^3 \sqrt{5}}{3^2 \ao^3}
+		= 3 \sqrt{3} e |\vE| \ao
+		= \mel{3 1 0}{V}{3 2 0}.
+	\eeq
+	
+	In summary, we have
+	\beqn \label{V2}
+		V = e |\vE| \ao \!\!\! \kbordermatrix{
+			& 3 0 0 & 3 1 {-1} & 3 1 0 & 3 1 1 & 3 2 {-2} & 3 2 {-1} & 3 2 0 & 3 2 1 & 3 2 2 \\
+			& 0 & 0 & 3 \sqrt{6} & 0 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 0 & 0 & 0 & 0 & 9/2 & 0 & 0 & 0 \\
+			& 3 \sqrt{6} & 0 & 0 & 0 & 0 & 0 & 3 \sqrt{3} & 0 & 0 \\
+			& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 9/2 & 0 \\
+			& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 9/2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 0 & 3 \sqrt{3} & 0 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 0 & 0 & 9/2 & 0 & 0 & 0 & 0 & 0 \\
+			& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+		}.
+	\eeqn
+\end{solution}
+%\vfix
+
+
+\newcommand{\Del}{\Delta^{(1)}}
+
+\begin{problem}
+	Determine the first order corrections, $\Del$, to the energies due to this perturbation, and write down the degeneracies of these energies.
+\end{problem}
+
+\begin{solution}
+	We have the perturbed Hamiltonian
+	\beq
+		H = \Ho + \lambda V,
+	\eeq
+	where $V$ is given by \refeq{V2}.  For the $n = 3$ states of hydrogen, $\Ho$ is ninefold degenerate, so we need to find the eigenvalues of the full matrix $V$.  Let $\Del = e |\vE| \ao \mu$ denote the eigenvalues of $V$, where $\mu$ are the roots of the equation
+	\begin{align*}
+		0 &= \det(\frac{V}{e |\vE| \ao} - \mu I)
+		= \svmqty{-\mu & 0 & 3 \sqrt{6} & 0 & 0 & 0 & 0 & 0 & 0 \\
+			0 & -\mu & 0 & 0 & 0 & 9/2 & 0 & 0 & 0 \\
+			3 \sqrt{6} & 0 & -\mu & 0 & 0 & 0 & 3 \sqrt{3} & 0 & 0 \\
+			0 & 0 & 0 & -\mu & 0 & 0 & 0 & 9/2 & 0 \\
+			0 & 0 & 0 & 0 & -\mu & 0 & 0 & 0 & 0 \\
+			0 & 9/2 & 0 & 0 & 0 & -\mu & 0 & 0 & 0 \\
+			0 & 0 & 3 \sqrt{3} & 0 & 0 & 0 & -\mu & 0 & 0 \\
+			0 & 0 & 0 & 9/2 & 0 & 0 & 0 & -\mu & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -\mu}
+		= \svmqty{-\mu & 0 & 3 \sqrt{6} & 0 & 0 & 0 & 0 & 0 & 0 \\
+			0 & -\mu & 0 & 0 & 0 & 9/2 & 0 & 0 & 0 \\
+			0 & 0 & \frac{\mu^2 - 54}{\mu} & 0 & 0 & 0 & 3 \sqrt{3} & 0 & 0 \\
+			0 & 0 & 0 & -\mu & 0 & 0 & 0 & 9/2 & 0 \\
+			0 & 0 & 0 & 0 & -\mu & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & \frac{81/4 - \mu^2}{\mu} & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 & \frac{\mu (81 - \mu^2)}{\mu^2 - 54} & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 & 0 & \frac{81/4 - \mu^2}{\mu} & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -\mu} \\
+			&= (-\mu)^5 \frac{\mu^2 - 54}{\mu} \left( \frac{81/4 - \mu^2}{\mu} \right)^2 \frac{\mu (81 - \mu^2)}{\mu^2 - 54}
+			= -\mu^3 \left( \frac{81}{4} - \mu^2 \right)^2 (81 - \mu^2) \\
+			&= \mu^3 \left( \frac{9}{2} - \mu \right)^2 \left( \frac{9}{2} + \mu \right)^2 (9 - \mu) (9 + \mu),
+	\end{align*}
+	where we have taken advantage of the determinant's invariance under elementary row addition.  This gives us the energy shifts
+	\beq
+		\Del = \begin{cases}
+			0 & \text{degeneracy 3}, \\
+			\pm\dfrac{9}{2} e |\vE| \ao & \text{degeneracy 2}, \\
+			\pm 9 e |\vE| \ao & \text{no degeneracy}.
+		\end{cases}
+	\eeq
+\end{solution}
