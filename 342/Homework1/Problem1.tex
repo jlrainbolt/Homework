@@ -113,15 +113,17 @@
 		H = \Ho + \lam V = \hbar^2 \mqty[ A & 0 & \lam B \\ 0 & 0 & 0 \\ \lam B & 0 & A ].
 	\eeq
 	Let $\Ei = \hbar^2 \mui$ denote the eigenvalues of $H$, where $\mu$ are the roots of the equation
-	\beq
-		0 = \det(\frac{H}{\hbar^2} - \mu I)
+	\begin{align*}
+		0 &= \det(\frac{H}{\hbar^2} - \mu I)
 		= \mqty| A - \mu & 0 & \lam B \\ 0 & -\mu & 0 \\ \lam B & 0 & A - \mu |
-		= - \mu (A - \mu)^2 + \mu (\lam B)^2.
-	\eeq
+		= - \mu (A - \mu)^2 + \mu (\lam B)^2
+		= \mu (A^2 - 2A \mu + \mu^2 + \lam^2 B^2 \\
+		&= \mu (\mu - A + \lam B) (\mu - A - \lam B).
+	\end{align*}
 	The roots are $\mu = 0$ and $\mu = A \pm \lam B$, which give us the eigenvalues
 	\begin{align*}
 		\Eq &= A + \lam B, &
-		\Ew &= 0,
+		\Ew &= 0, &
 		\Ee &= A - \lam B.
 	\end{align*}
 	Taking the difference $\Deln = \Eqn - \Eon$ for $\Eoi$ given by \refeq{ev1}, the energy shifts to first order in $\lam$ are

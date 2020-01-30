@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+ \documentclass[11pt]{article}
 \usepackage{geometry, titlesec}
 \usepackage[parfill]{parskip}
 \usepackage[italicdiff]{physics}
@@ -87,36 +87,7 @@
 
 \input{Problem3}
 
-%	Let $E$ be the eigenvalues of $\Heff$.  We need to solve the characteristic equation
-%	\begin{align*}
-%		0 &= \det\Heff - E I)
-%		= \mqty| \mel{1}{\Heff}{1} - E & \mel{1}{\Heff}{2} \\ \mel{2}{\Heff}{1} & \mel{2}{\Heff}{2} - E |
-%		= (\mel{1}{\Heff}{1} - E) (\mel{2}{\Heff}{2} - E) - \mel{1}{\Heff}{2} \mel{2}{\Heff}{1} \\
-%		&= E^2 - (\mel{1}{\Heff}{1} + \mel{2}{\Heff}{2}) E + \mel{1}{\Heff}{1} \mel{2}{\Heff}{2} - \mel{1}{\Heff}{2} \mel{2}{\Heff}{1}.
-%	\end{align*}
-%	Feeding in \refeq{mel11}--\refeq{mel22}, this becomes
-%	\begin{align*}
-%		0 &= E^2 - \left( 2\Eod + \frac{|\vq|^2 + |\vw|^2}{A} \right) E + {\Eod}^2 + \Eod \frac{|\vq|^2 + |\vw|^2}{A} + \frac{|\vq|^2 |\vw|^2}{A^2} - \frac{|\vq|^2 |\vw|^2}{A^2} \\
-%		&= E^2 - \Eod E - \frac{|\vq|^2 + |\vw|^2}{A} E - \Eod E + {\Eod}^2 + \Eod \frac{|\vq|^2 + |\vw|^2}{A}
-%		= (E - \Eod) \left( E - \Eod - \frac{|\vq|^2 + |\vw|^2}{A} \right).
-%	\end{align*}
-%	So the eigenvalues of $\Heff$ are
-%	\begin{align*}
-%		\Eq &= \Eod, &
-%		\Ew &= \Eod + \frac{(|\vq|^2 + |\vw|^2) (E - \Eod)}{(E - \Eod) (E - \Eoe) - (|\vq|^2 + |\vw|^2)}.
-%	\end{align*}
-%	Examining the expression for $\Ew$, note that
-%	\begin{align*}
-%		\Ew = E &= \Eod + \frac{(|\vq|^2 + |\vw|^2) (E - \Eod)}{(E - \Eod) (E - \Eoe) - (|\vq|^2 + |\vw|^2)} \\
-%		1 &= (E - \Eod) \frac{(E - \Eod) (E - \Eoe) - (|\vq|^2 + |\vw|^2)}{(|\vq|^2 + |\vw|^2) (E - \Eod)}
-%		= \frac{(E - \Eod) (E - \Eoe)}{(|\vq|^2 + |\vw|^2)} - 1 \\
-%		2 (|\vq|^2 + |\vw|^2) &= (E - \Eod) (E - \Eoe) \\
-%		0 &= E^2 - (\Eod + \Eoe) E + \Eod \Eoe - 2 (|\vq|^2 + |\vw|^2),
-%	\end{align*}
-%	which gives us
-%	\beq
-%		E = \frac{1}{2} \left( \Eod + \Eoe \pm \sqrt{(\Eod + \Eoe)^2 - 8 (|\vq|^2 + |\vw|^2)} \right).
-%	\eeq
+
 \end{solution}
 
 
