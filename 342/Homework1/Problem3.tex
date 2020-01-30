@@ -1,0 +1,131 @@
+\newcommand{\kq}{\ket{1}}
+\newcommand{\kw}{\ket{2}}
+\newcommand{\ke}{\ket{3}}
+
+\newcommand{\vq}{v_1}
+\newcommand{\vw}{v_2}
+\newcommand{\ve}{v_3}
+
+\newcommand{\vqs}{\vq^*}
+\newcommand{\vws}{\vw^*}
+
+\newcommand{\Heff}{H_\text{eff}}
+\newcommand{\Eo}{E\suo}
+\newcommand{\Eod}{\Eo_D}
+
+\newcommand{\Pq}{P_1}
+
+\clearpage
+\begin{statement}{}
+	Consider the Hamiltonian $\Ho$ acting on a three-dimensional Hilbert space spanned by the orthonormal basis $\{\kq, \kw, \ke\}$.  $\Ho = \sum_{i = 3}^3 E_i \ketbra{i}$, with energy eigenvalues $\Eoq, \Eow, \Eoe$.  Assume $\Eq = \Ew = \Eod$.  To $\Ho$, we add a perturbation
+	\beq
+		V = \vq \ketbra{1}{3} + \vqs \ketbra{3}{1} + \vw \ketbra{2}{3} + \vws \ketbra{3}{2}.
+	\eeq
+	Here, $\vq$ and $\vw$ are complex constants and small compared to $\Ee$.
+\end{statement}
+
+\begin{problem}
+	To second order in $V$, write down the explicit form of the effective Hamiltonian acting on the subspace spanned by $\{\kq, \kw\}$.
+\end{problem}
+
+\begin{solution}
+	We have
+	\begin{align*}
+		\Ho &= \mqty[ \Eod & 0 & 0 \\ 0 & \Eod & 0 \\ 0 & 0 & \Eoe ], &
+		V &= \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ], &
+		H &= \Ho + \lam V = \mqty[ \Eod & 0 & \lam \vq \\ 0 & \Eod & \lam \vw \\ \vqs & \vws & \Eoe].
+	\end{align*}
+	From the lecture notes and (5.2.7) in Sakurai, the effective Hamiltonian is given by
+	\beq
+		\Heff = \Eod + \lam \Po V \Po + \lam^2 \Po V \Pq (E - \Ho - \lam V)^{-1} \Pq V \Po
+	\eeq
+	where $\Po$ is the projection onto the degenerate subspace, $\Pq$ is the projection onto the nondegenerate subspace, $E$ is the perturbed energy, and $\Eod$ is the degenerate energy.  Here, $\Po$ projects onto the subspace spanned by $\{ \kq, \kw \}$ and $\Pq$ onto that spanned by $\{ \ke \}$.
+	
+	Note that
+	\beq
+		E - \Ho - \lam V = \mqty[ E - \Eod & 0 & -\lam \vq \\ 0 & E - \Eod & -\lam \vw \\ -\lam \vqs & -\lam \vws & E - \Eoe ],
+	\eeq
+	and we can find the inverse of this matrix using Gaussian elimination with an augmented matrix $M$.  However, we only care about the matrix element $\mel{3}{(E - \Ho - \lam V)^{-1}}{3}$ since we are applying the projection $\Pq$.  This means we only need to reduce the bottom row:
+	\begin{align*}
+		M &= \mqty[ E - \Eod & 0 & -\lam \vq & 1 & 0 & 0 \\ 0 & E - \Eod & -\lam \vw & 0 & 1 & 0 \\ -\lam \vqs & -\lam \vws & E - \Eoe & 0 & 0 & 1 ]
+		= \mqty[ E - \Eod & 0 & -\lam \vq & 1 & 0 & 0 \\ 0 & E - \Eod & -\lam \vw & 0 & 1 & 0 \\ 0 & 0 & A & \frac{\lam \vqs}{E - \Eod} & \frac{\lam \vws}{E - \Eod} & 1 ] \\
+		&= \mqty[ E - \Eod & 0 & -\lam \vq & 1 & 0 & 0 \\ 0 & E - \Eod & -\lam \vw & 0 & 1 & 0 \\ 0 & 0 & 1 & \frac{\lam \vqs}{A (E - \Eod)} & \frac{\lam \vws}{A (E - \Eod)} & \frac{1}{A} ]
+	\end{align*}
+	where we have defined
+	\beqn \label{A}
+		A \equiv E - \Eoe - \lam^2 \frac{|\vq|^2 + |\vw|^2}{E - \Eod}.
+	\eeqn
+	Now we have
+	\begin{align*}
+		\Heff &= \Eod + \lam^2 \Po \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ] \mqty[ 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1/A ] \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ] \Po
+		= \Eod + \lam^2 \Po \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ] \mqty[ 0 & 0 & 0 \\ 0 & 0 & 0 \\ \vqs/A & \vws/A & 0 ] \Po \\
+		&= \Eod + \lam^2 \Po \mqty[ |\vq|^2 / A & \vq \vws / A & 0 \\ \vqs \vw / A & |\vw|^2 / A & 0 \\ 0 & 0 & 0 ] \Po
+		= \mqty[ \Eod & 0 \\ 0 & \Eod ] + \lam^2 \mqty[ |\vq|^2 / A & \vq \vws / A \\ \vqs \vw / A & |\vw|^2 / A ] \\
+		&= \mqty[ \Eod + \lam^2 |\vq|^2 / A & \lam^2 \vq \vws / A \\ \lam^2 \vqs \vw / A & \Eod + \lam^2 |\vw|^2 / A ].
+	\end{align*}
+	Substituting in A from \refeq{A}, the matrix elements of the effective Hamiltonian are, to second order in $\lam$,
+	\begin{align}
+		\mel{1}{\Heff}{1} &= \Eod + \frac{|\vq|^2 (E - \Eod)}{(E - \Eod) (E - \Eoe) - (|\vq|^2 + |\vw|^2)}, \label{mel11} \\
+		\mel{1}{\Heff}{2} &= \frac{\vq \vws (E - \Eod)}{(E - \Eod) (E - \Eoe) - (|\vq|^2 + |\vw|^2)}, \\
+		\mel{2}{\Heff}{1} &= \frac{\vqs \vw (E - \Eod)}{(E - \Eod) (E - \Eoe) - (|\vq|^2 + |\vw|^2)}, \\
+		\mel{2}{\Heff}{2} &= \Eod + \frac{|\vw|^2 (E - \Eod)}{(E - \Eod) (E - \Eoe) - (|\vq|^2 + |\vw|^2)}. \label{mel22}
+	\end{align}
+\end{solution}
+\vfix
+
+
+\newcommand{\Esw}{E^{(2)}}
+\newcommand{\Eswq}{\Esw_1}
+\newcommand{\Esww}{\Esw_2}
+\newcommand{\uq}{u_1}
+\newcommand{\uw}{u_2}
+\newcommand{\wq}{w_1}
+\newcommand{\ww}{w_2}
+
+\begin{problem}
+	By solving the effective Hamiltonian, construct the approximate solution for the eigenvalues and eigenfunctions of $\Ho + V$.  (The eigenkets only need to be constructed within the degenerate subspace.)
+\end{problem}
+
+\begin{solution}
+	Let $\Esw$ be the eigenvalues of $\Heff$.  We need to solve the characteristic equation
+	\begin{align*}
+		0 &= \det(\Heff - \Esw I)
+		= \mqty| \mel{1}{\Heff}{1} - \Esw & \mel{1}{\Heff}{2} \\ \mel{2}{\Heff}{1} & \mel{2}{\Heff}{2} - \Esw |
+		= (\mel{1}{\Heff}{1} - \Esw) (\mel{2}{\Heff}{2} - \Esw) - \mel{1}{\Heff}{2} \mel{2}{\Heff}{1} \\
+		&= {\Esw}^2 - (\mel{1}{\Heff}{1} + \mel{2}{\Heff}{2}) \Esw + \mel{1}{\Heff}{1} \mel{2}{\Heff}{2} - \mel{1}{\Heff}{2} \mel{2}{\Heff}{1}.
+	\end{align*}
+	Feeding in \refeq{mel11}--\refeq{mel22}, this becomes
+	\begin{align*}
+		0 &= {\Esw}^2 - \left( 2\Eod + \frac{|\vq|^2 + |\vw|^2}{A} \right) \Esw + {\Eod}^2 + \Eod \frac{|\vq|^2 + |\vw|^2}{A} + \frac{|\vq|^2 |\vw|^2}{A^2} - \frac{|\vq|^2 |\vw|^2}{A^2} \\
+		&= {\Esw}^2 - \Eod \Esw - \frac{|\vq|^2 + |\vw|^2}{A} \Esw - \Eod \Esw + {\Eod}^2 + \Eod \frac{|\vq|^2 + |\vw|^2}{A} \\
+		&= (\Esw - \Eod) \left( \Esw - \Eod - \frac{|\vq|^2 + |\vw|^2}{A} \right),
+	\end{align*}
+	so the eigenvalues are
+	\begin{align*}
+		\Esw_1 &= \Eod, &
+		\Esw_2 &= \Eod + \frac{(|\vq|^2 + |\vw|^2) (E - \Eod)}{(E - \Eod) (E - \Eoe) - (|\vq|^2 + |\vw|^2)}.
+	\end{align*}
+	
+	The eigenvector corresponding to $\Eswq$ can be found by
+	\beq
+		\mqty[ \Eod + |\vq|^2 / A & \vq \vws / A \\ \vqs \vw / A & \Eod + |\vw|^2 / A ] \mqty[ \uq \\ \uw ] = \Eod \mqty[ \uq \\ \uw ]
+	\eeq
+	which is equivalent to the system of equations
+	\begin{align*}
+		\left( \Eod + \frac{|\vq|^2}{A} \right) \uq + \frac{\vq \vws}{A} \uw &= \Eod \uq, &
+		\frac{\vqs \vw}{A} \uq + \left( \Eod + \frac{|\vw|^2}{A} \right) \uw &= \Eod \uw.
+	\end{align*}
+	By inspection, these are satisfied when $\uq = -\vws$ and $\uw = \vqs$.  For the eigenvector corresponding to $\Esww$, we have
+	\beq
+		\mqty[ \Eod + |\vq|^2 / A & \vq \vws / A \\ \vqs \vw / A & \Eod + |\vw|^2 / A ] \mqty[ \wq \\ \ww ] = \left( \Eod + \frac{|\vq|^2 + |\vw|^2}{A} \right)\mqty[ \wq \\ \ww ]
+	\eeq
+	which is equivalent to the system of equations
+	\begin{align*}
+		\left( \Eod + \frac{|\vq|^2}{A} \right) \wq + \frac{\vq \vws}{A} \ww &= \left( \Eod + \frac{|\vq|^2 + |\vw|^2}{A} \right) \wq, \\
+		\frac{\vqs \vw}{A} \wq + \left( \Eod + \frac{|\vw|^2}{A} \right) \ww &= \left( \Eod + \frac{|\vq|^2 + |\vw|^2}{A} \right) \ww.
+	\end{align*}
+	By inspection, these are satisfied when $\wq = \vq$ and $\ww = \ww$.  So we have the eigenvectors
+	\begin{align*}
+		\ket*{\Eswq} &= \mqty[ -\vws \\ \vqs ], &
+		\ket*{\Esww} &= \mqty[ \vq \\ \vw ].
+	\end{align*}
