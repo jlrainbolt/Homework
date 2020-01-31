@@ -148,32 +148,36 @@
 		\item If the net charge of the cell is zero, what is the magnitude of the total charge on either cell wall membrane?  Ignore edge effects and treat the cell as a very long cylinder.
 		
 		\begin{solution}
-	Just as Gauss's law tells us that the electric field outside a charged sphere is the same as for a point charge at its center, the electric field outside an infinitely long cylinder is the same as for a line charge along its axis.  We know from class that the electric field of an infinite line of charge is
-	\beq
-		\vE = \frac{1}{2\pi \eo} \frac{\lambda}{r} \,\vec{\hat{r}},
-	\eeq
-	where $\lambda$ is the linear charge density.  The total charge of the line, $Q$, is then related by $\lambda = Q / L$, where $L$ is the length of the line.  We can now use $\vE$ to calculate the potential difference $\Delta V$ across the cell wall and relate it to the total charge:
-	\beq
-		\Delta V = \int_a^b \vE \cdot d\vl
-		= \int_a^b \frac{1}{2\pi \eo} \frac{\lambda}{r} \dd{r}
-		= \frac{Q / L}{2 \pi \eo} \int_a^b \frac{\dd{r}}{r}
-		= \frac{Q / L}{2 \pi \eo} \bigg[ \ln(r) \bigg]_a^b
-		= \frac{Q / L}{2 \pi \eo} \ln\!\left( \frac{b}{a} \right)
-		\implies
-		Q = \frac{2\pi\eo L}{\ln(b/a)} \Delta V.
-	\eeq
-	We know $L = \SI{100}{\micro\meter}$.  The outer diameter of the cell is \SI{20.0}{\micro\meter}, so its outer radius $b = \SI{10.0}{\micro\meter}$.  Since the cell is \SI{1.00}{\micro\meter} thick, its inner radius $a = \SI{9.0}{\micro\meter}$.  We are told that $\Delta V$ across the cell is \SI{90.0}{\milli\volt}, going from the inside to the outside.  Plugging in these numbers,
-	\beq
-		Q = \frac{2\pi (\SI{8.85e-12}{\square\coulomb\per\newton\per\square\meter}) (\SI{100e-6}{\meter})}{\ln[(\SI{10.0e-6}{\meter}) / (\SI{9.0e-6}{\meter})]} (\SI{90.0e-3}{\newton\meter\per\coulomb})
-		= \SI{4.75e-15}{\coulomb}.
-	\eeq
+			We are told that we can treat the cell as a very log cylinder, which is a hint that we should work with the charge on the outer cell wall.  Just as the electric field outside a charged sphere is the same as for a point charge at its center, the electric field outside an infinitely long cylinder is the same as for a line charge along its axis.  We know from class that the electric field of an infinite line of charge is
+			\beq
+				\vE = \frac{1}{2\pi \eo} \frac{\lambda}{r} \,\vec{\hat{r}},
+			\eeq
+			where $\lambda$ is the linear charge density.  The total charge of the line, $Q$, is then related by $\lambda = Q / L$, where $L$ is the length of the line.  Here, $Q$ is the magnitude of the total charge on the outer cell wall.
+			
+			  We can now use $\vE$ to ?ind an expression for the potential difference $\Delta V$ across the cell wall.  The expression we found for $\vE$ is really only valid outside of the cell, but since the wall thickness is so small compared to the (effectively infinite) length of the cell, it should be okay for the purposes of our approximation to assume it is valid on the inner wall as well.
+			  
+			  We can integrate from the inner radius $a$ to the outer radius $b$, and solve for $Q$:
+			\beq
+				\Delta V = \int_a^b \vE \cdot d\vl
+				= \int_a^b \frac{1}{2\pi \eo} \frac{\lambda}{r} \dd{r}
+				= \frac{Q / L}{2 \pi \eo} \int_a^b \frac{\dd{r}}{r}
+				= \frac{Q / L}{2 \pi \eo} \bigg[ \ln(r) \bigg]_a^b
+				= \frac{Q / L}{2 \pi \eo} \ln\!\left( \frac{b}{a} \right)
+				\implies
+				Q = \frac{2\pi\eo L}{\ln(b/a)} \Delta V.
+			\eeq
+			We know $L = \SI{100}{\micro\meter}$.  The outer diameter of the cell is \SI{20.0}{\micro\meter}, so its outer radius $b = \SI{10.0}{\micro\meter}$.  Since the cell is \SI{1.00}{\micro\meter} thick, its inner radius $a = \SI{9.0}{\micro\meter}$.  We are told that $\Delta V$ across the cell is \SI{90.0}{\milli\volt}, going from the inside to the outside.  Plugging in these numbers,
+			\beq
+				Q = \frac{2\pi (\SI{8.85e-12}{\square\coulomb\per\newton\per\square\meter}) (\SI{100e-6}{\meter})}{\ln[(\SI{10.0e-6}{\meter}) / (\SI{9.0e-6}{\meter})]} (\SI{90.0e-3}{\newton\meter\per\coulomb})
+				= \SI{4.75e-15}{\coulomb}.
+			\eeq
 \end{solution}
 
 
 		\item What is the magnitude of the electric field just inside the cell wall?
 		
 		\begin{solution}
-			Using the expression for the electric field from (a), and our solved value for $Q$, we can easily plug in $r = a = \SI{9.0}{\micro\meter}$:
+			Since we decided the experession $\vE$ we wrote applies on the inner cell wall, we can easily plug in $r = a = \SI{9.0}{\micro\meter}$ and the value we obtained for $Q$:
 			\beq
 				E(a) = \frac{1}{2\pi \eo} \frac{Q / L}{a}
 				= \frac{1}{2\pi (\SI{8.85e-12}{\square\coulomb\per\newton\per\square\meter})} \frac{\SI{4.75e-15}{\coulomb}}{(\SI{100e-6}{\meter}) (\SI{9.0e-6}{\meter})}
@@ -181,16 +185,16 @@
 			\eeq
 		\end{solution}
 		
-		
+		\clearpage
 		\item In a subsequent depolarization event, sodium ions move through channels in the cell wall, so that the inner membrane becomes positively charged.  At the end of this event, the inside of the cell has a potential that is \SI{20.0}{\milli\volt} higher than the potential outside the cell.  If we model this event by charge moving from the outer membrane to the inner membrane, what magnitude of charge moves across the cell wall during this event?
 		
 		\begin{solution}
-			We can use our formulation from (a) to once solve for the total charge \emph{after} the depolarization event, which we'll call $\Qf$.  Note that the inner surface is now positively charged instead of negatively charged, so we need to use a minus sign on the new potential difference: $\Delta \Vf = -\SI{20.0}{\milli\volt}$.  Then
-			\beq
-				\Qf = \frac{2\pi\eo L}{\ln(b/a)} \Delta \Vf
-				= \frac{2\pi (\SI{8.85e-12}{\square\coulomb\per\newton\per\square\meter}) (\SI{100e-6}{\meter})}{\ln[(\SI{10.0e-6}{\meter}) / (\SI{9.0e-6}{\meter})]} (-\SI{20.0e-3}{\newton\meter\per\coulomb})
-				= \SI{-1.06e-15}{\coulomb}.
-			\eeq
+			We can use our formulation from (a) once more to solve for the total charge \emph{after} the depolarization event, which we'll call $\Qf$.  Note that the inner surface is now positively charged instead of negatively charged, so we need to use a minus sign on the new potential difference: $\Delta \Vf = -\SI{20.0}{\milli\volt}$.  Then
+			\begin{align*}
+				\Qf &= \frac{2\pi\eo L}{\ln(b/a)} \Delta \Vf
+				= \frac{2\pi (\SI{8.85e-12}{\square\coulomb\per\newton\per\square\meter}) (\SI{100e-6}{\meter})}{\ln[(\SI{10.0e-6}{\meter}) / (\SI{9.0e-6}{\meter})]} (-\SI{20.0e-3}{\newton\meter\per\coulomb}) \\
+				&= \SI{-1.06e-15}{\coulomb}.
+			\end{align*}
 			The magnitude of charge that has moved is now $|\Delta Q| = |\Qf - \Qi|$, where $\Qi$ is what we found in (a):
 			\beq
 				|\Delta Q| = |\Qf - \Qi|
