@@ -44,14 +44,11 @@
 	Note that
 	\beq
 		Po V \Po = \mqty[ 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 ] \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ] \mqty[ 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 ]
-		= \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ 0 & 0 & 0 ] \mqty[ 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 ]
-		= \mqty[ 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 ]
+		= \mqty[ 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 ],
 	\eeq
 	and
 	\begin{align*}
-		\Po V \Pq &(\Eod - \Ho)^{-1} \Pq V \Po = \frac{1}{\Eod - \Eoe} \Po V \mqty[ 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1] V \Po \\
-		&= \frac{1}{\Eod - \Eoe} \Po \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ] \mqty[ 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1] \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ] \Po 
-		= \frac{1}{\Eod - \Eoe} \Po \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ 0 & 0 & 0 ] \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ] \Po \\
+		\Po V \Pq (\Eod - \Ho)^{-1} &\Pq V \Po = \frac{1}{\Eod - \Eoe} \Po \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ] \mqty[ 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1] \mqty[ 0 & 0 & \vq \\ 0 & 0 & \vw \\ \vqs & \vws & 0 ] \Po \\
 		&= \frac{1}{\Eod - \Eoe} \mqty[ 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 ] \mqty[|\vq|^2 & \vq \vws & 0 \\ \vqs \vw & |\vq|^2 & 0 \\ 0 & 0 & 0] \mqty[ 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 ]
 		= \frac{1}{\Eod - \Eoe} \mqty[|\vq|^2 & \vq \vws & 0 \\ \vqs \vw & |\vq|^2 & 0 \\ 0 & 0 & 0].
 	\end{align*}
@@ -63,7 +60,7 @@
 \end{solution}
 
 
-\clearpage
+%\clearpage
 \newcommand{\uq}{u_1}
 \newcommand{\uw}{u_2}
 \newcommand{\wq}{w_1}
@@ -78,15 +75,15 @@
 	\begin{align*}
 		0 &= \det(\Heff - E I)
 		= \vmqty{ \Eod + |\vq|^2/(\Eod - \Eoe) - E & \vq \vws / (\Eod - \Eoe) \\ \vqs \vw / (\Eod - \Eoe) & \Eod + |\vw|^2/(\Eod - \Eoe) - E } \\
-		&= \left( \Eod + \frac{|\vq|^2}{\Eod - \Eoe} - E \right) \left( \Eod + \frac{|\vq|^2}{\Eod - \Eoe} - E \right) - \frac{|\vq|^2 |\vw|^2}{(\Eod - \Eoe)^2} \\
-		&= {\Eod}^2 - \Eod \frac{|\vw|^2}{\Eod - \Eoe} - \Eod E + \Eod \frac{|\vq|^2}{\Eod - \Eoe} - E \frac{|\vq|^2}{\Eod - \Eoe} - \Eod E - E \frac{|\vw|^2}{\Eod - \Eoe} + E^2 \\
+		&= \left( \Eod + \frac{|\vq|^2}{\Eod - \Eoe} - E \right) \left( \Eod + \frac{|\vw|^2}{\Eod - \Eoe} - E \right) - \frac{|\vq|^2 |\vw|^2}{(\Eod - \Eoe)^2} \\
+		&= {\Eod}^2 + \Eod \frac{|\vw|^2}{\Eod - \Eoe} - \Eod E + \Eod \frac{|\vq|^2}{\Eod - \Eoe} - E \frac{|\vq|^2}{\Eod - \Eoe} - \Eod E - E \frac{|\vw|^2}{\Eod - \Eoe} + E^2 \\
 		&= E^2 - \Eod E - E \frac{|\vq|^2 + |\vw|^2}{\Eod - \Eoe} - \Eod E + {\Eod}^2 + \Eod \frac{|\vq|^2 + |\vw|^2}{\Eod - \Eoe} \\
-		&= (E - \Eod) \left( E - \Eod - \frac{|\vq|^2 |\vw|^2}{(\Eod - \Eoe)^2} \right)
+		&= (E - \Eod) \left( E - \Eod - \frac{|\vq|^2 + |\vw|^2}{(\Eod - \Eoe)^2} \right),
 	\end{align*}
 	so the eigenvalues are
 	\begin{align*}
 		\Eq &= \Eod, &
-		\Ew &= \Eod + \frac{|\vq|^2 |\vw|^2}{(\Eod - \Eoe)}^2.
+		\Ew &= \Eod + \frac{|\vq|^2 + |\vw|^2}{(\Eod - \Eoe)^2}.
 	\end{align*}
 	
 	The eigenvector corresponding to $\Eq$ can be found by
