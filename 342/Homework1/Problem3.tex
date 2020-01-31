@@ -80,11 +80,25 @@
 		&= E^2 - \Eod E - E \frac{|\vq|^2 + |\vw|^2}{\Eod - \Eoe} - \Eod E + {\Eod}^2 + \Eod \frac{|\vq|^2 + |\vw|^2}{\Eod - \Eoe} \\
 		&= (E - \Eod) \left( E - \Eod - \frac{|\vq|^2 + |\vw|^2}{(\Eod - \Eoe)^2} \right),
 	\end{align*}
-	so the eigenvalues are
+	so the energies are
 	\begin{align*}
 		\Eq &= \Eod, &
 		\Ew &= \Eod + \frac{|\vq|^2 + |\vw|^2}{(\Eod - \Eoe)^2}.
 	\end{align*}
+	For $\Ee$, we can use nondegenerate perturbation theory to find the energy shift to second order.  From (5.1.43) in Sakurai,
+	\beq
+		\Deln = \lam V_{n n} + \lam^2 \sum_{k \neq n} \frac{|V_{n k}|^2}{\Eo_n - \Eo_k} + \cdots.
+	\eeq
+	For $n = 3$, up to second order we have
+	\beq
+		\Dele = \lam V_{3 3} + \lam^2 \left( \frac{|V_{3 1}|^2}{\Eoe - \Eod} + \frac{|V_{3 2}|^2}{\Eoe - \Eod} \right)
+		= \lam^2 \frac{|\vq|^2 + |\vw|^2}{\Eoe - \Eod}
+		= -\lam^2 \frac{|\vq|^2 + |\vw|^2}{\Eod - \Eoe}.
+	\eeq
+	Thus, we have
+	\beq
+		\Ee = \Eoe - \frac{|\vq|^2 + |\vw|^2}{\Eod - \Eoe}.
+	\eeq
 	
 	The eigenvector corresponding to $\Eq$ can be found by
 	\beq
@@ -97,6 +111,7 @@
 	\end{align*}
 	By inspection, these are satisfied when $\uq = -\vws$ and $\uw = \vqs$.
 	
+	\clearpage
 	For the eigenvector corresponding to $\Ew$, we have
 	\beq
 		\mqty[ \Eod + |\vq|^2 / (\Eod - \Eoe) & \vq \vws / (\Eod - \Eoe) \\ \vqs \vw / (\Eod - \Eoe) & \Eod + |\vw|^2 / (\Eod - \Eoe) ] \mqty[ \wq \\ \ww ] = \left( \Eod + \frac{|\vq|^2 + |\vw|^2}{\Eod - \Eoe} \right)\mqty[ \wq \\ \ww ]
