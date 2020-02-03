@@ -1,0 +1,210 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm, mathrsfs}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{siunitx}
+\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\vfix}{\vspace{-\baselineskip}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 322 Homework 2}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\blg}{\begin{align*}}
+\newcommand{\elg}{\end{align*}}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\color{darkgray}
+	\ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+	\subsection{}
+	\color{darkgray}
+%	\paragraph{Problem.}
+    \ignorespaces
+}
+{
+
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+
+\DeclareSIUnit\esu{esu}
+\DeclareSIUnit\erg{erg}
+
+\begin{document}
+
+
+\input{Problem1}
+
+
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\phio}{\phi_0}
+\newcommand{\phiox}{\phio(\vx)}
+\newcommand{\const}{\text{const.}}
+\newcommand{\sig}{\sigma}
+\newcommand{\alp}{\alpha}
+\newcommand{\sigtv}{\sig(\tht, \vph)}
+
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\dcx}{\dd[3]{x}}
+\newcommand{\rhoo}{\rho_0}
+\newcommand{\dS}{\dd{S}}
+
+\begin{statement}{}
+	Let $\cV$ be an arbitrary bounded region of space and suppose that a total charge $Q$ is to be distributed in $\cV$ in an arbitrary way, with $\rho = 0$ outside of $\cV$.  Show that the total energy is minimized if the charge is distributed the way that it would be if $\cV$ were a conductor, so that $\phi = \const$ within $\cV$ (and thus, in particular, all of the charge lies on the boundary of $\cV$).
+	
+	Hint: Let $\phiox$ be the potential one would obtain if $\cV$ were filled by a conducting body.  Consider the energy of $\phio + \phi'$, where the source $\rho'$ of $\phi'$ vanishes outside of $\cV$ and has no net charge within $\cV$.
+\end{statement}
+
+\begin{solution}
+	Let $S = \partial \cV$ denote the boundary of $\cV$.  We separate space into three mutually exclusive regions: $\cV$, $S$, and the region outside (in which we are not interested).  By the superposition principle, we may write
+	\begin{align*}
+		\rho &= \rhoo + \rho', &
+		\phi &= \phio + \phi',
+	\end{align*}
+	where $\rhoo$ is the charge of a conducting body filling $\cV$, $\phio$ is the electrostatic potential due to $\rhoo$, $\rho'$ is the charge distribution within $\cV$, and $\phi'$ is the electrostatic potential due to $\rho'$.  In order to eliminate ambiguity on the boundary, we require
+	\begin{align} \label{rhoconds}
+		\rhoo|_\cV &= 0, &
+		\rho'|_S &= 0.
+	\end{align}
+	That is, $\rhoo = 0$ inside the conductor by definition, and $\rho'$ vanishes on the boundary where $\rhoo$ is nonzero.  For the entire body to have charge $Q$, we need
+	\beq
+		\int \rhoo \dcx = \int_\cV \rho' \dcx + \int_S \rhoo \dS = Q.
+	\eeq
+	From \refeq{rhoconds}, it follows that
+	\beq
+		\phio|_\cV = \phio|_S = \const
+	\eeq
+
+	The total energy is given by Eq.~(2.25) in the course notes,
+	\beq
+		\sE = \frac{1}{2} \int \phi \rho \dcx.
+	\eeq
+	So
+	\begin{align*}
+		\sE &= \frac{1}{2} \int (\phio + \phi') (\rhoo + \rho') \dcx
+		= \frac{1}{2} \left( \int \phio (\rhoo + \rho') \dcx + \int \phi' (\rhoo + \rho') \dcx \right) \\
+		&= \frac{1}{2} \left( \phio Q + \int_\cV \phi' \rho' \dcx + \int_S \phi' \rhoo \dS \right).
+	\end{align*}
+	\hl{help}
+\end{solution}
+
+
+
+\begin{statement}{}
+	Charge is distributed on a (nonconducting) sphere of radius $R$, i.e., the charge density throughout space is of the form $\rhox = \sig(\tht, \vph) \, \delta(r - R)$.  The surface charge distribution $\sig$ on the sphere is chosen in such a way that the electrostatic potential on the sphere is $\phi(r=R, \tht, \vph) = \alp \cost$, where $\alp$ is a constant.
+\end{statement}
+
+\begin{problem}
+	Find the electrostatic potential $\phix$ at all $r \leq R$.
+\end{problem}
+
+\begin{solution}
+	Dirichlet BP?
+\end{solution}
+
+
+\begin{problem}
+	Find the electrostatic potential $\phix$ at all $r \geq R$.
+\end{problem}
+
+\begin{problem}
+	Find the surface charge density $\sigtv$ that was required in order to produce this potential $\phi$.
+\end{problem}
+
+\begin{problem}
+	Find the total electrostatic energy.
+\end{problem}
+
+
+
+\newcommand{\Gd}{G_D}
+\newcommand{\Gdxxp}{\Gd(\vx, \vx')}
+\newcommand{\vF}{\vec{F}}
+
+\begin{statement}{}
+	A point charge of charge $q$ is placed at point $\vx'$ inside a conducting spherical shell of radius $R$.  There is no net charge on the conductor.  The potentiial inside the sphere is thus given by $q \, \Gdxxp$, where the explicit formula for $\Gdxxp$ for a spherical cavity is given in the lecture notes.
+\end{statement}
+
+\begin{problem}
+	Find the surface charge density $\sigtv$ on the conducting shell.
+\end{problem}
+
+\begin{problem}
+	Find the force $\vF$ that must be exerted on the point charge in order to hold it in place.
+\end{problem}
+
+
+
+\newcommand{\lap}{\nabla^2}
+\newcommand{\vE}{\vec{E}}
+
+\begin{statement}{}
+	The ``mean value theorem'' is stated as follows: For any solution $\phi$ to $\lap \phi = 0$, the value of $\phi$ at $\vx$ is equal to the average value of t$\phi$ on a sphere of radius $R$ (for any $R$) centered at $\vx$.
+\end{statement}
+
+\begin{problem}
+	Prove the mean value theorem.  Hint: Apply Green's theorem to $\phi$ and $1/\abs{\vx - \vx'}$ for a suitable choice of region and a suitable choice of $\vx'$.
+\end{problem}
+
+\begin{problem}
+	Use this result to show that a point charge can never be in stable equilibrium if placed in an electric field $\vE$ that is source free in a neighborhood of the charge---and, indeed, it can be in neutral equilibrium only if $\vE = 0$ in this neighborhood.
+\end{problem}
+
+%\vfill
+%In addition to the course lecture notes, I consulted Griffiths's \emph{Introduction to Electrodynamics} and David Tong's lecture notes on electrodynamics while writing up these solutions.
+\end{document}

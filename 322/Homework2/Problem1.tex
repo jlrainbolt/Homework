@@ -1,0 +1,102 @@
+\newcommand{\vx}{\vec{x}}
+\newcommand{\rhox}{\rho(\vx)}
+\newcommand{\phix}{\phi(\vx)}
+\newcommand{\tht}{\theta}
+\newcommand{\vph}{\varphi}
+\newcommand{\cost}{\cos\tht}
+\newcommand{\sint}{\sin\tht}
+\newcommand{\for}{\text{for }}
+\newcommand{\absx}{\abs{\vx}}
+
+\newcommand{\qlm}{q_{l m}}
+\newcommand{\Ylm}{Y_{l m}}
+\newcommand{\tv}{(\tht, \phi)}
+\newcommand{\tvp}{(\tht', \phi')}
+\newcommand{\Ylmtv}{\Ylm\tv}
+\newcommand{\Plm}{P_l^m}
+\newcommand{\rhoxp}{\rho(\vx')}
+
+\newcommand{\sintp}{\sin\tht'}
+\newcommand{\costp}{\cos\tht'}
+\newcommand{\dcxp}{\dd[3]{x'}}
+\newcommand{\intoR}{\int_0^R}
+\newcommand{\intono}{\int_{-1}^1}
+\newcommand{\intotp}{\int_0^{2\pi}}
+\newcommand{\intopi}{\int_0^\pi}
+\newcommand{\drp}{\dd{r'}}
+\newcommand{\dtp}{\dd{\tht'}}
+\newcommand{\dctp}{\dd{(\costp)}}
+\newcommand{\dvp}{\dd{\vph'}}
+
+\newcommand{\sqfr}[2]{\sqrt{\frac{#1}{#2}}}
+
+\begin{statement}{}
+	Consider the charge density $\rhox$ given by
+	\beqn \label{rho}
+		\rhox = \begin{cases}
+			(R - r) (1 - \cost)^2 & \for \absx \leq R, \\
+			0 & \for \absx \geq R.
+			\end{cases}
+	\eeqn
+	Find the electrostatic potential, $\phix$, of this charge distribution at all $\vx$ with $\absx \geq R$.
+\end{statement}
+
+\begin{solution}
+	The multipole expansion in spherical harmonics is given by Eq.~(2.79) in the course notes,
+	\beqn \label{multipole}
+		\phix = \sum_{l, m} \frac{4\pi}{2l + 1} \frac{\qlm}{r^{l + 1}} \Ylmtv,
+	\eeqn
+	where the spherical multipole moments $\qlm$ are defined in Eq.~(2.80),
+	\beq
+		\qlm \equiv \int \rhoxp \, {r'}^l \, \Ylm^*\tvp \dcxp.
+	\eeq
+	Note that \refeq{multipole} is valid only for $\absx \geq R$ when the charge distribution $\rhoxp$ is nonzero only within $\abs{\vx'} \leq R$, which is the regime we are interested in here.
+	
+	The spherical harmonics $\Ylm$ are given by Eq.~(2.58),
+	\beq
+		\Ylmtv = \sqrt{\frac{2l + 1}{4\pi}} \sqrt{\frac{(l - m)!}{(l + m)!}} \Plm(\cost) e^{i m \vph},
+	\eeq
+	and the Lagrange polynomials $\Plm$ are given by Eq.~(2.59),
+	\beq
+		\Plm(x) = \frac{(-1)^m}{2^l l!} (1 - x^2)^{m/2} \dv[l + m]{}{x} (x^2 - 1)^l,
+	\eeq
+	although in practice I am taking all spherical harmonics from the table in Jackson.  
+	
+	We can write the angular component of $\rhox$ as an expansion of spherical harmonics.  Inspecting \refeq{rho}, we will only have terms of $l = 0, 1, 2$ and $m = 0$.  The relevant spherical harmonics are
+	\begin{align*}
+		Y_{0 0}\tv &= \frac{1}{\sqrt{4 \pi}}, &
+		Y_{1 0}\tv &= \sqfr{3}{4\pi} \cost, &
+		Y_{2 0}\tv &= \sqfr{5}{4\pi} \left( \frac{3}{2} \cos^2\tht - \frac{1}{2} \right).
+	\end{align*}
+	Then we have
+	\begin{align*}
+		\rho(r, \tht,\ vph) &= (R - r) (1 - 2 \cost + \cos^2\tht) \\
+		&= (R - r) \left( \frac{2}{3} \sqfr{4\pi}{5} Y_{2 0}\tv - 2 \sqfr{4\pi}{3} Y_{1 0}\tv + 4 \frac{\sqrt{4\pi}}{3} Y_{0 0}\tv \right).
+	\end{align*}
+	
+	The only nonzero $\qlm$ are $q_{0 0}$, $q_{1 0}$, and $q_{2 0}$:
+	\begin{align*}
+		q_{0 0} &= \intotp \intono \intoR \rhoxp \, {r'}^0 \, Y_{0 0}^*\tvp \, r' \drp \dctp \dvp \\
+		&= 4 \frac{\sqrt{4\pi}}{3} \intotp \intono Y_{0 0}^*\tvp Y_{0 0} \tvp \dctp \dvp \intoR (R - r') r' \drp \\
+		&= 4 \frac{\sqrt{4\pi}}{3} \left[ \frac{R {r'}^2}{2} - \frac{{r'}^3}{3} \right]_0^R
+		= 4 \frac{\sqrt{4\pi}}{3} \frac{R^3}{6}
+		= \frac{4 \sqrt{\pi}}{9} R^3, \\[1em]
+		q_{1 0} &= \intotp \intono \intoR \rhoxp \, {r'}^1 \, Y_{1 0}^*\tvp \, r' \drp \dctp \dvp \\
+		&= -2 \sqfr{4\pi}{3} \intotp \intono Y_{1 0}^*\tvp Y_{1 0} \tvp \dctp \dvp \intoR (R - r') {r'}^2 \drp \\
+		&= -2 \sqfr{4\pi}{3} \left[\frac{R {r'}^3}{3} - \frac{{r'}^4}{4} \right]_0^R
+		= -2 \sqfr{4\pi}{3} \frac{R^4}{12}
+		= -\frac{1}{3} \sqfr{\pi}{3} R^4, \\[1em]
+		q_{2 0} &= \intotp \intono \intoR \rhoxp \, {r'}^2 \, Y_{2 0}^*\tvp \, r' \drp \dctp \dvp \\
+		&= \frac{2}{3} \sqfr{4\pi}{5} \intotp \intono Y_{2 0}^*\tvp Y_{2 0} \tvp \dctp \dvp \intoR (R - r') {r'}^3 \drp \\
+		&= \frac{2}{3} \sqfr{4\pi}{5} \left[ \frac{R {r'}^4}{4} - \frac{{r'}^5}{5} \right]_0^R
+		= \frac{2}{3} \sqfr{4\pi}{5} \frac{R^5}{20}
+		= \frac{1}{15} \sqfr{\pi}{5} R^5.
+	\end{align*}
+	Then $\phi$ is given by
+	\begin{align*}
+		\phix &= \frac{4\pi}{1} \frac{q_{0 0}}{r^1} Y_{0 0}\tv + \frac{4\pi}{2 + 1} \frac{q_{1 0}}{r^2} Y_{1 0}\tv + \frac{4\pi}{5} \frac{q_{2 0}}{r^3} Y_{2 0}\tv \\
+		&= (4\pi) \frac{4 \sqrt{\pi}}{9} \frac{R^3}{r} \frac{1}{\sqrt{4 \pi}} - \frac{4\pi}{3} \frac{1}{3} \sqfr{\pi}{3} \frac{R^4}{r^2} \sqfr{3}{4\pi} \cost + \frac{4\pi}{5} \frac{1}{15} \sqfr{\pi}{5} \frac{R^5}{r^3} \sqfr{5}{4\pi} \left( \frac{3}{2} \cos^2\tht - \frac{1}{2} \right) \\
+		&= \frac{8\pi}{9} \frac{R^3}{r} - \frac{2 \pi}{9} \frac{R^4}{r^2} \cost + \frac{\pi}{75} \frac{R^5}{r^3} (2 \cos^2\tht - 1).
+	\end{align*}
+\end{solution}
+\vfix
