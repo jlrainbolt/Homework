@@ -195,14 +195,52 @@
 
 
 \newcommand{\vF}{\vec{F}}
+\newcommand{\vE}{\vec{E}}
+\newcommand{\rh}{\vec{\hat{r}}}
+\newcommand{\thh}{\boldsymbol{\hat{\tht}}}
+\newcommand{\phh}{\boldsymbol{\hat{\vph}}}
+\newcommand{\nabx}{\nabla_x}
 
 \begin{statement}{}
-	A point charge of charge $q$ is placed at point $\vx'$ inside a conducting spherical shell of radius $R$.  There is no net charge on the conductor.  The potentiial inside the sphere is thus given by $q \, \Gdxxp$, where the explicit formula for $\Gdxxp$ for a spherical cavity is given in the lecture notes.
+	A point charge of charge $q$ is placed at point $\vx'$ inside a conducting spherical shell of radius $R$.  There is no net charge on the conductor.  The potential inside the sphere is thus given by $q \, \Gdxxp$, where the explicit formula for $\Gdxxp$ for a spherical cavity is given in the lecture notes.
 \end{statement}
 
 \begin{problem}
 	Find the surface charge density $\sigtv$ on the conducting shell.
 \end{problem}
+
+\begin{solution}
+	The Green's function for a spherical cavity is given by Eq.~(2.91),
+	\beq
+		\Gdxxp = \frac{1}{\abs{\vx - \vx'}} + \frac{\alp}{\abs{\vx - \vx''}} \qq{where} \vx'' = \vx' \frac{R^2}{\absxp^2} \qand \alp = - \frac{R}{\absxp}.
+	\eeq
+	The surface charge density can be found from Eq.~(2.86),
+	\beq
+		\vE \cdot \nh = 4\pi \sig,
+	\eeq
+	where $\vE = -\nabla \phi$ in electrostatics.
+	
+	We will begin by finding $\vE$.  We will orient our coordinate system such that $\vx'$ (and consequently $\vx''$) points along the $z$ axis.  Note that
+	\begin{align*}
+		\Gdxxp &= \frac{1}{\abs{\vx - \vx'}} - \frac{R}{\absxp \abs{\vx - \dfrac{R^2}{\absxp^2} \vx'}}
+		= \frac{1}{\sqrt{\vx^2 - 2 \vx \cdot \vx' + {\vx'}^2}} - \frac{R}{\absxp \sqrt{\vx^2 - 2 \dfrac{R^2}{{\vx'}^2} \vx \cdot \vx' + \dfrac{R^4}{{\vx'}^4} {\vx'}^2}} \\
+		&= \frac{1}{\sqrt{\vx^2 - 2 \vx \cdot \vx' + {\vx'}^2}} - \frac{1}{\sqrt{\vx^2 {\vx'}^2 / R^2 - 2 \vx \cdot \vx' + R^2}}.
+	\end{align*}
+	In spherical coordinates, we have
+	\beq
+		\Gdxxp = \frac{1}{\sqrt{r^2 - 2 r r' \cost + {r'}^2}} - \frac{1}{\sqrt{r^2 {r'}^2 / R^2 - 2 r r' \cost + R^2}},
+	\eeq
+	where we note that $\tht$ is the angle between $\vx$ and the $z$ axis.  The gradient in spherical coordinates is given by
+	\beq
+		\nabla = \pdv{}{r} \,\rh + \frac{1}{r} \pdv{}{\tht} \,\thh + \frac{1}{r \sint} \pdv{}{\vph} \, \phh,
+	\eeq
+	so we can find the electric field:
+	\begin{align*}
+		\vE &= -\nabx \, q \Gdxxp
+		= -q \, \nabx \! \left( \frac{1}{\sqrt{r^2 - 2 r r' \cost + {r'}^2}} - \frac{1}{\sqrt{r^2 {r'}^2 / R^2 - 2 r r' \cost + R^2}} \right)
+	\end{align*}
+	
+\end{solution}
 
 \begin{problem}
 	Find the force $\vF$ that must be exerted on the point charge in order to hold it in place.
@@ -210,10 +248,9 @@
 
 
 
-\newcommand{\vE}{\vec{E}}
 
 \begin{statement}{}
-	The ``mean value theorem'' is stated as follows: For any solution $\phi$ to $\lap \phi = 0$, the value of $\phi$ at $\vx$ is equal to the average value of t$\phi$ on a sphere of radius $R$ (for any $R$) centered at $\vx$.
+	The ``mean value theorem'' is stated as follows: For any solution $\phi$ to $\lap \phi = 0$, the value of $\phi$ at $\vx$ is equal to the average value of $\phi$ on a sphere of radius $R$ (for any $R$) centered at $\vx$.
 \end{statement}
 
 \begin{problem}
