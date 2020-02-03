@@ -103,6 +103,10 @@
 \newcommand{\dcx}{\dd[3]{x}}
 \newcommand{\rhoo}{\rho_0}
 \newcommand{\dS}{\dd{S}}
+\newcommand{\evS}{|_S}
+\newcommand{\evV}{|_\cV}
+\newcommand{\intS}{\int_S}
+\newcommand{\intV}{\int_\cV}
 
 \begin{statement}{}
 	Let $\cV$ be an arbitrary bounded region of space and suppose that a total charge $Q$ is to be distributed in $\cV$ in an arbitrary way, with $\rho = 0$ outside of $\cV$.  Show that the total energy is minimized if the charge is distributed the way that it would be if $\cV$ were a conductor, so that $\phi = \const$ within $\cV$ (and thus, in particular, all of the charge lies on the boundary of $\cV$).
@@ -118,16 +122,16 @@
 	\end{align*}
 	where $\rhoo$ is the charge of a conducting body filling $\cV$, $\phio$ is the electrostatic potential due to $\rhoo$, $\rho'$ is the charge distribution within $\cV$, and $\phi'$ is the electrostatic potential due to $\rho'$.  In order to eliminate ambiguity on the boundary, we require
 	\begin{align} \label{rhoconds}
-		\rhoo|_\cV &= 0, &
-		\rho'|_S &= 0.
+		\rhoo\evV &= 0, &
+		\rho'\evS &= 0.
 	\end{align}
 	That is, $\rhoo = 0$ inside the conductor by definition, and $\rho'$ vanishes on the boundary where $\rhoo$ is nonzero.  For the entire body to have charge $Q$, we need
 	\beq
-		\int \rhoo \dcx = \int_\cV \rho' \dcx + \int_S \rhoo \dS = Q.
+		\int \rhoo \dcx = \intV \rho' \dcx + \intS \rhoo \dS = Q.
 	\eeq
 	From \refeq{rhoconds}, it follows that
 	\beq
-		\phio|_\cV = \phio|_S = \const
+		\phio\evV = \phio\evS = \const
 	\eeq
 
 	The total energy is given by Eq.~(2.25) in the course notes,
@@ -138,12 +142,22 @@
 	\begin{align*}
 		\sE &= \frac{1}{2} \int (\phio + \phi') (\rhoo + \rho') \dcx
 		= \frac{1}{2} \left( \int \phio (\rhoo + \rho') \dcx + \int \phi' (\rhoo + \rho') \dcx \right) \\
-		&= \frac{1}{2} \left( \phio Q + \int_\cV \phi' \rho' \dcx + \int_S \phi' \rhoo \dS \right).
+		&= \frac{1}{2} \left( \phio Q + \intV \phi' \rho' \dcx + \intS \phi' \rhoo \dS \right).
 	\end{align*}
 	\hl{help}
 \end{solution}
 
 
+
+\newcommand{\lap}{\nabla^2}
+\newcommand{\Gd}{G_D}
+\newcommand{\Gdxxp}{\Gd(\vx, \vx')}
+\newcommand{\Gdxpx}{\Gd(\vx', \vx)}
+\newcommand{\psixp}{\psi(\vx')}
+\newcommand{\nh}{\vec{\hat{n}}}
+\newcommand{\nabxp}{\nabla_{x'}}
+\newcommand{\dSxp}{\dd{S_{x'}}}
+\newcommand{\absxp}{\abs{\vx'}}
 
 \begin{statement}{}
 	Charge is distributed on a (nonconducting) sphere of radius $R$, i.e., the charge density throughout space is of the form $\rhox = \sig(\tht, \vph) \, \delta(r - R)$.  The surface charge distribution $\sig$ on the sphere is chosen in such a way that the electrostatic potential on the sphere is $\phi(r=R, \tht, \vph) = \alp \cost$, where $\alp$ is a constant.
@@ -154,7 +168,15 @@
 \end{problem}
 
 \begin{solution}
-	Dirichlet BP?
+	This is a Dirichlet boundary value problem.  We are seeking the solution to Poisson's equation $\lap\phi = -4\pi\rho$ subject to $\phi\evS = \psi = \alp \cost$.  Equation~(2.100) in the lecture notes gives the general solution,
+	\beq
+		\phix = \intV \Gdxxp \, \rhoxp \dcxp - \frac{1}{4\pi} \intS \psixp \, \nh' \cdot \nabxp \Gdxpx \dSxp.
+	\eeq
+	The Green's function for a sphere is given by Eq.~(2.91),
+	\beq
+		\Gdxxp = \frac{1}{\abs{\vx - \vx'}} + \frac{\beta}{\abs{\vx - \vx''}} \qq{where} \vx'' = \vx' \frac{R^2}{\absxp^2} \qand \beta = - \frac{R}{\absxp}.
+	\eeq
+	\hl{Spherical harmonic expansion (2.78)?}
 \end{solution}
 
 
@@ -172,8 +194,6 @@
 
 
 
-\newcommand{\Gd}{G_D}
-\newcommand{\Gdxxp}{\Gd(\vx, \vx')}
 \newcommand{\vF}{\vec{F}}
 
 \begin{statement}{}
@@ -190,7 +210,6 @@
 
 
 
-\newcommand{\lap}{\nabla^2}
 \newcommand{\vE}{\vec{E}}
 
 \begin{statement}{}
