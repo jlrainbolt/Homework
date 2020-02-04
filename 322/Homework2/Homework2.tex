@@ -151,16 +151,18 @@
 
 \newcommand{\lap}{\nabla^2}
 \newcommand{\Gd}{G_D}
+\newcommand{\Gxxp}{G(\vx, \vx')}
 \newcommand{\Gdxxp}{\Gd(\vx, \vx')}
 \newcommand{\Gdxpx}{\Gd(\vx', \vx)}
 \newcommand{\psixp}{\psi(\vx')}
 \newcommand{\nh}{\vec{\hat{n}}}
-\newcommand{\nabxp}{\nabla_{x'}}
+\newcommand{\rh}{\vec{\hat{r}}}
+\newcommand{\nabxp}{\nabla_{\!x'}}
 \newcommand{\dSxp}{\dd{S_{x'}}}
 \newcommand{\absxp}{\abs{\vx'}}
 
 \begin{statement}{}
-	Charge is distributed on a (nonconducting) sphere of radius $R$, i.e., the charge density throughout space is of the form $\rhox = \sig(\tht, \vph) \, \delta(r - R)$.  The surface charge distribution $\sig$ on the sphere is chosen in such a way that the electrostatic potential on the sphere is $\phi(r=R, \tht, \vph) = \alp \cost$, where $\alp$ is a constant.
+	Charge is distributed on a (nonconducting) sphere of radius $R$, i.e., the charge density throughout space is of the form $\rhox = \sig\tv \, \delta(r - R)$.  The surface charge distribution $\sig$ on the sphere is chosen in such a way that the electrostatic potential on the sphere is $\phi(r=R, \tht, \vph) = \alp \cost$, where $\alp$ is a constant.
 \end{statement}
 
 \begin{problem}
@@ -169,20 +171,79 @@
 
 \begin{solution}
 	This is a Dirichlet boundary value problem.  We are seeking the solution to Poisson's equation $\lap\phi = -4\pi\rho$ subject to $\phi\evS = \psi = \alp \cost$.  Equation~(2.100) in the lecture notes gives the general solution,
-	\beq
+	\beqn \label{sol3}
 		\phix = \intV \Gdxxp \, \rhoxp \dcxp - \frac{1}{4\pi} \intS \psixp \, \nh' \cdot \nabxp \Gdxpx \dSxp.
-	\eeq
+	\eeqn
 	The Green's function for a sphere is given by Eq.~(2.91),
 	\beq
 		\Gdxxp = \frac{1}{\abs{\vx - \vx'}} + \frac{\beta}{\abs{\vx - \vx''}} \qq{where} \vx'' = \vx' \frac{R^2}{\absxp^2} \qand \beta = - \frac{R}{\absxp}.
 	\eeq
-	\hl{Spherical harmonic expansion (2.78)?}
+	The Green's function for unbounded space, $\Gxxp$, can be expanded in spherical harmonics according to Eq.~(2.78):
+	\beq
+		\Gxxp = \frac{1}{\abs{\vx - \vx'}}
+		= \begin{cases} \sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{r^l}{{r'}^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \text{if } r < r', \\
+		\sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{{r'}^l}{r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \text{if } r > r'. \end{cases}
+	\eeq
+	Expanding $\Gdxxp$ in spherical harmonics in the region $r < r'$ gives us
+	\begin{align*}
+		\Gdxxp &= \sum_{l,m} \left( \frac{4\pi}{2l + 1} \frac{r^l}{{r'}^{l + 1}} \Ylm^*\tvp \, \Ylm\tv + \beta \frac{4\pi}{2l + 1} \frac{r^l}{{r''}^{l + 1}} \Ylm^*(\tht'', \vph'') \, \Ylm\tv \right) \\
+		&= \sum_{l,m} \frac{4\pi}{2l + 1} r^l \, \Ylm\tv \left( \frac{1}{{r'}^{l + 1}} \Ylm^*\tvp + \frac{\beta}{{r''}^{l + 1}} \Ylm^*(\tht'', \vph'') \right) \\
+		&= \sum_{l,m} \frac{4\pi}{2l + 1} r^l \, \Ylm\tv \left[ \frac{1}{{r'}^{l + 1}} \Ylm^*\tvp - \frac{1}{R (R^2 / r')^l} \Ylm^*\!\left( \frac{R^2 \tht'}{{r'}^2}, \frac{R^2 \vph'}{{r'}^2} \right) \right].
+	\end{align*}
+	We can also write $\psi$ in terms spherical harmonics:
+	\beq
+		\psi(r=R, \tht, \vph) = \alp \sqfr{4\pi}{3} Y_{1 0}\tv = \alp \sqfr{4\pi}{3} Y_{1 0}^*\tv.
+	\eeq
+	
+	Since charge is distributed only on the surface of the sphere, the first integral in \refeq{sol3} is 0.  For the second integral, note that $\nh = \rh$ for a sphere.  Making the substitutions from the problem statement, we have
+	\beqn \label{thing}
+		\phix = -\frac{\alp}{4\pi} \intS \costp \, \rh' \cdot \nabxp \Gdxpx \dSxp
+		= -\frac{\alp}{4\pi} \intotp \intono \intoR \costp \pdv{\Gdxpx}{r'} \delta(r' - R) \drp \dctp \dvp.
+	\eeqn
+	Note that
+	\begin{align*}
+		\pdv{\Gdxpx}{r'} = \sum_{l,m} 4\pi \frac{l}{2l + 1} {r'}^{l-1} \, \Ylm\tvp \left[ \frac{1}{r^{l + 1}} \Ylm^*\tv - \frac{r^l}{R^{2l+1}} \Ylm^*\!\left( \frac{R^2 \tht}{r^2}, \frac{R^2 \vph}{r^2} \right) \right],
+	\end{align*}
+	and that \refeq{thing} is only nonzero for the $l = 1$, $m = 0$ term of $\pdv*{\Gdxpx}{r'}$, which is
+	\beq
+		\frac{4\pi}{3} \, Y_{1 0}\tvp \left[ \frac{1}{r^2} Y_{1 0}^*\tv - \frac{r}{R^3} Y_{1 0}^*\!\left( \frac{R^2 \tht}{r^2}, \frac{R^2 \vph}{r^2} \right) \right].
+	\eeq
+	So \refeq{thing} becomes
+	\begin{align*}
+		\phix &= -\frac{\alp}{3} \sqfr{4\pi}{3} \left[ \frac{1}{r^2} Y_{1 0}^*\tv - \frac{r}{R^3} Y_{1 0}^*\!\left( \frac{R^2 \tht}{r^2}, \frac{R^2 \vph}{r^2} \right) \right] \\
+		&= -\frac{\alp}{3} \left[ \frac{1}{r^2} \cost - \frac{r}{R^3} \cos(\frac{R^2 \tht}{{r}^2}) \right]
+		= -\frac{\alp}{3} \left[ \frac{1}{\absx^2} \cost - \frac{\absx}{R^3} \cos(\frac{R^2 \tht}{\absx^2}) \right].
+	\end{align*}
 \end{solution}
+\vfix
 
 
 \begin{problem}
 	Find the electrostatic potential $\phix$ at all $r \geq R$.
 \end{problem}
+
+\begin{solution}
+	Expanding $\Gdxxp$ in spherical harmonics in the region $r > r'$ gives us
+	\beq
+		\Gdxxp = \sum_{l,m} \frac{4\pi}{2l + 1} \frac{1}{r^{l+1}} \, \Ylm\tv \left[ {r'}^l \Ylm^*\tvp - \frac{R^{2l}}{{r'}^l} \Ylm^*\!\left( \frac{R^2 \tht'}{{r'}^2}, \frac{R^2 \vph'}{{r'}^2} \right) \right].
+	\eeq
+	In this region,
+	\beq
+		\pdv{\Gdxpx}{r'} = \sum_{l,m} -4\pi \frac{l + 1}{2l + 1} \frac{1}{{r'}^{l+2}} \, \Ylm\tv \left[ r^l \Ylm^*\tv - \frac{R^{2l}}{r^l} \Ylm^*\!\left( \frac{R^2 \tht}{r^2}, \frac{R^2 \vph}{r^2} \right) \right].
+	\eeq
+	We may once again use \refeq{thing} with the $l = 1$, $m = 0$ term of $\pdv*{\Gdxpx}{r'}$, which is
+	\beq
+		-\frac{8\pi}{3} \frac{1}{{r'}^3} Y_{1 0}\tvp \left[ r Y_{1 0}^*\tv - \frac{R^2}{r} Y_{1 0}^*\!\left( \frac{R^2 \tht}{r^2}, \frac{R^2 \vph}{r^2} \right) \right].
+	\eeq
+	Now \refeq{thing} becomes
+	\begin{align*}
+		\phix &= -\frac{2\alp}{3} \sqfr{4\pi}{3} \frac{1}{R^3} \left[ r Y_{1 0}^*\tv - \frac{R^2}{r} Y_{1 0}^*\!\left( \frac{R^2 \tht}{r^2}, \frac{R^2 \vph}{r^2} \right) \right] \\
+		&= -\frac{2\alp}{3} \left[ \frac{r}{R^3} \cost - \frac{1}{R r} \cos(\frac{R^2 \tht}{r^2}) \right]
+		= -\frac{2\alp}{3} \left[ \frac{\absx}{R^3} \cost - \frac{1}{R \absx} \cos(\frac{R^2 \tht}{r^2}) \right].
+	\end{align*}
+\end{solution}
+\vfix
+
 
 \begin{problem}
 	Find the surface charge density $\sigtv$ that was required in order to produce this potential $\phi$.
@@ -194,105 +255,7 @@
 
 
 
-\newcommand{\vF}{\vec{F}}
-\newcommand{\vE}{\vec{E}}
-\newcommand{\rh}{\vec{\hat{r}}}
-\newcommand{\thh}{\boldsymbol{\hat{\tht}}}
-\newcommand{\phh}{\boldsymbol{\hat{\vph}}}
-\newcommand{\nabx}{\nabla_{\!x}}
-\newcommand{\Er}{E_r}
-
-\begin{statement}{}
-	A point charge of charge $q$ is placed at point $\vx'$ inside a conducting spherical shell of radius $R$.  There is no net charge on the conductor.  The potential inside the sphere is thus given by $q \, \Gdxxp$, where the explicit formula for $\Gdxxp$ for a spherical cavity is given in the lecture notes.
-\end{statement}
-
-\begin{problem}
-	Find the surface charge density $\sigtv$ on the conducting shell.
-\end{problem}
-
-\begin{solution}
-	The Green's function for a spherical cavity is given by Eq.~(2.91),
-	\beq
-		\Gdxxp = \frac{1}{\abs{\vx - \vx'}} + \frac{\alp}{\abs{\vx - \vx''}} \qq{where} \vx'' = \vx' \frac{R^2}{\absxp^2} \qand \alp = - \frac{R}{\absxp}.
-	\eeq
-	The surface charge density can be found from Eq.~(2.86),
-	\beqn \label{scdeq}
-		\vE \cdot \nh = 4\pi \sig,
-	\eeqn
-	where $\vE = -\nabla \phi$ in electrostatics.
-	
-	We will begin by finding $\vE$.  We will orient our coordinate system such that $\vx'$ (and consequently $\vx''$) points along the $z$ axis.  Note that
-	\beq
-		\Gdxxp = \frac{1}{\abs{\vx - \vx'}} - \frac{R}{\absxp \abs{\vx - \dfrac{R^2}{\absxp^2} \vx'}}
-		= \frac{1}{\sqrt{\vx^2 - 2 \vx \cdot \vx' + {\vx'}^2}} - \frac{R}{\absxp \sqrt{\vx^2 - 2 \dfrac{R^2}{{\vx'}^2} \vx \cdot \vx' + \dfrac{R^4}{{\vx'}^4} {\vx'}^2}}.
-	\eeq
-	In spherical coordinates, we have
-	\beq
-		\Gdxxp = \frac{1}{\sqrt{r^2 - 2 r r' \cost + {r'}^2}} - \frac{R}{r'} \frac{1}{\sqrt{r^2 - 2 R^2 r \cost / r' + R^4 / {r'}^2}},
-	\eeq
-	where we note that $\tht$ is the angle between $\vx$ and the $z$ axis.  The gradient in spherical coordinates is given by
-	\beq
-		\nabla = \pdv{}{r} \,\rh + \frac{1}{r} \pdv{}{\tht} \,\thh + \frac{1}{r \sint} \pdv{}{\vph} \, \phh.
-	\eeq
-	The $r$ component of the electric field inside the conductor is then
-	\beq
-		\Er(\vx) = -q \pdv{\Gdxxp}{r}
-		= q \left( \frac{r - r' \cost}{(r^2 - 2 r r' \cost + {r'}^2)^{3/2}} - \frac{R}{r'} \frac{r - R^2 \cost / r'}{(r^2 - 2 R^2 r \cost / r' + R^4 / {r'}^2)^{3/2}} \right).
-	\eeq
-	Since $\nh = -\rh$ for the inner surface of a sphere, we are interested in only the $r$ component of the field.  On the surface of the sphere, the field is $\Er(r=R) \,\rh$.  So we have
-	\begin{align*}
-		\Er(r=R) &= q \left( \frac{R - r' \cost}{(R^2 - 2 R r' \cost + {r'}^2)^{3/2}} - \frac{R}{r'} \frac{R - R^2 \cost / r'}{(R^2 - 2 R^3 \cost / r' + R^4 / {r'}^2)^{3/2}} \right) \\
-		&= q \left( \frac{R - r' \cost}{{r'}^3 (R^2 / {r'}^2 - 2 R \cost / r' + 1)^{3/2}} - \frac{R}{r'} \frac{R - R^2 \cost / r'}{R^3 (1 - 2 R \cost / r' + R^2 / {r'}^2)^{3/2}} \right) \\
-		&= \frac{q}{r'} \frac{R^3 - R^2 r' \cost - R {r'}^2 + R^2 r' \cost}{R^2 {r'}^2 (R^2 / {r'}^2 - 2 R \cost / r' + 1)^{3/2}}
-		= \frac{q}{R {r'}^3} \frac{R^2 - {r'}^2}{(R^2 / {r'}^2 - 2 R \cost / r' + 1)^{3/2}}.
-	\end{align*}
-	Finally, feeding this into \refeq{scdeq},
-	\beq
-		\sig = -\frac{\vE \cdot \rh}{4\pi}
-		= \frac{q}{4\pi R {r'}^3} \frac{{r'}^2 - R^2}{(R^2 / {r'}^2 - 2 R \cost / r' + 1)^{3/2}}
-		= \frac{q}{4\pi R \absxp^3} \frac{\absxp^2 - R^2}{(R^2 / \absxp^2 - 2 R \cost / \absxp + 1)^{3/2}}.
-	\eeq
-\end{solution}
-\vfix
-
-
-\newcommand{\vEo}{\vE_0}
-\newcommand{\del}{\delta}
-\newcommand{\Etht}{E_\tht}
-\newcommand{\Fr}{F_r}
-
-\begin{problem}
-	Find the force $\vF$ that must be exerted on the point charge in order to hold it in place.
-\end{problem}
-
-\begin{solution}
-	The total force on a charge distribution arises only from the external electric field $\vEo$, and is given by Eq.~(2.42) in the lecture notes:
-	\beq
-		\vF = \int \rhox \, \vEo(\vx) \dcx.
-	\eeq
-	We now need the $\tht$ component of the field inside the conductor, which is
-	\beq
-		\Etht(\vx) = -\frac{q}{r} \pdv{\Gdxxp}{\tht}
-		= -q \left( \frac{r' \sint}{(r^2 - 2 r r' \cost + {r'}^2)^{3/2}} - \frac{R^3 \sint}{{r'}^2 (r^2 - 2 R^2 r \cost / r' + R^4 / {r'}^2)^{3/2}} \right).
-	\eeq
-	The charge density for a point charge located at $\vx'$ is given by $\rhox = q \, \delta(\vx - \vx')$.  Evaluating the integral, we have
-	\beq
-		\vF = \int q \, \delta(\vx - \vx') \, \vE(\vx) \dcx = q \vE(\vx').
-	\eeq
-	Recall that we chose $\vx'$ to point along the $z$ axis, so $\tht' = 0$.  The $\tht$ component of $\vF$ is then $0$, and the $r$ component is
-	\begin{align*}
-		\Fr &= q^2 \left( \frac{r' - r'}{({r'}^2 - 2 {r'}^2 + {r'}^2)^{3/2}} - \frac{R}{r'} \frac{r' - R^2 / r'}{({r'}^2 - 2 R^2 + R^4 / {r'}^2)^{3/2}} \right)
-		= q^2 R {r'}^2 \frac{R^2 / r' - r'}{({r'}^4 - 2 R^2 {r'}^2 + R^4)^{3/2}} \\
-		&= q^2 R {r'}^2 \frac{(R^2 - {r'}^2) / r'}{(R^2 - {r'}^2)^3}
-		= q^2 \frac{R r'}{(R^2 - {r'}^2)^2}.
-	\end{align*}
-	Since only the $r$ component of $\vF$ is nonzero, it points in the $z$ direction, which we chose to be equivalent to the unit vector $\vx' / \absxp$.  Therefore,
-	\beq
-		\vF = q^2 \frac{R \absxp}{(R^2 - \absxp^2)^2} \frac{\vx'}{\absxp}
-		= q^2 \frac{R}{(R^2 - \absxp^2)^2} \vx'.
-	\eeq
-\end{solution}
-
+\input{Problem4}
 
 
 
