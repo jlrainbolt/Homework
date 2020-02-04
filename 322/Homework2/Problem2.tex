@@ -1,0 +1,76 @@
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\phio}{\phi_0}
+\newcommand{\phiox}{\phio(\vx)}
+\newcommand{\const}{\text{const.}}
+\newcommand{\sig}{\sigma}
+\newcommand{\alp}{\alpha}
+\newcommand{\sigtv}{\sig(\tht, \vph)}
+
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\dcx}{\dd[3]{x}}
+\newcommand{\rhoo}{\rho_0}
+\newcommand{\evS}{|_S}
+\newcommand{\intV}{\int_\cV}
+\newcommand{\vE}{\vec{E}}
+
+\begin{statement}{}
+	Let $\cV$ be an arbitrary bounded region of space and suppose that a total charge $Q$ is to be distributed in $\cV$ in an arbitrary way, with $\rho = 0$ outside of $\cV$.  Show that the total energy is minimized if the charge is distributed the way that it would be if $\cV$ were a conductor, so that $\phi = \const$ within $\cV$ (and thus, in particular, all of the charge lies on the boundary of $\cV$).
+	
+	Hint: Let $\phiox$ be the potential one would obtain if $\cV$ were filled by a conducting body.  Consider the energy of $\phio + \phi'$, where the source $\rho'$ of $\phi'$ vanishes outside of $\cV$ and has no net charge within $\cV$.
+\end{statement}
+
+\begin{solution}
+	Let $S = \partial \cV$ denote the boundary of $\cV$.  Suppose, to the contrary, that there is charge enclosed within $\cV$.  Call this source $\rho'$.  By the superposition principle, we may write
+	\begin{align*}
+		\rho &= \rhoo + \rho', &
+		\phi &= \phio + \phi',
+	\end{align*}
+	where $\rhoo$ is the charge of a conducting body filling $\cV$, $\phio$ is the electrostatic potential due to $\rhoo$, $\rho'$ is the charge distribution within $\cV$, and $\phi'$ is the electrostatic potential due to $\rho'$.  Without loss of generality, we may require
+	\beqn \label{wtf}
+		\intV \rho' \dcx = 0.
+	\eeqn
+	For the entire body to have charge $Q$, we need
+	\beq
+		\int \rhoo \dcx = Q.
+	\eeq
+	By definition, $\rhoo = 0$ everywhere \emph{but} on the boundary.  It follows that $\phio = \const$ everywhere.
+
+	The total energy is given by Eq.~(2.25) in the course notes,
+	\beqn \label{tote}
+		\sE = \frac{1}{8\pi} \intV |\vE|^2 \dcx = \frac{1}{2} \int \phi \rho \dcx.
+	\eeqn
+	So
+	\begin{align}
+		\sE &= \frac{1}{2} \int (\phio + \phi') (\rhoo + \rho') \dcx
+		= \frac{1}{2} \left( \int \phio (\rhoo + \rho') \dcx + \int \phi' (\rhoo + \rho') \dcx \right) \notag \\
+		&= \frac{1}{2} \left( \phio Q + \intV \phi' \rho' \dcx + \intV \phi' \rhoo \dcx \right). \label{3terms}
+	\end{align}
+	Applying \refeq{tote}, we can rewrite the second term:
+	\beq
+		\intV \phi' \rho' \dcx = \frac{1}{4\pi} \intV |\vE'|^2 \dcx \geq 0.
+	\eeq
+	Eq.~(2.30) gives the expression for interaction energy,
+	\beq
+		\sE_\text{int} = \int \rho_1 \phi_2 \dcx = \int \rho_2 \phi_1 \dcx,
+	\eeq
+	so we can rewrite the third term of \refeq{3terms} as follows:
+	\beq
+		\intV \phi' \rhoo \dcx = \intV \phio \rho' \dcx = \phio \intV \rho' \dcx = 0.
+	\eeq
+	
+	Now \refeq{3terms} becomes
+	\beq
+		\sE = \frac{1}{2} \left( \phio Q + \frac{1}{4\pi} \intV |\vE'|^2 \dcx \right),
+	\eeq
+	which is minimal when
+	\beq
+		0 = \frac{1}{4\pi} \intV |\vE'|^2 \dcx = \intV \phi' \rho' \dcx.
+	\eeq
+	This is only posisble if
+	\begin{align*}
+		\phi' = 0 &\text{ or } \rho' = 0, &
+		\rho' = \const &\text{ and } \intV \phi' \dcx = 0, &
+		\phi' = \const &\text{ and } \intV \rho' \dcx = 0.
+	\end{align*}
+	The first is trivial, and the second contradicts \refeq{wtf}.  So we are left with the third option, and thus conclude that $\phi' = \const$  However, this implies that $\rho'$ is distributed as it would be for a conductor, which contradicts our initial assumption.  Thus, we have shown that the total energy is minimized for charge distributed as it is in a conductor.
+\end{solution}
