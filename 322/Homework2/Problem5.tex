@@ -1,0 +1,76 @@
+\newcommand{\phiq}{\phi_1}
+\newcommand{\phiw}{\phi_2}
+\newcommand{\rhoq}{\rho_1}
+\newcommand{\rhow}{\rho_2}
+\newcommand{\intS}{\int_S}
+\newcommand{\dS}{\dd{S}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\phixp}{\phi(\vx')}
+
+\begin{statement}{}
+	The ``mean value theorem'' is stated as follows: For any solution $\phi$ to $\lap \phi = 0$, the value of $\phi$ at $\vx$ is equal to the average value of $\phi$ on a sphere of radius $R$ (for any $R$) centered at $\vx$.
+\end{statement}
+
+\begin{problem} \label{5a}
+	Prove the mean value theorem.  Hint: Apply Green's theorem to $\phi$ and $1/\abs{\vx - \vx'}$ for a suitable choice of region and a suitable choice of $\vx'$.
+\end{problem}
+
+\begin{solution}
+	Green's theorem is given by Eq.~(2.96),
+	\beq
+		\intS \nh \cdot (\phiq \nabla\phiw - \phiw \nabla\phiq) \dS = -4\pi \intV (\phiq \rhow - \phiw \rhoq) \dcx.
+	\eeq
+	We will choose our volume as a sphere centered at $\vx$ with radius $r$, so $\nh = \rh$.  Suppose $\phiq = \phix$ is a solution to Laplace's equation as stated.  Let $\vx'$ point radially from $\vx$, located at the center of the sphere, to a point a distance $r$ away; that is, $\vx' = \vx + r \, \rh$.  Then
+	\beq
+		\phiw = \frac{1}{\abs{\vx - \vx'}} = \frac{1}{\abs{-r \, \rh}} = \frac{1}{r}.
+	\eeq
+	From Poisson's equation, $\lap\phi = -4\pi\rho$ in general.  This means $\rhoq = 0$.  For the Green's function, $\rhow = \delta(\vx - \vx') = \delta(r)$.
+	
+	Applying Green's theorem,
+	\beqn \label{gt}
+		\intS \rh \cdot \left( \phix \nabla\frac{1}{r} - \frac{1}{r} \nabla\phix \right) \dS = -4\pi \intV \phi \, \delta(r) \dcx
+	\eeqn
+	For the first term on the left side, note that
+	\beq
+		\rh \cdot \nabla\frac{1}{r} = \pdv{}{r} \frac{1}{r} \rh \cdot \rh = -\frac{1}{r^2}.
+	\eeq
+	Gauss's theorem is given by Eq.~(2.6),
+	\beq
+		\intV \nabla \cdot \vv \dcx = \intS \vv \cdot \nh \dS.
+	\eeq
+	Applying this to the second term on the left side of \refeq{gt},
+	\beq
+		-\intS \nh \cdot \frac{1}{r} \nabla\phix \dS = -\intV \nabla \cdot \frac{1}{r} \nabla\phix \dcx
+		= -\frac{1}{r} \lap\phix
+		= 0.
+	\eeq
+	For the right side of \refeq{gt},
+	\beq
+		-4\pi \intV \phix \, \delta(r) \dcx = -4\pi \phi(0).
+	\eeq
+	
+	Putting this together, \refeq{gt} becomes
+	\beq
+		-\intS \frac{\phix}{r^2} \dS = -4\pi \phi(0) \dS.
+	\eeq
+	We can choose $\vx = 0$ without loss of generality and switch $\vx$ with $\vx'$, which gives us
+	\beqn \label{mvt}
+		\phix = \frac{1}{4\pi r^2} \intS \phixp \dd{S'}.
+	\eeqn
+	This equation demonstrates that the value of $\phi$ at $\vx$ is equal to its average value on a sphere of arbitrary radius $r$.  Thus, we have proven the mean value theorem. \qed
+\end{solution}
+
+
+\begin{problem}
+	Use this result to show that a point charge can never be in stable equilibrium if placed in an electric field $\vE$ that is source free in a neighborhood of the charge.
+\end{problem}
+
+\begin{solution}
+	Let $\cV$ denote the neighborhood of the point charge, which can be described as a sphere of radius $r$ centerd at the location of the point charge.  We will choose this point as the origin.  Let $S$ denote the boundary of $\cV$.
+	
+	Suppose, contrary to the problem statement, that the point charge is in stable equilibrium.  This means that the electrostatic potential $\phi$ has a local minimum at the origin, and so $\phi(0) < \phix$ for all other $\vx \neq 0$ within $\cV$.  In particular, $\phi(0) < \phi|_S$ at all points on the boundary, and so
+	\beqn \label{fake}
+		\phi(0) < \frac{1}{4\pi r^2} \intS \phix \dS.
+	\eeqn
+	However, $\phi$ must satisfy $\lap\phi = 0$, since $\cV$ is source free.  As proven in \ref{5a}, $\phi$ therefore obeys \refeq{mvt}, which contradicts \refeq{fake} and therefore our assumption that the point charge is in stable equilibrium.  So we have shown that stable equilibrium is impossible in this situation. \qed
+\end{solution}

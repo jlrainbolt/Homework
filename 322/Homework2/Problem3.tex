@@ -84,7 +84,7 @@
 	\eeq
 	which implies
 	\beq
-		\sig\tv = \sqfr{3}{4\pi} \frac{\alp}{R} \sqfr{3}{4\pi} \cost = \frac{3}{4\pi} \alpha R \cost.
+		\sig\tv = \sqfr{3}{4\pi} \frac{\alp}{R} \sqfr{3}{4\pi} \cost = \frac{3}{4\pi} \frac{\alp}{R} \cost.
 	\eeq
 \end{solution}
 \vfix
@@ -102,11 +102,11 @@
 	The total energy is given by \refeq{tote}.  Since $\rho$ is nonzero only on the boundary, we can use the given expression for $\phi$ on the boundary.  Feeding in our result from \ref{3c}, 
 	\begin{align*}
 		\sE &= \frac{1}{2} \int \phi \rho \dcx
-		= \frac{1}{2} \intotp \intono \intoi \frac{3}{4\pi} \alp R \cost \, \delta(r - R) \, \alp \cost r^2 \dr \dct \dph \\
-		&= \frac{3}{8\pi} \alp^2 R \intotp \dph \intono \cos^2\tht \dct \intoi \delta(r - R) \, r^2 \dr
-		= \frac{3}{8\pi} \alp^2 R \bigg[ \vph \bigg]_0^{2\pi} \left[ \frac{\cos^3\tht}{3} \right]_{-1}^1 R^2
-		= \frac{3}{8\pi} \alp^2 R^3 (2\pi) \frac{2}{3} \\
-		&= \frac{1}{2\pi} \alp^2 R^3.
+		= \frac{1}{2} \intotp \intono \intoi \frac{3}{4\pi} \frac{\alp}{R} \cost \, \delta(r - R) \, \alp \cost r^2 \dr \dct \dph \\
+		&= \frac{3}{8\pi} \frac{\alp^2}{R} \intotp \dph \intono \cos^2\tht \dct \intoi \delta(r - R) \, r^2 \dr
+		= \frac{3}{8\pi} \frac{\alp^2}{R} \bigg[ \vph \bigg]_0^{2\pi} \left[ \frac{\cos^3\tht}{3} \right]_{-1}^1 R^2
+		= \frac{3}{8\pi} \alp^2 R (2\pi) \frac{2}{3} \\
+		&= \frac{1}{2} \alp^2 R.
 	\end{align*}
 \end{solution}
 \vfix

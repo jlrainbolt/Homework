@@ -75,25 +75,26 @@
 	\beq
 		\vF = \int \rhox \, \vEo(\vx) \dcx.
 	\eeq
-	We now need the $\tht$ component of the field inside the conductor, which is
+	The force required to keep the point charge in place is equal and opposite to this force, so we need to insert a minus sign.  We also need the $\tht$ component of the field inside the conductor, which is
 	\beq
 		\Etht(\vx) = -\frac{q}{r} \pdv{\Gdxxp}{\tht}
 		= -q \left( \frac{r' \sint}{(r^2 - 2 r r' \cost + {r'}^2)^{3/2}} - \frac{R^3 \sint}{{r'}^2 (r^2 - 2 R^2 r \cost / r' + R^4 / {r'}^2)^{3/2}} \right).
 	\eeq
 	The charge density for a point charge located at $\vx'$ is given by $\rhox = q \, \delta(\vx - \vx')$.  Evaluating the integral, we have
 	\beq
-		\vF = \int q \, \delta(\vx - \vx') \, \vE(\vx) \dcx = q \vE(\vx').
+		\vF = -\int q \, \delta(\vx - \vx') \, \vE(\vx) \dcx
+		= -q \vE(\vx').
 	\eeq
 	Recall that we chose $\vx'$ to point along the $z$ axis, so $\tht' = 0$.  The $\tht$ component of $\vF$ is then $0$, and the $r$ component is
 	\begin{align*}
-		\Fr &= q^2 \left( \frac{r' - r'}{({r'}^2 - 2 {r'}^2 + {r'}^2)^{3/2}} - \frac{R}{r'} \frac{r' - R^2 / r'}{({r'}^2 - 2 R^2 + R^4 / {r'}^2)^{3/2}} \right)
-		= q^2 R {r'}^2 \frac{R^2 / r' - r'}{({r'}^4 - 2 R^2 {r'}^2 + R^4)^{3/2}} \\
-		&= q^2 R {r'}^2 \frac{(R^2 - {r'}^2) / r'}{(R^2 - {r'}^2)^3}
-		= q^2 \frac{R r'}{(R^2 - {r'}^2)^2}.
+		\Fr &= -q^2 \left( \frac{r' - r'}{({r'}^2 - 2 {r'}^2 + {r'}^2)^{3/2}} - \frac{R}{r'} \frac{r' - R^2 / r'}{({r'}^2 - 2 R^2 + R^4 / {r'}^2)^{3/2}} \right)
+		= q^2 R {r'}^2 \frac{r' - R^2 / r'}{({r'}^4 - 2 R^2 {r'}^2 + R^4)^{3/2}} \\
+		&= -q^2 R {r'}^2 \frac{({r'}^2 - R^2) / r'}{({r'}^2 - R^2)^3}
+		= -q^2 \frac{R r'}{({r'}^2 - R^2)^2}.
 	\end{align*}
 	Since only the $r$ component of $\vF$ is nonzero, it points in the $z$ direction, which we chose to be equivalent to the unit vector $\vx' / \absxp$.  Therefore,
 	\beq
-		\vF = q^2 \frac{R \absxp}{(R^2 - \absxp^2)^2} \frac{\vx'}{\absxp}
-		= q^2 \frac{R}{(R^2 - \absxp^2)^2} \vx'.
+		\vF = -q^2 \frac{R \absxp}{(R^2 - \absxp^2)^2} \frac{\vx'}{\absxp}
+		= -q^2 \frac{R}{(R^2 - \absxp^2)^2} \vx'.
 	\eeq
 \end{solution}
