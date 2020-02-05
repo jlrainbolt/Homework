@@ -22,7 +22,7 @@
 	\eeq
 	We can also write $\phi$ in terms of spherical harmonics:
 	\beq
-		\psi(r=R, \tht, \vph) = \alp \sqfr{4\pi}{3} Y_{1 0}\tv = \alp \sqfr{4\pi}{3} Y_{1 0}^*\tv.
+		\phi(r=R, \tht, \vph) = \alp \sqfr{4\pi}{3} Y_{1 0}\tv.
 	\eeq
 	
 	For $r \leq r'$, the potential is
@@ -31,15 +31,18 @@
 		&= \sum_{l,m} \frac{4\pi}{2l + 1} r^l \Ylm\tv \intoi \delta(r' - R) \frac{1}{{r'}^{l - 1}} \drp \intotp \intono \sig\tvp \, \Ylm^*\tvp \dctp \dvp \notag \\
 		&= \sum_{l,m} \frac{4\pi}{2l + 1} r^l \Ylm\tv \frac{1}{R^{l - 1}} \intotp \intono \sig\tvp \, \Ylm^*\tvp \dctp \dvp. \label{pot1ax}
 	\end{align}
-	Plugging in $r = R$,
+	Plugging in $r = R$, we may apply the boundary condition:
 	\beq
-		\alp \cost = \sum_{l,m} \frac{4\pi}{2l + 1} R \Ylm\tv \intotp \intono \sig\tvp \, \Ylm^*\tvp \dctp \dvp,
+		\alp \sqfr{4\pi}{3} Y_{1 0}\tv = \sum_{l,m} \frac{4\pi}{2l + 1} R \Ylm\tv \intotp \intono \sig\tvp \, \Ylm^*\tvp \dctp \dvp,
 	\eeq
 	which implies that $l = 1$ and $m = 0$ are the only $\Ylm$ with nonzero coefficients.  Therefore,
-	\begin{align}
-		\alp \cost &= \frac{4\pi}{3} R \sqfr{3}{4\pi} \cost \intotp \intono \sig\tvp \, \Ylm^*\tvp \dctp \dvp \notag \\
-		&\implies \intotp \intono \sig\tvp \, \Ylm^*\tvp \dctp \dvp = \sqfr{3}{4\pi} \frac{\alp}{R}, \label{integ}
-	\end{align}
+	\beq
+		\alp \sqfr{4\pi}{3} Y_{1 0}\tv = \frac{4\pi}{3} R \, Y_{1 0}\tv \intotp \intono \sig\tvp \, \Ylm^*\tvp \dctp \dvp,
+	\eeq
+	which implies
+	\beqn \label{integ}
+		\intotp \intono \sig\tvp \, \Ylm^*\tvp \dctp \dvp = \sqfr{3}{4\pi} \frac{\alp}{R},
+	\eeqn
 	so \refeq{pot1ax} becomes
 	\beq
 		\phix = \frac{4\pi}{3} r \sqfr{3}{4\pi} \cost \frac{1}{R^{l - 1}} \sqfr{3}{4\pi} \frac{\alp}{R}
@@ -80,7 +83,7 @@
 	From \refeq{integ} and the fact that $l = 1$ and $m = 0$, we need $\sig\tv = C \,Y_{1 0}\tv$ where $C$ is a constant.  Then
 	\beq
 		\sqfr{3}{4\pi} \frac{\alp}{R} = C \intotp \intono Y_{1 0}\tvp Y_{1 0}^*\tvp \dctp \dvp
-		= C
+		= C,
 	\eeq
 	which implies
 	\beq

@@ -18,22 +18,22 @@
 	
 	Hint: Let $\phiox$ be the potential one would obtain if $\cV$ were filled by a conducting body.  Consider the energy of $\phio + \phi'$, where the source $\rho'$ of $\phi'$ vanishes outside of $\cV$ and has no net charge within $\cV$.
 \end{statement}
-
+ß
 \begin{solution}
 	Let $S = \partial \cV$ denote the boundary of $\cV$.  Suppose, to the contrary, that there is charge enclosed within $\cV$.  Call this source $\rho'$.  By the superposition principle, we may write
 	\begin{align*}
 		\rho &= \rhoo + \rho', &
 		\phi &= \phio + \phi',
 	\end{align*}
-	where $\rhoo$ is the charge of a conducting body filling $\cV$, $\phio$ is the electrostatic potential due to $\rhoo$, $\rho'$ is the charge distribution within $\cV$, and $\phi'$ is the electrostatic potential due to $\rho'$.  Without loss of generality, we may require
+	where $\rhoo$ is the charge of a conducting body filling $\cV$, $\phio$ is the electrostatic potential due to $\rhoo$, $\rho'$ is the other charge distribution within $\cV$, and $\phi'$ is the electrostatic potential due to $\rho'$.  For the entire body to have charge $Q$, we need
+	\beq
+		\int \rho \dcx = \int (\rho + \rho') \dcx = Q.
+	\eeq
+	Without loss of generality, we may require
 	\beqn \label{wtf}
 		\intV \rho' \dcx = 0.
 	\eeqn
-	For the entire body to have charge $Q$, we need
-	\beq
-		\int \rhoo \dcx = Q.
-	\eeq
-	By definition, $\rhoo = 0$ everywhere \emph{but} on the boundary.  It follows that $\phio = \const$ everywhere.
+	By definition, $\rhoo = 0$ everywhere \emph{but} on the boundary.  It follows that $\phio = \const$ everywhere within $\cV$.
 
 	The total energy is given by Eq.~(2.25) in the course notes,
 	\beqn \label{tote}
@@ -47,9 +47,9 @@
 	\end{align}
 	Applying \refeq{tote}, we can rewrite the second term:
 	\beq
-		\intV \phi' \rho' \dcx = \frac{1}{4\pi} \intV |\vE'|^2 \dcx \geq 0.
+		\intV \phi' \rho' \dcx = \frac{1}{4\pi} \intV |\vE'|^2 \dcx,
 	\eeq
-	Eq.~(2.30) gives the expression for interaction energy,
+	which must be nonnegative.  Eq.~(2.30) gives the expression for interaction energy,
 	\beq
 		\sE_\text{int} = \int \rho_1 \phi_2 \dcx = \int \rho_2 \phi_1 \dcx,
 	\eeq

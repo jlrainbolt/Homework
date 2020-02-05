@@ -28,11 +28,11 @@
 	
 	Applying Green's theorem,
 	\beqn \label{gt}
-		\intS \rh \cdot \left( \phix \nabla\frac{1}{r} - \frac{1}{r} \nabla\phix \right) \dS = -4\pi \intV \phi \, \delta(r) \dcx
+		\intS \rh \cdot \left( \phix \nabla\frac{1}{r} - \frac{1}{r} \nabla\phix \right) \dS = -4\pi \intV \phi \, \delta(r) \dcx.
 	\eeqn
 	For the first term on the left side, note that
 	\beq
-		\rh \cdot \nabla\frac{1}{r} = \pdv{}{r} \frac{1}{r} \rh \cdot \rh = -\frac{1}{r^2}.
+		\rh \cdot \phix \nabla\frac{1}{r} = \phix \pdv{}{r} \frac{1}{r} \rh \cdot \rh = -\frac{\phix}{r^2}.
 	\eeq
 	Gauss's theorem is given by Eq.~(2.6),
 	\beq
@@ -40,8 +40,8 @@
 	\eeq
 	Applying this to the second term on the left side of \refeq{gt},
 	\beq
-		-\intS \nh \cdot \frac{1}{r} \nabla\phix \dS = -\intV \nabla \cdot \frac{1}{r} \nabla\phix \dcx
-		= -\frac{1}{r} \lap\phix
+		-\intS \rh \cdot \frac{1}{r} \nabla\phix \dS = -\frac{1}{R} \intV \nabla \cdot \nabla\phix \dcx
+		= -\frac{1}{R} \lap\phix
 		= 0.
 	\eeq
 	For the right side of \refeq{gt},
