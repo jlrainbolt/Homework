@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{siunitx}
+%\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\setenumerate[1]{label={(\alph*)}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Physics 132-B}
+\chead{\textbf{Discussion 4 Solutions}}
+\rhead{A--De Discussion}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\blg}{\begin{align*}}
+\newcommand{\elg}{\end{align*}}
+
+
+\newenvironment{statement}
+{
+%    \color{gray}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+
+\begin{document}
+	
+
+\newcommand{\vE}{\vec{E}}
+\newcommand{\vEq}{\vE_1}
+\newcommand{\vEw}{\vE_2}
+\renewcommand{\qq}{q_1}
+\newcommand{\qw}{q_2}
+\newcommand{\tht}{\theta}
+\newcommand{\thtq}{\tht_1}
+\newcommand{\thtw}{\tht_2}
+\newcommand{\Eq}{E_1}
+\newcommand{\Ew}{E_2}
+\newcommand{\Ex}{E_x}
+\newcommand{\Ey}{E_y}
+\newcommand{\ent}{\epsilon_0}
+\newcommand{\fk}{\frac{1}{4\pi\ent}}
+
+\begin{minipage}[l]{0.65\textwidth}
+\paragraph{Problem 21.96}
+%\paragraph{Problem 1}
+\begin{problem}
+	Two charges are placed as shown in Fig.~P21.96.  The magnitude of $\qq$ is \SI{3.00}{\micro\coulomb}, but its sign and the value of the charge $\qw$ are not known.  The direction of the net electric field $\vE$ at point $P$ is entirely in the negative $y$ direction. \medskip
+	\begin{enumerate}
+		\item Considering the different possible signs of $\qq$ and $\qw$, four possible diagrams could represent the electric fields $\vEq$ and $\vEw$ produced by $\qq$ and $\qw$.  Sketch the four possible electric field configurations. \medskip
+		\item Using the sketches from part (a) and the direction of $\vE$, deduce the signs of $\qq$ and $\qw$. \medskip
+		\item Determine the magnitude of $\vE$.
+	\end{enumerate}
+\end{problem}
+\end{minipage}%
+\hspace{0.05\textwidth}%
+\begin{minipage}[r]{0.3\textwidth}
+\includegraphics[width=\textwidth]{P21-96.jpeg}
+\center \textbf{Figure P21.96}
+\end{minipage}
+
+\begin{solution}
+	\begin{enumerate}
+		\item The four possible diagrams are:
+		
+		\begin{center}
+			\includegraphics[scale=1.5]{P21-96a}
+		\end{center}
+		
+		Here $E_1$ and $E_2$ indicate the electric fields of $\qq$ and $\qw$, respectively.
+		
+		\item The first diagram is the only one that has the net $\vE = \vEq + \vEw$ pointing in the $-y$ direction like we want.  This means both $\qq$ and $\qw$ are negative.  (We also could have deduced this by placing a positive test charge at $P$, and realizing we need $\qq$ and $\qw$ to be negative in order to produce an electric field pointing down.)
+		
+		\item Using the expression for the electric field due to a point charge, we can find the magnitudes of $\Eq$ and $\Ew$:
+		\begin{align*}
+			\Eq &= \fk \frac{\qq}{(\SI{5.0}{\cm})^2} = -\fk \frac{\SI{3.00}{\micro\coulomb}}{(\SI{5.0}{\cm})^2}, &
+			\Ew &= \fk \frac{\qw}{(\SI{12.0}{\cm})^2}.
+		\end{align*}
+		Notice that we need to solve for $\qw$, which we can do by force balance.  We need to find and add the $x$ and $y$ components of $\vEq$ and $\vEw$, which we can do by finding their angles from the horizontal.  Call these angles $\thtq$ and $\thtw$.  Building off of our diagram for (a), we can make something similar to a force diagram, but for the electric field:
+		
+		\begin{center}
+			\includegraphics[scale=1.5]{P21-96b}
+		\end{center}
+		
+		From Fig.~P21.96, we can write down
+		\begin{align*}
+			\cos\thtq &= \frac{5}{13}, &
+			\sin\thtq &= \frac{12}{13}, &
+			\cos\thtw &= \frac{12}{13}, &
+			\sin\thtw &= \frac{5}{12}.
+		\end{align*}
+		
+		First, let's balance forces in the $x$ direction, in which we know there's 0 net electric field.  This will allow us to find $\qw$:
+		\beq
+			0 = \Ex
+			= {\Eq}_x + {\Eq}_x
+			= \Eq \cos\thtq + \Ew \cos\thtw
+			= -\frac{5}{13} \fk \frac{\SI{3.00}{\micro\coulomb}}{(\SI{5.0}{\cm})^2} + \fk \frac{12}{13} \frac{\qw}{(\SI{12.0}{\cm})^2}
+		\eeq
+		
+		
+	\end{enumerate}
+\end{solution}
+
+\vfill
+	
+\paragraph{Problem 23.82}
+%\paragraph{Problem 2}
+\begin{problem}
+	A hollow, thin-walled insulating cylinder of radius $R$ and length $L$ (like the cardboard tube in a roll of toilet paper) has charge $Q$ uniformly distributed over its surface.
+	
+	\begin{enumerate}
+		\item Calculate the electric potential at all points along the axis of the tube.  Take the origin to be at the center of the tube, and take the potential to be zero at infinity.
+		\setcounter{enumi}{2}
+		\item Use the result of part (a) to find the electric field at all points along the axis of the tube.
+	\end{enumerate}
+\end{problem}
+
+\vfill
+
+
+\clearpage
+
+\begin{minipage}[b]{0.65\textwidth}
+\paragraph{Problem 22.32}
+%\paragraph{Problem 3}
+\begin{problem}
+	A cube has sides of length $L = \SI{0.300}{\meter}$.  One corner is at the origin~(Fig.~E22.6).  The nonuniform electric field is given by ${\vE = (\SI{-5.00}{\newton\per\coulomb\per\meter})x \, \vec{\hat{i}} + (\SI{23.00}{\newton\per\coulomb\per\meter}) z \, \vec{\hat{k}}}$. \medskip
+	\begin{enumerate}
+		\item Find the electric flux through each of the six cube faces $S_1,\ S_2,\ S_3,\ S_4,\ S_5$, and $S_6$. \medskip
+		\item Find the total electric charge inside the cube.
+	\end{enumerate}
+\end{problem}
+\end{minipage}%
+\hspace{0.05\textwidth}%
+\begin{minipage}{0.3\textwidth}
+\includegraphics[width=\textwidth]{E22-6.jpeg}
+\center \textbf{Figure E22.6}
+\end{minipage}
+
+\vspace{-6\baselineskip}
+\vfill
+
+\paragraph{Problem 24.11}
+\paragraph{Problem 4}
+\begin{problem}
+	A spherical capacitor contains a charge of \SI{3.30}{\nano\coulomb} when connected to a potential difference of \SI{220}{\volt}.  If its plates are separated by vacuum and the inner radius of the outer shell is \SI{4.00}{\centi\meter}, calculate
+	
+	\begin{enumerate}
+		\item the capacitance,
+		\item the radius of the inner sphere, and
+		\item the electric field just outside the surface of the inner sphere.
+	\end{enumerate}
+\end{problem}
+
+\vfill
+
+\end{document}
