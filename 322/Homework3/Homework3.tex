@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm, mathrsfs}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{siunitx}
+\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\vfix}{\vspace{-\baselineskip}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 322 Homework 3}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\blg}{\begin{align*}}
+\newcommand{\elg}{\end{align*}}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\color{darkgray}
+	\ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+	\subsection{}
+	\color{darkgray}
+%	\paragraph{Problem.}
+    \ignorespaces
+}
+{
+
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+
+
+\begin{document}
+
+\newcommand{\eps}{\epsilon}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\phix}{\phi(\vx)}
+\newcommand{\vp}{\vec{p}}
+\newcommand{\dcx}{\dd[3]{x}}
+\newcommand{\dcxp}{\dd[3]{x'}}
+\newcommand{\rhox}{\rho(\vx)}
+\newcommand{\rhoxp}{\rho(\vx')}
+\newcommand{\xh}{\vec{\hat{x}}}
+\newcommand{\absx}{\abs{\vx}}
+\newcommand{\absxp}{\abs{\vx'}}
+
+\newcommand{\Ylm}{Y_{l m}}
+\newcommand{\qlm}{q_{l m}}
+\newcommand{\Plm}{P_l^m}
+\newcommand{\tht}{\theta}
+\newcommand{\cost}{\cos\tht}
+\newcommand{\vph}{\varphi}
+\newcommand{\tv}{(\tht, \vph)}
+\newcommand{\tvp}{(\tht', \vph')}
+\newcommand{\Gxxp}{G(\vx, \vx')}
+\newcommand{\qplm}{q'_{l m}}
+
+\newcommand{\lap}{\nabla^2}
+\newcommand{\evphi}{\ev{\phi}}
+\newcommand{\rhof}{\rho_f}
+\newcommand{\fe}{\frac{4\pi}{\eps}}
+
+\begin{statement}{}
+	Consider a dielectric ball of radius $R$ with dielectric constant $\eps$.  Obtain a multipole expansion for the field, $\phix$, of a point charge $q$ placed at a point $\vx'$ with $\abs{\vx'} = d > R$ (so the charge is outside of the dielectric ball).
+	
+	Hint: Follow the procedure we used in class to find the multipole expansion of a point charge without the dielectric, but now consider the three regions $r \leq R$, $R \leq r \leq d$, and $r \geq d$.  Obtain the form of the solution in these regions and match suitably.
+\end{statement}
+
+\begin{solution}
+	In class, we derived the multipole expansion for $\absx \geq R$ when the charge distribution $\rhoxp$ is nonzero only within $\abs{\vx'} \leq R$.  We can find an equivalent expression for the reverse situation (within $\absx \leq R$ when the charge distribution $\rhoxp$ is nonzero only for $\abs{\vx'} \geq R$) using the spherical harmonic expansion of the Green's function $\Gxxp$ in Eq.~(2.78):
+	\beq
+		\Gxxp = \frac{1}{\abs{\vx - \vx'}}
+		= \begin{cases} \sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{r^l}{{r'}^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \text{if } r < r', \\
+		\sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{{r'}^l}{r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \text{if } r > r'. \end{cases}
+	\eeq
+	As in Eq.~(2.79) in the course notes, we integrate and obtain
+	\beq
+		\phix = \int \Gxxp \, \rhoxp \dcxp
+		= \sum_{l, m} \frac{4\pi}{2l + 1} r^l \Ylm\tv \int \frac{\rhoxp}{{r'}^{l+1}} \Ylm^*\tvp \dcxp.
+	\eeq
+	where we have defined
+	\beq
+		\qplm \equiv \int \frac{\rhoxp}{{r'}^{l+1}} \Ylm^*\tvp \dcxp.
+	\eeq
+	Combining this with the result of Eq.~(2.79), we have
+	\beqn \label{multipole}
+		\phix = \begin{cases} \sum_{l, m} \dfrac{4\pi}{2l + 1} r^l \, \qplm \, \Ylm\tv & \text{if } r < r' \text{ and } \rhoxp(r) = 0, \\
+		\sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{\qlm}{r^{l+1}} \Ylm\tv & \text{if } r > r'  \text{ and } \rhoxp(r) = 0, \end{cases}
+	\eeqn
+	where
+	\begin{align*}
+		\qlm &\equiv \int \rhoxp \, {r'}^l \, \Ylm^*\tvp \dcxp, &
+		\qplm &\equiv \int \frac{\rhoxp}{{r'}^{l+1}} \Ylm^*\tvp \dcxp,
+	\end{align*}
+	from Eq.~(2.80) and our derivation.  Additionally, the spherical harmonics $\Ylm$ are given by Eq.~(2.58),
+	\beq
+		\Ylm\tv = \sqrt{\frac{2l + 1}{4\pi}} \sqrt{\frac{(l - m)!}{(l + m)!}} \Plm(\cost) e^{i m \vph},
+	\eeq
+	and the associated Legendre polynomials $\Plm$ are given by Eq.~(2.59),
+	\beq
+		\Plm(x) = \frac{(-1)^m}{2^l l!} (1 - x^2)^{m/2} \dv[l + m]{}{x} (x^2 - 1)^l.
+	\eeq	
+	Poisson's equation inside a dielectric medium is given by Eq.~(3.22),
+	\beq
+		\lap\evphi = -\frac{4\pi}{\eps} \ev{\rhof},
+	\eeq
+	where $\rhof$ is the free charge density.  For this problem, $\rhof = 0$ since the point charge is outside the dielectric.
+	
+	Without loss of generality, we may choose the location of the point charge to be on the $z$ axis at $z = d$, so $\vx' = (r', 0, 0)$.  We will begin inside the dielectric, where $r \leq R$.  We need a solution to Laplace's equation, which is the first case of \refeq{multipole}, with a factor inserted to account for the dielectric constant:
+	\beq
+		\phix = \fe \sum_{l, m} \frac{4\pi}{2l + 1} r^l \, \qplm \, \Ylm\tv,
+	\eeq
+	where
+	\beq
+		\qplm = \sqrt{\frac{2l + 1}{4\pi}} \sqrt{\frac{(l - m)!}{(l + m)!}} \int \frac{\rhoxp}{{r'}^{l+1}} \Plm(1) \dcxp
+		= \sqrt{\frac{2l + 1}{4\pi}} \sqrt{\frac{(l - m)!}{(l + m)!}} \int \frac{\rhoxp}{{r'}^{l+1}} \frac{(-1)^m}{2^l l!} (1 - x^2)^{m/2} \dv[l + m]{}{x} (x^2 - 1)^l
+	\eeq
+	
+\end{solution}
+
+
+
+\newcommand{\phio}{\phi_0}
+\newcommand{\alp}{\alpha}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cEint}{\cE_\text{int}}
+
+\begin{statement}{}
+	A dielectric ball of radius $R$ and dielectric constant $\eps$ is placed in the external electrostatic potential $\phio = \alp (2z^2 - x^2 - y^2)$ where $\alp$ is a constant, with the center of the ball at $\vx = 0$.
+\end{statement}
+
+\begin{problem}
+	Find the total electrostatic potential $\phi$ everywhere.
+	
+	Hint: It is useful to note that the external potential is proportional to $r^2 \, Y_{2 0}\tv$.  This should allow you to determine/guess the form of the total potential inside and outside the dielectric up to unknown constants, which can then be determined by matching.
+\end{problem}
+
+\begin{problem}
+	Calculate the interaction energy between the field produced by the dielectric and the external field.  Assume that the potential arises from ``distant charges'' so that the formula for $\cEint$ given in class and the notes can be used.
+\end{problem}
+
+\begin{problem}
+	Calculate the total force needed to hold the dielectric ball in place.
+\end{problem}
+
+
+
+\vfill
+In addition to the course lecture notes, I consulted Jackson's \emph{Classical Electrodynamics} while writing up these solutions.
+\end{document}
