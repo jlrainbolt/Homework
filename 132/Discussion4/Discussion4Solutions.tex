@@ -67,7 +67,7 @@
 
 \newenvironment{solution}
 {
-    \paragraph{Solution.}
+    \paragraph{Solution}
     \ignorespaces
 }
 {
@@ -127,8 +127,8 @@
 		
 		\item Using the expression for the electric field due to a point charge, we can find the magnitudes of $\Eq$ and $\Ew$:
 		\begin{align*}
-			\Eq &= \fk \frac{\qq}{(\SI{5.0}{\cm})^2} = -\fk \frac{\SI{3.00}{\micro\coulomb}}{(\SI{5.0}{\cm})^2}, &
-			\Ew &= \fk \frac{\qw}{(\SI{12.0}{\cm})^2}.
+			\Eq &= \fk \frac{\abs{\qq}}{(\SI{5.0}{\cm})^2} = -\fk \frac{\SI{3.00}{\micro\coulomb}}{(\SI{5.0}{\cm})^2}, &
+			\Ew &= \fk \frac{\abs{\qw}}{(\SI{12.0}{\cm})^2}.
 		\end{align*}
 		Notice that we need to solve for $\qw$, which we can do by force balance.  We need to find and add the $x$ and $y$ components of $\vEq$ and $\vEw$, which we can do by finding their angles from the horizontal.  Call these angles $\thtq$ and $\thtw$.  Building off of our diagram for (a), we can make something similar to a force diagram, but for the electric field:
 		
@@ -144,19 +144,37 @@
 			\sin\thtw &= \frac{5}{12}.
 		\end{align*}
 		
-		First, let's balance forces in the $x$ direction, in which we know there's 0 net electric field.  This will allow us to find $\qw$:
+		First, let's balance forces in the $x$ direction, in which we know there's 0 net electric field.  This will allow us to find the magnitude of $\qw$:
 		\beq
 			0 = \Ex
-			= {\Eq}_x + {\Eq}_x
+			= {\Eq}_x + {\Ew}_x
 			= \Eq \cos\thtq + \Ew \cos\thtw
-			= -\frac{5}{13} \fk \frac{\SI{3.00}{\micro\coulomb}}{(\SI{5.0}{\cm})^2} + \fk \frac{12}{13} \frac{\qw}{(\SI{12.0}{\cm})^2}
+			= -\frac{5}{13} \fk \frac{\SI{3.00}{\micro\coulomb}}{(\SI{5.0}{\cm})^2} + \frac{12}{13} \fk \frac{\abs{\qw}}{(\SI{12.0}{\cm})^2}
 		\eeq
-		
-		
+		\beq
+			\implies \frac{\SI{3.00}{\micro\coulomb}}{\SI{5.0}{\square\cm}} = \frac{\abs{\qw}}{\SI{12.0}{\square\cm}}
+			\implies \abs{\qw} = \frac{36}{5} \si{\micro\coulomb} = \SI{7.2}{\micro\coulomb}.
+		\eeq
+		Now we can add the forces in the $y$ direction to find the magnitude of $\vE$:
+		\begin{align*}
+			|\vE| &= \Ey
+			= {\Eq}_y + {\Ew}_y
+			= \Eq \sin\thtq + \Ew \sin\thtw
+			= \frac{12}{13} \fk \frac{\SI{3.00}{\micro\coulomb}}{(\SI{5.0}{\cm})^2} + \frac{5}{12} \fk \frac{\SI{7.2}{\micro\coulomb}}{(\SI{12.0}{\cm})^2} \\
+			&= \fk \left( \frac{12}{13} \frac{\SI{3.00e-6}{\coulomb}}{\SI{25e-4}{\square\m}} + \frac{5}{12} \frac{\SI{7.2e-6}{\coulomb}}{\SI{144e-4}{\square\m}} \right)
+			= \fk \left( \frac{36}{325} + \frac{36}{1728} \right) \times\SI{e-2}{\coulomb\per\square\meter} \\
+			&= (\SI{8.99e9}{\newton\square\meter\per\square\coulomb}) (\SI{0.131e-2}{\coulomb\per\square\meter}) \\
+			&= \SI{1.18e7}{\newton\per\coulomb}.
+		\end{align*}
 	\end{enumerate}
 \end{solution}
 
-\vfill
+%\vfill
+
+\newcommand{\dQ}{\dd{Q}}
+\newcommand{\dz}{\dd{z}}
+\newcommand{\du}{\dd{u}}
+\newcommand{\dtht}{\dd{\tht}}
 	
 \paragraph{Problem 23.82}
 %\paragraph{Problem 2}
@@ -170,7 +188,63 @@
 	\end{enumerate}
 \end{problem}
 
-\vfill
+\begin{solution}
+	\begin{enumerate}
+		\item We can think of the tube as being made of a stack of charged rings.  Example~23.11 in the textbook derives the expression for the electric potential due to a ring, which is
+			\beq
+				V_\text{ring} = \fk \frac{Q_\text{ring}}{\sqrt{x^2 + a^2}},
+			\eeq
+			where $Q_\text{ring}$ is the total charge of the ring, $x$ is the distance from the center of the ring along its axis, and $a$ is the ring's radius~(Fig.~23.20).
+			
+%			\includegraphics{P23-20}
+
+			Let the ring have charge $\dQ$ and be at position $z$ along the $x$ axis.  We will need to integrate $z$ from $-L/2$ to $L/2$.  The infinitesimal charge $\dQ$ of the ring is related to the entire charge of the tube through their respective lengths:
+			\beq
+				\frac{\dQ}{\dz} = \frac{Q}{L} \implies \dQ = \frac{Q}{L} \dz.
+			\eeq
+			Our integral is then
+			\beq
+				V = \int_{-L/2}^{L/2} \fk \frac{\dQ}{\sqrt{(x-z)^2 + R^2}}
+				= \fk \frac{Q}{L} \int_{-L/2}^{L/2} \frac{\dz}{\sqrt{(x-z)^2 + R^2}}.
+			\eeq
+			The denominator of the integrand looks kind of gross, so we probably want to do a $u$ substitution.  Let $u = x - z$, so $\du = -\dz$.  Then our integral becomes
+			\beq
+				V = -\fk \frac{Q}{L} \int_{x + L/2}^{x - L/2} \frac{\du}{\sqrt{u^2 + R^2}}
+				= \fk \frac{Q}{L} \int_{x - L/2}^{x + L/2} \frac{\du}{\sqrt{u^2 + R^2}},
+			\eeq
+			which is possible to do, but we would have to look it up in a table of integrals, and the form is really gross (look it up and see).  Let's try to find an easier way, by finding the electric field first instead of second.
+			
+			The electric field due to a ring of charge was found in Ex.~21.9:
+			\beq
+				E_\text{ring} = \fk \frac{Q_\text{ring} x}{(x^2 + a^2)^{3/2}}.
+			\eeq
+			Setting up the integral over the length of the tube as we did before, we get
+			\beq
+				E = \int_{-L/2}^{L/2} \fk \frac{\dQ}{[(x-z)^2 + R^2]^{3/2}}
+				= \fk \frac{Q}{L} \int_{-L/2}^{L/2} \frac{\dz}{[(x-z)^2 + R^2]^{3/2}}
+				= \fk \frac{Q}{L} \int_{x - L/2}^{x + L/2} \frac{\du}{(u^2 + R^2)^{3/2}}.
+			\eeq
+			
+%			and it's best to consult a table of integrals for this one.  We have
+%			\begin{align*}
+%				V &= \fk \frac{Q}{L} \left[ \ln\left| u + \sqrt{u^2 + R^2} \right| \right]_{x - L/2}^{x + L/2} \\
+%				&= \fk \frac{Q}{L} \left( \ln\left| x + \frac{L}{2} + \sqrt{(x + L/2)^2 + R^2} \right| - \ln\left| x - \frac{L}{2} + \sqrt{(x - L/2)^2 + R^2} \right| \right)
+%			\end{align*}
+%			which we can solve using a trig substitution.  Let $u = R \tan\tht$, so $\du = R \sec^2\tht \dtht$.  The the bounds of integration become
+%			\begin{align*}
+%				\thtq &\equiv \tan[-1](\frac{x - L/2}{R}), &
+%				\thtw &\equiv \tan[-1](\frac{x + L/2}{R}).
+%			\end{align*}
+%			Using the identity $\tan^2\tht + 1 = \sec^2\tht$, our integral becomes
+%			\begin{align*}
+%				V &= \fk \frac{Q}{L} \int_{\thtq}^{\thtw} \frac{R \sec^2\tht}{\sqrt{R^2 \tan^2\tht + R^2}} \dtht
+%				= \fk \frac{Q}{L} \int_{\thtq}^{\thtw} \frac{\sec^2\tht}{\sqrt{\tan^2\tht + 1}} \dtht
+%				= \fk \frac{Q}{L} \int_{\thtq}^{\thtw} \sec\tht \dtht \\
+%				&= \fk \frac{Q}{L} \int_{\thtq}^{\thtw} \frac{1}{\cos\tht} \dtht
+%				= \ln(\sec\tht + \tan\tht)
+%			\end{align*}
+	\end{enumerate}
+\end{solution}
 
 
 \clearpage
