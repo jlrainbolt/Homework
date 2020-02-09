@@ -300,7 +300,7 @@
 	\beq
 		\sEint = \int (\evrhof \!\phio - \evP \cdot \vEo) \dcx,
 	\eeq
-	where $\vEo$ is the electric field due to the external potential $\phio$.  Again, $\evrhof = 0$.  For our assumption of a linear, homogeneous, and isotropic dielectric,
+	where $\vEo$ is the electric field due to the external potential $\phio$.  Again, $\rhof = 0$.  For our assumption of a linear, homogeneous, and isotropic dielectric,
 	\beq
 		\evP = \chi \!\evE
 	\eeq
@@ -311,21 +311,21 @@
 	from Eq.~(3.21).
 	
 	The gradient in spherical coordinates is
-	\beq
+	\beqn \label{grad}
 		\grad = \pdv{}{r} \,\rh + \frac{1}{r} \pdv{}{\tht} \,\thh + \frac{1}{r \sint} \pdv{}{\vph} \, \phh.
-	\eeq
+	\eeqn
 	Differentiating \refeq{phisph} for $r \leq R$,
-	\begin{align*}
+	\begin{align} \label{Ein}
 		\evEr &= 2 \alp \frac{5}{2\eps + 3} r (3 \cos^2\tht - 1), &
 		\evEth &= -6 \alp \frac{5}{2\eps + 3} r \cost \sint, &
 		\evEph &= 0.
-	\end{align*}
+	\end{align}
 	For the external field,
-	\begin{align*}
+	\begin{align} \label{E0}
 		\Eor &= 2 \alp r (3 \cos^2\tht - 1), &
 		\Eoth &= -6 \alp r \cost \sint, &
 		\Eoph &= 0.
-	\end{align*}
+	\end{align}
 	Note that $\evP = (\eps - 1) \!\evE\! / 4 \pi$, so
 	\beq
 		\evP \cdot \vEo = 4 \alp^2 \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} r^2 \left[ (3 \cos^2\tht - 1)^2 + 9 \cos^2\tht \sin^2\tht \right]
@@ -343,9 +343,61 @@
 
 
 
+\newcommand{\vF}{\vb{F}}
+
 \begin{problem}
 	Calculate the total force needed to hold the dielectric ball in place.
 \end{problem}
+
+\begin{solution}
+	Equation~(3.26) in the lecture notes gives the total force on a dielectric:
+	\beq
+		\vF = \int [\evrhof\! \vEo + (\evP \cdot \grad) \vEo] \dcx.
+	\eeq
+	In electrostatics, there is no contribution from the dielectric's self field, and here $\rhof = 0$.  To find the force needed to hold the ball in place, we will need to insert a minus sign.
+	
+	From \refeq{Ein} and \refeq{grad}, we have
+	\beq
+		\evP \cdot \grad = 2\alp \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \left[ r (3 \cos^2\tht - 1) \pdv{}{r} - 3 \cost \sint \pdv{}{\tht} \right].
+	\eeq
+	From \refeq{E0}, note that
+	\begin{align*}
+		\pdv{\vEo}{r} &= \pdv{}{r} \left[ 2 \alp r (3 \cos^2\tht - 1) \,\rh - 6 \alp r \cost \sint \,\thh \right]
+		= 2 \alp \left[ (3 \cos^2\tht - 1) \,\rh - 3 \cost \sint \,\thh \right], \\[2ex]
+		\pdv{\vEo}{\tht} &= \pdv{}{\tht} \left[ \alp r (3 \cos2\tht + 1) \,\rh - 3 \alp r \sin2\tht \,\thh \right]
+		= -6\alp r (\sin2\tht \,\rh + \cos2\tht \,\thh) \\
+		&= -6 \alp r \left[ 2 \cost \sint \,\rh + (\cos^2\tht - \sin^2\tht) \,\thh \right].
+	\end{align*}
+	Then
+	\begin{align*}
+		(\evP \cdot \grad) \vEo &= 2\alp \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \left[ r (3 \cos^2\tht - 1) \pdv{\vEo}{r} - 3 \cost \sint \pdv{\vEo}{\tht} \right] \\
+		&= 4\alp^2  \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} r \!\left[ (3 \cos^2\tht - 1) \!\left( (3 \cos^2\tht - 1) \,\rh - 3 \cost \sint \,\thh \right)\! \right. \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmmm} \left. + 9 \cost \sint \!\left( 2 \cost \sint \,\rh + (\cos^2\tht - \sin^2\tht) \,\thh \right) \right] \\
+		&= 4\alp^2  \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} r \!\left[ \left( (3 \cos^2\tht - 1)^2 - 18 \cos^2\tht \sin^2\tht \right) \rh \right. \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmmm} \left. + 3 \cost \sint \left( 1 - 3\cos^2\tht + 3 (\cos^2\tht - \sin^2\tht) \right) \thh \right] \\
+		&= 4\alp^2  \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} r \!\left[ (-9\cos^4\tht + 12\cos^2\tht + 1) \,\rh + 3 \cost (-3\sin^2\tht + \sint) \,\thh \right],
+	\end{align*}
+	and the integral becomes
+	\begin{align*}
+		\vF &= -\int (\evP \cdot \grad) \vEo \dcx \\
+		&= -4\alp^2  \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \intotp \intono \intoR r^3 \!\left[ (-9\cos^4\tht + 12\cos^2\tht + 1) \,\rh + 3 \cost (-3\sin^2\tht + \sint) \,\thh \right] \dr \dct \dph \\
+		&= -4\alp^2 \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \intotp \dph \intono \left[ (-9\cos^4\tht + 12\cos^2\tht + 1) \,\rh + 3 \cost (-3\sin^2\tht + \sint) \,\thh \right] \dct \intoR r^3 \dr.
+	\end{align*}
+	For the second integral, note that
+	\beq
+		\intono \cost (-3\sin^2\tht + \sint) \dct
+		= \int_0^\pi \cost \sint (-3\sin^2\tht + \sint) \dd{\tht}
+		= \int_0^0 (-3\sin^3\tht + \sin^3\tht) \dd{(\sint)}
+		= 0.
+	\eeq
+	Then we have
+	\begin{align*}
+		\vF &= -4\alp^2 \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \bigg[ \vph \bigg]_0^{2\pi} \left[ -\frac{9}{5} \cos^5\tht + 4 \cos^3\tht + \cost \right]_{-1}^1 \left[ \frac{r^4}{4} \right]_0^R \rh
+		= -4\alp^2 \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} (2\pi) \left( \frac{32}{5} \right) \frac{R^4}{4} \,\rh \\
+		&= -16 \alp^2 \frac{\eps - 1}{2\eps + 3} R^4 \,\rh.
+	\end{align*}
+\end{solution}
+\vfix
 
 
 
