@@ -152,8 +152,8 @@
 \newcommand{\evphi}{\ev{\phi}}
 \newcommand{\evrhof}{\ev{\rhof}}
 \newcommand{\vP}{\vb{P}}
-\newcommand{\evvP}{\ev{\vP}}
-\newcommand{\divP}{\div{\evvP}}
+\newcommand{\evP}{\ev{\vP}}
+\newcommand{\divP}{\div{\evP}}
 \newcommand{\lap}{\laplacian}
 
 \newcommand{\Alm}{A_{l m}}
@@ -162,10 +162,12 @@
 \newcommand{\nh}{\vb{\hat{n}}}
 \newcommand{\vE}{\vb{E}}
 \newcommand{\evE}{\ev{\vE}}
-\newcommand{\evEr}{\ev{E_r}}
+\newcommand{\Er}{E_r}
+\newcommand{\evEr}{\ev{\Er}}
 \newcommand{\vD}{\vb{D}}
 \newcommand{\evD}{\ev{\vD}}
 \newcommand{\tfor}{\quad \text{for }}
+\newcommand{\Ytotv}{Y_{2 0}\tv}
 
 \begin{statement}{}
 	A dielectric ball of radius $R$ and dielectric constant $\eps$ is placed in the external electrostatic potential $\phio = \alp (2z^2 - x^2 - y^2)$ where $\alp$ is a constant, with the center of the ball at $\vx = 0$.
@@ -174,11 +176,21 @@
 \begin{problem}
 	Find the total electrostatic potential $\phi$ everywhere.
 	
-	Hint: It is useful to note that the external potential is proportional to $r^2 \, Y_{2 0}\tv$.  This should allow you to determine/guess the form of the total potential inside and outside the dielectric up to unknown constants, which can then be determined by matching.
+	Hint: It is useful to note that the external potential is proportional to $r^2 \, \Ytotv$.  This should allow you to determine/guess the form of the total potential inside and outside the dielectric up to unknown constants, which can then be determined by matching.
 \end{problem}
 
 \begin{solution}
-	Poisson's equation inside a dielectric is given by Eq.~(3.22) in the course notes,
+	Firstly, note that
+	\beq
+		\Ytotv = \frac{1}{4} \sqrt{\frac{5}{\pi}} (3 \cos^2\tht - 1),
+	\eeq
+	and
+	\beq
+		\phio = \alp r^2 (3 \cos^2\tht - 1) = 4 \alp r^2 \sqrt{\frac{\pi}{5}} \Ytotv \equiv \beta r^2 \, \Ytotv,
+	\eeq
+	where we have defined $\beta \equiv 4 \alp \sqrt{\pi/5}$.
+
+	We assume the dielectric is linear, homogeneous, and isotropic.  Poisson's equation inside such a dielectric is given by Eq.~(3.22) in the course notes,
 	\beq
 		\lap\evphi = -\frac{4\pi}{\eps} \evrhof.
 	\eeq
@@ -190,21 +202,21 @@
 	
 	In the region $r < R$, we must have $\Blm = 0$ because $1/r^{l+1}$ is undefined at the origin.  In the region $r > R$, we may invoke the boundary condition at infinity:
 	\beq
-		\phi(r > R, \tht, \vph) \to \alp r^2 \, Y_{2 0}\tv,
+		\phi(r > R, \tht, \vph) \to \phio = \beta r^2 \, \Ytotv,
 	\eeq
-	where we note that $\evphi = \phi$ for $r > R$.  This implies that the only nonzero $\Alm$ here is $A_{2 0} = \alp$.  Thus we have
+	where we note that $\evphi = \phi$ for $r > R$.  This implies that the only nonzero $\Alm$ here is $A_{2 0} = \beta$.  Thus we have
 	\beq
-		\evphi\!(r, \tht, \vph) = \begin{cases} \sum_{l,m} \Alm r^l \, \Ylm\tv & \tif r \leq R, \\
-		\alp r^2 \, Y_{2 0}\tv + \sum_{l,m} \dfrac{\Blm}{r^{l+1}} \, \Ylm\tv & \tif r \geq R. \end{cases}
+		\evphi\!(r, \tht, \vph) = \begin{cases} \sum_{l,m} \Alm r^l \, \Ylm\tv & \tif r \leq R, \\[2ex]
+		\beta r^2 \, \Ytotv + \sum_{l,m} \dfrac{\Blm}{r^{l+1}} \, \Ylm\tv & \tif r \geq R. \end{cases}
 	\eeq
 	
 	To solve for the remaining coefficients, we invoke the boundary conditions at $r = R$.  Firstly, $\evphi$ must be continuous at the boundary.  This gives us
 	\beq
-		\evphi\!(R, \tht, \vph) = \sum_{l,m} \Alm R^l \, \Ylm\tv = \alp R^2 \, Y_{2 0}\tv + \sum_{l,m} \dfrac{\Blm}{R^{l+1}} \, \Ylm\tv,
+		\evphi\!(R, \tht, \vph) = \sum_{l,m} \Alm R^l \, \Ylm\tv = \beta R^2 \, \Ytotv + \sum_{l,m} \dfrac{\Blm}{R^{l+1}} \, \Ylm\tv,
 	\eeq
 	so
 	\begin{align} \label{c1}
-		A_{2 0} &= \alp + \dfrac{B_{2 0}}{R^{5}}, &
+		A_{2 0} &= \beta + \dfrac{B_{2 0}}{R^{5}}, &
 		\Alm &= \frac{\Blm}{R^{l+3}} \tfor (l,m) \neq (2,0).
 	\end{align}
 	
@@ -212,41 +224,124 @@
 	\beq
 		\evD = \eps \evE
 	\eeq
-	inside a dielectric, from Eq.~(3.20) in the course notes.  (In vacuum, $\vD = \vE$.)  Here we are only concerned with the $r$ component of $\evE$.  Applying $\evE = -\grad\!\evphi$, we have
+	inside the dielectric, from Eq.~(3.20) in the course notes.  (In vacuum, $\vD = \vE$.)  Here we are only concerned with the $r$ component of $\evE$.  Applying $\evE = -\grad\!\evphi$, we have
 	\beq
-		\evEr\!(r, \tht, \phi) = \begin{cases} \sum_{l,m} \Alm l r^{l-1} \, \Ylm\tv & \tif r \leq R, \\
-		2 \alp r \, Y_{2 0}\tv - \sum_{l,m} (l + 1) \dfrac{\Blm}{r^{l+2}} \, \Ylm\tv & \tif r \geq R. \end{cases}
+		\evEr\!(r, \tht, \phi) = \begin{cases} \sum_{l,m} \Alm l r^{l-1} \, \Ylm\tv & \tif r \leq R, \\[2ex]
+		2 \beta r \, \Ytotv - \sum_{l,m} (l + 1) \dfrac{\Blm}{r^{l+2}} \, \Ylm\tv & \tif r \geq R. \end{cases}
 	\eeq
 	Then we need to satisfy
 	\beq
-		\evD\!(R, \tht, \vph) = \eps \sum_{l,m} \Alm l R^{l-1} \, \Ylm\tv = 2 \alp R \, Y_{2 0}\tv - \sum_{l,m} (l + 1) \dfrac{\Blm}{R^{l+2}} \, \Ylm\tv,
+		\evD\!(R, \tht, \vph) = \eps \sum_{l,m} \Alm l R^{l-1} \, \Ylm\tv = 2 \beta R \, \Ytotv - \sum_{l,m} (l + 1) \dfrac{\Blm}{R^{l+2}} \, \Ylm\tv,
 	\eeq
 	which stipulates
 	\begin{align} \label{c2}
-		A_{2 0} &= \frac{1}{\eps} \left( \alp - \frac{3}{2} \frac{B_{2 0}}{R^{5}} \right), &
+		A_{2 0} &= \frac{1}{\eps} \left( \beta - \frac{3}{2} \frac{B_{2 0}}{R^{5}} \right), &
 		\Alm &= -\frac{1}{\eps} \frac{(l + 1)}{l} \frac{\Blm}{R^{2l+1}} \tfor (l,m) \neq (2,0).
 	\end{align}
 	Eliminating $\Blm$ from \refeq{c1} and \refeq{c2}, we obtain
 	\begin{align*}
-		A_{2 0} &= \frac{5 \alp}{2\eps + 3}, &
+		A_{2 0} &= \frac{5 \beta}{2\eps + 3}, &
 		\Alm &= 0 \tfor (l,m) \neq (2,0),
 	\end{align*}
 	and substituting back into \refeq{c1} yields
 	\begin{align*}
-		B_{2 0} &= 2 \alp R^5 \frac{1 - \eps}{2\eps + 3}, &
+		B_{2 0} &= 2 \beta R^5 \frac{1 - \eps}{2\eps + 3}, &
 		\Blm &= 0 \tfor (l,m) \neq (2,0).
 	\end{align*}
 	
 	Finally, the total electrostatic potential everywhere is
+	\beqn \label{phisph}
+		\evphi\!(r, \tht, \vph) = \alp (3 \cos^2\tht - 1) r^2 \times
+		\begin{cases} \dfrac{5}{2\eps + 3} & \tif r \leq R, \\[2ex]
+		1 + 2 \dfrac{1 - \eps}{2\eps + 3} \dfrac{R^5}{r^5} & \tif r \geq R,\end{cases}
+	\eeqn
+	or, in Cartesian coordinates,
 	\beq
-		\evphi\!(r, \tht, \vph) = \begin{cases} \dfrac{5 \alp}{2\eps + 3} r^2 \, Y_{2 0}\tv & \tif r \leq R, \\
-		\alp r^2 \, Y_{2 0}\tv + 2 \alp \dfrac{1 - \eps}{2\eps + 3} \dfrac{R^5}{r^{l+1}} \, Y_{2 0}\tv & \tif r \geq R. \end{cases}
+		\evphi\!(x, y, z) = \alp (2z^2 - x^2 - y^2) \times
+		\begin{cases} \dfrac{5}{2\eps + 3} & \tif r \leq R, \\[2ex]
+		1 + 2 \dfrac{1 - \eps}{2\eps + 3} \dfrac{R^5}{\sqrt{x^2 + y^2 + z^2}} & \tif r \geq R.\end{cases}
 	\eeq
 \end{solution}
+\vfix
+
+
+
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\sEint}{\sE_\text{int}}
+\newcommand{\vEo}{\vE_0}
+\newcommand{\dcx}{\dd[3]{x}}
+\newcommand{\rh}{\vb{\hat{r}}}
+\newcommand{\thh}{\boldsymbol{\hat{\tht}}}
+\newcommand{\phh}{\boldsymbol{\hat{\vph}}}
+\newcommand{\sint}{\sin\tht}
+\newcommand{\Eth}{E_\tht}
+\newcommand{\Eph}{E_\vph}
+\newcommand{\evEth}{\ev{\Eth}}
+\newcommand{\evEph}{\ev{\Eph}}
+\newcommand{\Eo}{E_0}
+\newcommand{\Eor}{{\Eo}_r}
+\newcommand{\Eoth}{{\Eo}_\tht}
+\newcommand{\Eoph}{{\Eo}_\vph}
+
+\newcommand{\evPr}{\ev{P_r}}
+\newcommand{\evPth}{\ev{P_\tht}}
+\newcommand{\evPph}{\ev{P_\vph}}
+\newcommand{\dph}{\dd{\vph}}
+\newcommand{\dct}{\dd{(\cost)}}
+\newcommand{\dr}{\dd{r}}
+\newcommand{\intRi}{\int_R^\infty}
 
 \begin{problem}
 	Calculate the interaction energy between the field produced by the dielectric and the external field.  Assume that the potential arises from ``distant charges'' so that the formula for $\cEint$ given in class and the notes can be used.
 \end{problem}
+
+\begin{solution}
+	Equation~(3.34) in the lectures notes gives the interaction energy:
+	\beq
+		\sEint = \int (\evrhof \!\phio - \evP \cdot \vEo) \dcx,
+	\eeq
+	where $\vEo$ is the electric field due to the external potential $\phio$.  Again, $\evrhof = 0$.  For our assumption of a linear, homogeneous, and isotropic dielectric,
+	\beq
+		\evP = \chi \!\evE
+	\eeq
+	by Eq.~(3.19), where
+	\beq
+		\eps = 1 + 4\pi \chi
+	\eeq
+	from Eq.~(3.21).
+	
+	The gradient in spherical coordinates is
+	\beq
+		\grad = \pdv{}{r} \,\rh + \frac{1}{r} \pdv{}{\tht} \,\thh + \frac{1}{r \sint} \pdv{}{\vph} \, \phh.
+	\eeq
+	Differentiating \refeq{phisph} for $r \leq R$,
+	\begin{align*}
+		\evEr &= 2 \alp \frac{5}{2\eps + 3} r (3 \cos^2\tht - 1), &
+		\evEth &= -6 \alp \frac{5}{2\eps + 3} r \cost \sint, &
+		\evEph &= 0.
+	\end{align*}
+	For the external field,
+	\begin{align*}
+		\Eor &= 2 \alp r (3 \cos^2\tht - 1), &
+		\Eoth &= -6 \alp r \cost \sint, &
+		\Eoph &= 0.
+	\end{align*}
+	Note that $\evP = (\eps - 1) \!\evE\! / 4 \pi$, so
+	\beq
+		\evP \cdot \vEo = 4 \alp^2 \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} r^2 \left[ (3 \cos^2\tht - 1)^2 + 9 \cos^2\tht \sin^2\tht \right]
+	\eeq
+	Then
+	\begin{align*}
+		\sEint &= -\int \evP \cdot \vEo \dcx
+		= 4 \alp^2 \frac{1 - \eps}{4\pi} \frac{5}{2\eps + 3} \intotp \dph \intono (3 \cos^2\tht + 1) \dct \intoR r^4 \dr \\
+		&= 4 \alp^2 \frac{1 - \eps}{4\pi} \frac{5}{2\eps + 3} \bigg[ \vph \bigg]_0^{2\pi} \bigg[ \cos^3\tht + \cost \bigg]_{-1}^1 \left[ \frac{r^5}{5} \right]_0^R
+		= 4 \alp^2 \frac{1 - \eps}{4\pi} \frac{5}{2\eps + 3} (2\pi) (4) \frac{R^5}{5}
+		= 8 \alp^2 \frac{1 - \eps}{2\eps + 3} R^5.
+	\end{align*}
+\end{solution}
+\vfix
+
+
 
 \begin{problem}
 	Calculate the total force needed to hold the dielectric ball in place.
