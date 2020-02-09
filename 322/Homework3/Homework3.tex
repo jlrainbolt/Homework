@@ -88,316 +88,189 @@
 \newcommand{\eps}{\epsilon}
 \newcommand{\vx}{\vb{x}}
 \newcommand{\phix}{\phi(\vx)}
+\newcommand{\dcx}{\dd[3]{x}}
+\newcommand{\dcxp}{\dd[3]{x'}}
+\newcommand{\rhox}{\rho(\vx)}
+\newcommand{\rhoxp}{\rho(\vx')}
+\newcommand{\rhopxp}{\rho'(\vx')}
+\newcommand{\xh}{\vec{\hat{x}}}
+\newcommand{\absx}{\abs{\vx}}
+\newcommand{\absxp}{\abs{\vx'}}
+
+\newcommand{\Ylm}{Y_{l m}}
+\newcommand{\qlm}{q_{l m}}
+\newcommand{\Plm}{P_l^m}
 \newcommand{\tht}{\theta}
 \newcommand{\cost}{\cos\tht}
 \newcommand{\vph}{\varphi}
-\newcommand{\absx}{\abs{\vx}}
+\newcommand{\tv}{(\tht, \vph)}
+\newcommand{\tvp}{(\tht', \vph')}
+\newcommand{\Gxxp}{G(\vx, \vx')}
+\newcommand{\Gpxxp}{G'(\vx, \vx')}
+\newcommand{\Gdxxp}{G_D(\vx, \vx')}
+\newcommand{\qplm}{q'_{l m}}
 
-\newcommand{\qlm}{q_{l m}}
-\newcommand{\Ylm}{Y_{l m}}
-\newcommand{\tv}{(\tht, \phi)}
-\newcommand{\tvp}{(\tht', \phi')}
-\newcommand{\Ylmtv}{\Ylm\tv}
-\newcommand{\Plm}{P_l^m}
-\newcommand{\rhoxp}{\rho(\vx')}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\evphi}{\ev{\phi}}
+\newcommand{\evphix}{\evphi\!(\vx)}
+\newcommand{\rhof}{\rho_f}
+\newcommand{\evrhof}{\ev{\rhof}}
+\newcommand{\fe}{\frac{1}{\eps}}
+\newcommand{\tif}{\text{if }}
+\newcommand{\Al}{A_l}
+\newcommand{\Bl}{B_l}
+\newcommand{\Cl}{C_l}
 
-\newcommand{\sintp}{\sin\tht'}
-\newcommand{\costp}{\cos\tht'}
-\newcommand{\dcxp}{\dd[3]{x'}}
-\newcommand{\intoR}{\int_0^R}
-\newcommand{\intono}{\int_{-1}^1}
+\newcommand{\intoi}{\int_0^\infty}
+\newcommand{\intono}{\int_{-1}^{1}}
 \newcommand{\intotp}{\int_0^{2\pi}}
-\newcommand{\intopi}{\int_0^\pi}
 \newcommand{\drp}{\dd{r'}}
-\newcommand{\dtp}{\dd{\tht'}}
-\newcommand{\dctp}{\dd{(\costp)}}
+\newcommand{\dctp}{\dd{(\cost')}}
 \newcommand{\dvp}{\dd{\vph'}}
 
-\begin{statement}{}
+\newcommand{\Ploq}{P_l^0(1)}
+\newcommand{\Ylotv}{Y_{l 0}\tv}
+\newcommand{\dr}{\dd{r}}
+\newcommand{\dct}{\dd{(\cost)}}
+\newcommand{\ddv}{\dd{\vph}}
+
+\newcommand{\Alm}{A_{l m}}
+\newcommand{\Blm}{B_{l m}}
+\newcommand{\Ploct}{P_l^0(\cost)}
+\newcommand{\alp}{\alpha}
+\newcommand{\phirtp}{\phi(r, \tht, \phi}
+\newcommand{\qlo}{q_{l 0}}
+\newcommand{\qplo}{q'_{l 0}}
+
+\newcommand{\vD}{\vb{D}}
+\newcommand{\evD}{\ev{\vD}}
+\newcommand{\nh}{\vb{\hat{n}}}
+\newcommand{\vE}{\vb{E}}
+\newcommand{\evE}{\ev{\vE}}
+\newcommand{\Er}{E_r}
+\newcommand{\evEr}{\ev{\Er}}
+
+\begin{statement}{} \label{1}
 	Consider a dielectric ball of radius $R$ with dielectric constant $\eps$.  Obtain a multipole expansion for the field, $\phix$, of a point charge $q$ placed at a point $\vx'$ with $\abs{\vx'} = d > R$ (so the charge is outside of the dielectric ball).
 	
 	Hint: Follow the procedure we used in class to find the multipole expansion of a point charge without the dielectric, but now consider the three regions $r \leq R$, $R \leq r \leq d$, and $r \geq d$.  Obtain the form of the solution in these regions and match suitably.
 \end{statement}
 
 \begin{solution}
-	The multipole expansion in spherical harmonics is given by Eq.~(2.79) in the course notes,
-	\beqn \label{multipole}
-		\phix = \sum_{l, m} \frac{4\pi}{2l + 1} \frac{\qlm}{r^{l + 1}} \Ylmtv,
+	In class, we derived the multipole expansion for $\absx \geq R$ when the charge distribution $\rhoxp$ is nonzero only within $\abs{\vx'} \leq R$.  We can find an equivalent expression for the reverse situation (within $\absx \leq R$ when the charge distribution $\rhoxp$ is nonzero only for $\abs{\vx'} \geq R$) using the spherical harmonic expansion of the Green's function $\Gxxp$ in Eq.~(2.78):
+	\beqn \label{greenexp}
+		\Gxxp = \frac{1}{\abs{\vx - \vx'}}
+		= \begin{cases} \displaystyle \sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{r^l}{{r'}^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \tif r < r', \\[2ex]
+		\displaystyle \sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{{r'}^l}{r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \tif r > r'. \end{cases}
 	\eeqn
-	where the spherical multipole moments $\qlm$ are defined in Eq.~(2.80),
+	As in Eq.~(2.79) in the course notes, we integrate and obtain
 	\beq
-		\qlm \equiv \int \rhoxp \, {r'}^l \, \Ylm^*\tvp \dcxp.
+		\phix = \int \Gxxp \, \rhoxp \dcxp
+		= \sum_{l, m} \frac{4\pi}{2l + 1} r^l \Ylm\tv \int \frac{\rhoxp}{{r'}^{l+1}} \Ylm^*\tvp \dcxp.
 	\eeq
-	Note that \refeq{multipole} is valid only for $\absx \geq R$ when the charge distribution $\rhoxp$ is nonzero only within $\abs{\vx'} \leq R$, which is outside the dielectric.
+	Combining this with the result of Eq.~(2.79), we have
+	\beqn \label{multipole}
+		\phix = \begin{cases}\displaystyle \sum_{l, m} \dfrac{4\pi}{2l + 1} r^l \, \qlm \, \Ylm\tv & \tif r < r' \text{ and } \rhoxp(r) = 0, \\[2ex]
+		\displaystyle \sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{\qlm}{r^{l+1}} \Ylm\tv & \tif r > r' \text{ and } \rhoxp(r) = 0, \end{cases}
+	\eeqn
+	where
+	\beqn \label{qlm}
+		\qlm \equiv \begin{cases} \displaystyle \int \frac{\rhoxp}{{r'}^{l+1}} \Ylm^*\tvp \dcxp & \tif r > r', \\[2ex]
+		\displaystyle \int \rhoxp \, {r'}^l \, \Ylm^*\tvp \dcxp & \tif r < r', \end{cases}
+	\eeqn
+	from Eq.~(2.80) and our derivation.  In this problem, $\rhoxp = q \,\delta(r' - d)$.
 	
-	The spherical harmonics $\Ylm$ are given by Eq.~(2.58),
+	Additionally, the spherical harmonics $\Ylm$ are given by Eq.~(2.58),
 	\beq
-		\Ylmtv = \sqrt{\frac{2l + 1}{4\pi}} \sqrt{\frac{(l - m)!}{(l + m)!}} \Plm(\cost) e^{i m \vph},
+		\Ylm\tv = \sqrt{\frac{2l + 1}{4\pi}} \sqrt{\frac{(l - m)!}{(l + m)!}} \Plm(\cost) e^{i m \vph},
 	\eeq
 	and the associated Legendre polynomials $\Plm$ are given by Eq.~(2.59),
 	\beq
 		\Plm(x) = \frac{(-1)^m}{2^l l!} (1 - x^2)^{m/2} \dv[l + m]{}{x} (x^2 - 1)^l.
-	\eeq
-\end{solution}
-
-
-
-
-
-\newcommand{\phio}{\phi_0}
-\newcommand{\alp}{\alpha}
-\newcommand{\cE}{\mathcal{E}}
-\newcommand{\cEint}{\cE_\text{int}}
-\newcommand{\rhof}{\rho_f}
-\newcommand{\evphi}{\ev{\phi}}
-\newcommand{\evrhof}{\ev{\rhof}}
-\newcommand{\vP}{\vb{P}}
-\newcommand{\evP}{\ev{\vP}}
-\newcommand{\divP}{\div{\evP}}
-\newcommand{\lap}{\laplacian}
-
-\newcommand{\Alm}{A_{l m}}
-\newcommand{\Blm}{B_{l m}}
-\newcommand{\tif}{\text{if }}
-\newcommand{\nh}{\vb{\hat{n}}}
-\newcommand{\vE}{\vb{E}}
-\newcommand{\evE}{\ev{\vE}}
-\newcommand{\Er}{E_r}
-\newcommand{\evEr}{\ev{\Er}}
-\newcommand{\vD}{\vb{D}}
-\newcommand{\evD}{\ev{\vD}}
-\newcommand{\tfor}{\quad \text{for }}
-\newcommand{\Ytotv}{Y_{2 0}\tv}
-
-\begin{statement}{}
-	A dielectric ball of radius $R$ and dielectric constant $\eps$ is placed in the external electrostatic potential $\phio = \alp (2z^2 - x^2 - y^2)$ where $\alp$ is a constant, with the center of the ball at $\vx = 0$.
-\end{statement}
-
-\begin{problem}
-	Find the total electrostatic potential $\phi$ everywhere.
+	\eeq	
 	
-	Hint: It is useful to note that the external potential is proportional to $r^2 \, \Ytotv$.  This should allow you to determine/guess the form of the total potential inside and outside the dielectric up to unknown constants, which can then be determined by matching.
-\end{problem}
-
-\begin{solution}
-	Firstly, note that
-	\beq
-		\Ytotv = \frac{1}{4} \sqrt{\frac{5}{\pi}} (3 \cos^2\tht - 1),
-	\eeq
-	and
-	\beq
-		\phio = \alp r^2 (3 \cos^2\tht - 1) = 4 \alp r^2 \sqrt{\frac{\pi}{5}} \Ytotv \equiv \beta r^2 \, \Ytotv,
-	\eeq
-	where we have defined $\beta \equiv 4 \alp \sqrt{\pi/5}$.
-
 	We assume the dielectric is linear, homogeneous, and isotropic.  Poisson's equation inside such a dielectric is given by Eq.~(3.22) in the course notes,
 	\beq
-		\lap\evphi = -\frac{4\pi}{\eps} \evrhof.
+		\lap\evphi = -\frac{4\pi}{\eps} \evrhof\!,
 	\eeq
-	Here, $\evrhof = 0$ since there are no free charges within the dielectric, so this reduces to Laplace's equation.  The general solution to Laplace's equation is given by Eq.~(3.61) in Jackson,
+	where $\rhof$ is the free charge density.  Here, $\evrhof = 0$ since there are no free charges within the dielectric, so this reduces to Laplace's equation.  The general solution to Laplace's equation is given by Eq.~(3.61) in Jackson,
 	\beqn \label{lapsol}
 		\evphi\!(r, \tht, \vph) = \sum_{l,m} \left( \Alm r^l + \frac{\Blm}{r^{l+1}} \right) \, \Ylm\tv,
 	\eeqn
 	where $\Alm$ and $\Blm$ are constant coefficients.
 	
-	In the region $r < R$, we must have $\Blm = 0$ because $1/r^{l+1}$ is undefined at the origin.  In the region $r > R$, we may invoke the boundary condition at infinity:
-	\beq
-		\phi(r > R, \tht, \vph) \to \phio = \beta r^2 \, \Ytotv,
-	\eeq
-	where we note that $\evphi = \phi$ for $r > R$.  This implies that the only nonzero $\Alm$ here is $A_{2 0} = \beta$.  Thus we have
-	\beq
-		\evphi\!(r, \tht, \vph) = \begin{cases} \sum_{l,m} \Alm r^l \, \Ylm\tv & \tif r \leq R, \\[2ex]
-		\beta r^2 \, \Ytotv + \sum_{l,m} \dfrac{\Blm}{r^{l+1}} \, \Ylm\tv & \tif r \geq R. \end{cases}
-	\eeq
-	
-	To solve for the remaining coefficients, we invoke the boundary conditions at $r = R$.  Firstly, $\evphi$ must be continuous at the boundary.  This gives us
-	\beq
-		\evphi\!(R, \tht, \vph) = \sum_{l,m} \Alm R^l \, \Ylm\tv = \beta R^2 \, \Ytotv + \sum_{l,m} \dfrac{\Blm}{R^{l+1}} \, \Ylm\tv,
-	\eeq
-	so
-	\begin{align} \label{c1}
-		A_{2 0} &= \beta + \dfrac{B_{2 0}}{R^{5}}, &
-		\Alm &= \frac{\Blm}{R^{l+3}} \tfor (l,m) \neq (2,0).
-	\end{align}
-	
-	Secondly, we require that $\nh \cdot \evD$ is also continuous at the boundary, where
-	\beq
-		\evD = \eps \evE
-	\eeq
-	inside the dielectric, from Eq.~(3.20) in the course notes.  (In vacuum, $\vD = \vE$.)  Here we are only concerned with the $r$ component of $\evE$.  Applying $\evE = -\grad\!\evphi$, we have
-	\beq
-		\evEr\!(r, \tht, \phi) = \begin{cases} \sum_{l,m} \Alm l r^{l-1} \, \Ylm\tv & \tif r \leq R, \\[2ex]
-		2 \beta r \, \Ytotv - \sum_{l,m} (l + 1) \dfrac{\Blm}{r^{l+2}} \, \Ylm\tv & \tif r \geq R. \end{cases}
-	\eeq
-	Then we need to satisfy
-	\beq
-		\evD\!(R, \tht, \vph) = \eps \sum_{l,m} \Alm l R^{l-1} \, \Ylm\tv = 2 \beta R \, \Ytotv - \sum_{l,m} (l + 1) \dfrac{\Blm}{R^{l+2}} \, \Ylm\tv,
-	\eeq
-	which stipulates
-	\begin{align} \label{c2}
-		A_{2 0} &= \frac{1}{\eps} \left( \beta - \frac{3}{2} \frac{B_{2 0}}{R^{5}} \right), &
-		\Alm &= -\frac{1}{\eps} \frac{(l + 1)}{l} \frac{\Blm}{R^{2l+1}} \tfor (l,m) \neq (2,0).
-	\end{align}
-	Eliminating $\Blm$ from \refeq{c1} and \refeq{c2}, we obtain
-	\begin{align*}
-		A_{2 0} &= \frac{5 \beta}{2\eps + 3}, &
-		\Alm &= 0 \tfor (l,m) \neq (2,0),
-	\end{align*}
-	and substituting back into \refeq{c1} yields
-	\begin{align*}
-		B_{2 0} &= 2 \beta R^5 \frac{1 - \eps}{2\eps + 3}, &
-		\Blm &= 0 \tfor (l,m) \neq (2,0).
-	\end{align*}
-	
-	Finally, the total electrostatic potential everywhere is
-	\beqn \label{phisph}
-		\evphi\!(r, \tht, \vph) = \alp (3 \cos^2\tht - 1) r^2 \times
-		\begin{cases} \dfrac{5}{2\eps + 3} & \tif r \leq R, \\[2ex]
-		1 + 2 \dfrac{1 - \eps}{2\eps + 3} \dfrac{R^5}{r^5} & \tif r \geq R,\end{cases}
+	We will begin inside the dielectric, where $r \leq R$.  Here we must have $\Blm = 0$ because $1/r^{l+1}$ is undefined at the origin.  Without loss of generality, we may choose the location of the point charge to be on the $z$ axis at $z = d$, so $\vx' = (r', 0, 0)$.  Clearly, the system is azimuthally symmetric, so $m = 0$.  This gives us the macroscopically averaged potential
+	\beqn \label{inside}
+		\evphi\!(r, \tht, \vph) = \sum_{l} \Al r^l \, Y_{l 0}\tv
+		= \sum_{l} \sqrt{\frac{2l + 1}{4\pi}} \Al r^l \Ploct \quad \tif r \leq R.
 	\eeqn
-	or, in Cartesian coordinates,
-	\beq
-		\evphi\!(x, y, z) = \alp (2z^2 - x^2 - y^2) \times
-		\begin{cases} \dfrac{5}{2\eps + 3} & \tif r \leq R, \\[2ex]
-		1 + 2 \dfrac{1 - \eps}{2\eps + 3} \dfrac{R^5}{\sqrt{x^2 + y^2 + z^2}} & \tif r \geq R.\end{cases}
-	\eeq
-\end{solution}
-\vfix
-
-
-
-\newcommand{\sE}{\mathscr{E}}
-\newcommand{\sEint}{\sE_\text{int}}
-\newcommand{\vEo}{\vE_0}
-\newcommand{\dcx}{\dd[3]{x}}
-\newcommand{\rh}{\vb{\hat{r}}}
-\newcommand{\thh}{\boldsymbol{\hat{\tht}}}
-\newcommand{\phh}{\boldsymbol{\hat{\vph}}}
-\newcommand{\sint}{\sin\tht}
-\newcommand{\Eth}{E_\tht}
-\newcommand{\Eph}{E_\vph}
-\newcommand{\evEth}{\ev{\Eth}}
-\newcommand{\evEph}{\ev{\Eph}}
-\newcommand{\Eo}{E_0}
-\newcommand{\Eor}{{\Eo}_r}
-\newcommand{\Eoth}{{\Eo}_\tht}
-\newcommand{\Eoph}{{\Eo}_\vph}
-
-\newcommand{\evPr}{\ev{P_r}}
-\newcommand{\evPth}{\ev{P_\tht}}
-\newcommand{\evPph}{\ev{P_\vph}}
-\newcommand{\dph}{\dd{\vph}}
-\newcommand{\dct}{\dd{(\cost)}}
-\newcommand{\dr}{\dd{r}}
-\newcommand{\intRi}{\int_R^\infty}
-
-\begin{problem}
-	Calculate the interaction energy between the field produced by the dielectric and the external field.  Assume that the potential arises from ``distant charges'' so that the formula for $\cEint$ given in class and the notes can be used.
-\end{problem}
-
-\begin{solution}
-	Equation~(3.34) in the lectures notes gives the interaction energy:
-	\beq
-		\sEint = \int (\evrhof \!\phio - \evP \cdot \vEo) \dcx,
-	\eeq
-	where $\vEo$ is the electric field due to the external potential $\phio$.  Again, $\rhof = 0$.  For our assumption of a linear, homogeneous, and isotropic dielectric,
-	\beq
-		\evP = \chi \!\evE
-	\eeq
-	by Eq.~(3.19), where
-	\beq
-		\eps = 1 + 4\pi \chi
-	\eeq
-	from Eq.~(3.21).
 	
-	The gradient in spherical coordinates is
-	\beqn \label{grad}
-		\grad = \pdv{}{r} \,\rh + \frac{1}{r} \pdv{}{\tht} \,\thh + \frac{1}{r \sint} \pdv{}{\vph} \, \phh.
+	In the region $R \leq d \leq r$, we are in free space so $\evphi = \phi$.  The point charge is at greater $r$, so we account for its contribution using the first case of \refeq{multipole}.  However, there are multipole contributions from the dielectric at lesser $r$, so we must account for these using the second case of \refeq{multipole}.  We can use the method of images to keep track of the dielectric contribution in this regime.  We find the Green's function for the image charge as the second term in the Dirichlet Green's function for a spherical cavity, which is Eq.~(2.91) in the lecture notes:
+	\beq
+		\Gdxxp = \frac{1}{\abs{\vx - \vx'}} + \frac{\alp}{\abs{\vx - \vx''}}
+		\qq{where} \vx'' = \vx' \frac{R^2}{\abs{\vx'}^2}
+		\qand \alp = -\frac{R}{\abs{\vx'}}.
+	\eeq
+	Adapting the second case of \refeq{greenexp} to this case, we obtain
+	\beq
+		\Gpxxp = \frac{\alp}{\abs{\vx - \vx''}}
+		= -\sum_{l,m} \frac{4\pi}{2l + 1} \frac{R^{2l+1}}{{r'}^{l+1} r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv \quad \tif r \leq R.
+	\eeq
+	Now adapting the second cases of \refeq{multipole} and \refeq{qlm},
+	\beq
+		\phix = -\sum_{l,m} \frac{4\pi}{2l+1} R^{2l+1} \frac{\qplm}{r^{l+1}} \Ylm\tv \quad \tif r \leq R,
+	\eeq
+	where
+	\beq
+		\qplm \equiv \int \frac{\rhopxp}{{r'}^{l+1}} \Ylm^*\tvp \quad \tif r \leq R
+	\eeq
+	and
+	\beq
+		\rhopxp = q \, \delta(r' - r'')
+		= q \, \delta(r' - R^2 / d).
+	\eeq
+	Putting all of this together, and again taking advantage of the azimuthal symmetry, we have
+	\begin{align}
+		\phirtp) &= \sum_{l} \frac{4\pi}{2l+1} Y_{l 0}\tv \left( \Bl R^{2l+1} \frac{\qplo}{r^{l+1}} + r^l \qlo \right) \notag \\
+		&= \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \left( \Bl R^{2l+1} \frac{\qplo}{r^{l+1}} + r^l \qlo \right) \quad \tif R \leq r \leq d. \label{middle}
+	\end{align}
+	Here the second term has coefficient 1 because it applies only to the point charge.
+	
+	In the region $r \geq d$, we account for both the point charge and the image charge using the second case of \refeq{multipole}.  With the azimuthal symmetry, this gives us
+	\beqn \label{outside}
+		\phirtp) = \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \left( \Cl R^{2l+1} \frac{\qplo}{r^{l+1}} + \frac{\qlo}{r^{l+1}} \right) \quad \tif r \geq d.
 	\eeqn
-	Differentiating \refeq{phisph} for $r \leq R$,
-	\begin{align} \label{Ein}
-		\evEr &= 2 \alp \frac{5}{2\eps + 3} r (3 \cos^2\tht - 1), &
-		\evEth &= -6 \alp \frac{5}{2\eps + 3} r \cost \sint, &
-		\evEph &= 0.
-	\end{align}
-	For the external field,
-	\begin{align} \label{E0}
-		\Eor &= 2 \alp r (3 \cos^2\tht - 1), &
-		\Eoth &= -6 \alp r \cost \sint, &
-		\Eoph &= 0.
-	\end{align}
-	Note that $\evP = (\eps - 1) \!\evE\! / 4 \pi$, so
-	\beq
-		\evP \cdot \vEo = 4 \alp^2 \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} r^2 \left[ (3 \cos^2\tht - 1)^2 + 9 \cos^2\tht \sin^2\tht \right]
-	\eeq
-	Then
-	\begin{align*}
-		\sEint &= -\int \evP \cdot \vEo \dcx
-		= 4 \alp^2 \frac{1 - \eps}{4\pi} \frac{5}{2\eps + 3} \intotp \dph \intono (3 \cos^2\tht + 1) \dct \intoR r^4 \dr \\
-		&= 4 \alp^2 \frac{1 - \eps}{4\pi} \frac{5}{2\eps + 3} \bigg[ \vph \bigg]_0^{2\pi} \bigg[ \cos^3\tht + \cost \bigg]_{-1}^1 \left[ \frac{r^5}{5} \right]_0^R
-		= 4 \alp^2 \frac{1 - \eps}{4\pi} \frac{5}{2\eps + 3} (2\pi) (4) \frac{R^5}{5}
-		= 8 \alp^2 \frac{1 - \eps}{2\eps + 3} R^5.
-	\end{align*}
-\end{solution}
-\vfix
-
-
-
-\newcommand{\vF}{\vb{F}}
-
-\begin{problem}
-	Calculate the total force needed to hold the dielectric ball in place.
-\end{problem}
-
-\begin{solution}
-	Equation~(3.26) in the lecture notes gives the total force on a dielectric:
-	\beq
-		\vF = \int [\evrhof\! \vEo + (\evP \cdot \grad) \vEo] \dcx.
-	\eeq
-	In electrostatics, there is no contribution from the dielectric's self field, and here $\rhof = 0$.  To find the force needed to hold the ball in place, we will need to insert a minus sign.
 	
-	From \refeq{Ein} and \refeq{grad}, we have
+	Now we must match $\evphi$ at the boundaries of each region.  We will begin with \refeq{middle} and \refeq{outside}.  Evaluating at $r = d$, we have
 	\beq
-		\evP \cdot \grad = 2\alp \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \left[ r (3 \cos^2\tht - 1) \pdv{}{r} - 3 \cost \sint \pdv{}{\tht} \right].
+		\phi(d, \tht, \phi) = \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct
+		\begin{cases} \Bl R^{2l+1} \dfrac{\qplo}{d^{l+1}} + d^l \qlo & \tif R \leq r \leq dm \\[2ex]
+		\Cl R^{2l+1} \dfrac{\qplo}{d^{l+1}} + \dfrac{\qlo}{d^{l+1}} & \tif r \geq d. \end{cases}
 	\eeq
-	From \refeq{E0}, note that
-	\begin{align*}
-		\pdv{\vEo}{r} &= \pdv{}{r} \left[ 2 \alp r (3 \cos^2\tht - 1) \,\rh - 6 \alp r \cost \sint \,\thh \right]
-		= 2 \alp \left[ (3 \cos^2\tht - 1) \,\rh - 3 \cost \sint \,\thh \right], \\[2ex]
-		\pdv{\vEo}{\tht} &= \pdv{}{\tht} \left[ \alp r (3 \cos2\tht + 1) \,\rh - 3 \alp r \sin2\tht \,\thh \right]
-		= -6\alp r (\sin2\tht \,\rh + \cos2\tht \,\thh) \\
-		&= -6 \alp r \left[ 2 \cost \sint \,\rh + (\cos^2\tht - \sin^2\tht) \,\thh \right].
-	\end{align*}
-	Then
-	\begin{align*}
-		(\evP \cdot \grad) \vEo &= 2\alp \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \left[ r (3 \cos^2\tht - 1) \pdv{\vEo}{r} - 3 \cost \sint \pdv{\vEo}{\tht} \right] \\
-		&= 4\alp^2  \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} r \!\left[ (3 \cos^2\tht - 1) \!\left( (3 \cos^2\tht - 1) \,\rh - 3 \cost \sint \,\thh \right)\! \right. \\
-		&\phantom{mmmmmmmmmmmmmmmmmmmmmmm} \left. + 9 \cost \sint \!\left( 2 \cost \sint \,\rh + (\cos^2\tht - \sin^2\tht) \,\thh \right) \right] \\
-		&= 4\alp^2  \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} r \!\left[ \left( (3 \cos^2\tht - 1)^2 - 18 \cos^2\tht \sin^2\tht \right) \rh \right. \\
-		&\phantom{mmmmmmmmmmmmmmmmmmmmmmm} \left. + 3 \cost \sint \left( 1 - 3\cos^2\tht + 3 (\cos^2\tht - \sin^2\tht) \right) \thh \right] \\
-		&= 4\alp^2  \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} r \!\left[ (-9\cos^4\tht + 12\cos^2\tht + 1) \,\rh + 3 \cost (-3\sin^2\tht + \sint) \,\thh \right],
-	\end{align*}
-	and the integral becomes
-	\begin{align*}
-		\vF &= -\int (\evP \cdot \grad) \vEo \dcx \\
-		&= -4\alp^2  \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \intotp \intono \intoR r^3 \!\left[ (-9\cos^4\tht + 12\cos^2\tht + 1) \,\rh + 3 \cost (-3\sin^2\tht + \sint) \,\thh \right] \dr \dct \dph \\
-		&= -4\alp^2 \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \intotp \dph \intono \left[ (-9\cos^4\tht + 12\cos^2\tht + 1) \,\rh + 3 \cost (-3\sin^2\tht + \sint) \,\thh \right] \dct \intoR r^3 \dr.
-	\end{align*}
-	For the second integral, note that
+	Equating these two cases gives us $\Bl = \Cl$.
+	
+	For \refeq{inside} and \refeq{middle}, we must match at $r = R$:
 	\beq
-		\intono \cost (-3\sin^2\tht + \sint) \dct
-		= \int_0^\pi \cost \sint (-3\sin^2\tht + \sint) \dd{\tht}
-		= \int_0^0 (-3\sin^3\tht + \sin^3\tht) \dd{(\sint)}
-		= 0.
+		\evphi\!(R, \tht, \phi) = \sum_{l} \Ploct \begin{cases} \sqrt{\dfrac{2l + 1}{4\pi}} \Al R^l & \tif r \leq R, \\[2ex]
+		\sqrt{\dfrac{4\pi}{2l+1}} R^l (\Bl \qplo + \qlo) & \tif R \leq r \leq d, \end{cases}
 	\eeq
-	Then we have
-	\begin{align*}
-		\vF &= -4\alp^2 \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} \bigg[ \vph \bigg]_0^{2\pi} \left[ -\frac{9}{5} \cos^5\tht + 4 \cos^3\tht + \cost \right]_{-1}^1 \left[ \frac{r^4}{4} \right]_0^R \rh
-		= -4\alp^2 \frac{\eps - 1}{4\pi} \frac{5}{2\eps + 3} (2\pi) \left( \frac{32}{5} \right) \frac{R^4}{4} \,\rh \\
-		&= -16 \alp^2 \frac{\eps - 1}{2\eps + 3} R^4 \,\rh.
-	\end{align*}
+	which gives us
+	\beq
+		\Al = \frac{4\pi}{2l+1} (\Bl \qplo + \qlo).
+	\eeq
+	Here we must also match $\nh \cdot \evD$ at the boundary, where
+	\beqn \label{D}
+		\evD = \eps \!\evE
+	\eeqn
+	inside the dielectric, from Eq.~(3.20) in the course notes.  (In vacuum, $\vD = \vE$.)  Here we are only concerned with the $r$ component of $\evE$.  Applying $\evE = -\grad\!\evphi$ to \refeq{inside} gives us
+	\beq
+		\evEr
+	\eeq
 \end{solution}
-\vfix
+
+
+\clearpage
+\input{Problem2}
 
 
 
