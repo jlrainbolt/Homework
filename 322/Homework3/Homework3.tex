@@ -316,28 +316,29 @@
 		\end{cases}
 	\eeqn
 	where $\qlm$ and $\qplm$ are given by \refeq{qlm}, and $\rhox = q \,\delta(r - d\cost)$.
-%	For this problem, $\rhox = q \,\delta(r - d\cost)$.  From \refeq{qlm}, we have
-%	\begin{align*}
-%		\qplo &= q \int \frac{\delta(r' - d\cost')}{{r'}^{l+1}} Y_{l 0}^*\tvp \dcxp
-%		= \sqrt{\frac{2l + 1}{4\pi}} q \intotp \intono \intoi \frac{\delta(r' - d\cost')}{{r'}^{l+1}} \Ploctp {r'}^2 \drp \dctp \dvp \\
-%		&= \sqrt{\frac{2l + 1}{4\pi}} q \intotp \dvp \intono \intoi \Ploctp \frac{\delta(r' - d\cost')}{{r'}^{l-1}} \dr \dctp
-%		= \sqrt{\pi (2l + 1)} \frac{q}{d^{l-1}} \intono \frac{\Ploctp}{\cos^{l-1}\tht'} \dctp
-%	\end{align*}
-%	and
-%	\begin{align*}
-%		\qlo &= q \int \delta(r' - d\cost') {r'}^l \, \Ylm^*\tvp \dcxp
-%		= \sqrt{\frac{2l + 1}{4\pi}} q \intotp \intono \intoi \delta(r' - d\cost') {r'}^{l+2} \Ploctp \drp \dctp \dvp \\
-%		&= \sqrt{\pi (2l + 1)} q d^{l+2} \intono \cos^{l+2}\tht' \Ploctp \dctp.
-%	\end{align*}
-%	\hl{which seems wrong}
-%	Finally, \hl{pretending the integrals evaluate to 1}, \refeq{sol1} becomes
-%	\beq
-%		\evphi\!\rtp = \sum_{l} 2\pi \Ploct \begin{cases}
-%			\dfrac{2l + 1}{l (1 + \eps) + 1} \dfrac{r^l}{d^{l-1}} & \tif r \leq R, \\[2ex]
-%			\dfrac{1 - \eps}{1 + \eps + l^{-1}} \dfrac{R^{2l+1}}{d^{l-1}} \dfrac{1}{r^{l+1}} + \dfrac{r^l}{d^{l-1}} & \tif R \leq r \leq d, \\[2ex]
-%			\dfrac{1 - \eps}{1 + \eps + l^{-1}} \dfrac{R^{2l+1}}{d^{l-1}} \dfrac{1}{r^{l+1}} + \dfrac{d^{l+2}}{r^{l+1}} & \tif r \geq d.
-%		\end{cases}
-%	\eeq
+
+	For this problem, $\rhox = q \,\delta(r - d\cost)$.  From \refeq{qlm}, we have
+	\begin{align*}
+		\qplo &= q \int \frac{\delta(r' - d\cost')}{{r'}^{l+1}} Y_{l 0}^*\tvp \dcxp
+		= \sqrt{\frac{2l + 1}{4\pi}} q \intotp \intono \intoi \frac{\delta(r' - d\cost')}{{r'}^{l+1}} \Ploctp {r'}^2 \drp \dctp \dvp \\
+		&= \sqrt{\frac{2l + 1}{4\pi}} q \intotp \dvp \intono \intoi \Ploctp \frac{\delta(r' - d\cost')}{{r'}^{l-1}} \dr \dctp
+		= \sqrt{\pi (2l + 1)} \frac{q}{d^{l-1}} \intono \frac{\Ploctp}{\cos^{l-1}\tht'} \dctp
+	\end{align*}
+	and
+	\begin{align*}
+		\qlo &= q \int \delta(r' - d\cost') {r'}^l \, \Ylm^*\tvp \dcxp
+		= \sqrt{\frac{2l + 1}{4\pi}} q \intotp \intono \intoi \delta(r' - d\cost') {r'}^{l+2} \Ploctp \drp \dctp \dvp \\
+		&= \sqrt{\pi (2l + 1)} q d^{l+2} \intono \cos^{l+2}\tht' \Ploctp \dctp.
+	\end{align*}
+	\hl{which seems wrong}
+	Finally, \hl{pretending the integrals evaluate to 1}, \refeq{sol1} becomes
+	\beq
+		\evphi\!\rtp = \sum_{l} 2\pi \Ploct \begin{cases}
+			\dfrac{2l + 1}{l (1 + \eps) + 1} \dfrac{r^l}{d^{l-1}} & \tif r \leq R, \\[2ex]
+			\dfrac{1 - \eps}{1 + \eps + l^{-1}} \dfrac{R^{2l+1}}{d^{l-1}} \dfrac{1}{r^{l+1}} + \dfrac{r^l}{d^{l-1}} & \tif R \leq r \leq d, \\[2ex]
+			\dfrac{1 - \eps}{1 + \eps + l^{-1}} \dfrac{R^{2l+1}}{d^{l-1}} \dfrac{1}{r^{l+1}} + \dfrac{d^{l+2}}{r^{l+1}} & \tif r \geq d.
+		\end{cases}
+	\eeq
 \end{solution}
 
 
