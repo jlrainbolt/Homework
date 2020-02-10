@@ -35,8 +35,10 @@
 	\eeq
 	where we note that $\evphi = \phi$ for $r > R$.  This implies that the only nonzero $\Alm$ here is $A_{2 0} = \beta$.  Thus we have
 	\beq
-		\evphi\!(r, \tht, \vph) = \begin{cases} \displaystyle \sum_{l,m} \Alm r^l \, \Ylm\tv & \tif r \leq R, \\[2ex]
-		\beta r^2 \, \Ytotv + \displaystyle \sum_{l,m} \dfrac{\Blm}{r^{l+1}} \, \Ylm\tv & \tif r \geq R. \end{cases}
+		\evphi\!(r, \tht, \vph) = \begin{cases}
+			\dsum_{l,m} \Alm r^l \, \Ylm\tv & \tif r \leq R, \\[2ex]
+			\beta r^2 \, \Ytotv + \dsum_{l,m} \dfrac{\Blm}{r^{l+1}} \, \Ylm\tv & \tif r \geq R.
+		\end{cases}
 	\eeq
 	
 	To solve for the remaining coefficients, we invoke the boundary conditions at $r = R$.  Firstly, $\evphi$ must be continuous at the boundary.  This gives us
@@ -49,14 +51,16 @@
 		\Alm &= \frac{\Blm}{R^{l+3}} \tfor (l,m) \neq (2,0).
 	\end{align}
 	
-	Secondly, we require that $\nh \cdot \evD$ is also continuous at the boundary, where $\evD$ is defined in \refeq{D}.  Here we are only concerned with the $r$ component of $\evE$.  Applying $\evE = -\grad\!\evphi$, we have
+	Secondly, we require that $\nh \cdot \evD$ is also continuous at the boundary, where $\evD$ is defined in \refeq{D}.  Here $\nh = \rh$, so we are only concerned with the $r$ component of $\evE$.  Applying $\evE = -\grad\!\evphi$, we have
 	\beq
-		\evEr\!(r, \tht, \phi) = \begin{cases} \displaystyle \sum_{l,m} \Alm l r^{l-1} \, \Ylm\tv & \tif r \leq R, \\[2ex]
-		2 \beta r \, \Ytotv - \displaystyle \sum_{l,m} (l + 1) \dfrac{\Blm}{r^{l+2}} \, \Ylm\tv & \tif r \geq R. \end{cases}
+		\evEr\!(r, \tht, \phi) = \begin{cases}
+			\dsum_{l,m} \Alm l r^{l-1} \, \Ylm\tv & \tif r \leq R, \\[2ex]
+			2 \beta r \, \Ytotv - \dsum_{l,m} (l + 1) \dfrac{\Blm}{r^{l+2}} \, \Ylm\tv & \tif r \geq R.
+		\end{cases}
 	\eeq
 	Then we need to satisfy
 	\beq
-		\evD\!(R, \tht, \vph) = \eps \sum_{l,m} \Alm l R^{l-1} \, \Ylm\tv = 2 \beta R \, \Ytotv - \sum_{l,m} (l + 1) \dfrac{\Blm}{R^{l+2}} \, \Ylm\tv,
+		\rh \cdot \evD\!(R, \tht, \vph) = \eps \sum_{l,m} \Alm l R^{l-1} \, \Ylm\tv = 2 \beta R \, \Ytotv - \sum_{l,m} (l + 1) \dfrac{\Blm}{R^{l+2}} \, \Ylm\tv,
 	\eeq
 	which stipulates
 	\begin{align} \label{c2}
@@ -76,15 +80,17 @@
 	
 	Finally, the total electrostatic potential everywhere is
 	\beqn \label{phisph}
-		\evphi\!(r, \tht, \vph) = \alp (3 \cos^2\tht - 1) r^2 \times
-		\begin{cases} \dfrac{5}{2\eps + 3} & \tif r \leq R, \\[2ex]
-		1 + 2 \dfrac{1 - \eps}{2\eps + 3} \dfrac{R^5}{r^5} & \tif r \geq R,\end{cases}
+		\evphi\!(r, \tht, \vph) = \alp (3 \cos^2\tht - 1) r^2 \times \begin{cases}
+			\dfrac{5}{2\eps + 3} & \tif r \leq R, \\[2ex]
+			1 + 2 \dfrac{1 - \eps}{2\eps + 3} \dfrac{R^5}{r^5} & \tif r \geq R,
+		\end{cases}
 	\eeqn
 	or, in Cartesian coordinates,
 	\beq
-		\evphi\!(x, y, z) = \alp (2z^2 - x^2 - y^2) \times
-		\begin{cases} \dfrac{5}{2\eps + 3} & \tif r \leq R, \\[2ex]
-		1 + 2 \dfrac{1 - \eps}{2\eps + 3} \dfrac{R^5}{\sqrt{x^2 + y^2 + z^2}} & \tif r \geq R.\end{cases}
+		\evphi\!(x, y, z) = \alp (2z^2 - x^2 - y^2) \times \begin{cases}
+			\dfrac{5}{2\eps + 3} & \tif r \leq R, \\[2ex]
+			1 + 2 \dfrac{1 - \eps}{2\eps + 3} \dfrac{R^5}{\sqrt{x^2 + y^2 + z^2}} & \tif r \geq R.
+		\end{cases}
 	\eeq
 \end{solution}
 \vfix
@@ -94,7 +100,6 @@
 \newcommand{\sE}{\mathscr{E}}
 \newcommand{\sEint}{\sE_\text{int}}
 \newcommand{\vEo}{\vE_0}
-\newcommand{\rh}{\vb{\hat{r}}}
 \newcommand{\thh}{\boldsymbol{\hat{\tht}}}
 \newcommand{\phh}{\boldsymbol{\hat{\vph}}}
 \newcommand{\sint}{\sin\tht}

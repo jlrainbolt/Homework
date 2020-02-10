@@ -128,7 +128,6 @@
 \newcommand{\dctp}{\dd{(\cost')}}
 \newcommand{\dvp}{\dd{\vph'}}
 
-\newcommand{\Ploq}{P_l^0(1)}
 \newcommand{\Ylotv}{Y_{l 0}\tv}
 \newcommand{\dr}{\dd{r}}
 \newcommand{\dct}{\dd{(\cost)}}
@@ -137,10 +136,14 @@
 \newcommand{\Alm}{A_{l m}}
 \newcommand{\Blm}{B_{l m}}
 \newcommand{\Ploct}{P_l^0(\cost)}
+\newcommand{\Ploctp}{P_l^0(\cost')}
 \newcommand{\alp}{\alpha}
-\newcommand{\phirtp}{\phi(r, \tht, \phi}
+\newcommand{\rtp}{(r, \tht, \phi)}
+\newcommand{\phirtp}{\phi\rtp}
 \newcommand{\qlo}{q_{l 0}}
 \newcommand{\qplo}{q'_{l 0}}
+\newcommand{\qpplm}{q''_{l m}}
+\newcommand{\qpplo}{q''_{l 0}}
 
 \newcommand{\vD}{\vb{D}}
 \newcommand{\evD}{\ev{\vD}}
@@ -149,6 +152,10 @@
 \newcommand{\evE}{\ev{\vE}}
 \newcommand{\Er}{E_r}
 \newcommand{\evEr}{\ev{\Er}}
+\newcommand{\rh}{\vb{\hat{r}}}
+
+\newcommand{\dint}{\displaystyle \int}
+\newcommand{\dsum}{\displaystyle \sum}
 
 \begin{statement}{} \label{1}
 	Consider a dielectric ball of radius $R$ with dielectric constant $\eps$.  Obtain a multipole expansion for the field, $\phix$, of a point charge $q$ placed at a point $\vx'$ with $\abs{\vx'} = d > R$ (so the charge is outside of the dielectric ball).
@@ -160,8 +167,10 @@
 	In class, we derived the multipole expansion for $\absx \geq R$ when the charge distribution $\rhoxp$ is nonzero only within $\abs{\vx'} \leq R$.  We can find an equivalent expression for the reverse situation (within $\absx \leq R$ when the charge distribution $\rhoxp$ is nonzero only for $\abs{\vx'} \geq R$) using the spherical harmonic expansion of the Green's function $\Gxxp$ in Eq.~(2.78):
 	\beqn \label{greenexp}
 		\Gxxp = \frac{1}{\abs{\vx - \vx'}}
-		= \begin{cases} \displaystyle \sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{r^l}{{r'}^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \tif r < r', \\[2ex]
-		\displaystyle \sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{{r'}^l}{r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \tif r > r'. \end{cases}
+		= \begin{cases}
+			\dsum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{r^l}{{r'}^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \tif r < r', \\[2ex]
+			\dsum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{{r'}^l}{r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \tif r > r'.
+		\end{cases}
 	\eeqn
 	As in Eq.~(2.79) in the course notes, we integrate and obtain
 	\beq
@@ -170,15 +179,17 @@
 	\eeq
 	Combining this with the result of Eq.~(2.79), we have
 	\beqn \label{multipole}
-		\phix = \begin{cases}\displaystyle \sum_{l, m} \dfrac{4\pi}{2l + 1} r^l \, \qlm \, \Ylm\tv & \tif r < r' \text{ and } \rhoxp(r) = 0, \\[2ex]
-		\displaystyle \sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{\qlm}{r^{l+1}} \Ylm\tv & \tif r > r' \text{ and } \rhoxp(r) = 0, \end{cases}
+		\phix = \begin{cases}
+			\dsum_{l, m} \dfrac{4\pi}{2l + 1} r^l \, \qplm \, \Ylm\tv & \tif r < r' \text{ and } \rhoxp(r) = 0, \\[2ex]
+			\dsum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{\qlm}{r^{l+1}} \Ylm\tv & \tif r > r' \text{ and } \rhoxp(r) = 0,
+		\end{cases}
 	\eeqn
 	where
-	\beqn \label{qlm}
-		\qlm \equiv \begin{cases} \displaystyle \int \frac{\rhoxp}{{r'}^{l+1}} \Ylm^*\tvp \dcxp & \tif r > r', \\[2ex]
-		\displaystyle \int \rhoxp \, {r'}^l \, \Ylm^*\tvp \dcxp & \tif r < r', \end{cases}
-	\eeqn
-	from Eq.~(2.80) and our derivation.  In this problem, $\rhoxp = q \,\delta(r' - d)$.
+	\begin{align} \label{qlm}
+		\qplm &\equiv \int \frac{\rhoxp}{{r'}^{l+1}} \Ylm^*\tvp \dcxp, &
+		\qlm &\equiv \int \rhoxp \, {r'}^l \, \Ylm^*\tvp \dcxp,
+	\end{align}
+	from Eq.~(2.80) and our derivation.
 	
 	Additionally, the spherical harmonics $\Ylm$ are given by Eq.~(2.58),
 	\beq
@@ -218,54 +229,115 @@
 	\eeq
 	Now adapting the second cases of \refeq{multipole} and \refeq{qlm},
 	\beq
-		\phix = -\sum_{l,m} \frac{4\pi}{2l+1} R^{2l+1} \frac{\qplm}{r^{l+1}} \Ylm\tv \quad \tif r \leq R,
+		\phix = -\sum_{l,m} \frac{4\pi}{2l+1} R^{2l+1} \frac{\qpplm}{r^{l+1}} \Ylm\tv \quad \tif r \leq R,
 	\eeq
 	where
 	\beq
-		\qplm \equiv \int \frac{\rhopxp}{{r'}^{l+1}} \Ylm^*\tvp \quad \tif r \leq R
+		\qpplm \equiv \int \frac{\rhopxp}{{r'}^{l+1}} \Ylm^*\tvp \quad \tif r \leq R
 	\eeq
 	and
 	\beq
 		\rhopxp = q \, \delta(r' - r'')
-		= q \, \delta(r' - R^2 / d).
+		= q \, \delta(r' - R^2 / d\cost').
 	\eeq
 	Putting all of this together, and again taking advantage of the azimuthal symmetry, we have
 	\begin{align}
-		\phirtp) &= \sum_{l} \frac{4\pi}{2l+1} Y_{l 0}\tv \left( \Bl R^{2l+1} \frac{\qplo}{r^{l+1}} + r^l \qlo \right) \notag \\
-		&= \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \left( \Bl R^{2l+1} \frac{\qplo}{r^{l+1}} + r^l \qlo \right) \quad \tif R \leq r \leq d. \label{middle}
+		\phirtp &= \sum_{l} \frac{4\pi}{2l+1} Y_{l 0}\tv \left( \Bl R^{2l+1} \frac{\qpplo}{r^{l+1}} + r^l \qplo \right) \notag \\
+		&= \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \left( \Bl R^{2l+1} \frac{\qpplo}{r^{l+1}} + r^l \qplo \right) \quad \tif R \leq r \leq d. \label{middle}
 	\end{align}
-	Here the second term has coefficient 1 because it applies only to the point charge.
+	Here the second term has coefficient 1 because it applies to the point charge.
 	
 	In the region $r \geq d$, we account for both the point charge and the image charge using the second case of \refeq{multipole}.  With the azimuthal symmetry, this gives us
 	\beqn \label{outside}
-		\phirtp) = \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \left( \Cl R^{2l+1} \frac{\qplo}{r^{l+1}} + \frac{\qlo}{r^{l+1}} \right) \quad \tif r \geq d.
+		\phirtp = \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \left( \Cl R^{2l+1} \frac{\qpplo}{r^{l+1}} + \frac{\qlo}{r^{l+1}} \right) \quad \tif r \geq d.
 	\eeqn
 	
 	Now we must match $\evphi$ at the boundaries of each region.  We will begin with \refeq{middle} and \refeq{outside}.  Evaluating at $r = d$, we have
 	\beq
-		\phi(d, \tht, \phi) = \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct
-		\begin{cases} \Bl R^{2l+1} \dfrac{\qplo}{d^{l+1}} + d^l \qlo & \tif R \leq r \leq dm \\[2ex]
-		\Cl R^{2l+1} \dfrac{\qplo}{d^{l+1}} + \dfrac{\qlo}{d^{l+1}} & \tif r \geq d. \end{cases}
+		\phi(d, \tht, \phi) = \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \begin{cases}
+			\Bl R^{2l+1} \dfrac{\qpplo}{d^{l+1}} + d^l \qplo & \tif R \leq r \leq d \\[2ex]
+			\Cl R^{2l+1} \dfrac{\qpplo}{d^{l+1}} + \dfrac{\qlo}{d^{l+1}} & \tif r \geq d.
+		\end{cases}
 	\eeq
 	Equating these two cases gives us $\Bl = \Cl$.
 	
 	For \refeq{inside} and \refeq{middle}, we must match at $r = R$:
 	\beq
-		\evphi\!(R, \tht, \phi) = \sum_{l} \Ploct \begin{cases} \sqrt{\dfrac{2l + 1}{4\pi}} \Al R^l & \tif r \leq R, \\[2ex]
-		\sqrt{\dfrac{4\pi}{2l+1}} R^l (\Bl \qplo + \qlo) & \tif R \leq r \leq d, \end{cases}
+		\evphi\!(R, \tht, \phi) = \sum_{l} \Ploct \begin{cases}
+			\sqrt{\dfrac{2l + 1}{4\pi}} \Al R^l & \tif r \leq R, \\[2ex]
+			\sqrt{\dfrac{4\pi}{2l+1}} R^l (\Bl \qpplo + \qplo) & \tif R \leq r \leq d,
+		\end{cases}
 	\eeq
 	which gives us
-	\beq
-		\Al = \frac{4\pi}{2l+1} (\Bl \qplo + \qlo).
-	\eeq
+	\beqn \label{A1}
+		\Al = \frac{4\pi}{2l+1} (\Bl \qpplo + \qplo).
+	\eeqn
 	Here we must also match $\nh \cdot \evD$ at the boundary, where
 	\beqn \label{D}
 		\evD = \eps \!\evE
 	\eeqn
-	inside the dielectric, from Eq.~(3.20) in the course notes.  (In vacuum, $\vD = \vE$.)  Here we are only concerned with the $r$ component of $\evE$.  Applying $\evE = -\grad\!\evphi$ to \refeq{inside} gives us
+	inside the dielectric, from Eq.~(3.20) in the course notes.  (In vacuum, $\vD = \vE$.)  Here $\nh = \rh$, so we are only concerned with the $r$ component of $\evE$.  Applying $\evE = -\grad\!\evphi$ to \refeq{inside} and \refeq{outside} gives us
 	\beq
-		\evEr
+		\evEr\!(R, \tht, \phi) = -\sum_l R^{l-1} \Ploct \begin{cases}
+			\sqrt{\dfrac{2l+1}{4\pi}} \Al l & \tif r \leq R, \\[2ex]
+			\sqrt{\dfrac{4\pi}{2l+1}} [-(l + 1) \Bl \qpplo + l \qplo] & \tif R \leq r \leq d.
+		\end{cases}
 	\eeq
+	Then we stipulate that
+	\beq
+		\rh \cdot \evD\!(R, \tht, \phi) = -\eps \sqrt{\frac{2l+1}{4\pi}} \Al l = \sqrt{\frac{4\pi}{2l+1}} [(l + 1) \Bl \qpplo - l \qplo],
+	\eeq
+	which implies
+	\beqn \label{A2}
+		\Al = \frac{1}{\eps} \frac{4\pi}{2l+1} \left( \qplo - \frac{l + 1}{l} \Bl \qpplo \right).
+	\eeqn
+	By equating \refeq{A1} and \refeq{A2}, we can solve for $\Bl$:
+	\beq
+		\Bl \qpplo + \qplo = \frac{1}{\eps} \left( \qplo - \frac{l + 1}{l} \Bl \qpplo \right)
+		\implies
+		\left( 1 + \frac{1}{\eps} \frac{l + 1}{l} \right) \Bl \qpplo = \left( \frac{1}{\eps} - 1 \right) \qplo
+		\implies
+		\Bl = \frac{1 - \eps}{1 + \eps + l^{-1}} \frac{\qplo}{\qpplo}.
+	\eeq
+	Feeding this back into \refeq{A1},
+	\beq
+		\Al = \frac{4\pi}{2l+1} \left( \frac{1 - \eps}{1 + \eps + l^{-1}} \frac{\qplo}{\qpplo} \qpplo + \qplo \right)
+		= \frac{4\pi}{2l+1} \frac{1 - \eps + 1 + \eps + l^{-1}}{1 + \eps + l^{-1}} \qplo
+		= \frac{4\pi}{2l+1} \frac{2 + l^{-1}}{1 + \eps + l^{-1}} \qplo
+		= \frac{4\pi}{l (1 + \eps) + 1} \qplo.
+	\eeq
+	
+	Substituting in all of the coefficients, \refeq{inside}, \refeq{middle}, and \refeq{outside} can be written as
+	\beqn \label{sol1}
+		\evphi\!\rtp = \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \begin{cases}
+			\dfrac{2l + 1}{l (1 + \eps) + 1} \qplo r^l & \tif r \leq R, \\[2ex]
+			\dfrac{1 - \eps}{1 + \eps + l^{-1}} R^{2l+1} \dfrac{\qplo}{r^{l+1}} + r^l \qplo & \tif R \leq r \leq d, \\[2ex]
+			\dfrac{1 - \eps}{1 + \eps + l^{-1}} R^{2l+1} \dfrac{\qplo}{r^{l+1}} + \dfrac{\qlo}{r^{l+1}} & \tif r \geq d,
+		\end{cases}
+	\eeqn
+	where $\qlm$ and $\qplm$ are given by \refeq{qlm}, and $\rhox = q \,\delta(r - d\cost)$.
+%	For this problem, $\rhox = q \,\delta(r - d\cost)$.  From \refeq{qlm}, we have
+%	\begin{align*}
+%		\qplo &= q \int \frac{\delta(r' - d\cost')}{{r'}^{l+1}} Y_{l 0}^*\tvp \dcxp
+%		= \sqrt{\frac{2l + 1}{4\pi}} q \intotp \intono \intoi \frac{\delta(r' - d\cost')}{{r'}^{l+1}} \Ploctp {r'}^2 \drp \dctp \dvp \\
+%		&= \sqrt{\frac{2l + 1}{4\pi}} q \intotp \dvp \intono \intoi \Ploctp \frac{\delta(r' - d\cost')}{{r'}^{l-1}} \dr \dctp
+%		= \sqrt{\pi (2l + 1)} \frac{q}{d^{l-1}} \intono \frac{\Ploctp}{\cos^{l-1}\tht'} \dctp
+%	\end{align*}
+%	and
+%	\begin{align*}
+%		\qlo &= q \int \delta(r' - d\cost') {r'}^l \, \Ylm^*\tvp \dcxp
+%		= \sqrt{\frac{2l + 1}{4\pi}} q \intotp \intono \intoi \delta(r' - d\cost') {r'}^{l+2} \Ploctp \drp \dctp \dvp \\
+%		&= \sqrt{\pi (2l + 1)} q d^{l+2} \intono \cos^{l+2}\tht' \Ploctp \dctp.
+%	\end{align*}
+%	\hl{which seems wrong}
+%	Finally, \hl{pretending the integrals evaluate to 1}, \refeq{sol1} becomes
+%	\beq
+%		\evphi\!\rtp = \sum_{l} 2\pi \Ploct \begin{cases}
+%			\dfrac{2l + 1}{l (1 + \eps) + 1} \dfrac{r^l}{d^{l-1}} & \tif r \leq R, \\[2ex]
+%			\dfrac{1 - \eps}{1 + \eps + l^{-1}} \dfrac{R^{2l+1}}{d^{l-1}} \dfrac{1}{r^{l+1}} + \dfrac{r^l}{d^{l-1}} & \tif R \leq r \leq d, \\[2ex]
+%			\dfrac{1 - \eps}{1 + \eps + l^{-1}} \dfrac{R^{2l+1}}{d^{l-1}} \dfrac{1}{r^{l+1}} + \dfrac{d^{l+2}}{r^{l+1}} & \tif r \geq d.
+%		\end{cases}
+%	\eeq
 \end{solution}
 
 
