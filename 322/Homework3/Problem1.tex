@@ -1,0 +1,202 @@
+\newcommand{\eps}{\epsilon}
+\newcommand{\vx}{\vb{x}}
+\newcommand{\phix}{\phi(\vx)}
+\newcommand{\dcx}{\dd[3]{x}}
+\newcommand{\dcxp}{\dd[3]{x'}}
+\newcommand{\rhox}{\rho(\vx)}
+\newcommand{\rhoxp}{\rho(\vx')}
+\newcommand{\rhopxp}{\rho'(\vx')}
+\newcommand{\xh}{\vec{\hat{x}}}
+\newcommand{\absx}{\abs{\vx}}
+\newcommand{\absxp}{\abs{\vx'}}
+
+\newcommand{\Ylm}{Y_{l m}}
+\newcommand{\qlm}{q_{l m}}
+\newcommand{\Plm}{P_l^m}
+\newcommand{\tht}{\theta}
+\newcommand{\cost}{\cos\tht}
+\newcommand{\vph}{\varphi}
+\newcommand{\tv}{(\tht, \vph)}
+\newcommand{\tvp}{(\tht', \vph')}
+\newcommand{\Gxxp}{G(\vx, \vx')}
+\newcommand{\Gpxxp}{G'(\vx, \vx')}
+\newcommand{\Gdxxp}{G_D(\vx, \vx')}
+\newcommand{\qplm}{q'_{l m}}
+
+\newcommand{\lap}{\nabla^2}
+\newcommand{\evphi}{\ev{\phi}}
+\newcommand{\evphix}{\evphi\!(\vx)}
+\newcommand{\rhof}{\rho_f}
+\newcommand{\evrhof}{\ev{\rhof}}
+\newcommand{\fe}{\frac{1}{\eps}}
+\newcommand{\tif}{\text{if }}
+\newcommand{\Al}{A_l}
+\newcommand{\Bl}{B_l}
+\newcommand{\Cl}{C_l}
+
+\newcommand{\intoi}{\int_0^\infty}
+\newcommand{\intono}{\int_{-1}^{1}}
+\newcommand{\intotp}{\int_0^{2\pi}}
+\newcommand{\drp}{\dd{r'}}
+\newcommand{\dctp}{\dd{(\cost')}}
+\newcommand{\dvp}{\dd{\vph'}}
+
+\newcommand{\Ylotv}{Y_{l 0}\tv}
+\newcommand{\dr}{\dd{r}}
+\newcommand{\dct}{\dd{(\cost)}}
+\newcommand{\ddv}{\dd{\vph}}
+
+\newcommand{\Alm}{A_{l m}}
+\newcommand{\Blm}{B_{l m}}
+\newcommand{\Clm}{C_{l m}}
+\newcommand{\Pl}{P_l}
+\newcommand{\Plct}{\Pl(\cost)}
+\newcommand{\Plctp}{\Pl(\cost')}
+\newcommand{\alp}{\alpha}
+\newcommand{\rtp}{(r, \tht, \phi)}
+\newcommand{\phirtp}{\phi\rtp}
+\newcommand{\qlo}{q_{l 0}}
+\newcommand{\qplo}{q'_{l 0}}
+\newcommand{\qpplm}{q''_{l m}}
+\newcommand{\qpplo}{q''_{l 0}}
+
+\newcommand{\vD}{\vb{D}}
+\newcommand{\evD}{\ev{\vD}}
+\newcommand{\nh}{\vb{\hat{n}}}
+\newcommand{\vE}{\vb{E}}
+\newcommand{\evE}{\ev{\vE}}
+\newcommand{\Er}{E_r}
+\newcommand{\evEr}{\ev{\Er}}
+\newcommand{\rh}{\vb{\hat{r}}}
+
+\newcommand{\dint}{\displaystyle \int}
+\newcommand{\dsum}{\displaystyle \sum}
+
+\begin{statement}{} \label{1}
+	Consider a dielectric ball of radius $R$ with dielectric constant $\eps$.  Obtain a multipole expansion for the field, $\phix$, of a point charge $q$ placed at a point $\vx'$ with $\abs{\vx'} = d > R$ (so the charge is outside of the dielectric ball).
+	
+	Hint: Follow the procedure we used in class to find the multipole expansion of a point charge without the dielectric, but now consider the three regions $r \leq R$, $R \leq r \leq d$, and $r \geq d$.  Obtain the form of the solution in these regions and match suitably.
+\end{statement}
+
+\begin{solution}
+	The spherical harmonic expansion of the Green's function $\Gxxp$ is given by Eq.~(2.78):
+	\beqn \label{greenexp}
+		\Gxxp = \frac{1}{\abs{\vx - \vx'}}
+		= \begin{cases}
+			\dsum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{r^l}{{r'}^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \tif r < r', \\[2ex]
+			\dsum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{{r'}^l}{r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \tif r > r'.
+		\end{cases}
+	\eeqn
+	The spherical harmonics $\Ylm$ are given by Eq.~(2.58),
+	\beq
+		\Ylm\tv = \sqrt{\frac{2l + 1}{4\pi}} \sqrt{\frac{(l - m)!}{(l + m)!}} \Plm(\cost) e^{i m \vph},
+	\eeq
+	and the associated Legendre polynomials $\Plm$ are given by Eq.~(2.59),
+	\beq
+		\Plm(x) = \frac{(-1)^m}{2^l l!} (1 - x^2)^{m/2} \dv[l + m]{}{x} (x^2 - 1)^l.
+	\eeq	
+	
+	We will assume the dielectric is linear, homogeneous, and isotropic.  Poisson's equation inside such a dielectric is given by Eq.~(3.22) in the course notes,
+	\beq
+		\lap\evphi = -\frac{4\pi}{\eps} \evrhof\!,
+	\eeq
+	where $\rhof$ is the free charge density.  Here, $\evrhof = 0$ since there are no free charges within the dielectric, so this reduces to Laplace's equation.  The general solution to Laplace's equation is given by Eq.~(3.61) in Jackson,
+	\beqn \label{lapsol}
+		\evphi\!(r, \tht, \vph) = \sum_{l,m} \left( \Alm r^l + \frac{\Blm}{r^{l+1}} \right) \, \Ylm\tv,
+	\eeqn
+	where $\Alm$ and $\Blm$ are constant coefficients.
+	
+	We will begin inside the dielectric, where $r \leq R$.  Here we must have $\Blm = 0$ because $1/r^{l+1}$ is undefined at the origin.  Without loss of generality, we may choose the location of the point charge to be on the $z$ axis at $z = d$, so $\vx' = (d, 0, 0)$.  Clearly, the system is azimuthally symmetric, so $m = 0$.  This gives us the macroscopically averaged potential
+	\beqn \label{inside}
+		\evphi\!(r, \tht, \vph) = \sum_{l} \Al r^l \, Y_{l 0}\tv
+		= \sum_{l} \sqrt{\frac{2l + 1}{4\pi}} \Al r^l \Plct \quad \tif r \leq R.
+	\eeqn
+	
+	In the region $R \leq d \leq r$, we are in free space so $\evphi = \phi$.  The point charge is at greater $r$, so we account for its contribution using the first case of \refeq{greenexp}.  Additionally, there are multipole contributions from the dielectric at lesser $r$, which we must account for as well.  This is similar to the problem of a point charge outside a conducting sphere, so we can use the method of images to find the dielectric contribution in this regime.  However, since we are working with a dielectric and not a conductor, in this case the image charge will not have a charge of exactly $q$.  Therefore, we need to assign coefficients to this contribution and match at the boundary to obtain the correct expression of the potential due to the dielectric.
+	
+	The Dirichlet Green's function for a spherical cavity is Eq.~(2.91) in the lecture notes:
+	\beq
+		\Gdxxp = \frac{1}{\abs{\vx - \vx'}} + \frac{\alp}{\abs{\vx - \vx''}}
+		\qq{where} \vx'' = \vx' \frac{R^2}{\abs{\vx'}^2}
+		\qand \alp = -\frac{R}{\abs{\vx'}}.
+	\eeq
+	Here, the second term is the same as the Green's function for an image charge inside the conducting sphere.  We will use this term to find the dielectric ball's contribution to the potential.  Adapting the second case of \refeq{greenexp} to this case, we obtain
+	\beq
+		\Gpxxp = \frac{\alp}{\abs{\vx - \vx''}}
+		= -\sum_{l,m} \frac{4\pi}{2l + 1} \frac{R^{2l+1}}{{r'}^{l+1} r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv \quad \tif r \leq R.
+	\eeq
+	Putting these together, and again taking advantage of the azimuthal symmetry, we have
+	\begin{align}
+		\phirtp &= q \sum_{l,m} \frac{4\pi}{2l + 1} \frac{r^l}{d^{l + 1}} \Ylm^*\tvp \, \Ylm\tv - \sum_{l,m} \Blm \frac{4\pi}{2l + 1} \frac{R^{2l+1}}{d^{l+1} r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv \notag \\
+		&= \sum_{l,m} \frac{4\pi}{2l + 1} \Ylm^*\tvp \, \Ylm\tv \frac{1}{d^{l+1}} \left( q r^l - \Blm \frac{R^{2l+1}}{r^{l+1}} \right) \notag \\
+		&= \sum_{l} \frac{\Plct}{d^{l+1}} \left( q r^l - \Bl \frac{R^{2l+1}}{r^{l+1}} \right)
+		\phantom{mmmmmmmmmmmmmmmmmmmmmmmm} \tif R \leq r \leq d, \label{middle}
+	\end{align}
+	where $\cost' = 1$ due to our choice of coordinates, and $\Pl(1) = 1$ because the Legendre polynomials are normalized.
+	
+	In the region $r \geq d$, we account for the point charge using the second case of \refeq{greenexp}, and for the dielectric using the same methods as above.  With the azimuthal symmetry, this gives us
+	\begin{align}
+		\phirtp &= q \sum_{l,m} \frac{4\pi}{2l + 1} \frac{d^l}{r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv - \sum_{l,m} \Clm \frac{4\pi}{2l + 1} \frac{R^{2l+1}}{d^{l+1} r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv \notag \\
+		&= \sum_{l,m} \frac{4\pi}{2l + 1} \Ylm^*\tvp \, \Ylm\tv \frac{1}{r^{l+1}} \left( q d^l - \Cl \frac{R^{2l+1}}{d^{l+1}} \right) \notag \\
+		&= \sum_{l} \frac{\Plct}{r^{l+1}} \left( q d^l - \Cl \frac{R^{2l+1}}{d^{l+1}} \right) & \tif r \geq d. \label{outside}
+	\end{align}
+	
+	Now we must match $\evphi$ at the boundaries of each region.  Inspecting \refeq{middle} and \refeq{outside}, it is obvious that $\Bl = \Cl$.  For \refeq{inside} and \refeq{middle}, we must match at $r = R$.  Evaluating at this boundary,
+	\beq
+		\evphi\!(R, \tht, \phi) = \sum_{l} \Plct R^l \begin{cases}
+			\sqrt{\dfrac{2l + 1}{4\pi}} \Al & \tif r \leq R, \\[2ex]
+			\dfrac{q - \Bl}{d^{l+1}} & \tif R \leq r \leq d.
+		\end{cases}
+	\eeq
+	Equating these gives us
+	\beqn \label{A1}
+		\Al = \sqrt{\frac{4\pi}{2l+1}} \frac{q - \Bl}{d^{l+1}}.
+	\eeqn
+	Here we must also match $\nh \cdot \evD$ at the boundary, where
+	\beqn \label{D}
+		\evD = \eps \!\evE
+	\eeqn
+	inside the dielectric, from Eq.~(3.20) in the course notes.  (In vacuum, $\vD = \vE$.)  Here $\nh = \rh$, so we are only concerned with the $r$ component of $\evE$.  Applying $\evE = -\grad\!\evphi$ to \refeq{inside} and \refeq{middle} gives us
+	\beq
+		\evEr\!(R, \tht, \phi) = -\sum_{l} \Plct \, R^{l-1} \begin{cases}
+			\sqrt{\dfrac{2l+1}{4\pi}} l \Al & \tif r \leq R, \\[2ex]
+			\dfrac{l q + (l+1) \Bl}{d^{l+1}} & \tif R \leq r \leq d.
+		\end{cases}
+	\eeq
+	Then we stipulate that
+	\beq
+		\rh \cdot \evD\!(R, \tht, \phi) = -\eps \sum_{l} l \sqrt{\frac{2l + 1}{4\pi}} \Al \Plct \, R^{l-1}
+		= -\sum_{l} l \frac{l q + (l+1) \Bl}{d^{l+1}} \Plct \, R^{l-1} ,
+	\eeq
+	which implies
+	\beqn \label{A2}
+		\Al = \frac{1}{\eps} \sqrt{\frac{4\pi}{2l+1}} \frac{l q + (l+1) \Bl}{l d^{l+1}}.
+	\eeqn
+	By equating \refeq{A1} and \refeq{A2}, we can solve for $\Bl$:
+	\beq
+%		\sqrt{\frac{4\pi}{2l+1}} \frac{q - \Bl}{l d^{l+1}} = \frac{1}{\eps} \sqrt{\frac{4\pi}{2l+1}} \frac{l q + (l+1) \Bl}{d^{l+1}}
+%		\implies
+		q - \Bl = \frac{l q + (l+1) \Bl}{\eps l}
+		\implies
+		l (\eps - 1) q = (\eps l + l + 1) \Bl
+		\implies
+		\Bl = \frac{l (\eps - 1)}{\eps l + l + 1} q.
+	\eeq
+	Feeding this back into \refeq{A1},
+	\beq
+		\Al = \sqrt{\frac{4\pi}{2l+1}} \frac{1}{d^{l+1}} \left( 1 - \frac{l (\eps - 1)}{\eps l + l + 1} \right) q
+%		= \sqrt{\frac{4\pi}{2l+1}} \frac{1}{d^{l+1}} \left( \frac{\eps l + l + 1}{\eps l + l + 1} - \frac{l (\eps - 1)}{\eps l + l + 1} \right) q
+		= \sqrt{\frac{4\pi}{2l+1}} \frac{2l + 1}{\eps l + l + 1} \frac{q}{d^{l+1}}
+		= \frac{\sqrt{4\pi (2l+1)}}{\eps l + l + 1} \frac{q}{d^{l+1}}.
+	\eeq
+	
+	Substituting in all of the coefficients, \refeq{inside}, \refeq{middle}, and \refeq{outside} can be written as
+	\beq
+		\evphi\!\rtp = q \sum_{l} \Plct \begin{cases}
+			\dfrac{2l + 1}{\eps l + l + 1} \dfrac{r^l}{d^{l+1}} & \tif r \leq R, \\[2ex]
+			\dfrac{l (1 - \eps)}{\eps l + l + 1} \dfrac{R^{2l+1}}{d^{l+1}} \dfrac{1}{r^{l+1}} + \dfrac{r^l}{d^{l+1}} & \tif R \leq r \leq d, \\[2ex]
+			\dfrac{l (1 - \eps)}{\eps l + l + 1} \dfrac{R^{2l+1}}{d^{l+1}} \dfrac{1}{r^{l+1}} + \dfrac{d^l}{r^{l+1}} & \tif r \geq d.
+		\end{cases}
+	\eeq
+\end{solution}
+\vfix
