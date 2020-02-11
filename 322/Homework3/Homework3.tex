@@ -164,7 +164,7 @@
 \end{statement}
 
 \begin{solution}
-	In class, we derived the multipole expansion for $\absx \geq R$ when the charge distribution $\rhoxp$ is nonzero only within $\abs{\vx'} \leq R$.  We can find an equivalent expression for the reverse situation (within $\absx \leq R$ when the charge distribution $\rhoxp$ is nonzero only for $\abs{\vx'} \geq R$) using the spherical harmonic expansion of the Green's function $\Gxxp$ in Eq.~(2.78):
+	The spherical harmonic expansion of the Green's function $\Gxxp$ is given by Eq.~(2.78):
 	\beqn \label{greenexp}
 		\Gxxp = \frac{1}{\abs{\vx - \vx'}}
 		= \begin{cases}
@@ -172,26 +172,7 @@
 			\dsum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{{r'}^l}{r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv & \tif r > r'.
 		\end{cases}
 	\eeqn
-	As in Eq.~(2.79) in the course notes, we integrate and obtain
-	\beq
-		\phix = \int \Gxxp \, \rhoxp \dcxp
-		= \sum_{l, m} \frac{4\pi}{2l + 1} r^l \Ylm\tv \int \frac{\rhoxp}{{r'}^{l+1}} \Ylm^*\tvp \dcxp.
-	\eeq
-	Combining this with the result of Eq.~(2.79), we have
-	\beqn \label{multipole}
-		\phix = \begin{cases}
-			\dsum_{l, m} \dfrac{4\pi}{2l + 1} r^l \, \qplm \, \Ylm\tv & \tif r < r' \text{ and } \rhoxp(r) = 0, \\[2ex]
-			\dsum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{\qlm}{r^{l+1}} \Ylm\tv & \tif r > r' \text{ and } \rhoxp(r) = 0,
-		\end{cases}
-	\eeqn
-	where
-	\begin{align} \label{qlm}
-		\qplm &\equiv \int \frac{\rhoxp}{{r'}^{l+1}} \Ylm^*\tvp \dcxp, &
-		\qlm &\equiv \int \rhoxp \, {r'}^l \, \Ylm^*\tvp \dcxp,
-	\end{align}
-	from Eq.~(2.80) and our derivation.
-	
-	Additionally, the spherical harmonics $\Ylm$ are given by Eq.~(2.58),
+	The spherical harmonics $\Ylm$ are given by Eq.~(2.58),
 	\beq
 		\Ylm\tv = \sqrt{\frac{2l + 1}{4\pi}} \sqrt{\frac{(l - m)!}{(l + m)!}} \Plm(\cost) e^{i m \vph},
 	\eeq
@@ -216,7 +197,7 @@
 		= \sum_{l} \sqrt{\frac{2l + 1}{4\pi}} \Al r^l \Ploct \quad \tif r \leq R.
 	\eeqn
 	
-	In the region $R \leq d \leq r$, we are in free space so $\evphi = \phi$.  The point charge is at greater $r$, so we account for its contribution using the first case of \refeq{multipole}.  However, there are multipole contributions from the dielectric at lesser $r$, so we must account for these using the second case of \refeq{multipole}.  We can use the method of images to keep track of the dielectric contribution in this regime.  We find the Green's function for the image charge as the second term in the Dirichlet Green's function for a spherical cavity, which is Eq.~(2.91) in the lecture notes:
+	In the region $R \leq d \leq r$, we are in free space so $\evphi = \phi$.  The point charge is at greater $r$, so we account for its contribution using the first case of \refeq{greenexp}.  Additionally, there are multipole contributions from the dielectric at lesser $r$, so we must account for these using the second case of \refeq{greenexp}.  We can use the method of images to keep track of the dielectric contribution in this regime.  We find the Green's function for the image charge as the second term in the Dirichlet Green's function for a spherical cavity, which is Eq.~(2.91) in the lecture notes:
 	\beq
 		\Gdxxp = \frac{1}{\abs{\vx - \vx'}} + \frac{\alp}{\abs{\vx - \vx''}}
 		\qq{where} \vx'' = \vx' \frac{R^2}{\abs{\vx'}^2}
@@ -227,30 +208,19 @@
 		\Gpxxp = \frac{\alp}{\abs{\vx - \vx''}}
 		= -\sum_{l,m} \frac{4\pi}{2l + 1} \frac{R^{2l+1}}{{r'}^{l+1} r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv \quad \tif r \leq R.
 	\eeq
-	Now adapting the second cases of \refeq{multipole} and \refeq{qlm},
-	\beq
-		\phix = -\sum_{l,m} \frac{4\pi}{2l+1} R^{2l+1} \frac{\qpplm}{r^{l+1}} \Ylm\tv \quad \tif r \leq R,
-	\eeq
-	where
-	\beq
-		\qpplm \equiv \int \frac{\rhopxp}{{r'}^{l+1}} \Ylm^*\tvp \quad \tif r \leq R
-	\eeq
-	and
-	\beq
-		\rhopxp = q \, \delta(r' - r'')
-		= q \, \delta(r' - R^2 / d\cost').
-	\eeq
-	Putting all of this together, and again taking advantage of the azimuthal symmetry, we have
+	Putting these together, and again taking advantage of the azimuthal symmetry, we have
 	\begin{align}
-		\phirtp &= \sum_{l} \frac{4\pi}{2l+1} Y_{l 0}\tv \left( \Bl R^{2l+1} \frac{\qpplo}{r^{l+1}} + r^l \qplo \right) \notag \\
-		&= \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \left( \Bl R^{2l+1} \frac{\qpplo}{r^{l+1}} + r^l \qplo \right) \quad \tif R \leq r \leq d. \label{middle}
+		\phirtp &= q \sum_{l,m} \frac{4\pi}{2l + 1} \frac{r^l}{{r'}^{l + 1}} \Ylm^*\tvp \, \Ylm\tv - q \sum_{l,m} \Blm \frac{4\pi}{2l + 1} \frac{R^{2l+1}}{{r'}^{l+1} r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv \notag \\
+		&= q \sum_{l,m} \frac{4\pi}{2l + 1} \Ylm^*\tvp \, \Ylm\tv \frac{1}{{r'}^{l+1}} \left( r^l - \Blm \frac{R^{2l+1}}{r^{l+1}} \right) \notag \\
+		&= q \sum_{l} \Ploctp \, \Ploct \frac{1}{{r'}^{l+1}} \left( r^l - \Bl \frac{R^{2l+1}}{r^{l+1}} \right) \quad \tif R \leq r leq d. \label{middle}
 	\end{align}
 	Here the second term has coefficient 1 because it applies to the point charge.
 	
-	In the region $r \geq d$, we account for both the point charge and the image charge using the second case of \refeq{multipole}.  With the azimuthal symmetry, this gives us
-	\beqn \label{outside}
-		\phirtp = \sum_{l} \sqrt{\frac{4\pi}{2l+1}} \Ploct \left( \Cl R^{2l+1} \frac{\qpplo}{r^{l+1}} + \frac{\qlo}{r^{l+1}} \right) \quad \tif r \geq d.
-	\eeqn
+	In the region $r \geq d$, we account for both the point charge and the image charge using the second case of \refeq{greenexp}.  With the azimuthal symmetry, this gives us
+	\begin{align} \label{outside}
+		\phirtp = q \sum_{l,m} \dfrac{4\pi}{2l + 1} \dfrac{{r'}^l}{r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv - \sum_{l,m} \frac{4\pi}{2l + 1} \frac{R^{2l+1}}{{r'}^{l+1} r^{l + 1}} \Ylm^*\tvp \, \Ylm\tv \notag \\
+		& \quad \tif r \geq d.
+	\end{align}
 	
 	Now we must match $\evphi$ at the boundaries of each region.  We will begin with \refeq{middle} and \refeq{outside}.  Evaluating at $r = d$, we have
 	\beq
