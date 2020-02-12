@@ -81,19 +81,103 @@
 
 \begin{document}
 
+\newcommand{\Vt}{V(t)}
 \newcommand{\psiE}{\psi_E}
+\newcommand{\qp}{^{(1)}}
+\newcommand{\cnq}{c_n\qp}
+\newcommand{\cnqt}{\cnq(t)}
+\newcommand{\too}{t_0}
+\newcommand{\inttot}{\int_{\too}^t}
+\newcommand{\omg}{\omega}
+\newcommand{\omgni}{\omg_{n i}}
+\newcommand{\dtp}{\dd{t'}}
+\newcommand{\Ho}{H_0}
+\newcommand{\psiq}{\psi_1}
+\newcommand{\psiw}{\psi_2}
+\newcommand{\psiqt}{\psiq(t)}
+\newcommand{\psiwt}{\psiw(t)}
+\newcommand{\Eq}{E_1}
+\newcommand{\Ew}{E_2}
+\newcommand{\dxp}{\dd{x'}}
+\newcommand{\dxpp}{\dd{x''}}
+\newcommand{\intoi}{\int_0^\infty}
+\newcommand{\intoL}{\int_0^L}
+\newcommand{\intopi}{\int_0^\pi}
+\newcommand{\intoepi}{\int_0^{3\pi}}
+\newcommand{\du}{\dd{u}}
+\newcommand{\ddv}{\dd{v}}
+
 
 \begin{statement}{}
-	A particle is initially in the the ground state of an infinite one-dimensional potential box with walls at $x = 0$ and $x = L$.  During the time interval $0 \leq t \leq \infty$, the particle is subject to a perturbation $V(t) = x^2 e^{-t/\tau}$, where $\tau$ is a time constant.  Calculate, to first order in perturbation theory, the probability of finding the particle in its first excited state as a result of this perturbation.
+	A particle is initially in the the ground state of an infinite one-dimensional potential box with walls at $x = 0$ and $x = L$.  During the time interval $0 \leq t \leq \infty$, the particle is subject to a perturbation $\Vt = x^2 e^{-t/\tau}$, where $\tau$ is a time constant.  Calculate, to first order in perturbation theory, the probability of finding the particle in its first excited state as a result of this perturbation.
 \end{statement}
 
 \begin{solution}
 	The wave functions and energy eigenstates for a particle in an infinite one-dimensional box are given by Eq.~(A.2.4) in Sakurai:
 	\begin{align*}
-		\psiE(x) &= \sqrt{\frac{2}{L}} \sin\left(\frac{n \pi x}{L}\right), &
+		\psiE(x) &= \sqrt{\frac{2}{L}} \sin(\frac{n \pi x}{L}), &
 		E &= \frac{\hbar^2 n^2 \pi^2}{2 m L^2},
 	\end{align*}
-	where $n = 1, 2, 3, \ldots$
+	where $n = 1, 2, 3, \ldots$  Equation~(5.6.19) gives the general expression for the transition probability from state $i$ to state $n$, which is
+	\beq
+		P(i \to n) = \abs{\cnqt + c_n^{(2)}(t) + \cdots}^2.
+	\eeq
+	We are looking for the first order contribution, $\cnqt$, which may be found using Eq.~(5.6.17):
+	\beq
+		\cnqt = -\frac{i}{\hbar} \inttot \mel{n}{V_I(t')}{t} \dtp
+		= -\frac{i}{\hbar} \inttot e^{i \omgni t'} V_{n i}(t') \dtp,
+	\eeq
+	where
+	\beq
+		e^{i (E_n - E_i) t / \hbar} = e^{i \omgni t}
+	\eeq
+	from Eq.~5.6.18.
+	
+	Let $\psi_n$ denote the wavefunctions corresponding to the eigenstates of $\Ho$.  We are interested in the transition probability from $i = 1$ to $n = 2$, so the relevant wavefunctions are
+	\begin{align*}
+		\psiqt &= \sqrt{\frac{2}{L}} \sin(\frac{\pi x}{L}), &
+		\psiwt &= \sqrt{\frac{2}{L}} \sin(\frac{2\pi x}{L}),
+	\end{align*}
+	and the corresponding energies are
+	\begin{align*}
+		\Eq &= \frac{\hbar^2 \pi^2}{2 m L^2}, &
+		\Ew &= \frac{2 \hbar^2 \pi^2}{m L^2}.
+	\end{align*}
+	The relevant matrix element of $\Vt$ is
+	\begin{align*}
+		\mel{2}{\Vt}{1} &= \intoi \intoi \braket{\psiw}{x'} \mel{x'}{V}{x''} \braket{x''}{\psiq} \dxp \dxpp
+		= \frac{2}{L} e^{-t / \tau} \intoL \intoL \sin(\frac{2\pi x'}{L}) {x'}^2 \delta(x' - x'') \sin(\frac{\pi x''}{L}) \dxp \dxpp \\
+		&= \frac{2}{L} e^{-t / \tau} \intoL \sin(\frac{2\pi x'}{L}) {x'}^2 \sin(\frac{\pi x'}{L}) \dxp
+		= \frac{4}{L} e^{-t / \tau} \intoL {x'}^2 \sin[2](\frac{\pi x'}{L}) \cos(\frac{\pi x'}{L}) \dxp.
+	\end{align*}
+	Let $u = \pi x' / L$.  Then
+	\begin{align*}
+		\mel{2}{\Vt}{1} &= \frac{4 L^2}{\pi^3} e^{-t / \tau} \intopi u^2 \sin^2{u} \cos{u} \du
+		= \frac{4 L^2}{\pi^3} e^{-t / \tau} \intopi u^2 (\cos{u} - \cos^3{u}) \du \\
+		&= \frac{4 L^2}{\pi^3} e^{-t / \tau} \intopi u^2 \left( \cos{u} - \frac{3}{4} \cos{u} - \frac{1}{4} \cos{3u} \right) \du
+		= \frac{L^2}{\pi^3} e^{-t / \tau} \intopi u^2 \left( \cos{u} - \cos{3u} \right) \du.
+	\end{align*}
+	For the first integral, we integrate by parts twice:
+	\beq
+		\intopi u^2 \cos{u} \du = \bigg[ u^2 \sin{u} \bigg]_0^\pi - 2 \intopi u \sin{u} \du
+		= 2 \bigg[ u \cos{u} \bigg]_0^\pi + 2 \intopi \cos{u} \du
+		= -2 \pi + 2 \bigg[ \sin{u} \bigg]_0^\pi
+		= -2 \pi.
+	\eeq
+	For the second, let $v = 3u$.  Then we again integrate by parts twice:
+	\begin{align*}
+		\intopi u^2 \cos{3u} \du &= \frac{1}{27} \intoepi v^2 \cos{v} \ddv
+		= \frac{1}{27} \bigg[ v^2 \sin{v} \bigg]_0^{3\pi} - \frac{2}{27} \intoepi v \sin{v} \ddv
+		= \frac{2}{27} \bigg[ v \cos{v} \bigg]_0^{3\pi} + \frac{2}{27} \intoepi \cos{v} \ddv \\
+		&= -\frac{2\pi}{9} + \frac{2}{27} \bigg[ \sin{v} \bigg]_0^{3\pi}
+		= -\frac{2\pi}{9}.
+	\end{align*}
+	Then our matrix element is
+	\beq
+		\mel{2}{\Vt}{1} = -\frac{L^2}{\pi^3} e^{-t / \tau} \frac{16 \pi}{9}
+		= -\frac{16 L^2}{9 \pi^2} e^{-t / \tau}.
+	\eeq
+	
 \end{solution}
 
 
@@ -137,7 +221,6 @@
 
 
 
-\newcommand{\Ho}{H_0}
 \newcommand{\px}{p_x}
 \newcommand{\py}{p_y}
 \newcommand{\vS}{\vb{S}}
