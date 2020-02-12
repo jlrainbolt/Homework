@@ -120,18 +120,18 @@
 	\end{align*}
 	where $n = 1, 2, 3, \ldots$  Equation~(5.6.19) gives the general expression for the transition probability from state $i$ to state $n$, which is
 	\beq
-		P(i \to n) = \abs{\cnqt + c_n^{(2)}(t) + \cdots}^2.
+		P(i \to n) = \abs*{\cnqt + c_n^{(2)}(t) + \cdots}^2.
 	\eeq
 	We are looking for the first order contribution, $\cnqt$, which may be found using Eq.~(5.6.17):
-	\beq
+	\beqn \label{cn1}
 		\cnqt = -\frac{i}{\hbar} \inttot \mel{n}{V_I(t')}{t} \dtp
 		= -\frac{i}{\hbar} \inttot e^{i \omgni t'} V_{n i}(t') \dtp,
-	\eeq
+	\eeqn
 	where
 	\beq
 		e^{i (E_n - E_i) t / \hbar} = e^{i \omgni t}
 	\eeq
-	from Eq.~5.6.18.
+	from Eq.~(5.6.18).
 	
 	Let $\psi_n$ denote the wavefunctions corresponding to the eigenstates of $\Ho$.  We are interested in the transition probability from $i = 1$ to $n = 2$, so the relevant wavefunctions are
 	\begin{align*}
@@ -145,8 +145,8 @@
 	\end{align*}
 	The relevant matrix element of $\Vt$ is
 	\begin{align*}
-		\mel{2}{\Vt}{1} &= \intoi \intoi \braket{\psiw}{x'} \mel{x'}{V}{x''} \braket{x''}{\psiq} \dxp \dxpp
-		= \frac{2}{L} e^{-t / \tau} \intoL \intoL \sin(\frac{2\pi x'}{L}) {x'}^2 \delta(x' - x'') \sin(\frac{\pi x''}{L}) \dxp \dxpp \\
+		\mel{2}{\Vt}{1} &= \intoi \intoi \braket{\psiw}{x'} \mel{x'}{V}{x''} \braket{x''}{\psiq} \dxp \dxpp \\
+		&= \frac{2}{L} e^{-t / \tau} \intoL \intoL \sin(\frac{2\pi x'}{L}) {x'}^2 \delta(x' - x'') \sin(\frac{\pi x''}{L}) \dxp \dxpp \\
 		&= \frac{2}{L} e^{-t / \tau} \intoL \sin(\frac{2\pi x'}{L}) {x'}^2 \sin(\frac{\pi x'}{L}) \dxp
 		= \frac{4}{L} e^{-t / \tau} \intoL {x'}^2 \sin[2](\frac{\pi x'}{L}) \cos(\frac{\pi x'}{L}) \dxp.
 	\end{align*}
@@ -174,10 +174,26 @@
 	\end{align*}
 	Then our matrix element is
 	\beq
-		\mel{2}{\Vt}{1} = -\frac{L^2}{\pi^3} e^{-t / \tau} \frac{16 \pi}{9}
+		\mel{2}{\Vt}{1} = -\frac{L^2}{\pi^2} e^{-t / \tau} \frac{16 \pi}{9}
 		= -\frac{16 L^2}{9 \pi^2} e^{-t / \tau}.
 	\eeq
-	
+	 Returning to \refeq{cn1}, we may now find the first-order coefficient.  First note that
+	 \beq
+	 	\Ew - \Eq = \frac{3 \hbar^2 \pi^3}{2 m L^2}.
+	 \eeq
+	 Then
+	 \begin{align*}
+	 	\cnqt &= -\frac{i}{\hbar} \inttot e^{i (\Ew - \Eq) t' / \hbar} V_{2 1}(t') \dtp
+	 	= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \intoi \exp(i \frac{3 \hbar \pi^2}{2 m L^2} t')  \, e^{-t' / \tau} \dtp \\
+	 	&= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \intoi \exp[ \left( i \frac{3 \hbar \pi^2}{2 m L^2} - \frac{1}{\tau} \right) t'] \dtp
+	 	= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \left[ \frac{2 m L^2 \tau}{i 3 \hbar \pi^2 \tau - 2 m L^2} \exp(\frac{i 3 \hbar \pi^2 \tau - 2 m L^2}{2 m L^2 \tau} t') \right]_0^\infty \\
+	 	&= \frac{i}{\hbar} \frac{32}{9 \pi^2} \frac{m L^4 \tau}{i 3 \hbar \pi^2 \tau - 2 m L^2},
+	 \end{align*}
+	 so the transition probability is
+	 \beq
+	 	\abs*{\cnqt}^2 = \left( \frac{i}{\hbar} \frac{32}{9 \pi^2} \frac{m L^4 \tau}{i 3 \hbar \pi^2 \tau - 2 m L^2} \right) \left( \frac{i}{\hbar} \frac{32}{9 \pi^2} \frac{m L^4 \tau}{i 3 \hbar \pi^2 \tau + 2 m L^2} \right)
+	 	= \frac{1024}{81 \hbar^2} \frac{L^8 \tau^2}{9 \hbar^2 \pi^4 \tau^2 + 4 m^2 L^4}.
+	 \eeq
 \end{solution}
 
 
