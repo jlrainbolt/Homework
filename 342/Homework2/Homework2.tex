@@ -1,0 +1,174 @@
+ \documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{kbordermatrix}
+%\allowdisplaybreaks
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 342 Homework 1}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\vfix}{\vspace{-\baselineskip}}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\color{darkgray}
+	\ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \subsection{}
+    \ignorespaces
+}
+
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newcommand{\Schrodinger}{Schr\"{o}dinger}
+
+
+\begin{document}
+
+\newcommand{\psiE}{\psi_E}
+
+\begin{statement}{}
+	A particle is initially in the the ground state of an infinite one-dimensional potential box with walls at $x = 0$ and $x = L$.  During the time interval $0 \leq t \leq \infty$, the particle is subject to a perturbation $V(t) = x^2 e^{-t/\tau}$, where $\tau$ is a time constant.  Calculate, to first order in perturbation theory, the probability of finding the particle in its first excited state as a result of this perturbation.
+\end{statement}
+
+\begin{solution}
+	The wave functions and energy eigenstates for a particle in an infinite one-dimensional box are given by Eq.~(A.2.4) in Sakurai:
+	\begin{align*}
+		\psiE(x) &= \sqrt{\frac{2}{L}} \sin\left(\frac{n \pi x}{L}\right), &
+		E &= \frac{\hbar^2 n^2 \pi^2}{2 m L^2},
+	\end{align*}
+	where $n = 1, 2, 3, \ldots$
+\end{solution}
+
+
+
+\newcommand{\Ha}{H_a}
+\newcommand{\Hb}{H_b}
+\newcommand{\Hi}{H_i}
+\newcommand{\vp}{\vb{p}}
+\newcommand{\vpi}{\vp_i}
+\newcommand{\alp}{\alpha}
+\newcommand{\ri}{r_i}
+\newcommand{\ra}{r_a}
+\newcommand{\rb}{r_b}
+\newcommand{\rab}{r_{a b}}
+\newcommand{\vx}{\vb{x}}
+\newcommand{\vxi}{\vx_i}
+\newcommand{\vxa}{\vx_a}
+\newcommand{\vxb}{\vx_b}
+
+\begin{statement}{}
+	Consider a system of two electrons, which is described by the Hamiltonian
+	\begin{align*}
+		H &= \Ha + \Hb + V, &
+		\Hi &= \frac{\vpi^2}{2m} - \frac{Z \alp \hbar c}{\ri}, &
+		V = \frac{\alp \hbar c}{\rab}.
+	\end{align*}
+	Here, we label two electrons by $i = a, b$; $\ri = \abs{\vxi}$ and $\rab = \abs{\vxa - \vxb}$ where $\vxi$ is the spatial coordinate for electron $i$; and $Z$ and $\alp$ are constants.  To find an approximate ground state of $H$, let us try a variational wave function
+	\beq
+		\Psi(\vxa, \vxb) = \frac{A}{4\pi} e^{-B(\ra + \rb)},
+	\eeq
+	where $A$ is a normalization constant and $B$ is your variational parameter.
+\end{statement}
+
+\begin{problem}
+	Compute the variational energy for the given variational parameter $B$.
+\end{problem}
+
+\begin{problem}
+	By minimizing the variational energy, find the optimal value of $B$.
+\end{problem}
+
+
+
+\newcommand{\Ho}{H_0}
+\newcommand{\px}{p_x}
+\newcommand{\py}{p_y}
+\newcommand{\vS}{\vb{S}}
+\newcommand{\vSq}{\vS_1}
+\newcommand{\vSw}{\vS_2}
+\newcommand{\Sz}{S^z}
+\newcommand{\Szq}{\Sz_1}
+\newcommand{\Szw}{\Sz_2}
+
+\begin{statement}{}
+	Consider a two-dimensional harmonic oscillator described by the Hamiltonian
+	\beq
+		\Ho = \frac{\px^2 + \py^2}{2m} + m \omega^2 \frac{x^2 + y^2}{2}.
+	\eeq
+\end{statement}
+
+\begin{problem}
+	How many single-particle states are there for the first excited level?
+\end{problem}
+
+\begin{problem}
+	Write down the many-body ground state for two electrons (with spin).  What is the eigenvalue of $(\vSq + \vSw)^2$ for this state?  Here $\vS_i$ are the spin operators of the electrons.
+\end{problem}
+
+\begin{problem}
+	Write down all the first excited many-body states of two electrons (with spin).  Choose them to be eigenstates of the total spin operator, and compute their eigenvalues of $(\vSq + \vSw)^2$ and $\Szq + \Szw$ (where $\Sz_i$ is the $z$ componenet of the spin operator $\vS_i$).
+\end{problem}
+
+
+
+\vfill
+I consulted Sakurai's \emph{Modern Quantum Mechanics}, Shankar's \emph{Principles of Quantum Mechanics}, and Wolfram MathWorld while writing up these solutions.
+
+\end{document}
