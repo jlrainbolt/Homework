@@ -81,121 +81,7 @@
 
 \begin{document}
 
-\newcommand{\Vt}{V(t)}
-\newcommand{\psiE}{\psi_E}
-\newcommand{\qp}{^{(1)}}
-\newcommand{\cnq}{c_n\qp}
-\newcommand{\cnqt}{\cnq(t)}
-\newcommand{\too}{t_0}
-\newcommand{\inttot}{\int_{\too}^t}
-\newcommand{\omg}{\omega}
-\newcommand{\omgni}{\omg_{n i}}
-\newcommand{\dtp}{\dd{t'}}
-\newcommand{\Ho}{H_0}
-\newcommand{\psiq}{\psi_1}
-\newcommand{\psiw}{\psi_2}
-\newcommand{\psiqt}{\psiq(t)}
-\newcommand{\psiwt}{\psiw(t)}
-\newcommand{\Eq}{E_1}
-\newcommand{\Ew}{E_2}
-\newcommand{\dxp}{\dd{x'}}
-\newcommand{\dxpp}{\dd{x''}}
-\newcommand{\intoi}{\int_0^\infty}
-\newcommand{\intoL}{\int_0^L}
-\newcommand{\intopi}{\int_0^\pi}
-\newcommand{\intoepi}{\int_0^{3\pi}}
-\newcommand{\du}{\dd{u}}
-\newcommand{\ddv}{\dd{v}}
-
-
-\begin{statement}{}
-	A particle is initially in the the ground state of an infinite one-dimensional potential box with walls at $x = 0$ and $x = L$.  During the time interval $0 \leq t \leq \infty$, the particle is subject to a perturbation $\Vt = x^2 e^{-t/\tau}$, where $\tau$ is a time constant.  Calculate, to first order in perturbation theory, the probability of finding the particle in its first excited state as a result of this perturbation.
-\end{statement}
-
-\begin{solution}
-	The wave functions and energy eigenstates for a particle in an infinite one-dimensional box are given by Eq.~(A.2.4) in Sakurai:
-	\begin{align*}
-		\psiE(x) &= \sqrt{\frac{2}{L}} \sin(\frac{n \pi x}{L}), &
-		E &= \frac{\hbar^2 n^2 \pi^2}{2 m L^2},
-	\end{align*}
-	where $n = 1, 2, 3, \ldots$  Equation~(5.6.19) gives the general expression for the transition probability from state $i$ to state $n$, which is
-	\beq
-		P(i \to n) = \abs*{\cnqt + c_n^{(2)}(t) + \cdots}^2.
-	\eeq
-	We are looking for the first order contribution, $\cnqt$, which may be found using Eq.~(5.6.17):
-	\beqn \label{cn1}
-		\cnqt = -\frac{i}{\hbar} \inttot \mel{n}{V_I(t')}{t} \dtp
-		= -\frac{i}{\hbar} \inttot e^{i \omgni t'} V_{n i}(t') \dtp,
-	\eeqn
-	where
-	\beq
-		e^{i (E_n - E_i) t / \hbar} = e^{i \omgni t}
-	\eeq
-	from Eq.~(5.6.18).
-	
-	Let $\psi_n$ denote the wavefunctions corresponding to the eigenstates of $\Ho$.  We are interested in the transition probability from $i = 1$ to $n = 2$, so the relevant wavefunctions are
-	\begin{align*}
-		\psiqt &= \sqrt{\frac{2}{L}} \sin(\frac{\pi x}{L}), &
-		\psiwt &= \sqrt{\frac{2}{L}} \sin(\frac{2\pi x}{L}),
-	\end{align*}
-	and the corresponding energies are
-	\begin{align*}
-		\Eq &= \frac{\hbar^2 \pi^2}{2 m L^2}, &
-		\Ew &= \frac{2 \hbar^2 \pi^2}{m L^2}.
-	\end{align*}
-	The relevant matrix element of $\Vt$ is
-	\begin{align*}
-		\mel{2}{\Vt}{1} &= \intoi \intoi \braket{\psiw}{x'} \mel{x'}{V}{x''} \braket{x''}{\psiq} \dxp \dxpp \\
-		&= \frac{2}{L} e^{-t / \tau} \intoL \intoL \sin(\frac{2\pi x'}{L}) {x'}^2 \delta(x' - x'') \sin(\frac{\pi x''}{L}) \dxp \dxpp \\
-		&= \frac{2}{L} e^{-t / \tau} \intoL \sin(\frac{2\pi x'}{L}) {x'}^2 \sin(\frac{\pi x'}{L}) \dxp
-		= \frac{4}{L} e^{-t / \tau} \intoL {x'}^2 \sin[2](\frac{\pi x'}{L}) \cos(\frac{\pi x'}{L}) \dxp.
-	\end{align*}
-	Let $u = \pi x' / L$.  Then
-	\begin{align*}
-		\mel{2}{\Vt}{1} &= \frac{4 L^2}{\pi^3} e^{-t / \tau} \intopi u^2 \sin^2{u} \cos{u} \du
-		= \frac{4 L^2}{\pi^3} e^{-t / \tau} \intopi u^2 (\cos{u} - \cos^3{u}) \du \\
-		&= \frac{4 L^2}{\pi^3} e^{-t / \tau} \intopi u^2 \left( \cos{u} - \frac{3}{4} \cos{u} - \frac{1}{4} \cos{3u} \right) \du
-		= \frac{L^2}{\pi^3} e^{-t / \tau} \intopi u^2 \left( \cos{u} - \cos{3u} \right) \du.
-	\end{align*}
-	For the first integral, we integrate by parts twice:
-	\beq
-		\intopi u^2 \cos{u} \du = \bigg[ u^2 \sin{u} \bigg]_0^\pi - 2 \intopi u \sin{u} \du
-		= 2 \bigg[ u \cos{u} \bigg]_0^\pi + 2 \intopi \cos{u} \du
-		= -2 \pi + 2 \bigg[ \sin{u} \bigg]_0^\pi
-		= -2 \pi.
-	\eeq
-	For the second, let $v = 3u$.  Then we again integrate by parts twice:
-	\begin{align*}
-		\intopi u^2 \cos{3u} \du &= \frac{1}{27} \intoepi v^2 \cos{v} \ddv
-		= \frac{1}{27} \bigg[ v^2 \sin{v} \bigg]_0^{3\pi} - \frac{2}{27} \intoepi v \sin{v} \ddv
-		= \frac{2}{27} \bigg[ v \cos{v} \bigg]_0^{3\pi} + \frac{2}{27} \intoepi \cos{v} \ddv \\
-		&= -\frac{2\pi}{9} + \frac{2}{27} \bigg[ \sin{v} \bigg]_0^{3\pi}
-		= -\frac{2\pi}{9}.
-	\end{align*}
-	Then our matrix element is
-	\beq
-		\mel{2}{\Vt}{1} = -\frac{L^2}{\pi^2} e^{-t / \tau} \frac{16 \pi}{9}
-		= -\frac{16 L^2}{9 \pi^2} e^{-t / \tau}.
-	\eeq
-	 Returning to \refeq{cn1}, we may now find the first-order coefficient.  First note that
-	 \beq
-	 	\Ew - \Eq = \frac{3 \hbar^2 \pi^3}{2 m L^2}.
-	 \eeq
-	 Then
-	 \begin{align*}
-	 	\cnqt &= -\frac{i}{\hbar} \inttot e^{i (\Ew - \Eq) t' / \hbar} V_{2 1}(t') \dtp
-	 	= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \intoi \exp(i \frac{3 \hbar \pi^2}{2 m L^2} t')  \, e^{-t' / \tau} \dtp \\
-	 	&= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \intoi \exp[ \left( i \frac{3 \hbar \pi^2}{2 m L^2} - \frac{1}{\tau} \right) t'] \dtp
-	 	= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \left[ \frac{2 m L^2 \tau}{i 3 \hbar \pi^2 \tau - 2 m L^2} \exp(\frac{i 3 \hbar \pi^2 \tau - 2 m L^2}{2 m L^2 \tau} t') \right]_0^\infty \\
-	 	&= \frac{i}{\hbar} \frac{32}{9 \pi^2} \frac{m L^4 \tau}{i 3 \hbar \pi^2 \tau - 2 m L^2},
-	 \end{align*}
-	 so the transition probability is
-	 \beq
-	 	\abs*{\cnqt}^2 = \left( \frac{i}{\hbar} \frac{32}{9 \pi^2} \frac{m L^4 \tau}{i 3 \hbar \pi^2 \tau - 2 m L^2} \right) \left( \frac{i}{\hbar} \frac{32}{9 \pi^2} \frac{m L^4 \tau}{i 3 \hbar \pi^2 \tau + 2 m L^2} \right)
-	 	= \frac{1024}{81 \hbar^2} \frac{L^8 \tau^2}{9 \hbar^2 \pi^4 \tau^2 + 4 m^2 L^4}.
-	 \eeq
-\end{solution}
-
+\input{Problem1}
 
 
 \newcommand{\Ha}{H_a}
@@ -227,9 +113,123 @@
 	where $A$ is a normalization constant and $B$ is your variational parameter.
 \end{statement}
 
+
+\newcommand{\Hbar}{\bar{H}}
+\newcommand{\ot}{\tilde{0}}
+\newcommand{\kot}{\ket{\ot}}
+\newcommand{\vpa}{\vp_a}
+\newcommand{\vpb}{\vp_b}
+\newcommand{\vr}{\vb{r}}
+\newcommand{\vra}{\vec{r}_a}
+\newcommand{\vrb}{\vec{r}_b}
+\newcommand{\dcxa}{\dd[3]{\vxa}}
+\newcommand{\dcxb}{\dd[3]{\vxb}}
+\newcommand{\dcxap}{\dd[3]{\vxa'}}
+\newcommand{\dcxbp}{\dd[3]{\vxb'}}
+\newcommand{\dra}{\dd{\ra}}
+\newcommand{\drb}{\dd{\rb}}
+\newcommand{\drap}{\dd{\ra'}}
+\newcommand{\drbp}{\dd{\rb'}}
+\newcommand{\dr}{\dd{r}}
+\newcommand{\tht}{\theta}
+\newcommand{\tha}{\tht_a}
+\newcommand{\dcta}{\dd{(\cos\tha)}}
+\newcommand{\intono}{\int_{-1}^1}
+\newcommand{\intab}{\int_{(\ra - \rb)^2}^{(\ra + \rb)^2}}
+
 \begin{problem}
 	Compute the variational energy for the given variational parameter $B$.
 \end{problem}
+
+\begin{solution}
+	The general expression for the variational energy $\Hbar$ is (5.4.1) in Sakurai:
+	\beqn \label{Hbar}
+		\Hbar = \frac{\ev{H}{\ot}}{\braket{\ot}},
+	\eeqn
+	where $\kot$ is our trial ket.
+	
+	For this problem, the numerator of \refeq{Hbar} is
+	\begin{align*}
+		\ev{H}{\ot} &= \ev{H}{\Psi}
+		= \iint \braket{\Psi}{\vxa, \vxb} \mel{\vxa, \vxb}{H}{\vxa', \vxb'} \braket{\vxa', \vxb'}{\Psi} \\
+		&= \iint \iint \Psi(\vxa, \vxb) \mel{\vxa, \vxb}{H}{\vxa', \vxb'} \Psi(\vxa', \vxb') \dcxa \dcxb \dcxap \dcxbp,
+	\end{align*}
+	where
+	\beq
+		H = \frac{\vpa^2}{2m} + \frac{\vpb^2}{2m} - \frac{Z \alp \hbar c}{\abs{\vxa}} - \frac{Z \alp \hbar c}{\abs{\vxb}} + \frac{\alp \hbar c}{\abs{\vxa - \vxb}},
+	\eeq
+	so we have five integrals.  For the first,
+	\begin{align*}
+		\frac{A^2}{32 \pi^2 m} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\vpa^2}{\vxa', \vxb'}^2 e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
+		&= \frac{A^2}{32 \pi^2 m} \iint \iint e^{-B(\ra + \rb)} \bigg( i^2 \hbar^2 \delta(\vxa - \vxa') \delta(\vxb - \vxb') \laplacian_{a'} \bigg) e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
+		&= -\frac{A^2 \hbar^2}{2 m} \iint e^{-B(\ra + \rb)} \left( \pdv[2]{}{\ra} e^{-B(\ra + \rb)} \right) \ra^2 \rb^2 \dra \drb
+		= -\frac{A^2 B^2 \hbar^2}{2 m} \intoi \ra^2 e^{-2 B \ra} \dra \intoi \rb^2 e^{-2 B \rb} \drb \\
+		&= -\frac{A^2 \hbar^2}{32 B^4 m},
+	\end{align*}
+	where we have used
+	\begin{align*}
+		\intoi r^2 e^{-2B r} \dr &= \left[ -\frac{r^2 e^{-2 B r}}{2 B} \right]_0^\infty + \frac{1}{B} \intoi r e^{-2 B r} \dr
+		= \frac{1}{B} \left[ -\frac{r e^{-2 B r}}{2 B} \right]_0^\infty + \frac{1}{2 B^2} \intoi e^{-2 B r} \dr
+		= \frac{1}{2 B^2} \left[ -\frac{e^{-2 B r}}{2 B} \right]_0^\infty \\
+		&= \frac{1}{4 B^3}.
+	\end{align*}
+	For the second integral, we also have
+	\beq
+		\frac{A^2}{16 \pi^2} \frac{1}{2 m} \iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\vpb^2}{\vxa', \vxb'}^2 e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp = -\frac{A^2 \hbar^2}{32 B^4 m}.
+	\eeq
+	
+	For the third integral,
+	\begin{align*}
+		-\frac{Z \alp \hbar c}{16\pi^2} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxa}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
+		&= -\frac{Z \alp \hbar c}{16\pi^2}\iint \iint e^{-B(\ra + \rb)} \left( \delta(\vxa - \vxa') \delta(\vxb - \vxb') \frac{1}{\abs{\vxa}} \right) e^{-B(\ra' + \rb')} \dra \drb \drap \drbp \\
+		&= -A^2 Z \alp \hbar c \iint \frac{e^{-2B(\ra + \rb)}}{\ra} \ra^2 \rb^2 \dra \drb
+		= -A^2 Z \alp \hbar c \intoi \ra e^{-2 B \ra} \dra \intoi \rb^2 e^{-2 B \rb} \drb \\
+		&= -\frac{A^2 Z \alp \hbar c}{16 B^5}.
+	\end{align*}
+	For the fourth integral, we also have
+	\beq
+		-\frac{Z \alp \hbar c}{16\pi^2} \iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxb}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp = -\frac{A^2 Z \alp \hbar c}{16 B^5}.
+	\eeq
+	
+	For the fifth integral, we will orient our coordinate system such that $\vxb$ points in the $z$ direction and stipulate that $\ra > \rb$.  Then
+	\beq
+		\frac{1}{\abs{\vxa - \vxb}} = \frac{1}{\sqrt{\vxa^2 - 2 \vxa \cdot \vxb + \vxb^2}}
+		= \frac{1}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}},
+	\eeq
+	and so
+	\begin{align}
+		\frac{\alp \hbar c}{16\pi^2} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxa - \vxb}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \notag \\
+		&= \frac{\alp \hbar c}{16\pi^2} \iint \iint e^{-B(\ra + \rb)}  \left( \delta(\vxa - \vxa') \delta(\vxb - \vxb') \frac{1}{\abs{\vxa - \vxb}} \right) e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \notag \\
+		&= \frac{\alp \hbar c}{2} \intoi \intono \intoi \frac{e^{-2B(\ra + \rb)}}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}} \ra^2 \rb^2 \dra \dcta \drb \notag \\
+		&= \frac{\alp \hbar c}{2} \intoi \intoi \ra^2 \rb^2 e^{-2B(\ra + \rb)} \intono \frac{\dcta}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}} \dra \drb. \label{leftoff}
+	\end{align}
+	For the innermost integral, let $u = \ra^2 - 2 \ra \rb \cos\tha + \rb^2$.  Then
+	\beq
+		\dcta = -\frac{\du}{2 \ra \rb},
+	\eeq
+	and we are integrating from $\ra^2 + 2 \ra \rb + \rb^2 = (\ra + \rb)^2$ to $\ra^2 - 2 \ra \rb + \rb^2 = (\ra - \rb)^2$.  So the innermost integral becomes
+	\begin{align*}
+		\intono \frac{\dcta}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}} &= \frac{1}{2 \ra \rb} \intab \frac{\du}{\sqrt{u}}
+		= \frac{1}{2 \ra \rb} \bigg[ 2 \sqrt{u} \bigg]_{(\ra - \rb)^2}^{(\ra + \rb)^2}
+		= \frac{\abs{\ra + \rb} - \abs{\ra - \rb}}{\ra \rb} \\
+		&= \frac{\ra + \rb - \ra + \rb}{\ra \rb}
+		= \frac{2}{\ra},
+	\end{align*}
+	where we have used $\ra, \rb > 0$ and our assumption that $\ra > \rb$.  Picking up from \refeq{leftoff}, we now have
+	\begin{align*}
+		\frac{\alp \hbar c}{16\pi^2} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxa - \vxb}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
+		&= \alp \hbar c \intoi \ra e^{-2B \ra} \dra \intoi \rb^2 e^{-2B \rb} \drb
+		= \frac{\alp \hbar c}{16 B^5}.
+	\end{align*}
+	
+	Putting this all together,
+	\beq
+		\ev{H}{\ot} = \frac{\alp \hbar c}{16 B^5} - \frac{A^2 B \hbar^2 / m}{16 B^5} - \frac{2 A^2 Z \alp \hbar c}{16 B^5}
+		= \frac{1}{16 B^5} \left( (1 - 2 A^2 Z) \alp \hbar c - \frac{A^2 B \hbar^2}{m} \right).
+	\eeq
+\end{solution}
+
+
 
 \begin{problem}
 	By minimizing the variational energy, find the optimal value of $B$.
