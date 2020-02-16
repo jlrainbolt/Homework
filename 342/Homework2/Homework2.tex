@@ -99,18 +99,113 @@
 \begin{statement}{}
 	Consider a two-dimensional harmonic oscillator described by the Hamiltonian
 	\beq
-		\Ho = \frac{\px^2 + \py^2}{2m} + m \omega^2 \frac{x^2 + y^2}{2}.
+		\Ho = \frac{\px^2 + \py^2}{2m} + m \omg^2 \frac{x^2 + y^2}{2}.
 	\eeq
 \end{statement}
 \vfix
+
+
+\newcommand{\Hx}{H_x}
+\newcommand{\Hy}{H_y}
+\newcommand{\Ex}{E_x}
+\newcommand{\Ey}{E_y}
+\newcommand{\Eo}{E_0}
+\newcommand{\nx}{n_x}
+\newcommand{\ny}{n_y}
 
 \begin{problem}
 	How many single-particle states are there for the first excited level?
 \end{problem}
 
+\begin{solution}
+	The Hamiltonian is separable; that is, we may write $\Ho = \Hx + \Hy$ where
+	\begin{align*}
+		\Hx &= \frac{\px^2}{2m} + m \omg^2 \frac{x^2}{2}, &
+		\Hy &= \frac{\py^2}{2m} + m \omg^2 \frac{y^2}{2},
+	\end{align*}
+	which are both one-dimensional oscillators.  Thus, the energy of each is given by (A.4.4) in Sakurai:
+	\begin{align*}
+		E &= \hbar \omg \left( n + \frac{1}{2} \right), &
+		n &= 0, 1, 2, \ldots
+	\end{align*}
+	So the total energy for $\Ho$ is
+	\begin{align*}
+		\Eo &= \Ex + \Ey
+		= \hbar \omg (\nx + \ny + 1), &
+		\nx, \ny = 0, 1, 2, \ldots
+	\end{align*}
+	For the first excited level, we may have $(\nx, \ny) = (0, 1)$ or $(1, 0)$.  So there are \emph{two} single-particle states.  \hl{Do we need to consider spin?}
+\end{solution}
+
+
+\newcommand{\Stot}{\vS_\text{tot}}
+\newcommand{\ms}{m_s}
+\newcommand{\msq}{{\ms}_1}
+\newcommand{\msw}{{\ms}_2}
+\newcommand{\vxq}{\vx_1}
+\newcommand{\vxw}{\vx_2}
+\newcommand{\xq}{x_1}
+\newcommand{\xw}{x_2}
+\newcommand{\yq}{y_1}
+\newcommand{\yw}{y_2}
+\newcommand{\pxq}{{\px}_1}
+\newcommand{\pxw}{{\px}_2}
+\newcommand{\pyq}{{\py}_1}
+\newcommand{\pyw}{{\py}_2}
+\newcommand{\nxq}{{\nx}_1}
+\newcommand{\nxw}{{\nx}_2}
+\newcommand{\nyq}{{\ny}_1}
+\newcommand{\nyw}{{\ny}_2}
+\newcommand{\kpsi}{\ket{\psi}}
+\newcommand{\kphi}{\ket{\phi}}
+\newcommand{\kchi}{\ket{\chi}}
+\newcommand{\up}{\uparrow}
+\newcommand{\dn}{\downarrow}
+
 \begin{problem}
-	Write down the many-body ground state for two electrons (with spin).  What is the eigenvalue of $(\vSq + \vSw)^2$ for this state?  Here $\vS_i$ are the spin operators of the electrons.
+	Write down the many-body ground state for two electrons (with spin).  What is the eigenvalue of $\Stot^2 = (\vSq + \vSw)^2$ for this state?  Here $\vS_i$ are the spin operators of the electrons.
 \end{problem}
+
+\begin{solution}
+	For two electrons, the Hamiltonian is
+	\beq
+		\Ho = \frac{\pxq^2 + \pyq^2}{2m} + \frac{\pxw^2 + \pyw^2}{2m} + m \omg^2 \frac{\xq^2 + \yq^2}{2} + m \omg^2 \frac{\xw^2 + \yw^2}{2}.
+	\eeq
+	From (6.3.2) in Sakurai, the Hamiltonian commutes with $\Stot^2$---that is, $[\Stot^2, \Ho] = 0$---so the eigenfunctions $\psi$ of $\Ho$ are also eigenfunctions of $\Stot^2$.  This also means the eigenfunctions are separable, and so they can be written as is (6.6.3):
+	\beq
+		\psi = \phi(\vxq, \vxw) \chi.
+	\eeq
+	Here, $\phi$ is given by (6.3.14),
+%	\beq
+%		\phi(\vxq, \vxw) = \frac{\omg
+%	\eeq
+	where $\vx_i = (x_i, y_i)$.
+	\beq
+		\chi(\msq, \msw) = \begin{cases}
+			\chi_{+ +} & \text{triplet (symmetrical)}, \\[2ex]
+			\dfrac{\chi_{+ -} + \chi_{- +}}{\sqrt{2}} & \text{triplet (symmetrical)}, \\[2ex]
+			\chi_{- -} & \text{triplet (symmetrical)}, \\[2ex]
+			\dfrac{\chi_{+ -} - \chi_{- +}}{\sqrt{2}} & \text{singlet (antisymmetrical)}.
+		\end{cases}
+	\eeq
+%	In Dirac notation, we will write $\phi$ as
+%	\beq
+%		\kphi = \ket{\nxq, \nyq} 
+%	\eeq
+%	and $\chi$ as
+%	\beq
+%		\kchi = \begin{cases}
+%			\ket{\up \up} & \text{triplet (symmetrical)}, \\[2ex]
+%			\dfrac{\ket{\up \dn} + \ket{\dn \up}}{\sqrt{2}} & \text{triplet (symmetrical)}, \\[2ex]
+%			\ket{\dn \dn} & \text{triplet (symmetrical)}, \\[2ex]
+%			\dfrac{\ket{\up \dn} - \ket{\dn \up}}{\sqrt{2}} & \text{singlet (antisymmetrical)}.
+%		\end{cases}
+%	\eeq
+	
+	For two fermions, we need the overall wavefunction to be antisymmetric.  For the ground state we need $\nxq = \nyq = \nxw = \nyw = 0$
+\end{solution}
+
+
 
 \begin{problem}
 	Write down all the first excited many-body states of two electrons (with spin).  Choose them to be eigenstates of the total spin operator, and compute their eigenvalues of $(\vSq + \vSw)^2$ and $\Szq + \Szw$ (where $\Sz_i$ is the $z$ component of the spin operator $\vS_i$).
