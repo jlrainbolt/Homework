@@ -1,0 +1,180 @@
+\newcommand{\Ha}{H_a}
+\newcommand{\Hb}{H_b}
+\newcommand{\Hi}{H_i}
+\newcommand{\vp}{\vb{p}}
+\newcommand{\vpi}{\vp_i}
+\newcommand{\alp}{\alpha}
+\newcommand{\ri}{r_i}
+\newcommand{\ra}{r_a}
+\newcommand{\rb}{r_b}
+\newcommand{\rab}{r_{a b}}
+\newcommand{\vx}{\vb{x}}
+\newcommand{\vxi}{\vx_i}
+\newcommand{\vxa}{\vx_a}
+\newcommand{\vxb}{\vx_b}
+
+\begin{statement}{}
+	Consider a system of two electrons, which is described by the Hamiltonian
+	\begin{align*}
+		H &= \Ha + \Hb + V, &
+		\Hi &= \frac{\vpi^2}{2m} - \frac{Z \alp \hbar c}{\ri}, &
+		V = \frac{\alp \hbar c}{\rab}.
+	\end{align*}
+	Here, we label two electrons by $i = a, b$; $\ri = \abs{\vxi}$ and $\rab = \abs{\vxa - \vxb}$ where $\vxi$ is the spatial coordinate for electron $i$; and $Z$ and $\alp$ are constants.  To find an approximate ground state of $H$, let us try a variational wave function
+	\beq
+		\Psi(\vxa, \vxb) = \frac{A}{4\pi} e^{-B(\ra + \rb)},
+	\eeq
+	where $A$ is a normalization constant and $B$ is your variational parameter.
+\end{statement}
+
+
+\newcommand{\Hbar}{\bar{H}}
+\newcommand{\ot}{\tilde{0}}
+\newcommand{\kot}{\ket{\ot}}
+\newcommand{\vpa}{\vp_a}
+\newcommand{\vpb}{\vp_b}
+\newcommand{\vr}{\vb{r}}
+\newcommand{\vra}{\vec{r}_a}
+\newcommand{\vrb}{\vec{r}_b}
+\newcommand{\dcxa}{\dd[3]{\vxa}}
+\newcommand{\dcxb}{\dd[3]{\vxb}}
+\newcommand{\dcxap}{\dd[3]{\vxa'}}
+\newcommand{\dcxbp}{\dd[3]{\vxb'}}
+\newcommand{\dra}{\dd{\ra}}
+\newcommand{\drb}{\dd{\rb}}
+\newcommand{\drap}{\dd{\ra'}}
+\newcommand{\drbp}{\dd{\rb'}}
+\newcommand{\dr}{\dd{r}}
+\newcommand{\tht}{\theta}
+\newcommand{\tha}{\tht_a}
+\newcommand{\dcta}{\dd{(\cos\tha)}}
+\newcommand{\intono}{\int_{-1}^1}
+\newcommand{\intab}{\int_{(\ra - \rb)^2}^{(\ra + \rb)^2}}
+
+\begin{problem}
+	Compute the variational energy for the given variational parameter $B$.
+\end{problem}
+
+\begin{solution}
+	The general expression for the variational energy $\Hbar$ is (5.4.1) in Sakurai:
+	\beqn \label{Hbar}
+		\Hbar = \frac{\ev{H}{\ot}}{\braket{\ot}},
+	\eeqn
+	where $\kot$ is our trial ket.
+	
+	For this problem, the numerator of \refeq{Hbar} is
+	\begin{align*}
+		\ev{H}{\ot} &= \ev{H}{\Psi}
+		= \iint \braket{\Psi}{\vxa, \vxb} \mel{\vxa, \vxb}{H}{\vxa', \vxb'} \braket{\vxa', \vxb'}{\Psi} \\
+		&= \iint \iint \Psi(\vxa, \vxb) \mel{\vxa, \vxb}{H}{\vxa', \vxb'} \Psi(\vxa', \vxb') \dcxa \dcxb \dcxap \dcxbp,
+	\end{align*}
+	where
+	\beq
+		H = \frac{\vpa^2}{2m} + \frac{\vpb^2}{2m} - \frac{Z \alp \hbar c}{\abs{\vxa}} - \frac{Z \alp \hbar c}{\abs{\vxb}} + \frac{\alp \hbar c}{\abs{\vxa - \vxb}},
+	\eeq
+	so we have five integrals.  For the first,
+	\begin{align*}
+		\frac{A^2}{32 \pi^2 m} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\vpa^2}{\vxa', \vxb'}^2 e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
+		&= \frac{A^2}{32 \pi^2 m} \iint \iint e^{-B(\ra + \rb)} \bigg( i^2 \hbar^2 \delta(\vxa - \vxa') \delta(\vxb - \vxb') \laplacian_{a'} \bigg) e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
+		&= -\frac{A^2 \hbar^2}{2 m} \iint e^{-B(\ra + \rb)} \left( \pdv[2]{}{\ra} e^{-B(\ra + \rb)} \right) \ra^2 \rb^2 \dra \drb
+		= -\frac{A^2 B^2 \hbar^2}{2 m} \intoi \ra^2 e^{-2 B \ra} \dra \intoi \rb^2 e^{-2 B \rb} \drb \\
+		&= -\frac{A^2 \hbar^2}{32 B^4 m},
+	\end{align*}
+	where we have used
+	\begin{align*}
+		\intoi r^2 e^{-2B r} \dr &= \left[ -\frac{r^2 e^{-2 B r}}{2 B} \right]_0^\infty + \frac{1}{B} \intoi r e^{-2 B r} \dr
+		= \frac{1}{B} \left[ -\frac{r e^{-2 B r}}{2 B} \right]_0^\infty + \frac{1}{2 B^2} \intoi e^{-2 B r} \dr
+		= \frac{1}{2 B^2} \left[ -\frac{e^{-2 B r}}{2 B} \right]_0^\infty \\
+		&= \frac{1}{4 B^3}.
+	\end{align*}
+	For the second integral, we also have
+	\beq
+		\frac{A^2}{16 \pi^2} \frac{1}{2 m} \iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\vpb^2}{\vxa', \vxb'}^2 e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp = -\frac{A^2 \hbar^2}{32 B^4 m}.
+	\eeq
+	
+	For the third integral,
+	\begin{align*}
+		-\frac{Z \alp \hbar c}{16\pi^2} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxa}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
+		&= -\frac{Z \alp \hbar c}{16\pi^2}\iint \iint e^{-B(\ra + \rb)} \left( \delta(\vxa - \vxa') \delta(\vxb - \vxb') \frac{1}{\abs{\vxa}} \right) e^{-B(\ra' + \rb')} \dra \drb \drap \drbp \\
+		&= -A^2 Z \alp \hbar c \iint \frac{e^{-2B(\ra + \rb)}}{\ra} \ra^2 \rb^2 \dra \drb
+		= -A^2 Z \alp \hbar c \intoi \ra e^{-2 B \ra} \dra \intoi \rb^2 e^{-2 B \rb} \drb \\
+		&= -\frac{A^2 Z \alp \hbar c}{16 B^5}.
+	\end{align*}
+	For the fourth integral, we also have
+	\beq
+		-\frac{Z \alp \hbar c}{16\pi^2} \iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxb}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp = -\frac{A^2 Z \alp \hbar c}{16 B^5}.
+	\eeq
+	
+	For the fifth integral, we will orient our coordinate system such that $\vxb$ points in the $z$ direction and stipulate that $\ra > \rb$.  Then
+	\beq
+		\frac{1}{\abs{\vxa - \vxb}} = \frac{1}{\sqrt{\vxa^2 - 2 \vxa \cdot \vxb + \vxb^2}}
+		= \frac{1}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}},
+	\eeq
+	and so
+	\begin{align}
+		\frac{\alp \hbar c}{16\pi^2} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxa - \vxb}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \notag \\
+		&= \frac{A^2 \alp \hbar c}{16\pi^2} \iint \iint e^{-B(\ra + \rb)}  \left( \delta(\vxa - \vxa') \delta(\vxb - \vxb') \frac{1}{\abs{\vxa - \vxb}} \right) e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \notag \\
+		&= \frac{A^2 \alp \hbar c}{2} \intoi \intono \intoi \frac{e^{-2B(\ra + \rb)}}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}} \ra^2 \rb^2 \dra \dcta \drb \notag \\
+		&= \frac{A^2 \alp \hbar c}{2} \intoi \intoi \ra^2 \rb^2 e^{-2B(\ra + \rb)} \intono \frac{\dcta}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}} \dra \drb. \label{leftoff}
+	\end{align}
+	For the innermost integral, let $u = \ra^2 - 2 \ra \rb \cos\tha + \rb^2$.  Then
+	\beq
+		\dcta = -\frac{\du}{2 \ra \rb},
+	\eeq
+	and we are integrating from $\ra^2 + 2 \ra \rb + \rb^2 = (\ra + \rb)^2$ to $\ra^2 - 2 \ra \rb + \rb^2 = (\ra - \rb)^2$.  So the innermost integral becomes
+	\begin{align*}
+		\intono \frac{\dcta}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}} &= \frac{1}{2 \ra \rb} \intab \frac{\du}{\sqrt{u}}
+		= \frac{1}{2 \ra \rb} \bigg[ 2 \sqrt{u} \bigg]_{(\ra - \rb)^2}^{(\ra + \rb)^2}
+		= \frac{\abs{\ra + \rb} - \abs{\ra - \rb}}{\ra \rb} \\
+		&= \frac{\ra + \rb - \ra + \rb}{\ra \rb}
+		= \frac{2}{\ra},
+	\end{align*}
+	where we have used $\ra, \rb > 0$ and our assumption that $\ra > \rb$.  Picking up from \refeq{leftoff}, we now have
+	\begin{align*}
+		\frac{A^2 \alp \hbar c}{16\pi^2} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxa - \vxb}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
+		&= A^2 \alp \hbar c \intoi \ra e^{-2B \ra} \dra \intoi \rb^2 e^{-2B \rb} \drb
+		= \frac{A^2 \alp \hbar c}{16 B^5}.
+	\end{align*}
+	
+	Putting this all together,
+	\beq
+		\ev{H}{\ot} = \frac{A^2 \alp \hbar c}{16 B^5} - \frac{A^2 B \hbar^2 / m}{16 B^5} - \frac{2 A^2 Z \alp \hbar c}{16 B^5}
+		= \frac{1}{16 B^5} \left( (1 - 2 Z) A^2 \alp \hbar c - \frac{A^2 B \hbar^2}{m} \right).
+	\eeq
+	For the denominator of \refeq{Hbar},
+	\begin{align*}
+		\braket{\ot} &= \frac{1}{16 \pi^2} \iint \braket{\Psi}{\vxa, \vxb} \braket{\vxa, \vxb}{\Psi} \dcxa \dcxb
+		= \iint e^{-B(\ra + \rb)} e^{-B(\ra + \rb)} \ra^2 \rb^2 \dra \drb \\
+		&= \intoi \ra^2 e^{-2B \ra} \dra \intoi \rb^2 e^{-2B \rb} \drb
+		= \frac{1}{16 B^6}.
+	\end{align*}
+	Finally,
+	\beqn \label{Hsol}
+		\Hbar = A^2 B (1 - 2 Z) \alp \hbar c - \frac{A^2 B^2 \hbar^2}{m}.
+	\eeqn
+\end{solution}
+
+
+
+\begin{problem}
+	By minimizing the variational energy, find the optimal value of $B$.
+\end{problem}
+
+\begin{solution}
+	By (5.4.9) in Sakurai, we can minimize $\Hbar$ by setting to zero its derivative with respect to $B$.  From \refeq{Hsol}, we have
+	\beq
+		\pdv{\Hbar}{B} = A^2 (1 - 2 Z) \alp \hbar c - 2 \frac{A^2 B \hbar^2}{m} = 0
+	\eeq
+	which implies
+	\beq
+		(1 - 2 Z) \alp c = 2 \frac{B \hbar}{m}
+		\implies
+		B = \frac{1 - 2 Z}{2 \hbar} \alp c m.
+	\eeq
+	Substituting this back into \refeq{Hsol},
+	\beq
+		\Hbar = A^2 \frac{1 - 2 Z}{2 \hbar} \alp c m (1 - 2 Z) \alp \hbar c - \frac{A^2 \hbar^2}{m} \left( \frac{1 - 2 Z}{2 \hbar} \alp c m \right)^2
+		= \frac{A^2 \alp^2 c^2 m}{4} (1 - 2 Z)^2.
+	\eeq
+\end{solution}
+\vfix
