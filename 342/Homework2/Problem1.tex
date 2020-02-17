@@ -23,6 +23,7 @@
 \newcommand{\intoepi}{\int_0^{3\pi}}
 \newcommand{\du}{\dd{u}}
 \newcommand{\ddv}{\dd{v}}
+\newcommand{\intot}{\int_0^t}
 
 
 \begin{statement}{}
@@ -96,19 +97,22 @@
 	\eeq
 	 Returning to \refeq{cn1}, we may now find the first-order coefficient.  First note that
 	 \beq
-	 	\Ew - \Eq = \frac{3 \hbar^2 \pi^3}{2 m L^2}.
+	 	\omgni = \frac{\Ew - \Eq}{\hbar}
+	 	= \frac{3 \hbar \pi^3}{2 m L^2}.
 	 \eeq
 	 Then
 	 \begin{align*}
-	 	\cnqt &= -\frac{i}{\hbar} \inttot e^{i (\Ew - \Eq) t' / \hbar} V_{2 1}(t') \dtp
-	 	= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \intoi \exp(i \frac{3 \hbar \pi^2}{2 m L^2} t')  \, e^{-t' / \tau} \dtp \\
-	 	&= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \intoi \exp[ \left( i \frac{3 \hbar \pi^2}{2 m L^2} - \frac{1}{\tau} \right) t'] \dtp
-	 	= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \left[ \frac{2 m L^2 \tau}{i 3 \hbar \pi^2 \tau - 2 m L^2} \exp(\frac{i 3 \hbar \pi^2 \tau - 2 m L^2}{2 m L^2 \tau} t') \right]_0^\infty \\
-	 	&= \frac{i}{\hbar} \frac{32}{9 \pi^2} \frac{m L^4 \tau}{i 3 \hbar \pi^2 \tau - 2 m L^2},
+	 	\cnqt &= -\frac{i}{\hbar} \inttot e^{i \omgni t'} V_{2 1}(t') \dtp
+	 	= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \intot e^{i \omgni t'}  \, e^{-t' / \tau} \dtp 
+	 	= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \intot \exp[\left(i \omgni - \frac{1}{\tau} \right) t'] \dtp \\
+	 	&= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \frac{1}{i\omgni - 1/\tau} \left[ \exp{\left(i \omgni - \frac{1}{\tau} \right) t'} \right]_0^t
+	 	= \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \frac{1}{i\omgni - 1/\tau} \left( e^{i\omgni t} e^{-t/\tau} - 1 \right),
 	 \end{align*}
 	 so the transition probability is
-	 \beq
-	 	\abs*{\cnqt}^2 = \left( \frac{i}{\hbar} \frac{32}{9 \pi^2} \frac{m L^4 \tau}{i 3 \hbar \pi^2 \tau - 2 m L^2} \right) \left( \frac{i}{\hbar} \frac{32}{9 \pi^2} \frac{m L^4 \tau}{i 3 \hbar \pi^2 \tau + 2 m L^2} \right)
-	 	= \frac{1024}{81 \hbar^2} \frac{L^8 \tau^2}{9 \hbar^2 \pi^4 \tau^2 + 4 m^2 L^4}.
-	 \eeq
+	 \begin{align*}
+	 	\abs*{\cnqt}^2 &= \left[ \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \frac{1}{i\omgni - 1/\tau} \left( e^{i\omgni t} e^{-t/\tau} - 1 \right) \right] \left[ \frac{i}{\hbar} \frac{16 L^2}{9 \pi^2} \frac{1}{i\omgni + 1/\tau} \left( e^{-i\omgni t} e^{-t/\tau} - 1 \right) \right] \\
+	 	&= \frac{16^2 L^2}{9^2 \pi^2 \hbar^2} \frac{\tau^2}{\omgni^2 \tau^2 + 1} \left( e^{-2t/\tau} - e^{i\omgni t} e^{-t/\tau} - e^{-i\omgni t} e^{-t/tau} + 1 \right) \\
+	 	&= \frac{16^2 L^2}{9^2 \pi^2 \hbar^2} \frac{\tau^2}{\omgni^2 \tau^2 + 1} \left( e^{-2t/\tau} - 2 e^{-t/\tau} \cos(\omgni t) + 1 \right).
+	 \end{align*}
 \end{solution}
+\vfix

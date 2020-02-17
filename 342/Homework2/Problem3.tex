@@ -34,6 +34,7 @@
 		\Hx &= \frac{\px^2}{2m} + m \omg^2 \frac{x^2}{2}, &
 		\Hy &= \frac{\py^2}{2m} + m \omg^2 \frac{y^2}{2},
 	\end{align*}
+	\clearpage
 	which are both one-dimensional oscillators.  Thus, the energy of each is given by (A.4.4) in Sakurai:
 	\begin{align*}
 		E &= \hbar \omg \left( n + \frac{1}{2} \right), &
@@ -65,7 +66,6 @@
 		\end{cases}
 	\eeq
 	which gives us \emph{four} single-particle states.
-	
 \end{solution}
 
 
@@ -169,14 +169,14 @@
 	\eeq
 	Only the symmetrical spatial function is nonzero.  For two fermions, we need the overall wavefunction to be antisymmetric, so this means we must have the spin singlet state.  The ground state is then
 	\beq
-		\kpsi = \ket{\nxq, \nxw} \ket{\nxq, \nyq} \ket{\sq, \sw}
+		\kpsi = \ket{\nxq, \nxw} \ket{\nyq, \nyw} \ket{\sq, \sw}
 		= \frac{\ket{0 0} \ket{0 0} \ket{+ -} - \ket{0 0} \ket{0 0} \ket{- +}}{\sqrt{2}},
 	\eeq
 	where we have normalized.
 	
 	The eigenvalues of $\vS^2$ and $\Sz$ are given by Sakurai~(3.7.12),
 	\begin{align} \label{eigen}
-		\vS^2 = (\vSq + \vSw)^2 &: s(s + 1) \hbar, &
+		\vS^2 = (\vSq + \vSw)^2 &: s(s + 1) \hbar^2, &
 		\Sz = \Szq + \Szw &: m \hbar,
 	\end{align}
 	where the $s$ and $m$ quantum numbers for each spinor $\chi$ are given by (3.7.15):
@@ -193,6 +193,7 @@
 \newcommand{\fq}{f_1}
 \newcommand{\gq}{g_1}
 
+\clearpage
 \begin{problem}
 	Write down all the first excited many-body states of two electrons (with spin).  Choose them to be eigenstates of the total spin operator, and compute their eigenvalues of $(\vSq + \vSw)^2$ and $\Sz = \Szq + \Szw$ (where $\Sz_i$ is the $z$ component of the spin operator $\vS_i$).
 \end{problem}
@@ -210,17 +211,33 @@
 			\ket{0 0} \ket{0 1} \pm \ket{0 0} \ket{1 0} & \begin{cases} \text{symmetrical}, \\ \text{antisymmetrical}. \end{cases}
 		\end{cases}
 	\eeq
-	so we will make use of both the singlet and triplet spinors.  The possible states with the $\vS$ and $\Sz$ eigenvales are
+	so we will make use of both the singlet and triplet spinors.  The possible states are
 	\beq
-		\psi = \begin{cases}
-			\dfrac{\ket{0 1} \ket{0 0} + \ket{1 0} \ket{0 0}}{\sqrt{2}} \dfrac{\ket{+ -} - \ket{- +}}{\sqrt{2}} &\quad \vS : 0\phantom{\hbar} \quad \Sz : 0, \\[2ex]
-			\dfrac{\ket{0 1} \ket{0 0} - \ket{1 0} \ket{0 0}}{\sqrt{2}} \ket{+ +} &\quad \vS : 2\hbar \quad \Sz : \hbar, \\[2ex]
-			\dfrac{\ket{0 1} \ket{0 0} - \ket{1 0} \ket{0 0}}{\sqrt{2}} \dfrac{\ket{+ -} + \ket{- +}}{\sqrt{2}} &\quad \vS : 2\hbar \quad \Sz : \hbar, \\[2ex]
-			\dfrac{\ket{0 1} \ket{0 0} - \ket{1 0} \ket{0 0}}{\sqrt{2}} \ket{- -} &\quad \vS : 2\hbar \quad \Sz : -\hbar, \\[2ex]
-			\dfrac{\ket{0 0} \ket{0 1} + \ket{0 0} \ket{1 0}}{\sqrt{2}} \dfrac{\ket{+ -} - \ket{- +}}{\sqrt{2}} &\quad \vS : 0\phantom{\hbar} \quad \Sz : 0, \\[2ex]
-			\dfrac{\ket{0 0} \ket{0 1} - \ket{0 0} \ket{1 0}}{\sqrt{2}} \ket{+ +} &\quad \vS : 2\hbar \quad \Sz : \hbar, \\[2ex]
-			\dfrac{\ket{0 0} \ket{0 1} - \ket{0 0} \ket{1 0}}{\sqrt{2}} \dfrac{\ket{+ -} + \ket{- +}}{\sqrt{2}} &\quad \vS : 2\hbar \quad \Sz : \hbar, \\[2ex]
-			\dfrac{\ket{0 0} \ket{0 1} - \ket{0 0} \ket{1 0}}{\sqrt{2}} \ket{- -} &\quad \vS : 2\hbar \quad \Sz : -\hbar.
+		\kpsi = \ket{\nxq, \nxw} \ket{\nyq, \nyw} \ket{\sq, \sw}
+		= \begin{cases}
+			\dfrac{\ket{0 1} \ket{0 0} + \ket{1 0} \ket{0 0}}{\sqrt{2}} \dfrac{\ket{+ -} - \ket{- +}}{\sqrt{2}}, \\[2ex]
+			\dfrac{\ket{0 1} \ket{0 0} - \ket{1 0} \ket{0 0}}{\sqrt{2}} \ket{+ +}, \\[2ex]
+			\dfrac{\ket{0 1} \ket{0 0} - \ket{1 0} \ket{0 0}}{\sqrt{2}} \dfrac{\ket{+ -} + \ket{- +}}{\sqrt{2}}, \\[2ex]
+			\dfrac{\ket{0 1} \ket{0 0} - \ket{1 0} \ket{0 0}}{\sqrt{2}} \ket{- -}, \\[2ex]
+			\dfrac{\ket{0 0} \ket{0 1} + \ket{0 0} \ket{1 0}}{\sqrt{2}} \dfrac{\ket{+ -} - \ket{- +}}{\sqrt{2}}, \\[2ex]
+			\dfrac{\ket{0 0} \ket{0 1} - \ket{0 0} \ket{1 0}}{\sqrt{2}} \ket{+ +}, \\[2ex]
+			\dfrac{\ket{0 0} \ket{0 1} - \ket{0 0} \ket{1 0}}{\sqrt{2}} \dfrac{\ket{+ -} + \ket{- +}}{\sqrt{2}}, \\[2ex]
+			\dfrac{\ket{0 0} \ket{0 1} - \ket{0 0} \ket{1 0}}{\sqrt{2}} \ket{- -}.
+		\end{cases}
+	\eeq
+	Written in terms of eigenkets of the total spin operator, the possible states with the $\vS$ and $\Sz$ eigenvales are
+	\beq
+		\kpsi = \ket{\nxq, \nxw} \ket{\nyq, \nyw} \ket{s, m}
+		= \frac{1}{\sqrt{2}} \begin{cases}
+			\ket{0 1} \ket{0 0} \ket{0 0} + \ket{1 0} \ket{0 0} \ket{0 0} &\quad \vS : 0\phantom{\hbar^2} \quad \Sz : 0, \\
+			\ket{0 1} \ket{0 0} \ket{1 1} - \ket{1 0} \ket{0 0} \ket{1 1} &\quad \vS : 2\hbar^2 \quad \Sz : \hbar, \\
+			\ket{0 1} \ket{0 0} \ket{1 0} - \ket{1 0} \ket{0 0} \ket{1 0} &\quad \vS : 2\hbar^2 \quad \Sz : \hbar, \\
+			\ket{0 1} \ket{0 0} \ket{1 \,{-1}} - \ket{1 0} \ket{0 0} \ket{1 \,{-1}} &\quad \vS : 2\hbar^2 \quad \Sz : -\hbar, \\
+			\ket{0 0} \ket{0 1} \ket{0 0} + \ket{0 0} \ket{1 0} \ket{0 0} &\quad \vS : 0\phantom{\hbar^2} \quad \Sz : 0, \\
+			\ket{0 0} \ket{0 1} \ket{1 1} - \ket{0 0} \ket{1 0} \ket{1 1} &\quad \vS : 2\hbar^2 \quad \Sz : \hbar, \\
+			\ket{0 0} \ket{0 1} \ket{1 0} - \ket{0 0} \ket{1 0} \ket{1 0} &\quad \vS : 2\hbar^2 \quad \Sz : \hbar, \\
+			\ket{0 0} \ket{0 1} \ket{1 \,{-1}} - \ket{0 0} \ket{1 0} \ket{1 \,{-1}} &\quad \vS : 2\hbar^2 \quad \Sz : -\hbar.
 		\end{cases}
 	\eeq
 \end{solution}
+\vfix

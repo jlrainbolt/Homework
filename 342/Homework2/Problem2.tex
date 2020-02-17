@@ -78,7 +78,7 @@
 		&= \frac{A^2}{32 \pi^2 m} \iint \iint e^{-B(\ra + \rb)} \bigg( i^2 \hbar^2 \delta(\vxa - \vxa') \delta(\vxb - \vxb') \laplacian_{a'} \bigg) e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
 		&= -\frac{A^2 \hbar^2}{2 m} \iint e^{-B(\ra + \rb)} \left( \pdv[2]{}{\ra} e^{-B(\ra + \rb)} \right) \ra^2 \rb^2 \dra \drb
 		= -\frac{A^2 B^2 \hbar^2}{2 m} \intoi \ra^2 e^{-2 B \ra} \dra \intoi \rb^2 e^{-2 B \rb} \drb \\
-		&= -\frac{A^2 \hbar^2}{32 B^4 m},
+		&= \frac{A^2 \hbar^2}{32 B^4 m},
 	\end{align*}
 	where we have used
 	\begin{align*}
@@ -89,7 +89,7 @@
 	\end{align*}
 	For the second integral, we also have
 	\beq
-		\frac{A^2}{16 \pi^2} \frac{1}{2 m} \iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\vpb^2}{\vxa', \vxb'}^2 e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp = -\frac{A^2 \hbar^2}{32 B^4 m}.
+		\frac{A^2}{16 \pi^2} \frac{1}{2 m} \iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\vpb^2}{\vxa', \vxb'}^2 e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp = \frac{A^2 \hbar^2}{32 B^4 m}.
 	\eeq
 	
 	For the third integral,
@@ -105,7 +105,7 @@
 		-\frac{Z \alp \hbar c}{16\pi^2} \iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxb}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp = -\frac{A^2 Z \alp \hbar c}{16 B^5}.
 	\eeq
 	
-	For the fifth integral, we will orient our coordinate system such that $\vxb$ points in the $z$ direction and stipulate that $\ra > \rb$.  Then
+	For the fifth integral, we will orient our coordinate system such that $\vxb$ points in the $z$ direction.  Then
 	\beq
 		\frac{1}{\abs{\vxa - \vxb}} = \frac{1}{\sqrt{\vxa^2 - 2 \vxa \cdot \vxb + \vxb^2}}
 		= \frac{1}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}},
@@ -126,33 +126,55 @@
 		\intono \frac{\dcta}{\sqrt{\ra^2 - 2 \ra \rb \cos\tha + \rb^2}} &= \frac{1}{2 \ra \rb} \intab \frac{\du}{\sqrt{u}}
 		= \frac{1}{2 \ra \rb} \bigg[ 2 \sqrt{u} \bigg]_{(\ra - \rb)^2}^{(\ra + \rb)^2}
 		= \frac{\abs{\ra + \rb} - \abs{\ra - \rb}}{\ra \rb} \\
-		&= \frac{\ra + \rb - \ra + \rb}{\ra \rb}
-		= \frac{2}{\ra},
+		&= \begin{cases}
+			\dfrac{\ra + \rb - \ra + \rb}{\ra \rb} = \dfrac{2}{\ra} & \text{if } \ra > \rb, \\[2ex]
+			\dfrac{\ra + \rb + \ra - \rb}{\ra \rb} = \dfrac{2}{\rb} & \text{if } \rb > \ra,
+		\end{cases}
 	\end{align*}
-	where we have used $\ra, \rb > 0$ and our assumption that $\ra > \rb$.  Picking up from \refeq{leftoff}, we now have
+	where we have used $\ra, \rb > 0$.  Picking up from \refeq{leftoff}, we now have
+	\begin{align}
+		\frac{A^2 \alp \hbar c}{16\pi^2} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxa - \vxb}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \notag \\
+		&= A^2 \alp \hbar c \intoi \ra^2 e^{-2B \ra} \left( \frac{1}{\ra} \int_0^{\ra} \rb^2 e^{-2B \rb} \drb + \int_{\ra}^\infty \rb e^{-2B \rb} \drb \right) \dra, \label{leftoff2}
+	\end{align}
+	where the first inner integral is
+	\begin{align*}
+		\frac{1}{\ra} \int_0^{\ra} \rb^2 e^{-2B \rb} \drb &= \frac{1}{\ra} \left[ -\frac{\rb^2 e^{-2 B \rb}}{2 B} \right]_0^{\ra} + \frac{1}{B \ra} \int_0^{\ra} \rb e^{-2B \rb} \drb \\
+		&= -\frac{\ra e^{-2B \ra}}{2 B} + \frac{1}{B \ra} \left[ -\frac{\rb e^{-2B \rb}}{2 B} \right]_0^{\ra} + \frac{1}{2 B^2 \ra} \int_0^{\ra} e^{-2B \rb} \drb \\
+		&= -\frac{\ra e^{-2B \ra}}{2 B} - \frac{e^{-2B \ra}}{2 B^2} + \frac{1}{2 B^2 \ra} \left[ -\frac{e^{-2B \rb}}{2B} \right]_{\ra}^\infty \\
+		&= -\frac{\ra e^{-2B \ra}}{2 B} - \frac{e^{-2B \ra}}{2 B^2} - \frac{e^{-2B \ra}}{4 B^3 \ra} + \frac{1}{4 B^3 \ra},
+	\end{align*}
+	and the second is
+	\beq
+		\int_{\ra}^\infty \rb e^{-2B \rb} \drb = \left[ -\frac{\rb e^{-2B \rb}}{2 B} \right]_{\ra}^\infty + \frac{1}{2B} \int_{\ra}^\infty e^{-2B \rb} \drb
+		= \frac{\ra e^{-2 \ra}}{2B} + \frac{1}{2B} \left[ -\frac{e^{-2B \rb}}{2 B} \right]_{\ra}^\infty
+		= \frac{\ra e^{-2B \ra}}{2 B} + \frac{e^{-2B \ra}}{4 B^2}.
+	\eeq
+	Picking up from \refeq{leftoff2},
 	\begin{align*}
 		\frac{A^2 \alp \hbar c}{16\pi^2} &\iint \iint e^{-B(\ra + \rb)} \mel{\vxa, \vxb}{\frac{1}{\abs{\vxa - \vxb}}}{\vxa', \vxb'} e^{-B(\ra' + \rb')} \dcxa \dcxb \dcxap \dcxbp \\
-		&= A^2 \alp \hbar c \intoi \ra e^{-2B \ra} \dra \intoi \rb^2 e^{-2B \rb} \drb
-		= \frac{A^2 \alp \hbar c}{16 B^5}.
+		&= A^2 \alp \hbar c \intoi \ra^2 e^{-2B \ra} \left( \frac{1}{4 B^3 \ra} - \frac{e^{-2B \ra}}{4 B^3 \ra} - \frac{e^{-2B \ra}}{4 B^2} \right) \dra \\
+		&= \frac{A^2 \alp \hbar c}{4B^3} \left( \intoi \ra e^{-2B \ra} \dra - \intoi \ra e^{-4B \ra} \dra - B \intoi \ra^2 e^{-4B \ra} \dra \right) \\
+		&= \frac{A^2 \alp \hbar c}{4B^3} \left( \frac{1}{4 B^2} - \frac{1}{16 B^2} - \frac{1}{32 B^2} \right)
+		= \frac{5 A^2 \alp \hbar c}{128 B^5}.
 	\end{align*}
-	
 	Putting this all together,
 	\beq
-		\ev{H}{\ot} = \frac{A^2 \alp \hbar c}{16 B^5} - \frac{A^2 B \hbar^2 / m}{16 B^5} - \frac{2 A^2 Z \alp \hbar c}{16 B^5}
-		= \frac{1}{16 B^5} \left( (1 - 2 Z) A^2 \alp \hbar c - \frac{A^2 B \hbar^2}{m} \right).
+		\ev{H}{\ot} = \frac{5}{8} \frac{A^2 \alp \hbar c}{16 B^5} + \frac{A^2 B \hbar^2 / m}{16 B^5} - 2 \frac{A^2 Z \alp \hbar c}{16 B^5}
+		= \frac{A^2}{16 B^5} \left[ \left( \frac{5}{8} - 2 Z \right) \alp \hbar c + \frac{B \hbar^2}{m} \right].
 	\eeq
 	For the denominator of \refeq{Hbar},
 	\begin{align*}
-		\braket{\ot} &= \frac{1}{16 \pi^2} \iint \braket{\Psi}{\vxa, \vxb} \braket{\vxa, \vxb}{\Psi} \dcxa \dcxb
-		= \iint e^{-B(\ra + \rb)} e^{-B(\ra + \rb)} \ra^2 \rb^2 \dra \drb \\
-		&= \intoi \ra^2 e^{-2B \ra} \dra \intoi \rb^2 e^{-2B \rb} \drb
-		= \frac{1}{16 B^6}.
+		\braket{\ot} &= \iint \braket{\Psi}{\vxa, \vxb} \braket{\vxa, \vxb}{\Psi} \dcxa \dcxb
+		= \frac{A^2}{16 \pi^2} \iint e^{-B(\ra + \rb)} e^{-B(\ra + \rb)} \ra^2 \rb^2 \dra \drb \\
+		&= A^2 \intoi \ra^2 e^{-2B \ra} \dra \intoi \rb^2 e^{-2B \rb} \drb
+		= \frac{A^2}{16 B^6}.
 	\end{align*}
 	Finally,
 	\beqn \label{Hsol}
-		\Hbar = A^2 B (1 - 2 Z) \alp \hbar c - \frac{A^2 B^2 \hbar^2}{m}.
+		\Hbar = B \left( \frac{5}{8} - 2 Z \right) \alp \hbar c + \frac{B^2 \hbar^2}{m}.
 	\eeqn
 \end{solution}
+\vfix
 
 
 
@@ -163,18 +185,13 @@
 \begin{solution}
 	By (5.4.9) in Sakurai, we can minimize $\Hbar$ by setting to zero its derivative with respect to $B$.  From \refeq{Hsol}, we have
 	\beq
-		\pdv{\Hbar}{B} = A^2 (1 - 2 Z) \alp \hbar c - 2 \frac{A^2 B \hbar^2}{m} = 0
+		\pdv{\Hbar}{B} = A^2 (1 - 2 Z) \alp \hbar c + 2 \frac{A^2 B \hbar^2}{m} = 0
 	\eeq
 	which implies
 	\beq
-		(1 - 2 Z) \alp c = 2 \frac{B \hbar}{m}
+		\left( \frac{5}{8} - 2 Z \right) \alp c = -2 \frac{B \hbar}{m}
 		\implies
-		B = \frac{1 - 2 Z}{2 \hbar} \alp c m.
+		B = \frac{2 Z - 5/8}{2 \hbar} \alp c m
 	\eeq
-	Substituting this back into \refeq{Hsol},
-	\beq
-		\Hbar = A^2 \frac{1 - 2 Z}{2 \hbar} \alp c m (1 - 2 Z) \alp \hbar c - \frac{A^2 \hbar^2}{m} \left( \frac{1 - 2 Z}{2 \hbar} \alp c m \right)^2
-		= \frac{A^2 \alp^2 c^2 m}{4} (1 - 2 Z)^2.
-	\eeq
+	is the optimal value of $B$.
 \end{solution}
-\vfix
