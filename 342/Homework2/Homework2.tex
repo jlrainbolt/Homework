@@ -134,11 +134,30 @@
 		= \hbar \omg (\nx + \ny + 1), &
 		\nx, \ny = 0, 1, 2, \ldots
 	\end{align*}
-	For the first excited level, we may have $(\nx, \ny) = (0, 1)$ or $(1, 0)$.  So there are \emph{two} single-particle states.  \hl{Do we need to consider spin?}
+	
+	Ignoring spin, for the first excited level we may have
+	\beq
+		\ket{\nx, \ny} = \begin{cases}
+			\ket{0, 1}, \\
+			\ket{1, 0}.
+		\end{cases}
+	\eeq
+	This gives us \emph{two} single-particle states.
+	
+	If we assume that the single particle is an electron, we have an additional spin degree of freedom, which we denote by $s$.  Then the possible configurations are
+	\beq
+		\ket{\nx, \ny, s} = \begin{cases}
+			\ket{0, 1, +}, \\
+			\ket{0, 1, -}, \\
+			\ket{1, 0, +}, \\
+			\ket{1, 0, -},
+		\end{cases}
+	\eeq
+	which gives us \emph{four} single-particle states.
+	
 \end{solution}
 
 
-\newcommand{\Stot}{\vS_\text{tot}}
 \newcommand{\ms}{m_s}
 \newcommand{\msq}{{\ms}_1}
 \newcommand{\msw}{{\ms}_2}
@@ -161,9 +180,19 @@
 \newcommand{\kchi}{\ket{\chi}}
 \newcommand{\up}{\uparrow}
 \newcommand{\dn}{\downarrow}
+\newcommand{\omgA}{\omg_A}
+\newcommand{\omgB}{\omg_B}
+\newcommand{\fA}{f_A}
+\newcommand{\gA}{g_A}
+\newcommand{\fB}{f_B}
+\newcommand{\gB}{g_B}
+\newcommand{\fo}{f_0}
+\newcommand{\go}{g_0}
+\newcommand{\sq}{s_1}
+\newcommand{\sw}{s_2}
 
 \begin{problem}
-	Write down the many-body ground state for two electrons (with spin).  What is the eigenvalue of $\Stot^2 = (\vSq + \vSw)^2$ for this state?  Here $\vS_i$ are the spin operators of the electrons.
+	Write down the many-body ground state for two electrons (with spin).  What is the eigenvalue of $\vS^2 = (\vSq + \vSw)^2$ for this state?  Here $\vS_i$ are the spin operators of the electrons.
 \end{problem}
 
 \begin{solution}
@@ -171,15 +200,18 @@
 	\beq
 		\Ho = \frac{\pxq^2 + \pyq^2}{2m} + \frac{\pxw^2 + \pyw^2}{2m} + m \omg^2 \frac{\xq^2 + \yq^2}{2} + m \omg^2 \frac{\xw^2 + \yw^2}{2}.
 	\eeq
-	From (6.3.2) in Sakurai, the Hamiltonian commutes with $\Stot^2$---that is, $[\Stot^2, \Ho] = 0$---so the eigenfunctions $\psi$ of $\Ho$ are also eigenfunctions of $\Stot^2$.  This also means the eigenfunctions are separable, and so they can be written as is (6.6.3):
-	\beq
-		\psi = \phi(\vxq, \vxw) \chi.
-	\eeq
-	Here, $\phi$ is given by (6.3.14),
-%	\beq
-%		\phi(\vxq, \vxw) = \frac{\omg
-%	\eeq
-	where $\vx_i = (x_i, y_i)$.
+	From (6.3.2) in Sakurai, the Hamiltonian commutes with $\vS^2$---that is, $[\vS^2, \Ho] = 0$---so the eigenfunctions $\psi$ of $\Ho$ are also eigenfunctions of $\vS^2$.  This also means the eigenfunctions are separable, and so they can be written as is (6.6.3):
+	\beqn \label{psi}
+		\psi = \phi(\vxq, \vxw) \chi,
+	\eeqn
+	where $\vx_i = (x_i, y_i)$ for this problem.  Here, $\phi$ is given by (6.3.14),
+	\beqn \label{phi}
+		\phi(\vxq, \vxw) = \frac{\omgA(\vxq) \, \omgB(\vxw) \pm \omgA(\vxw) \, \omgB(\vxq)}{\sqrt{2}} \begin{cases}
+			\text{symmetrical}, \\
+			\text{antisymmetrical},
+		\end{cases}
+	\eeqn
+	where $\omgA$ and $\omgB$ each represent states.  Next, $\chi$ is given by (6.3.4),
 	\beq
 		\chi(\msq, \msw) = \begin{cases}
 			\chi_{+ +} & \text{triplet (symmetrical)}, \\[2ex]
@@ -188,28 +220,86 @@
 			\dfrac{\chi_{+ -} - \chi_{- +}}{\sqrt{2}} & \text{singlet (antisymmetrical)}.
 		\end{cases}
 	\eeq
-%	In Dirac notation, we will write $\phi$ as
-%	\beq
-%		\kphi = \ket{\nxq, \nyq} 
-%	\eeq
-%	and $\chi$ as
-%	\beq
-%		\kchi = \begin{cases}
-%			\ket{\up \up} & \text{triplet (symmetrical)}, \\[2ex]
-%			\dfrac{\ket{\up \dn} + \ket{\dn \up}}{\sqrt{2}} & \text{triplet (symmetrical)}, \\[2ex]
-%			\ket{\dn \dn} & \text{triplet (symmetrical)}, \\[2ex]
-%			\dfrac{\ket{\up \dn} - \ket{\dn \up}}{\sqrt{2}} & \text{singlet (antisymmetrical)}.
-%		\end{cases}
-%	\eeq
 	
-	For two fermions, we need the overall wavefunction to be antisymmetric.  For the ground state we need $\nxq = \nyq = \nxw = \nyw = 0$
+	Since the two-dimensional harmonic oscillator is separable in $x$ and $y$, we can write
+	\beq
+		\omg(\vx) = f_n(x) \, g_n(y),
+	\eeq
+	where $f_n$ and $g_n$ are both eigenfunctions corresponding to level $n$ of the one-dimensional harmonic oscillator Hamiltonian, given by Sakurai~(A.4.3):
+	\beq
+		\psi_n = \frac{1}{\sqrt{2^n n!}} \left( \frac{m \omg}{\pi \hbar} \right)^{1/4} e^{-\xi^2 / 2} H_n(\xi),
+	\eeq
+	where $\xi = \sqrt{m \omg / \hbar} x$ from (A.4.2) and $H_n$ are the Hermite polynomials.  Using this notation, \refeq{phi} becomes
+	\beqn \label{phi2}
+		\phi(\vxq, \vxw) = \frac{1}{\sqrt{2}} \begin{cases}
+			\big[ \fA(\vxq) \, \fB(\vxw) \pm \fA(\vxw) \, \fB(\vxq) \big] \big[ \gA(\vxq) \, \gB(\vxw) \pm \gA(\vxw) \, \gB(\vxq) \big] & \text{symmetrical}, \\
+			\big[ \fA(\vxq) \, \fB(\vxw) \pm \fA(\vxw) \, \fB(\vxq) \big] \big[ \gA(\vxq) \, \gB(\vxw) \mp \gA(\vxw) \, \gB(\vxq) \big] & \text{antisymmetrical}.
+		\end{cases}
+	\eeqn
+	
+	For the ground state, $A = B = 0$.  Then \refeq{phi2} becomes
+	\beq
+		\phi(\vxq, \vxw) = \frac{1}{\sqrt{2}} \begin{cases}
+			\big[ \fo(\vxq) \, \fo(\vxw) \pm \fo(\vxw) \, \fo(\vxq) \big] \big[ \go(\vxq) \, \go(\vxw) \pm \go(\vxw) \, \go(\vxq) \big] \begin{cases} \neq 0, \\ = 0, \end{cases} \\
+			\big[ \fo(\vxq) \, \fo(\vxw) \pm \fo(\vxw) \, \fo(\vxq) \big] \big[ \go(\vxq) \, \go(\vxw) \mp \go(\vxw) \, \go(\vxq) \big] \begin{cases} = 0, \\ = 0, \end{cases}.
+		\end{cases}
+	\eeq
+	Only the symmetrical spatial function is nontrivial.  For two fermions, we need the overall wavefunction to be antisymmetric, so this means we must have the spin singlet state.  The ground state is then
+	\beq
+		\psi = 2 \fo(\vxq) \fo(\vxw) \go(\vxq) \go(\vxw) \big[ \chi_{+ -} - \chi_{- +} \big],
+	\eeq
+	or, in Dirac notation,
+	\beq
+		\kpsi = \ket{\nxq, \nxw} \ket{\nxq, \nyq} \ket{\sq, \sw}
+		= \ket{0 0} \ket{0 0} \ket{+ -} - \ket{0 0} \ket{0 0} \ket{- +},
+	\eeq
+	where we have not normalized.
+	
+	The eigenvalues of $\vS^2$ and $\Sz$ are given by Sakurai~(3.7.12),
+	\begin{align} \label{eigen}
+		\vS^2 = (\vSq + \vSw)^2 &: s(s + 1) \hbar, &
+		\Sz = \Szq + \Szw &: m \hbar,
+	\end{align}
+	where the $s$ and $m$ quantum numbers for each spinor $\chi$ are given by (3.7.15):
+	\begin{align}
+		\ket{s=1, m=1} &= \ket{+ +}, &
+		\ket{s=1, m=0} &= \frac{\ket{+ -} + \ket{- +}}{\sqrt{2}}, \notag \\
+		\ket{s=1, m=-1} &= \ket{- -}, &
+		\ket{s=0, m=0} &= \frac{\ket{+ -} - \ket{- +}}{\sqrt{2}}. \label{sm}
+	\end{align}
+	So for the singlet, as we have in the ground state, the eigenvalue of $\vS$ is 0.
 \end{solution}
 
 
+\newcommand{\fq}{f_1}
+\newcommand{\gq}{g_1}
 
 \begin{problem}
-	Write down all the first excited many-body states of two electrons (with spin).  Choose them to be eigenstates of the total spin operator, and compute their eigenvalues of $(\vSq + \vSw)^2$ and $\Szq + \Szw$ (where $\Sz_i$ is the $z$ component of the spin operator $\vS_i$).
+	Write down all the first excited many-body states of two electrons (with spin).  Choose them to be eigenstates of the total spin operator, and compute their eigenvalues of $(\vSq + \vSw)^2$ and $\Sz = \Szq + \Szw$ (where $\Sz_i$ is the $z$ component of the spin operator $\vS_i$).
 \end{problem}
+
+\begin{solution}
+	For the spatial part $\phi$ of \refeq{psi}, both the symmetric and antisymmetric cases of \refeq{phi2} are nontrivial:
+	\beq
+		\phi(\vxq, \vxw) = \frac{1}{\sqrt{2}} \begin{cases}
+			\ket{0 1} \ket{0 0} \pm \ket{1 0} \ket{0 0} & \begin{cases} \text{symmetrical}, \\ \text{antisymmetrical}, \end{cases} \\
+			\ket{0 0} \ket{0 1} \pm \ket{0 0} \ket{1 0} & \begin{cases} \text{symmetrical}, \\ \text{antisymmetrical}. \end{cases}
+		\end{cases}
+	\eeq
+	so we will make use of both the singlet and triplet spinors.  The possible states with the $\vS$ and $\Sz$ eigenvales are
+	\beq
+		\psi = \begin{cases}
+			\big( \ket{0 1} \ket{0 0} + \ket{1 0} \ket{0 0} \big) \big( \ket{+ -} - \ket{- +} \big) & \vS : 0 \quad \Sz : 0, \\
+			\big( \ket{0 1} \ket{0 0} - \ket{1 0} \ket{0 0} \big) \ket{+ +} & \vS : 1 \quad \Sz : 1, \\
+			\big( \ket{0 1} \ket{0 0} - \ket{1 0} \ket{0 0} \big) \big( \ket{+ -} + \ket{- +} \big) & \vS : 1 \quad \Sz : 1, \\
+			\big( \ket{0 1} \ket{0 0} - \ket{1 0} \ket{0 0} \big) \ket{- -} & \vS : 1 \quad \Sz : -1, \\
+			\big( \ket{0 0} \ket{0 1} + \ket{0 0} \ket{1 0} \big) \big( \ket{+ -} - \ket{- +} \big) & \vS : 0 \quad \Sz : 0, \\
+			\big( \ket{0 0} \ket{0 1} - \ket{0 0} \ket{1 0} \big) \ket{+ +} & \vS : 1 \quad \Sz : 1, \\
+			\big( \ket{0 0} \ket{0 1} - \ket{0 0} \ket{1 0} \big) \big( \ket{+ -} + \ket{- +} \big) & \vS : 1 \quad \Sz : 0, \\
+			\big( \ket{0 0} \ket{0 1} - \ket{0 0} \ket{1 0} \big) \ket{- -} & \vS : 1 \quad \Sz : -1.
+		\end{cases}
+	\eeq
+\end{solution}
 
 
 
