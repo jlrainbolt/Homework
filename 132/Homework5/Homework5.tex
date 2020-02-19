@@ -83,7 +83,7 @@
 \newcommand{\Vab}{V_{ab}}
 \newcommand{\cE}{\mathcal{E}}
 \newcommand{\sicE}{\SI{12.0}{\volt}}
-\newcommand{\sir}{\SI{0.400}{\ohm}}
+\newcommand{\sir}{\SI{0.40}{\ohm}}
 \newcommand{\siP}{\SI{80.0}{\watt}}
 	
 
@@ -146,7 +146,7 @@
 \begin{minipage}[b]{0.75\textwidth}
 \paragraph{Exercise 26.26}
 \begin{problem}
-	In the circuit shown in Fig.~E26.28, find
+	In the circuit shown in \textbf{Fig.~E26.26}, find
 	\begin{enumerate}
 		\item the current in each branch, and
 		\item the potential difference $\Vab$ of point $a$ relative to point $b$.
@@ -154,8 +154,8 @@
 \end{problem}
 \end{minipage}%
 \begin{minipage}{0.35\textwidth}
-	%\includegraphics[width=\textwidth]{E26-26}
-	\center \textbf{Figure \hl{E26.28}}
+	\includegraphics{E26-26}
+	\center \textbf{Figure E26.26}
 \end{minipage}
 
 \begin{solution}
@@ -176,44 +176,77 @@
 	\end{enumerate}
 \end{solution}
 
-%
-%\vfill
-%
-%
-%\clearpage
-%
-%\begin{minipage}[b]{0.65\textwidth}
-%%\paragraph{Problem 22.34}
-%\paragraph{Problem 3}
-%\begin{problem}
-%	A cube has sides of length $L = \SI{0.350}{\meter}$.  One corner is at the origin~(Fig.~2).  The nonuniform electric field is given by ${\vE = (\SI{-5.64}{\newton\per\coulomb\per\meter})x \, \vec{\hat{i}} + (\SI{2.54}{\newton\per\coulomb\per\meter}) z \, \vec{\hat{k}}}$. \medskip
-%	\begin{enumerate}
-%		\item Find the electric flux through each of the six cube faces $S_1,\ S_2,\ S_3,\ S_4,\ S_5$, and $S_6$. \medskip
-%		\item Find the total electric charge inside the cube.
-%	\end{enumerate}
-%\end{problem}
-%\end{minipage}%
-%\begin{minipage}[b]{0.65\textwidth}%\hspace{0.05\textwidth}%
-%\begin{minipage}{0.3\textwidth}
-%\includegraphics[width=\textwidth]{E22-6.jpeg}
-%\center \textbf{Figure 3}
-%\end{minipage}
-%
-%\vspace{-6\baselineskip}
-%\vfill
-%
-%\paragraph{Problem 4}
-%%\paragraph{Problem 24.11}
-%\begin{problem}
-%	A spherical capacitor contains a charge of \SI{3.10}{\nano\coulomb} when connected to a potential difference of \SI{240}{\volt}.  If its plates are separated by vacuum and the inner radius of the outer shell is \SI{4.40}{\centi\meter}, calculate
-%	
-%	\begin{enumerate}
-%		\item the capacitance,
-%		\item the radius of the inner sphere, and
-%		\item the electric field just outside the surface of the inner sphere.
-%	\end{enumerate}
-%\end{problem}
-%
-%\vfill
+\begin{minipage}[b]{0.75\textwidth}
+\paragraph{Exercise 26.29}
+\begin{problem}
+	In the circuit shown in \textbf{Fig.~E26.29} the batteries have negligible internal resistance and the meters are both idealized.  With the switch $S$ open, the voltmeter reads \SI{15.0}{\volt}.
+	\begin{enumerate}
+		\item Find the emf $\cE$ of the battery.
+		\item What will the ammeter read when the switch is closed?
+	\end{enumerate}
+\end{problem}
+\end{minipage}%
+\begin{minipage}{0.35\textwidth}
+	\includegraphics{E26-29}
+	\center \textbf{Figure E26.29}
+\end{minipage}
+
+\begin{minipage}[b]{0.75\textwidth}
+\paragraph{Exercise 26.41}
+\begin{problem}
+	In the circuit shown in \textbf{Fig.~E26.41} both capacitors are initially charged to \SI{45.0}{\volt}.
+	\begin{enumerate}
+		\item How long after closing the switch $S$ will the potential across each capacitor be reduced to \SI{10.0}{\volt}, and
+		\item what will be the current at that time?
+	\end{enumerate}
+\end{problem}
+\end{minipage}%
+\begin{minipage}{0.35\textwidth}
+	\includegraphics{E26-41}
+	\center \textbf{Figure E26.41}
+\end{minipage}
+
+\begin{minipage}[b]{0.75\textwidth}
+\paragraph{Exercise 26.47}
+\begin{problem}
+	In the circuit shown in \textbf{Fig.~E26.47} the capacitors are initially uncharged, the battery has no internal resistance, and the ammeter is idealized.  Find the ammeter reading
+	\begin{enumerate}
+		\item just after the switch $S$ is closed, and
+		\item after $S$ has been closed for a very long time.
+	\end{enumerate}
+\end{problem}
+\end{minipage}%
+\begin{minipage}{0.35\textwidth}
+	\includegraphics{E26-47}
+	\center \textbf{Figure E26.47}
+\end{minipage}
+
+
+\newcommand{\PcE}{P_\cE}
+\newcommand{\dt}{\dd{t}}
+\newcommand{\PR}{P_R}
+
+\paragraph{Problem 26.53}
+\begin{problem}
+	A capacitor with capacitance $C$ is connected in series to a resistor of resistance $R$ and a battery with emf $\cE$.  The circuit is completed at time $t = 0$.
+	\begin{enumerate}
+		\item In terms of $\cE$, $R$, and $C$, how much energy is stored in the capacitor when it is fully charged?
+		\item The power output of the battery is $\PcE = \cE i$, with $i$ given by Eq.~\refeq{26.13}.  The electrical energy supplied in an infinitesimal time $\dt$ is $\PcE \dt$.  Integrate from $t = 0$ to $t \to \infty$ to find the total energy supplied by the battery.
+		\item The rate of consumption of electrical energy in the resistor is $\PR = i^2 R$.  In an infinitesimal time interval $\dt$, the amount of electrical energy consumed by the resistor is $\PR \dt$.  Integrate from $t = 0$ to $t \to \infty$ to find the total energy consumed by the resistor.
+		\item What fraction of the total energy supplied by the battery is stored in the capacitor?  What fraction is consumed in the resistor?
+	\end{enumerate}
+\end{problem}
+
+\begin{minipage}[b]{0.75\textwidth}
+\paragraph{Problem 26.59}
+\begin{problem}
+	Calculate the currents $\Iq$, $\Iw$, and $\Ie$ indicated in the circuit diagram shown in \textbf{Fig.~P26.59}.
+\end{problem}
+\end{minipage}%
+\begin{minipage}{0.35\textwidth}
+	\includegraphics{P26-59}
+	\center \textbf{Figure P26.59}
+\end{minipage}
+
 
 \end{document}
