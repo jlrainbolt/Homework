@@ -137,12 +137,16 @@
 	\end{align*}
 \end{solution}
 
-\vfill
-%\clearpage
+\clearpage
+
+
 
 \newcommand{\Iq}{I_1}
 \newcommand{\Iw}{I_2}
 \newcommand{\Ie}{I_3}
+\newcommand{\Sohm}[1]{\SI{#1}{\ohm}}
+\newcommand{\Svolt}[1]{\SI{#1}{\volt}}
+\newcommand{\Samp}[1]{\SI{#1}{\ampere}}
 
 \begin{minipage}[l]{0.7\textwidth}
 \paragraph{Exercise 26.26}
@@ -160,26 +164,83 @@
 	\center \textbf{Figure E26.26}
 \end{minipage}
 
-\vfill
-\clearpage
 
-%\begin{solution}
-%	\begin{enumerate}
-%		\item We need to use Kirchhoff's rules.  Since this circuit has more than one loop, we need to use both the junction rule,
-%		\beqn \tag{26.5} \label{26.5}
-%			\sum I = 0,
-%		\eeqn
-%		and the loop rule,
-%		\beqn \tag{26.6} \label{26.6}
-%			\sum V = 0.
-%		\eeqn
-%		Let's choose the current to be flowing to the right across the \SI{10.00}{\volt} battery, and start with the loop rule.  For the top loop, we have
-%		\beqn 
-%			0= \SI{10}{\volt} -\Iq (\SI{2}{\ohm}) - \Iq (\SI{1}{\ohm}) - \SI{5}{\volt} - \Iq (\SI{4}{\ohm}) - \Iq (\SI{3}{\ohm})
-%			= \SI{5}{\volt} - \Iq (\SI{10}{\ohm})
-%		\eeqn
-%	\end{enumerate}
-%\end{solution}
+\begin{solution}
+ 	For this problem we need to use Kirchhoff's rules:
+	\begin{align}
+		\sum I &= 0 & &\text{(junction rule)}, \tag{26.5} \label{26.5} \\
+		\sum V &= 0 & &\text{(loop rule)}. \tag{26.6} \label{26.6}
+	\end{align}
+	
+	\begin{enumerate}
+		\item Let $\Iq$ be the current through the top branch, $\Iw$ the current through the middle branch, and $\Ie$ the current through the bottom branch.  Let's choose $\Iq$ to be flowing from $+$ to $-$ across the \Svolt{10} battery, since it has the largest emf.  Then we'll choose $\Iw$ to be flowing from $+$ to $-$ across the \Svolt{5} battery.  Since the \Svolt{10} battery has a larger emf, let's choose $\Ie$ to be flowing to the right across the \Sohm{10} resistor.
+		
+		First of all, applying the junction rule to point $P$ gives us
+		\beq
+			0 = \Iq - \Iw - \Ie
+			\implies
+			\Iq = \Iw + \Ie
+		\eeq
+		
+  We will need to apply the loop rule to three loops: the top loop, the bottom loop, and the outer loop.
+		
+		For the top loop, we have
+		\beq
+			0 = \Svolt{10} - (\Sohm{2}) \Iq - (\Sohm{1}) \Iw - \Svolt{5} - (\Sohm{4}) \Iw - (\Sohm{3}) \Iq
+			= \Svolt{5} - (\Sohm{5}) \Iq - (\Sohm{5}) \Iw,
+		\eeq
+		where we have subtracted the voltage of the \Svolt{5} battery, since we chose the current to flow against it.
+		
+		For the bottom loop, we have
+		\beq
+			0 = \Svolt{5} + (\Sohm{1}) \Iw - (\Sohm{10}) \Ie + (\Sohm{4}) \Iw
+			= \Svolt{5} + (\Sohm{5}) \Iw - (\Sohm{10}) \Ie,
+		\eeq
+		where we note that the current is flowing with the \Svolt{5} for this loop.
+		
+		For the outer loop,
+		\beq
+			0 = \Svolt{10} - (\Sohm{2}) \Iq - (\Sohm{10}) \Ie - (\Sohm{3}) \Iq
+			= \Svolt{10} - (\Sohm{5}) \Iq - (\Sohm{10}) \Ie.
+		\eeq
+		
+		Gathering these together, we have a system of three equations in three unknowns:
+		\begin{align*}
+			\Svolt{5} &= (\Sohm{5}) \Iq + (\Sohm{5}) \Iw, &
+			\Svolt{5} &= (\Sohm{5}) \Iw + (\Sohm{10}) \Ie, &
+			\Svolt{10} &= (\Sohm{5}) \Iq + (\Sohm{10}) \Ie.
+		\end{align*}
+		We can divide them all by \Sohm{5} to simplify things a bit:
+		\begin{align}
+			\Samp{1} &= \Iq + \Iw, \label{A} \\
+			\Samp{1} &= \Iw + 2 \Ie, \label{B} \\
+			\Samp{2} &= \Iq + 2 \Ie. \label{C}
+		\end{align}
+		
+		Subtracting \refeq{A} from \refeq{C}, we get
+		\beq
+			\Samp{1} = 2 \Ie - \Iw.
+		\eeq
+		Adding \refeq{B} to this gives us
+		\beq
+			\Samp{2} = 4 \Ie
+			\implies
+			\Ie = \Samp{2}.
+		\eeq
+		Now we can plug $\Ie$ into \refeq{B} to get
+		\beq
+			\Samp{1} = \Iw + \Samp{4}
+			\implies
+			\Iw = \Samp{-3},
+		\eeq
+		and we can plug it into \refeq{C} to get
+		\beq
+			\Samp{2} = \Iq + \Samp{4}
+			\implies
+			\Iq = \Samp{-2}
+		\eeq
+	\end{enumerate}
+\end{solution}
 
 \begin{minipage}[l]{0.65\textwidth}
 \paragraph{Exercise 26.29}
