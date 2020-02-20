@@ -92,6 +92,7 @@
 \newcommand{\sicE}{\SI{12.0}{\volt}}
 \newcommand{\sir}{\SI{0.40}{\ohm}}
 \newcommand{\siP}{\SI{80.0}{\watt}}
+\newcommand{\qimplies}{\quad\implies\quad}
 	
 
 \paragraph{Problem 25.58}
@@ -100,39 +101,39 @@
 \end{problem}
 
 \begin{solution}
-	The power $P$ delivered to a resistor is
+	We can think of the battery's internal resistance as another resistor of resistance $r$ connected in series.
+	
+	\vspace{1.5in}
+
+	The power $P$ delivered to the resistor of resistance $R$ is
 	\beqn \tag{25.18} \label{25.18}
 		P = I^2 R,
 	\eeqn
-	where $I$ is the current through the resistor and $R$ its resistance.  We can find the current from
-	\beqn \tag{25.17} \label{25.17}
-		\Vab = \cE - I r,
-	\eeqn
-	where $\Vab$ is the voltage difference across the resistor, $\cE$ is the emf of the battery, and $r$ its internal resistance.  We also know that
-	\beqn \tag{25.11} \label{25.11}
-		\Vab = I R.
-	\eeqn
-	Substituting \refeq{25.11} into \refeq{25.17}, we get
+	where $I$ is the current through the resistor.  We have a one-loop circuit, so the current through all elements is the same.  We can easily find $I$ using Kirchhoff's loop rule,
 	\beq
-		IR = \cE - Ir
-		\implies
-		\cE = I (R + r)
-		\implies
+		\sum V = 0. \tag{26.6}
+	\eeq
+	Let's start at the battery and work counterclockwise as indicated in the diagram.  We get
+	\beq
+		0 = \cE - I r - I R
+		\qimplies
+		\cE = I (R + R)
+		\qimplies
 		I = \frac{\cE}{R + r}.
 	\eeq
 	Now we can substitute this result into \refeq{25.18} and solve for $R$:
 	\begin{align*}
 		P = \frac{\cE^2}{(R + r)^2} R
-		&\implies
+		&\qimplies
 		\cE^2 R = P (R^2 + 2 R r + r^2)
-		\implies
+		\qimplies
 		0 = P R^2 + (2P r - \cE^2) R + P r^2 \\
-		&\implies
-		R = \frac{\cE^2 - 2 P r \pm \sqrt{(2P r - \cE^2)^2 - 4 P^2 r^2}}{2 P}
+		&\qimplies
+		R = \frac{\cE^2 - 2 P r \pm \sqrt{(2P r - \cE^2)^2 - 4 P^2 r^2}}{2 P}.
 	\end{align*}
 	Plugging in our numerical values for $r$, $P$, and $\cE$, and recalling that $\SI{1}{\watt} = \SI{1}{\square\volt\per\ohm}$, we get
 	\begin{align*}
-		R &= \frac{(\sicE)^2 - 2 (\siP) (\sir) \pm \sqrt{[2 (\siP) (\sir) - (\sicE)^2]^2 - 4 (\siP)^2 (\sir)^2}}{2 (\siP)} \\
+		R &= \frac{(\sicE)^2 - 2 (\siP) (\sir) \pm \sqrt{[2 (\siP) (\sir) - (\sicE)^2]^2 - 4 (\siP)^2 (\sir)^2}}{2 (\siP)} \\[1.5ex]
 		&= \frac{\SI{80.0}{\square\volt} - \pm \sqrt{(\SI{80}{\square\volt})^2 - (\SI{64}{\square\volt})}}{\SI{160}{\square\volt\per\ohm}}
 		= \frac{\SI{80.0}{\square\volt} \pm \sqrt{\SI{2306}{\volt^4}}}{\SI{160}{\square\volt\per\ohm}}
 		= \frac{80.0 \pm 48.0}{160} \,\si{\ohm}
@@ -181,27 +182,78 @@
 	\end{align}
 	
 	\begin{enumerate}
-		\item Let $\Iq$ be the current through the top branch, $\Iw$ the current through the middle branch, and $\Ie$ the current through the bottom branch.  Let's choose all three currents to be flowing to the left.  Then applying the junction rule to the junction on the left gives us
-		\beq
-			0 = \Iq + \Iw + \Ie.
-		\eeq
-		Now we will apply the loop rule to the top and the bottom loops, and move through each counterclockwise, starting at the battery.  For the top loop,
+		\item Let $\Iq$ be the current through the top branch, $\Iw$ the current through the middle branch, and $\Ie$ the current through the bottom branch.  Let's choose all three currents to be flowing to the left.
+		
+		\vspace{3in}
+		
+		
+		Then applying the junction rule to the junction on the left~(shown in red) gives us
+		\beqn \label{junction}
+			0 = \Iq + \Iw + \Ie,
+		\eeqn
+		which would not make sense if we had chosen the directions of all three currents correctly.  But the currents whose direction we have chosen incorrectly will just end up being negative in our solution.
+		
+		
+		Now let's apply the loop rule to the top and the bottom loops, and move through each counterclockwise, starting at the battery.  For the top loop,
 		\beq
 			0 = \Svolt{10} - (\Sohm{2}) \Iq + (\Sohm{1}) \Iw - \Svolt{5} + (\Sohm{4}) \Iw - (\Sohm{3}) \Iq
-			\implies
-			\Svolt{5} = (\Sohm{5}) \Iq - (\Sohm{5}) \Iw
-			\implies
-			\Samp{1} = \Iq - \Iw,
+			\qimplies
+			\Svolt{5} = (\Sohm{5}) \Iq - (\Sohm{5}) \Iw,
 		\eeq
-		where in going to the final equation we have simply divided by $\Sohm{5}$, since $\SI{1}{\volt} = \SI{1}{\ohm\ampere}$.  For the bottom loop,
+		which simplifies to
+		\beqn \label{top}
+			\Samp{1} = \Iq - \Iw,
+		\eeqn
+		where we have just divided by $\Sohm{5}$, since $\SI{1}{\volt} = \SI{1}{\ohm\ampere}$.  For the bottom loop,
 		\beq
 			0 = \Svolt{5} - (\Sohm{1}) \Iw + (\Sohm{10}) \Ie - (\Sohm{4}) \Iw
-			\implies
-			\Svolt{5} = (\Sohm{5}) \Iw - (\Sohm{10}) \Ie
-			\implies
-			\Samp{1} = \Iw - 2 \Ie.
+			\qimplies
+			\Svolt{5} = (\Sohm{5}) \Iw - (\Sohm{10}) \Ie,
 		\eeq
-		Now we have three equations in three unknowns, which you can solve using your favorite method.  I prefer Gaussian elimination.  The matrix equation is
+		which simplifies to
+		\beqn \label{bottom}
+			\Samp{1} = \Iw - 2 \Ie.
+		\eeqn
+		
+		Now we have the three equations~\refeq{junction}, \refeq{top}, and \refeq{bottom} in three unknowns, which you can solve using your favorite method.  If we want to solve them algebraically, we can begin by solving \refeq{junction} for $\Iq$, which gives us
+		\beq
+			\Iq = - \Iw - \Ie.
+		\eeq
+		Now we can feed this into \refeq{top} and solve for $\Iw$:
+		\beq
+			\Samp{1} = -\Iw - \Ie - \Iw = -2 \Iw - \Ie
+			\qimplies
+			\Iw = -\frac{\Ie + \Samp{1}}{2}
+			= -\frac{\Ie}{2} - \frac{1}{2}\,\si{\ampere}.
+		\eeq
+		Substituting this expression into \refeq{bottom}, we get
+		\beq
+			\Samp{1} = -\frac{\Ie}{2} - \frac{1}{2}\,\si{\ampere} - 2 \Ie
+			\qimplies
+			\frac{5 \Ie}{2} = -\frac{3}{2}\,\si{\ampere}
+			\qimplies
+			\Ie = \frac{3}{5}\,\si{\ampere}.
+		\eeq
+		Now we can plug this result for $\Ie$ into \refeq{bottom} to find $\Iw$:
+		\beq
+			\Samp{1} = \Iw + 2 \frac{3}{5}\,\si{\ampere} = \Iw + \frac{6}{5}\,\si{\ampere}
+			\implies
+			\Iw = -\frac{1}{5}\,\si{\ampere}.
+		\eeq
+		Finally, we can plug this result for $\Iw$ into \refeq{top} to get $\Iq$:
+		\beq
+			\Samp{1} = \Iq + \frac{1}{5}\,\si{\ampere}
+			\qimplies
+			\Iq = \frac{4}{5}\,\si{\ampere}.
+		\eeq
+		As it turns out, both $\Iw$ and $\Ie$ are in the direction opposite of what we guessed.  Gathering all of our results, we have
+		{\color{blue} \begin{align*}
+			\text{Top branch: }& \Samp{0.800} \text{ (to the left)}, \\
+			\text{Middle branch: }& \Samp{0.200} \text{ (to the right)}, \\
+			\text{Bottom branch: }& \Samp{0.600} \text{ (to the right)}.
+		\end{align*}}
+
+		For a tricky system of three or more equations, it might be easier to use Gaussian elimination instead.  The matrix equation is
 		\beq
 			\mqty[ 1 & 1 & 1 \\
 				1 & -1 & 0 \\
@@ -239,14 +291,11 @@
 				1 & 0 & 0 & 4/5 \\
 				0 & 1 & 0 & -1/5 \\
 				0 & 0 & 1 & -3/5
-			\end{bmatrix}.
+			\end{bmatrix},
 		\eeq
-		A minus sign tells us the current is in the direction opposite of what we guessed.  So we have {\color{blue}
-		\begin{align*}
-			\text{Top branch: }& \Samp{0.800} \text{ (to the left)}, \\
-			\text{Middle branch: }& \Samp{0.200} \text{ (to the right)}, \\
-			\text{Bottom branch: }& \Samp{0.600} \text{ (to the right)}.
-		\end{align*}}
+		which is the same as what we got through algebraic substitution.
+		
+		\vfill
 		
 		\item We can find the potential difference between points $a$ and $b$ by moving counterclockwise through the top loop, similar to applying the loop rule in (a).  But now we start at $b$ and end on $a$:
 		\beq
@@ -289,7 +338,7 @@
 		Let's begin with what we are given, which is the voltmeter reading.  Since the voltmeter is connected in parallel to the \Sohm{50} resistor, we know that the potential across this resistor is \Svolt{15}.  So we can use Ohm's law to find the current through this resistor:
 		\beq
 			V = I R
-			\implies
+			\qimplies
 			I_{\Sohm{50}} = \frac{\Svolt{15}}{\Sohm{50}}
 			= \frac{3}{10}\,\si{\ampere}
 			= \Samp{0.300}.
@@ -315,7 +364,7 @@
 		Applying Kirchhoff's junction rule to the top junction in the diagram just above, we can find the current through the branch of the circuit with the unknown emf $\cE$:
 		\beq
 			0 = I_\cE - I_{\Sohm{75}} - I_{\Sohm{80}}
-			\implies
+			\qimplies
 			I_\cE = \Samp{0.320} + \Samp{0.300}
 			= \Samp{0.620}.
 		\eeq
@@ -324,7 +373,7 @@
 			\frac{1}{{\Req}_2} = \frac{1}{\Sohm{75}} + \frac{1}{{\Req}_1}
 			= \frac{1}{\Sohm{75}} + \frac{1}{\Sohm{80}}
 			= \frac{31}{1200}\,\si{\per\ohm}
-			\implies
+			\qimplies
 			{\Req}_2 = \frac{1200}{31}\,\si{\ohm}
 			= \Sohm{38.7}.
 		\eeq
@@ -346,6 +395,8 @@
 			= (\Samp{0.620}) (\Sohm{58.7})
 			= {\color{blue} \Svolt{36.4}}.
 		\eeq
+		
+		\vfill
 		
 		\item When the switch is closed, the \Sohm{50} resistor is connected in parallel to the \Svolt{25} battery, so the potential across the \Sohm{50} resistor is equal to \Svolt{25}.
 
@@ -414,15 +465,17 @@
 		We can plug these values and our intended value of $v = \Svolt{10.0}$ into \refeq{Vt} to solve for the time $t$:
 		\begin{align*}
 			\Svolt{10.0} &= (\Svolt{45.0}) \exp(-\frac{t}{(\SI{80.0}{\ohm}) (\SI{35.0}{\micro\farad})})
-			\implies
+			\qimplies
 			\frac{2}{9} = \exp(-\frac{t}{\SI{2800}{\micro\second}})
-			\implies
+			\qimplies
 			-1.50 = -\frac{t}{\SI{2800}{\micro\second}} \\[1.5ex]
-			&\implies
+			&\qimplies
 			t = \SI{4210}{\micro\second}
 			= {\color{blue} \SI{4.21}{\milli\second}},
 		\end{align*}
 		where we have used the fact that $\SI{1}{\second} = \SI{1}{\ohm\farad}$.
+		
+		\vfill
 		
 		\item The current $i$ through a capacitor at a given time $t$ after the circuit is closed is given by
 		\beq \tag{26.13}
@@ -441,6 +494,7 @@
 			= {\color{blue} \SI{0.125}{\ampere}}.
 		\eeq
 	\end{enumerate}
+	\vspace{-\baselineskip}
 \end{solution}
 
 
@@ -472,7 +526,7 @@
 		The \Sohm{50} and \Sohm{25} resistors are in parallel, and have the equivalent resistance $\Req$ given by
 		\beq
 			\frac{1}{\Req} = \frac{1}{\Sohm{50}} + \frac{1}{\Sohm{25}} = \frac{3}{50}\,\si{\per\ohm}
-			\implies
+			\qimplies
 			\Req = \frac{50}{3}\,\si{\ohm} = \Sohm{16.7}.
 		\eeq
 		
@@ -489,7 +543,7 @@
 		We can use Ohm's law to find the current through the equivalent resistance, which is the same as the ammeter reading:
 		\beq
 			\cE = I \Rtot
-			\implies
+			\qimplies
 			I = \frac{\cE}{\Rtot}
 			= \frac{\Svolt{100.0}}{\Sohm{106.7}}
 			= {\color{blue} \Samp{0.937}}.
@@ -546,6 +600,8 @@
 		{\color{blue} \beq
 			\UC = \frac{1}{2} C \cE^2.
 		\eeq }
+		
+		\vfill
 	
 		\item In terms of the given quantities $\cE$, $R$, and $C$, the instantaneous current $i$ is given by
 		\beq \label{26.13} \tag{26.13}
@@ -561,6 +617,8 @@
 			= {\color{blue} C \cE^2}.
 		\eeq
 		
+		\vfill
+		
 		\item We just need to plug \refeq{26.13} in again and integrate to find the total energy consumed by the resistor:
 		\begin{align*}
 			\UR &= \intoi \PR \dt
@@ -571,6 +629,8 @@
 			&= \frac{\cE^2}{R} \frac{RC}{2}
 			= {\color{blue} \frac{1}{2} C \cE^2}.
 		\end{align*}
+		
+		\vfill
 		
 		\item From (a) and (b), $\UC / \UcE = 1/2$, so {\color{blue} half} of the total energy supplied by the battery is stored in the capacitor.  From (b) and (c), $\UR / \UcE = 1/2$, so the other {\color{blue} half} of the total energy is consumed by the resistor.
 	\end{enumerate}
@@ -599,39 +659,53 @@
 		\includegraphics{A26-59}
 	\end{center}
 	
-		The circuit has three loops, so we will need to use the loop rule three times.  But first we need to use the junction rule to find the current through the \Sohm{5} and \Sohm{8} resistors.  At the junction on the left, we have
+		The circuit has three loops, so we will need to use the loop rule three times.  But first we need to use the junction rule to find the current through the \Sohm{5} and \Sohm{8} resistors.  At the junction on the left (shown in red), we have
 	\beq
-		0 = \Iw - \Ie + I_{\Sohm{5}}
-		\implies
+		0 = \Iw - \Ie + I_{\Sohm{5}},
+	\eeq
+	which tells us the current through the \Sohm{8} resistor is
+	\beqn \tag{A}
 		I_{\Sohm{5}} = \Ie - \Iw,
-	\eeq
-	meaning it is pointing away from the junction (as shown in the diagram) if $\Iw > \Ie$.  At the junction on the right, we have
+	\eeqn
+	meaning it is pointing away from the junction (as shown in the diagram) if $\Iw > \Ie$.
+	
+	At the junction on the right, we have
 	\beq
-		0 = \Iq + \Ie + I_{\Sohm{8}}
-		\implies
-		I_{\Sohm{8}} = -\Iq - \Ie,
+		0 = \Iq + \Ie + I_{\Sohm{8}},
 	\eeq
+	which tells us the current through the \Sohm{8} resistor is
+	\beqn \tag{B}
+		I_{\Sohm{8}} = -\Iq - \Ie,
+	\eeqn
 	meaning it is pointing away from the junction as shown.
 	
 	Now we can apply the loop rule, moving counterclockwise from each battery.  For loop (1), we have
 	\beq
-		0 = -\Svolt{12} + (\Sohm{1}) \Iw + (\Sohm{5}) (\Iw - \Ie)
-		\implies
-		\Samp{12} = 6 \Iw - 5 \Ie.
+		0 = -\Svolt{12} + (\Sohm{1}) \Iw + (\Sohm{5}) (\Iw - \Ie),
 	\eeq
+	which simplifies to
+	\beqn \tag{1} \label{1}
+		\Samp{12} = 6 \Iw - 5 \Ie.
+	\eeqn
 	For loop (2),
 	\beq
-		0 = \Svolt{9} - (\Sohm{8}) (\Iq - \Ie) + (\Sohm{1}) \Iq
-		\implies
+		0 = \Svolt{9} - (\Sohm{8}) (\Iq - \Ie) + (\Sohm{1}) \Iq,
+	\eeq
+	which simplifies to
+	\beqn \tag{2} \label{2}
 		\Samp{9} = 9 \Iq + 8 \Ie.
-	\eeq
-	For loop (3), let's start at the \Svolt{12} battery:
+	\eeqn
+	For loop (3), let's start at the \Svolt{12} battery.  We find
 	\beq
-		0 = \Svolt{12} - (\Sohm{10}) \Ie - \Svolt{9} + (\Sohm{1}) \Iq - (\Sohm{1}) \Iw
-		\implies
-		\Samp{3} = -\Iq + \Iw + 10 \Ie.
+		0 = \Svolt{12} - (\Sohm{10}) \Ie - \Svolt{9} + (\Sohm{1}) \Iq - (\Sohm{1}) \Iw,
 	\eeq
-	The matrix equation is
+	which simplifies to
+	\beqn \tag{3} \label{3}
+		\Samp{3} = -\Iq + \Iw + 10 \Ie.
+	\eeqn
+	
+	The loop rule has given us the system of three equations \refeq{1}, \refeq{2}, and \refeq{3},
+	which you can solve using whatever method you like.  Since this system is more complicated than the system in \textbf{Exercise 26.26}, I prefer to use Gaussian elimination.  The matrix equation is
 	\beq
 		\mqty[ 0 & 6 & -5 \\
 			9 & 0 & 8 \\
@@ -639,7 +713,7 @@
 			\mqty[ \Iq \\ \Iw \\ \Ie ]
 			= \mqty[ 12 \\ 9 \\ 3 ],
 	\eeq
-	which can be solved using Gaussian elimination as follows:
+	which can be solved as follows:
 	\beq
 		\begin{bmatrix}[c c c | c]
 			0 & 6 & -5 & 12 \\
