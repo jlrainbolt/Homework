@@ -49,6 +49,13 @@
 \newcommand{\blg}{\begin{align*}}
 \newcommand{\elg}{\end{align*}}
 
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
 
 \newenvironment{statement}
 {
@@ -129,12 +136,13 @@
 		&= \frac{\SI{80.0}{\square\volt} - \pm \sqrt{(\SI{80}{\square\volt})^2 - (\SI{64}{\square\volt})}}{\SI{160}{\square\volt\per\ohm}}
 		= \frac{\SI{80.0}{\square\volt} \pm \sqrt{\SI{2306}{\volt^4}}}{\SI{160}{\square\volt\per\ohm}}
 		= \frac{80.0 \pm 48.0}{160} \,\si{\ohm}
-		= (0.50 \pm 0.30) \,\si{\ohm} \\
-		&= \begin{cases}
-			{\color{blue} \SI{0.80}{\ohm}}, \\
-			{\color{blue} \SI{0.20}{\ohm}}.
-		\end{cases}
+		= (0.50 \pm 0.30) \,\si{\ohm}.
 	\end{align*}
+	So the two possible resistances are
+	{\color{blue} \begin{align*}
+		R &= \SI{0.80}{\ohm}, &
+		R &= \SI{0.20}{\ohm}.
+	\end{align*}}
 \end{solution}
 
 \clearpage
@@ -160,7 +168,7 @@
 \end{minipage}%
 \hspace{0.05\textwidth}%
 \begin{minipage}{0.25\textwidth}
-	\center \includegraphics{E26-26}
+	\center \includegraphics[scale=1.25]{E26-26}
 	\center \textbf{Figure E26.26}
 \end{minipage}
 
@@ -173,74 +181,91 @@
 	\end{align}
 	
 	\begin{enumerate}
-		\item Let $\Iq$ be the current through the top branch, $\Iw$ the current through the middle branch, and $\Ie$ the current through the bottom branch.  Let's choose $\Iq$ to be flowing from $+$ to $-$ across the \Svolt{10} battery, since it has the largest emf.  Then we'll choose $\Iw$ to be flowing from $+$ to $-$ across the \Svolt{5} battery.  Since the \Svolt{10} battery has a larger emf, let's choose $\Ie$ to be flowing to the right across the \Sohm{10} resistor.
-		
-		First of all, applying the junction rule to point $P$ gives us
+		\item Let $\Iq$ be the current through the top branch, $\Iw$ the current through the middle branch, and $\Ie$ the current through the bottom branch.  Let's choose all three currents to be flowing to the left.  Then applying the junction rule to the junction on the left gives us
 		\beq
-			0 = \Iq - \Iw - \Ie
+			0 = \Iq + \Iw + \Ie.
+		\eeq
+		Now we will apply the loop rule to the top and the bottom loops, and move through each counterclockwise, starting at the battery.  For the top loop,
+		\beq
+			0 = \Svolt{10} - (\Sohm{2}) \Iq + (\Sohm{1}) \Iw - \Svolt{5} + (\Sohm{4}) \Iw - (\Sohm{3}) \Iq
 			\implies
-			\Iq = \Iw + \Ie
+			\Svolt{5} = (\Sohm{5}) \Iq - (\Sohm{5}) \Iw
+			\implies
+			\Samp{1} = \Iq - \Iw,
 		\eeq
-		
-  We will need to apply the loop rule to three loops: the top loop, the bottom loop, and the outer loop.
-		
-		For the top loop, we have
+		where in going to the final equation we have simply divided by $\Sohm{5}$, since $\SI{1}{\volt} = \SI{1}{\ohm\ampere}$.  For the bottom loop,
 		\beq
-			0 = \Svolt{10} - (\Sohm{2}) \Iq - (\Sohm{1}) \Iw - \Svolt{5} - (\Sohm{4}) \Iw - (\Sohm{3}) \Iq
-			= \Svolt{5} - (\Sohm{5}) \Iq - (\Sohm{5}) \Iw,
+			0 = \Svolt{5} - (\Sohm{1}) \Iw + (\Sohm{10}) \Ie - (\Sohm{4}) \Iw
+			\implies
+			\Svolt{5} = (\Sohm{5}) \Iw - (\Sohm{10}) \Ie
+			\implies
+			\Samp{1} = \Iw - 2 \Ie.
 		\eeq
-		where we have subtracted the voltage of the \Svolt{5} battery, since we chose the current to flow against it.
-		
-		For the bottom loop, we have
+		Now we have three equations in three unknowns, which you can solve using your favorite method.  I like to do Gaussian elimination with an augmented matrix.  The matrix equation is
 		\beq
-			0 = \Svolt{5} + (\Sohm{1}) \Iw - (\Sohm{10}) \Ie + (\Sohm{4}) \Iw
-			= \Svolt{5} + (\Sohm{5}) \Iw - (\Sohm{10}) \Ie,
+			\mqty[ 1 & 1 & 1 \\
+				1 & -1 & 0 \\
+				0 & 1 & -2 ]
+				\mqty[ \Iq \\ \Iw \\ \Ie ]
+				= \mqty[ 0 \\ 1 \\ 1 ],
 		\eeq
-		where we note that the current is flowing with the \Svolt{5} for this loop.
-		
-		For the outer loop,
-		\beq
-			0 = \Svolt{10} - (\Sohm{2}) \Iq - (\Sohm{10}) \Ie - (\Sohm{3}) \Iq
-			= \Svolt{10} - (\Sohm{5}) \Iq - (\Sohm{10}) \Ie.
-		\eeq
-		
-		Gathering these together, we have a system of three equations in three unknowns:
+		which can be solved as follows:
 		\begin{align*}
-			\Svolt{5} &= (\Sohm{5}) \Iq + (\Sohm{5}) \Iw, &
-			\Svolt{5} &= (\Sohm{5}) \Iw + (\Sohm{10}) \Ie, &
-			\Svolt{10} &= (\Sohm{5}) \Iq + (\Sohm{10}) \Ie.
+			\begin{bmatrix}[c c c | c]
+				1 & 1 & 1 & 0 \\
+				1 & -1 & 0 & 1 \\
+				0 & 1 & -2 & 1
+			\end{bmatrix}
+			&\sim
+			\begin{bmatrix}[c c c | c]
+				1 & -1 & 0 & 1 \\
+				0 & 1 & -2 & 1 \\
+				1 & 1 & 1 & 0
+			\end{bmatrix}
+			\sim
+			\begin{bmatrix}[c c c | c]
+				1 & 0 & -2 & 2 \\
+				0 & 1 & -2 & 1 \\
+				0 & 2 & 1 & -1
+			\end{bmatrix}
+			\sim
+			\begin{bmatrix}[c c c | c]
+				1 & 0 & -2 & 2 \\
+				0 & 1 & -2 & 1 \\
+				0 & 0 & 5 & -3
+			\end{bmatrix}
+			\sim
+			\begin{bmatrix}[c c c | c]
+				1 & 0 & -2 & 2 \\
+				0 & 1 & -2 & 1 \\
+				0 & 0 & 1 & -3/5
+			\end{bmatrix} \\
+			&\sim
+			\begin{bmatrix}[c c c | c]
+				1 & 0 & 0 & 4/5 \\
+				0 & 1 & 0 & -1/5 \\
+				0 & 0 & 1 & -3/5
+			\end{bmatrix}.
 		\end{align*}
-		We can divide them all by \Sohm{5} to simplify things a bit:
-		\begin{align}
-			\Samp{1} &= \Iq + \Iw, \label{A} \\
-			\Samp{1} &= \Iw + 2 \Ie, \label{B} \\
-			\Samp{2} &= \Iq + 2 \Ie. \label{C}
-		\end{align}
+		So we have {\color{blue}
+		\begin{align*}
+			\Iq &= \Samp{0.800} \text{ (to the left)}, &
+			\Iw &= -\Samp{0.200} \text{ (to the right)}, &
+			\Ie &= -\Samp{0.600} \text{ (to the right)}.
+		\end{align*}}
 		
-		Subtracting \refeq{A} from \refeq{C}, we get
+		\item We can find the potential difference between points $a$ and $b$ by moving counterclockwise through the top loop, similar to applying the loop rule in (a).  But now we start at $b$ and end on $a$:
 		\beq
-			\Samp{1} = 2 \Ie - \Iw.
-		\eeq
-		Adding \refeq{B} to this gives us
-		\beq
-			\Samp{2} = 4 \Ie
-			\implies
-			\Ie = \Samp{2}.
-		\eeq
-		Now we can plug $\Ie$ into \refeq{B} to get
-		\beq
-			\Samp{1} = \Iw + \Samp{4}
-			\implies
-			\Iw = \Samp{-3},
-		\eeq
-		and we can plug it into \refeq{C} to get
-		\beq
-			\Samp{2} = \Iq + \Samp{4}
-			\implies
-			\Iq = \Samp{-2}
+			\Vab = (\Sohm{4}) \Iw - (\Sohm{3}) \Iq
+			= (\Sohm{4.00}) (-\Samp{0.200}) - (\Sohm{3.00}) (\Samp{0.800})
+			= {\color{blue} \Svolt{32.0}}.
 		\eeq
 	\end{enumerate}
 \end{solution}
+
+
+
+\clearpage
 
 \begin{minipage}[l]{0.65\textwidth}
 \paragraph{Exercise 26.29}
@@ -258,7 +283,14 @@
 	\center \textbf{Figure E26.29}
 \end{minipage}
 
-\vfill
+
+
+\clearpage
+
+\newcommand{\Qo}{Q_0}
+\newcommand{\Vo}{V_0}
+\newcommand{\Ceq}{C_\text{eq}}
+\newcommand{\Req}{R_\text{eq}}
 
 \begin{minipage}[l]{0.75\textwidth}
 \paragraph{Exercise 26.41}
@@ -276,7 +308,69 @@
 	\center \textbf{Figure E26.41}
 \end{minipage}
 
-\vfill
+\begin{solution}
+	This problem is about discharging capacitors.  The charge $q$ on a capacitor at a given time $t$ after an RC circuit is closed is given by
+	\beqn \label{26.16} \tag{26.16}
+		q = \Qo e^{-t / RC},
+	\eeqn
+	where $\Qo$ is the initial charge on the capacitor, $C$ is its capacitance, and $R$ is the resistance of the resistor connected in series.
+	
+	\begin{enumerate}
+		\item The definition of capacitance $C$ is
+		\beqn \tag{24.1}
+			C = \frac{Q}{\Vab},
+		\eeqn
+		where $Q$ is the charge on the capacitor and $\Vab$ is the potential across it.  $C$ is a property of a given capacitor and does not change with time.  So we can use $Q = C V$ and the fact that $C$ is constant to write \refeq{26.16} in terms of $C$ and $V$:
+		\beqn \tag{$*$} \label{Vt}
+			v = \Vo e^{-t / RC},
+		\eeqn
+		where $v$ is the potential across the capacitor at time $t$ after the circuit is closed.
+		
+		The capacitors in this problem are connected in parallel, so their equivalent capacitance is simply the sum of their individual capacitances:
+		\beq
+			\Ceq = \SI{15.0}{\micro\farad} + \SI{20.0}{\micro\farad}
+			= \SI{35.0}{\micro\farad}.
+		\eeq
+		The resistors are connected in series, so their equivalent resistance is also just the sum:
+		\beq
+			\Req = \SI{30.0}{\ohm} + \SI{50.0}{\ohm}
+			= \SI{80.0}{\ohm}.
+		\eeq
+		We can plug these values and our intended value of $v = \Svolt{10.0}$ into \refeq{Vt} to solve for the time $t$:
+		\begin{align*}
+			\Svolt{10.0} &= (\Svolt{45.0}) \exp(-\frac{t}{(\SI{80.0}{\ohm}) (\SI{35.0}{\micro\farad})})
+			\implies
+			\frac{2}{9} = \exp(-\frac{t}{\SI{2800}{\micro\second}})
+			\implies
+			-1.50 = -\frac{t}{\SI{2800}{\micro\second}} \\
+			&\implies
+			t = \SI{4210}{\micro\second}
+			= {\color{blue} \SI{4.21}{\milli\second}},
+		\end{align*}
+		where we have used the fact that $\SI{1}{\second} = \SI{1}{\ohm\farad}$.
+		
+		\item The current $i$ through a capacitor at a given time $t$ after the circuit is closed is given by
+		\beq \tag{26.13}
+			i = \frac{\Qo}{RC} e^{-t / RC}.
+		\eeq
+		From (a), we know that $\Qo / C = \Vo$, so we can write this as
+		\beq
+			i = \frac{\Vo}{R} e^{-t / RC}.
+		\eeq
+		Plugging in our $\Vo$, $\Req$, $\Ceq$, and $t$ that we found in (a), we have
+		\beq
+			i = \frac{\Svolt{45.0}}{\SI{80.0}{\ohm}} \exp(-\frac{\SI{4210}{\micro\second}}{\SI{2800}{\micro\second}})
+			= \frac{9}{16} e^{-1.50}\,\si{\ampere}
+			= \frac{9}{16} \frac{2}{9}\,\si{\ampere}
+			= \frac{1}{8}\,\si{\ampere}
+			= {\color{blue} \SI{0.125}{\ampere}}.
+		\eeq
+	\end{enumerate}
+\end{solution}
+
+
+
+\clearpage
 
 \begin{minipage}[l]{0.55\textwidth}
 \paragraph{Exercise 26.47}
@@ -290,29 +384,76 @@
 \end{minipage}%
 \hspace{0.05\textwidth}%
 \begin{minipage}{0.4\textwidth}
-	\center \includegraphics{E26-47}
+	\center \includegraphics[scale=.31]{E26-47}
 	\center \textbf{Figure E26.47}
 \end{minipage}
 
-\vfill
 
+
+\clearpage
 
 \newcommand{\PcE}{P_\cE}
 \newcommand{\dt}{\dd{t}}
 \newcommand{\PR}{P_R}
+\newcommand{\intoi}{\int_0^\infty}
+\newcommand{\UC}{U_C}
+\newcommand{\UcE}{U_\cE}
+\newcommand{\UR}{U_R}
 
 \paragraph{Problem 26.53}
 \begin{problem}
 	A capacitor with capacitance $C$ is connected in series to a resistor of resistance $R$ and a battery with emf $\cE$.  The circuit is completed at time $t = 0$.
 	\begin{enumerate}
 		\item In terms of $\cE$, $R$, and $C$, how much energy is stored in the capacitor when it is fully charged?
-		\item The power output of the battery is $\PcE = \cE i$, with $i$ given by Eq.~(26.13).  The electrical energy supplied in an infinitesimal time $\dt$ is $\PcE \dt$.  Integrate from $t = 0$ to $t \to \infty$ to find the total energy supplied by the battery.
+		\item The power output of the battery is $\PcE = \cE i$, with $i$ given by Eq.~\refeq{26.13}.  The electrical energy supplied in an infinitesimal time $\dt$ is $\PcE \dt$.  Integrate from $t = 0$ to $t \to \infty$ to find the total energy supplied by the battery.
 		\item The rate of consumption of electrical energy in the resistor is $\PR = i^2 R$.  In an infinitesimal time interval $\dt$, the amount of electrical energy consumed by the resistor is $\PR \dt$.  Integrate from $t = 0$ to $t \to \infty$ to find the total energy consumed by the resistor.
 		\item What fraction of the total energy supplied by the battery is stored in the capacitor?  What fraction is consumed in the resistor?
 	\end{enumerate}
 \end{problem}
 
-\vfill
+\begin{solution}
+	\begin{enumerate}
+		\item In general, the potential energy $U$ stored in a capacitor is given by
+		\beqn \tag{24.9}
+			U = \frac{1}{2} C V^2,
+		\eeqn
+		where $C$ is the capacitor's capacitance and $V$ the potential difference between its plates.  When the capacitor its fully charged, the potential difference between its plates is the emf $\cE$.  So we have
+		{\color{blue} \beq
+			\UC = \frac{1}{2} C \cE^2.
+		\eeq }
+	
+		\item In terms of the given quantities $\cE$, $R$, and $C$, the instantaneous current $i$ is given by
+		\beq \label{26.13} \tag{26.13}
+			i = \frac{\cE}{R} e^{-t / RC}.
+		\eeq
+		Plugging this in and integrating, the total energy supplied by the battery is
+		\beq
+			\UcE = \intoi \PcE \dt
+			= \intoi \cE i \dt
+			= \intoi \cE \frac{\cE}{R} e^{-t / RC} \dt
+			= \frac{\cE^2}{R} \bigg[ - RC e^{-t / RC} \bigg]_0^\infty
+			= \frac{\cE^2}{R} R C
+			= {\color{blue} C \cE^2}.
+		\eeq
+		
+		\item We just need to plug \refeq{26.13} in again and integrate to find the total energy consumed by the resistor:
+		\begin{align*}
+			\UR &= \intoi \PR \dt
+			= \intoi i^2 R \dt
+			= \intoi \left( \frac{\cE}{R} e^{-t / RC} \right)^2 R \dt
+			= \frac{\cE^2}{R} \intoi e^{-2t / RC} \dt
+			= \frac{\cE^2}{R} \left[ -\frac{RC e^{-2t / RC}}{2} \right]_0^\infty \\
+			&= \frac{\cE^2}{R} \frac{RC}{2}
+			= {\color{blue} \frac{1}{2} C \cE^2}.
+		\end{align*}
+		
+		\item From (a) and (b), $\UC / \UcE = 1/2$, so {\color{blue} half} of the total energy supplied by the battery is stored in the capacitor.  From (b) and (c), $\UR / \UcE = 1/2$, so the other {\color{blue} half} of the total energy is consumed by the resistor.
+	\end{enumerate}
+\end{solution}
+
+
+
+\clearpage
 
 \begin{minipage}[l]{0.7\textwidth}
 \paragraph{Problem 26.59}
@@ -326,7 +467,93 @@
 	\center \textbf{Figure P26.59}
 \end{minipage}
 
-\vfill
+\begin{solution}
+	This is another problem for Kirchhoff's rules:
+	
+	\begin{center}
+		\includegraphics{A26-59}
+	\end{center}
+	
+		The circuit has three loops, so we will need to use the loop rule three times as indicated in the diagram above.  But first we need to use the junction rule to find the current through the \Sohm{5} and \Sohm{8} resistors.  At the junction on the left, we have
+	\beq
+		0 = \Iw - \Ie + I_{\Sohm{5}}
+		\implies
+		I_{\Sohm{5}} = \Ie - \Iw,
+	\eeq
+	meaning it is pointing away from the junction if $\Iw > \Ie$.  At the junction on the right, we have
+	\beq
+		0 = \Iq + \Ie + I_{\Sohm{8}}
+		\implies
+		I_{\Sohm{8}} = -\Iq - \Ie,
+	\eeq
+	meaning it is pointing away from the junction.
+	
+	Now we can apply the loop rule, moving counterclockwise from each battery.  For loop (1), we have
+	\beq
+		0 = -\Svolt{12} + (\Sohm{1}) \Iw + (\Sohm{5}) (\Iw - \Ie)
+		\implies
+		\Samp{12} = 6 \Iw - 5 \Ie.
+	\eeq
+	For loop (2),
+	\beq
+		0 = \Svolt{9} - (\Sohm{8}) (\Iq - \Ie) + (\Sohm{1}) \Iq
+		\implies
+		\Samp{9} = 9 \Iq + 8 \Ie.
+	\eeq
+	For loop (3), let's start at the \Svolt{12} battery:
+	\beq
+		0 = \Svolt{12} - (\Sohm{10}) \Ie - \Svolt{9} + (\Sohm{1}) \Iq - (\Sohm{1}) \Iw
+		\implies
+		\Samp{3} = -\Iq + \Iw + 10 \Ie.
+	\eeq
+	The matrix equation is
+	\beq
+		\mqty[ 0 & 6 & -5 \\
+			9 & 0 & 8 \\
+			-1 & 1 & 10 ]
+			\mqty[ \Iq \\ \Iw \\ \Ie ]
+			= \mqty[ 12 \\ 9 \\ 3 ],
+	\eeq
+	which can be solved as follows:
+	\beq
+		\begin{bmatrix}[c c c | c]
+			0 & 6 & -5 & 12 \\
+			9 & 0 & 8 & 9 \\
+			-1 & 1 & 10 & 3
+		\end{bmatrix}
+		\sim
+		\begin{bmatrix}[c c c | c]
+			1 & 0 & 8/9 & 1 \\
+			0 & 1 & -5/6 & 2 \\
+			-1 & 1 & 10 & 3
+		\end{bmatrix}
+		\sim
+		\begin{bmatrix}[c c c | c]
+			1 & 0 & 8/9 & 1 \\
+			0 & 1 & -5/6 & 2 \\
+			0 & 1 & 98/9 & 4
+		\end{bmatrix}
+		\sim
+		\begin{bmatrix}[c c c | c]
+			1 & 0 & 8/9 & 1 \\
+			0 & 1 & -5/6 & 2 \\
+			0 & 0 & 211/18 & 2
+		\end{bmatrix}
+		\sim
+		\begin{bmatrix}[c c c | c]
+			1 & 0 & 0 & 179/211 \\
+			0 & 1 & 0 & 452/211 \\
+			0 & 0 & 1 & 36/211
+		\end{bmatrix}.
+		\eeq
+		So we have {\color{blue}
+		\begin{align*}
+			\Iq &= \Samp{0.848} \text{ (to the right)}, &
+			\Iw &= \Samp{2.14} \text{ (to the left)}, &
+			\Ie &= \Samp{0.171} \text{ (to the right)}.
+		\end{align*}}
+
+\end{solution}
 
 
 \end{document}
