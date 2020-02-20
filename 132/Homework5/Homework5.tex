@@ -168,7 +168,7 @@
 \end{minipage}%
 \hspace{0.05\textwidth}%
 \begin{minipage}{0.25\textwidth}
-	\center \includegraphics[scale=1.25]{E26-26}
+	\center \includegraphics{E26-26}
 	\center \textbf{Figure E26.26}
 \end{minipage}
 
@@ -201,7 +201,7 @@
 			\implies
 			\Samp{1} = \Iw - 2 \Ie.
 		\eeq
-		Now we have three equations in three unknowns, which you can solve using your favorite method.  I like to do Gaussian elimination with an augmented matrix.  The matrix equation is
+		Now we have three equations in three unknowns, which you can solve using your favorite method.  I prefer Gaussian elimination.  The matrix equation is
 		\beq
 			\mqty[ 1 & 1 & 1 \\
 				1 & -1 & 0 \\
@@ -210,13 +210,13 @@
 				= \mqty[ 0 \\ 1 \\ 1 ],
 		\eeq
 		which can be solved as follows:
-		\begin{align*}
+		\beq
 			\begin{bmatrix}[c c c | c]
 				1 & 1 & 1 & 0 \\
 				1 & -1 & 0 & 1 \\
 				0 & 1 & -2 & 1
 			\end{bmatrix}
-			&\sim
+			\sim
 			\begin{bmatrix}[c c c | c]
 				1 & -1 & 0 & 1 \\
 				0 & 1 & -2 & 1 \\
@@ -236,22 +236,16 @@
 			\end{bmatrix}
 			\sim
 			\begin{bmatrix}[c c c | c]
-				1 & 0 & -2 & 2 \\
-				0 & 1 & -2 & 1 \\
-				0 & 0 & 1 & -3/5
-			\end{bmatrix} \\
-			&\sim
-			\begin{bmatrix}[c c c | c]
 				1 & 0 & 0 & 4/5 \\
 				0 & 1 & 0 & -1/5 \\
 				0 & 0 & 1 & -3/5
 			\end{bmatrix}.
-		\end{align*}
-		So we have {\color{blue}
+		\eeq
+		A minus sign tells us the current is in the direction opposite of what we guessed.  So we have {\color{blue}
 		\begin{align*}
-			\Iq &= \Samp{0.800} \text{ (to the left)}, &
-			\Iw &= -\Samp{0.200} \text{ (to the right)}, &
-			\Ie &= -\Samp{0.600} \text{ (to the right)}.
+			\text{Top branch: }& \Samp{0.800} \text{ (to the left)}, \\
+			\text{Middle branch: }& \Samp{0.200} \text{ (to the right)}, \\
+			\text{Bottom branch: }& \Samp{0.600} \text{ (to the right)}.
 		\end{align*}}
 		
 		\item We can find the potential difference between points $a$ and $b$ by moving counterclockwise through the top loop, similar to applying the loop rule in (a).  But now we start at $b$ and end on $a$:
@@ -266,6 +260,9 @@
 
 
 \clearpage
+
+\newcommand{\Req}{R_\text{eq}}
+\newcommand{\Rtot}{R_\text{tot}}
 
 \begin{minipage}[l]{0.65\textwidth}
 \paragraph{Exercise 26.29}
@@ -283,6 +280,85 @@
 	\center \textbf{Figure E26.29}
 \end{minipage}
 
+\begin{solution}
+	\begin{enumerate}
+		\item We need to simplify the circuit to the point that we know the current through the battery and the single equivalent resistance connected to it.  When the switch is open, we can ignore the branch of the circuit with the \Svolt{25} battery.
+		
+		\vspace{1.5in}
+		
+		Let's begin with what we are given, which is the voltmeter reading.  Since the voltmeter is connected in parallel to the \Sohm{50} resistor, we know that the potential across this resistor is \Svolt{15}.  So we can use Ohm's law to find the current through this resistor:
+		\beq
+			V = I R
+			\implies
+			I_{\Sohm{50}} = \frac{\Svolt{15}}{\Sohm{50}}
+			= \frac{3}{10}\,\si{\ampere}
+			= \Samp{0.300}.
+		\eeq
+		This is the current through any components connected in series with the \Sohm{50} resistor, so it is also the current through their equivalent resistance.  The \Sohm{30} resistor is in series with the \Sohm{50} resistor, and their equivalent resistance is
+		\beq
+			{\Req}_1 = \Sohm{50} + \Sohm{30}
+			= \Sohm{80.0}.
+		\eeq
+		
+		\vspace{1.5in}
+		
+		The potential difference across ${\Req}_1$ can be found by using Ohm's law once more:
+		\beq
+			V_{\Sohm{80}} = I_{\Sohm{50}} {\Req}_1 = (\Samp{0.300}) (\Sohm{80.0}) = \Svolt{24.0}.
+		\eeq
+		This is also the potential difference across any components connected in parallel to ${\Req}_1$.  The \Sohm{75} resistor is connected in parallel, so we can find the current through it using Ohm's law:
+		\beq
+			I_{\Sohm{75}} = \frac{V_{\Sohm{80}}}{\Sohm{75}}
+			= \frac{\Svolt{24.0}}{\Sohm{75.0}}
+			= \Samp{0.320}.
+		\eeq
+		Applying Kirchhoff's junction rule to the top junction in the diagram just above, we can find the current through the branch of the circuit with the unknown emf $\cE$:
+		\beq
+			0 = I_\cE - I_{\Sohm{75}} - I_{\Sohm{80}}
+			\implies
+			I_\cE = \Samp{0.320} + \Samp{0.300}
+			= \Samp{0.620}.
+		\eeq
+		Now that we know the current through the battery, we can simplify the circuit to just one equivalent resistance.  First adding the \Sohm{75} and \Sohm{80} resistors in parallel, we find
+		\beq
+			\frac{1}{{\Req}_2} = \frac{1}{\Sohm{75}} + \frac{1}{{\Req}_1}
+			= \frac{1}{\Sohm{75}} + \frac{1}{\Sohm{80}}
+			= \frac{31}{1200}\,\si{\per\ohm}
+			\implies
+			{\Req}_2 = \frac{1200}{31}\,\si{\ohm}
+			= \Sohm{38.7}.
+		\eeq
+		
+		\vspace{1.5in}
+				
+		Adding this in series with the \Sohm{20} resistor, we find
+		\beq
+			\Rtot = {\Req}_2 + \Sohm{20}
+			= \Sohm{38.7} + \Sohm{20}
+			= \Sohm{58.7}.
+		\eeq
+		
+		\vspace{1.5in}
+				
+		Finally, we know that the potential across $\Rtot$ is the same as across the battery.  So Ohm's law tells us
+		\beq
+			\cE = I_\cE \Rtot
+			= (\Samp{0.620}) (\Sohm{58.7})
+			= {\color{blue} \Svolt{36.4}}.
+		\eeq
+		
+		\item When the switch is closed, the \Sohm{50} resistor is connected in parallel to the \Svolt{25} battery, so the potential across the \Sohm{50} resistor is equal to \Svolt{25}.
+
+		\vspace{1.5in}
+
+		We can apply Ohm's law once more to find the current through the \Sohm{50} resistor, which is the same as the current through the ammeter connected in series:
+		\beq
+			I_A = \frac{\Svolt{25.0}}{\Sohm{50.0}}
+			= {\color{blue} \Samp{0.500}}.
+		\eeq
+	\end{enumerate}
+\end{solution}
+
 
 
 \clearpage
@@ -290,7 +366,6 @@
 \newcommand{\Qo}{Q_0}
 \newcommand{\Vo}{V_0}
 \newcommand{\Ceq}{C_\text{eq}}
-\newcommand{\Req}{R_\text{eq}}
 
 \begin{minipage}[l]{0.75\textwidth}
 \paragraph{Exercise 26.41}
@@ -309,22 +384,22 @@
 \end{minipage}
 
 \begin{solution}
-	This problem is about discharging capacitors.  The charge $q$ on a capacitor at a given time $t$ after an RC circuit is closed is given by
+	This problem is about discharging capacitors.  The charge $q$ on a capacitor at time $t$ after closing an $RC$ circuit is given by
 	\beqn \label{26.16} \tag{26.16}
 		q = \Qo e^{-t / RC},
 	\eeqn
-	where $\Qo$ is the initial charge on the capacitor, $C$ is its capacitance, and $R$ is the resistance of the resistor connected in series.
+	where $\Qo$ is the initial charge on the capacitor, $C$ is its capacitance, and $R$ is the resistance of the resistor connected to it in series.
 	
 	\begin{enumerate}
-		\item The definition of capacitance $C$ is
-		\beqn \tag{24.1}
-			C = \frac{Q}{\Vab},
-		\eeqn
-		where $Q$ is the charge on the capacitor and $\Vab$ is the potential across it.  $C$ is a property of a given capacitor and does not change with time.  So we can use $Q = C V$ and the fact that $C$ is constant to write \refeq{26.16} in terms of $C$ and $V$:
+		\item The definition of capacitance is
+		\beq
+			C = \frac{Q}{V},
+		\eeq
+		where $Q$ is the charge on the capacitor and $V$ is the potential across it.  $C$ is a property of a given capacitor and does not change with time.  So we can use $Q = C V$ and the fact that $C$ is constant to write \refeq{26.16} in terms of $C$ and $V$:
 		\beqn \tag{$*$} \label{Vt}
 			v = \Vo e^{-t / RC},
 		\eeqn
-		where $v$ is the potential across the capacitor at time $t$ after the circuit is closed.
+		where $v$ is the potential across the capacitor at time $t$.
 		
 		The capacitors in this problem are connected in parallel, so their equivalent capacitance is simply the sum of their individual capacitances:
 		\beq
@@ -342,7 +417,7 @@
 			\implies
 			\frac{2}{9} = \exp(-\frac{t}{\SI{2800}{\micro\second}})
 			\implies
-			-1.50 = -\frac{t}{\SI{2800}{\micro\second}} \\
+			-1.50 = -\frac{t}{\SI{2800}{\micro\second}} \\[1.5ex]
 			&\implies
 			t = \SI{4210}{\micro\second}
 			= {\color{blue} \SI{4.21}{\milli\second}},
@@ -387,6 +462,56 @@
 	\center \includegraphics[scale=.31]{E26-47}
 	\center \textbf{Figure E26.47}
 \end{minipage}
+
+\begin{solution}
+	\begin{enumerate}
+		\item Just after the switch is closed, there is no charge on any of the capacitors.  This means they act like a short in the circuit, so we can ignore any resistor that is in parallel with a capacitor.
+		
+		\vspace{1.5in}
+		
+		The \Sohm{50} and \Sohm{25} resistors are in parallel, and have the equivalent resistance $\Req$ given by
+		\beq
+			\frac{1}{\Req} = \frac{1}{\Sohm{50}} + \frac{1}{\Sohm{25}} = \frac{3}{50}\,\si{\per\ohm}
+			\implies
+			\Req = \frac{50}{3}\,\si{\ohm} = \Sohm{16.7}.
+		\eeq
+		
+		\vspace{1.5in}
+		
+		The three resistances in series now give us the total resistance,
+		\beq
+			\Rtot = \Sohm{75.0} + \Sohm{16.7} + \Sohm{15.0}
+			= \Sohm{106.7}.
+		\eeq
+		
+		\vspace{1.5in}
+		
+		We can use Ohm's law to find the current through the equivalent resistance, which is the same as the ammeter reading:
+		\beq
+			\cE = I \Rtot
+			\implies
+			I = \frac{\cE}{\Rtot}
+			= \frac{\Svolt{100.0}}{\Sohm{106.7}}
+			= {\color{blue} \Samp{0.937}}.
+		\eeq
+		
+		\item After $S$ has been closed for a very long time, the capacitors are completely charged and current cannot flow through them.  Therefore every capacitor acts like a break in the circuit, and we can adjust our diagram accordingly.
+		
+		\vspace{1.5in}
+		
+		This gives us five resistors in series, which have the equivalent total resistance
+		\beq
+			\Rtot = \Sohm{25.0} + \Sohm{75.0} + \Sohm{25.0} + \Sohm{25.0} + \Sohm{15.0}
+			= \Sohm{165.0}.
+		\eeq
+		Once again, we use Ohm's law to find the ammeter reading:
+		\beq
+			I = \frac{\cE}{\Rtot}
+			= \frac{\Svolt{100.0}}{\Sohm{165.0}}
+			= {\color{blue} \Samp{0.606}}.
+		\eeq
+	\end{enumerate}
+\end{solution}
 
 
 
@@ -468,25 +593,25 @@
 \end{minipage}
 
 \begin{solution}
-	This is another problem for Kirchhoff's rules:
+	This is another problem we can solve using Kirchhoff's rules.
 	
 	\begin{center}
 		\includegraphics{A26-59}
 	\end{center}
 	
-		The circuit has three loops, so we will need to use the loop rule three times as indicated in the diagram above.  But first we need to use the junction rule to find the current through the \Sohm{5} and \Sohm{8} resistors.  At the junction on the left, we have
+		The circuit has three loops, so we will need to use the loop rule three times.  But first we need to use the junction rule to find the current through the \Sohm{5} and \Sohm{8} resistors.  At the junction on the left, we have
 	\beq
 		0 = \Iw - \Ie + I_{\Sohm{5}}
 		\implies
 		I_{\Sohm{5}} = \Ie - \Iw,
 	\eeq
-	meaning it is pointing away from the junction if $\Iw > \Ie$.  At the junction on the right, we have
+	meaning it is pointing away from the junction (as shown in the diagram) if $\Iw > \Ie$.  At the junction on the right, we have
 	\beq
 		0 = \Iq + \Ie + I_{\Sohm{8}}
 		\implies
 		I_{\Sohm{8}} = -\Iq - \Ie,
 	\eeq
-	meaning it is pointing away from the junction.
+	meaning it is pointing away from the junction as shown.
 	
 	Now we can apply the loop rule, moving counterclockwise from each battery.  For loop (1), we have
 	\beq
@@ -514,7 +639,7 @@
 			\mqty[ \Iq \\ \Iw \\ \Ie ]
 			= \mqty[ 12 \\ 9 \\ 3 ],
 	\eeq
-	which can be solved as follows:
+	which can be solved using Gaussian elimination as follows:
 	\beq
 		\begin{bmatrix}[c c c | c]
 			0 & 6 & -5 & 12 \\
