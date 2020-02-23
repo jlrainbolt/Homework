@@ -1,0 +1,144 @@
+\begin{statement}{}
+	A spherical shell of radius $R$ has a total charge $Q$ uniformly spread over the shell.  The shell is now put into uniform rotation about the $z$ axis with angular velocity $\omg$.  Find the vector potential $\vAx$ and magnetic field $\vBx$ everywhere, i.e., both inside and outside of the shell.
+\end{statement}
+
+\begin{solution}
+	Let $\rhox$ be the charge density everywhere in space, so
+	\beq
+		\rhox = \frac{1}{4\pi} \frac{Q}{R^2} \delta(r - R).
+	\eeq
+	The linear velocity of the moving charge everywhere is
+	\beq
+		\vvx = \omg r \, \delta(r - R)\, \phh.
+	\eeq
+	Then the current density $\vJ$ is simply the product of charge density and the linear velocity of the charge:
+	\beq
+		\vJx = \rhox \, \vvx
+		= \frac{Q \omg}{4\pi} \frac{r}{R^2} \delta(r - R) \, \phh.
+	\eeq
+	From Eq.~(4.21) in the lecture notes, $\vAx$ everywhere is given by
+	\beq
+		\vAx = \frac{1}{c} \int \frac{\vJx'}{\abs{\vx - \vx'}} \dcxp.
+	\eeq
+	The integral we need to evaluate is then
+	\beq
+		\vAx = \frac{1}{4\pi c} \frac{Q \omg}{R^2} \int \frac{r' \, \delta(r' - R)}{\abs{\vx - \vx'}} \dcxp.
+	\eeq
+	
+	The problem is azimuthally symmetric, so we will rotate our coordinate system such that $\vx$ points along the $z$ axis.  In the new coordinate system,
+	\beq
+		\frac{1}{\abs{\vx - \vx'}} = \frac{1}{\sqrt{\vx^2 - 2 \vx \cdot \vx' + {\vx'}^2}}
+		= \frac{1}{\sqrt{r^2 - 2 r r' \cos\tht' + {r'}^2}}.
+	\eeq
+	Let $\vomg$ be the angular velocity vector (that lay along the $z$ axis of the original coordinate system), which we choose to lie in the $xz$ plane.  Let $\alp$ be the angle between $\vomg$ and the $z$ axis.  Then the linear velocity of the moving charge is
+	\begin{align*}
+		\vv(\vx') &= \vomg \times \vx'
+		= \mqty| \xh & \yh & \zh \\
+			\omg \sin\alp & 0 & \omg \cos\alp \\
+			r' \sin\tht' \cos\vph' & r' \sin\tht' \sin\vph' & r' \cos\tht' | \\
+		&= - \omg r' (\cos\alp \sin\tht' \sin\vph') \,\xh + \omg r' (\cos\alp \sin\tht' \cos\vph' - \sin\alp \cos\tht') \,\yh + \omg r' (\sin\alp \sin\tht' \sin\vph') \,\zh,
+	\end{align*}
+	so in the new coordinate system,
+	\beq
+		\vJ(\vx') = \frac{Q}{4\pi} \frac{\vomg \times \vx'}{R^2} \, \delta(r' - R)
+		= \frac{Q \omg}{4\pi} \frac{r'}{R^2} (\omgh \times \xh') \, \delta(r' - R),
+	\eeq
+	where
+	\beq
+		\omgh \times \xh' = - (\cos\alp \sin\tht' \sin\vph') \,\xh + (\cos\alp \sin\tht' \cos\vph' - \sin\alp \cos\tht') \,\yh + (\sin\alp \sin\tht' \sin\vph') \,\zh.
+	\eeq
+	The integral we need to evaluate becomes
+	\beq
+		\vAx = \frac{1}{4\pi c} \frac{Q \omg}{R^2} \intotp \intono \intoi \frac{{r'}^3 (\omgh \times \xh') \, \delta(r' - R)}{\sqrt{r^2 - 2 r r' \cos\tht' + {r'}^2}} \drp \dctp \dvp.
+	\eeq
+	Evaluating the radial integral, we have
+	\beq
+		\vAx = \frac{Q \omg R}{4\pi c} \intotp \intono \frac{\omgh \times \xh'}{\sqrt{r^2 - 2 R r  \cos\tht' + R^2}} \dctp \dvp.
+	\eeq
+	For the angular integrals, the $\xh$ term is
+	\beq
+		- \cos\alp \,\xh \intono \frac{\sin\tht'}{\sqrt{r^2 - 2 R r  \cos\tht' + R^2}} \dctp \intotp \sin\vph' \dvp
+		\propto \bigg[ -\cos\vph' \bigg]_0^{2\pi}
+		= 0.
+	\eeq
+	Similarly, the $\zh$ term is
+	\beq
+		\sin\alp \,\zh \intono \frac{\sin\tht'}{\sqrt{r^2 - 2 R r  \cos\tht' + R^2}} \dctp \intotp \sin\vph' \dvp
+		\propto \bigg[ -\cos\vph' \bigg]_0^{2\pi}
+		= 0.
+	\eeq
+	There are two $\yh$ terms.  For the first,
+	\beq
+		\cos\alp \,\yh \intono \frac{\sin\tht'}{\sqrt{r^2 - 2 R r  \cos\tht' + R^2}} \dctp \intotp \cos\vph' \dvp
+		\propto \bigg[ \sin\vph' \bigg]_0^{2\pi}
+		= 0.
+	\eeq
+	For the second,
+	\begin{align*}
+		-\sin\alp \,\yh &\intono \frac{\cos\tht'}{\sqrt{r^2 - 2 R r  \cos\tht' + R^2}} \dctp \intotp \dvp
+		= -2\pi \sin\alp \,\yh \intono \frac{\cos\tht'}{\sqrt{r^2 - 2 R r  \cos\tht' + R^2}} \dctp \\
+		&= -2\pi \sin\alp \,\yh \left( \left[ -\frac{\cos\tht' \sqrt{r^2 - 2 R r \cos\tht' + R^2}}{R r} \right]_{-1}^1 + \frac{1}{R r} \intono \sqrt{r^2 - 2 R r \cos\tht' + R^2} \dctp \right) \\
+		&= -2\pi \sin\alp \,\yh \left( \left[ -\frac{\cos\tht' \sqrt{r^2 - 2 R r \cos\tht' + R^2}}{R r} \right]_{-1}^1 + \frac{1}{R r} \left[ -\frac{(r^2 - 2 R r \cos\tht' + R^2)^{3/2}}{3 R r} \right]_{-1}^1\right) \\
+		&= -2\pi \sin\alp \,\yh \left( -\frac{\sqrt{r^2 + 2 R r + R^2}}{R r} + \frac{\sqrt{r^2 - 2 R r + R^2}}{R r} - \frac{(r^2 - 2 R r + R^2)^{3/2}}{3 R^2 r^2} + \frac{(r^2 + 2 R r + R^2)^{3/2}}{3 R^2 r^2} \right) \\
+		&= 2\pi \sin\alp \frac{3 R r \sqrt{(r + R)^2} - 3 R r \sqrt{(r - R)^2} + [(r - R)^2]^{3/2} - [(r + R)^2]^{3/2}}{3 R^2 r^2} \yh \\
+		&= 2\pi \sin\alp \frac{3 R r \abs{r + R} - 3 R r \abs{r - R} + (r - R)^2 \abs{r - R} - (r + R)^2 \abs{r + R}}{3 R^2 r^2} \yh \\
+		&= 2\pi \sin\alp \frac{(r^2 + R r + R^2) \abs{r - R} - (r^2 - R r + R^2) (r + R)}{3 R^2 r^2} \yh \\
+		&= \frac{2\pi \sin\alp \, \yh}{3 R^2 r^2} \begin{cases}
+			(r^2 + R r + R^2) (R - r) - (r^2 - R r + R^2) (r + R) & r < R, \\
+			(r^2 + R r + R^2) (r - R) - (r^2 - R r + R^2) (r + R) & r > R
+		\end{cases} \\
+		&= -\frac{4}{3} \pi \sin\alp \, \yh \begin{cases}
+			\dfrac{r}{R^2} & r < R, \\[2ex]
+			\dfrac{R}{r^2} & r > R.
+		\end{cases}
+	\end{align*}
+	Finally, in the new coordinate system we have
+	\beq
+		\vAx = -\frac{Q \omg}{3 c} \sin\alp \,\yh \begin{cases}
+			\dfrac{r}{R} & r < R, \\[2ex]
+			\dfrac{R^2}{r^2} & r > R.
+		\end{cases}
+	\eeq
+	
+	Transforming back to the old coordinate system, $\sin\alp \to - \sin\tht$.  Since the original system is azimuthally symmetric, $\vph = 0$ so $\yh = \sin\tht \sin\vph \,\rh + \cos\tht \sin\vph \,\thh + \cos\vph \,\phh = \phh$.  Thus we have
+	\beq
+		\vAx = \frac{Q \omg}{3 c} \sin\tht \,\phh \begin{cases}
+			\dfrac{r}{R} & r < R, \\[2ex]
+			\dfrac{R^2}{r^2} & r > R.
+		\end{cases}
+	\eeq
+	
+	The magnetic field is given by Eq.~(1.7),
+	\beq
+		\vB = \grad \times \vA.
+	\eeq
+	In spherical coordinates,
+	\beq
+		\grad \times \vA = \frac{1}{r \sin\tht} \left(\pdv{}{\tht} (\sin\tht A_\vph) - \pdv{A_\tht}{\vph} \right) \rh + \frac{1}{r} \left( \frac{1}{\sin\tht} \pdv{A_r}{\vph} - \pdv{}{r} (r A_\vph) \right) \thh + \frac{1}{r} \left( \pdv{}{r} (r A_\tht) - \pdv{A_r}{\tht} \right) \phh,
+	\eeq
+	so
+	\beq
+		\vB = \frac{1}{r \sin\tht} \pdv{}{\tht} (\sin\tht A_\vph) \rh - \frac{1}{r} \pdv{}{r} (r A_\vph) \thh.
+	\eeq
+	For $r < R$,
+	\begin{align*}
+		\vBx &= \frac{Q \omg}{3 c} \frac{1}{r} \left[ \frac{1}{\sin\tht} \pdv{}{\tht} \left( \frac{r}{R} \sin^2\tht \right) \rh - \pdv{}{r} \left( \frac{r^2}{R} \sin\tht \right) \thh \right]
+		= \frac{Q \omg}{3 c} \frac{1}{r} \left( \frac{r}{R} \frac{2 \cos\tht \sin\tht}{\sin\tht} \,\rh - \frac{2 r}{R} \sin\tht \,\thh \right) \\
+		&= \frac{2}{3} \frac{Q \omg}{c R} (\cos\tht \,\rh - \sin\tht \,\thh)
+		= \frac{2}{3} \frac{Q \omg}{c R} \,\zh.
+	\end{align*}
+	For $r > R$,
+	\begin{align*}
+		\vBx &= \frac{Q \omg}{3 c} \frac{1}{r} \left[ \frac{1}{\sin\tht} \pdv{}{\tht} \left( \frac{R^2}{r^2} \sin^2\tht \right) \rh - \pdv{}{r} \left( \frac{R^2}{r} \sin\tht \right) \thh \right]
+		= \frac{Q \omg}{3 c} \frac{1}{r} \left( \frac{R^2}{r^2} \frac{2 \cos\tht \sin\tht}{\sin\tht} \,\rh + 2 \frac{R^2}{r^2} \sin\tht \,\thh \right) \\
+		&= \frac{2}{3} \frac{Q \omg}{c} \frac{R^2}{r^3} (\cos\tht \,\rh + \sin\tht \,\thh).
+	\end{align*}
+	In summary,
+	\beq
+		\vBx = \frac{2}{3} \frac{Q \omg}{c} \begin{cases}
+			\dfrac{\zh}{R} & r < R, \\[2ex]
+			\dfrac{R^2}{r^3} (\cos\tht \,\rh + \sin\tht \,\thh) & r > R.
+		\end{cases}
+	\eeq
+\end{solution}
+\vfix

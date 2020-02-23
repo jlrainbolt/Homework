@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm, mathrsfs}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{siunitx}
+\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+%\renewcommand{\vb}[1]{\mathbf{#1}}
+\newcommand{\vfix}{\vspace{-\baselineskip}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 322 Homework 4}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\blg}{\begin{align*}}
+\newcommand{\elg}{\end{align*}}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\color{darkgray}
+	\ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+	\subsection{}
+	\color{darkgray}
+%	\paragraph{Problem.}
+    \ignorespaces
+}
+{
+
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+
+
+\begin{document}
+
+\newcommand{\alp}{\alpha}
+\newcommand{\tht}{\theta}
+\newcommand{\vph}{\varphi}
+\newcommand{\omg}{\omega}
+
+\newcommand{\vA}{\vb{A}}
+\newcommand{\vB}{\vb{B}}
+\newcommand{\vE}{\vb{E}}
+\newcommand{\vJ}{\vb{J}}
+\newcommand{\vP}{\vb{P}}
+\newcommand{\vv}{\vb{v}}
+\newcommand{\vx}{\vb{x}}
+\newcommand{\vomg}{\boldsymbol{\omg}}
+\newcommand{\rh}{\vb{\hat{r}}}
+\newcommand{\phh}{\boldsymbol{\hat{\vph}}}
+\newcommand{\thh}{\boldsymbol{\hat{\tht}}}
+
+\newcommand{\vAx}{\vA(\vx)}
+\newcommand{\vBx}{\vB(\vx)}
+\newcommand{\vJx}{\vJ(\vx)}
+\newcommand{\vvx}{\vv(\vx)}
+
+\newcommand{\rhox}{\rho(\vx)}
+\newcommand{\absx}{\abs{\vx}}
+\newcommand{\dcxp}{\dd[3]{\vx'}}
+
+\newcommand{\xh}{\vb{\hat{x}}}
+\newcommand{\yh}{\vb{\hat{y}}}
+\newcommand{\zh}{\vb{\hat{z}}}
+\newcommand{\omgh}{\boldsymbol{\hat{\omg}}}
+
+\newcommand{\intotp}{\int_0^{2\pi}}
+\newcommand{\intono}{\int_{-1}^1}
+\newcommand{\intoi}{\int_0^\infty}
+\newcommand{\drp}{\dd{r'}}
+\newcommand{\dctp}{\dd{(\cos\tht')}}
+\newcommand{\dvp}{\dd{\vph}}
+
+\input{Problem1}
+
+
+
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\vcP}{\vb{\cP}}
+\newcommand{\vcPx}{\vcP(\vx)}
+\newcommand{\dcx}{\dd[3]{x}}
+\newcommand{\phix}{\phi(\vx)}
+
+\begin{statement}{}
+	If an electric and magnetic field are both present, the momentum density carried by the electromagnetic field is given by Poynting's formula
+	\beq
+		\vcP = \frac{1}{4\pi c} (\vE \times \vB).
+	\eeq
+	Consider a bounded distribution of time-independent charges and currents, i.e., $\rhox$ and $\vJx$ are time independent and vanish when $\absx > R$ for some $R$.
+\end{statement}
+
+\begin{problem}
+	Show that the total momentum can be written as
+	\beq
+		\vP \equiv \int \vcPx \dcx
+		= \int \phix \, \vJx \dcx.
+	\eeq
+\end{problem}
+
+\begin{problem}
+	Give an example of a stationary, bounded charge and current distribution for which $\vP \neq 0$.
+\end{problem}
+
+
+
+\newcommand{\vl}{\vb{l}}
+\newcommand{\vL}{\vb{L}}
+
+\begin{statement}{}
+	The angular momentum density of the electromagnetic field is given by
+	\beq
+		\vl = \vx \times \vcP
+		= \frac{1}{4\pi c} \vx \times (\vE \times \vB).
+	\eeq
+	Consider a source free ($\rho = 0$, $\vJ = 0$) solution to Maxwell's equations in electrodynamics with $\vE$ and $\vB$ vanishing rapidly as $\absx \to \infty$, so the total angular momentum
+	\beq
+		\vL = \int \vl \dcx
+	\eeq
+	is well defined.  Show that $\vL$ is conserved, i.e., independent of time.
+\end{statement}
+
+
+
+\vfill
+In addition to the course lecture notes, I consulted Griffiths's \emph{Introduction to Electrodynamics}, Jackson's \emph{Classical Electrodynamics}, and Wolfram Mathworld while writing up these solutions.
+\end{document}
