@@ -133,6 +133,11 @@
 \newcommand{\dcx}{\dd[3]{x}}
 \newcommand{\phix}{\phi(\vx)}
 
+\newcommand{\vaa}{\vb{a}}
+\newcommand{\vbb}{\vb{b}}
+\newcommand{\vc}{\vb{c}}
+\newcommand{\lap}{\laplacian}
+
 \begin{statement}{}
 	If an electric and magnetic field are both present, the momentum density carried by the electromagnetic field is given by Poynting's formula
 	\beq
@@ -148,6 +153,48 @@
 		= \int \phix \, \vJx \dcx.
 	\eeq
 \end{problem}
+
+\begin{solution}
+	From Eq.~(2.2), in electrostatics
+	\beqn \label{Efield}
+		\vE = -\grad\phi.
+	\eeqn
+	Applying \refeq{Bfield} and \refeq{Efield},
+%	\beq
+%		\vP \equiv \int \vcPx \dcx
+%		= \frac{1}{4\pi c} \int (\vE \times \vB) \dcx
+%		= -\frac{1}{4\pi c} \int [\grad\phi \times (\grad \times \vA)] \dcx.
+%	\eeq
+	\beq
+		\vE \times \vB = -\grad\phi \times (\grad \times \vA).
+	\eeq
+	Equation~(4.12) gives the vector calculus identity
+	\beq
+		\vaa \times (\vbb \times \vc) = \vbb (\vaa \cdot \vc) - \vc (\vaa \cdot \vbb),
+	\eeq
+	so we find
+	\beqn \label{thing}
+		-\vE \times \vB = \grad (\grad\phi \cdot \vA) - \vA (\grad \phi \cdot \grad)
+		= \grad (\grad\phi \cdot \vA) - \vA \lap\phi.
+	\eeqn
+	Another vector identity from the inside cover of Jackson is
+	\beq
+		\grad (\vaa \cdot \vbb) = (\vaa \cdot \grad) \vbb + (\vbb \cdot \grad) \vaa + \vaa \times (\grad \times \vbb) + \vbb \times (\grad \times \vaa),
+	\eeq
+	so
+	\begin{align*}
+		\grad (\grad\phi \cdot \vA) &= (\grad\phi \cdot \grad) \vA + (\vA \cdot \grad) \grad\phi + \grad\phi \times (\grad \times \vA) + \vA \times (\grad \times \grad\phi) \\
+		&= \vA \lap\phi + \grad\phi (\grad \cdot \vA) - \vE \times \vB,
+	\end{align*}
+	since $\grad \times \grad\phi = -\grad \times \vE = 0$ in electrostatics.
+	Substituting this into \refeq{thing}, we get 
+	\beq
+		-\vE \times \vB = \vA \lap\phi + \grad\phi (\grad \cdot \vA) - \vE \times \vB - \vA \lap\phi 
+		\implies
+		\grad \cdot \vA = 0,
+	\eeq
+	which is not very helpful.
+\end{solution}
 
 \begin{problem}
 	Give an example of a stationary, bounded charge and current distribution for which $\vP \neq 0$.
