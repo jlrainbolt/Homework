@@ -161,34 +161,26 @@
 %	\eeqn
 	Applying \refeq{Bfield},
 	\beq
-		\vE \times \vB = -\vE \times (\grad \times \vA).
+		\vE \times \vB = \vE \times (\grad \times \vA).
 	\eeq
-%	Equation~(4.12) gives the vector calculus identity
-%	\beq
-%		\vaa \times (\vbb \times \vc) = \vbb (\vaa \cdot \vc) - \vc (\vaa \cdot \vbb),
-%	\eeq
-%	so we find
-%	\beqn \label{thing}
-%		-\vE \times \vB = \grad (\vE \cdot \vA) - \vA (\vE \cdot \grad)
-%		= \grad (\vE \cdot \vA) - \vA \lap\phi.
-%	\eeqn
-%	Another vector identity from the inside cover of Jackson is
-%	\beq
-%		\grad (\vaa \cdot \vbb) = (\vaa \cdot \grad) \vbb + (\vbb \cdot \grad) \vaa + \vaa \times (\grad \times \vbb) + \vbb \times (\grad \times \vaa),
-%	\eeq
-%	so
-%	\begin{align*}
-%		\grad (\grad\phi \cdot \vA) &= (\grad\phi \cdot \grad) \vA + (\vA \cdot \grad) \grad\phi + \grad\phi \times (\grad \times \vA) + \vA \times (\grad \times \grad\phi) \\
-%		&= \vA \lap\phi + \grad\phi (\grad \cdot \vA) - \vE \times \vB,
-%	\end{align*}
-%	since $\grad \times \grad\phi = -\grad \times \vE = 0$ in electrostatics.
-%	Substituting this into \refeq{thing}, we get 
-%	\beq
-%		-\vE \times \vB = \vA \lap\phi + \grad\phi (\grad \cdot \vA) - \vE \times \vB - \vA \lap\phi 
-%		\implies
-%		\grad \cdot \vA = 0,
-%	\eeq
-%	which is not very helpful.
+	Vector identity (4) in Griffiths is
+	\beq
+		\grad(\vaa \cdot \vbb) = \vaa \times (\grad \times \vbb) + \vbb \times (\grad \times \vaa) + (\vaa \cdot \grad) \vbb + (\vbb \cdot \grad) \vaa,
+	\eeq
+	which allows us to write
+	\beq
+		\vE \times \vB = \grad(\vA \cdot \vE) - \vA \times (\grad \times \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA \notag
+		= \grad(\vA \cdot \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA,
+	\eeq
+	since $\grad \times E = 0$ in electrostatics by Eq.~(1.4) in the lecture notes.  From the Wikipedia article on vector calculus identities (because I couldn't find a better source), the product rule for the outer product $\vbb \vaa = \vbb \otimes \vaa^\text{T}$ is
+	\beq
+		\grad \cdot (\vbb \vaa) = \vaa (\grad \cdot \vbb) + (\vbb \cdot \grad) \vaa.
+	\eeq
+	Adding and subtracting $\vA (\grad \cdot \vE)$, we apply the product rule to obtain
+	\beq
+		\vE \times \vB = \grad(\vA \cdot \vE) + \vA (\grad \cdot \vE) - \vA (\grad \cdot \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA \notag \\
+		= \grad(\vA \cdot \vE) + \vA (\grad \cdot \vE) - \grad \cdot (\vE \vA) - (\vE \cdot \grad) \vA. \label{thing2}
+	\eeq
 \end{solution}
 
 \begin{problem}
