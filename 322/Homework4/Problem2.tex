@@ -1,0 +1,128 @@
+\begin{statement}{}
+	If an electric and magnetic field are both present, the momentum density carried by the electromagnetic field is given by Poynting's formula
+	\beq
+		\vcP = \frac{c}{4\pi} (\vE \times \vB).
+	\eeq
+	Consider a bounded distribution of time-independent charges and currents, i.e., $\rhox$ and $\vJx$ are time independent and vanish when $\absx > R$ for some $R$.
+\end{statement}
+
+\begin{problem}
+	Show that the total momentum can be written as
+	\beq
+		\vP \equiv \int \vcPx \dcx
+		= \int \phix \, \vJx \dcx.
+	\eeq
+\end{problem}
+
+\begin{solution}
+	Applying \refeq{Bfield},
+	\beq
+		\vE \times \vB = \vE \times (\grad \times \vA).
+	\eeq
+	Vector identity (4) in Griffiths is
+	\beq
+		\grad(\vaa \cdot \vbb) = \vaa \times (\grad \times \vbb) + \vbb \times (\grad \times \vaa) + (\vaa \cdot \grad) \vbb + (\vbb \cdot \grad) \vaa,
+	\eeq
+	which allows us to write
+	\beq
+		\vE \times \vB = \grad(\vA \cdot \vE) - \vA \times (\grad \times \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA \notag
+		= \grad(\vA \cdot \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA,
+	\eeq
+	since $\grad \times E = 0$ in electrostatics by Eq.~(1.4) in the lecture notes.  Now using component notation with implied sums,
+	\beq
+		(\vA \cdot \grad) \Ei = \Aj \pdv{\Ei}{\xj} = \pdv{}{\xj} (\Aj \Ei) - \Ei \pdv{\Aj}{\xj}
+		= \pdv{}{\xj} (\Aj \Ei).
+	\eeq
+	Here we have used the product rule in addition to Eq.~(4.20), which states that $\grad \cdot \vA = 0$ in the Coulomb gauge, which we may choose without loss of generality.  Similarly,
+	\beq
+		(\vE \cdot \grad) \Ai = \Ej \pdv{\Ai}{\xj} = \pdv{}{\xj} (\Ej \Ai) - \Ai \pdv{\Ej}{\xj}
+		= \pdv{}{\xj} (\Ej \Ai) + \Ai \lap\phi,
+	\eeq
+	where we have used Eq.~(2.2), $\vE = -\grad\phi$, which holds in the electrostatic case.  Putting this all together, we have
+	\beq
+		(\vE \times \vB)_i = \pdv{}{\xi} (\Aj \Ej) - \pdv{}{\xj} (\Aj \Ei) - \pdv{}{\xj} (\Ej \Ai) - \Ai \lap\phi,
+	\eeq
+	and so
+	\beq
+		\int (\vE \times \vB)_i \dcx = \int \left( \pdv{}{\xi} (\Aj \Ej) - \pdv{}{\xj} (\Aj \Ei) - \pdv{}{\xj} (\Ej \Ai) - \Ai \lap\phi \right) \dcx.
+	\eeq
+	
+	Let $L \geq R$.  Note that
+	\beq
+		\int f(\vx) \dcx = \limLi \intLL \intLL \intLL f(\vx) \dd{x} \dd{y} \dd{z}.
+	\eeq
+	Then for the first term, integrating with respect to $\xi$ by parts gives us
+	\beq
+		\limLi \intLL \pdv{}{\xi} (\Aj \Ej) \dxi = \bigg[ \Aj \Ej \bigLL = 0,
+	\eeq
+	since both $\rhox$ and $\vJx$ vanish for $\absx > R$.  This means $\vE \to 0$ and $\vA \to 0$ as $\absx \to \infty$.  Applying similar logic to the second and third terms,
+	\begin{align*}
+		\limLi \intLL \pdv{}{\xj} (\Aj \Ei) \dxj &= \bigg[ \Aj \Ei \bigLL = 0, &
+		\limLi \intLL \pdv{}{\xj} (\Ej \Ai) \dxj &= \bigg[ \Ej \Ai \bigLL = 0,
+	\end{align*}
+	where there are no implied sums over the derivatives.  Now we have
+	\beq
+		\int (\vE \times \vB)_i \dcx = -\int \Ai \lap\phi \dcx.
+	\eeq
+	
+	Green's theorem is given by Eq.~(2.96),
+	\beq
+		\intS \nh \cdot (\phiq \grad\phiw - \phiw \grad\phiq) \dS = -4\pi \intcV(\phiq \rhow - \phiw \rhoq) \dcx
+		= \intcV (\phiq \lap\phiw - \phiw \lap\phiq) \dcx,
+	\eeq
+	where the final equality comes from the proof in Eq.~(2.97).  Let $\cV$ be a cube of side length $2L$ centered at the origin.  Applying Green's theorem gives us
+	\beq
+		\intcV (\vE \times \vB)_i \dcx = \intS \nh \cdot (\phi \grad\Ai - \Ai \grad\phi) \dS - \intcV \phi \lap\Ai \dcx.
+	\eeq
+	Note that
+	\beq
+		\limLi \intS \nh \cdot (\phi \grad\Ai - \Ai \grad\phi) \dS \propto \limLi \intS \frac{1}{\absx^3} \dS = 0
+	\eeq
+	since $\phi, \Ai \propto 1/\absx$ and $\grad\phi, \grad\Ai \propto 1/\absx^2$.  Now we have
+	\beq
+		\int (\vE \times \vB) \dcx = -\int \phi \lap\vA \dcx.
+	\eeq
+	
+	Vector identity (11) in Griffiths states that
+	\beq
+		\grad \times (\grad \times \vaa) = \grad (\grad \cdot \vaa) - \lap\vaa,
+	\eeq
+	which gives us
+	\beq
+		\int (\vE \times \vB) \dcx = \int \phi [\grad \times (\grad \times \vA) - \grad (\grad \cdot \vA)] \dcx
+		= \frac{4\pi}{c} \int \phi \vJ \dcx,
+	\eeq
+	where we have once again used the Coulomb gauge condition, and that $\grad \times (\grad \times \vA) = 4\pi \vJ / c$ from Eq.~(4.4).  Thus, we have proven
+	\beq
+		\vP = \int \cP(\vx) \dcx = \frac{c}{4\pi} \int (\vE \times \vB) \dcx = \int \phix \, \vJx \dcx,
+	\eeq
+	as desired. \qed
+	
+\end{solution}
+
+
+\clearpage
+\begin{problem}
+	Give an example of a stationary, bounded charge and current distribution for which $\vP \neq 0$.
+\end{problem}
+
+\begin{solution}
+	Consider a toroid in the $xy$ plane centered on the origin, with $N$ total turns and current $I$.  Consider also a point charge of charge $Q$ at the origin.  In cylindrical coordinates $(s, \vph, z)$, the magnetic field due to the solenoid is given by Eq.~(5.60) in Griffiths:
+	\beq
+		\vBx = \begin{cases}
+			\dfrac{2 N I}{s} \phh & \text{inside}, \\[2ex]
+			0 & \text{outside}.
+		\end{cases}
+	\eeq
+	The electric field due to the point charge is simply
+	\beq
+		\vE = \frac{Q}{s^2 + z^2} \rh.
+	\eeq
+	Let $T$ denote the volume of the toroid, and note that $\vE \times \vB \neq 0$ only within this finite volume.  Then
+	\beq
+		\vP = \frac{c}{4\pi} \int (\vE \times \vB) \dcx
+		= \frac{c}{4\pi} 2 N I Q \int_T \frac{\sh \times \phh}{s (s^2 + z^2)} \dcx
+		= \frac{c}{2\pi} N I Q \,\zh \int_T \frac{\dcx}{s (s^2 + z^2)},
+	\eeq
+	which is nonzero.
+\end{solution}

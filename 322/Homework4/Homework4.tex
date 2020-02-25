@@ -138,54 +138,32 @@
 \newcommand{\vc}{\vb{c}}
 \newcommand{\lap}{\laplacian}
 
-\begin{statement}{}
-	If an electric and magnetic field are both present, the momentum density carried by the electromagnetic field is given by Poynting's formula
-	\beq
-		\vcP = \frac{1}{4\pi c} (\vE \times \vB).
-	\eeq
-	Consider a bounded distribution of time-independent charges and currents, i.e., $\rhox$ and $\vJx$ are time independent and vanish when $\absx > R$ for some $R$.
-\end{statement}
+\newcommand{\Ai}{A_i}
+\newcommand{\Aj}{A_j}
+\newcommand{\Ei}{E_i}
+\newcommand{\Ej}{E_j}
+\renewcommand{\xi}{x_i}
+\newcommand{\xj}{x_j}
+\newcommand{\dxi}{\dd{\xi}}
+\newcommand{\dxj}{\dd{\xj}}
+\newcommand{\intLL}{\int_{-L}^L}
+\newcommand{\limLi}{\lim_{L \to \infty}}
+\newcommand{\bigLL}{\bigg]_{-L}^L}
 
-\begin{problem}
-	Show that the total momentum can be written as
-	\beq
-		\vP \equiv \int \vcPx \dcx
-		= \int \phix \, \vJx \dcx.
-	\eeq
-\end{problem}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\intcV}{\int_\cV}
+\newcommand{\intS}{\int_S}
+\newcommand{\dS}{\dd{S}}
+\newcommand{\nh}{\vb{\hat{n}}}
+\newcommand{\phiq}{\phi_1}
+\newcommand{\phiw}{\phi_2}
+\newcommand{\rhoq}{\rho_1}
+\newcommand{\rhow}{\rho_2}
 
-\begin{solution}
-%	From Eq.~(2.2), in electrostatics
-%	\beqn \label{Efield}
-%		\vE = -\grad\phi.
-%	\eeqn
-	Applying \refeq{Bfield},
-	\beq
-		\vE \times \vB = \vE \times (\grad \times \vA).
-	\eeq
-	Vector identity (4) in Griffiths is
-	\beq
-		\grad(\vaa \cdot \vbb) = \vaa \times (\grad \times \vbb) + \vbb \times (\grad \times \vaa) + (\vaa \cdot \grad) \vbb + (\vbb \cdot \grad) \vaa,
-	\eeq
-	which allows us to write
-	\beq
-		\vE \times \vB = \grad(\vA \cdot \vE) - \vA \times (\grad \times \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA \notag
-		= \grad(\vA \cdot \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA,
-	\eeq
-	since $\grad \times E = 0$ in electrostatics by Eq.~(1.4) in the lecture notes.  From the Wikipedia article on vector calculus identities (because I couldn't find a better source), the product rule for the outer product $\vbb \vaa = \vbb \otimes \vaa^\text{T}$ is
-	\beq
-		\grad \cdot (\vbb \vaa) = \vaa (\grad \cdot \vbb) + (\vbb \cdot \grad) \vaa.
-	\eeq
-	Adding and subtracting $\vA (\grad \cdot \vE)$, we apply the product rule to obtain
-	\beq
-		\vE \times \vB = \grad(\vA \cdot \vE) + \vA (\grad \cdot \vE) - \vA (\grad \cdot \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA \notag \\
-		= \grad(\vA \cdot \vE) + \vA (\grad \cdot \vE) - \grad \cdot (\vE \vA) - (\vE \cdot \grad) \vA. \label{thing2}
-	\eeq
-\end{solution}
+\newcommand{\sh}{\vb{\hat{s}}}
 
-\begin{problem}
-	Give an example of a stationary, bounded charge and current distribution for which $\vP \neq 0$.
-\end{problem}
+\clearpage
+\input{Problem2}
 
 
 
@@ -208,5 +186,5 @@
 
 
 \vfill
-In addition to the course lecture notes, I consulted Griffiths's \emph{Introduction to Electrodynamics}, Jackson's \emph{Classical Electrodynamics}, and Wolfram Mathworld while writing up these solutions.
+In addition to the course lecture notes, I consulted Griffiths's \emph{Introduction to Electrodynamics}, Jackson's \emph{Classical Electrodynamics}, and Kirk McDonald's electromagnetism notes while writing up these solutions.
 \end{document}
