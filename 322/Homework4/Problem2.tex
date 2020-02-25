@@ -24,10 +24,10 @@
 		\grad(\vaa \cdot \vbb) = \vaa \times (\grad \times \vbb) + \vbb \times (\grad \times \vaa) + (\vaa \cdot \grad) \vbb + (\vbb \cdot \grad) \vaa,
 	\eeq
 	which allows us to write
-	\beq
-		\vE \times \vB = \grad(\vA \cdot \vE) - \vA \times (\grad \times \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA \notag
+	\beqn \label{thingy1}
+		\vE \times \vB = \grad(\vA \cdot \vE) - \vA \times (\grad \times \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA
 		= \grad(\vA \cdot \vE) - (\vA \cdot \grad) \vE - (\vE \cdot \grad) \vA,
-	\eeq
+	\eeqn
 	since $\grad \times E = 0$ in electrostatics by Eq.~(1.4) in the lecture notes.  Now using component notation with implied sums,
 	\beq
 		(\vA \cdot \grad) \Ei = \Aj \pdv{\Ei}{\xj} = \pdv{}{\xj} (\Aj \Ei) - \Ei \pdv{\Aj}{\xj}
@@ -38,20 +38,20 @@
 		(\vE \cdot \grad) \Ai = \Ej \pdv{\Ai}{\xj} = \pdv{}{\xj} (\Ej \Ai) - \Ai \pdv{\Ej}{\xj}
 		= \pdv{}{\xj} (\Ej \Ai) + \Ai \lap\phi,
 	\eeq
-	where we have used Eq.~(2.2), $\vE = -\grad\phi$, which holds in the electrostatic case.  Putting this all together, we have
+	where we have used Eq.~(2.2), $\vE = -\grad\phi$, which holds in the electrostatic case.  Putting this all together, \refeq{thingy1} gives us
 	\beq
 		(\vE \times \vB)_i = \pdv{}{\xi} (\Aj \Ej) - \pdv{}{\xj} (\Aj \Ei) - \pdv{}{\xj} (\Ej \Ai) - \Ai \lap\phi,
 	\eeq
 	and so
-	\beq
+	\beqn \label{thingy2}
 		\int (\vE \times \vB)_i \dcx = \int \left( \pdv{}{\xi} (\Aj \Ej) - \pdv{}{\xj} (\Aj \Ei) - \pdv{}{\xj} (\Ej \Ai) - \Ai \lap\phi \right) \dcx.
-	\eeq
+	\eeqn
 	
 	Let $L \geq R$.  Note that
 	\beq
 		\int f(\vx) \dcx = \limLi \intLL \intLL \intLL f(\vx) \dd{x} \dd{y} \dd{z}.
 	\eeq
-	Then for the first term, integrating with respect to $\xi$ by parts gives us
+	Then for the first term of \refeq{thingy2}, integrating with respect to $\xi$ by parts yields
 	\beq
 		\limLi \intLL \pdv{}{\xi} (\Aj \Ej) \dxi = \bigg[ \Aj \Ej \bigLL = 0,
 	\eeq
@@ -60,25 +60,25 @@
 		\limLi \intLL \pdv{}{\xj} (\Aj \Ei) \dxj &= \bigg[ \Aj \Ei \bigLL = 0, &
 		\limLi \intLL \pdv{}{\xj} (\Ej \Ai) \dxj &= \bigg[ \Ej \Ai \bigLL = 0,
 	\end{align*}
-	where there are no implied sums over the derivatives.  Now we have
-	\beq
+	where there are no implied sums over the derivatives.  Now \refeq{thingy2}
+	\beqn \label{thingy3}
 		\int (\vE \times \vB)_i \dcx = -\int \Ai \lap\phi \dcx.
-	\eeq
+	\eeqn
 	
 	Green's theorem is given by Eq.~(2.96),
 	\beq
 		\intS \nh \cdot (\phiq \grad\phiw - \phiw \grad\phiq) \dS = -4\pi \intcV(\phiq \rhow - \phiw \rhoq) \dcx
 		= \intcV (\phiq \lap\phiw - \phiw \lap\phiq) \dcx,
 	\eeq
-	where the final equality comes from the proof in Eq.~(2.97).  Let $\cV$ be a cube of side length $2L$ centered at the origin.  Applying Green's theorem gives us
+	where the final equality comes from the proof in Eq.~(2.97).  Let $\cV$ be a cube of side length $2L$ centered at the origin, and let $S$ be the surface of the cube.  Applying Green's theorem gives us
 	\beq
 		\intcV (\vE \times \vB)_i \dcx = \intS \nh \cdot (\phi \grad\Ai - \Ai \grad\phi) \dS - \intcV \phi \lap\Ai \dcx.
 	\eeq
 	Note that
 	\beq
-		\limLi \intS \nh \cdot (\phi \grad\Ai - \Ai \grad\phi) \dS \propto \limLi \intS \frac{1}{\absx^3} \dS = 0
+		\limLi \intS \nh \cdot (\phi \grad\Ai - \Ai \grad\phi) \dS \sim\limLi \intS \frac{1}{\absx^3} \dS = 0
 	\eeq
-	since $\phi, \Ai \propto 1/\absx$ and $\grad\phi, \grad\Ai \propto 1/\absx^2$.  Now we have
+	since $\phi, \Ai \sim 1/\absx$ for bounded $\rho, \vJ$ and therefore $\grad\phi, \grad\Ai \sim 1/\absx^2$.  Now \refeq{thingy3} is
 	\beq
 		\int (\vE \times \vB) \dcx = -\int \phi \lap\vA \dcx.
 	\eeq
@@ -92,9 +92,9 @@
 		\int (\vE \times \vB) \dcx = \int \phi [\grad \times (\grad \times \vA) - \grad (\grad \cdot \vA)] \dcx
 		= \frac{4\pi}{c} \int \phi \vJ \dcx,
 	\eeq
-	where we have once again used the Coulomb gauge condition, and that $\grad \times (\grad \times \vA) = 4\pi \vJ / c$ from Eq.~(4.4).  Thus, we have proven
+	where we have once again used the Coulomb gauge condition $\grad \cdot \vA = 0$, and that $\grad \times (\grad \times \vA) = 4\pi \vJ / c$ from Eq.~(4.4).  Thus, we have proven
 	\beq
-		\vP = \int \cP(\vx) \dcx = \frac{1}{4\pi c} \int (\vE \times \vB) \dcx = \frac{1}{c^2} \int \phix \, \vJx \dcx,
+		\vP = \int \cP(\vx) \dcx = \frac{1}{4\pi c} \int (\vE \times \vB) \dcx = \frac{1}{c^2} \int \phix \, \vJx \dcx
 	\eeq
 	as desired, except for the factor of $1 / c^2$. \qed
 	
@@ -107,22 +107,22 @@
 \end{problem}
 
 \begin{solution}
-	Consider a toroid in the $xy$ plane centered on the origin, with $N$ total turns and current $I$.  Consider also a point charge of charge $Q$ at the origin.  In cylindrical coordinates $(s, \vph, z)$, the magnetic field due to the solenoid is given by Eq.~(5.60) in Griffiths:
+	Consider a toroid in the $xy$ plane centered on the origin with current $I$ through its wire, which has $N$ total turns.  Let $\cV$ be the interior volume of the toroid.  In cylindrical coordinates $(s, \vph, z)$, the magnetic field due to the toroid is given by Eq.~(5.60) in Griffiths (which I have converted into Gaussian units):
 	\beq
 		\vBx = \begin{cases}
-			\dfrac{2 N I}{s} \phh & \text{inside}, \\[2ex]
-			0 & \text{outside}.
+			\dfrac{2 N I}{s} \phh & \vx \in \cV, \\[2ex]
+			0 & \vx \not\in \cV.
 		\end{cases}
 	\eeq
-	The electric field due to the point charge is simply
+	Consider also a point charge of charge $Q$ at the origin, so in the center of the toroid.  The electric field due to the point charge is simply
 	\beq
 		\vE = \frac{Q}{s^2 + z^2} \rh.
 	\eeq
-	Let $T$ denote the volume of the toroid, and note that $\vE \times \vB \neq 0$ only within this finite volume.  Then
+	Note that $\vE \times \vB \neq 0$ only within $\cV$.  Then
 	\beq
 		\vP = \frac{1}{4\pi c} \int (\vE \times \vB) \dcx
-		= \frac{2 N I Q}{4\pi c} \int_T \frac{\sh \times \phh}{s (s^2 + z^2)} \dcx
-		= \frac{N I Q}{2\pi c} \zh \int_T \frac{\dcx}{s (s^2 + z^2)},
+		= \frac{2 N I Q}{4\pi c} \intcV \frac{\sh \times \phh}{s (s^2 + z^2)} \dcx
+		= \frac{N I Q}{2\pi c} \zh \intcV \frac{\dcx}{s (s^2 + z^2)},
 	\eeq
-	which is nonzero.
+	which is nonzero because $\cV$ is bounded.
 \end{solution}

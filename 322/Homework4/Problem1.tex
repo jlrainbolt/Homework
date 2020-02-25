@@ -9,28 +9,29 @@
 	\eeq
 	The linear velocity of the moving charge everywhere is
 	\beq
-		\vvx = \omg r \, \delta(r - R)\, \phh.
+		\vvx = \vomg \times \vx
+		= \omg r \, \delta(r - R)\, \phh,
 	\eeq
-	Then the current density $\vJ$ is simply the product of charge density and the linear velocity of the charge:
+	where $\vomg = \omg \,\zh$ is the angular velocity vector.  Then the current density $\vJ$ is simply the product of charge density and the linear velocity of the charge:
 	\beq
 		\vJx = \rhox \, \vvx
 		= \frac{Q \omg}{4\pi} \frac{r}{R^2} \delta(r - R) \, \phh.
 	\eeq
 	From Eq.~(4.21) in the lecture notes, $\vAx$ everywhere is given by
 	\beq
-		\vAx = \frac{1}{c} \int \frac{\vJx'}{\abs{\vx - \vx'}} \dcxp.
+		\vAx = \frac{1}{c} \int \frac{\vJ(\vx')}{\abs{\vx - \vx'}} \dcxp.
 	\eeq
 	The integral we need to evaluate is then
-	\beq
+	\beqn \label{int1}
 		\vAx = \frac{1}{4\pi c} \frac{Q \omg}{R^2} \int \frac{r' \, \delta(r' - R)}{\abs{\vx - \vx'}} \dcxp.
-	\eeq
+	\eeqn
 	
-	The problem is azimuthally symmetric, so we will rotate our coordinate system such that $\vx$ points along the $z$ axis.  In the new coordinate system,
+	The problem is azimuthally symmetric, so we will rotate our coordinate system such that $\vx$ points along the $z$ axis.  Then, in the new coordinate system,
 	\beq
 		\frac{1}{\abs{\vx - \vx'}} = \frac{1}{\sqrt{\vx^2 - 2 \vx \cdot \vx' + {\vx'}^2}}
 		= \frac{1}{\sqrt{r^2 - 2 r r' \cos\tht' + {r'}^2}}.
 	\eeq
-	Let $\vomg$ be the angular velocity vector (that lay along the $z$ axis of the original coordinate system), which we choose to lie in the $xz$ plane.  Let $\alp$ be the angle between $\vomg$ and the $z$ axis.  Then the linear velocity of the moving charge is
+	Let $\vomg$ lie in the $xz$ plane, and let $\alp$ be the angle between $\vomg$ and the $z$ axis.  Then the linear velocity of the moving charge is
 	\begin{align*}
 		\vv(\vx') &= \vomg \times \vx'
 		= \mqty| \xh & \yh & \zh \\
@@ -44,18 +45,18 @@
 		= \frac{Q \omg}{4\pi} \frac{r'}{R^2} (\omgh \times \xh') \, \delta(r' - R),
 	\eeq
 	where
-	\beq
+	\beqn \label{ucross}
 		\omgh \times \xh' = - (\cos\alp \sin\tht' \sin\vph') \,\xh + (\cos\alp \sin\tht' \cos\vph' - \sin\alp \cos\tht') \,\yh + (\sin\alp \sin\tht' \sin\vph') \,\zh.
-	\eeq
-	The integral we need to evaluate becomes
+	\eeqn
+	Then \refeq{int1} becomes
 	\beq
 		\vAx = \frac{1}{4\pi c} \frac{Q \omg}{R^2} \intotp \intono \intoi \frac{{r'}^3 (\omgh \times \xh') \, \delta(r' - R)}{\sqrt{r^2 - 2 r r' \cos\tht' + {r'}^2}} \drp \dctp \dvp.
 	\eeq
 	Evaluating the radial integral, we have
-	\beq
+	\beqn \label{int2}
 		\vAx = \frac{Q \omg R}{4\pi c} \intotp \intono \frac{\omgh \times \xh'}{\sqrt{r^2 - 2 R r  \cos\tht' + R^2}} \dctp \dvp.
-	\eeq
-	For the angular integrals, the $\xh$ term is
+	\eeqn
+	For the angular integrals, the $\xh$ term in \refeq{xcross} gives us
 	\beq
 		- \cos\alp \,\xh \intono \frac{\sin\tht'}{\sqrt{r^2 - 2 R r  \cos\tht' + R^2}} \dctp \intotp \sin\vph' \dvp
 		\propto \bigg[ -\cos\vph' \bigg]_0^{2\pi}
@@ -92,7 +93,7 @@
 			\dfrac{R}{r^2} & r > R.
 		\end{cases}
 	\end{align*}
-	Finally, in the new coordinate system we have
+	Finally, in the new coordinate system \refeq{int2} is
 	\beq
 		\vAx = -\frac{Q \omg}{3 c} \sin\alp \,\yh \begin{cases}
 			\dfrac{r}{R} & r < R, \\[2ex]
@@ -100,7 +101,7 @@
 		\end{cases}
 	\eeq
 	
-	Transforming back to the old coordinate system, $\sin\alp \to - \sin\tht$.  Since the original system is azimuthally symmetric, $\vph = 0$ so $\yh = \sin\tht \sin\vph \,\rh + \cos\tht \sin\vph \,\thh + \cos\vph \,\phh = \phh$.  Thus we have
+	Transforming back to the old coordinate system, $\sin\alp \to - \sin\tht$, and $\yh \to \phh$ since the original system is azimuthally symmetric.  Thus we have
 	\beq
 		\vAx = \frac{Q \omg}{3 c} \sin\tht \,\phh \begin{cases}
 			\dfrac{r}{R} & r < R, \\[2ex]

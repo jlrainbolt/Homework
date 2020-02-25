@@ -16,30 +16,28 @@
 	\beq
 		\dv{\vL}{t} = 0.
 	\eeq
-	The stress-energy tensor $\Tij$ is defined in Eq.~(5.11):
-	\beq
-		\Tij = \frac{1}{4\pi} \left[ \Ei \Ej + \Bi \Bj - \frac{1}{2} \delij (\abs{\vE}^2 + \abs{\vB}^2) \right]
-	\eeq
 	From Eq.~(5.18), the failure of linear momentum conservation to hold for the electromagnetic field alone, in general, is
 	\beq
 		\pdv{\cPi}{t} - \sum_{j=1}^3 \partial_j \Tij = - \left[ \rho \Ei + \frac{1}{c} (\vJ \times \vB)_i \right],
 	\eeq
-	where Eq.~(5.19) defines
+	where the stress-energy tensor $\Tij$ is defined in Eq.~(5.11),
+	\beq
+		\Tij = \frac{1}{4\pi} \left[ \Ei \Ej + \Bi \Bj - \frac{1}{2} \delij (\abs{\vE}^2 + \abs{\vB}^2) \right],
+	\eeq
+	and Eq.~(5.19) defines
 	\beq
 		\vf = \rho \vE + \frac{1}{c} \vJ \times \vB
 	\eeq
-	as the force meter unit volume that the electromagnetic field exerts on matter.  For a source-free solution, $\vf = 0$.
+	as the force meter unit volume that the electromagnetic field exerts on matter.
 	
-	For angular momentum, we can use the distributive property of the cross product to write
+	We can use the distributive property of the cross product to write
 	\beq
 		\vx \times \pdv{\cP}{t} - \vx \times (\grad \cdot \vT) = - \vx \times \vf = 0,
 	\eeq
-	where we use the notation $(\grad \cdot \vT)_i = \sum_{j=1}^3 \partial_j \Tij$, where the sum is implied.
-	
-	We are free to move the time derivative since $\vx$ represents the point at which we are evaluating the angular momentum, and is not time dependent.  Thus, we have
-	\beq
-		\pdv{\vl}{t} = \pdv{}{t} (\vx \times \cP) = \vx \times (\grad \cdot \vT).
-	\eeq
+	where we use the notation $(\grad \cdot \vT)_i = \sum_{j=1}^3 \partial_j \Tij$, and we have used the fact that we are working with a source-free solution to write $\vf = 0$.  We are free to move the time derivative since $\vx$ represents the point at which we are evaluating the angular momentum, and is not time dependent.  Thus, we have
+	\beqn \label{friend1}
+		\vx \times (\grad \cdot \vT) = \pdv{}{t} (\vx \times \cP) = \pdv{\vl}{t}.
+	\eeqn
 	The $y$ component of this vector is
 	\beq
 		\pdv{\ly}{t} = z (\grad \cdot \vT)_x - x (\grad \cdot \vT)_z,
@@ -47,25 +45,25 @@
 	where
 	\begin{align*}
 		(\grad \cdot \vT)_x &= \left( \pdv{T_{xx}}{x} + \pdv{T_{xy}}{y} + \pdv{T_{xz}}{z} \right) \\
-		&= \frac{1}{4\pi} \left[ \pdv{}{x} \left( \Ex^2 + \Bx^2 - \frac{E^2 + B^2}{2} \right) + \pdv{}{y} (\Ex \Ey + \Bx \By) + \pdv{}{z} (\Ex \Ez + \Bx \Bz) \right],
+		&= \frac{1}{4\pi} \left[ \pdv{}{x} \left( \Ex^2 + \Bx^2 - \frac{E^2 + B^2}{2} \right) + \pdv{}{y} (\Ex \Ey + \Bx \By) + \pdv{}{z} (\Ex \Ez + \Bx \Bz) \right].
 	\end{align*}
-	and similarly for $(\grad \cdot \vT)_y$ and $(\grad \cdot \vT)_y$.
+	Note that $(\grad \cdot \vT)_y$ and $(\grad \cdot \vT)_y$ have similar forms.
 	
-	Integrating over all of space,
-	\beq
+	Integrating \refeq{friend1} over all of space,
+	\beqn \label{friend2}
 		\int \pdv{\ly}{t} \dcx = \int [ z (\grad \cdot \vT)_x - x (\grad \cdot \vT)_z ] \dcx.
-	\eeq
+	\eeqn
 	Note that
 	\beq
 		\int \pdv{\vl}{t} \dcx = \limLi \intLL \intLL \intLL \pdv{\vl}{t} \dx \dy \dz,
 	\eeq
-	so the first term becomes
+	so the first term of \refeq{friend2} becomes
 	\begin{align*}
 		\int z (\grad \cdot \vT)_x \dcx &= \limLi \frac{1}{4\pi} \intLL \intLL \intLL z \pdv{}{x} \left( \Ex^2 + \Bx^2 - \frac{E^2 + B^2}{2} \right) \dx \dy \dz \\
 		&\phantom{mmmmmmmmmm} + \limLi \frac{1}{4\pi} \intLL \intLL \intLL z \pdv{}{y} (\Ex \Ey + \Bx \By) \dx \dy \dz \\
 		&\phantom{mmmmmmmmmmmmmmmmmmmm} + \limLi \frac{1}{4\pi} \intLL \intLL \intLL z \pdv{}{z} (\Ex \Ez + \Bx \Bz) \dx \dy \dz.
 	\end{align*}
-	For the first term of this integral, integrating with respect to $x$ by parts yields
+	For the first term of this integral, integrating by parts with respect to $x$ yields
 	\beq
 		\limLi \intLL \pdv{}{x} \left( \Ex^2 + \Bx^2 - \frac{E^2 + B^2}{2} \right) \dx = \limLi \bigg[ \Ex^2 + \Bx^2 - \frac{E^2 + B^2}{2} \bigLL = 0,
 	\eeq
@@ -75,15 +73,19 @@
 	\eeq
 	For the third term,
 	\beq
-		\intLL z \pdv{}{z} (\Ex \Ez + \Bx \Bz) \dz = \limLi \bigg[ z (\Ex \Ez + \Bx \Bz) \bigLL - \limLi \intLL (\Ex \Ez + \Bx \Bz) \dz = 0.
+		\intLL z \pdv{}{z} (\Ex \Ez + \Bx \Bz) \dz = \limLi \bigg[ z (\Ex \Ez + \Bx \Bz) \bigLL - \limLi \intLL (\Ex \Ez + \Bx \Bz) \dz.
 	\eeq
-	Since $\vE$ and $\vB$ fall off ``rapidly,'' we assume they overtake $\absx$ as $\absx \to \infty$.
+	Since $\vE$ and $\vB$ fall off ``rapidly,'' we assume they overtake $\absx$ as $\absx \to \infty$.  That is, $\vE, \vB \sim 1/\absx^n$ where $n > 1$.  Then
+	\begin{align*}
+		\limLi \bigg[ z (\Ex \Ez + \Bx \Bz) \bigLL &\sim \limLi \bigg[ \frac{1}{z^{n-1}} \bigLL = 0, &
+		\limLi \intLL (\Ex \Ez + \Bx \Bz) \dz &\sim \limLi \bigg[ \frac{1}{z^{n-1}} \bigLL = 0
+	\end{align*}
 	
-	Thus, by symmetry we have
+	Thus, \refeq{friend2} becomes
 	\beq
-		\int \pdv{l_x}{t} \dcx = \int \pdv{l_y}{t} \dcx = \int \pdv{l_z}{t} \dcx = 0.
+		\int \pdv{\ly}{t} \dcx = 0 \implies \int \pdv{\vl}{t} \dcx = 0
 	\eeq
-	We may move the derivative out of the integral to obtain
+	by symmetry.  We may move the derivative out of the integral to obtain
 	\beq
 		\dv{\vL}{t} = \dv{}{t} \int \vl \dcx = \int \pdv{\vl}{t} \dcx = 0,
 	\eeq
