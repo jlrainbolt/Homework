@@ -1,7 +1,7 @@
 \begin{statement}{}
 	If an electric and magnetic field are both present, the momentum density carried by the electromagnetic field is given by Poynting's formula
 	\beq
-		\vcP = \frac{c}{4\pi} (\vE \times \vB).
+		\vcP = \frac{1}{4\pi c} (\vE \times \vB).
 	\eeq
 	Consider a bounded distribution of time-independent charges and currents, i.e., $\rhox$ and $\vJx$ are time independent and vanish when $\absx > R$ for some $R$.
 \end{statement}
@@ -94,9 +94,9 @@
 	\eeq
 	where we have once again used the Coulomb gauge condition, and that $\grad \times (\grad \times \vA) = 4\pi \vJ / c$ from Eq.~(4.4).  Thus, we have proven
 	\beq
-		\vP = \int \cP(\vx) \dcx = \frac{c}{4\pi} \int (\vE \times \vB) \dcx = \int \phix \, \vJx \dcx,
+		\vP = \int \cP(\vx) \dcx = \frac{1}{4\pi c} \int (\vE \times \vB) \dcx = \frac{1}{c^2} \int \phix \, \vJx \dcx,
 	\eeq
-	as desired. \qed
+	as desired, except for the factor of $1 / c^2$. \qed
 	
 \end{solution}
 
@@ -120,9 +120,9 @@
 	\eeq
 	Let $T$ denote the volume of the toroid, and note that $\vE \times \vB \neq 0$ only within this finite volume.  Then
 	\beq
-		\vP = \frac{c}{4\pi} \int (\vE \times \vB) \dcx
-		= \frac{c}{4\pi} 2 N I Q \int_T \frac{\sh \times \phh}{s (s^2 + z^2)} \dcx
-		= \frac{c}{2\pi} N I Q \,\zh \int_T \frac{\dcx}{s (s^2 + z^2)},
+		\vP = \frac{1}{4\pi c} \int (\vE \times \vB) \dcx
+		= \frac{2 N I Q}{4\pi c} \int_T \frac{\sh \times \phh}{s (s^2 + z^2)} \dcx
+		= \frac{N I Q}{2\pi c} \zh \int_T \frac{\dcx}{s (s^2 + z^2)},
 	\eeq
 	which is nonzero.
 \end{solution}
