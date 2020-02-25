@@ -1,0 +1,91 @@
+\begin{statement}{}
+	The angular momentum density of the electromagnetic field is given by
+	\beq
+		\vl = \vx \times \vcP
+		= \frac{c}{4\pi} \vx \times (\vE \times \vB).
+	\eeq
+	Consider a source free ($\rho = 0$, $\vJ = 0$) solution to Maxwell's equations in electrodynamics with $\vE$ and $\vB$ vanishing rapidly as $\absx \to \infty$, so the total angular momentum
+	\beq
+		\vL = \int \vl \dcx
+	\eeq
+	is well defined.  Show that $\vL$ is conserved, i.e., independent of time.
+\end{statement}
+
+\begin{solution}
+	We want to show that
+	\beq
+		\dv{\vL}{t} = 0.
+	\eeq
+	The stress-energy tensor $\Tij$ is defined in Eq.~(5.11):
+	\beq
+		\Tij = \frac{1}{4\pi} \left[ \Ei \Ej + \Bi \Bj - \frac{1}{2} \delij (\abs{\vE}^2 + \abs{\vB}^2) \right]
+	\eeq
+	From Eq.~(5.18), the failure of linear momentum conservation to hold for the electromagnetic field alone, in general, is
+	\beq
+		\pdv{\cPi}{t} - \sum_{j=1}^3 \partial_j \Tij = - \left[ \rho \Ei + \frac{1}{c} (\vJ \times \vB)_i \right],
+	\eeq
+	where Eq.~(5.19) defines
+	\beq
+		\vf = \rho \vE + \frac{1}{c} \vJ \times \vB
+	\eeq
+	as the force meter unit volume that the electromagnetic field exerts on matter.  For a source-free solution, $\vf = 0$.
+	
+	For angular momentum, we can use the distributive property of the cross product to write
+	\beq
+		\vx \times \pdv{\cP}{t} - \vx \times (\grad \cdot \vT) = - \vx \times \vf = 0,
+	\eeq
+	where we use the notation $(\grad \cdot \vT)_i = \sum_{j=1}^3 \partial_j \Tij$, where the sum is implied.
+	
+	We are free to move the time derivative since $\vx$ represents the point at which we are evaluating the angular momentum, and is not time dependent.  Thus, we have
+	\beq
+		\pdv{\vl}{t} = \pdv{}{t} (\vx \times \cP) = \vx \times (\grad \cdot \vT).
+	\eeq
+	The $y$ component of this vector is
+	\beq
+		\pdv{\ly}{t} = z (\grad \cdot \vT)_x - x (\grad \cdot \vT)_z,
+	\eeq
+	where
+	\begin{align*}
+		(\grad \cdot \vT)_x &= \left( \pdv{T_{xx}}{x} + \pdv{T_{xy}}{y} + \pdv{T_{xz}}{z} \right) \\
+		&= \frac{1}{4\pi} \left[ \pdv{}{x} \left( \Ex^2 + \Bx^2 - \frac{E^2 + B^2}{2} \right) + \pdv{}{y} (\Ex \Ey + \Bx \By) + \pdv{}{z} (\Ex \Ez + \Bx \Bz) \right],
+	\end{align*}
+	and similarly for $(\grad \cdot \vT)_y$ and $(\grad \cdot \vT)_y$.
+	
+	Integrating over all of space,
+	\beq
+		\int \pdv{\ly}{t} \dcx = \int [ z (\grad \cdot \vT)_x - x (\grad \cdot \vT)_z ] \dcx.
+	\eeq
+	Note that
+	\beq
+		\int \pdv{\vl}{t} \dcx = \limLi \intLL \intLL \intLL \pdv{\vl}{t} \dx \dy \dz,
+	\eeq
+	so the first term becomes
+	\begin{align*}
+		\int z (\grad \cdot \vT)_x \dcx &= \limLi \frac{1}{4\pi} \intLL \intLL \intLL z \pdv{}{x} \left( \Ex^2 + \Bx^2 - \frac{E^2 + B^2}{2} \right) \dx \dy \dz \\
+		&\phantom{mmmmmmmmmm} + \limLi \frac{1}{4\pi} \intLL \intLL \intLL z \pdv{}{y} (\Ex \Ey + \Bx \By) \dx \dy \dz \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmm} + \limLi \frac{1}{4\pi} \intLL \intLL \intLL z \pdv{}{z} (\Ex \Ez + \Bx \Bz) \dx \dy \dz.
+	\end{align*}
+	For the first term of this integral, integrating with respect to $x$ by parts yields
+	\beq
+		\limLi \intLL \pdv{}{x} \left( \Ex^2 + \Bx^2 - \frac{E^2 + B^2}{2} \right) \dx = \limLi \bigg[ \Ex^2 + \Bx^2 - \frac{E^2 + B^2}{2} \bigLL = 0,
+	\eeq
+	since $\vE$ and $\vB$ vanish rapidly as $\absx \to \infty$.  For the second term,
+	\beq
+		\intLL \pdv{}{y} (\Ex \Ey + \Bx \By) \dy = \limLi \bigg[ \Ex \Ey + \Bx \By \bigLL = 0.
+	\eeq
+	For the third term,
+	\beq
+		\intLL z \pdv{}{z} (\Ex \Ez + \Bx \Bz) \dz = \limLi \bigg[ z (\Ex \Ez + \Bx \Bz) \bigLL - \limLi \intLL (\Ex \Ez + \Bx \Bz) \dz = 0.
+	\eeq
+	Since $\vE$ and $\vB$ fall off ``rapidly,'' we assume they overtake $\absx$ as $\absx \to \infty$.
+	
+	Thus, by symmetry we have
+	\beq
+		\int \pdv{l_x}{t} \dcx = \int \pdv{l_y}{t} \dcx = \int \pdv{l_z}{t} \dcx = 0.
+	\eeq
+	We may move the derivative out of the integral to obtain
+	\beq
+		\dv{\vL}{t} = \dv{}{t} \int \vl \dcx = \int \pdv{\vl}{t} \dcx = 0,
+	\eeq
+	as we sought to prove. \qed
+\end{solution}

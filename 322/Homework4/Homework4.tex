@@ -142,6 +142,8 @@
 \newcommand{\Aj}{A_j}
 \newcommand{\Ei}{E_i}
 \newcommand{\Ej}{E_j}
+\newcommand{\Bi}{B_i}
+\newcommand{\Bj}{B_j}
 \newcommand{\Ek}{E_k}
 \renewcommand{\xi}{x_i}
 \newcommand{\xj}{x_j}
@@ -151,6 +153,9 @@
 \newcommand{\intLL}{\int_{-L}^L}
 \newcommand{\limLi}{\lim_{L \to \infty}}
 \newcommand{\bigLL}{\bigg]_{-L}^L}
+\newcommand{\dx}{\dd{x}}
+\newcommand{\dy}{\dd{y}}
+\newcommand{\dz}{\dd{z}}
 
 \newcommand{\cV}{\mathcal{V}}
 \newcommand{\intcV}{\int_\cV}
@@ -171,78 +176,24 @@
 
 \newcommand{\vl}{\vb{l}}
 \newcommand{\vL}{\vb{L}}
-\newcommand{\li}{l_i}
-\newcommand{\Bi}{B_i}
-\newcommand{\Bj}{B_j}
-\newcommand{\Bk}{B_k}
-\newcommand{\vi}{v_i}
-\newcommand{\vj}{v_j}
+\newcommand{\ly}{l_y}
+\newcommand{\cPi}{\cP_i}
+\newcommand{\Tij}{T_{ij}}
+\newcommand{\del}{\delta}
+\newcommand{\delij}{\del_{ij}}
+\newcommand{\vf}{\vb{f}}
+\newcommand{\vT}{\vb{T}}
 
-\begin{statement}{}
-	The angular momentum density of the electromagnetic field is given by
-	\beq
-		\vl = \vx \times \vcP
-		= \frac{c}{4\pi} \vx \times (\vE \times \vB).
-	\eeq
-	Consider a source free ($\rho = 0$, $\vJ = 0$) solution to Maxwell's equations in electrodynamics with $\vE$ and $\vB$ vanishing rapidly as $\absx \to \infty$, so the total angular momentum
-	\beq
-		\vL = \int \vl \dcx
-	\eeq
-	is well defined.  Show that $\vL$ is conserved, i.e., independent of time.
-\end{statement}
+\newcommand{\Ex}{E_x}
+\newcommand{\Ey}{E_y}
+\newcommand{\Ez}{E_z}
+\newcommand{\Bx}{B_x}
+\newcommand{\By}{B_y}
+\newcommand{\Bz}{B_z}
+\newcommand{\intii}{\int_{-\infty}^\infty}
 
-\begin{solution}
-	We want to show that
-	\beq
-		\dv{\vL}{t} = 0.
-	\eeq
-	From Eq.~(4.12) in the lecture notes,
-	\beqn \label{baccab}
-		\vaa \times (\vbb \times \vc) = (\vaa \cdot \vc) \vbb - (\vaa \cdot \vbb) \vc.
-	\eeqn
-	Then
-	\beq
-		\vl = (\vx \cdot \vB) \vE - (\vx \cdot \vE) \vB.
-	\eeq
-	Differentiating with respect to time and applying the product rule, we find
-	\begin{align*}
-		\pdv{\vl}{t} &= \vE \pdv{}{t} (\vx \cdot \vB) + (\vx \cdot \vB) \pdv{\vE}{t} - \vB \pdv{}{t} (\vx \cdot \vE) + (\vx \cdot \vE) \pdv{\vB}{t} \\
-		&= \vE \left(\pdv{\vx}{t} \cdot \vB + \vx \cdot \pdv{\vB}{t} \right) + (\vx \cdot \vB) \pdv{\vE}{t} - \vB \left (\pdv{\vx}{t} \cdot \vE + \vx \cdot \pdv{\vE}{t} \right) + (\vx \cdot \vE) \pdv{\vB}{t}
-	\end{align*}
-	For a source-free solution, Maxwell's equations~(1.1)--(1.4) in the lecture notes become
-	\begin{align*}
-		\grad \cdot \vE &= 0, &
-		\grad \times \vB - \frac{1}{c} \pdv{\vE}{t} &= 0, &
-		\grad \cdot \vB &= 0, &
-		\grad \times \vE + \frac{1}{c} \pdv{\vB}{t} &= 0.
-	\end{align*}
-	This allows us to write
-	\begin{align*}
-		\pdv{\vl}{t} &= \vE [\vv \cdot \vB - c \vx \cdot (\grad \times \vE)] + c (\vx \cdot \vB) (\grad \times \vB) - \vB [\vv \cdot \vE + c \vx \cdot (\grad \times \vB)] - c (\vx \cdot \vE) (\grad \times \vE) \\
-		&= \vE (\vv \cdot \vB) - \vB (\vv \cdot \vE) - c \vE [ \vx \cdot (\grad \times \vE) ] - c \vB [ \vx \cdot (\grad \times \vB) ] + c (\vx \cdot \vB) (\grad \times \vB) - c (\vx \cdot \vE) (\grad \times \vE)
-	\end{align*}
-	where $\vv = \pdv*{\vx}{t}$.  
-	Vector calculus identity (6) in Griffiths is
-	\beq
-		\grad \cdot (\vaa \times \vbb) = \vbb \cdot (\grad \times \vaa) - \vaa \cdot (\grad \times \vbb).
-	\eeq
-	Then
-	\beq
-		\vx \cdot (\grad \times \vE) = \grad \cdot (\vE \times \vx) + \vE \cdot (\grad \times \vx)
-		= \grad \cdot (\vE \times \vx),
-	\eeq
-	and similarly for $\vE \to \vB$.  So
-	\beq
-		\pdv{\vl}{t} = \vE (\vv \cdot \vB) - \vB (\vv \cdot \vE) - c \vE [ \grad \cdot (\vx \times \vE) ] - c \vB [ \grad \cdot (\vx \times \vB) ] + c (\vx \cdot \vB) (\grad \times \vB) - c (\vx \cdot \vE) (\grad \times \vE).
-	\eeq
-	
-%	In component notation,
-%	\begin{align*}
-%		\pdv{\li}{t} &= \Ei [ \vj \Bj - c \xj (\grad \times \vE)_j ] + c \xj \Bj (\grad \times \vB)_i - \Bi [ \vj \Ej + c \xj (\grad \times \vB)_j ] - c \xj \Ej (\grad \times \vE)_i \\
-%%		&= \Ei \left[ \vj \Bj - c \xj \left( \pdv{\Ei}{\xk} - \pdv{\Ek}{\xi} \right) \right] + c \xj \Bj (\grad \times \vB)_i - \Bi [ \vj \Ej + c \xj (\grad \times \vB)_j ] - c \xj \Ej \left( \pdv{\Ek}{\xj} - \pdv{\Ej}{\xk} \right) \\
-%		&= \Ei \vj \Bj - c \Ei \xj (\grad \times \vE)_j + c \xj \Bj (\grad \times \vB)_i - \Bi \vj \Ej + c \Bi \xj (\grad \times \vB)_j - c \xj \Ej (\grad \times \vE)_i
-%	\end{align*}
-\end{solution}
+\clearpage
+\input{Problem3}
 
 
 \vfill
