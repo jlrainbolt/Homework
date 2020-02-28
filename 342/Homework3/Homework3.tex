@@ -8,6 +8,7 @@
 \usepackage{enumitem}
 \usepackage{xcolor, soul}
 \usepackage{kbordermatrix}
+\usepackage{booktabs}
 %\allowdisplaybreaks
 
 \makeatletter
@@ -133,19 +134,17 @@
 	The possiblities are listed in the following table:
 	\beq
 		\begin{array}{l | c c c c c c c c c c c c c c c c}
+		\toprule
 			Q & +1 & +1 & +1 & +1 & -1 & -1 & +1 & +1 & +1 & -1 & -1 & -1 & -1 & -1 & +1 & -1 \\
 			R & +1 & +1 & +1 & -1 & +1 & +1 & -1 & +1 & -1 & +1 & -1 & -1 & -1 & +1 & -1 & -1 \\
 			S & +1 & +1 & -1 & +1 & +1 & +1 & +1 & -1 & -1 & -1 & +1 & -1 & +1 & -1 & -1 & -1 \\
-			T & +1 & -1 & +1 & +1 & +1 & -1 & -1 & -1 & +1 & +1 & +1 & +1 & -1 & -1 & -1 & -1 \\ \hline \\[-1.5ex]
-			\vE & \dhf & \dhf & -\dhf & -\dhf & \dhf & -\dhf & \dhf & -\dhf & -\dhf & \dhf & -\dhf & \dhf & -\dhf & -\dhf & \dhf & \dhf
+			T & +1 & -1 & +1 & +1 & +1 & -1 & -1 & -1 & +1 & +1 & +1 & +1 & -1 & -1 & -1 & -1 \\ \midrule
+			\vE & \dhf & \dhf & -\dhf & -\dhf & \dhf & -\dhf & \dhf & -\dhf & -\dhf & \dhf & -\dhf & \dhf & -\dhf & -\dhf & \dhf & \dhf \\
+		\bottomrule
 		\end{array}
-	\eeq
-	Clearly,
-	\beq
-		\Max = \frac{1}{2}.
-	\eeq
+	\eeq \smallskip
+	Clearly, $\Max = 1/2$.
 \end{solution}
-\vfix
 
 
 
@@ -165,6 +164,12 @@
 
 
 
+\newcommand{\kQp}{\ket{Q_+}}
+\newcommand{\kQm}{\ket{Q_-}}
+\newcommand{\kTp}{\ket{T_+}}
+\newcommand{\kTm}{\ket{T_-}}
+\newcommand{\Apm}{A_\pm}
+
 \begin{problem}
 	Now consider a quantum mechanical version of the game.  There are quantum states of two spin-$1/2$ degrees of freedom shared by Alice and Bob.  Alice can measure the $z$ component or $x$ components of the first spin $\vSA$.  (This corresponds to $Q = \pm1$ or $R = \pm1$.)  Bob can measure the $-(z+x)$ component or the $(z-x)$ component of the first spin $\vSB$.  (This corresponds to $S = \pm1$ or $T = \pm1$.)
 	
@@ -181,6 +186,60 @@
 	\end{align*}
 	Let us consider the case when Alice measures $Q$ and Bob measures $T$.  Calculate the probability $P(Q, T)$ for Alice and Bob getting the measurement outcomes $(Q, T) = (\pm1, \pm1)$.
 \end{problem}
+
+\begin{solution}
+	All of the operators have eigenvalues $\pm \hbar/2$.  In the $\SzA$ basis, $Q$ and its eigenvectors are
+	\begin{align*}
+		Q &= \frac{\hbar}{2} \mqty[ 1 & 0 \\ 0 & -1 ], &
+		\kQp &= \mqty[ 1 \\ 0 ], &
+		\kQm &= \mqty[ 0 \\ 1 ].
+	\end{align*}
+	In the $\SzB$ basis, $T$ can be written
+	\beq
+		T = \frac{\hbar}{2\sqrt{2}} \left( \mqty[ 1 & 0 \\ 0 & -1 ] - \mqty[ 0 & 1 \\ 1 & 0 ] \right)
+		= \frac{\hbar}{2\sqrt{2}} \mqty[ 1 & -1 \\ -1 & -1 ].
+	\eeq
+	The eigenvectors corresponding to eigenvalues $\pm \hbar/2$ can be found by
+	\beq
+		\mqty[ 1 & -1 \\ -1 & -1 ] \mqty[ u \\ v ] = \pm\sqrt{2} \mqty[ u \\ v ],
+	\eeq
+	which is satisfied when
+	\begin{align*}
+		v &= (1 \mp \sqrt{2}) u, &
+		u &= -(1 \pm \sqrt{2}) v.
+	\end{align*}
+	We will fix $u = 1$.  Then the normalization constants $\Apm$ are found by
+	\beq
+		1 = \abs{\braket{T_\pm}}^2
+		= \Apm^2 \mqty[ 1 & 1 \mp \sqrt{2} ] \mqty[ 1 \\ 1 \mp \sqrt{2} ]
+		= \Apm^2 (4 \mp 2 \sqrt{2})
+		\implies
+		\Apm = \frac{1}{\sqrt{4 \mp 2 \sqrt{2}}}.
+	\eeq
+	The normalized eigenvectors are
+	\begin{align*}
+		\kTp &= \frac{1}{\sqrt{4 - 2 \sqrt{2}}} \mqty[ 1 \\ 1 - \sqrt{2} ], &
+		\kTm &= \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \mqty[ 1 \\ 1 + \sqrt{2} ].
+	\end{align*}
+	
+	The probability for Alice and Bob's obtaining $(Q, T) = (+1, +1)$ is
+	\begin{align*}
+		P(Q=+1, T=+1) &= \abs{\braket{Q_-, T_-}{\psi}}^2
+		= \abs{ \mqty[ 1 & 0 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 - 2 \sqrt{2}}} \mqty[1 & 1 - \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] }^2 \\
+		&= \abs{ \frac{1}{\sqrt{2}} \otimes -\frac{1}{\sqrt{4 - 2 \sqrt{2}}} }^2
+		= \frac{1}{2} \frac{1}{4 - 2 \sqrt{2}}
+		= \frac{1}{8 - 4 \sqrt{2}},
+	\end{align*}
+	and the probability for their obtaining $(Q, T) = (-1, -1)$ is
+	\begin{align*}
+		P(Q=-1, T=-1) &= \abs{\braket{Q_+, T_+}{\psi}}^2
+		= \abs{ \mqty[ 0 & 1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \mqty[1 & 1 + \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] }^2 \\
+		&= \abs{ -\frac{1}{\sqrt{2}} \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} }^2
+		= \frac{1}{2} \frac{1}{4 + 2 \sqrt{2}}
+		= \frac{1}{8 + 4 \sqrt{2}}.
+	\end{align*}
+\end{solution}
+\vfix
 
 
 
