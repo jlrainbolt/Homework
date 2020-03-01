@@ -81,260 +81,89 @@
 
 \begin{document}
 
+\input{Problem1}
 
-\newcommand{\vE}{\vb{E}}
-\newcommand{\vS}{\vb{S}}
-\newcommand{\vSA}{\vS^A}
-\newcommand{\vSB}{\vS^B}
-\newcommand{\Max}{\text{Max}}
-\newcommand{\kpsi}{\ket{\psi}}
-\newcommand{\up}{\uparrow}
-\newcommand{\dn}{\downarrow}
-\newcommand{\kupz}{\ket{\up_z}}
-\newcommand{\kdnz}{\ket{\dn_z}}
-\newcommand{\Sx}{S_x}
-\newcommand{\Sz}{S_z}
-\newcommand{\SxA}{\Sx^A}
-\newcommand{\SzA}{\Sz^A}
-\newcommand{\SxB}{\Sx^B}
-\newcommand{\SzB}{\Sz^B}
-\newcommand{\dhf}{\dfrac{1}{2}}
+
+
+\newcommand{\Vo}{V_0}
+\newcommand{\vr}{\vb{r}}
+\newcommand{\Rl}{R_l}
+\newcommand{\Ylm}{Y_{l m}}
+\newcommand{\Rlr}{\Rl(r)}
+\newcommand{\vep}{\varepsilon}
+\newcommand{\tht}{\theta}
+\newcommand{\del}{\delta}
+\newcommand{\dell}{\del_l}
+\newcommand{\delo}{\del_0}
+\newcommand{\Al}{A_l}
+\newcommand{\absr}{\abs{r}}
 
 \begin{statement}{}
-	Consider the following probabalistic game: There are four doors ($Q, R, S, T$).  Behind each door is a device which displays $\pm 1$ randomly according to the probability $P(Q=\pm1, R=\pm1, S=\pm1, T=\pm1)$.  Alice and Bob are on the same team.  Alice has to choose either $Q$ and $R$, and then Bob has to choose either $S$ and $T$.  When the numbers match, they get $+1$ point; when the numbers do not match, they get $-1$ point.  However, when they open $Q$ and $T$, it's an exception.  When the numbers (do not) match, they get $-1$~($+1$).
-\end{statement}
-
-\begin{problem} \label{1.1}
-	Let's assume Alice and Bob open the doors completely randomly.  When all numbers are $+1$ with probability 1, what is the expectation value of the point they get?
-\end{problem}
-
-\begin{solution}
-	Let $\vE$ be the expectation value of the number of points.  In this case, the numbers behind the two doors will always match.  So
+	Consider a quantum particle with mass $m$ moving in the presence of the square well potential
 	\beq
-		\vE = \frac{QS + RS + RT - QT}{4}
-		= \frac{1 + 1 + 1 - 1}{4}
-		= \frac{1}{2}.
-	\eeq
-	\vfix
-\end{solution}
-
-
-
-\begin{problem}
-	As it turns out, irrespective of how hard you fine tune the probability $P(Q=\pm1, R=\pm1, S=\pm1, T=\pm1)$, the expectation value of the point Alice and Bob get cannot exceed a certain value $\Max$:
-	\beq
-		\frac{\vE(QS) + \vE(RS) + \vE(RT) - \vE(QT)}{4} \leq \Max.
-	\eeq
-	Here, $\vE(QS)$, etc. is the expectation value of the point when Alice opens $Q$ and Bob opens $S$.  This is a Bell inequality.  Determine $\Max$.
-	
-	\emph{Hint:} For a given realization of the numbers $Q = \pm1$, $R = \pm1$, $S = \pm1$, $T = \pm1$, which occurs with probability $P(Q, R, S, T)$, note that $QS + RS + RT - QT = (Q+R)S + (R-Q)T$, where one of $\{(R+Q), (R-Q)\}$ is 2 and the other 0.
-\end{problem}
-
-\begin{solution}
-	In addition to the information provided in the hint, both $S$ and $T$ must be $\pm1$.  This means the only possibilities for the number of points earned are
-	\beq
-		\frac{(Q + R) S + (R - Q) T}{4} = \begin{cases}
-			\dfrac{(0) (-1) + (2) (1)}{4} = \dfrac{1}{2}, \\[2ex]
-			\dfrac{(0) (1) + (2) (-1)}{4} = -\dfrac{1}{2}.
+		V(\absr) = \begin{cases}
+			-\Vo & r \leq a, \\
+			0 & r > a.
 		\end{cases}
 	\eeq
-	Thus,
-	\beq
-		\Max = \frac{1}{2}.
-	\eeq
 	\vfix
-\end{solution}
-
-
+\end{statement}
 
 \begin{problem}
-	Frustrated by the upper bound set by the Bell inequality, Bob decides to cheat.  He now changes the value of $T$ after Alice chooses $Q$ or $R$.  Assume $Q,R,S$ are set to be $+1$ with probability 1.  To make the expectation value of the point they get equal to $+1$, what values should Bob set after Alice chooses $Q$ or $R$?
+	Writing the wave function in polar coordinates as $\psi(\vr) = \Rlr \, \Ylm(\tht, \phi)$, write down the {\Schrodinger} equation obeyed by $\Rl$.
 \end{problem}
-
-\begin{solution}
-	If Alice chooses $R$, Bob should set $T = 1$.  If Alice chooses $Q$, Bob should set $T = -1$.  This way,
-	\beq
-		\frac{\vE(QS) + \vE(RS) + \vE(RT) - \vE(QT)}{4}
-		= \frac{1 + 1 + 1 + 1}{4}
-		= 1.
-	\eeq
-	\vfix
-\end{solution}
-
-
-
-\newcommand{\kQp}{\ket{Q_+}}
-\newcommand{\kQm}{\ket{Q_-}}
-\newcommand{\kTp}{\ket{T_+}}
-\newcommand{\kTm}{\ket{T_-}}
-\newcommand{\Apm}{A_\pm}
 
 \begin{problem}
-	Now consider a quantum mechanical version of the game.  There are quantum states of two spin-$1/2$ degrees of freedom shared by Alice and Bob.  Alice can measure the $z$ component or $x$ components of the first spin $\vSA$.  (This corresponds to $Q = \pm1$ or $R = \pm1$.)  Bob can measure the $-(z+x)$ component or the $(z-x)$ component of the first spin $\vSB$.  (This corresponds to $S = \pm1$ or $T = \pm1$.)
-	
-	More specifically, Alice and Bob share the quantum state
-	\beq
-		\kpsi = \frac{\kupz \otimes \kdnz - \kdnz \otimes \kupz}{\sqrt{2}}.
-	\eeq
-	The operators to be measured are
-	\begin{align*}
-		Q &= \SzA, &
-		R &= \SxA, &
-		S &= -\frac{\SzB + \SxB}{\sqrt{2}}, &
-		T &= \frac{\SxB - \SzB}{\sqrt{2}}.
-	\end{align*}
-	Let us consider the case when Alice measures $Q$ and Bob measures $T$.  Calculate the probability $P(Q, T)$ for Alice and Bob getting the measurement outcomes $(Q, T) = (\pm1, \pm1)$.
+	When $\Vo$ is a certain value, there is one bound state for the $s$ wave ($l = 0$).  The bound state energy $\vep$ is small ($0 < \abs{\vep} \ll \Vo$).  Obtain the range of the depth of the well $\Vo$ (? $\leq \Vo <$ ?).  Also, calculate for the bound state the probability for the particle to exist outside of the well.
 \end{problem}
-
-\begin{solution}
-	All of the operators have eigenvalues $\pm \hbar/2$.  In the $\SzA$ basis, $Q$ and its eigenvectors are
-	\begin{align*}
-		Q &= \frac{\hbar}{2} \mqty[ 1 & 0 \\ 0 & -1 ], &
-		\kQp &= \mqty[ 1 \\ 0 ], &
-		\kQm &= \mqty[ 0 \\ 1 ].
-	\end{align*}
-	In the $\SzB$ basis, $T$ can be written
-	\beq
-		T = \frac{\hbar}{2\sqrt{2}} \left( \mqty[ 1 & 0 \\ 0 & -1 ] - \mqty[ 0 & 1 \\ 1 & 0 ] \right)
-		= \frac{\hbar}{2\sqrt{2}} \mqty[ 1 & -1 \\ -1 & -1 ].
-	\eeq
-	The eigenvectors of $T$ corresponding to eigenvalues $\pm \hbar/2$ can be found by
-	\beq
-		\mqty[ 1 & -1 \\ -1 & -1 ] \mqty[ u \\ v ] = \pm\sqrt{2} \mqty[ u \\ v ],
-	\eeq
-	which is satisfied when
-	\begin{align*}
-		v &= (1 \mp \sqrt{2}) u, &
-		u &= -(1 \pm \sqrt{2}) v.
-	\end{align*}
-	We will fix $u = 1$.  Then the normalization constants $\Apm$ are found by
-	\beqn \label{Apm}
-		1 = \abs{\braket{T_\pm}}^2
-		= \Apm^2 \mqty[ 1 & 1 \mp \sqrt{2} ] \mqty[ 1 \\ 1 \mp \sqrt{2} ]
-		= \Apm^2 (4 \mp 2 \sqrt{2})
-		\implies
-		\Apm = \frac{1}{\sqrt{4 \mp 2 \sqrt{2}}}.
-	\eeqn
-	The normalized eigenvectors are
-	\begin{align} \label{Teig}
-		\kTp &= \frac{1}{\sqrt{4 - 2 \sqrt{2}}} \mqty[ 1 \\ 1 - \sqrt{2} ], &
-		\kTm &= \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \mqty[ 1 \\ 1 + \sqrt{2} ].
-	\end{align}
-	
-	The probability that Alice and Bob obtain $(Q, T) = (+1, +1)$ is
-	\begin{align*}
-		P(+1, +1) &= \abs{\braket{Q_+, T_+}{\psi}}^2
-		= \abs{ \mqty[ 1 & 0 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 - 2 \sqrt{2}}} \mqty[1 & 1 - \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] }^2
-		= \abs{ \frac{1}{\sqrt{2}} \otimes -\frac{1}{\sqrt{4 - 2 \sqrt{2}}} }^2 \\
-		&= \frac{1}{8 - 4 \sqrt{2}},
-	\end{align*}
-	and the probability that they obtain $(Q, T) = (-1, -1)$ is
-	\begin{align*}
-		P(-1, -1) &= \abs{\braket{Q_-, T_-}{\psi}}^2
-		= \abs{ \mqty[ 0 & 1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \mqty[1 & 1 + \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] }^2
-		= \abs{ -\frac{1}{\sqrt{2}} \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} }^2 \\
-		&= \frac{1}{8 + 4 \sqrt{2}}.
-	\end{align*}
-	\vfix
-\end{solution}
-
-
-
-\newcommand{\kRp}{\ket{R_+}}
-\newcommand{\kRm}{\ket{R_-}}
-\newcommand{\kSp}{\ket{S_+}}
-\newcommand{\kSm}{\ket{S_-}}
 
 \begin{problem}
-	Similarly, consider the case when Alice measures $R$ and Bob measures $T$.  Calculate the probability $P(R, T)$ for Alice and Bob getting the measurement outcomes $(R, T) = (\pm1, \pm1)$.
+	Consider the scattering problem by the well.  For each $l$, for large enough $r$, when $\Rlr$ is given by $\Rlr \sim \Al \sin(kr - l\pi / 2 + \dell) / r$, $\dell$ is called the scattering phase shift.  For the value of $\Vo$ within the range you obtained in the above problem, when the energy of the incident wave is is $E = 9 \Vo / 16$, calculate $\tan\delo$~(where $\delo$ is the scattering phase shift for the $s$ wave).
 \end{problem}
-
-\begin{solution}
-	In the $\SzA$ basis, $R$ and its eigenvectors are
-	\begin{align*}
-		R &= \frac{\hbar}{2} \mqty[ 0 & 1 \\ 1 & 0 ] &
-		\kRp &= \frac{1}{\sqrt{2}} \mqty[ 1 \\ 1 ] &
-		\kRm &= \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ].
-	\end{align*}
-	Using \refeq{Teig}, the probability for Alice and Bob obtain $(R,T) = (+1, +1)$ is
-	\beq
-		P(+1, +1) = \abs{\braket{R_+, T_+}{\psi}}^2
-		= \abs{ \frac{1}{\sqrt{2}} \mqty[ 1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 - 2 \sqrt{2}}} \mqty[ 1 & 1 - \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] }^2
-		= 0,
-	\eeq
-	and the probability that they obtain $(R,T) = (-1, -1)$ is
-		\begin{align*}
-		P(-1, -1) &= \abs{\braket{R_-, T_-}{\psi}}^2
-		= \abs{ \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \mqty[ 1 & 1 + \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] }^2
-		= \abs{ 1 \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} }^2 \\
-		&= \frac{1}{4 + 2 \sqrt{2}}.
-	\end{align*}
-	\vfix
-\end{solution}
-
-
 
 \begin{problem}
-	Compute the expectation values $\vE(QS)$, $\vE(RS)$, $\vE(QT)$, and $\vE(RT)$.  Compute
-	\beq
-		\frac{\vE(QS) + \vE(RS) + \vE(RT) - \vE(QT)}{4}.
-	\eeq
-	\vfix
+	Now consider the $S$ matrix, $S \equiv \exp(2i \delo) = \exp(i \delo) / \exp(-i \delo)$.  Compare the condition on $s$ wave bound state energies and the zero of the denominator of $S$.  Explain their relation.
 \end{problem}
 
-\begin{solution}
-	Firstly, in the $\SzB$ basis, $S$ can be written
-	\beq
-		S = -\frac{\hbar}{2 \sqrt{2}} \left( \mqty[ 0 & 1 \\ 1 & 0 ] + \mqty[ 1 & 0 \\ 0 & -1 ] \right)
-		= \frac{\hbar}{2 \sqrt{2}} \mqty[ -1 & -1 \\ -1 & 1 ].
-	\eeq
-%	The eigenvalues of $S$ corresponding to eigenvalues $\pm\hbar/2$ can be found by
-%	\beq
-%		\mqty[ -1 & -1 \\ -1 & 1 ] \mqty[ u \\ v ] = \pm \sqrt{2} \mqty[ u \\ v ],
-%	\eeq
-%	which is satisfied when
-%	\begin{align*}
-%		v &= -(1 \pm \sqrt{2}) u, &
-%		u &= (1 \mp \sqrt{2}) v.
-%	\end{align*}
-%	We will fix $v = 1$.  Then the normalization constants $\Apm$ are the same as in \refeq{Apm}, so the normalized eigenvectors are
-%	\begin{align*}
-%		\kSp &= \frac{1}{\sqrt{4 - 2 \sqrt{2}}} \mqty[ 1 - \sqrt{2} \\ 1 ], &
-%		\kSm &= \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \mqty[ 1 + \sqrt{2} \\ 1 ].
-%	\end{align*}
-%	
-%	Now we can compute the expectation values:
-	Then the expectation values are
-	\begin{align*}
-		\vE(QS) &= \ev{Q S}{\psi}
-		= \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \frac{\hbar}{2} \mqty[ 1 & 0 \\ 0 & -1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{2}} \mqty[ -1 & 1 ] \frac{\hbar}{2 \sqrt{2}} \mqty[ -1 & -1 \\ -1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \\
-		&= \frac{\hbar^2}{4} \mqty[ 1 & -1 ] \mqty[ 1 \\ 1 ] \otimes \frac{\hbar^2}{4 \sqrt{2}} \mqty[ -1 & 1 ] \mqty[ 0 \\ 2 ]
-		= 0, \\[2ex]
-		\vE(RS) &= \ev{R S}{\psi}
-		= \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \frac{\hbar}{2} \mqty[ 0 & 1 \\ 1 & 0 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{2}} \mqty[ -1 & 1 ] \frac{\hbar}{2 \sqrt{2}} \mqty[ -1 & -1 \\ -1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \\
-		&= \frac{\hbar}{4} \mqty[ 1 & -1 ] \mqty[ -1 \\ 1 ] \otimes \frac{\hbar}{4 \sqrt{2}} \mqty[ -1 & 1 ] \mqty[ 0 \\ 2 ]
-		= -\frac{\hbar}{2} \otimes \frac{\hbar}{2 \sqrt{2}}
-		= -\frac{\hbar^2}{4 \sqrt{2}},
-	\end{align*}
-	\begin{align*}
-		\vE(QT) &= \ev{Q T}{\psi}
-		= \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \frac{\hbar}{2} \mqty[ 1 & 0 \\ 0 & -1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{2}} \mqty[ -1 & 1 ] \frac{\hbar}{2\sqrt{2}} \mqty[ 1 & -1 \\ -1 & -1 ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \\
-		&= \frac{\hbar}{4} \mqty[ 1 & -1 ] \mqty[ 1 \\ 1 ] \otimes \frac{\hbar}{4 \sqrt{2}} \mqty[ -1 & 1 ] \mqty[ -2 \\ 0 ]
-		= 0, \\[2ex]
-		\vE(RT) &= \ev{R T}{\psi}
-		= \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \frac{\hbar}{2} \mqty[ 0 & 1 \\ 1 & 0 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{2}} \mqty[ -1 & 1 ] \frac{\hbar}{2\sqrt{2}} \mqty[ 1 & -1 \\ -1 & -1 ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \\
-		&= \frac{\hbar}{4} \mqty[ 1 & -1 ] \mqty[ -1 \\ 1 ] \otimes \frac{\hbar}{4 \sqrt{2}} \mqty[ -1 & 1 ] \mqty[ -2 \\ 0 ]
-		= -\frac{\hbar}{2} \otimes \frac{\hbar}{2 \sqrt{2}}
-		= -\frac{\hbar^2}{4 \sqrt{2}}.
-	\end{align*}
-	Then
-	\beq
-		\frac{\vE(QS) + \vE(RS) + \vE(RT) - \vE(QT)}{4} = \frac{1}{4} \left( -\frac{\hbar^2}{4 \sqrt{2}} - \frac{\hbar^2}{4 \sqrt{2}} \right)
-		= -\frac{\hbar^2}{8 \sqrt{2}},
-	\eeq
-	\hl{which doesn't make sense.  Any of it.}
-\end{solution}
 
+
+
+\newcommand{\gam}{\gamma}
+\newcommand{\chio}{\chi_0}
+\newcommand{\chior}{\chio(r)}
+\newcommand{\Gam}{\Gamma}
+
+\begin{statement}{}
+	Consider a three dimensional potential
+	\beq
+		V(\absr) = \frac{\hbar^2 \gam}{2m} \del(\absr - a).
+	\eeq
+	The $s$ wave {\Schrodinger} equation is given by
+	\beq
+		-\frac{\hbar^2}{2m} \dv[2]{\chior}{r} + \frac{\hbar^2 \gam}{2m} \del(r - a) \, \chior = E \,\chior.
+	\eeq
+	The $s$ wave function must be regular (zero) at $r = 0$.  At $r = a$, it is continuous, but its derivative can jump.
+\end{statement}
+
+\begin{problem}
+	Calculate the $s$ wave scattering phase shift $\do(k)$, where $k$ is related to $E$ as $E = \hbar^2 k^2 / 2m$.
+\end{problem}
+
+\begin{problem}
+	When $\gam \gg k$, $1/a$ and when $\sin ka$ is not small, discuss the behavior of the scattering phase shift.
+\end{problem}
+
+\begin{problem}
+	Obtain the condition to have resonant states and calculate the energy of the resonant states.
+\end{problem}
+
+\begin{problem}
+	Calculate the width $\Gam$ of the resonance.  Discuss its behavior when $\gam$ is big.
+\end{problem}
+
+\begin{problem}
+	When the velocity of the incident wave is small, obtain the scattering cross section.
+\end{problem}
 
 
 

@@ -1,0 +1,67 @@
+\begin{statement}{}
+	Show that for an arbitrary spatially bound charge-current source, the electric dipole moment $\vp$ satisfies
+	\beq
+		\dv{\vp}{t} = \int \vJ \dcx.
+	\eeq
+\end{statement}
+
+\begin{solution}
+	The electric dipole moment $\vp$ is defined by Eq.~(2.36),
+	\beq
+		\vp = \int \vx \,\rhox \dcx.
+	\eeq
+	Differentiating both sides with respect to $t$, we find
+	\beqn \label{pder}
+		\dv{\vp}{t} = \dv{}{t} \int \vx \rho \dcx = \int \dv{}{t} (\vx \rho) \dcx
+		= \int \vx \pdv{\rho}{t} \dcx,
+	\eeqn
+	because $\vx$ is simply the point at which we are evaluating the potential, and is therefore independent of time.
+	
+	The charge-current conservation law is given by Eq.~(5.8),
+	\beq
+		\pdv{\rho}{t} + \div{\vJ} = 0.
+	\eeq
+	Multiplying by $\vx$ on both sides and integrating over all space, we obtain
+	\beq
+		\int \vx \pdv{\rho}{t} \dcx + \int \vx (\div{\vJ}) \dcx = 0.
+	\eeq
+	Applying \refeq{pder}, we have
+	\beqn \label{thing1}
+		\dv{\vp}{t} = -\int \vx (\div{\vJ}) \dcx.
+	\eeqn
+	It remains to be shown that the right side is equal to the integral of $\vJ$ over all space.
+	
+	Vector identity (5) in Griffiths is
+	\beq
+		\div{(f \vaa)} = f (\div{\vaa}) + \vaa \vdot (\grad f).
+	\eeq
+	Writing the right side of \refeq{thing1} in component notation and applying the identity gives us
+	\beqn \label{thing2}
+		-\int \xi (\div{\vJ}) \dcx = \int \vJ \vdot (\grad \xi) \dcx - \int \div{(\xi \vJ)} \dcx.
+	\eeqn
+	
+	Gauss's theorem is given by Eq.~(2.6),
+	\beq
+		\intcV \div{\vv} \dcx = \intS \vv \vdot \nh \dS,
+	\eeq
+	Here, let $\cV$ be a ball of radius $R$, with $R$ large enough that the entire charge-current source is enclosed.  Then $S$ is the surface of $\cV$, and $\nh = \rh$.  Applying Gauss's theorem to the second integral on the right side of \refeq{thing2}, we have
+	\beq
+		\int \div{(\xi \vJ)} \dcx = \limRi \intcV \div{(\xi \vJ)} \dcx
+		= \limRi \intS \xi \vJ \vdot \rh \dS
+		= 0,
+	\eeq
+	since $\vJ$ is bounded, and therefore $\vJ$ evaluated on $S$ reaches zero well before $\xi$ becomes very large.
+	
+	Returning to \refeq{thing2}, we now have
+	\beq
+		-\int \xi (\div{\vJ}) \dcx = \int \vJ \vdot (\grad \xi) \dcx
+		= \sum_j \int J_j \partial_j \xi \dcx
+		= \sum_j \int J_j \del_{ij} \dcx
+		= \int J_i \dcx,
+	\eeq
+	where we have followed the proof in Eq.~(4.24) of the course notes.  Finally, \refeq{thing1} becomes
+	\beq
+		\dv{\vp}{t} = \int \vJ \dcx
+	\eeq
+	as desired. \qed
+\end{solution}

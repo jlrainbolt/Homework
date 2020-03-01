@@ -1,0 +1,249 @@
+\newcommand{\vE}{\vb{E}}
+\newcommand{\vS}{\vb{S}}
+\newcommand{\vSA}{\vS^A}
+\newcommand{\vSB}{\vS^B}
+\newcommand{\Max}{\text{Max}}
+\newcommand{\kpsi}{\ket{\psi}}
+\newcommand{\up}{\uparrow}
+\newcommand{\dn}{\downarrow}
+\newcommand{\kupz}{\ket{\up_z}}
+\newcommand{\kdnz}{\ket{\dn_z}}
+\newcommand{\Sx}{S_x}
+\newcommand{\Sz}{S_z}
+\newcommand{\SxA}{\Sx^A}
+\newcommand{\SzA}{\Sz^A}
+\newcommand{\SxB}{\Sx^B}
+\newcommand{\SzB}{\Sz^B}
+\newcommand{\dhf}{\dfrac{1}{2}}
+
+\begin{statement}{}
+	Consider the following probabalistic game: There are four doors ($Q, R, S, T$).  Behind each door is a device which displays $\pm 1$ randomly according to the probability $P(Q=\pm1, R=\pm1, S=\pm1, T=\pm1)$.  Alice and Bob are on the same team.  Alice has to choose either $Q$ and $R$, and then Bob has to choose either $S$ and $T$.  When the numbers match, they get $+1$ point; when the numbers do not match, they get $-1$ point.  However, when they open $Q$ and $T$, it's an exception.  When the numbers (do not) match, they get $-1$~($+1$).
+\end{statement}
+
+\begin{problem} \label{1.1}
+	Let's assume Alice and Bob open the doors completely randomly.  When all numbers are $+1$ with probability 1, what is the expectation value of the point they get?
+\end{problem}
+
+\begin{solution}
+	Let $\vE$ be the expectation value of the number of points.  In this case, the numbers behind the two doors will always match.  So
+	\beq
+		\vE = \frac{QS + RS + RT - QT}{4}
+		= \frac{1 + 1 + 1 - 1}{4}
+		= \frac{1}{2}.
+	\eeq
+	\vfix
+\end{solution}
+
+
+
+\begin{problem}
+	As it turns out, irrespective of how hard you fine tune the probability $P(Q=\pm1, R=\pm1, S=\pm1, T=\pm1)$, the expectation value of the point Alice and Bob get cannot exceed a certain value $\Max$:
+	\beq
+		\frac{\vE(QS) + \vE(RS) + \vE(RT) - \vE(QT)}{4} \leq \Max.
+	\eeq
+	Here, $\vE(QS)$, etc. is the expectation value of the point when Alice opens $Q$ and Bob opens $S$.  This is a Bell inequality.  Determine $\Max$.
+	
+	\emph{Hint:} For a given realization of the numbers $Q = \pm1$, $R = \pm1$, $S = \pm1$, $T = \pm1$, which occurs with probability $P(Q, R, S, T)$, note that $QS + RS + RT - QT = (Q+R)S + (R-Q)T$, where one of $\{(R+Q), (R-Q)\}$ is 2 and the other 0.
+\end{problem}
+
+\begin{solution}
+	In addition to the information provided in the hint, both $S$ and $T$ must be $\pm1$.  This means the only possibilities for the number of points earned are
+	\beq
+		\frac{(Q + R) S + (R - Q) T}{4} = \begin{cases}
+			\dfrac{(0) (-1) + (2) (1)}{4} = \dfrac{1}{2}, \\[2ex]
+			\dfrac{(0) (1) + (2) (-1)}{4} = -\dfrac{1}{2}.
+		\end{cases}
+	\eeq
+	Thus,
+	\beq
+		\Max = \frac{1}{2}.
+	\eeq
+	\vfix
+\end{solution}
+
+
+
+\begin{problem}
+	Frustrated by the upper bound set by the Bell inequality, Bob decides to cheat.  He now changes the value of $T$ after Alice chooses $Q$ or $R$.  Assume $Q,R,S$ are set to be $+1$ with probability 1.  To make the expectation value of the point they get equal to $+1$, what values should Bob set after Alice chooses $Q$ or $R$?
+\end{problem}
+
+\begin{solution}
+	If Alice chooses $R$, Bob should set $T = 1$.  If Alice chooses $Q$, Bob should set $T = -1$.  This way,
+	\beq
+		\frac{\vE(QS) + \vE(RS) + \vE(RT) - \vE(QT)}{4}
+		= \frac{1 + 1 + 1 + 1}{4}
+		= 1.
+	\eeq
+	\vfix
+\end{solution}
+
+
+
+\newcommand{\kQp}{\ket{Q_+}}
+\newcommand{\kQm}{\ket{Q_-}}
+\newcommand{\kTp}{\ket{T_+}}
+\newcommand{\kTm}{\ket{T_-}}
+\newcommand{\Apm}{A_\pm}
+
+\newcommand{\sig}{\sigma}
+\newcommand{\sigq}{\sig_1}
+\newcommand{\sigw}{\sig_2}
+\newcommand{\sige}{\sig_3}
+
+\begin{problem}
+	Now consider a quantum mechanical version of the game.  There are quantum states of two spin-$1/2$ degrees of freedom shared by Alice and Bob.  Alice can measure the $z$ component or $x$ components of the first spin $\vSA$.  (This corresponds to $Q = \pm1$ or $R = \pm1$.)  Bob can measure the $-(z+x)$ component or the $(z-x)$ component of the second spin $\vSB$.  (This corresponds to $S = \pm1$ or $T = \pm1$.)
+	
+	More specifically, Alice and Bob share the quantum state
+	\beq
+		\kpsi = \frac{\kupz \otimes \kdnz - \kdnz \otimes \kupz}{\sqrt{2}}.
+	\eeq
+	The operators to be measured are
+	\begin{align*}
+		Q &= \SzA, &
+		R &= \SxA, &
+		S &= -\frac{\SzB + \SxB}{\sqrt{2}}, &
+		T &= \frac{\SzB - \SxB}{\sqrt{2}}.
+	\end{align*}
+	Let us consider the case when Alice measures $Q$ and Bob measures $T$.  Calculate the probability $P(Q, T)$ for Alice and Bob getting the measurement outcomes $(Q, T) = (\pm1, \pm1)$.
+\end{problem}
+
+\begin{solution}
+	All of the spin operators have eigenvalues $\pm \hbar/2$, but in order to maintain consistency with the classical example, we will let $\Sz \to \sigq$ and $\Sz \to \sige$ so the eigenvalues are instead $\pm 1$.
+
+	The Pauli matrices are given by Eq.~(3.2.32) in Sakurai,
+	\begin{align*}
+		\sigq &= \mqty[ 0 & 1 \\ 1 & 0 ], &
+		\sigw &= \mqty[ 0 & -i \\ i & 0 ], &
+		\sige &= \mqty[ 1 & 0 \\ 0 & -1 ].
+	\end{align*}
+	Then in the $\SzA$ basis, $Q$ and its eigenvectors are
+	\begin{align*}
+		Q &= \mqty[ 1 & 0 \\ 0 & -1 ], &
+		\kQp &= \mqty[ 1 \\ 0 ], &
+		\kQm &= \mqty[ 0 \\ 1 ].
+	\end{align*}
+	In the $\SzB$ basis, $T$ can be written
+	\beq
+		T = \frac{\hbar}{2\sqrt{2}} \left( \mqty[ 1 & 0 \\ 0 & -1 ] - \mqty[ 0 & 1 \\ 1 & 0 ] \right)
+		= \frac{\hbar}{2\sqrt{2}} \mqty[ 1 & -1 \\ -1 & -1 ].
+	\eeq
+	The eigenvectors of $T$ corresponding to eigenvalues $\pm \hbar/2$ can be found by
+	\beq
+		\mqty[ 1 & -1 \\ -1 & -1 ] \mqty[ u \\ v ] = \pm\sqrt{2} \mqty[ u \\ v ],
+	\eeq
+	which is satisfied when
+	\begin{align*}
+		v &= (1 \mp \sqrt{2}) u, &
+		u &= -(1 \pm \sqrt{2}) v.
+	\end{align*}
+	We will fix $u = 1$.  Then the normalization constants $\Apm$ are found by
+	\beqn \label{Apm}
+		1 = \abs{\braket{T_\pm}}^2
+		= \Apm^2 \mqty[ 1 & 1 \mp \sqrt{2} ] \mqty[ 1 \\ 1 \mp \sqrt{2} ]
+		= \Apm^2 (4 \mp 2 \sqrt{2})
+		\implies
+		\Apm = \frac{1}{\sqrt{4 \mp 2 \sqrt{2}}}.
+	\eeqn
+	The normalized eigenvectors are
+	\begin{align} \label{Teig}
+		\kTp &= \frac{1}{\sqrt{4 - 2 \sqrt{2}}} \mqty[ 1 \\ 1 - \sqrt{2} ], &
+		\kTm &= \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \mqty[ 1 \\ 1 + \sqrt{2} ].
+	\end{align}
+	
+	The probability that Alice and Bob obtain $(Q, T) = (+1, +1)$ is
+	\begin{align*}
+		P(+1, +1) &= \abs{\braket{Q_+, T_+}{\psi}}^2
+		= \left( \mqty[ 1 & 0 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 - 2 \sqrt{2}}} \mqty[1 & 1 - \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \right)^2 \\
+		&= \left( \frac{1}{\sqrt{2}} \otimes -\frac{1}{\sqrt{4 - 2 \sqrt{2}}} \right)^2
+		= \frac{1}{8 - 4 \sqrt{2}},
+	\end{align*}
+	and the probability that they obtain $(Q, T) = (-1, -1)$ is
+	\begin{align*}
+		P(-1, -1) &= \abs{\braket{Q_-, T_-}{\psi}}^2
+		= \left( \mqty[ 0 & 1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \mqty[1 & 1 + \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \right)^2 \\
+		&= \left( -\frac{1}{\sqrt{2}} \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \right)^2
+		= \frac{1}{8 + 4 \sqrt{2}}.
+	\end{align*}
+	\vfix
+\end{solution}
+
+
+
+\newcommand{\kRp}{\ket{R_+}}
+\newcommand{\kRm}{\ket{R_-}}
+\newcommand{\kSp}{\ket{S_+}}
+\newcommand{\kSm}{\ket{S_-}}
+
+\begin{problem}
+	Similarly, consider the case when Alice measures $R$ and Bob measures $T$.  Calculate the probability $P(R, T)$ for Alice and Bob getting the measurement outcomes $(R, T) = (\pm1, \pm1)$.
+\end{problem}
+
+\begin{solution}
+	In the $\SzA$ basis, $R$ and its eigenvectors are
+	\begin{align*}
+		R &= \mqty[ 0 & 1 \\ 1 & 0 ] &
+		\kRp &= \frac{1}{\sqrt{2}} \mqty[ 1 \\ 1 ] &
+		\kRm &= \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ].
+	\end{align*}
+	Using \refeq{Teig}, the probability for Alice and Bob obtain $(R,T) = (+1, +1)$ is
+	\beq
+		P(+1, +1) = \abs{\braket{R_+, T_+}{\psi}}^2
+		= \left( \frac{1}{\sqrt{2}} \mqty[ 1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 - 2 \sqrt{2}}} \mqty[ 1 & 1 - \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \right)^2
+		= 0,
+	\eeq
+	and the probability that they obtain $(R,T) = (-1, -1)$ is
+		\begin{align*}
+		P(-1, -1) &= \abs{\braket{R_-, T_-}{\psi}}^2
+		= \left( \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \mqty[ 1 & 1 + \sqrt{2} ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \right)^2 \\
+		&= \left( 1 \otimes \frac{1}{\sqrt{4 + 2 \sqrt{2}}} \right)^2
+		= \frac{1}{4 + 2 \sqrt{2}}.
+	\end{align*}
+	\vfix
+\end{solution}
+
+
+
+\begin{problem}
+	Compute the expectation values $\vE(QS)$, $\vE(RS)$, $\vE(QT)$, and $\vE(RT)$.  Compute
+	\beq
+		\frac{\vE(QS) + \vE(RS) + \vE(RT) - \vE(QT)}{4}.
+	\eeq
+	\vfix
+\end{problem}
+
+\begin{solution}
+	Firstly, in the $\SzB$ basis, $S$ can be written
+	\beq
+		S = -\frac{1}{\sqrt{2}} \left( \mqty[ 0 & 1 \\ 1 & 0 ] + \mqty[ 1 & 0 \\ 0 & -1 ] \right)
+		= \frac{1}{\sqrt{2}} \mqty[ -1 & -1 \\ -1 & 1 ].
+	\eeq
+	\clearpage
+	Then the expectation values are
+	\begin{align*}
+		\vE(QS) &= \ev{Q S}{\psi}
+		= \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \mqty[ 1 & 0 \\ 0 & -1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{2}} \mqty[ -1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ -1 & -1 \\ -1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \\
+		&= \frac{1}{2} \mqty[ 1 & -1 ] \mqty[ 1 \\ 1 ] \otimes \frac{1}{2 \sqrt{2}} \mqty[ -1 & 1 ] \mqty[ 0 \\ 2 ]
+		= 0, \\[2ex]
+		\vE(RS) &= \ev{R S}{\psi}
+		= \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \mqty[ 0 & 1 \\ 1 & 0 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{2}} \mqty[ -1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ -1 & -1 \\ -1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \\
+		&= \frac{1}{2} \mqty[ 1 & -1 ] \mqty[ -1 \\ 1 ] \otimes \frac{1}{2 \sqrt{2}} \mqty[ -1 & 1 ] \mqty[ 0 \\ 2 ]
+		= -1 \otimes \frac{1}{\sqrt{2}}
+		= -\frac{1}{\sqrt{2}}, \\[2ex]
+		\vE(QT) &= \ev{Q T}{\psi}
+		= \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \mqty[ 1 & 0 \\ 0 & -1 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{2}} \mqty[ -1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ 1 & -1 \\ -1 & -1 ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \\
+		&= \frac{1}{2} \mqty[ 1 & -1 ] \mqty[ 1 \\ 1 ] \otimes \frac{1}{2 \sqrt{2}} \mqty[ -1 & 1 ] \mqty[ -2 \\ 0 ]
+		= 0, \\[2ex]
+		\vE(RT) &= \ev{R T}{\psi}
+		= \frac{1}{\sqrt{2}} \mqty[ 1 & -1 ] \mqty[ 0 & 1 \\ 1 & 0 ] \frac{1}{\sqrt{2}} \mqty[ 1 \\ -1 ] \otimes \frac{1}{\sqrt{2}} \mqty[ -1 & 1 ] \frac{1}{\sqrt{2}} \mqty[ 1 & -1 \\ -1 & -1 ] \frac{1}{\sqrt{2}} \mqty[ -1 \\ 1 ] \\
+		&= \frac{1}{2} \mqty[ 1 & -1 ] \mqty[ -1 \\ 1 ] \otimes \frac{1}{2 \sqrt{2}} \mqty[ -1 & 1 ] \mqty[ -2 \\ 0 ]
+		= -1 \otimes \frac{1}{\sqrt{2}}
+		= -\frac{1}{\sqrt{2}}.
+	\end{align*}
+	Then
+	\beq
+		\frac{\vE(QS) + \vE(RS) + \vE(RT) - \vE(QT)}{4} = \frac{1}{4} \left( -\frac{1}{\sqrt{2}} - \frac{1}{\sqrt{2}} \right)
+		= -\frac{1}{2 \sqrt{2}}
+		= - \frac{\sqrt{2}}{4},
+	\eeq
+	\hl{which is not greater than the classical} $\Max = 1/2$, thus \hl{not} violating Bell's inequality.
+\end{solution}

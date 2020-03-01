@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm, mathrsfs}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{siunitx}
+\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+%\renewcommand{\vb}[1]{\mathbf{#1}}
+\newcommand{\vfix}{\vspace{-\baselineskip}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 322 Homework 5}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\blg}{\begin{align*}}
+\newcommand{\elg}{\end{align*}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\color{darkgray}
+	\ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+	\subsection{}
+	\color{darkgray}
+%	\paragraph{Problem.}
+    \ignorespaces
+}
+{
+
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+
+
+\begin{document}
+
+\newcommand{\vaa}{\vb{a}}
+\newcommand{\vp}{\vb{p}}
+\newcommand{\vv}{\vb{v}}
+\newcommand{\vx}{\vb{x}}
+\newcommand{\vB}{\vb{B}}
+\newcommand{\vE}{\vb{E}}
+\newcommand{\vF}{\vb{F}}
+\newcommand{\vJ}{\vb{J}}
+
+\newcommand{\del}{\delta}
+\newcommand{\vph}{\varphi}
+\newcommand{\omg}{\omega}
+
+\newcommand{\rhox}{\rho(x)}
+\newcommand{\dcx}{\dd[3]{x}}
+
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\intcV}{\int_\cV}
+\newcommand{\intS}{\int_S}
+\newcommand{\dS}{\dd{S}}
+\newcommand{\nh}{\vb{\hat{n}}}
+\newcommand{\rh}{\vb{\hat{r}}}
+\renewcommand{\xi}{x_i}
+\newcommand{\limRi}{\lim_{R \to \infty}}
+
+\input{Problem1}
+
+
+
+\renewcommand{\qq}{q_1}
+\newcommand{\qw}{q_2}
+\newcommand{\absx}{\abs{\vx}}
+
+\begin{statement}{}
+	A particle of charge $\qq$ moves with velocity $v$ in a circular orbit of radius $R$ about the origin in the $xy$ plane, such that its $\vph$ coordinate varies as $\vph = \omg t$, with $\omg = v / R$.  Assume that $v \ll c$.  Another particle of charge $\qw$ is at rest at point $\vx$, where $\absx \gg R$.  To order $1 / \absx$, find the force $\vF$ on the particle of charge $\qw$ at time $t$.
+\end{statement}
+
+
+
+\newcommand{\Io}{I_0}
+\newcommand{\zh}{\vb{\hat{z}}}
+\newcommand{\tz}{(t, z)}
+
+\begin{statement}{}
+	An ``antenna'' is a segment of conducting wire in which a current flows (driven by an external power supply).  Suppose an antenna of length $L$ is placed on the $z$ axis between $z = 0$ and $z = L$, and suppose that the current in the antenna is
+	\beq
+		\vJ\tz = \Io \sin(\frac{\pi z}{L}) \cos(\omg t) \,\del(x) \,\del(y) \,\zh.
+	\eeq
+\end{statement}
+
+\begin{problem}
+	Find the charge density $\rho\tz$ in the antenna.
+\end{problem}
+
+\begin{problem}
+	Assume that $\omg L \ll c$.  Find the electric and magnetic fields, $\vE\tz$ and $\vB\tz$, at large distances from the antenna (valid to order $1 / \absx$).
+\end{problem}
+
+
+
+\vfill
+{\small In addition to the course lecture notes, I consulted Griffiths's \emph{Introduction to Electrodynamics}, Jackson's \emph{Classical Electrodynamics}, and K.~T.~McDonald's and D.~K.~Ghosh's notes on electromagnetism while writing up these solutions.}
+\end{document}
