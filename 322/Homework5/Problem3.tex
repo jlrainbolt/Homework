@@ -1,0 +1,84 @@
+\begin{statement}{}
+	An ``antenna'' is a segment of conducting wire in which a current flows (driven by an external power supply).  Suppose an antenna of length $L$ is placed on the $z$ axis between $z = 0$ and $z = L$, and suppose that the current in the antenna is
+	\beqn \label{J3}
+		\vJ\tz = \Io \sin(\frac{\pi z}{L}) \cos(\omg t) \,\del(x) \,\del(y) \,\zh.
+	\eeqn
+	\vfix
+\end{statement}
+
+\begin{problem}
+	Find the charge density $\rho\tz$ in the antenna.
+\end{problem}
+
+\begin{solution}
+	From the charge-current conservation law \refeq{continuity}, we have
+	\beq
+		\rho\tz = -\int \div{\vJ} \dt.
+	\eeq
+	For $\vJ$ given by \refeq{J3},
+	\beq
+		\div{\vJ} = \pdv{J_z}{z}
+		= \frac{\pi}{L} \Io \cos(\frac{\pi z}{L}) \cos(\omg t) \,\del(x) \,\del(y),
+	\eeq
+	and so, discarding the constant of integration,
+	\beq
+		\rho\tz = -\frac{\pi}{L} \Io \cos(\frac{\pi z}{L}) \,\del(x) \,\del(y) \int \cos(\omg t) \dt
+		= -\frac{\pi}{L} \frac{\Io}{\omg} \cos(\frac{\pi z}{L}) \sin(\omg t) \,\del(x) \,\del(y)
+	\eeq
+	for $0 \leq z \leq L$.
+\end{solution}
+
+
+
+\begin{problem}
+	Assume that $\omg L \ll c$.  Find the electric and magnetic fields, $\vE\tz$ and $\vB\tz$, at large distances from the antenna (valid to order $1 / \absx$).
+\end{problem}
+
+\begin{solution}
+	We will use \refeq{Efield} to find $\vE\tz$.  From Eq.~(5.68), we know
+	\beq
+		\int \vJ(\vx) \dcx = \dv{\vp}{t},
+	\eeq
+	so from \refeq{J3} we have
+	\begin{align*}
+		\dv{\vp}{t} &= \Io \cos(\omg t) \,\zh \intoL \intii \intii \sin(\frac{\pi z}{L}) \,\del(x) \,\del(y) \dx \dy \dz
+		= \Io \cos(\omg t) \,\zh \intoL \sin(\frac{\pi z}{L}) \dz \\
+		&= \Io \cos(\omg t) \,\zh \left[ -\frac{L}{\pi} \cos(\frac{\pi z}{L}) \right]_0^L
+		= \frac{2 L}{\pi} \Io \cos(\omg t) \,\zh.
+	\end{align*}
+	Then
+	\beq
+		\dv[2]{\vp}{t} = -\frac{2 L}{\pi} \Io \omg \sin(\omg t) \,\zh.
+	\eeq
+	
+	Using the retarded time \refeq{rettime}, to first order in $1/\absx$ we obtain
+	\begin{align*}
+		\vE\tx &= \frac{1}{c^2 r} \left[ \left( -\rh \vdot \frac{2 L}{\pi} \Io \omg \sin(\omg t) \,\zh \right) \rh + \frac{2 L}{\pi} \Io \omg \sin(\omg t) \,\zh \right]_\ret
+		= \frac{2 L}{\pi c^3} \frac{\Io \omg}{r} \bigg[ \sin(\omg t) \big[ \zh - (\vr \vdot \zh) \rh \big] \bigg]_\ret \\
+		&= \frac{2 L}{\pi c^2} \frac{\Io \omg}{r} \sin(\omg t - \frac{\omg r}{c}) \big[ \zh - (\vr \vdot \zh) \rh \big].
+	\end{align*}
+	Note that $\zh = \cos\tht \,\rh - \sin\tht \,\thh$, so
+	\beq
+		\zh - (\rh \vdot \zh) \rh = \zh - \cos\tht \,\rh = -\sin\tht \,\thh,
+	\eeq
+	and then
+	\beq
+		\vE\tx = -\frac{2 L}{\pi c^2} \frac{\Io \omg}{r} \sin(\omg t - \frac{\omg r}{c}) \sin\tht \,\thh.
+	\eeq
+
+	The multipole expansion of the magnetic field in electrodynamics is given by Eq.~(5.73),
+	\beqn \label{Bfield}
+		\vB\tx = -\frac{1}{c^2 \absx} \xh \cross \left[ \dv[2]{\vp}{t} \right]_\ret + \order{\frac{1}{\absx^2}}.
+	\eeqn
+	To first order in $1/\absx$, we obtain
+	\beq
+		\vB\tx = \frac{1}{c^2 r} \rh \cross \left[ \frac{2 L}{\pi} \Io \omg \sin(\omg t) \,\zh \right]_\ret
+		= \frac{2 L}{\pi c^2} \frac{\Io \omg }{r} \rh \cross \bigg[ \sin(\omg t) \,\zh \bigg]_\ret
+		= \frac{2 L}{\pi c^2} \frac{\Io \omg }{r} \sin(\omg t - \frac{\omg r}{c}) (\rh \cross \zh).
+	\eeq
+	Again using spherical coordinates, $r (\rh \cross \zh) = -r \sin\tht \,\phh$, and so
+	\beq
+		\vB\tx = -\frac{2 L}{\pi c^2} \frac{\Io \omg}{r} \sin(\omg t - \frac{\omg r}{c}) \sin\tht \,\phh.
+	\eeq
+	\vfix
+\end{solution}
