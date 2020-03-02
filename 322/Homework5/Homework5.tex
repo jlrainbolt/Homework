@@ -95,9 +95,11 @@
 \newcommand{\vE}{\vb{E}}
 \newcommand{\vF}{\vb{F}}
 \newcommand{\vJ}{\vb{J}}
+\newcommand{\vomg}{\boldsymbol{\omega}}
 
 \newcommand{\del}{\delta}
 \newcommand{\vph}{\varphi}
+\newcommand{\tht}{\theta}
 \newcommand{\omg}{\omega}
 
 \newcommand{\rhox}{\rho(x)}
@@ -107,10 +109,15 @@
 \newcommand{\intcV}{\int_\cV}
 \newcommand{\intS}{\int_S}
 \newcommand{\dS}{\dd{S}}
-\newcommand{\nh}{\vb{\hat{n}}}
-\newcommand{\rh}{\vb{\hat{r}}}
+
 \renewcommand{\xi}{x_i}
 \newcommand{\limRi}{\lim_{R \to \infty}}
+
+\newcommand{\nh}{\vb{\hat{n}}}
+\newcommand{\rh}{\vb{\hat{r}}}
+\newcommand{\xh}{\vb{\hat{x}}}
+\newcommand{\zh}{\vb{\hat{z}}}
+\newcommand{\phh}{\boldsymbol{\hat{\vph}}}
 
 \input{Problem1}
 
@@ -119,27 +126,116 @@
 \renewcommand{\qq}{q_1}
 \newcommand{\qw}{q_2}
 \newcommand{\absx}{\abs{\vx}}
+\newcommand{\tx}{(t, \vx)}
+
+\newcommand{\rhoq}{\rho_1}
+\newcommand{\vEq}{\vE_1}
+\newcommand{\vpq}{\vp_1}
+\newcommand{\vpqt}{\vpq(t)}
+\newcommand{\vxq}{\vx_1}
+\newcommand{\vxqt}{\vxq(t)}
+
+\newcommand{\ret}{\text{ret}}
 
 \begin{statement}{}
 	A particle of charge $\qq$ moves with velocity $v$ in a circular orbit of radius $R$ about the origin in the $xy$ plane, such that its $\vph$ coordinate varies as $\vph = \omg t$, with $\omg = v / R$.  Assume that $v \ll c$.  Another particle of charge $\qw$ is at rest at point $\vx$, where $\absx \gg R$.  To order $1 / \absx$, find the force $\vF$ on the particle of charge $\qw$ at time $t$.
 \end{statement}
 
+\begin{solution}
+	The Lorentz force equation, Eq.~(1.25), is written
+	\beq
+		\vF = q \left( \vE + \frac{\vv}{c} \cross \vB \right),
+	\eeq
+	where $\vv$ is the velocity of the charge $q$ on which the force is exerted, and $\vE$ and $\vB$ are the total electric and magnetic fields.  For this problem, we are interested in the force acting on a stationary point charge $\qw$, so $\vv_2 = 0$.  Additionally, we do not have to consider the self-field contribution to $\vE$, since static charge distributions do not experience any self force.  Thus we need only find the electric field due to $\qq$, $\vEq$.  The multipole expansion of the electric field in electrodynamics is given by Eq.~(5.70),
+	\beqn \label{Efield}
+		\vE\tx = \frac{1}{c^2 \absx} \left[ \left(\xh \vdot \dv[2]{\vp}{t} \right) \xh - \dv[2]{\vp}{t} \right]_\ret + \order{\frac{1}{\absx^2}},
+	\eeqn
+	where $\xh = \vx / \absx$ is the unit vector in the direction of the point at which we are evaluating the field, and $\vp$ is the dipole moment defined by \refeq{dipole}.  In addition, \refeq{Efield} relies upon the assumption that the velocity of $\qq$, $v$, satisfies $v \ll c$.
+	
+	The position of $\qq$ at time $t$ can be expressed as
+	\beq
+		\vxqt = R \cos(\omg t) \,\phh,
+	\eeq
+	so the charge density for $\qq$ everywhere is
+	\beq
+		\rhoq\tx = \qq \,\del\big( \vx - \vxqt \big).
+	\eeq
+	Then the dipole moment $\vpq\tx$ is
+	\beq
+		\vpq\tx = \int \vx \,\rhoq\tx \dcx
+		= \qq \int \vx \,\del\big(\vx - \vxqt \big) \dcx
+		= \qq \vxqt
+		= \qq R \cos(\omg t) \,\phh,
+	\eeq
+	and so its second time derivative is
+	\beq
+		\dv[2]{\vpqt}{t} = \dv{}{t} \left( \dv{\vpq}{t} \right)
+		= \dv{}{t} \bigg( \!-\!\qq R \omg \sin(\omg t) \,\phh \bigg)
+		= -\qq R \omg^2 \cos(\omg t) \,\phh.
+	\eeq
+	
+	The retarded time $t'$ is defined
+	\beq
+		t' = t - \frac{\abs{\vx - \vx'}}{c},
+	\eeq
+	so here
+	\beq
+		t' = t - \frac{\abs{\vx - \vxqt}}{c}
+		= t - \frac{\abs{\vx - R \cos(\omg t) \,\phh}}{c}.
+	\eeq
+	Since $R \ll \absx$, we can Taylor expand the second term about $R = 0$ as in Eq.~(5.57),
+	\beq
+		\abs{\vx - \vx'} = \absx - \xh \vdot \vx' + \order{\frac{1}{\absx}}.
+	\eeq
+	This gives us
+	\beq
+		\abs{\vx - R \cos(\omg t) \,\phh} \approx \absx - R \cos(\omg t) (\xh \vdot \phh),
+	\eeq
+	so
+	\beq
+		t' \approx t - \frac{\absx}{c} - \frac{R \cos(\omg t)}{c} (\xh \vdot \phh),
+	\eeq
+	\hl{which is really not helpful.}
+\end{solution}
+
 
 
 \newcommand{\Io}{I_0}
-\newcommand{\zh}{\vb{\hat{z}}}
 \newcommand{\tz}{(t, z)}
+
+\newcommand{\dt}{\dd{t}}
 
 \begin{statement}{}
 	An ``antenna'' is a segment of conducting wire in which a current flows (driven by an external power supply).  Suppose an antenna of length $L$ is placed on the $z$ axis between $z = 0$ and $z = L$, and suppose that the current in the antenna is
-	\beq
+	\beqn \label{J3}
 		\vJ\tz = \Io \sin(\frac{\pi z}{L}) \cos(\omg t) \,\del(x) \,\del(y) \,\zh.
-	\eeq
+	\eeqn
+	\vfix
 \end{statement}
 
 \begin{problem}
 	Find the charge density $\rho\tz$ in the antenna.
 \end{problem}
+
+\begin{solution}
+	From the charge-current conservation law \refeq{continuity}, we have
+	\beq
+		\rho\tz = -\int \div{\vJ} \dt.
+	\eeq
+	For $\vJ$ given by \refeq{J3},
+	\beq
+		\div{\vJ} = \pdv{J_z}{z}
+		= \frac{\pi}{L} \Io \cos(\frac{\pi z}{L}) \cos(\omg t) \,\del(x) \,\del(y),
+	\eeq
+	and so
+	\beq
+		\rho\tz = -\frac{\pi}{L} \Io \cos(\frac{\pi z}{L}) \,\del(x) \,\del(y) \int \cos(\omg t) \dt
+		= -\frac{\pi}{L} \frac{\Io}{\omg} \cos(\frac{\pi z}{L}) \sin(\omg t) \,\del(x) \,\del(y),
+	\eeq
+	where we have set the integration constant to 0.
+\end{solution}
+
+
 
 \begin{problem}
 	Assume that $\omg L \ll c$.  Find the electric and magnetic fields, $\vE\tz$ and $\vB\tz$, at large distances from the antenna (valid to order $1 / \absx$).

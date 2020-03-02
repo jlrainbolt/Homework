@@ -7,9 +7,9 @@
 
 \begin{solution}
 	The electric dipole moment $\vp$ is defined by Eq.~(2.36),
-	\beq
+	\beqn \label{dipole}
 		\vp = \int \vx \,\rhox \dcx.
-	\eeq
+	\eeqn
 	Differentiating both sides with respect to $t$, we find
 	\beqn \label{pder}
 		\dv{\vp}{t} = \dv{}{t} \int \vx \rho \dcx = \int \dv{}{t} (\vx \rho) \dcx
@@ -18,9 +18,9 @@
 	because $\vx$ is simply the point at which we are evaluating the potential, and is therefore independent of time.
 	
 	The charge-current conservation law is given by Eq.~(5.8),
-	\beq
+	\beqn \label{continuity}
 		\pdv{\rho}{t} + \div{\vJ} = 0.
-	\eeq
+	\eeqn
 	Multiplying by $\vx$ on both sides and integrating over all space, we obtain
 	\beq
 		\int \vx \pdv{\rho}{t} \dcx + \int \vx (\div{\vJ}) \dcx = 0.
