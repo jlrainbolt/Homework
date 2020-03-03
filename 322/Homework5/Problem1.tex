@@ -3,6 +3,7 @@
 	\beq
 		\dv{\vp}{t} = \int \vJ \dcx.
 	\eeq
+	\vfix
 \end{statement}
 
 \begin{solution}
@@ -44,13 +45,13 @@
 	\beq
 		\intcV \div{\vv} \dcx = \intS \vv \vdot \nh \dS,
 	\eeq
-	Here, let $\cV$ be a ball of radius $R$, with $R$ large enough that the entire charge-current source is enclosed.  Then $S$ is the surface of $\cV$, and $\nh = \rh$.  Applying Gauss's theorem to the second integral on the right side of \refeq{thing2}, we have
+	Here, let $\cV$ be a ball of radius $R$, with $R$ large enough that the entire charge-current source is enclosed.  Then $S$ is a sphere of radius $R$, and $\nh = \rh$.  Applying Gauss's theorem to the second integral on the right side of \refeq{thing2}, we have
 	\beq
 		\int \div{(\xi \vJ)} \dcx = \limRi \intcV \div{(\xi \vJ)} \dcx
 		= \limRi \intS \xi \vJ \vdot \rh \dS
 		= 0,
 	\eeq
-	since $\vJ$ is bounded, and therefore $\vJ$ evaluated on $S$ reaches zero well before $\xi$ becomes very large.
+	since $\vJ$ is bounded, meaning that $\vJ$ evaluated on $S$ reaches zero well before $\xi$ becomes very large.
 	
 	Returning to \refeq{thing2}, we now have
 	\beq
@@ -60,8 +61,8 @@
 		= \int J_i \dcx,
 	\eeq
 	where we have followed the proof in Eq.~(4.24) of the course notes.  Finally, \refeq{thing1} becomes
-	\beqn
+	\beq
 		\dv{\vp}{t} = \int \vJ \dcx
-	\eeqn
+	\eeq
 	as desired. \qed
 \end{solution}

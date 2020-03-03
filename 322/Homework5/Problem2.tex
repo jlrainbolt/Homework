@@ -41,9 +41,9 @@
 	\eeqn
 	In \refeq{Efield}, let $\vx \to \vr$.  Then $\xh \to \rh$, which is the radial unit vector, and $\absx \to r$.  To first order in $1/\absx$, we get
 	\begin{align*}
-		\vE\tx &= \frac{1}{c^2 r} \left[ -\frac{\qq R \omg^2}{r} \left[ \cos(\omg t') (\rh \vdot \xh) + \sin(\omg t') (\rh \vdot \yh) \right] \vr + \qq R \omg^2 \big[ \cos(\omg t') \,\xh + \sin(\omg t') \,\yh \big] \right]_\ret \\
+		\vEq\tx &= \frac{1}{c^2 r} \left[ -\frac{\qq R \omg^2}{r} \left[ \cos(\omg t') (\rh \vdot \xh) + \sin(\omg t') (\rh \vdot \yh) \right] \vr + \qq R \omg^2 \big[ \cos(\omg t') \,\xh + \sin(\omg t') \,\yh \big] \right]_\ret \\
 		&= \qq \frac{R \omg^2}{c^2 r} \bigg[ \cos(\omg t') \big[ \xh - (\rh \vdot \xh) \rh \big] + \sin(\omg t') \big[ \yh - (\rh \vdot \yh) \rh \big] \bigg]_\ret \\
-		&= \qq \frac{R \omg^2}{c^2 r} \left\{ \cos(\omg t - \frac{\omg \absx}{c}) \big[ \xh - (\rh \vdot \xh) \rh \big] + \sin(\omg t - \frac{\omg \absx}{c}) \big[ \yh - (\rh \vdot \yh) \rh \big] \right\}.
+		&= \qq \frac{R \omg^2}{c^2 r} \left\{ \cos(\omg t - \frac{\omg r}{c}) \big[ \xh - (\rh \vdot \xh) \rh \big] + \sin(\omg t - \frac{\omg r}{c}) \big[ \yh - (\rh \vdot \yh) \rh \big] \right\}.
 	\end{align*}
 	Note that
 	\begin{align*}
@@ -59,11 +59,14 @@
 	\end{align*}
 	and then
 	\beq
-		\vE\tx = \qq \frac{R \omg^2}{c^2 r} \left[ \cos(\omg t - \frac{\omg r}{c}) (\cos\tht \cos\vph \,\thh - \sin\vph \,\phh) + \sin(\omg t - \frac{\omg r}{c}) (\cos\tht \sin\vph \,\thh + \cos\vph \,\phh) \right].
+		\vEq\tx = \qq \frac{R \omg^2}{c^2 r} \left[ \cos(\omg t - \frac{\omg r}{c}) (\cos\tht \cos\vph \,\thh - \sin\vph \,\phh) + \sin(\omg t - \frac{\omg r}{c}) (\cos\tht \sin\vph \,\thh + \cos\vph \,\phh) \right].
 	\eeq
-	Applying \refeq{lorentz} with $\vv = 0$, we have
-	\beq
-		\vF\tx = \qq \qw \frac{R \omg^2}{c^2 r} \left[ \cos(\omg t - \frac{\omg r}{c}) (\cos\tht \cos\vph \,\thh - \sin\vph \,\phh) + \sin(\omg t - \frac{\omg r}{c}) (\cos\tht \sin\vph \,\thh + \cos\vph \,\phh) \right].
-	\eeq
+	Applying \refeq{lorentz} with $\vv_2 = 0$, we have
+	\begin{align*}
+		\vF\tx &= \qw \vEq \\
+		&= \qq \qw \frac{R \omg^2}{c^2 r} \left[ \cos(\omg t - \frac{\omg r}{c}) (\cos\tht \cos\vph \,\thh - \sin\vph \,\phh) + \sin(\omg t - \frac{\omg r}{c}) (\cos\tht \sin\vph \,\thh + \cos\vph \,\phh) \right] \\
+		&= \qq \qw \frac{R \omg^2}{c^2 r} \bigg\{ \left[ \cos(\omg t - \frac{\omg r}{c}) \cos\vph + \sin(\omg t - \frac{\omg r}{c}) \sin\vph \right] \cos\tht \,\thh \\ 
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmmmmm} + \left[ \sin(\omg t - \frac{\omg r}{c}) \cos\vph - \cos(\omg t - \frac{\omg r}{c}) \sin\vph \right] \phh \bigg\}.
+	\end{align*}
 	\vfix
 \end{solution}
