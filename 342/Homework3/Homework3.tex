@@ -97,14 +97,26 @@
 \newcommand{\delo}{\del_0}
 \newcommand{\Al}{A_l}
 \newcommand{\absr}{\abs{r}}
+\newcommand{\lap}{\laplacian}
+
+\newcommand{\vL}{\vb{L}}
+\newcommand{\vk}{\vb{k}}
+\newcommand{\vp}{\vb{p}}
+\newcommand{\vx}{\vb{x}}
+\newcommand{\eff}{\text{eff}}
+\newcommand{\Veff}{V_\eff}
+\newcommand{\El}{E_l}
+\newcommand{\Eo}{E_0}
+
+\newcommand{\omg}{\omega}
 
 \clearpage
 \begin{statement}{}
 	Consider a quantum particle with mass $m$ moving in the presence of the square well potential
 	\beq
 		V(\absr) = \begin{cases}
-			-\Vo & r \leq a, \\
-			0 & r > a.
+			-\Vo & \absr \leq a, \\
+			0 & \absr > a.
 		\end{cases}
 	\eeq
 	\vfix
@@ -114,19 +126,69 @@
 	Writing the wave function in polar coordinates as $\psi(\vr) = \Rlr \, \Ylm(\tht, \phi)$, write down the {\Schrodinger} equation obeyed by $\Rl$.
 \end{problem}
 
-\begin{problem}
+\begin{solution}
 	In three dimensions, the Hamiltonian for the square well is
 	\beq
 		H = \begin{cases}
-			\dfrac{p^2}{2m} - \Vo & r \leq a, \\
-			\dfrac{p^2}{2m} & r > a.
+			\dfrac{\vp^2}{2m} - \Vo & \absr \leq a, \\[2ex]
+			\dfrac{\vp^2}{2m} & \absr > a.
 		\end{cases}
 	\eeq
-\end{problem}
+	In the position basis in spherical coordinates, (3.6.21) in Sakurai tells us that the kinetic energy can be written
+	\beq
+		\frac{1}{2m} \mel{\vx'}{\vp^2}{\alp} = -\frac{\hbar^2}{2 m} \left( \pdv[2]{}{r} \braket{\vx'}{\alp} + \frac{2}{r} \pdv{}{r} \braket{\vx'}{\alp} - \frac{1}{\hbar^2 r^2} \mel{\vx'}{\vL^2}{\alp} \right).
+	\eeq
+	From (3.6.27) in Sakurai,
+	\beq
+		\vL^2 \ket{l,m} = l (l + 1) \hbar^2 \ket{l,m},
+	\eeq
+	so the angular part $\Ylm(\tht, \phi)$ obeys
+	\beqn \label{ang}
+		\vL^2 \Ylm(\tht, \phi) = l (l + 1) \hbar^2 \Ylm(\tht, \phi).
+	\eeqn
+	
+	The time-independent {\Schrodinger} equation is
+	\beq
+		H \kpsi = E \kpsi,
+	\eeq
+	where $E$ is the energy associated with $\kpsi$.  Substituting in $H$ and $\psi$ in the range $\absr \leq a$, this becomes
+	\beq
+		\frac{\hbar^2}{2 m} \left[ -\frac{1}{r^2} \pdv{}{r} \left( r^2 \pdv{}{r} \right) + \frac{\vL^2}{\hbar^2 r^2} - \Vo \right] \Rlr \, \Ylm(\tht, \phi) = \El \, \Rlr \, \Ylm(\tht, \phi).
+	\eeq
+	The angular part acts only on $\Ylm$, so substituting in \refeq{ang} gives us
+	\beq
+		\frac{\hbar^2}{2 m} \left[ -\frac{1}{r^2} \pdv{}{r} \left( r^2 \pdv{}{r} \right) + \frac{l (l + 1)}{r^2} - \Vo \right] \Rlr = \El \, \Rlr.
+	\eeq
+	From (7.7.1), the effective potential at low energies for the $l$th partial wave is
+	\beq
+		\Veff = V(r) + \frac{\hbar^2}{2m} \frac{l (l + 1)}{r^2},
+	\eeq
+	so the {\Schrodinger} equation can be rewritten as
+	\beq
+		\left[ -\frac{\hbar^2}{2 m} \frac{1}{r^2} \pdv{}{r} \left( r^2 \pdv{}{r} \right) + \Veff \right] \Rlr = \El \, \Rlr,
+	\eeq
+	where
+	\beq
+		\Veff = \frac{\hbar^2}{2m} \frac{l (l + 1)}{r^2} - \Vo.
+	\eeq
+	\vfix
+\end{solution}
 
 \begin{problem}
 	When $\Vo$ is a certain value, there is one bound state for the $s$ wave ($l = 0$).  The bound state energy $\vep$ is small ($0 < \abs{\vep} \ll \Vo$).  Obtain the range of the depth of the well $\Vo$ (? $\leq \Vo <$ ?).  Also, calculate for the bound state the probability for the particle to exist outside of the well.
 \end{problem}
+
+\begin{solution}
+	The bound state must have energy $\Eo < -\Vo$...
+	
+	(A.1.2)
+	\begin{align*}
+		\vk &= \frac{\vp}{\hbar}, &
+		\omg &= \frac{E}{\hbar} = \frac{\vp^2}{2 m \hbar} = \frac{\hbar \vk^2}{2 m}
+	\end{align*}
+\end{solution}
+
+
 
 \begin{problem}
 	Consider the scattering problem by the well.  For each $l$, for large enough $r$, when $\Rlr$ is given by $\Rlr \sim \Al \sin(kr - l\pi / 2 + \dell) / r$, $\dell$ is called the scattering phase shift.  For the value of $\Vo$ within the range you obtained in the above problem, when the energy of the incident wave is is $E = 9 \Vo / 16$, calculate $\tan\delo$~(where $\delo$ is the scattering phase shift for the $s$ wave).
@@ -179,6 +241,6 @@
 
 
 \vfill
-I consulted Sakurai's \emph{Modern Quantum Mechanics}, Shankar's \emph{Principles of Quantum Mechanics}, and Wolfram MathWorld while writing up these solutions.
+I consulted Sakurai's \emph{Modern Quantum Mechanics}, Shankar's \emph{Principles of Quantum Mechanics}, and the Wikipedia article on a particle in a spherically symmetric potential while writing up these solutions.
 
 \end{document}
