@@ -9,6 +9,7 @@
 \usepackage{xcolor, soul}
 \usepackage{kbordermatrix}
 \usepackage{booktabs}
+\usepackage{graphicx}
 %\allowdisplaybreaks
 
 \makeatletter
@@ -203,7 +204,7 @@
 		\uE \sim \begin{cases}
 			e^{-\kap r} & \text{for } r > a, \\
 			\cos kr \quad \text{(even parity)} & \text{for } r < a, \\
-			\sin kr \quad \text{(even parity)} & \text{for } r > a,
+			\sin kr \quad \text{(odd parity)} & \text{for } r > a,
 		\end{cases}
 	\eeq
 	where $k$ and $\kap$ are defined by (A.2.7),
@@ -220,18 +221,37 @@
 	can be found by solving (A.2.8),
 	\begin{align*}
 		k a \tan k a &= \kap a \quad\text{(even parity)}, &
-		k a \cot k a &= -\kap a \quad\text{(odd parity)}.
+		k a \cot k a &= -\kap a \quad\text{(odd parity)},
 	\end{align*}
-	We are interested in the odd parity solutions, so
-%	where $\kap$ and $k$ are related by (A.2.9),
-%	\beq
-%		\frac{2 m \Vo a^2}{\hbar^2} = (k^2 + \kap^2) a^2.
-%	\eeq
-	
+	where $\kap$ and $k$ are related by (A.2.9),
 	\beq
-		\frac{\pi^2 \hbar^2}{8 m a^2} < \Vo < \infty.
+		\frac{2 m \Vo a^2}{\hbar^2} = (k^2 + \kap^2) a^2.
 	\eeq
-	\hl{For some reason}, $l = 0$ has odd parity.
+	We are interested in the odd parity solutions, so we want to solve
+	\beqn \label{ka}
+		k a \cot k a = -\kap a.
+	\eeqn
+	For the right side, we can write
+	\beqn \label{kapa}
+		\kap a = -\sqrt{\frac{2 m \Vo a^2}{\hbar^2} - k^2 a^2} \equiv -\sqrt{z^2 - (ka)^2},
+	\eeqn
+	where we have defined $z$.
+	
+	Now we can solve the equation graphically.  Note that $ka$ and $z$ are both positive definite. This means the odd parity equation in \refeq{ka} has its first $ka$ axis intercept at $ka = \pi/2$, where the slope is negative.  Note also that $\kap a$ given by \refeq{kapa} is an equation for one quarter of an ellipse in quadrant IV, so it is not defined above the $ka$ axis.  Therefore it is not possible for the two graphs to intersect for $z < \pi / 2$.  For $z > 3\pi / 2$, the plots intersect twice, meaning there is more than one bound state.  In Fig.~\ref{plot}, this is illustrated with $\kap a$ for $z = n \pi / 2$ with $n = 1, 2, 3, \ldots$.
+	
+	\begin{figure} \centering
+		\includegraphics[trim=2cm 0 0 0,clip,width=0.75\textwidth]{plot}
+		\caption{Plot demonstrating single bound state solutions to \refeq{ka} in the range $\pi/2 < z < 3\pi/2$, where $z$ is defined in \refeq{kapa}.}
+		\label{plot}
+	\end{figure}
+	
+	Finally, we have the restriction
+	\beq
+		\frac{\pi}{2} < \sqrt{\frac{2 m \Vo a^2}{\hbar^2}} < \frac{3\pi}{2}
+		\qimplies
+		\frac{\pi^2 \hbar^2}{8 m a^2} < \Vo < \frac{9\pi^2 \hbar^2}{8 m a^2}.
+	\eeq
+	\vfix
 \end{solution}
 
 
