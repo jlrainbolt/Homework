@@ -2,7 +2,7 @@
 \usepackage{geometry, titlesec}
 \usepackage[parfill]{parskip}
 \usepackage[italicdiff]{physics}
-\usepackage{amsfonts, amsthm}
+\usepackage{amsfonts, amsthm, amssymb}
 \usepackage[cm]{fullpage}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
@@ -97,9 +97,12 @@
 \newcommand{\intoi}{\int_0^\infty}
 \newcommand{\dr}{\dd{r}}
 \newcommand{\drp}{\dd{r'}}
+\newcommand{\En}{E_n}
+\newcommand{\kn}{k_n}
 
 \newcommand{\hql}{h_l^{(1)}\!}
 \newcommand{\ks}{k^*}
+\newcommand{\sigtot}{\sig_\text{tot}}
 
 \begin{statement}{}
 	Consider a three dimensional potential
@@ -159,9 +162,9 @@
 		= -\frac{a^2 \gam \, \jl^2(ka)}{1 + i k a^2 \gam \, \jl(ka) \, \hql(ka)},
 	\eeq
 	or
-	\beq
+	\beqn \label{sindelo}
 		e^{i \dell} \sin\dell = -\frac{k a^2 \gam \, \jl^2(ka)}{1 + i k a^2 \gam \, \jl(ka) \, \hql(ka)}. % = (\cos\dell + i \sin\dell) \sin\dell
-	\eeq
+	\eeqn
 	From \refeq{hankel}, \hl{we can write}
 	\beq
 		\tan\dell = -\frac{k a^2 \gam \, \jl^2(ka)}{1 - k a^2 \gam \, \jl(ka) \, \nl(ka)}.
@@ -177,9 +180,9 @@
 %	\eeq
 	
 	For the $s$ wave, the relevant $\jo$ is given by \refeq{jo}, and from (A.5.12),
-	\beq
+	\beqn \label{no}
 		\no(\rho) = -\frac{\cos\rho}{\rho}.
-	\eeq
+	\eeqn
 	Then
 %	\beq
 %		\hql(\rho) = \frac{\sin\rho - i \cos\rho}{\rho}
@@ -188,12 +191,12 @@
 %	\eeq
 	\beqn \label{tandelo}
 		\tan\delo = -\frac{k a^2 \gam \, \jo^2(ka)}{1 - k a^2 \gam \, \jo(ka) \, \no(ka)}
-		= -\frac{k a^2 \gam \, \sin[2] ka / (ka)^2}{1 + k a^2 \gam \sin ka \cos ka / (ka)^2}
-		= -\frac{\gam \, \sin[2] ka}{k + \gam \sin ka \cos ka}
+		= -\frac{k a^2 \gam \, \sin^2 ka / (ka)^2}{1 + k a^2 \gam \sin ka \cos ka / (ka)^2}
+		= -\frac{\gam \, \sin^2 ka}{k + \gam \sin ka \cos ka}
 	\eeqn
 	and so we have found
 	\beqn \label{delo}
-		\delo(k) = \tan^{-1}\!\!\left( -\frac{\gam \, \sin[2] ka}{k + \gam \sin ka \cos ka} \right).
+		\delo(k) = \tan^{-1}\!\!\left( -\frac{\gam \, \sin^2 ka}{k + \gam \sin ka \cos ka} \right).
 	\eeqn
 	\vfix
 \end{solution}
@@ -207,7 +210,7 @@
 \begin{solution}
 	In the limit $\gam \gg k$, \refeq{delo} becomes
 	\beq
-		\delo \to \tan^{-1}\!\!\left( -\frac{\gam \, \sin[2] ka}{\gam \sin ka \cos ka} \right)
+		\delo \to \tan^{-1}\!\!\left( -\frac{\gam \, \sin^2 ka}{\gam \sin ka \cos ka} \right)
 		= \tan^{-1}\!\left[ -\cot ka \right]
 		= \tan^{-1}\!\left[ \cot(-ka) \right]
 		= -ka.
@@ -229,7 +232,7 @@
 	\end{align}
 	From \refeq{tandelo},
 	\beq
-		\cot\delo = -\frac{k + \gam \sin ka \cos ka}{\gam \, \sin[2] ka} = 0
+		\cot\delo = -\frac{k + \gam \sin ka \cos ka}{\gam \, \sin^2 ka} = 0
 		\qimplies
 		-\frac{k}{\gam} = \sin ka \cos ka = \frac{\sin(2ka)}{2}.
 	\eeq
@@ -237,7 +240,7 @@
 	\beqn \label{thingy}
 		\sin(2ka) = -\frac{2ka}{\gam a},
 	\eeqn
-	which we may solve graphically.  As shown in Fig.~\ref{plot3}, \refeq{thingy} has roots near $ka = n \pi / 2$ for $n = 0, 1, 2, \ldots$.  As $\gamma$ increases, they become closer to $n\pi$.
+	which we may solve graphically.  As shown in Fig.~\ref{plot3}, \refeq{thingy} has roots near $ka = n \pi / 2$ for $n = 0, 1, 2, \ldots \lessapprox 2\gam$.  As $\gamma$ increases, they become closer to $n\pi$.
 	
 	\begin{figure} \centering
 		\includegraphics[width=0.75\textwidth]{plot3}
@@ -246,12 +249,12 @@
 	\end{figure}
 	
 	We must determine which roots fulfill the second condition in \refeq{conds}.  Note that
-	\begin{align*}
+	\begin{align}
 		\dv{\cot\delo}{k} &= -\dv{k} \left( \frac{k}{\gam} \csc^2 ka + \cot ka \right)
-		= -\left[ \frac{\csc^2 ka}{\gam} \dv{k}{k} + \frac{k}{\gam} \dv{k} \bigg( \csc^2 ka \bigg) + \dv{k} \bigg( \cot ka \bigg) \right] \\
+		= -\left[ \frac{\csc^2 ka}{\gam} \dv{k}{k} + \frac{k}{\gam} \dv{k} \bigg( \csc^2 ka \bigg) + \dv{k} \bigg( \cot ka \bigg) \right] \notag \\
 		&=  -\frac{\csc^2 ka}{\gam} + \frac{2 ka}{\gam} \cot ka \csc^2 ka + a \csc^2 ka
-		= \frac{a\gam - 1 + 2 ka \cot ka}{\gam \sin^2 ka}.
-	\end{align*}
+		= \frac{a\gam - 1 + 2 ka \cot ka}{\gam \sin^2 ka}. \label{delder}
+	\end{align}
 	For $\ks = n\pi/2$ with $n$ odd,
 	\beq
 		\left. \dv{\cot\delo}{k} \right|_{\ks} = \frac{a \gam - 1}{\gam} \sim a \not< 0,
@@ -260,16 +263,17 @@
 	\beq
 		\lim_{k \to \ks} \dv{\cot\delo}{k} = \lim_{k \to \ks} \frac{\cot ka - ka \csc^2 ka}{\gam \sin ka \cos ka} = -\infty,
 	\eeq
-	since $\csc^2 ka$ blows up faster than $\cot ka$.
+	since $\csc^2 ka$ blows up faster than $\cot ka$.  So we have $ka \approx n\pi$ for $n = 0, 1, 2, ... \lessapprox \gam$.
 	
-	So the condition for resonance is
+	In the limit $\gam \gg k$, we may approximate the offset of the resonances from the $x$ as $-1 / \gam a$.  Then the condition for resonance is
 	\beq
-		k \approx \frac{n \pi}{a}, \quad n = 0, 1, 2, ...
+		\kn \approx \frac{n \pi}{a} \left( 1 - \frac{1}{\gam a} \right), \quad n = 0, 1, 2, ... \lessapprox \gam,
 	\eeq
 	and the energies of the resonant states are
 	\beq
-		E \approx \frac{n^2 \hbar^2 \pi^2}{2 m a^2}, \quad n = 0, 1, 2, ....
+		\En \approx \frac{n^2 \pi^2 \hbar^2}{2 m a^2} \left( 1 - \frac{2}{\gam R} \right), \quad n = 0, 1, 2, ... \lessapprox \gam,
 	\eeq
+	where we have dropped terms of $\order{\gam^{-2}}$.
 \end{solution}
 
 
@@ -278,13 +282,80 @@
 	Calculate the width $\Gam$ of the resonance.  Discuss its behavior when $\gam$ is big.
 \end{problem}
 
+\begin{solution}
+	Sakurai (7.8.8) relates the width to the phase shift:
+	\beqn \label{Gamma}
+		\left. \dv{(\cot\dell)}{E} \right|_{E = E_r} \equiv - \frac{2}{\Gam}.
+	\eeqn
+	Applying \refeq{delder},
+	\beq
+		\dv{(\cot\delo)}{E} = \dv{(\cot\delo)}{k} \dv{k}{E}
+		= \dv{(\cot\delo)}{k} \dv{E} \!\left( \sqrt{\frac{2 m E}{\hbar^2}} \right)
+		= \sqrt{\frac{m}{2 \hbar^2 E}} \frac{a\gam - 1 + 2 ka \cot ka}{\gam \sin^2 ka}
+		= \frac{m}{\hbar^2 k} \frac{a\gam - 1 + 2 ka \cot ka}{\gam \sin^2 ka}.
+	\eeq
+	Taking the limit that $\gam$ is reasonably large, we have
+	\begin{align*}
+		\sin ka &= \sin(n\pi - \frac{n\pi}{\gam a})
+		= \sin n\pi \cos(\frac{n\pi}{\gam a}) - \cos n\pi \sin(\frac{n\pi}{\gam a})
+		\approx (-1)^{n+1} \frac{n\pi}{\gam a}, \\
+		\cos ka &= \sin(n\pi - \frac{n\pi}{\gam a})
+		= \cos n\pi \cos(\frac{n\pi}{\gam a}) + \sin n\pi \sin(\frac{n\pi}{\gam a})
+		\approx (-1)^n,
+	\end{align*}
+	where we have dropped terms of $\order{\gam^{-2}}$.  Then, taking $\gam \gg k$ and $k \approx n\pi / a$,
+	\begin{align*}
+		\left. \dv{(\cot\dell)}{E} \right|_{E = \En} &= \frac{m}{\hbar^2 k} \left( \frac{a\gam/k - 1/k}{\gam/k} + \frac{2 a \cos ka}{(\gam/k) \sin ka} \right) \frac{1}{\sin^2 ka}
+		\approx \frac{m a}{\hbar^2 k} \left( 1 + \frac{2 \cos ka}{\gam \sin ka} \right) \frac{1}{\sin^2 ka} \\
+		&\approx \frac{2 m a}{\hbar^2 k \gam} \frac{\cos ka}{\sin^3 ka}
+		\approx \frac{2 m a^2}{n\pi \hbar^2} \frac{(-1)^n}{(-1)^{3n+3}} \left( \frac{\gam a}{n\pi} \right)^3
+		= -\frac{2 m a^5 \gam^3}{n^4 \pi^4 \hbar^2},
+	\end{align*}
+	so \refeq{Gamma} gives us
+	\beq
+		\Gam_n \approx \frac{n^4 \pi^4 \hbar^2}{m a^5 \gam^3}.
+	\eeq
+	Inspecting the above, clearly $\Gam \to 0$ quickly when $\gamma$ is very large.  This makes sense because the potential shell becomes impenetrable in the limit $\gam \to \infty$, when a particle bound inside the shell is unable to escape.  The lifetime of the bound state---which is proportional to $\Gam^{-1}$---is infinite in this limit, hence $\Gam \to 0$.
+\end{solution}
+
+
+
 \begin{problem}
 	When the velocity of the incident wave is small, obtain the scattering cross section.
 \end{problem}
 
+\begin{solution}
+	Sakurai (7.6.18) gives an expression for the total cross section,
+	\beq
+		\sigtot = \frac{4\pi}{k^2} \sum_{l} (2l + 1) \sin^2\dell.
+	\eeq
+	In the low-energy limit, corresponding to low velocity of the incident wave, we need only consider $s$ wave scattering.  The total cross section becomes
+	\beq
+		\sigtot = \frac{4\pi}{k^2} \sin^2\delo.
+	\eeq
+	From \refeq{sindelo}, \refeq{jo}, and \refeq{no}, \hl{we can write}
+	\beq
+		\sin^2 \delo = \frac{\gam^2 \sin^4 ka}{[k - \gam \sin ka \cos ka]^2 + \gam^2 \sin^4 ka}.
+	\eeq
+	Taking the limit $k \to 0$,
+	\begin{align*}
+		\sin^2 \delo &\to 
+		\frac{\gam^2 (ka)^4}{[k - \gam ka]^2 + \gam^2 (ka)^4}
+		= \frac{\gam^2 (ka)^4}{k^2 - 2 \gam k^2 a - \gam^2 k^2 a^2 + \gam^2 k^4 a^4}
+		= \frac{\gam^2 k^2 a^4}{1 - 2 \gam a + \gam^2 a^2 + \gam^2 k^2 a^4} \\
+		&\approx \frac{\gam^2 k^2 a^4}{1 - 2 \gam a + \gam^2 a^2}
+		= \frac{k^2 a^4 \gam^2}{(1 - \gam a)^2},
+	\end{align*}
+	so
+	\beq
+		\sigtot = \frac{4\pi a^4 \gam^2}{(1 - \gam a)^2}.
+	\eeq
+	\vfix
+\end{solution}
+
 
 
 \vfill
-{\footnotesize I consulted Sakurai's \emph{Modern Quantum Mechanics}, Shankar's \emph{Principles of Quantum Mechanics}, Merzbacher's \emph{Quantum Mechanics}, Gottfried's \emph{Quantum Mechaniccs Volume I: Fundamentals}, the MIT OpenCourseWare notes on Introduction to Applied Nuclear Physics, Masatsugu Sei Suzuki's notes on phase shift analysis, and Wolfram MathWorld while writing up these solutions.}
+{\footnotesize I consulted Sakurai's \emph{Modern Quantum Mechanics}, Merzbacher's \emph{Quantum Mechanics}, Gottfried's \emph{Quantum Mechanics Volume I: Fundamentals}, Napolitano's solutions to the problems in Sakurai, the MIT OpenCourseWare notes on Introduction to Applied Nuclear Physics, Masatsugu Sei Suzuki's notes on phase shift analysis, and Wolfram MathWorld while writing up these solutions.}
 
 \end{document}
