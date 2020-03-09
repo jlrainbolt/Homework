@@ -71,7 +71,7 @@
 	\beqn \label{sindelo}
 		e^{i \dell} \sin\dell = -\frac{k a^2 \gam \, \jl^2(ka)}{1 + i k a^2 \gam \, \jl(ka) \, \hql(ka)}.
 	\eeqn
-	From \refeq{hankel}, according to Gottfried Ch.~15~(5) we can write
+	According to Gottfried Ch.~15~(5) we can apply \refeq{hankel} to find
 	\beq
 		\tan\dell = -\frac{k a^2 \gam \, \jl^2(ka)}{1 - k a^2 \gam \, \jl(ka) \, \nl(ka)}.
 	\eeq
@@ -103,7 +103,7 @@
 	In the limit $\gam \gg k$, \refeq{delo} becomes
 	\beq
 		\delo \to \tan^{-1}\!\!\left( -\frac{\gam \, \sin^2 ka}{\gam \sin ka \cos ka} \right)
-		= \tan^{-1}\!\left[ -\cot ka \right]
+		= \tan^{-1}(-\cot ka)
 		= \tan^{-1}\!\left[ \cot(-ka) \right]
 		= -ka.
 	\eeq
@@ -132,10 +132,10 @@
 	\beqn \label{thingy}
 		\sin(2ka) = -\frac{2ka}{\gam a},
 	\eeqn
-	which we may solve graphically.  As shown in Fig.~\ref{plot3}, \refeq{thingy} has roots near $ka = n \pi / 2$ for $n = 0, 1, 2, \ldots \lessapprox 2\gam$.  As $\gamma$ increases, they become closer to $n\pi$.
+	which we may solve graphically.  As shown in Fig.~\ref{plot3}, \refeq{thingy} has roots near $ka = n \pi / 2$ for $n = 0, 1, 2, \ldots \lessapprox 2\gam$.  As $\gamma$ increases, they become closer to $n\pi/2$.
 	
 	\begin{figure} \centering
-		\includegraphics[width=0.75\textwidth]{plot3}
+		\includegraphics[width=0.6\textwidth]{plot3}
 		\caption{Plot demonstrating roots of \refeq{thingy}.  The roots at $n \pi$ ($n = 0, 1, 2, \ldots$) correspond to resonances.}
 		\label{plot3}
 	\end{figure}
@@ -151,13 +151,13 @@
 	\beq
 		\left. \dv{\cot\delo}{k} \right|_{\ks} = \frac{a \gam - 1}{\gam} \sim a \not< 0,
 	\eeq
-	since \refeq{thingy} has no solutions if $a \gam < 1$.  For $n$ even, applying L'Hospital's rule gives us
+	since \refeq{thingy} has no solutions if $a \gam < 1$, $a\gam$ being positive definite.  For $n$ even, applying L'Hospital's rule gives us
 	\beq
-		\lim_{k \to \ks} \dv{\cot\delo}{k} = \lim_{k \to \ks} \frac{\cot ka - ka \csc^2 ka}{\gam \sin ka \cos ka} = -\infty,
+		\lim_{k \to \ks} \dv{\cot\delo}{k} = \lim_{k \to \ks} \frac{\cot ka - ka \csc^2 ka}{\gam \sin ka \cos ka} = -\infty < 0,
 	\eeq
 	since $\csc^2 ka$ blows up faster than $\cot ka$.  So we have $ka \approx n\pi$ for $n = 0, 1, 2, ... \lessapprox \gam$.
 	
-	In the limit $\gam \gg k$, we may approximate the offset of the resonances from the $x$ as $-1 / \gam a$.  Then the condition for resonance is
+	In the limit $\gam \gg k$, we may approximate the offset of the resonances from the $x$ axis as $-1 / \gam a$.  Then the condition for resonance is
 	\beq
 		\kn \approx \frac{n \pi}{a} \left( 1 - \frac{1}{\gam a} \right), \quad n = 0, 1, 2, ... \lessapprox \gam,
 	\eeq
@@ -170,6 +170,7 @@
 
 
 
+%\clearpage
 \begin{problem}
 	Calculate the width $\Gam$ of the resonance.  Discuss its behavior when $\gam$ is big.
 \end{problem}
@@ -195,7 +196,7 @@
 		= \cos n\pi \cos(\frac{n\pi}{\gam a}) + \sin n\pi \sin(\frac{n\pi}{\gam a})
 		\approx (-1)^n,
 	\end{align*}
-	where we have dropped terms of $\order{\gam^{-2}}$.  Then, taking $\gam \gg k$ and $k \approx n\pi / a$,
+	where we have dropped terms of $\order{\gam^{-2}}$.  Then taking $\gam \gg k$ and $k \approx n\pi / a$, and discarding large terms that will end up in the denominator of $\Gam$,
 	\begin{align*}
 		\left. \dv{(\cot\dell)}{E} \right|_{E = \En} &= \frac{m}{\hbar^2 k} \left( \frac{a\gam/k - 1/k}{\gam/k} + \frac{2 a \cos ka}{(\gam/k) \sin ka} \right) \frac{1}{\sin^2 ka}
 		\approx \frac{m a}{\hbar^2 k} \left( 1 + \frac{2 \cos ka}{\gam \sin ka} \right) \frac{1}{\sin^2 ka} \\
@@ -212,7 +213,7 @@
 
 
 
-\clearpage
+%\clearpage
 \begin{problem}
 	When the velocity of the incident wave is small, obtain the scattering cross section.
 \end{problem}
