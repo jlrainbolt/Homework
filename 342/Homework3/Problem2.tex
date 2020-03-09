@@ -35,6 +35,12 @@
 \newcommand{\betao}{\beta_0}
 \newcommand{\constant}{\text{constant }}
 
+\newcommand{\dcx}{\dd[3]{x}}
+\newcommand{\intoi}{\int_0^\infty}
+\newcommand{\intoa}{\int_0^a}
+\newcommand{\intai}{\int_a^\infty}
+\newcommand{\dr}{\dd{r}}
+
 
 \clearpage
 \begin{statement}{}
@@ -111,13 +117,13 @@
 		-\frac{\hbar^2}{2m} \dv[2]{\uE}{r} + V(r) \uE = E \uE.
 	\eeq
 	The bound-state solutions are given by (A.2.6),
-	\beq
+	\beqn \label{sols}
 		\uE \sim \begin{cases}
 			e^{-\kap r} & \text{for } r > a, \\
 			\cos kr \quad \text{(even parity)} & \text{for } r < a, \\
-			\sin kr \quad \text{(odd parity)} & \text{for } r > a,
+			\sin kr \quad \text{(odd parity)} & \text{for } r < a,
 		\end{cases}
-	\eeq
+	\eeqn
 	where $k$ and $\kap$ are defined by (A.2.7),
 	\begin{align*}
 		k &= \sqrt{\frac{2m (\Vo - \abs{E})}{\hbar^2}}, &
@@ -163,7 +169,60 @@
 		\frac{\pi^2 \hbar^2}{8 m a^2} < \Vo < \frac{9\pi^2 \hbar^2}{8 m a^2}.
 	\eeqn
 	
-	The probability for a particle in the bound state to exist outside the well is given by the \hl{transmission coefficient} $T$.
+	For the probability for a particle in the bound state to exist outside the well, we impose the normalization condition
+	\beq
+		1 = \braket{\psi}
+		= \int \psi_0^2(\vr) \dcx
+		= \int \Ro^2(r) \, Y_{0 0}(\tht, \phi) \dcx
+		= \intoi \Ro^2(r) \, r^2 \dr,
+	\eeq
+	since $\Ylm$ are normalized.  From \refeq{sols}, we know
+	\beq
+		\Ro(r) = \begin{cases}
+			-\dfrac{e^{-\kap r}}{\kap r} & r > a, \\[2ex]
+			\dfrac{\sin kr}{kr} & r < a,
+		\end{cases}
+	\eeq
+	so the normalization condition becomes
+	\beq
+		1 = \frac{1}{k^2} \intoa \sin^2 kr \dr + \frac{1}{\kap^2} \intai e^{-2 \kap r} \dr
+		\equiv A + B,
+	\eeq
+	where we have defined $A$ and $B$.  The probability for the particle to exist outside the well is then
+	\beq
+		P(r > a) = \frac{B}{A + B}.
+	\eeq
+	Note that
+	\begin{align*}
+		A &= \frac{1}{k^2} \intoa \sin^2 kr \dr
+		= \frac{1}{2 k^2} \intoa (1 - \cos 2kr) \dr
+		= \frac{1}{2 k^2} \left[ r - \frac{\sin 2kr}{2k} \right]_0^a
+		= \frac{2 ka - \sin 2ka}{4 k^3}, \\
+		B &= \frac{1}{\kap^2} \intai e^{-2 \kap r} \dr
+		= \frac{1}{\kap^2} \left[ -\frac{e^{-2 \kap r}}{2 \kap} \right]_a^\infty
+		= \frac{e^{-2 \kap a}}{2 \kap^3},
+	\end{align*}
+	and that
+	\beq
+		A + B = \frac{2 k \kap^2 a - \kap^3 \sin 2ka + 2 k^3 e^{-2 \kap a}}{4 \kap^3 k^3}.
+	\eeq
+	Then the probability is
+	\beq
+		P(r > a) = \frac{e^{-2 \kap a}}{2 \kap^3} \frac{4 \kap^3 k^3}{2 k \kap^2 a - \kap^3 \sin 2ka + 2 k^3 e^{-2 \kap a}}
+		= \frac{k^3 e^{-2 \kap a}}{k \kap^2 a - \kap^3 \sin ka \cos ka + k^3 e^{-2 \kap a}}.
+	\eeq
+	Equating the two cases of $\Ro$ at the boundary, we obtain
+	\beq
+		-\frac{e^{\kap a}}{\kap a} = \frac{\sin ka}{ka}
+		\qimplies
+		k^2 e^{-2ka} = \kap^2 \sin^2 ka,
+	\eeq
+	and we can write the probability entirely in terms of trigonometric functions of $ka$:
+	\beq
+		P(r > a) = \frac{k \kap^2 \sin^2 ka}{k \kap^2 a - \kap^3 \sin ka \cos ka + k \kap^2 \sin^2 ka}
+		= \frac{k \sin^2 ka}{k a + k \sin^2 ka - \kap \sin ka \cos ka}.
+	\eeq
+	\vfix
 \end{solution}
 
 
@@ -256,6 +315,7 @@
 
 
 
+\clearpage
 \begin{problem}
 	Now consider the $S$ matrix, $S \equiv e^{2i \delo} = e^{i \delo} / e^{-i \delo}$.  Compare the condition on $s$ wave bound state energies and the zero of the denominator of $S$.  Explain their relation.
 \end{problem}
