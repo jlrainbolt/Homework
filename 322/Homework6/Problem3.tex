@@ -1,0 +1,93 @@
+\begin{statement}{}
+	Consider the wave equation with some arbitrary given ``potential'' $V(t, \vx)$,
+	\beq
+		\Box \psi + V \psi = -4\pi f.
+	\eeq
+	Although one may not be able to find their form explicitly, it is possible to prove by general arguments that unique retarded and advanced Green's functions exist for this equation, satisfying the ``support properties'' that
+	\begin{align*}
+		\Grettx = 0 &\qfor t < t' + \frac{\abs{\vx - \vx'}}{c}, &
+		\Gadv(t, \vx; t', \vx') = 0 &\qfor t > t' + \frac{\abs{\vx - \vx'}}{c}.
+	\end{align*}
+	\vfix
+\end{statement}
+
+\begin{problem} \label{3.a}
+	Show that a Green's identity holds for any two solutions, $\psiq, \psiw$, of this equation that takes exactly the same form as Eq.~(5.100) of the notes.
+\end{problem}
+
+\begin{solution}
+	Equation (5.100) is
+	\beqn \label{100}
+		\sum_{\mu, \nu} \dmu [\etamunu (\psiq \dnu \psiw - \psiw \dnu \psiq)] = \psiq \Box \psiw - \psiw \Box \psiq
+		= -4\pi (\psiq \fw - \psiw \fq),
+	\eeqn
+	where $\psiq$ and $\psiw$ are defined in Eqs.~(5.98) and (5.99),
+	\begin{align*}
+		\Box \psiq &= -4\pi \fq, &
+		\Box \psiw &= -4\pi \fw.
+	\end{align*}
+	
+	For this problem, let
+	\begin{align} \label{psis}
+		\Box \psiq + V \psiq &= -4\pi \fq, &
+		\Box \psiw + V \psiw &= -4\pi \fw.
+	\end{align}
+	Then 
+	\begin{align*}
+		\sum_{\mu, \nu} \dmu [\etamunu (\psiq \dnu \psiw - \psiw \dnu \psiq)] &= \psiq \Box \psiw - \psiw \Box \psiq
+		= \psiq (-4\pi \fw - V \psiw) - \psiw (-4\pi \fq - V \psiq) \\
+		&= -4\pi \fw \psiq + \psiq V \psiw + 4\pi \fq \psiw + \psiw V \psiq
+		= -4\pi (\psiq \fw - \psiw \fq),
+	\end{align*}
+	which has the same form as \refeq{100}, as we wanted to show. \qed
+\end{solution}
+
+
+
+\begin{problem}
+	Prove that for the wave equation with a potential, $\Grettx = \Gadv(t', \vx'; t, \vx)$.
+	
+	Hint: Integrate Green's identity over a suitable spacetime cube for suitable choices of $\psiq$ and $\psiw$.
+\end{problem}
+
+\begin{solution}
+	Let $\xmu$ be an arbitrary vector for $\mu = 0, 1, 2, 3$, and let $\sR$ be the rectangular region on spacetime defined by $\cmuo \leq \xmu \leq \cmuq$, where $\cmuo, \cmuq$ are constants.  Let $\vmu = (\vo, \vq, \vw, \ve)$ be an arbitrary differentiable vector field.  Then by (5.101),
+	\beq
+		\intsR \sum_\mu \dmu \vmu \dfx = \left[\int \vo \dxq \dxw \dxe \right]_{c_0^0}^{c_1^0} + \left[ \int \vq \dxo \dxw \dxe \right]_{c_0^1}^{c_1^1} + \left[ \int \vw \dxo \dxq \dxe \right]_{c_0^2}^{c_1^2} + \left[ \int \ve \dxo \dxq \dxw \right]_{c_0^3}^{c_1^3},
+	\eeq
+	where $\sR$ be the rectangular region on spacetime defined by $\cmuo \leq \xmu \leq \cmuq$.
+	
+	Following the procedure used in Sec.~2.5 to show that the Dirichlet Green's function is symmetrical, let $\psiq = \Grettx$ and $\psiw = \Gadvtx$ with $\xpo, \xppo > 0$.  As in (5.102), let
+	\beq
+		\vmu = \sum_\nu \etamunu (\psiq \dnu \psiw - \psiw \dnu \psiq).
+	\eeq
+	Now we can integrate \refeq{100} over $\sR$, since we have proven that it holds for \refeq{psis}.  Green's theorem is
+	\beqn \label{green}
+		\intsR \sum_\mu \dmu \vmu \dfx = -4\pi \intsR (\psiq \fw - \psiw \fq) \dfx.
+	\eeqn
+	For $\sR$, we choose $\cmuo, \cmuq$ such that the bottom face $\xo = c_0^0 = 0$, the top face $\xo = c_1^0 > \xpo, \xppo$, and the side faces $\cmuo < \xpa - \xpo, \xppa - \xppo$ and $\cmuq > \xpa + \xpo, \xppa + \xppo$ for $a = 1, 2, 3$.  This way, both the past and future light cones are enclosed in $\sR$, and the light cones do not intersect the side faces.  Then neither $\Gret$ nor $\Gadv$ contributes to the side faces.  So the left side of \refeq{green} becomes
+	\begin{align}
+		\intsR \sum_\mu \dmu \vmu \dfx &= \left[ -\int [\Grettx \, \doo \, \Gadvtx - \Gadvtx \,\doo\, \Grettx] \dxq \dxw \dxw \right]_{c_0^0}^{c_1^0} \notag \\
+		&= 0, \label{left}
+	\end{align}
+	since $\Grettx = 0$ on the bottom face and $\Gadvtx = 0$ on the top face.
+	
+	For the right side of \refeq{green}, applying \refeq{100} as permitted by our proof in \ref{3.a},
+	\beq
+		-4\pi \intsR (\psiq \fw - \psiw \fq) \dfx = \intsR [\Grettx \, \Box \Gadvtx - \Gadvtx \, \Box \Grettx] \dfx.
+	\eeq
+	We know that all Green's functions are solutions to Eq.~(5.30),
+	\beq
+		\Box_{(t, \vx)}G(t,x; t', x') = -4\pi \,\del(\vx - \vx') \,\del(t - t'),
+	\eeq
+	so the right side of \refeq{green} becomes
+	\begin{align}
+		-4\pi \intsR (\psiq \fw - \psiw \fq) \dfx &= -4\pi \intsR [\Grettx \, \del(\vx - \vx'') \,\del(t - t'') - \Gadvtx \, \del(\vx - \vx') \,\del(t - t')] \dfx \notag \\
+		&= -4\pi [\Gret(t'', \vx''; t', \vx') - \Gadv(t', \vx'; t'', \vx'')]. \label{right}
+	\end{align}
+	Equating the left side \refeq{left} with the right side \refeq{right}, and letting $t'' \to t$ and $\vx'' \to \vx$, we have
+	\beq
+		\Grettx = \Gadv(t', \vx'; t, \vx),
+	\eeq
+	as we sought to prove. \qed
+\end{solution}

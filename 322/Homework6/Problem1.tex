@@ -71,7 +71,7 @@
 	\end{align*}
 	Then the dipole moment is
 	\begin{align*}
-		\vp &= \int \vx [ \rhoq(t, \vx) + \rhoq(t, \vx) + \rhoq(t, \vx) + \rhoq(t, \vx) ] \dcx
+		\vp &= \int \vx [ \rhoq(t, \vx) + \rhow(t, \vx) + \rhoe(t, \vx) + \rhor(t, \vx) ] \dcx
 		= q [ \vxq(t) + \vxw(t) - \vxe(t) - \vxr(t) ] \\
 		&= \sqrt{2} q d [ (\cos \Omg t - \sin \Omg t) \,\xh + (\cos \Omg t + \sin \Omg t) \,\yh ],
 	\end{align*}
@@ -91,7 +91,15 @@
 		\ne &= 4.
 	\end{align*}
 	
-	For case~(ii), we need to go to quadrupole order in the multipole expansion.  According to the final paragraph of Sec.~5.3.1 in the course notes, the ``electric quadrupole radiation'' gives a contribution to radiated power proportional to $\abs{\dv*[3]{\Qij}{t}}^2$.  Since this is the only term that contributes for case~(ii), we have
+	For case~(ii), we need to go to quadrupole order in the multipole expansion.  According to the final paragraph of Sec.~5.3.1 in the course notes, the ``electric quadrupole radiation'' gives a contribution to radiated power proportional to $\abs{\dv*[3]{\Qij}{t}}^2$.  At this order, there is also a contribution to the power from ``magnetic dipole radiation'' proportional to $\abs{\dv*[2]{\vvmu}{t}}^2$, where the magnetic dipole moment $\vvmu$ is defined by (4.32),
+	\beq
+		\vvmu \equiv \frac{1}{2c} \int \vx \cross \vJ(\vx) \dcx.
+	\eeq
+	However, from (5.68),
+	\beq
+		\int \vJ(\vx) \dcx = \pdv{\vp}{t},
+	\eeq
+	and $\vp = 0$ for case~(ii).  So the ``electric quadrupole radiation'' is the only term that contributes for case~(ii), and we have
 	\beq
 		P \propto \abs{\dv[3]{\Qij}{t}}^2_\ret,
 	\eeq
@@ -123,7 +131,7 @@
 		&= -\Qqq, \\[2ex]
 		Q_{13} &= Q_{23} = Q_{33} = 0.
 	\end{align*}
-	All of the nonzero elements have the same powers of $d$, $q$, and trigonometric functions, as we might have guessed from dimensional analysis.  Thus, we need only differentiate one of them to find the general proportionality.  Differentiating $\Qqq$ with respect to time,
+	All of the nonzero elements have the same powers of $d$, $q$, $\cos$, and $\sin$, as we might have guessed from dimensional analysis.  Thus, we need only differentiate one of them to find the general proportionality.  Differentiating $\Qqq$ with respect to time,
 	\begin{align*}
 		\dv{\Qqq}{t} &= 2 q d^2 \Omg \sin 2\Omg t, &
 		\dv[2]{\Qqq}{t} &= 4 q d^2 \Omg^2 \cos 2\Omg t, &

@@ -55,9 +55,10 @@
 	so the radiated power is
 	\beqn \label{radpow}
 		P = \frac{2}{3 c^3} \abs{-q \alp \omg^2 \cos \omg t \,\zh}^2_\ret
-		= \frac{2 q^2 \alp^2 \omg^4}{3 c^3} \cos[2](\omg t - \frac{\omg}{c} r).
+		= \frac{2 q^2 \alp^2 \omg^4}{3 c^3} \abs{\cos[2](\omg t - \frac{\omg}{c} r)}
+		= \frac{q^2 \alp^2 \omg^4}{3 c^3},
 	\eeqn
-	\vfix
+	where we have used the time average $\abs{\cos^2 t} = 1/2$.
 \end{solution}
 
 
@@ -75,9 +76,9 @@
 	\beq
 		Q = \omg \frac{\sEosc}{P},
 	\eeq
-	where $\sEosc$ is the energy stored in the oscillator, and $P$ is the radiated power.  Adapting Eq.~(5.75) in the course notes, we can write
+	where $\sEosc$ is the energy stored in the oscillator, and $P$ is the radiated power given by \refeq{radpow}.  Adapting Eq.~(5.75) in the course notes, we can write
 	\beq
-		P \equiv -\dv{\sEosc}{t}.
+		P = -\dv{\sEosc}{t}.
 	\eeq
 	Applying the definition of $Q$ gives us a differential equation:
 	\beq
@@ -93,18 +94,13 @@
 	\eeqn
 	where $\sEosc(0)$ is the initial energy stored in the oscillator.
 	
-	The ``average'' energy stored in an oscillator at any given time is equivalent to its maximal potential or kinetic energy,
+	The energy stored in an oscillator at any given time is equivalent to its maximal potential or kinetic energy,
 	\beq
-		\ev{\sEosc} = \frac{m \alp^2 \omg^2}{2} = \frac{k \alp^2}{2},
+		\sEosc = \frac{m \omg^2 \alp^2}{2} = \frac{k \alp^2}{2},
 	\eeq
-	and the average power radiated over one oscillation comes directly from \refeq{radpow} and $\ev{\cos^2x} = 1/2$,
+	and the average power radiated over one oscillation comes directly from \refeq{radpow}.  We can use these to write $Q$ with no $\alp$ dependence:
 	\beq
-		\ev{P} = \frac{q^2 \alp^2 \omg^4}{3 c^3}.
-	\eeq
-	We can use these to write $Q$ with no $\alp$ dependence:
-	\beq
-		Q = \omg \frac{\ev{\sEosc}}{\ev{P}}
-		= \omg \frac{m \alp^2 \omg^2}{2} \frac{3 c^3}{q^2 \alp^2 \omg^4}
+		Q = \omg \frac{m \omg^2 \alp^2}{2} \frac{3 c^3}{q^2 \alp^2 \omg^4}
 		= \frac{3 m c^3}{2 q^2 \omg}.
 	\eeq
 	Substituting these into \refeq{ensol}, we obtain

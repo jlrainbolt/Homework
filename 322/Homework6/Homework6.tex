@@ -9,7 +9,7 @@
 \usepackage{xcolor, soul}
 \usepackage{graphicx, tikz}
 \usepackage{siunitx}
-%\allowdisplaybreaks
+\allowdisplaybreaks
 
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 %\renewcommand{\vb}[1]{\mathbf{#1}}
@@ -132,6 +132,8 @@
 \newcommand{\zh}{\vb{\hat{z}}}
 \newcommand{\thh}{\boldsymbol{\hat{\tht}}}
 
+\newcommand{\vvmu}{\boldsymbol{\mu}}
+\newcommand{\vJ}{\vb{J}}
 
 \input{Problem1}
 
@@ -152,29 +154,45 @@
 
 \newcommand{\psiq}{\psi_1}
 \newcommand{\psiw}{\psi_2}
+\newcommand{\fq}{f_1}
+\newcommand{\fw}{f_2}
+
+\newcommand{\dmu}{\partial_\mu}
+\newcommand{\dnu}{\partial_\nu}
+\newcommand{\doo}{\partial_0}
+\newcommand{\etamunu}{\eta^{\mu \nu}}
+
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\vmu}{v^\mu}
+\newcommand{\xmu}{x^\mu}
+\newcommand{\xpmu}{{x'}^\mu}
+\newcommand{\cmu}{c^\mu}
+\newcommand{\cmuo}{\cmu_0}
+\newcommand{\cmuq}{\cmu_1}
+
+\newcommand{\xo}{x^0}
+\newcommand{\xpo}{{x'}^0}
+\newcommand{\xppo}{{x''}^0}
+\newcommand{\xa}{x^a}
+\newcommand{\xpa}{{x'}^a}
+\newcommand{\xppa}{{x''}^a}
+
+\newcommand{\vo}{v^0}
+\newcommand{\vq}{v^1}
+\newcommand{\vw}{v^2}
+\newcommand{\ve}{v^3}
+
+\newcommand{\intsR}{\int_\sR}
+\newcommand{\dfx}{\dd[4]{x}}
+\newcommand{\dxo}{\dd{x^0}}
+\newcommand{\dxq}{\dd{x^1}}
+\newcommand{\dxw}{\dd{x^2}}
+\newcommand{\dxe}{\dd{x^3}}
+
+\newcommand{\Grettx}{\Gret(t, \vx; t', \vx')}
+\newcommand{\Gadvtx}{\Gadv(t, \vx; t'', \vx'')}
  
-\begin{statement}{}
-	Consider the wave equation with some arbitrary given ``potential'' $V(t, \vx)$,
-	\beq
-		\Box \psi + V \psi = -4\pi f.
-	\eeq
-	Although one may not be able to find their form explicitly, it is possible to prove by general arguments that unique retarded and advanced Green's functions exist for this equation, satisfying the ``support properties'' that
-	\begin{align*}
-		\Gret(t, \vx; t', \vx') = 0 &\qfor t < t' + \frac{\abs{\vx - \vx'}}{c}, &
-		\Gadv(t, \vx; t', \vx') = 0 &\qfor t > t' + \frac{\abs{\vx - \vx'}}{c}.
-	\end{align*}
-	\vfix
-\end{statement}
-
-\begin{problem}
-	Show that a Green's identity holds for any two solutions, $\psiq, \psiw$, of this equation that takes exactly the same form as Eq.~(5.100) of the notes.
-\end{problem}
-
-\begin{problem}
-	Prove that for the wave equation with a potential, $\Gret(t, \vx; t', \vx') = \Gadv(t', \vx'; t, \vx)$.
-	
-	Hint: Integrate Green's identity over a suitable spacetime cube for suitable choices of $\psiq$ and $\psiw$.
-\end{problem}
+\input{Problem3}
 
 
 
