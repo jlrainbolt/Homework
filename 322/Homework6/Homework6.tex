@@ -91,6 +91,8 @@
 
 \newcommand{\alp}{\alpha}
 \newcommand{\del}{\delta}
+\newcommand{\tht}{\theta}
+\newcommand{\omg}{\omega}
 \newcommand{\Omg}{\Omega}
 
 \newcommand{\nq}{{n_1}}
@@ -99,7 +101,9 @@
 
 \newcommand{\vA}{\vb{A}}
 \newcommand{\vp}{\vb{p}}
+\newcommand{\vv}{\vb{v}}
 \newcommand{\vx}{\vb{x}}
+
 \newcommand{\Qij}{Q_{ij}}
 \newcommand{\Qqq}{Q_{11}}
 
@@ -122,32 +126,23 @@
 \newcommand{\rhoe}{\rho_3}
 \newcommand{\rhor}{\rho_4}
 
+\newcommand{\rh}{\vb{\hat{r}}}
 \newcommand{\xh}{\vb{\hat{x}}}
 \newcommand{\yh}{\vb{\hat{y}}}
+\newcommand{\zh}{\vb{\hat{z}}}
+\newcommand{\thh}{\boldsymbol{\hat{\tht}}}
+
 
 \input{Problem1}
 
 
 
-\begin{statement}{}
-	A point charge of charge $q$ and mass $m$ is placed on the end of a spring of spring constant $k$.  The charge is displaced in the $z$ direction by an amount $\alp$ away from its equilibrium position and is then released into oscillation.  Assume that the resulting motion is nonrelativistic, $v \ll c$,
-\end{statement}
+\newcommand{\absx}{\abs{\vx}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\sEosc}{\sE_\text{osc}}
+\newcommand{\alpo}{\alp_0}
 
-\begin{problem}
-	Assume that the charge oscillates harmonically with amplitude $\alp$.  To order $1 / r$ in distance from the charge and to leading order in $v / c$, what are the resulting electromagnetic potentials $\phi, \vA$?
-\end{problem}
-
-\begin{problem}
-	What is the radiated power?
-\end{problem}
-
-\begin{solution}
-	\hl{Griffiths 11.18}
-\end{solution}
-
-\begin{problem}
-	As a result of the radiation of electromagnetic energy, the maximum amplitude of oscillation, $\alp$, will slowly decay with time.  Find $\alp(t)$.
-\end{problem}
+\input{Problem2}
 
 
 
@@ -184,5 +179,5 @@
 
 
 \vfill
-In addition to the course lecture notes, I consulted Griffiths's \emph{Introduction to Electrodynamics} while writing up these solutions.
+In addition to the course lecture notes, I consulted Jackson's \emph{Classical Electrodynamics}, Griffiths's \emph{Introduction to Electrodynamics}, and P.~R.~LeClair's notes on accelerating charges while writing these solutions.
 \end{document}

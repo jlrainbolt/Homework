@@ -1,0 +1,121 @@
+\begin{statement}{}
+	A point charge of charge $q$ and mass $m$ is placed on the end of a spring of spring constant $k$.  The charge is displaced in the $z$ direction by an amount $\alp$ away from its equilibrium position and is then released into oscillation.  Assume that the resulting motion is nonrelativistic, $v \ll c$.
+\end{statement}
+
+\begin{problem}
+	Assume that the charge oscillates harmonically with amplitude $\alp$.  To order $1 / r$ in distance from the charge and to leading order in $v / c$, what are the resulting electromagnetic potentials $\phi, \vA$?
+\end{problem}
+
+\begin{solution}
+	The multipole expansions of $\phi$ and $\vA$ are given to order $1 / r$ in distance and to leading order in $v / c$ in Eqs.~(5.66) and (5.69),
+	\begin{align*}
+		\phi(t, \vx) &= \frac{q}{\absx} + \frac{1}{c \absx} \xh \vdot \dv{\vp}{t} \bigg|_\ret, &
+		\vA(t, \vx) &= \frac{1}{c \absx} \dv{\vp}{t} \bigg|_\ret,
+	\end{align*}
+	where $\xh = \vx / \absx$, and the retarded time $t' = t - \absx / c$ to this order.
+
+	The charge's position is
+	\beq
+		\vx'(t) = \alp \cos \omg t \,\zh,
+	\eeq
+	where $\omg = \sqrt{k / m}$, and the charge density is
+	\beq
+		\rho(t, \vx) = q \,\del(\vx - \vx').
+	\eeq
+	Then from \refeq{dipole}, the dipole moment is
+	\beq
+		\vp = q \int \vx \,\del(\vx - \vx') \dcx
+		= q \vx'
+		= q \alp \cos \omg t \,\zh,
+	\eeq
+	which has the time derivative
+	\beqn \label{pder}
+		\dv{\vp}{t} = - q \alp \omg \sin \omg t \,\zh.
+	\eeqn
+	The potentials are then
+	\begin{align*}
+		\phi(t, \vx) &= \frac{q}{r} - \frac{q \alp \omg }{c r} \sin(\omg t - \frac{\omg}{c} r) (\rh \vdot \zh)
+		= \frac{q}{r} \left[ 1 - \frac{\alp \omg \cos\tht}{c} \sin(\omg t - \frac{\omg}{c} r) \right], \\
+		\vA(t, \vx) &= -\frac{q}{r} \frac{\alp \omg }{c} \sin(\omg t - \frac{\omg}{c} r) \,\zh,
+	\end{align*}
+	where we have used $\zh = \cos\tht \,\rh - \sin\tht \,\thh$.
+\end{solution}
+
+
+
+\begin{problem}
+	What is the radiated power?
+\end{problem}
+
+\begin{solution}
+	To this order, we may use \refeq{power} with the retarded time $t' = t - \absx / c$.  Differentiating \refeq{pder}, we have
+	\beq
+		\dv[2]{\vp}{t} = -q \alp \omg^2 \cos \omg t \,\zh,
+	\eeq
+	so the radiated power is
+	\beqn \label{radpow}
+		P = \frac{2}{3 c^3} \abs{-q \alp \omg^2 \cos \omg t \,\zh}^2_\ret
+		= \frac{2 q^2 \alp^2 \omg^4}{3 c^3} \cos[2](\omg t - \frac{\omg}{c} r).
+	\eeqn
+	\vfix
+\end{solution}
+
+
+
+\begin{problem}
+	As a result of the radiation of electromagnetic energy, the maximum amplitude of oscillation, $\alp$, will slowly decay with time.  Find $\alp(t)$.
+\end{problem}
+
+\begin{solution}
+	The quality factor $Q$ characterizes energy loss, and is defined in Jackson~(8.86) as
+	\beq
+		Q = \omg_0 \frac{\text{Stored energy}}{\text{Power loss}},
+	\eeq
+	where $\omg_0$ is a resonant frequency.  For the oscillating charge,
+	\beq
+		Q = \omg \frac{\sEosc}{P},
+	\eeq
+	where $\sEosc$ is the energy stored in the oscillator, and $P$ is the radiated power.  Adapting Eq.~(5.75) in the course notes, we can write
+	\beq
+		P \equiv -\dv{\sEosc}{t}.
+	\eeq
+	Applying the definition of $Q$ gives us a differential equation:
+	\beq
+		\dv{\sE}{t} = -\frac{\omg}{Q} \sEosc
+		\qimplies
+		\int \frac{\dd{\sEosc}}{\sEosc} = -\frac{\omg}{Q} \int \dd{t}
+		\qimplies
+		\ln\frac{\sEosc}{\sEosc(0)} = -\frac{\omg}{Q} t,
+	\eeq
+	and the final solution is
+	\beqn \label{ensol}
+		\sEosc(t) = \sEosc(0) \, e^{-\omg t / Q},
+	\eeqn
+	where $\sEosc(0)$ is the initial energy stored in the oscillator.
+	
+	The ``average'' energy stored in an oscillator at any given time is equivalent to its maximal potential or kinetic energy,
+	\beq
+		\ev{\sEosc} = \frac{m \alp^2 \omg^2}{2} = \frac{k \alp^2}{2},
+	\eeq
+	and the average power radiated over one oscillation comes directly from \refeq{radpow} and $\ev{\cos^2x} = 1/2$,
+	\beq
+		\ev{P} = \frac{q^2 \alp^2 \omg^4}{3 c^3}.
+	\eeq
+	We can use these to write $Q$ with no $\alp$ dependence:
+	\beq
+		Q = \omg \frac{\ev{\sEosc}}{\ev{P}}
+		= \omg \frac{m \alp^2 \omg^2}{2} \frac{3 c^3}{q^2 \alp^2 \omg^4}
+		= \frac{3 m c^3}{2 q^2 \omg}.
+	\eeq
+	Substituting these into \refeq{ensol}, we obtain
+	\beq
+		\frac{k}{2} \alp^2(t) = \frac{k}{2} \alp^2(0) \,\exp(-\omg t \frac{2 q^2 \omg}{3 m c^3})
+		\qimplies
+		\alp^2(t) = \alpo^2 \,\exp(-\frac{2 q^2 \omg^2}{3 m c^3} t)
+	\eeq
+	which implies
+	\beq
+		\alp(t) = \alpo \,\exp(-\frac{q^2 \omg^2}{3 m c^3} t),
+	\eeq
+	where $\alpo$ is the initial displacement from equilibrium.
+\end{solution}
