@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm, mathrsfs}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor, soul}
+\usepackage{graphicx, tikz}
+\usepackage{siunitx}
+%\allowdisplaybreaks
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+%\renewcommand{\vb}[1]{\mathbf{#1}}
+\newcommand{\vfix}{\vspace{-\baselineskip}}
+
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Physics 322 Homework 6}}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\blg}{\begin{align*}}
+\newcommand{\elg}{\end{align*}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+\newcommand{\qto}{\quad \to \quad}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\color{darkgray}
+	\ignorespaces
+}
+{
+%    \smallskip
+}
+
+\newenvironment{problem}
+{
+	\subsection{}
+	\color{darkgray}
+%	\paragraph{Problem.}
+    \ignorespaces
+}
+{
+
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+{
+    \bigskip
+}
+
+
+
+\begin{document}
+
+\newcommand{\alp}{\alpha}
+\newcommand{\del}{\delta}
+\newcommand{\Omg}{\Omega}
+
+\newcommand{\nq}{{n_1}}
+\newcommand{\nw}{{n_2}}
+\renewcommand{\ne}{{n_3}}
+
+\newcommand{\vA}{\vb{A}}
+\newcommand{\vp}{\vb{p}}
+\newcommand{\vx}{\vb{x}}
+\newcommand{\Qij}{Q_{ij}}
+\newcommand{\Qqq}{Q_{11}}
+
+\newcommand{\dcx}{\dd[3]{x}}
+
+\newcommand{\ret}{\text{ret}}
+
+\renewcommand{\qq}{q_1}
+\newcommand{\qw}{q_2}
+\newcommand{\qe}{q_3}
+\newcommand{\qr}{q_4}
+
+\newcommand{\vxq}{\vx_1}
+\newcommand{\vxw}{\vx_2}
+\newcommand{\vxe}{\vx_3}
+\newcommand{\vxr}{\vx_4}
+
+\newcommand{\rhoq}{\rho_1}
+\newcommand{\rhow}{\rho_2}
+\newcommand{\rhoe}{\rho_3}
+\newcommand{\rhor}{\rho_4}
+
+\newcommand{\xh}{\vb{\hat{x}}}
+\newcommand{\yh}{\vb{\hat{y}}}
+
+\input{Problem1}
+
+
+
+\begin{statement}{}
+	A point charge of charge $q$ and mass $m$ is placed on the end of a spring of spring constant $k$.  The charge is displaced in the $z$ direction by an amount $\alp$ away from its equilibrium position and is then released into oscillation.  Assume that the resulting motion is nonrelativistic, $v \ll c$,
+\end{statement}
+
+\begin{problem}
+	Assume that the charge oscillates harmonically with amplitude $\alp$.  To order $1 / r$ in distance from the charge and to leading order in $v / c$, what are the resulting electromagnetic potentials $\phi, \vA$?
+\end{problem}
+
+\begin{problem}
+	What is the radiated power?
+\end{problem}
+
+\begin{solution}
+	\hl{Griffiths 11.18}
+\end{solution}
+
+\begin{problem}
+	As a result of the radiation of electromagnetic energy, the maximum amplitude of oscillation, $\alp$, will slowly decay with time.  Find $\alp(t)$.
+\end{problem}
+
+
+
+\newcommand{\adv}{\text{adv}}
+\newcommand{\Gadv}{G_\adv}
+\newcommand{\Gret}{G_\ret}
+
+\newcommand{\psiq}{\psi_1}
+\newcommand{\psiw}{\psi_2}
+ 
+\begin{statement}{}
+	Consider the wave equation with some arbitrary given ``potential'' $V(t, \vx)$,
+	\beq
+		\Box \psi + V \psi = -4\pi f.
+	\eeq
+	Although one may not be able to find their form explicitly, it is possible to prove by general arguments that unique retarded and advanced Green's functions exist for this equation, satisfying the ``support properties'' that
+	\begin{align*}
+		\Gret(t, \vx; t', \vx') = 0 &\qfor t < t' + \frac{\abs{\vx - \vx'}}{c}, &
+		\Gadv(t, \vx; t', \vx') = 0 &\qfor t > t' + \frac{\abs{\vx - \vx'}}{c}.
+	\end{align*}
+	\vfix
+\end{statement}
+
+\begin{problem}
+	Show that a Green's identity holds for any two solutions, $\psiq, \psiw$, of this equation that takes exactly the same form as Eq.~(5.100) of the notes.
+\end{problem}
+
+\begin{problem}
+	Prove that for the wave equation with a potential, $\Gret(t, \vx; t', \vx') = \Gadv(t', \vx'; t, \vx)$.
+	
+	Hint: Integrate Green's identity over a suitable spacetime cube for suitable choices of $\psiq$ and $\psiw$.
+\end{problem}
+
+
+
+\vfill
+In addition to the course lecture notes, I consulted Griffiths's \emph{Introduction to Electrodynamics} while writing up these solutions.
+\end{document}
