@@ -34,7 +34,7 @@
 \lfoot{\today}
 \rfoot{\thepage}
 
-\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection}{1em}{}
 \titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
 
@@ -52,7 +52,7 @@
 
 \newenvironment{statement}[1]
 {
-	\section{#1}
+	\section{#1.}
 	\color{darkgray}
 	\ignorespaces
 }
@@ -78,17 +78,6 @@
 
 \begin{document}
 
-\newcommand{\vq}{v_1}
-\newcommand{\vw}{v_2}
-
-\begin{statement}{(Jackson 11.3)}
-	Show explicitly that two successive Lorentz transformations in the same direction are equivalent to a single Lorentz transformation with a velocity
-	\beq
-		v = \frac{\vq + \vw}{1 + \vq \vw / c^2}.
-	\eeq
-	This is an alternative way to derive the parallel-velocity addition law.
-\end{statement}
-
 \newcommand{\alp}{\alpha}
 \newcommand{\bet}{\beta}
 \newcommand{\gam}{\gamma}
@@ -97,6 +86,12 @@
 \newcommand{\tht}{\theta}
 \newcommand{\Lam}{\Lambda}
 \newcommand{\Tht}{\Theta}
+
+
+\input{Problem1}
+
+
+
 
 \newcommand{\Fab}{F^{\alp \bet}}
 \newcommand{\Ua}{U^\alp}
@@ -118,9 +113,9 @@
 \newcommand{\Ew}{E_2}
 \newcommand{\Be}{B_3}
 
-\begin{figure}[b] \centering
+\begin{figure} \centering
 \includegraphics{11-8}
-\caption{Particle of charge $q$ moving at constant velocity $\vv$ passes an observation point $P$ at impact parameter $b$.}
+\caption{(Jackson 11.8) Particle of charge $q$ moving at constant velocity $\vv$ passes an observation point $P$ at impact parameter $b$.}
 \label{11.8}
 %\tag{11.8}
 \end{figure}
@@ -255,7 +250,7 @@
 
 
 
-\begin{statement}{}
+\begin{statement}{\hspace{-1em}}
 	Show that $\vE \vdot \vB$ is Lorentz invariant.  You can do this either by using the Lorentz transformation laws for $\vE$ and $\vB$ derived in class, or by writing $\vE \vdot \vB$ in a manifestly Lorentz invariant (and gauge invariant) form.
 \end{statement}
 

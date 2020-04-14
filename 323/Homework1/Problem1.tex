@@ -1,0 +1,84 @@
+\newcommand{\vq}{v_1}
+\newcommand{\vw}{v_2}
+
+\begin{statement}{(Jackson 11.3)}
+	Show explicitly that two successive Lorentz transformations in the same direction are equivalent to a single Lorentz transformation with a velocity
+	\beq
+		v = \frac{\vq + \vw}{1 + \vq \vw / c^2}.
+	\eeq
+	This is an alternative way to derive the parallel-velocity addition law.
+\end{statement}
+
+\newcommand{\xo}{x_0}
+\newcommand{\xq}{x_1}
+\newcommand{\xw}{x_2}
+\newcommand{\xe}{x_3}
+
+\newcommand{\betq}{\bet_1}
+\newcommand{\betw}{\bet_2}
+\newcommand{\gamq}{\gam_1}
+\newcommand{\gamw}{\gam_2}
+
+\begin{solution}
+	The general expression for a Lorentz transformation in the $\xq$ direction is given by Jackson~(11.16),
+	\begin{align*}
+		\xo' &= \gam (\xo - \bet \xq), &
+		\xq' &= \gam (\xq - \bet \xo), &
+		\xw' &= \xw, &
+		\xe' &= \xe.
+	\end{align*}
+	Define $\bet$, $\betq$, and $\betw$ by
+	\begin{align*}
+		\bet &= \frac{v}{c}, &
+		\betq &= \frac{\vq}{c}, &
+		\betw &= \frac{\vw}{c},
+	\end{align*}
+	and define $\gam$, $\gamq$, and $\gamw$ correspondingly.
+	
+	First applying the boost corresponding to $\betq$ yields
+	\begin{align} \label{boost1}
+		\xo' &= \gamq (\xo - \betq \xq), &
+		\xq' &= \gamq (\xq - \betq \xo).
+	\end{align}
+	Successively applying the boost corresponding to $\betw$ yields
+	\begin{align} \label{boost2}
+		\xo'' &= \gamw (\xo' - \betw \xq'), &
+		\xq'' &= \gamw (\xq' - \betw \xo').
+	\end{align}
+	Substituting \refeq{boost1} into \refeq{boost2} gives us
+	\begin{align*}
+		\xo'' &= \gamq \gamw [(\xo - \betq \xq) - \betw (\xq - \betq \xo)]
+		= \gamq \gamw [(1 + \betq \betw) \xo - (\betq + \betw) \xq] \\
+		\xq'' &= \gamq \gamw [(\xq - \betq \xo) - \betw (\xo - \betq \xq)]
+		= \gamq \gamw [(1 + \betq \betw) \xq - (\betq + \betw) \xo],
+	\end{align*}
+	or
+	\begin{align} \label{thing1}
+		\xo'' &= (1 + \betq \betw) \gamq \gamw \left( \xo - \frac{\betq + \betw}{1 + \betq \betw} \xq \right), &
+		\xq'' &= (1 + \betq \betw) \gamq \gamw \left( \xq - \frac{\betq + \betw}{1 + \betq \betw} \xo \right).
+	\end{align}
+	
+	Note that
+	\beq
+		\frac{\betq + \betw}{1 + \betq \betw} = \frac{1}{c} \frac{\vq + \vw}{1 + \vq \vw / c^2}
+		= \frac{v}{c}
+		= \bet,
+	\eeq
+	and that
+	\begin{align*}
+		(1 + \betq \betw) \gamq \gamw &= \frac{1 + \betq \betw}{\sqrt{(1 - \betq^2) (1 - \betw^2)}}
+		= \sqrt{\frac{(1 - \betq^2) (1 - \betw^2)}{(1 + \betq \betw)^2}}^{\,-1}
+		= \sqrt{\frac{1 - \betq^2 - \betw^2 + \betq^2 \betw^2}{(1 + \betq \betw)^2}}^{\,-1} \\
+		&= \sqrt{\frac{1 + 2 \betq \betw + \betq^2 \betw^2 - (\betq^2 + 2 \betq \betw + \betw^2)}{(1 + \betq \betw)^2}}^{\,-1}
+		= \sqrt{\frac{(1 + \betq \betw)^2 - (\betq + \betw)^2}{(1 + \betq \betw)^2}}^{\,-1} \\
+		&= \sqrt{1 - \left( \frac{\betq + \betw}{1 + \betq \betw} \right)^2}^{\,-1}
+		= \sqrt{1 - \bet^2}^{\,-1}
+		= \gam.
+	\end{align*}
+	Then \refeq{thing1} becomes
+	\begin{align*}
+		\xo'' &= \gam \left( \xo - \bet \xq \right), &
+		\xq'' &= \gam \left( \xq - \bet \xo \right),
+	\end{align*}
+	which is a single Lorentz transformation with velocity $v$, as we wanted to show. \qed
+\end{solution}
