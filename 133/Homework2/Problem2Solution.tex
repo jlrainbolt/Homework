@@ -1,0 +1,149 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+%\allowdisplaybreaks
+ 
+%\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 2}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+%\setlength{\footskip}{24pt}
+%\cfoot{\today}
+%\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\large\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\ignorespaces
+}
+
+\newenvironment{problem}
+{
+    \paragraph{Problem.}
+    \color{darkgray}
+    \ignorespaces
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+
+\DeclareSIUnit{\mph}{mph}
+
+\begin{document}
+
+
+\newcommand{\ofreq}{\SI{10.5}{\giga\Hz}}
+\newcommand{\ifreq}{\SI{12.5}{\giga\Hz}}
+\newcommand{\pspeed}{\SI{35}{\meter\per\second}}
+\newcommand{\sspeed}{\SI{30.6}{\meter\per\second}}
+\newcommand{\vsound}{\SI{344}{\meter\per\second}}
+
+\setcounter{section}{1}
+\begin{statement}{}
+	% Y&F 16.51
+	A police car is waiting on the shoulder of Lake Shore Drive.  In order to catch speeding commuters, the officer uses a radar gun that emits sound of frequency {\ofreq}.  There is a single speeding car on the road, which is directly in front of or behind her.  When she fires the gun, the frequency that returns from the speeder's car is {\ifreq}.  What is the speed of the car?  Is it moving toward the officer, or away from her?
+
+	A few moments later, the officers takes off at {\pspeed} in pursuit of the speeder, who does not change his speed.  If the officer fires the gun now, what frequency will she receive?
+\end{statement}
+
+
+\newcommand{\vL}{v_L}
+\newcommand{\vS}{v_S}
+\newcommand{\fL}{f_L}
+\newcommand{\fS}{f_S}
+\newcommand{\vcar}{v_\text{car}}
+\newcommand{\voff}{v_\text{off}}
+
+\begin{solution}
+	This is a problem about the Doppler effect.  In general, we have
+	\beqn \label{dopp}
+		\fL = \frac{v \pm \vL}{v \pm \vS} \fS,
+	\eeqn
+	where $\fL$ and $\fS$ are the frequenceis in the frames of the listener and source, respectively, $\vL$ and $\vS$ are the velocities of the listener and source, and $v$ is the speed of sound.  (The speed of sound in air is $v = \vsound$.)  Written in this form, we choose a $+$ sign in the numerator if the listener is moving toward the source, and a $-$ sign if it is moving away.  The convention is flipped for the denominator: we choose a $-$ sign if the \emph{source} is moving toward the \emph{listener}, and a $+$ sign if it is moving away.
+	
+	It is easiest to answer the question about the direction of the car first.  Since the frequency that the officer hears is greater than the frequency she emitted, we know {\color{blue} the speeding car is moving toward her}.
+
+	In order to find the speed of the car, we need to apply \refeq{dopp} twice.  Let $f$ be the {\ofreq} frequency emitted by the radar gun, and $f'$ the frequency that is ``heard'' by the speeding car.  Equation~\refeq{dopp} becomes
+	\beqn \label{f}
+		f' = \frac{v + \vcar}{v} f,
+	\eeqn
+	where $\vcar$ is the velocity of the speeding car, which is the ``listener'' in this scenario, and is moving toward the officer.  The officer, who is the ``source,'' is stationary.  Now we can use $f'$ to find the {\ifreq} frequency that returns to the officer, which we will call $f''$.  This is found by writing Eq.~\refeq{dopp} as
+	\beqn \label{ff}
+		f'' = \frac{v}{v - \vcar} f',
+	\eeqn
+	where the stationary officer is now the ``listener,'' and the speeding car is now the ``source,'' which again is moving toward the officer.
+	
+	Substituting Eq.~\refeq{f} into Eq.~\refeq{ff}, we find
+	\beq
+		f'' = \frac{v}{v - \vcar} \frac{v + \vcar}{v} f
+		= \frac{v + \vcar}{v - \vcar} f.
+	\eeq
+	Now we can solve for $\vcar$:
+	\beq
+		f'' (v - \vcar) = f (v + \vcar)
+		\qimplies
+%		\frac{f''}{f} v - \frac{f''}{f} \vcar = v + \vcar
+%		\qimplies
+%		\frac{f''}{f} v - v = \frac{f''}{f} \vcar + \vcar
+%		\qimplies
+		(f'' - f) v = (f'' + f) \vcar
+		\qimplies
+		\vcar = \frac{f'' - f}{f'' + f} v.
+	\eeq
+	Finally, we can plug in known quantities to obtain
+	\beq
+		\vcar = \frac{(\ifreq) - (\ofreq)}{(\ifreq) + (\ofreq)} (\vsound)
+		= \frac{2}{22.5} (\vsound)
+		= {\color{blue} \sspeed},
+	\eeq
+	which is over \SI{68}{\mph}!  (The speed limit on Lake Shore Drive is 40--\SI{45}{\mph}.)
+	
+	When the officer pursues the car, the equivalent of Eq.~\refeq{f} is
+	\beq
+		f' = \frac{v - \vcar}{v - \voff} f,
+	\eeq
+	where $\voff$ is the speed of the officer's police car.  Here we use a $-$ sign in the numerator since the speeder is moving away from the officer, and a $-$ sign in the denominator because the officer is moving toward the speeder.  Likewise, the equivalent of Eq.~\refeq{ff} is
+	\beq
+		f'' = \frac{v + \voff}{v + \vcar} f'.
+	\eeq
+	Once again, we may substitute in $f'$ to find
+	\beq
+		f'' = \frac{v + \voff}{v + \vcar} \frac{v - \vcar}{v - \voff} f.
+	\eeq
+	Finally, plugging in quantities,
+	\begin{align*}
+		f'' &= \frac{(\vsound) + (\pspeed)}{(\vsound) + (\sspeed)} \frac{(\vsound) - (\sspeed)}{(\vsound) - (\pspeed)} (\ofreq)
+		= \frac{379}{374.6} \frac{313.4}{309} (\ofreq) \\
+		&= 1.03 (\ofreq)
+		= {\color{blue} \SI{10.8}{\giga\Hz}}.
+	\end{align*}
+\end{solution}
+
+\end{document}

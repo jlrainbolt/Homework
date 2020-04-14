@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+%\allowdisplaybreaks
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 1}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\large\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\ignorespaces
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+
+\begin{document}
+
+\newcommand{\strlen}{\SI{5}{\meter}}
+\newcommand{\strmass}{\SI{2}{\gram}}
+\newcommand{\wavelen}{\SI{15}{\cm}}
+\newcommand{\wavespd}{\SI{20}{\meter\per\second}}
+\newcommand{\wavepow}{\SI{35}{\watt}}
+
+\setcounter{section}{2}
+\begin{statement}{}
+	% Y&F 15.61
+	A transverse sinusoidal wave with wavelength {\wavelen} and wave speed {\wavespd} is traveling on a {\strlen-long} string of mass {\strmass}.  The average power of the wave is {\wavepow}.  What is the amplitude of the wave?  What is the average power if the wave speed is tripled?
+\end{statement}
+
+
+\newcommand{\evP}{\ev{P}}
+\newcommand{\omg}{\omega}
+\newcommand{\zo}{z_0}
+\newcommand{\lam}{\lambda}
+
+\newcommand{\wavelenSI}{\SI{15e-2}{\meter}}
+\newcommand{\strmassSI}{\SI{2e-3}{\kg}}
+\newcommand{\wavepowSI}{\SI{35}{\kg\square\meter\per\cubic\second}}
+
+\newcommand{\evPi}{\evP_i}
+\newcommand{\evPf}{\evP_{\!f}}
+\newcommand{\vi}{v_i}
+\newcommand{\vf}{v_f}
+\newcommand{\omgi}{\omg_i}
+\newcommand{\omgf}{\omg_f}
+
+\begin{solution}
+	The average power $\evP$ of a wave is given by
+	\beqn \label{pow}
+		\evP = \frac{1}{2} \mu \omg^2 \zo^2 v,
+	\eeqn
+	where $\mu = m / L$ is the mass density of the string, $\omg$ is the wave's angular frequency, $\zo$ is its amplitude, and $v$ is the wave speed.  Solving for the amplitude, we find
+	\beqn \label{amp}
+		\zo = \sqrt{\frac{2 \evP}{\mu \omg^2 v}}.
+	\eeqn
+	We need to find $\omg$ in terms of given quantities.  We know $\omg = k v$ and $k = 2\pi / \lam$, where $k$ is the wave number and $\lam$ the wavelength.  Thus,
+	\beq
+		\omg = \frac{2\pi v}{\lam}.
+	\eeq
+	Substituting this and $\mu = m / L$ into Eq.~\refeq{amp} gives us
+	\beq
+		\zo = \sqrt{\frac{2 L \evP}{m v} \frac{\lam^2}{4 \pi^2 v^2}} = \frac{1}{\pi} \sqrt{\frac{L \lam^2 \evP}{2 m v^3}}.
+	\eeq
+	Substituting in the given quantities, and recalling that $\SI{1}{\watt} = \SI{1}{\joule\per\second} = \SI{1}{\kg\square\meter\per\cubic\second}$, we have
+	\begin{align*}
+		\zo &= \frac{1}{\pi} \sqrt{\frac{(\strlen) (\wavelenSI)^2 (\wavepowSI)}{2 (\strmassSI) (\wavespd)^3}}
+		= \frac{1}{\pi} \sqrt{\frac{(5) (15)^2 (35) \times \num{e-4}}{2 (2) (20)^3 \times \num{e-3}} \si{\square\meter}}
+		= \frac{1}{\pi} \sqrt{\frac{39375}{32000} \times \SI{e-1}{\square\meter}}
+		= \frac{\sqrt{0.123}}{\pi} \si{\meter} \\
+		&= {\color{blue} \SI{0.11}{\meter}}
+		= {\color{blue} \SI{11}{\cm}}.
+	\end{align*}
+	
+	When we change the amplitude, we will hold all quantities fixed other than the wave speed.  Referring back to Eq.~\refeq{pow}, we can write
+	\beq
+		\evP \propto v
+		\qimplies
+		\frac{\evPf}{\evPi} = \frac{\vf}{\vi},
+	\eeq
+	where $\vf$ and $\vi$ are the wave speeds before and after tripling, respectively, and $\evPi$ and $\evPf$ are the corresponding average powers.  We know $\vf / \vi = 3$.  Plugging in the given average power for the original amplitude, we find
+	\beq
+		\evPf = 3 \evPi
+		= 3 (\wavepow)
+		= {\color{blue} \SI{105}{\watt}}.
+	\eeq
+	
+	If we instead allow the frequency vary as well, $\omg = k v$ tells us that $\omgf / \omgi = 3$ as well.  Then we will get
+	\beq
+		\frac{\evPf}{\evPi} = \left( \frac{\omgf}{\omgi} \right)^2 \frac{\vf}{\vi} = (3^2) (3) = 27,
+	\eeq
+	and so
+	\beq
+		\evPf = 27 \evPi
+		= 27 (\wavepow)
+		= {\color{blue} \SI{945}{\watt}}.
+	\eeq
+\end{solution}
+
+
+
+\end{document}

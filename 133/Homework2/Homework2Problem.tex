@@ -1,0 +1,87 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+%\allowdisplaybreaks
+ 
+%\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 2}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+%\setlength{\footskip}{24pt}
+%\cfoot{\today}
+%\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\ignorespaces
+}
+
+\newenvironment{problem}
+{
+    \paragraph{Problem.}
+    \color{darkgray}
+    \ignorespaces
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+
+\begin{document}
+
+\newcommand{\dist}{\SI{2}{\meter}}
+\newcommand{\freq}{\SI{800}{\Hz}}
+\newcommand{\vsound}{\SI{344}{\meter\per\second}}
+	
+\begin{itemize}
+% Y&F 16.61
+\item Consider two speakers emitting sound at the same volume with frequency $f = \freq$.  One speaker is located at the origin, and the other on the $y$ axis at $y = \dist$.  At what locations on the positive $x$ axis is the interference completely constructive?  At what points is it completely destructive?
+	
+Now we decrease $f$ until there are no longer any points of completely destructive interference on the positive $x$ axis.  How low must $f$ be for this to occur?
+
+
+\bigskip\bigskip\bigskip
+
+\newcommand{\ofreq}{\SI{10.5}{\giga\Hz}}
+\newcommand{\ifreq}{\SI{12.5}{\giga\Hz}}
+\newcommand{\pspeed}{\SI{35}{\meter\per\second}}
+
+
+% Y&F 16.51
+\item A police car is waiting on the shoulder of Lake Shore Drive.  In order to catch speeding commuters, the officer uses a radar gun that emits sound of frequency {\ofreq}.  There is a single speeding car on the road, which is directly in front of or behind her.  When she fires the gun, the frequency that returns from the speeder's car is {\ifreq}.  What is the speed of the car?  Is it moving toward the officer, or away from her?
+
+A few moments later, the officers takes off at {\pspeed} in pursuit of the speeder, who does not change his speed.  If the officer fires the gun now, what frequency will she receive?
+
+\end{itemize}
+
+
+
+
+\end{document}

@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{enumitem}
+%\allowdisplaybreaks
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 1}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\large\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\setenumerate[1]{label={(\alph*)}}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\ignorespaces
+}
+
+\newenvironment{problem}
+{
+    \color{darkgray}
+    \ignorespaces
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+
+\begin{document}
+
+\newcommand{\yxt}{y(x, t)}
+\newcommand{\yo}{y_0}
+\newcommand{\omg}{\omega}
+\newcommand{\lam}{\lambda}
+\newcommand{\evP}{\ev{P}}
+
+\newcommand{\amp}{\SI{2.30}{\mm}}
+\newcommand{\waven}{\SI{6.98}{\radian\per\meter}}
+\newcommand{\freq}{\SI{742}{\radian\per\second}}
+\newcommand{\len}{\SI{1.35}{\meter}}
+\newcommand{\mass}{\SI{0.00338}{\kg}}
+
+\begin{statement}{}
+	% Y&F 15.26
+	A fellow student with a mathematical bent tells you that the wave function of a traveling wave on a thin rope is
+	\beqn \label{given}
+		\yxt = (\amp) \cos[(\waven) x + (\freq) t ].
+	\eeqn
+	Being more practical, you measure the rope to have a length of {\len} and a mass of {\mass}.  You are then asked to determine the following:
+	\begin{enumerate}
+		\item amplitude;
+		\item frequency;
+		\item wavelength;
+		\item wave speed;
+		\item direction the wave is traveling;
+		\item tension in the rope;
+		\item average power transmitted by the wave.
+	\end{enumerate}
+\end{statement}
+
+
+
+\begin{solution}
+	\begin{enumerate}
+		\item A standing wave has the general form
+		\beq
+			\yxt = \yo \sin(k x - \omg t),
+		\eeq
+		where $\yo$ is the amplitude of the wave, $k$ its wavenumber, and $\omg$ its angular frequency.  However, since sine and cosine differ only by a phase, we might as well write
+		\beqn \label{form}
+			\yxt = \yo \cos(k x - \omg t),
+		\eeqn
+		which is the form given in the problem, Eq.~\refeq{given}.  Then we can easily read off the amplitude:
+		\beq
+			\yo = {\color{blue} \amp}.
+		\eeq
+		
+		\item Once again referring to Eq.~\refeq{form}, we can read off the \emph{angular} frequency $\omg = \freq$ from Eq.~\refeq{given}.  Then we can easily solve for the frequency $f$:
+		\beq
+			f = \frac{\omg}{2\pi}
+			= \frac{\freq}{2\pi \,\si{\radian}}
+			= {\color{blue} \SI{118}{\Hz}}.
+		\eeq
+		
+		\item Reading off the wave number from Eq.~\refeq{given}, we find $k = \waven$.  Solving for the wavelength $\lam$, we find
+		\beq
+			\lam = \frac{2\pi}{k}
+			= \frac{2\pi \,\si{\radian}}{\waven}
+			= {\color{blue} \SI{0.90}{\meter}}
+			= {\color{blue} \SI{90}{\cm}}.
+		\eeq
+		
+\newcommand{\wspd}{\SI{106}{\meter\per\second}}
+		
+		\item The wave speed is defined as $v = \omg / k$.  Plugging in the values of $\omg$ and $k$ that we found in (b) and (c),
+		\beq
+			v = \frac{\omg}{k}
+			= \frac{\freq}{\waven}
+			= {\color{blue} \wspd}.
+		\eeq
+		
+		\item Equation~\refeq{form} gives the general expression for a wave traveling in the $+x$ direction.  Here, the argument of the cosine function is $k x + \omg t$.  However, in the given expression of Eq.~\refeq{given}, the argument has the form $k x - \omg t$.  This means that the wave is traveling in the {\color{blue} $-x$ direction}.
+		
+		\item Another expression for the wave speed is
+		\beq	
+			v = \sqrt{\frac{T}{\mu}},
+		\eeq
+		where $\mu$ is the mass density of the rope, and $T$ is the tension in the rope.  Solving this definition for $T$ and substituting in $\mu = m / L$ gives us
+		\beq
+			T = \mu v^2
+			= \frac{m v^2}{L}.
+		\eeq
+		Plugging in the given values of $m$ and $L$, and our result for $v$ from (d), we find
+		\beq
+			T = \frac{(\mass) (\wspd)^2}{\len}
+			= {\color{blue} \SI{28.3}{\newton}}.
+		\eeq
+		
+		\item The average power $\evP$ transmitted by the wave is given by
+		\beq
+			\evP = \frac{1}{2} \mu \omg^2 \yo^2 v
+			= \frac{m \omg^2 \yo^2 v}{2 L},
+		\eeq
+		so plugging in known quantities and previous results gives us
+		\beq
+			\evP = \frac{(\mass) (\freq)^2 (\SI{0.0023}{\meter})^2 (\wspd)}{2 (\len)}
+			= {\color{blue} \SI{0.39}{\watt}}.
+		\eeq
+		
+	\end{enumerate}
+\end{solution}
+
+
+
+\end{document}
