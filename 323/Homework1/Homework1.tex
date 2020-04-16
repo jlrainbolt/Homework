@@ -84,11 +84,16 @@
 \newcommand{\del}{\delta}
 \newcommand{\lam}{\lambda}
 \newcommand{\tht}{\theta}
+
+\newcommand{\Del}{\Delta}
 \newcommand{\Lam}{\Lambda}
 \newcommand{\Tht}{\Theta}
 
+\newcommand{\etamn}{\eta^{\mu \nu}}
+
 
 \input{Problem1}
+
 
 
 
@@ -104,7 +109,7 @@
 \newcommand{\xaq}{x^\alp_q}
 
 \begin{statement}{(Jackson 11.17)}
-	The electric and magnetic fields \refeq{fields} of a charge in uniform motion can be obtained from Coulomb's law in the charge's rest frame and the fact that the field strength $\Fab$ is an antisymmetric tensor of rank 2 without considering \emph{explicitly} the Lorentz transformation.  The idea is the following.  For a charge in uniform motion the only relevant variables are the charge's 4-velocity $\Ua$ and the relative coordinate $\Xa = \xap - \xaq$, where $\xap$ and $\xaq$ aer the 4-vector coordinates of the observation point and the charge, respectively.  The only antisymmetric tensor that can be formed is $(\Xa \Ub - \Xb \Ua)$.  Thus the electromagnetic field $\Fab$ must be this tensor multiplied by some scalar function of the possible scalar products, $\Xsa \Xa$, $\Xsa \Ua$, $\Usa \Ua$.
+	The electric and magnetic fields \refeq{fields} of a charge in uniform motion can be obtained from Coulomb's law in the charge's rest frame and the fact that the field strength $\Fab$ is an antisymmetric tensor of rank 2 without considering \emph{explicitly} the Lorentz transformation.  The idea is the following.  For a charge in uniform motion the only relevant variables are the charge's 4-velocity $\Ua$ and the relative coordinate $\Xa = \xap - \xaq$, where $\xap$ and $\xaq$ are the 4-vector coordinates of the observation point and the charge, respectively.  The only antisymmetric tensor that can be formed is $(\Xa \Ub - \Xb \Ua)$.  Thus the electromagnetic field $\Fab$ must be this tensor multiplied by some scalar function of the possible scalar products, $\Xsa \Xa$, $\Xsa \Ua$, $\Usa \Ua$.
 \end{statement}
 
 \newcommand{\vbb}{\vb{b}}
@@ -117,7 +122,6 @@
 \includegraphics{11-8}
 \caption{(Jackson 11.8) Particle of charge $q$ moving at constant velocity $\vv$ passes an observation point $P$ at impact parameter $b$.}
 \label{11.8}
-%\tag{11.8}
 \end{figure}
 
 \begin{problem} \label{2.a}
@@ -165,6 +169,8 @@
 
 
 
+
+\clearpage
 
 \newcommand{\vr}{\vb{r}}
 \newcommand{\vrperp}{\vr_\perp}
@@ -226,16 +232,34 @@
 
 
 
+\clearpage
+
 \newcommand{\mq}{m_1}
 \newcommand{\mw}{m_2}
 \newcommand{\pq}{p_1}
 \newcommand{\pw}{p_2}
 
+\newcommand{\mLam}{\SI{1115}{\MeV}}
+\newcommand{\tauLam}{\SI{2.9e-10}{\second}}
+\newcommand{\mnuc}{\SI{939}{\MeV}}
+\newcommand{\mpi}{\SI{140}{\MeV}}
+
 \begin{statement}{(Jackson 11.20)}
-	The lambda particle ($\Lam$) is a neutral baryon of mass $M = \SI{1115}{\MeV}$ that decays with a lifetime of $\tau = \SI{2.9e-10}{\second}$ into a nucleon of mass $\mq \approx \SI{939}{\MeV}$ and a pi-meson of mass $\mw \approx \SI{140}{\MeV}$.  It was first observed in flight by its charged decay mode $\Lam \to p + \pi^-$ in cloud chambers.  The charged tracks originate from a single point and have the appearance of an inverted vee or lambda.  The particles' identities and momenta can be inferred from their ranges and curvature in the magnetic field of the chamber.
+	The lambda particle ($\Lam$) is a neutral baryon of mass $M = \mLam$ that decays with a lifetime of $\tau = \tauLam$ into a nucleon of mass $\mq \approx \mnuc$ and a pi-meson of mass $\mw \approx \mpi$.  It was first observed in flight by its charged decay mode $\Lam \to p + \pi^-$ in cloud chambers.  The charged tracks originate from a single point and have the appearance of an inverted vee or lambda.  The particles' identities and momenta can be inferred from their ranges and curvature in the magnetic field of the chamber.
 \end{statement}
 
-\begin{problem}
+\newcommand{\Pmu}{P^\mu}
+\newcommand{\Psmu}{P_\mu}
+\newcommand{\Pqmu}{{P_1}^\mu}
+\newcommand{\Pqsmu}{{P_1}_\mu}
+\newcommand{\Pwmu}{{P_2}^\mu}
+\newcommand{\Pwsmu}{{P_2}_\mu}
+
+\newcommand{\vp}{\vb{p}}
+\newcommand{\vpq}{\vp_1}
+\newcommand{\vpw}{\vp_2}
+
+\begin{problem} \label{4.a}
 	Using conservation of momentum and energy and the invariance of scalar products of 4-vectors show that, if the opening angle $\tht$ between the two tracks is measured, the mass of the decaying particle can be found from the formula
 	\beq
 		M^2 = \mq^2 + \mw^2 + 2 \Eq \Ew - 2 \pq \pw \cos\tht,
@@ -243,16 +267,128 @@
 	where here $\pq$ and $\pw$ are the magnitudes of the 3-momenta.
 \end{problem}
 
+\begin{solution}
+	The general momentum 4-vector for a particle is
+	\beq
+		\Pmu = (E / c, \vp),
+	\eeq
+	where $E$ is the energy of the particle and $\vp$ its three-dimensional momentum.  Let $\Pqmu$ and $\Pwmu$ be the momentum 4-vectors for the two particles, and define
+	\beq
+		\Pmu = \Pqmu + \Pwmu.
+	\eeq
+	Firstly, note that
+	\beq
+		\Pmu \Psmu = \frac{E^2}{c^2} - p^2.
+	\eeq
+	According to Jackson~(11.55),
+	\beqn \label{E}
+		E = \sqrt{c^2 p^2 + m^2 c^4},
+	\eeqn
+	so we have
+	\beqn \label{thing4.1}
+		\Pmu \Psmu = \frac{c^2 p^2 + M^2 c^4}{c^2} - p^2
+		= M^2 c^2.
+	\eeqn
+	Note also that
+	\beq
+		\Pmu \Psmu = (\Pqmu + \Pwmu) (\Pqsmu + \Pwsmu)
+		= \frac{(\Eq + \Ew)^2}{c^2} - (\vpq + \vpw)^2
+		= \frac{\Eq^2 + 2 \Eq \Ew + \Ew^2}{c^2} - \pq^2 - 2 \vpq \vdot \vpw - \pw^2,
+	\eeq
+	and once again making use of \refeq{E},
+	\beqn \label{thing4.2}
+		\Pmu \Psmu = \frac{c^2 \pq^2 + \mq^2 c^4 + 2 \Eq \Ew + c^2 \pw^2 + \mw^2 c^4}{c^2} - \pq^2 - 2 \vpq \vdot \vpw - \pw^2
+		= \mq^2 c^2 + \mw^2 c^2 + 2 \Eq \Ew / c^2 - 2 \pq \pw \cos\tht.
+	\eeqn
+	Equating \refeq{thing4.1} and \refeq{thing4.2}, we have
+	\beq
+		M^2 c^2 = \mq^2 c^2 + \mw^2 c^2 + 2 \Eq \Ew / c^2 - 2 \pq \pw \cos\tht.
+	\eeq
+	Taking $c = 1$, this becomes
+	\beq
+		M^2 = \mq^2 + \mw^2 + 2 \Eq \Ew - 2 \pq \pw \cos\tht
+	\eeq
+	as desired. \qed
+\end{solution}
+
+
+
+\newcommand{\ELam}{\SI{10}{\GeV}}
+
 \begin{problem}
-	A lambda particle is created with a total energy of \SI{10}{\GeV} in a collision in the top plate of a cloud chamber.  How far on the average will it travel in the chamber before decaying?  What range of opening angles will occur for a \SI{10}{\GeV} lambda if the decay is more or less isotropic in the lambda's rest frame?
+	A lambda particle is created with a total energy of {\ELam} in a collision in the top plate of a cloud chamber.  How far on the average will it travel in the chamber before decaying?  What range of opening angles will occur for a \SI{10}{\GeV} lambda if the decay is more or less isotropic in the lambda's rest frame?
 \end{problem}
 
+\begin{solution}
+	According to Jackson~(11.51),
+	\beq
+		E = \gam m c^2.
+	\eeq
+	For the $\Lam$, this gives us $\gam = E / M$ in natural units.  Substituting this into the expression for time dilation, we find
+	\beq
+		\Del t = \gam \tau
+		= \frac{E}{M} \tau
+		= \frac{\ELam}{\mLam} (\tauLam)
+		\approx \SI{2.60e-9}{\second}.
+	\eeq
+
+	\hl{opening angle?}
+	
+%	Let $\Pqmu$ represent the nucleon and $\Pwmu$ the pion.  Then from the result of \ref{4.a},
+%	\beq
+%		(\mLam)^2 = (\mnuc)^2 + (\mpi)^2 + 2 \Eq \Ew - 2 \pq \pw \cos\tht
+%	\eeq
+\end{solution}
 
 
+
+
+\clearpage
 
 \begin{statement}{\hspace{-1em}}
 	Show that $\vE \vdot \vB$ is Lorentz invariant.  You can do this either by using the Lorentz transformation laws for $\vE$ and $\vB$ derived in class, or by writing $\vE \vdot \vB$ in a manifestly Lorentz invariant (and gauge invariant) form.
 \end{statement}
+
+\newcommand{\Ee}{E_3}
+\newcommand{\Bq}{B_1}
+\newcommand{\Bw}{B_2}
+%\newcommand{\Be}{B_3}
+
+\newcommand{\Ft}{\tilde{F}}
+\newcommand{\Fsab}{F_{\alp \bet}}
+\newcommand{\Ftab}{\Ft^{\alp \bet}}
+\newcommand{\Ftsmn}{\Ft_{\alp \bet}}
+
+\newcommand{\Fmat}{\mqty[	0 & -\Eq & -\Ew & -\Ee \\
+						\Eq & 0 & -\Be & \Bw \\
+						\Ew & \Be & 0 & -\Bq \\
+						\Ee & -\Bw & \Bq & 0 ]}
+\newcommand{\Fsmat}{\mqty[	0 & \Eq & \Ew & \Ee \\
+						-\Eq & 0 & -\Be & \Bw \\
+						-\Ew & \Be & 0 & -\Bq \\
+						-\Ee & -\Bw & \Bq & 0 ]}
+\newcommand{\Ftmat}{\mqty[	0 & -\Bq & -\Bw & -\Be \\
+						\Bq & 0 & \Ee & -\Ew \\
+						\Bw & -\Ee & 0 & \Eq \\
+						\Be & \Ew & -\Eq & 0 ]}
+
+\begin{solution}
+	From Jackson~(11.137),
+	\begin{align*}
+		\Fab &= \Fmat, &
+		\Ftab &= \Ftmat.
+	\end{align*}
+	Then
+	\begin{align*}
+		\Fsab \Ftab = \Fsmat \Ftmat
+		= \mqty[	\vE \vdot \vB & 0 & 0 & 0 \\
+				0 & \vE \vdot \vB & 0 & 0 \\
+				0 & 0 & \vE \vdot \vB & 0 \\
+				0 & 0 & 0 & \vE \vdot \vB ]
+		= \vE \vdot \vB.
+	\end{align*}
+	Here we have shown that $\vE \vdot \vB$ is the inner product of two 4-tensors.  Thus, it is Lorentz invariant. \qed
+\end{solution}
 
 
 
