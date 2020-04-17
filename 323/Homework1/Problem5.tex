@@ -1,0 +1,35 @@
+\begin{statement}{\hspace{-1em}}
+	Show that $\vE \vdot \vB$ is Lorentz invariant.  You can do this either by using the Lorentz transformation laws for $\vE$ and $\vB$ derived in class, or by writing $\vE \vdot \vB$ in a manifestly Lorentz invariant (and gauge invariant) form.
+\end{statement}
+
+\newcommand{\Ft}{\tilde{F}}
+\newcommand{\Fsab}{F_{\alp \bet}}
+\newcommand{\Ftab}{\Ft^{\alp \bet}}
+\newcommand{\Ftsmn}{\Ft_{\alp \bet}}
+\newcommand{\sumab}{\sum_{\alp, \bet}}
+
+\newcommand{\Fsmat}{\mqty[	0 & \Eq & \Ew & \Ee \\
+						-\Eq & 0 & -\Be & \Bw \\
+						-\Ew & \Be & 0 & -\Bq \\
+						-\Ee & -\Bw & \Bq & 0 ]}
+\newcommand{\Ftmat}{\mqty[	0 & -\Bq & -\Bw & -\Be \\
+						\Bq & 0 & \Ee & -\Ew \\
+						\Bw & -\Ee & 0 & \Eq \\
+						\Be & \Ew & -\Eq & 0 ]}
+
+\begin{solution}
+	From Jackson~(11.140),
+	\beq
+		\Ftab = \Ftmat.
+	\eeq
+	Then, applying \refeq{F} as well,
+	\begin{align*}
+		\Fsab \Ftab &= \sumab \Fsmat \Ftmat
+		= \sumab \mqty[\vE \vdot \vB & 0 & 0 & 0 \\
+					0 & \vE \vdot \vB & 0 & 0 \\
+					0 & 0 & \vE \vdot \vB & 0 \\
+					0 & 0 & 0 & \vE \vdot \vB ] \\
+		&= 4 \vE \vdot \vB.
+	\end{align*}
+	Here we have shown that $\vE \vdot \vB$ is directly proportional to the inner product of two 4-tensors.  Thus, it is Lorentz invariant. \qed
+\end{solution}

@@ -116,19 +116,25 @@
 \newcommand{\vv}{\vb{v}}
 \newcommand{\Eq}{E_1}
 \newcommand{\Ew}{E_2}
+\newcommand{\Ee}{E_3}
+\newcommand{\Bq}{B_1}
+\newcommand{\Bw}{B_2}
 \newcommand{\Be}{B_3}
+
+\newcommand{\xsq}{x^1}
+
 
 \begin{figure} \centering
 \includegraphics{11-8}
-\caption{(Jackson 11.8) Particle of charge $q$ moving at constant velocity $\vv$ passes an observation point $P$ at impact parameter $b$.}
+\caption{(Jackson Fig.~11.8) Particle of charge $q$ moving at constant velocity $\vv$ passes an observation point $P$ at impact parameter $b$.}
 \label{11.8}
 \end{figure}
 
 \begin{problem} \label{2.a}
 	For the geometry of Fig.~\ref{11.8} the coordinates of $P$ and $q$ at a common time in $K$ can be written $\xap = (ct, \vbb)$, $\xaq = (ct, \vv t)$, with $\vbb \vdot \vv = 0$.  By considering the general form of $\Fab$ in the rest frame of the charge, show that
-	\beq
+	\beqn \label{show2}
 		\Fab = \frac{q}{c} \frac{\Xa \Ub - \Xb \Ua}{[(\Usa \Xa / c)^2 - \Xsa \Xa]^{3/2}}.
-	\eeq
+	\eeqn
 	Verify that this yields the expressions
 	\begin{align} \label{fields}
 		\Eq &= \Eq' = -\frac{q \gam v t}{(b^2 + \gam^2 v^2 t^2)^{3/2}}, &
@@ -139,6 +145,138 @@
 \end{problem}
 
 
+\newcommand{\Fmat}{\mqty[	0 & -\Eq & -\Ew & -\Ee \\
+						\Eq & 0 & -\Be & \Bw \\
+						\Ew & \Be & 0 & -\Bq \\
+						\Ee & -\Bw & \Bq & 0 ]}
+\newcommand{\Fpab}{{F'}^{\alp\bet}}
+\newcommand{\rp}{{r'}}
+\newcommand{\tLam}{\tilde{\Lam}}
+
+\begin{solution}
+	From Jackson~(11.137),
+	\beqn \label{F}
+		\Fab = \Fmat,
+	\eeqn
+	and from the equation immediately preceding Jackson~(11.151),
+	\begin{align*}
+		\Eq' &= -\frac{q v t'}{\rp^3}, &
+		\Ew' &= \frac{q b}{\rp^3}, &
+		\Ee' &= 0, &
+		\Bq' &= 0, &
+		\Bw' &= 0, &
+		\Be' &= 0,
+	\end{align*}
+	in the rest frame of the charge.  Here, $r' = \sqrt{b^2 + v^2 {t'}^2}$.  Then
+	\beqn \label{thing2.1b}
+		\Fpab = \frac{q}{(b^2 + v^2 {t'}^2)^{3/2}}
+			\mqty[0 & v t' & -b & 0 \\
+				-v t' & 0 & 0 & 0 \\
+				b & 0 & 0 & 0 \\
+				0 & 0 & 0 & 0 ].
+	\eeqn
+	
+	From Jackson~(11.147),
+	\beq
+		F' = \Lam F \tLam,
+	\eeq
+	although we need $F = \Lam F' \tLam$, where we boost in the direction opposite the particle's motion.  According to Jackson~(11.113), the Lorentz boost in the $-{\xsq}'$ direction is
+	\beq
+		\Lam^\alp_\bet = \mqty[ 	\gam & \gam \beta & 0 & 0 \\	
+							\gam \beta & \gam & 0 & 0 \\
+							0 & 0 & 1 & 0 \\
+							0 & 0 & 0 & 1 ].
+	\eeq
+	Then
+	\begin{align*}
+		\Fab &= \frac{q}{(b^2 + v^2 {t'}^2)^{3/2}}
+			\mqty[ \gam & \gam \beta & 0 & 0 \\	
+				\gam \beta & \gam & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 1 ]
+			\mqty[ 0 & v t' & -b & 0 \\
+				-v t' & 0 & 0 & 0 \\
+				b & 0 & 0 & 0 \\
+				0 & 0 & 0 & 0 ]
+			\mqty[ \gam & \gam \beta & 0 & 0 \\	
+				\gam \beta & \gam & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 1 ] \\
+		&= \frac{q}{(b^2 + v^2 {t'}^2)^{3/2}}
+			\mqty[ -\gam \bet v t' & \gam v t' & -\gam b & 0 \\
+				-\gam v t' & \gam \bet v t' & -\gam \bet b & 0 \\
+				b & 0 & 0 & 0 \\
+				0 & 0 & 0 & 0 ]
+			\mqty[ \gam & \gam \beta & 0 & 0 \\	
+				\gam \beta & \gam & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 1 ]
+		= \frac{q}{(b^2 + v^2 {t'}^2)^{3/2}}
+			\mqty[ 0 & v t' & -\gam b & 0 \\
+				-v t' & 0 & -\gam \bet b & 0 \\
+				\gam b & \gam \bet b & 0 & 0 \\
+				0 & 0 & 0 & 1 ].
+	\end{align*}
+	Note that $\xsq = 0$, so from \refeq{lorentz}, $t' = \gam t$.  Finally,
+	\beqn \label{thing2.1}
+		\Fab = \frac{\gam q}{(b^2 + \gam^2 v^2 t^2)^{3/2}} 
+			\mqty[0 & v t & -b & 0 \\
+				-v t & 0 & -v b / c & 0 \\
+				b & v b / c & 0 & 0 \\
+				0 & 0 & 0 & 0 ],
+	\eeqn
+	
+	Now we will begin from \refeq{show2}.  In accordance with Fig.~\ref{11.8},
+	\begin{align*}
+		\Xa &= (0, \vbb - \vv t) = (0, -v t, b, 0), &
+		\Ua &= (c, \vv) = \gam (c, v, 0, 0),
+	\end{align*}
+	and so
+	\beq
+		\Xa \Ub - \Xb \Ua = \gam \mqty[	0 & c v t & - c b & 0 \\
+								-c v t & 0 & -v b & 0 \\
+								c b & v b & 0 & 0 \\
+								0 & 0 & 0 & 0 ].
+	\eeq
+	Additionally,
+	\begin{align*}
+		\Usa \Xa &= \gam \mqty[ c & -v & 0 & 0 ] \mqty[ 0 \\ -v t \\ b \\ 0 ]
+		= \gam v^2 t, &
+		\Xsa \Xa &= \mqty[ 0 & vt & -b & 0 ] \mqty[ 0 \\ -v t \\ b \\ 0 ]
+		= -v^2 t^2 - b^2.
+	\end{align*}
+	Then
+	\beq
+		\Fab = \frac{\gam q}{(\gam^2 v^4 t^2 / c^2 + v^2 t^2 + b^2)^{3/2}}
+			\mqty[0 & v t & -b & 0 \\
+				-v t & 0 & -v b / c & 0 \\
+				b & v b / c & 0 & 0 \\
+				0 & 0 & 0 & 0 ].
+	\eeq
+	Note that
+	\beq
+		v^2 t^2 + \frac{\gam^2 v^4 t^2}{c^2} = v^2 t^2 \left( 1 + \gam^2 \frac{v^2}{c^2} \right)
+		= v^2 t^2 \left( 1 + \frac{\bet^2}{1 - \bet^2} \right)
+		= v^2 t^2 \frac{1 - \bet^2 + \bet^2}{1 - \bet^2}
+		= \gam^2 v^2 t^2,
+	\eeq
+	so we have again arrived at \refeq{thing2.1}.  Thus, we have proven \refeq{show2}.
+	
+	In addition, comparing \refeq{thing2.1} with \refeq{F}, we see that
+	\begin{align*}
+		\Eq &= -\frac{q \gam v t}{(b^2 + \gam^2 v^2 t^2)^{3/2}}, &
+		\Ew &= \frac{\gam q b}{(b^2 + \gam^2 v^2 t^2)^{3/2}}, &
+		\Be &= \frac{\gam \bet q b}{(b^2 + \gam^2 v^2 t^2)^{3/2}} = \bet \Ew.
+	\end{align*}
+	Comparing \refeq{thing2.1b} with \refeq{F} as well, and making the substitution $t' = \gam t$, yields
+	\begin{align*}
+		\Eq' &= -\frac{q \gam v t}{(b^2 + \gam^2 v^2 t^2)^{3/2}}, &
+		\Ew' &= \frac{q b}{(b^2 + \gam^2 v^2 t^2)^{3/2}},
+	\end{align*}
+	so we have also verified \refeq{fields}.
+\end{solution}
+
+
 \newcommand{\xpap}{{x'}^\alp_p}
 \newcommand{\xpaq}{{x'}^\alp_q}
 \newcommand{\Ya}{Y^\alp}
@@ -147,7 +285,7 @@
 \newcommand{\Ypa}{{Y'}^\alp}
 
 \begin{problem}
-	Repeat the calculation, using as the starting point the common-time coordinates in the rest fram, $\xpap = (ct', \vbb - \vv t')$ and $\xpaq = (ct', 0)$.  Show that
+	Repeat the calculation, using as the starting point the common-time coordinates in the rest frame, $\xpap = (ct', \vbb - \vv t')$ and $\xpaq = (ct', 0)$.  Show that
 	\beq
 		\Fab = \frac{q}{c} \frac{\Ya \Ub - \Yb \Ua}{(- \Ysa \Ya)^{3/2}},
 	\eeq
@@ -195,7 +333,17 @@
 \end{problem}
 
 \newcommand{\Ja}{J^\alp}
+\newcommand{\Jb}{J^\bet}
+\newcommand{\dela}{\partial_\alp}
 \newcommand{\valp}{v^\alp}
+
+\newcommand{\rperpq}{{\rperp}_1}
+\newcommand{\rperpw}{{\rperp}_2}
+
+\newcommand{\delt}{\partial_t}
+\newcommand{\delx}{\partial_x}
+\newcommand{\dely}{\partial_y}
+\newcommand{\delz}{\partial_z}
 
 \begin{problem}
 	Show that by substitution into the Maxwell equations that these fields are consistent with a 4-vector source density,
@@ -204,6 +352,38 @@
 	\eeq
 	where the 4-vector $\valp = (1, \vh)$.
 \end{problem}
+
+\begin{solution}
+	According to Jackson~(11.141), the inhomogeneous Maxwell equations can be written
+	\beq
+		\dela \Fab = \frac{4\pi}{c} \Jb.
+	\eeq
+	Here,
+	\beq
+		\Fab %= \frac{2q}{{\rperp}^2} \delctz
+%			\mqty[ 	0 & -\rperpq & -\rperpw & 0 \\
+%					\rperpq & 0 & 0 & \rperpq \\
+%					\rperpw & 0 & 0 & \rperpw \\
+%					0 & -\rperpq & -\rperpw & 0 ]
+		= \frac{2q}{{\rperp}^2} \delctz
+			\mqty[ 	0 & -x & -y & 0 \\
+					x & 0 & 0 & x \\
+					y & 0 & 0 & y \\
+					0 & -x & -y & 0 ]	
+	\eeq
+	and so
+	\beq
+		\dela \Fab = \mqty[ \delt & -\delx & -\dely & -\delz] \frac{2q}{{\rperp}^2} \delctz
+			\mqty[ 	0 & -x & -y & 0 \\
+					x & 0 & 0 & x \\
+					y & 0 & 0 & y \\
+					0 & -x & -y & 0 ]	
+		= \mqty[ & & & ]
+	\eeq
+\end{solution}
+
+
+
 
 \newcommand{\Ao}{A^0}
 \newcommand{\Az}{A^z}
@@ -219,7 +399,6 @@
 		\vAperp &= 0,
 	\end{align*}
 	or
-	
 	\begin{align*}
 		\Ao &= 0 = \Az, &
 		\vAperp &= -2q \Thtctz \grperp \ln(\lam \rperp),
@@ -345,50 +524,7 @@
 
 \clearpage
 
-\begin{statement}{\hspace{-1em}}
-	Show that $\vE \vdot \vB$ is Lorentz invariant.  You can do this either by using the Lorentz transformation laws for $\vE$ and $\vB$ derived in class, or by writing $\vE \vdot \vB$ in a manifestly Lorentz invariant (and gauge invariant) form.
-\end{statement}
-
-\newcommand{\Ee}{E_3}
-\newcommand{\Bq}{B_1}
-\newcommand{\Bw}{B_2}
-%\newcommand{\Be}{B_3}
-
-\newcommand{\Ft}{\tilde{F}}
-\newcommand{\Fsab}{F_{\alp \bet}}
-\newcommand{\Ftab}{\Ft^{\alp \bet}}
-\newcommand{\Ftsmn}{\Ft_{\alp \bet}}
-
-\newcommand{\Fmat}{\mqty[	0 & -\Eq & -\Ew & -\Ee \\
-						\Eq & 0 & -\Be & \Bw \\
-						\Ew & \Be & 0 & -\Bq \\
-						\Ee & -\Bw & \Bq & 0 ]}
-\newcommand{\Fsmat}{\mqty[	0 & \Eq & \Ew & \Ee \\
-						-\Eq & 0 & -\Be & \Bw \\
-						-\Ew & \Be & 0 & -\Bq \\
-						-\Ee & -\Bw & \Bq & 0 ]}
-\newcommand{\Ftmat}{\mqty[	0 & -\Bq & -\Bw & -\Be \\
-						\Bq & 0 & \Ee & -\Ew \\
-						\Bw & -\Ee & 0 & \Eq \\
-						\Be & \Ew & -\Eq & 0 ]}
-
-\begin{solution}
-	From Jackson~(11.137),
-	\begin{align*}
-		\Fab &= \Fmat, &
-		\Ftab &= \Ftmat.
-	\end{align*}
-	Then
-	\begin{align*}
-		\Fsab \Ftab = \Fsmat \Ftmat
-		= \mqty[	\vE \vdot \vB & 0 & 0 & 0 \\
-				0 & \vE \vdot \vB & 0 & 0 \\
-				0 & 0 & \vE \vdot \vB & 0 \\
-				0 & 0 & 0 & \vE \vdot \vB ]
-		= \vE \vdot \vB.
-	\end{align*}
-	Here we have shown that $\vE \vdot \vB$ is the inner product of two 4-tensors.  Thus, it is Lorentz invariant. \qed
-\end{solution}
+\input{Problem5}
 
 
 
