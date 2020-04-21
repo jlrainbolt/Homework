@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{enumitem}
+%\allowdisplaybreaks
+ 
+\renewcommand{\footrulewidth}{.2pt}
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 3}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\cfoot{\today}
+%\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+
+\begin{document}
+
+\begin{enumerate}
+
+\newcommand{\vE}{\vb{E}}
+\newcommand{\vB}{\vb{B}}
+\newcommand{\Eamp}{\SI{3.20e-3}{\volt\per\meter}}
+\newcommand{\wavel}{\SI{475}{\nano\meter}}
+
+% Y&F 32.8
+\item Consider a sinusoidal electromagnetic wave propagating in the $+x$ direction, whose electric field is parallel to the $y$ axis.  The wave has wavelength {\wavel}, and the electric field has amplitude {\Eamp}.  What is the frequency of the wave?  What is the amplitude of the magnetic field?  What are the vector equations for $\vE(x, t)$ and $\vB(x, t)$?
+
+
+
+\newcommand{\freq}{\SI{97.1}{\mega\Hz}}
+\newcommand{\length}{\SI{50.0}{\meter}}
+
+% Y&F 32.11,  index of refraction
+\item Chicago's radio station 97.1 FM ``The Drive'' uses the frequency {\freq}.  Imagine that you are in the pool at the Ratner athletics center, and you want to tune in to this station using an underwater radio.  What is the frequency of the broadcast under the water?  (The index of refraction of water is about $1.333$.)  How long would it take the broadcast to travel from one end of the {\length} pool to the other?  How long would it take to travel the same distance in vacuum?
+
+\end{enumerate}
+
+
+
+
+\end{document}

@@ -123,6 +123,46 @@
 	where $\vh$ is a unit vector in the direction of the particle's velocity.
 \end{problem}
 
+\newcommand{\nh}{\vb{\hat{n}}}
+\newcommand{\zh}{\vb{\hat{z}}}
+\newcommand{\diffr}{\abs{\vr - \vr'}}
+\newcommand{\limbet}{\lim_{\bet \to 1}}
+\newcommand{\tif}{\text{if }}
+
+\begin{solution}
+	According to Jackson~(11.154), the electric field can be written
+	\beq
+		\vE = \frac{q \vr}{r^3 \gam^2 (1 - \bet^2 \sin^2\psi)^{3/2}}.
+	\eeq
+	\clearpage
+	Here $\psi = \cos[-1](\nh \vdot \vh)$ is shown in Fig.~\ref{11.8}, and $\nh$ is a unit vector pointing from the current position of the charge to the observation point $\vr$.  Note that
+	\beq
+		\limbet \vE \sim \limbet \frac{1}{\gam^2 (1 - \bet^2 \sin^2\psi)^{3/2}}
+		= \limbet \frac{1 - \bet^2}{(1 - \bet^2 \sin^2\psi)^{3/2}}
+		= \begin{cases}
+			\infty & \tif \sin\psi = 1, \\
+			0 & \tif \sin\psi \neq 1.
+		\end{cases}
+	\eeq
+	Obviously $\sin\psi = 1$ if and only if $\cos\psi = 0$.
+	
+	Let $\vr'(t)$ be the position of the charge, so $\nh = (\vr - \vr') / \diffr$.  We know $\vh = \zh$, and $\vr' = \vv t \to ct \,\zh$ as $\bet \to 1$.  Then
+	\beq
+		\cos\psi = \nh \vdot \vh
+		= \frac{(\vr - \vr') \vdot \zh}{\diffr}
+		= \frac{z - ct}{\diffr},
+	\eeq
+	so $\cos\psi = 0$ if and only if $z = ct$.  Thus, we have shown that
+	\beq
+		\limbet \frac{1}{\gam^2 (1 - \bet^2 \sin^2\psi)^{3/2}} = \delctz.
+	\eeq
+	
+	Now we have
+	\beq
+		\limbet \vE = \frac{q \vr}{r^3} \delctz
+	\eeq
+\end{solution}
+
 \newcommand{\Ja}{J^\alp}
 \newcommand{\Jb}{J^\bet}
 \newcommand{\dela}{\partial_\alp}
@@ -218,12 +258,15 @@
 	The lambda particle ($\Lam$) is a neutral baryon of mass $M = \mLam$ that decays with a lifetime of $\tau = \tauLam$ into a nucleon of mass $\mq \approx \mnuc$ and a pi-meson of mass $\mw \approx \mpi$.  It was first observed in flight by its charged decay mode $\Lam \to p + \pi^-$ in cloud chambers.  The charged tracks originate from a single point and have the appearance of an inverted vee or lambda.  The particles' identities and momenta can be inferred from their ranges and curvature in the magnetic field of the chamber.
 \end{statement}
 
+\newcommand{\Pq}{P_1}
+\newcommand{\Pw}{P_2}
+
 \newcommand{\Pmu}{P^\mu}
 \newcommand{\Psmu}{P_\mu}
-\newcommand{\Pqmu}{{P_1}^\mu}
-\newcommand{\Pqsmu}{{P_1}_\mu}
-\newcommand{\Pwmu}{{P_2}^\mu}
-\newcommand{\Pwsmu}{{P_2}_\mu}
+\newcommand{\Pqmu}{{\Pq}^\mu}
+\newcommand{\Pqsmu}{{\Pq}_\mu}
+\newcommand{\Pwmu}{{\Pq}^\mu}
+\newcommand{\Pwsmu}{{\Pq}_\mu}
 
 \newcommand{\vp}{\vb{p}}
 \newcommand{\vpq}{\vp_1}
@@ -289,6 +332,40 @@
 	A lambda particle is created with a total energy of {\ELam} in a collision in the top plate of a cloud chamber.  How far on the average will it travel in the chamber before decaying?  What range of opening angles will occur for a \SI{10}{\GeV} lambda if the decay is more or less isotropic in the lambda's rest frame?
 \end{problem}
 
+\newcommand{\Delt}{\Del t}
+\newcommand{\lspeed}{\SI{3.00e8}{\meter\per\second}}
+
+\newcommand{\vvq}{\vv_1}
+\newcommand{\vvw}{\vv_2}
+
+\newcommand{\Enucp}{\SI{944}{\MeV}}
+\newcommand{\Epip}{\SI{171}{\MeV}}
+\newcommand{\Enuc}{\SI{8422}{\MeV}}
+\newcommand{\Epi}{\SI{1256}{\MeV}}
+
+\newcommand{\gamnuc}{1.005}
+\newcommand{\gampi}{1.221}
+\newcommand{\gamLam}{8.969}
+
+\newcommand{\pnucp}{\SI{98}{\MeV}}
+\newcommand{\ppip}{\pnucp}
+\newcommand{\pnuc}{\SI{8369}{\MeV}}
+\newcommand{\ppi}{\SI{1248}{\MeV}}
+
+%\newcommand{\Lammatt}{\mqty[	\gam & 0 & 0 & -\gam \bet \\
+%							0 & 1 & 0 & 0 \\
+%							0 & 0 & 1 & 0 \\
+%							-\gam \bet & 0 & 0 & \gam ]}
+%\newcommand{\pqq}{\pq^1}
+%\newcommand{\pqw}{\pq^2}
+%\newcommand{\pqe}{\pq^3}
+%\newcommand{\pwq}{\pw^1}
+%\newcommand{\pww}{\pw^2}
+%\newcommand{\pwe}{\pw^3}
+%
+%\newcommand{\ph}{\vb{\hat{p}}}
+%\newcommand{\pqh}{\ph_1}
+
 \begin{solution}
 	According to Jackson~(11.51),
 	\beq
@@ -296,18 +373,142 @@
 	\eeq
 	For the $\Lam$, this gives us $\gam = E / M$ in natural units.  Substituting this into the expression for time dilation, we find
 	\beq
-		\Del t = \gam \tau
+		\Delt = \gam \tau
 		= \frac{E}{M} \tau
-		= \frac{\ELam}{\mLam} (\tauLam)
-		\approx \SI{2.60e-9}{\second}.
 	\eeq
-
-	\hl{opening angle?}
+	as the average lifetime in the lab frame.  We also find
+	\beq
+		\bet = \sqrt{1 - \frac{1}{\gam^2}}
+		= \sqrt{1 - \frac{M^2}{E^2}}.
+	\eeq
+	Then the average distance traveled before decaying is
+	\beq
+		d = v \,\Delt
+		= c \tau \sqrt{1 - \frac{M^2}{E^2}} \frac{E}{M}
+		= (\lspeed) \sqrt{1 - \frac{(\mLam)^2}{(\ELam)^2}} \frac{\ELam}{\mLam} (\tauLam)
+		= {\color{blue} \SI{77}{\cm}}.
+	\eeq
 	
-%	Let $\Pqmu$ represent the nucleon and $\Pwmu$ the pion.  Then from the result of \ref{4.a},
-%	\beq
-%		(\mLam)^2 = (\mnuc)^2 + (\mpi)^2 + 2 \Eq \Ew - 2 \pq \pw \cos\tht
-%	\eeq
+	Let $K'$ denote the rest frame of the $\Lam$.  Using the result of \ref{4.a} and the fact that $M$, $\mq$, and $\mw$ are Lorentz invariant, we can write
+	\beqn \label{thing4}
+		\Eq' \Ew' - \pq' \pw' \cos\tht' = \Eq \Ew - \pq \pw \cos\tht,
+	\eeqn
+	where $\tht'$ is the angle between the daughter particles in $K'$.  We know from conservation of momentum that they must be ``back to back'' in this frame, meaning $\tht' = \pi$.  Taking this into account and rearranging, we find
+	\beqn \label{thing4.2}
+		\cos\tht = \frac{\Eq \Ew - \Eq' \Ew' - \pq' \pw'}{\pq \pw}.
+	\eeqn
+	Say that the $\Lam$ is moving in the $z$ direction in the lab frame $K$.  Then the opening angle $\tht$ will be maximized when the daughter particles are emitted transverse to the $z'$ axis in $K'$.
+	
+	Using natural units, in the $K'$ frame we have
+	\begin{align*}
+		{P'}^\mu &= (M, \vo), &
+		{\Pq'}^\mu &= (\Eq', \vpq'), &
+		{\Pw'}^\mu &= (\Ew', \vpw').
+	\end{align*}
+	Conservation of momentum and energy stipulates that
+	\begin{align*}
+		M &= \Eq' + \Eq'
+		= \gamq' \mq + \gamw' \mw, &
+		\vo &= \vpq' + \vpw'
+		= \gamq' \vpq' + \gamw' \vpw'
+		= \gamq' \mq \vvq' + \gamw' \mw \vvw',
+	\end{align*}
+	where $\gamq'$ and $\gamw'$ are associated with boosting to the rest frames of $\mq$ and $\mw$, respectively, from $K'$.  Note that
+	\beq
+		\gamq' \mq \vvq' = -\gamw' \mw \vvw'
+		\qimplies
+		{\gamq'}^2 \mq^2 {\vvq'}^2 = {\gamw'}^2 \mw^2 {\vvw'}^2,
+	\eeq
+	and that, in natural units,
+	\beq
+		\gam^2 v^2 = \gam^2 \bet^2
+		= \gam^2 \left( 1 - \frac{1}{\gam^2} \right)
+		= \gam^2 - 1.
+	\eeq
+	Then
+	\beq
+		({\gamq'}^2 - 1) \mq^2 = ({\gamw'}^2 - 1) \mw^2
+		\qimplies
+		{\Eq'}^2 - \mq^2 = {\Ew'}^2 - \mw^2
+		\qimplies
+		\mq^2 - \mw^2 = {\Eq'}^2 - {\Ew'}^2,
+	\eeq
+	which implies
+	\beq
+		\mq^2 - \mw^2 = {\Eq'}^2 - (M - \Eq')^2 = -M^2 - 2 M \Eq'
+		\qimplies
+		\Eq' = \frac{M^2 + \mq^2 - \mw^2}{2 M},
+	\eeq
+	and similarly for $\Ew$.  Let $\mq$ denote the nucleon and $\mw$ the pion.  Then we have
+	\begin{align*}
+		\Eq' &= \frac{1}{2} \frac{(\mLam)^2 + (\mnuc)^2 - (\mpi)^2}{\mLam} 
+		\approx \Enucp, \\
+		\Ew' &= \frac{1}{2} \frac{(\mLam)^2 - (\mnuc)^2 + (\mpi)^2}{\mLam} 
+		\approx \Epip.
+	\end{align*}
+	For the momenta, note that
+	\beq
+		\pq' = \mq \sqrt{{\gamq'}^2 - 1}
+		= \mw \sqrt{{\gamw'}^2 - 1}
+		= \pw',
+	\eeq
+	where
+	\begin{align*}
+		\gamq' &= \frac{\Eq'}{\mq}
+		= \frac{\Enucp}{\mnuc}
+		\approx \gamnuc, &
+		\gamw' &= \frac{\Ew'}{\mw}
+		= \frac{\Epip}{\mpi}
+		\approx \gampi.
+	\end{align*}
+	Then
+	\beq
+		\pq' = \pw' = (\mpi) \sqrt{{\gampi}^2 - 1}
+		\approx \pnucp.
+	\eeq
+	
+	For the left side of \refeq{thing4}, note that
+	\beq
+		\gam = \frac{E}{M}
+		= \frac{\ELam}{\mLam}
+		\approx \gamLam
+		\qimplies
+		\bet = \sqrt{1 - \frac{1}{\gam^2}}
+		\approx 0.994,
+	\eeq
+	whereas
+	\begin{align*}
+		\betq' &= \sqrt{1 - \frac{1}{{\gamq'}^2}}
+		\approx 0.104, &
+		\betw' &= \sqrt{1 - \frac{1}{{\gamw'}^2}}
+		\approx 0.573. &
+	\end{align*}
+	Since these are not nearly as relativistic as $\bet$, and we have stipulated that $\vbet'_1$ and $\vbet'_1$ are transverse to the $z'$ axis, it may be sufficient to approximate $\gamq, \gamw \approx \gam$.  Then we have
+	\begin{align*}
+		\Eq &\approx \gam \mq
+		= \gamLam (\mnuc)
+		\approx \Enuc, &
+		\Ew &\approx \gam \mw
+		= \gamLam (\mpi)
+		\approx \Epi, \\
+		\pq &\approx \mq \sqrt{\gam^2 - 1}
+		= (\mnuc) \sqrt{\gamLam^2 - 1}
+		\approx \pnuc, &
+		\pw &\approx \mw \sqrt{\gam^2 - 1}
+%		= (\mpi) \sqrt{\gamLam^2 - 1}
+		\approx \ppi.
+	\end{align*}
+	
+	Making these substitutions into \refeq{thing4.2}, we have
+	\beq
+		\cos\tht = \frac{(\Enuc) (\Epi) - (\Enucp) (\Epip) - (\pnucp)^2}{(\pnuc) (\ppi)}
+		\approx 0.996
+	\eeq
+	which implies
+	\beq
+		\tht \approx \cos[-1](0.996)
+		\approx {\color{blue} 5.13^\circ}.
+	\eeq
 \end{solution}
 
 

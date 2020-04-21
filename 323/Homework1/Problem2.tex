@@ -81,7 +81,7 @@
 	\eeqn
 	Now we will boost into the frame $K$.  From Jackson~(11.147), $F' = \Lam F \tLam$, although we need $F = \Lam F' \tLam$, where we boost in the direction opposite the particle's motion.  According to Jackson~(11.113), the Lorentz boost in the $-{\xsq}'$ direction is
 	\beqn \label{Lam2}
-		\Lam^\alp_\bet = \Lammat.
+		\Lam = \Lammat.
 	\eeqn
 	Then
 	\begin{align*}
@@ -193,14 +193,14 @@
 \newcommand{\Ypb}{{Y'}^\bet}
 \newcommand{\Upa}{{U'}^\alp}
 \newcommand{\Upb}{{U'}^\bet}
-\newcommand{\voo}{\mathbf{0}}
+\newcommand{\vo}{\mathbf{0}}
 \newcommand{\tp}{{t'}}
 
 \begin{solution}
 	Firstly, note that
 	\begin{align*}
 		\Ypa &= (0, \vbb - \vv t') = (0, -v t', b, 0), &
-		\Upa &= (c, \voo) = (c, 0, 0, 0),
+		\Upa &= (c, \vo) = (c, 0, 0, 0),
 	\end{align*}
 	Then
 	\beq
@@ -343,7 +343,7 @@
 	\beq
 		R^2 = b^2 + v^2 (t - R / c)^2.
 	\eeq
-	This is corroborated by the geometry of Fig.~\ref{11.8}.  Then, referring to the denominator of \refeq{thing2.1}, we find
+	This is corroborated by the geometry of Fig.~\ref{11.8}, since $t - R / c$ is the retarded time.  Then, referring to the denominator of \refeq{thing2.1}, we find
 	\begin{align*}
 		b^2 + \gam^2 v^2 t^2 &= R^2 - v^2 (t - R / c)^2 + \gam^2 v^2 t^2
 		= R^2 - \bet^2  (c^2 t^2 - 2 R c t + R^2) + \gam^2 \bet^2 c^2 t^2 \\
@@ -352,7 +352,7 @@
 		= \left( \frac{R}{\gam} + \gam \bet^2 c t \right)^2 \\
 		&= \left( \frac{\Usa \Za}{c} \right)^2.
 	\end{align*}
-	Thus, we have found
+	In summary, we have found
 	\beq
 		\Fab = \frac{\gam q}{(b^2 + \gam^2 v^2 t^2)^{3/2}}
 			\mqty[0 & v t & -b & 0 \\
