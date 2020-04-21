@@ -120,24 +120,24 @@
 	\beq
 		\left( x + n \lam \right)^2 = x^2 + (\Dely)^2
 		\qimplies
-		x^2 + n \lam x + n^2 \lam^2 = x^2 + (\Dely)^2
+		x^2 + 2 n \lam x + n^2 \lam^2 = x^2 + (\Dely)^2
 		\qimplies
-		n \lam x = (\Dely)^2 - n^2 \lam^2,
+		2 n \lam x = (\Dely)^2 - n^2 \lam^2,
 	\eeq
 	which implies
 	\beqn \label{const}
-		x = \frac{(\Dely)^2}{n \lam} - n \lam.
+		x = \frac{(\Dely)^2}{2 n \lam} - \frac{n \lam}{2}.
 	\eeqn
 	Now we can plug in numerical quantities and $n = 0, \pm 1, \pm 2, \ldots$ into Eq.~\refeq{const} to find
 	\begin{align*}
-		x(n = 1) &= \frac{(\dist)^2}{\wavel} - (\wavel)
-		= {\color{blue} \SI{8.87}{\meter}}, \\
-		x(n = 2) &= \frac{(\dist)^2}{2 (\wavel)} - 2 (\wavel)
-		= {\color{blue} \SI{3.79}{\meter}}, \\
-		x(n = 3) &= \frac{(\dist)^2}{3 (\wavel)} - 3 (\wavel)
-		= {\color{blue} \SI{1.81}{\meter}}, \\
-		x(n = 4) &= \frac{(\dist)^2}{4 (\wavel)} - 4 (\wavel)
-		= {\color{blue} \SI{0.61}{\meter}}.
+		x(n = 1) &= \frac{(\dist)^2}{2 (\wavel)} - \frac{1}{2} (\wavel)
+		= {\color{blue} \SI{4.44}{\meter}}, \\
+		x(n = 2) &= \frac{(\dist)^2}{4 (\wavel)} - (\wavel)
+		= {\color{blue} \SI{1.90}{\meter}}, \\
+		x(n = 3) &= \frac{(\dist)^2}{6 (\wavel)} - \frac{3}{2} (\wavel)
+		= {\color{blue} \SI{0.91}{\meter}}, \\
+		x(n = 4) &= \frac{(\dist)^2}{8 (\wavel)} - 2 (\wavel)
+		= {\color{blue} \SI{0.31}{\meter}}.
 	\end{align*}
 	Note that $x$ is undefined for $n = 0$ and is negative for $n > 4$.  Plugging in $n = -1, -2, -3, \ldots$ would also give us negative values.  None of these makes sense since we are interested only in the positive $x$ axis.  
 	
@@ -147,28 +147,26 @@
 	\eeq
 	and solving for $x$ in the same manner as before gives us
 	\beqn \label{dest}
-		x = \frac{(\Dely)^2}{(n + 1/2) \lam} - \left( n + \frac{1}{2} \right) \lam.
+		x = \frac{(\Dely)^2}{(2n + 1) \lam} - \frac{(n + 1/2) \lam}{2}.
 	\eeqn
 	Plugging in numerical quantities and $n = 0, 1, 2, \ldots$ into Eq.~\refeq{dest},
 	\begin{align*}
-		x(n = 0) &= \frac{(\dist)^2}{(1/2) (\wavel)} - \frac{1}{2} (\wavel)
-		= {\color{blue} \SI{18.4}{\meter}}, \\
-		x(n = 1) &= \frac{(\dist)^2}{(3/2) (\wavel)} - \frac{3}{2} (\wavel)
-		= {\color{blue} \SI{5.56}{\meter}}, \\
-		x(n = 2) &= \frac{(\dist)^2}{(5/2) (\wavel)} - \frac{5}{2} (\wavel)
-		= {\color{blue} \SI{2.65}{\meter}}, \\
-		x(n = 3) &= \frac{(\dist)^2}{(7/2) (\wavel)} - \frac{7}{2} (\wavel)
-		= {\color{blue} \SI{1.15}{\meter}}, \\
-		x(n = 4) &= \frac{(\dist)^2}{(9/2) (\wavel)} - \frac{9}{2} (\wavel)
-		= {\color{blue} \SI{0.13}{\meter}}.
+		x(n = 0) &= \frac{(\dist)^2}{\wavel} - \frac{1}{4} (\wavel)
+		= {\color{blue} \SI{9.19}{\meter}}, \\
+		x(n = 1) &= \frac{(\dist)^2}{3 (\wavel)} - \frac{3}{4} (\wavel)
+		= {\color{blue} \SI{2.78}{\meter}}, \\
+		x(n = 2) &= \frac{(\dist)^2}{5 (\wavel)} - \frac{5}{4} (\wavel)
+		= {\color{blue} \SI{1.32}{\meter}}, \\
+		x(n = 3) &= \frac{(\dist)^2}{7 (\wavel)} - \frac{7}{4} (\wavel)
+		= {\color{blue} \SI{0.58}{\meter}}, \\
+		x(n = 4) &= \frac{(\dist)^2}{9 (\wavel)} - \frac{9}{4} (\wavel)
+		= {\color{blue} \SI{0.07}{\meter}}.
 	\end{align*}
 	Again, $x < 0$ for $n < 0$ and $n > 4$, which are not sensible.
 	
 	In order to find the frequency for which there is no destructive interference on the $x$ axis, we should look at $n = 0$, since this gives us the point with the largest value of $x$.  If we plug $n = 0$ into Eq.~\refeq{dest} and set $x = 0$, we are requiring that destructive interference can only occur at the origin.  Solving for the wavelength $\lam$ tells us the smallest wavelength at which there is still destructive interference.  We find
 	\beq
-		0 = \frac{(\Dely)^2}{\lam / 2} - \frac{\lam}{2}
-		\qimplies
-		\frac{\lam}{2} = \frac{(\Dely)^2}{\lam / 2}
+		0 = \frac{(\Dely)^2}{\lam} - \frac{\lam}{4}
 		\qimplies
 		\frac{\lam^2}{4} = (\Dely)^2
 		\qimplies
