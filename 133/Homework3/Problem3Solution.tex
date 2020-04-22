@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+%\allowdisplaybreaks
+ 
+\renewcommand{\footrulewidth}{.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 3}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\cfoot{\today}
+\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\large\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+\newenvironment{statement}[1]
+{
+	\section{#1}
+	\ignorespaces
+}
+
+\newenvironment{solution}
+{
+    \paragraph{Solution.}
+    \ignorespaces
+}
+
+\begin{document}
+
+\newcommand{\lam}{\lambda}
+\newcommand{\omg}{\omega}
+
+\newcommand{\vE}{\vb{E}}
+\newcommand{\vB}{\vb{B}}
+\newcommand{\Eo}{E_0}
+\newcommand{\Bo}{B_0}
+
+\newcommand{\Eamp}{\SI{3.20e-3}{\volt\per\meter}}
+\newcommand{\wavel}{\SI{475}{\nano\meter}}
+\newcommand{\wavelSI}{\SI{475e-9}{\meter}}
+\newcommand{\lspeed}{\SI{3.00e8}{\meter\per\second}}
+
+\newcommand{\xh}{\vb{\hat{x}}}
+\newcommand{\yh}{\vb{\hat{y}}}
+\newcommand{\zh}{\vb{\hat{z}}}
+
+
+\setcounter{section}{2}
+
+\begin{statement}{}
+	% Y&F 32.8
+	Consider a sinusoidal electromagnetic wave propagating in the $+x$ direction, whose electric field is parallel to the $y$ axis.  The wave has wavelength {\wavel}, and the electric field has amplitude {\Eamp}.  What is the frequency of the wave?  What is the amplitude of the magnetic field?  What are the vector equations for $\vE(x, t)$ and $\vB(x, t)$?
+\end{statement}
+
+\begin{solution}
+	Frequency is related to wavelength by $v = \lam f$, where the wave speed $v = c$ for an electromagnetic wave in vacuum.  So
+	\beq
+		f = \frac{c}{\lam}
+		= \frac{\lspeed}{\wavelSI}
+		= \frac{\num{3.00e8}}{\num{4.75e-7}} \,\si{\Hz}
+		= {\color{blue} \SI{6.32e14}{\Hz}}.
+%		= {\color{blue} \SI{632}{\tera\Hz}}.
+	\eeq
+	
+	The amplitudes of the fields are related by $\Eo = c \Bo$, so
+	\beq
+		\Bo = \frac{\Eo}{c}
+		= \frac{\Eamp}{\lspeed}
+		= \frac{3.20}{3.00} \times \SI{e-11}{\tesla}
+		= {\color{blue} \SI{1.07e-11}{\tesla}}.
+%		= {\color{blue} \SI{10.7}{\pico\tesla}},
+	\eeq
+	where we have used $\SI{1}{\tesla} = \SI{1}{\volt\second\per\square\meter}$.
+	
+	The direction of propagation of the wave is $\vE \cross \vB$.  We know from the problem statement that the wave is propagating in the $\xh$ direction, and that the electric field points in the $\yh$ direction.  Since $\yh \cross \zh = \xh$, the magnetic field must point in the $\zh$ direction.  Then the vector equations are
+	\begin{align*}
+		\vE(x, t) &= \Eo \cos(k x - \omg t), &
+		\vB(x, t) &= \Bo \cos(k x - \omg t).
+	\end{align*}	
+	We can find the wave number $k$ and angular frequency $\omg$ as follows:
+	\begin{align*}
+		k &= \frac{2\pi}{\lam}
+		= \frac{\SI{2\pi}{\radian}}{\SI{4.75e-7}{\meter}}
+		= \SI{1.32e7}{\radian\per\meter}, \\
+		\omg &= 2\pi f
+		= (\SI{2\pi}{\radian}) (\SI{6.32e14}{\Hz)}
+		= \SI{3.97e15}{\radian\per\second}.
+	\end{align*}
+	Then we have
+		\begin{align*}
+		\vE(x, t) &= (\Eamp) \cos[ (\SI{1.32e7}{\radian\per\meter}) x - (\SI{3.97e15}{\radian\per\second}) t], \\
+		\vB(x, t) &= (\SI{1.07e-11}{\tesla}) \cos[ (\SI{1.32e7}{\radian\per\meter}) x - (\SI{3.97e15}{\radian\per\second}) t].
+	\end{align*}
+\end{solution}
+
+\end{document}
