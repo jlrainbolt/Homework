@@ -19,8 +19,8 @@
 \newcommand{\Psmu}{P_\mu}
 \newcommand{\Pqmu}{{\Pq}^\mu}
 \newcommand{\Pqsmu}{{\Pq}_\mu}
-\newcommand{\Pwmu}{{\Pq}^\mu}
-\newcommand{\Pwsmu}{{\Pq}_\mu}
+\newcommand{\Pwmu}{{\Pw}^\mu}
+\newcommand{\Pwsmu}{{\Pw}_\mu}
 
 \newcommand{\vp}{\vb{p}}
 \newcommand{\vpq}{\vp_1}
@@ -35,11 +35,7 @@
 \end{problem}
 
 \begin{solution}
-	The general momentum 4-vector for a particle is
-	\beq
-		\Pmu = (E / c, \vp),
-	\eeq
-	where $E$ is the energy of the particle and $\vp$ its three-dimensional momentum.  Let $\Pqmu$ and $\Pwmu$ be the momentum 4-vectors for the two particles, and define
+	The general momentum 4-vector for a particle is $\Pmu = (E / c, \vp)$, where $E$ is the energy of the particle and $\vp$ its three-dimensional momentum.  Let $\Pqmu$ and $\Pwmu$ be the momentum 4-vectors for the two particles, and define
 	\beq
 		\Pmu = \Pqmu + \Pwmu.
 	\eeq
@@ -108,11 +104,7 @@
 
 
 \begin{solution}
-	According to Jackson~(11.51),
-	\beq
-		E = \gam m c^2.
-	\eeq
-	For the $\Lam$, this gives us $\gam = E / M$ in natural units.  Substituting this into the expression for time dilation, we find
+	According to Jackson~(11.51), $E = \gam m c^2$.  For the $\Lam$, this gives us $\gam = E / M$ in natural units.  Substituting this into the expression for time dilation, we find
 	\beq
 		\Delt = \gam \tau
 		= \frac{E}{M} \tau
@@ -122,7 +114,7 @@
 		\bet = \sqrt{1 - \frac{1}{\gam^2}}
 		= \sqrt{1 - \frac{M^2}{E^2}}.
 	\eeq
-	Then the average distance traveled before decaying is
+	Then the average distance the $\Lam$ travels before decaying is
 	\beq
 		d = v \,\Delt
 		= c \tau \sqrt{1 - \frac{M^2}{E^2}} \frac{E}{M}
@@ -139,7 +131,7 @@
 		\cos\tht = \frac{\Eq \Ew - \Eq' \Ew' - \pq' \pw'}{\pq \pw}.
 	\eeqn
 
-	Say that the $\Lam$ is moving in the $z$ direction in the lab frame $K$.  The opening angle $\tht$ is minimized when the particles are emitted along the $\pm z'$ axis in $K'$, because the boost of the $\Lam$ in $K$ is much greater than that of either daughter particle in $K'$.  In this scenario, both of the daughter particles travel along the $z$ axis in the $+z$ direction in $K$, so the minimum possible opening angle $\tht = 0$.
+	Say that the $\Lam$ is moving in the $z$ direction in the lab frame $K$.  The opening angle $\tht$ is minimized when the particles are emitted along the $\pm z'$ axis in $K'$, because the boost of the $\Lam$ in $K$ is much greater than that of either daughter particle in $K'$.  In this scenario, both of the daughter particles travel along the $z$ axis in the $+z$ direction in $K$, so the minimum possible opening angle $\min\tht = 0$.
 	
 	By a similar argument, $\tht$ is maximized when the daughter particles are emitted transverse to the $z'$ axis in $K'$.  For this scenario, and using natural units, in the $K'$ frame we have
 	\begin{align*}
@@ -179,9 +171,13 @@
 	\beq
 		\mq^2 - \mw^2 = {\Eq'}^2 - (M - \Eq')^2 = -M^2 - 2 M \Eq'
 		\qimplies
-		\Eq' = \frac{M^2 + \mq^2 - \mw^2}{2 M},
+		\Eq' = \frac{M^2 + \mq^2 - \mw^2}{2 M}.
 	\eeq
-	and similarly for $\Ew$.  Let $\mq$ denote the nucleon and $\mw$ the pion.  Then we have
+	Similarly,
+	\beq
+		\Ew' = \frac{M^2 - \mq^2 + \mw^2}{2 M}.
+	\eeq
+	Let $\mq$ denote the nucleon and $\mw$ the pion.  Then we have
 	\begin{align*}
 		\Eq' &= \frac{1}{2} \frac{(\mLam)^2 + (\mnuc)^2 - (\mpi)^2}{\mLam} 
 		\approx \Enucp, \\
@@ -215,7 +211,7 @@
 		= \frac{\ELam}{\mLam}
 		\approx \gamLam
 		\qimplies
-		\bet = \sqrt{1 - \frac{1}{\gam^2}}
+		\bet = \sqrt{1 - \frac{M^2}{E^2}}
 		\approx 0.994,
 	\eeq
 	whereas
@@ -225,7 +221,7 @@
 		\betw' &= \sqrt{1 - \frac{1}{{\gamw'}^2}}
 		\approx 0.573. &
 	\end{align*}
-	Since these are not nearly as relativistic as $\bet$, and we have stipulated that $\vbet'_1$ and $\vbet'_1$ are transverse to the $z'$ axis, it may be sufficient to approximate $\gamq, \gamw \approx \gam$.  Then we have
+	Since these are not nearly as relativistic as $\bet$, and we have stipulated that $\vbet'_1$ and $\vbet'_2$ are transverse to the $z'$ axis, it may be sufficient to approximate $\gamq, \gamw \approx \gam$ in $K$.  Then we have
 	\begin{align*}
 		\Eq &\approx \gam \mq
 		\approx \gamLam (\mnuc)
@@ -242,18 +238,12 @@
 	\end{align*}
 	Making these substitutions into \refeq{thing4.2}, we have
 	\beq
-		\cos\tht = \frac{(\Enuc) (\Epi) - (\Enucp) (\Epip) - (\pnucp)^2}{(\pnuc) (\ppi)}
+		\cos\tht \approx \frac{(\Enuc) (\Epi) - (\Enucp) (\Epip) - (\pnucp)^2}{(\pnuc) (\ppi)}
 		\approx 0.996
 	\eeq
-	which implies
-	\beq
-		\max\tht \approx \cos[-1](0.996)
-		\approx 5.1^\circ.
-	\eeq
-	
-	This gives the possible range of $\tht$ as
+	which implies $\max\tht \approx \cos[-1](0.996) \approx 5.1^\circ$.  This gives the possible range of $\tht$ as
 	\beq
 		{\color{blue} 0 \leq \tht \lessapprox 5.1^\circ}.
 	\eeq
-	\vfix
 \end{solution}
+\vfix

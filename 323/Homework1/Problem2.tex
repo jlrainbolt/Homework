@@ -71,7 +71,7 @@
 		\Bw' &= 0, &
 		\Be' &= 0,
 	\end{align*}
-	in the rest frame of the charge.  Here, $r' = \sqrt{b^2 + v^2 {t'}^2}$.  Then, in $K'$,
+	in the rest frame of the charge for the geometry in Fig.~\ref{1}.  Here, $r' = \sqrt{b^2 + v^2 {t'}^2}$.  Then, in $K'$,
 	\beqn \label{thing2.1b}
 		\Fpab = \frac{q}{(b^2 + v^2 {t'}^2)^{3/2}}
 			\mqty[0 & v t' & -b & 0 \\
@@ -79,7 +79,7 @@
 				b & 0 & 0 & 0 \\
 				0 & 0 & 0 & 0 ].
 	\eeqn
-	Now we will boost into the frame $K$.  From Jackson~(11.147), $F' = \Lam F \tLam$, although we need $F = \Lam F' \tLam$, where we boost in the direction opposite the particle's motion.  According to Jackson~(11.113), the Lorentz boost in the $-{\xsq}'$ direction is
+	Now we will boost into the frame $K$.  From Jackson~(11.147), $F' = \Lam F \tLam$, although we need $F = \Lam F' \tLam$, where we boost in the direction opposite the particle's motion.  According to Jackson~(11.113), the Lorentz boost in the $-x'$ direction is
 	\beqn \label{Lam2}
 		\Lam = \Lammat.
 	\eeqn
@@ -103,13 +103,13 @@
 				\gam b & \gam \bet b & 0 & 0 \\
 				0 & 0 & 0 & 1 ].
 	\end{align*}
-	Note that $\xsq = 0$, so from \refeq{lorentz}, $t' = \gam t$.  Finally,
+	From \refeq{lorentz}, $t' = \gam t$ since $x = 0$.  Finally,
 	\beqn \label{thing2.1}
 		\Fab = \frac{\gam q}{(b^2 + \gam^2 v^2 t^2)^{3/2}} 
 			\mqty[0 & v t & -b & 0 \\
 				-v t & 0 & -v b / c & 0 \\
 				b & v b / c & 0 & 0 \\
-				0 & 0 & 0 & 0 ],
+				0 & 0 & 0 & 0 ].
 	\eeqn
 	
 	Now we will begin from \refeq{show2.a} and find $\Fab$ directly in $K$.  In accordance with Fig.~\ref{11.8},
@@ -170,7 +170,7 @@
 		\Eq' &= -\frac{q \gam v t}{(b^2 + \gam^2 v^2 t^2)^{3/2}}, &
 		\Ew' &= \frac{q b}{(b^2 + \gam^2 v^2 t^2)^{3/2}},
 	\end{align*}
-	so we have also verified \refeq{fields}.
+	so we have also verified \refeq{fields}. \qed
 \end{solution}
 
 
@@ -182,7 +182,7 @@
 \newcommand{\Ypa}{{Y'}^\alp}
 
 \begin{problem}
-	Repeat the calculation, using as the starting point the common-time coordinates in the rest frame, $\xpap = (ct', \vbb - \vv t')$ and $\xpaq = (ct', 0)$.  Show that
+	Repeat the calculation, using as the starting point the common-time coordinates in the rest frame, ${\xpap = (ct', \vbb - \vv t')}$ and $\xpaq = (ct', 0)$.  Show that
 	\beqn \label{show2.b}
 		\Fab = \frac{q}{c} \frac{\Ya \Ub - \Yb \Ua}{(- \Ysa \Ya)^{3/2}},
 	\eeqn
@@ -234,7 +234,7 @@
 	\eeq
 	which is identical to \refeq{thing2.1b}.  We know that boosting into $K$ yields \refeq{thing2.1}.
 	
-	Now we will find $\Fab$ directly in $K$ by boosting $\Ypa$ and $\Upa$.  From Jackson~(11.84), $x' = \Lam x$, and we once again use $\Lam$ given by \refeq{Lam2} to perform $x = \Lam x'$.  We obtain
+	Now we will find $\Fab$ directly in $K$ by boosting $\Ypa$ and $\Upa$.  From Jackson~(11.84), $x' = \Lam x$ (where $x$ represents $x^\alp$), and we once again use $\Lam$ given by \refeq{Lam2} to perform $x = \Lam x'$.  We obtain
 	\begin{align*}
 		Y &= \Lam Y'
 		= \Lammat \mqty[ 0 \\ -v t' \\ b \\ 0]
@@ -267,7 +267,7 @@
 		= \gam^2 \bet^2 v^2 \tp^2 - \gam^2 v^2 \tp^2 - b^2
 		= -v^2 \tp^2 - b^2.
 	\eeq
-	Making these substitutions into \refeq{show2.b}, and using $t' = \gam t$
+	Making these substitutions into \refeq{show2.b}, and using $t' = \gam t$,
 	\beq
 		\Fab = \frac{q}{(b^2 + v^2 \tp^2)^{3/2}}
 			\mqty[ 0 & v t' & -\gam b & 0 \\
@@ -294,8 +294,8 @@
 	\beqn \label{show2.c}
 		\Fab = \frac{q}{c} \frac{\Za \Ub - \Zb \Ua}{(\Usa \Za / c)^3}.
 	\eeqn
-	\vfix
 \end{problem}
+\vfix
 
 \begin{solution}
 	Referring to Fig~\ref{11.8},
@@ -333,7 +333,7 @@
 		= \frac{R}{\gam} + \gam \bet^2 c t.
 	\eeq
 	
-	Note that $\xap$ and $\xaq$, as they are defined here, have lightlike separation.  Then
+	Note that $\xap$ and $\xaq$, as they are defined here, have lightlike separation since $R / c$ is, by definition, the time it takes light to travel from $\xaq$ to $\xap$.  Then
 	\beq
 		0 = \Zsa \Za
 		= \mqty[ R & v (t - R / c) & -b & 0 ] \mqty[ R \\ -v (t - R / c) \\ b \\ 0 ]

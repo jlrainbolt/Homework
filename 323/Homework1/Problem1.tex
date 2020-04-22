@@ -3,9 +3,9 @@
 
 \begin{statement}{(Jackson 11.3)}
 	Show explicitly that two successive Lorentz transformations in the same direction are equivalent to a single Lorentz transformation with a velocity
-	\beq
+	\beqn \label{given1}
 		v = \frac{\vq + \vw}{1 + \vq \vw / c^2}.
-	\eeq
+	\eeqn
 	This is an alternative way to derive the parallel-velocity addition law.
 \end{statement}
 
@@ -64,13 +64,13 @@
 		= \frac{v}{c}
 		= \bet,
 	\eeq
-	and that
+	where $v$ is defined by \refeq{given1}, and that
 	\begin{align*}
 		(1 + \betq \betw) \gamq \gamw &= \frac{1 + \betq \betw}{\sqrt{(1 - \betq^2) (1 - \betw^2)}}
-		= \sqrt{\frac{(1 - \betq^2) (1 - \betw^2)}{(1 + \betq \betw)^2}}^{\,-1}
-		= \sqrt{\frac{1 - \betq^2 - \betw^2 + \betq^2 \betw^2}{(1 + \betq \betw)^2}}^{\,-1} \\
-		&= \sqrt{\frac{1 + 2 \betq \betw + \betq^2 \betw^2 - (\betq^2 + 2 \betq \betw + \betw^2)}{(1 + \betq \betw)^2}}^{\,-1}
-		= \sqrt{\frac{(1 + \betq \betw)^2 - (\betq + \betw)^2}{(1 + \betq \betw)^2}}^{\,-1} \\
+		= \sqrt{\frac{(1 + \betq \betw)^2}{(1 - \betq^2) (1 - \betw^2)}}
+		= \sqrt{\frac{(1 + \betq \betw)^2}{1 - \betq^2 - \betw^2 + \betq^2 \betw^2}} \\
+		&= \sqrt{\frac{(1 + \betq \betw)^2}{1 + 2 \betq \betw + \betq^2 \betw^2 - (\betq^2 + 2 \betq \betw + \betw^2)}}
+		= \sqrt{\frac{(1 + \betq \betw)^2}{(1 + \betq \betw)^2 - (\betq + \betw)^2}} \\
 		&= \sqrt{1 - \left( \frac{\betq + \betw}{1 + \betq \betw} \right)^2}^{\,-1}
 		= \sqrt{1 - \bet^2}^{\,-1}
 		= \gam.

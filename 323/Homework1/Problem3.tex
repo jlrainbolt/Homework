@@ -29,7 +29,6 @@
 \newcommand{\du}{\dd{u}}
 \newcommand{\dz}{\dd{z}}
 \newcommand{\vEperp}{\vE_\perp}
-\newcommand{\tif}{\text{if }}
 
 \begin{solution}
 	Let $K'$ denote the rest frame of this charge.  In this frame,
@@ -52,7 +51,7 @@
 		y' &= y, &
 		z' &= \gam (z + \bet c t).
 	\end{align*}
-	Let $\bet = v / c$, so $\bet < 1$.  Then
+	Let $\bet = v / c$, so $\bet < 0$.  Then
 	\begin{align*}
 		{r'}^2 &= {x'}^2 + {y'}^2 + {z'}^2
 		= x^2 + y^2 + \gam^2 (z - \bet c t)^2
@@ -69,14 +68,14 @@
 	\beq
 		\limgam \vEperp = q \vrperp \limgam \frac{\gam}{(\rperp^2 + \gam^2 (z - v t)^2)^{3/2}}
 		= \begin{cases}
-			\infty & \tif z = vt, \\
-			0 & z \neq vt,
+			\infty & \text{if } z = vt, \\
+			0 & \text{otherwise},
 		\end{cases}
 	\eeq
-	so we can conclude
+	so we can conclude that
 	\beq
-		\limgam \vEperp = q k \,\del(vt - z) \,\vrperp
-		= \,\delctz \,\vrperp,
+		\limgam \vEperp = k q \,\del(vt - z) \,\vrperp
+		= k q \,\del(ct - z) \,\vrperp
 	\eeq
 	where $k$ is some constant, and we have made the replacement $v \to c$ as $\bet \to 1$.  To find $k$, we use the fact that the integral of $\delctz$ from $z = -\infty$ to $z = \infty$ must be 1.  Let $u = \gam (z - vt)$.  Then $\dz = \du / \gam$, and
 	\beq
@@ -91,7 +90,7 @@
 	\eeq
 	as desired.
 	
-	For the magnetic field, Jackson~(11.150) states $\vB = \vbet \cross \vE$.  In the limit $\bet \to 1$, $\vbet \to \zh = \vh$.  Then we have
+	For the magnetic field, Jackson~(11.150) states that $\vB = \vbet \cross \vE$.  In the limit $\bet \to 1$, $\vbet \to \zh = \vh$.  Then we have
 	\beq
 		\vB = 2q \frac{\vh \cross \vrperp}{\rperp^2} \delctz,
 	\eeq
@@ -121,11 +120,23 @@
 \newcommand{\vro}{\vr_0}
 \newcommand{\grperp}{\grad_{\!\perp}}
 
+\newcommand{\dtht}{\dd{\tht}}
+\newcommand{\ddcV}{\dd{(\dcV)}}
+\newcommand{\ddS}{\dd{(\dS)}}
+\newcommand{\intotp}{\int_0^{2\pi}}
+\newcommand{\intS}{\int_S}
+\newcommand{\intdS}{\int_{\dS}}
+\newcommand{\intcV}{\int_\cV}
+\newcommand{\intdcV}{\int_{\dcV}}
+\newcommand{\dcr}{\dd[3]{r}}
+\newcommand{\dsr}{\dd[2]{r}}
+
 \newcommand{\Jo}{J^0}
 \newcommand{\vJ}{\vb{J}}
 \newcommand{\vaa}{\vb{a}}
 \newcommand{\rperpx}{{\rperp}_x}
 \newcommand{\rperpy}{{\rperp}_y}
+
 
 \begin{solution}
 	From Jackson~(11.128), $\Ja = (c \rho, \vJ)$.  From Wald~(5.4) and (5.5), the inhomogeneous Maxwell equations are
@@ -140,20 +151,21 @@
 	\eeq
 	Gauss's theorem is given by Wald~(2.6),
 	\beq
-		\int_\cV \grad \vdot \vv \dd[3]{r} = \int_{\dcV} \vv \vdot \nh \dd{S},
+		\intcV \grad \vdot \vv \dcr = \intdcV \vv \vdot \nh \ddcV,
 	\eeq
 	where $\cV$ is a three-dimensional bounded region with surface $\dcV$, $\vv$ is an arbitrary vector field, and $\nh$ is an outward pointing unit vector.  In two dimensions, this becomes
 	\beq
-		\int_S \grperp \vdot \vv \dd[2]{r} = \int_{\dS} \vv \vdot \nh \dd{S},
+		\intS \grperp \vdot \vv \dsr = \intdS \vv \vdot \nh \ddS,
 	\eeq
-	Taking the surface as the $xy$ plane,
+	where $S$ is a two-dimensional bounded region with boundary $\dS$, and $\grperp$ is the two-dimensional gradient.  Taking the surface as a circle of radius $\rperp$ in the $xy$ plane, $\ddS = \rperp \dtht$ in plane polar coordinates.  Then
 	\beq
-		\int_S \grperp \vdot \frac{\vrperp}{\rperp^2} \dd[2]{r} = \int_{\dS} \frac{\vrperp}{\rperp^2} \vdot \frac{\vrperp}{\rperp} \dd{S}
-		= \int_{\dS} \frac{\dd{S}}{\rperp}
-		= \int_0^{2\pi} \frac{\rperp}{\rperp} \dd{\tht}
+		\intS \grperp \vdot \frac{\vrperp}{\rperp^2} \dsr = \intdS \frac{\vrperp}{\rperp^2} \vdot \frac{\vrperp}{\rperp} \ddS
+		= \intdS \frac{\ddS}{\rperp}
+		= \intotp \frac{\rperp}{\rperp} \dtht
+		= \intotp \dtht
 		= 2\pi,
 	\eeq
-	where we have used plane polar coordinates and the Jacobian $\rperp$.  This implies
+	which implies
 	\beq
 		\grperp \vdot \frac{\vrperp}{\rperp^2} = 2\pi \,\delrp.
 	\eeq
@@ -166,7 +178,7 @@
 		\Jo = c q \,\delrp \,\delctz.
 	\eeqn
 	
-	For the second equation, note that $\pdv*{\vE}{t} = 0$, and
+	For the second equation of \refeq{maxwell}, note that $\pdv*{\vE}{t} = 0$, and
 	\beq
 		\grad \cross \vB = 2q \,\delctz \left[ \grad \cross \left( \vh \cross \frac{\vrperp}{\rperp^2} \right) \right].
 	\eeq
@@ -282,7 +294,7 @@
 		\phi' &= \phi - \frac{1}{c} \pdv{\chi}{t}, &
 		\vA' &= \vA + \grad\chi,
 	\end{align*}
-	where $\chi = \chi(t, \vr)$ is a gauge function.  Inspecting $\Ao$ in \refeq{given3.c.1} and in \refeq{given3.c.2}, we make the ansatz
+	where $\chi = \chi(t, \vr)$ is a gauge function.  Inspecting \refeq{given3.c.1} and \refeq{given3.c.2}, we make the ansatz
 	\beqn \label{chi}
 		{\color{blue} \chi = -2q \,\Thtctz \ln(\lam \rperp)},
 	\eeqn
