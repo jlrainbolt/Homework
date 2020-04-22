@@ -1,0 +1,303 @@
+\newcommand{\vr}{\vb{r}}
+\newcommand{\vrperp}{\vr_\perp}
+
+\begin{statement}{(Jackson 11.18)}
+	The electric and magnetic fields of a particle of charge $q$ moving in a straight line with speed $v = \bet c$, given by \refeq{fields}, become more and more concentrated as $\bet \to 1$.  Choose axes so that the charge moves along the $z$ axis in the positive direction, passing the origin at $t = 0$.  Let the spatial coordinates of the observation point be $(x, y, z)$ and define the transverse vector $\vrperp$, with components $x$ and $y$.  Consider the fields and the source in the limit of $\bet = 1$.
+\end{statement}
+
+\newcommand{\rperp}{r_\perp}
+\newcommand{\vE}{\vb{E}}
+\newcommand{\vB}{\vb{B}}
+\newcommand{\vh}{\vb{\hat{v}}}
+\newcommand{\delctz}{\del(ct - z)}
+
+\begin{problem} \label{3.a}
+	Show that the fields can be written as
+	\begin{align} \label{show3.a}
+		\vE &= 2q \frac{\vrperp}{\rperp^2} \delctz, &
+		\vB &= 2q \frac{\vh \cross \vrperp}{\rperp^2} \delctz,
+	\end{align}
+	where $\vh$ is a unit vector in the direction of the particle's velocity.
+\end{problem}
+
+
+\newcommand{\xh}{\vb{\hat{x}}}
+\newcommand{\yh}{\vb{\hat{y}}}
+\newcommand{\zh}{\vb{\hat{z}}}
+\newcommand{\intii}{\int_{-\infty}^\infty}
+\newcommand{\limgam}{\lim_{\gam \to \infty}}
+\newcommand{\du}{\dd{u}}
+\newcommand{\dz}{\dd{z}}
+\newcommand{\vEperp}{\vE_\perp}
+\newcommand{\tif}{\text{if }}
+
+\begin{solution}
+	Let $K'$ denote the rest frame of this charge.  In this frame,
+	\begin{align*}
+		\vE' &= \frac{q}{{r'}^3} \vr', &
+		\vB' &= \vo,
+	\end{align*}
+	where $\vr'$ is the observation point in $K'$.
+\clearpage
+	First we will boost into the lab frame.  Jackson~(11.148) gives the transformations of the electric field for a boost in the $x$ direction.  Adapting these for the $z$ direction, we have
+	\begin{align*}
+		\Eq &= \gam (\Eq' - \bet \Be') &
+		\Ew &= \gam (\Ew' + \bet \Bw') &
+		\Ee &= \Ee',
+	\end{align*}
+	where $\bet < 0$ indicates a boost in the $-z$ direction.  Note also that
+	\begin{align*}
+		ct' &= \gam (c t + \bet z), &
+		x' &= x, &
+		y' &= y, &
+		z' &= \gam (z + \bet c t).
+	\end{align*}
+	Let $\bet = v / c$, so $\bet < 1$.  Then
+	\begin{align*}
+		{r'}^2 &= {x'}^2 + {y'}^2 + {z'}^2
+		= x^2 + y^2 + \gam^2 (z - \bet c t)^2
+		= \rperp^2 + \gam^2 (z - v t)^2, \\
+		\vr' &= x' \,\xh' + y' \,\yh' + z' \,\zh'
+		= x \,\xh + y \,\yh + \gam (z - \bet c t)\,\zh
+		= \vrperp + \gam (z - v t)\,\zh,
+	\end{align*}
+	and in the lab frame, the perpendicular component of the electric field is
+	\beq
+		\vEperp = \gam q \frac{\vrperp}{(\rperp^2 + \gam^2 (z - v t)^2)^{3/2}}.
+	\eeq
+	Taking the limit of this expression as $\bet \to 1$ is identical to taking the limit as $\gam \to \infty$.  Doing so, we find
+	\beq
+		\limgam \vEperp = q \vrperp \limgam \frac{\gam}{(\rperp^2 + \gam^2 (z - v t)^2)^{3/2}}
+		= \begin{cases}
+			\infty & \tif z = vt, \\
+			0 & z \neq vt,
+		\end{cases}
+	\eeq
+	so we can conclude
+	\beq
+		\limgam \vEperp = q k \,\del(vt - z) \,\vrperp
+		= \,\delctz \,\vrperp,
+	\eeq
+	where $k$ is some constant, and we have made the replacement $v \to c$ as $\bet \to 1$.  To find $k$, we use the fact that the integral of $\delctz$ from $z = -\infty$ to $z = \infty$ must be 1.  Let $u = \gam (z - vt)$.  Then $\dz = \du / \gam$, and
+	\beq
+		k = \intii \frac{\gam}{(\rperp^2 + \gam^2 (z - v t)^2)^{3/2}} \dz
+		= \intii \frac{\du}{(\rperp^2 + u^2)^{3/2}}
+		= \left[ \frac{u}{\rperp^2 \sqrt{\rperp^2 + u^2}} \right]_{-\infty}^\infty
+		= \frac{2}{\rperp^2}.
+	\eeq
+	Finally, we have shown
+	\beq
+		\vEperp = 2 q \frac{\vrperp}{\rperp^2} \,\delctz
+	\eeq
+	as desired.
+	
+	For the magnetic field, Jackson~(11.150) states $\vB = \vbet \cross \vE$.  In the limit $\bet \to 1$, $\vbet \to \zh = \vh$.  Then we have
+	\beq
+		\vB = 2q \frac{\vh \cross \vrperp}{\rperp^2} \delctz,
+	\eeq
+	as desired.  This completes our proof of \refeq{show3.a}. \qed
+\end{solution}
+
+
+
+\newcommand{\Ja}{J^\alp}
+\newcommand{\Jb}{J^\bet}
+\newcommand{\dela}{\partial_\alp}
+\newcommand{\valp}{v^\alp}
+\newcommand{\delrp}{\del^2(\vrperp)}
+
+\begin{problem}
+	Show that by substitution into the Maxwell equations that these fields are consistent with a 4-vector source density,
+	\beq
+		\Ja = q c \valp \delrp \,\delctz,
+	\eeq
+	where the 4-vector $\valp = (1, \vh)$.
+\end{problem}
+
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\dcV}{\partial \cV}
+\newcommand{\dS}{\partial S}
+\newcommand{\nh}{\vb{\hat{n}}}
+\newcommand{\vro}{\vr_0}
+\newcommand{\grperp}{\grad_{\!\perp}}
+
+\newcommand{\Jo}{J^0}
+\newcommand{\vJ}{\vb{J}}
+\newcommand{\vaa}{\vb{a}}
+\newcommand{\rperpx}{{\rperp}_x}
+\newcommand{\rperpy}{{\rperp}_y}
+
+\begin{solution}
+	From Jackson~(11.128), $\Ja = (c \rho, \vJ)$.  From Wald~(5.4) and (5.5), the inhomogeneous Maxwell equations are
+	\begin{align} \label{maxwell}
+		\grad \vdot \vE &= 4\pi \rho, &
+		\grad \cross \vB - \frac{1}{c} \pdv{\vE}{t} &= \frac{4\pi}{c} \vJ.
+	\end{align}
+\clearpage
+	For the first equation,
+	\beq
+		\grad \vdot \vE = 2 q \,\delctz \left( \grperp \vdot \frac{\vrperp}{\rperp^2} \right).
+	\eeq
+	Gauss's theorem is given by Wald~(2.6),
+	\beq
+		\int_\cV \grad \vdot \vv \dd[3]{r} = \int_{\dcV} \vv \vdot \nh \dd{S},
+	\eeq
+	where $\cV$ is a three-dimensional bounded region with surface $\dcV$, $\vv$ is an arbitrary vector field, and $\nh$ is an outward pointing unit vector.  In two dimensions, this becomes
+	\beq
+		\int_S \grperp \vdot \vv \dd[2]{r} = \int_{\dS} \vv \vdot \nh \dd{S},
+	\eeq
+	Taking the surface as the $xy$ plane,
+	\beq
+		\int_S \grperp \vdot \frac{\vrperp}{\rperp^2} \dd[2]{r} = \int_{\dS} \frac{\vrperp}{\rperp^2} \vdot \frac{\vrperp}{\rperp} \dd{S}
+		= \int_{\dS} \frac{\dd{S}}{\rperp}
+		= \int_0^{2\pi} \frac{\rperp}{\rperp} \dd{\tht}
+		= 2\pi,
+	\eeq
+	where we have used plane polar coordinates and the Jacobian $\rperp$.  This implies
+	\beq
+		\grperp \vdot \frac{\vrperp}{\rperp^2} = 2\pi \,\delrp.
+	\eeq
+	Substituting into \refeq{maxwell}, we have
+	\beqn \label{rho}
+		4\pi q \,\delrp \,\delctz = 4\pi \rho
+		\qimplies
+		\rho = q \,\delrp \,\delctz
+		\qimplies
+		\Jo = c q \,\delrp \,\delctz.
+	\eeqn
+	
+	For the second equation, note that $\pdv*{\vE}{t} = 0$, and
+	\beq
+		\grad \cross \vB = 2q \,\delctz \left[ \grad \cross \left( \vh \cross \frac{\vrperp}{\rperp^2} \right) \right].
+	\eeq
+	From the inside cover of Jackson,
+	\beq
+		\grad \cross (\vaa \cross \vbb) = \vaa (\grad \vdot \vbb) - \vbb (\grad \vdot \vaa) + (\vbb \vdot \grad) \vaa - (\vaa \vdot \grad) \vbb.
+	\eeq
+	Note that
+	\begin{align*}
+		\grad \vdot \frac{\vrperp}{\rperp^2} &= 2\pi \,\delrp, &
+		\grad \vdot \vh &= 0, &
+		\left( \frac{\vrperp}{\rperp^2} \vdot \grad \right) \vv &= 0, &
+		\vv \vdot \grad &= 0,
+	\end{align*}
+	so
+	\beq
+		\grad \cross \left( \vh \cross \frac{\vrperp}{\rperp^2} \right) = 2\pi \vh \,\delrp.
+	\eeq
+	Substituting into \refeq{maxwell}, we find
+	\beq
+		4\pi q \vh \,\delrp \,\delctz = \frac{4\pi}{c} \vJ
+		\qimplies
+		\vJ = q c \vh \,\delrp \,\delctz.
+	\eeq
+	Combining this result with \refeq{rho}, we have shown
+	\beq
+		\Ja = (c q \,\delrp \,\delctz, q c \vh \,\delrp \,\delctz)
+		= q c \valp \delrp \,\delctz,
+	\eeq
+	as desired. \qed
+\end{solution}
+
+
+
+\newcommand{\Ao}{A^0}
+\newcommand{\Az}{A^z}
+\newcommand{\vA}{\vb{A}}
+\newcommand{\vAperp}{\vA_\perp}
+\newcommand{\Thtctz}{\Tht(ct - z)}
+
+\begin{problem}
+	Show that the fields of \refeq{3.a} are derivable from either of the following 4-vector potentials,
+	\begin{align} \label{given3.c.1}
+		\Ao &= \Az = -2q \,\delctz \ln(\lam \rperp), &
+		\vAperp &= \vo,
+	\end{align}
+	or
+	\begin{align} \label{given3.c.2}
+		\Ao &= 0 = \Az, &
+		\vAperp &= -2q \,\Thtctz \,\grperp \ln(\lam \rperp),
+	\end{align}
+	where $\lam$ is an irrelevant parameter setting the scale of the logarithm.
+	
+	Show that the two potentials differ by a gauge transformation and find the gauge function, $\chi$.
+\end{problem}
+
+\newcommand{\Aa}{A^\alp}
+\newcommand{\Apa}{{A'}^\alp}
+\newcommand{\Apo}{{A'}^0}
+\newcommand{\Apz}{{A'}^z}
+
+\begin{solution}
+	From Jackson~(11.132), $\Aa = (\phi, \vA)$.  From Wald~(5.2) and (5.3), the fields are derived from the potentials as
+	\begin{align} \label{potentials}
+		\vE &= -\grad\phi - \frac{1}{c} \pdv{\vA}{t}, &
+		\vB &= \grad \cross \vA.
+	\end{align}
+	
+	For the potentials of \refeq{given3.c.1}, note that
+	\begin{align*}
+		\grad\Ao &= -2q \,\delctz \left( \pdv{x} \xh + \pdv{y} \yh + \pdv{z} \zh \right) \ln( \lam \sqrt{x^2 + y^2})
+		= -2q \,\delctz \left( \frac{x}{x^2 + y^2} \xh + \frac{y}{x^2 + y^2}\yh \right) \\
+		&= -2q \frac{\vrperp}{\rperp^2} \delctz, \\[2ex]
+		\grad \cross \vA &= \left( \pdv{x} \xh + \pdv{y} \yh + \pdv{z} \right) \cross \Az \,\zh
+		= \left( \pdv{y} \xh - \pdv{x} \yh \right) \Az
+		= -2q \,\delctz \left( \pdv{y} \xh - \pdv{x} \yh \right) \ln( \lam \sqrt{x^2 + y^2}) \\
+		&= -2q \,\delctz \left( \frac{y}{x^2 + y^2} \xh - \frac{x}{x^2 + y^2} \yh \right)
+		= -2q \frac{\vrperp \cross \zh}{\rperp^2} \,\delctz
+		= 2q \frac{\vh \cross \vrperp}{\rperp^2} \,\delctz,
+	\end{align*}
+	while $\pdv*{\vAperp}{t} = \vo$.  Substitution into \refeq{potentials} yields
+	\begin{align*}
+		\vE &= 2q \frac{\vrperp}{\rperp^2} \delctz, &
+		\vB &= 2q \frac{\vh \cross \vrperp}{\rperp^2} \,\delctz,
+	\end{align*}
+	which are identical to \refeq{show3.a}, as desired.
+	
+	For the potentials of \refeq{given3.c.2}, we assume that $\Tht(x)$ denotes the Heaviside step function.  Then, according to Wolfram Mathworld,
+	\beq
+		\dv{\Tht(x)}{x} = \del(x).
+	\eeq
+	Note also that
+	\beq
+		\vAperp = -2q \,\Thtctz \left( \pdv{x} \xh + \pdv{y} \yh \right) \ln(\lam \sqrt{x^2 + y^2})
+		= -2q \frac{\vrperp}{\rperp^2} \,\Thtctz,
+	\eeq
+	so
+	\begin{align*}
+		\grad \cross \vA &= -2q \left( \pdv{x} \xh + \pdv{y} \yh + \pdv{z} \zh \right) \cross \Thtctz \left( \frac{x}{x^2 + y^2} \xh + \frac{y}{x^2 + y^2} \yh \right) \\
+		&= -2q \left[ \Thtctz \left( \pdv{x} \frac{y}{x^2 + y^2} - \pdv{y} \frac{x}{x^2 + y^2} \right) \zh + \left( \frac{x}{x^2 + y^2} \yh - \frac{y}{x^2 + y^2} \xh \right) \pdv{z} \Thtctz \right] \\
+		&= -2q \left[ \Thtctz \left( -\frac{2 x y}{(x^2 + y^2)^2} + \frac{2 x y}{(x^2 + y^2)^2} \right) \zh + \left( \frac{y}{x^2 + y^2} \xh - \frac{x}{x^2 + y^2} \yh \right) \delctz \right] \\
+		&= -2q \frac{\vrperp \cross \zh}{\rperp^2} \,\delctz
+		= 2q \frac{\vh \cross \vrperp}{\rperp^2} \,\delctz,
+	\end{align*}
+	and
+	\beq
+		\pdv{\vAperp}{t} = -2q c \frac{\vrperp}{\rperp^2} \delctz,
+	\eeq
+	while $\grperp\Ao = \vo$.  Substituting into \refeq{potentials}, we once again recover \refeq{show3.a}.
+	
+	According to Wald~(1.13), the general gauge transformations for $\Aa$ are given by
+	\begin{align*}
+		\phi' &= \phi - \frac{1}{c} \pdv{\chi}{t}, &
+		\vA' &= \vA + \grad\chi,
+	\end{align*}
+	where $\chi = \chi(t, \vr)$ is a gauge function.  Inspecting $\Ao$ in \refeq{given3.c.1} and in \refeq{given3.c.2}, we make the ansatz
+	\beqn \label{chi}
+		{\color{blue} \chi = -2q \,\Thtctz \ln(\lam \rperp)},
+	\eeqn
+	which we will now prove.  Denote \refeq{given3.c.1} by $\Aa$ and \refeq{given3.c.2} by $\Apa$.  Then we have
+	\begin{align*}
+		\Ao - \frac{1}{c} \pdv{\chi}{t} &= -2q \,\delctz \ln(\lam \rperp) + \frac{2q}{c} \ln(\lam \rperp) \pdv{t} \Thtctz
+		= -2q \,\delctz \ln(\lam \rperp) + 2q \,\delctz \ln(\lam \rperp) \\
+		&= 0
+		= \Apo, \\[2ex]
+		\vAperp + \grperp \chi &= -2q \,\Thtctz \, \grperp \ln(\lam \rperp)
+		= \vAperp', \\[2ex]
+		\Az + \pdv{\chi}{z} &= -2q \,\delctz \ln(\lam \rperp) - 2q \ln(\lam \rperp) \pdv{z} \Thtctz
+		= -2q \,\delctz \ln(\lam \rperp) + 2q \,\delctz \ln(\lam \rperp) \\
+		&= 0
+		= \Apz,
+	\end{align*}
+	so we have shown that \refeq{given3.c.1} and \refeq{given3.c.2} differ by the gauge transformation in \refeq{chi}. \qed
+\end{solution}

@@ -22,10 +22,10 @@
 \begin{solution}
 	The general expression for a Lorentz transformation in the $\xq$ direction is given by Jackson~(11.16),
 	\begin{align} \label{lorentz}
-		\xo' &= \gam (\xo - \bet \xq), &
-		\xq' &= \gam (\xq - \bet \xo), &
-		\xw' &= \xw, &
-		\xe' &= \xe.
+		c t' &= \gam (ct - \bet x), &
+		x' &= \gam (x - \bet c t), &
+		y' &= y, &
+		z' &= z.
 	\end{align}
 	Define $\bet$, $\betq$, and $\betw$ by
 	\begin{align*}
@@ -37,25 +37,25 @@
 	
 	First applying the boost corresponding to $\betq$ yields
 	\begin{align} \label{boost1}
-		\xo' &= \gamq (\xo - \betq \xq), &
-		\xq' &= \gamq (\xq - \betq \xo).
+		c t' &= \gamq (c t - \betq x), &
+		x' &= \gamq (x - \betq c t).
 	\end{align}
 	Successively applying the boost corresponding to $\betw$ yields
 	\begin{align} \label{boost2}
-		\xo'' &= \gamw (\xo' - \betw \xq'), &
-		\xq'' &= \gamw (\xq' - \betw \xo').
+		c t'' &= \gamw (c t' - \betw x'), &
+		x'' &= \gamw (x' - \betw c t').
 	\end{align}
 	Substituting \refeq{boost1} into \refeq{boost2} gives us
 	\begin{align*}
-		\xo'' &= \gamq \gamw [(\xo - \betq \xq) - \betw (\xq - \betq \xo)]
-		= \gamq \gamw [(1 + \betq \betw) \xo - (\betq + \betw) \xq] \\
-		\xq'' &= \gamq \gamw [(\xq - \betq \xo) - \betw (\xo - \betq \xq)]
-		= \gamq \gamw [(1 + \betq \betw) \xq - (\betq + \betw) \xo],
+		c t'' &= \gamq \gamw [(c t - \betq x) - \betw (x - \betq c t)]
+		= \gamq \gamw [(1 + \betq \betw) c t - (\betq + \betw) x] \\
+		x'' &= \gamq \gamw [(x - \betq c t) - \betw (c t - \betq x)]
+		= \gamq \gamw [(1 + \betq \betw) x - (\betq + \betw) c t],
 	\end{align*}
 	or
 	\begin{align} \label{thing1}
-		\xo'' &= (1 + \betq \betw) \gamq \gamw \left( \xo - \frac{\betq + \betw}{1 + \betq \betw} \xq \right), &
-		\xq'' &= (1 + \betq \betw) \gamq \gamw \left( \xq - \frac{\betq + \betw}{1 + \betq \betw} \xo \right).
+		c t'' &= (1 + \betq \betw) \gamq \gamw \left( c t - \frac{\betq + \betw}{1 + \betq \betw} x \right), &
+		x'' &= (1 + \betq \betw) \gamq \gamw \left( x - \frac{\betq + \betw}{1 + \betq \betw} c t \right).
 	\end{align}
 	
 	Note that
