@@ -1,0 +1,227 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{352}
+\homeworknum{1}
+
+
+\newcommand{\pN}{p_N}
+\newcommand{\pii}{p_i}
+\newcommand{\sumiN}{\sum_{i = 1}^N}
+
+\newcommand{\muB}{\mu_B}
+\newcommand{\muG}{\mu_G}
+\newcommand{\sigB}{\sig_B}
+\newcommand{\sigG}{\sig_G}
+
+\newcommand{\lapp}{\lessapprox}
+\newcommand{\gapp}{\gtrapprox}
+
+\newcommand{\xii}{x_i}
+\newcommand{\yii}{y_i}
+
+\newcommand{\deln}{\del n}
+\newcommand{\evn}{\ev{n}}
+\newcommand{\intoL}{\int_0^L}
+\newcommand{\dx}{\dd{x}}
+\newcommand{\dy}{\dd{y}}
+
+
+
+\newcommand{\sigi}{\sig_i}
+
+\newcommand{\hi}{h_i}
+\newcommand{\hK}{h_K}
+\newcommand{\hV}{h_V}
+\newcommand{\hR}{h_R}
+
+\newcommand{\pk}{p_k}
+\newcommand{\En}{E_n}
+
+\newcommand{\vp}{\vb{p}}
+\newcommand{\vL}{\vb{L}}
+
+
+
+\begin{document}
+
+\newcommand{\state}[2]{\begin{statement}{#1} #2 \end{statement}}
+\newcommand{\prob}[2]{\begin{problem}{#1} #2 \end{problem}}
+\newcommand{\subprob}[1]{\begin{subproblem} #1 \end{subproblem}}
+\newcommand{\sol}[1]{\begin{solution} #1 \end{solution}}
+\newcommand{\fig}[2]{\begin{figure} \centering #2  \label{#1} \end{figure}}
+
+
+
+\state{Central limit theorem}{
+	Consider a one-dimensional system consisting of a large number of non-interacting particles on a circle of circumference $L$.  Assume that the positions of the particles are independent random variables
+(i.r.v.) uniformly distributed on the circle.
+}
+
+\prob{}{
+	Find the probability $\pN(t, \alp)$ of observing exactly $\alp N$ of the $N$ particles in a fixed arc of length $t L$, where $t, \alp \in [0, 1]$.  (For $\alp = 0$ this is called \emph{gap} (or \emph{void}) \emph{formation probability}.)
+	
+	Find the leading behavior of the result in the limit $N \to \infty$ with $t, \alp$ fixed.  (You may use the Stirling formula $n! \approx n^n e^{-n} \sqrt{2\pi n}$.  A good sanity check for the answer is that $\int_0^1 \pN(t, \alp) \dd{\alp}$ evaluated with a computer should be 1.)
+	
+	Make a plot of this leading term as a function of $\alp \in [0, 1]$ for $N = 100$ and $t = 0.1$, overlaid with the exact discrete distribution.  Describe any qualitative changes in the plot as $N$ and $t$ change, and whether the asymptotic approximation breaks down anywhere.
+}
+
+\sol{
+	Consider a single particle $i$ on the circle.  The probability of observing it in an arc of length $t L$ is $p = t$.  This is equivalent to a Bernoulli trial with failure probability $q = 1 - p = 1 - t$.  The binomial distribution gives the probability of obtaining exactly $n$ successes out of $N$ such trials~\cite{Binomial}:
+	\eqn{binomial}{
+		P_p(n | N) = \mqty( N \\ n ) p^n q^{N - n}
+		= \frac{N!}{n! \,(N - n)!} p^n (1 - p)^{N - n}.
+	}
+	Assuming $n = \alp N$ is an integer, the probability of observing $\alp N$ of the $N$ particles in this arc is given by
+	\eqn{exact}{
+		\ans{
+			\pN(t, \alp) = \frac{N!}{(\alp N)! \,(N - \alp N)!} t^{\alp N} (1 - t)^{N - \alp N}.
+		}
+	}
+
+	To find the leading behavior as $N \to \infty$, we use Stirling's approximation for $N!$, $(\alp N)!$, and $(N - \alp N)!$.  In doing so, we assume $N, \alp N, (1 - \alp) N \gg 1$.  This yields
+	\aln{
+		\pN(t, \alp) &\approx \frac{N^N e^{-N} \sqrt{2\pi N}}{(\alp N)^{\alp N} e^{-\alp N} \sqrt{2\pi \alp N} (N - \alp N)^{N - \alp N} e^{\alp N - N} \sqrt{2\pi (N - \alp N)}} t^{\alp N} (1 - t)^{N - \alp N} \notag \\
+%		&= \frac{N^N e^{-N} \sqrt{2\pi N}}{\alp^{\alp N} N^{\alp N} (N - \alp N)^{N - \alp N} e^{-N} 2 \pi \sqrt{\alp N (N - \alp N)}} t^{\alp N} (1 - t)^{N - \alp N} \notag \\
+		&= \frac{N^{N - \alp N}}{\alp^{\alp N} N^{N - \alp N} (1 - \alp)^{N - \alp N} \sqrt{2 \pi \alp (N - \alp N)}} t^{\alp N} (1 - t)^{N - \alp N} \notag \\
+%		&= \frac{t^{\alp N} (1 - t)^{N - \alp N}}{\alp^{\alp N} (1 - \alp)^{N - \alp N} \sqrt{2 \pi \alp (N - \alp N)}} \notag \\
+		&= \ans{
+			\frac{1}{\sqrt{2 \pi \alp (1 - \alp) N}} \left( \frac{t}{\alp} \right)^{\alp N} \left( \frac{1 - t}{1 - \alp} \right)^{N - \alp N}. \label{approx}
+		}
+	}
+	A plot comparing this approximation to the exact, discrete distribution is shown in Fig.~\ref{fig1.1} as a function of $\alp \in [0, 1]$ for $N = 100$ and $t = 0.1$.  Both distributions becomes broader and shorter as $t$ is increased to $0.5$, and then narrower and taller as $t$ is increased from there.  The area under the curve becomes smaller as $N$ increases, although its shape does not change.  This makes sense because $\pN(t, \alp)$ as a function of $\alp$ is not a PDF; the PDF is $P_t(k | N)$ as a function of $k = \alp N$.  The area under the curve of $\pN(t, \alp)$ is $1/N$.
+	
+	For $t \lapp 0.2$ and $t \gapp 0.8$, the approximate distribution has a slightly sharper and higher peak than the discrete distribution.  This is slightly visible in Fig.~\ref{fig1.1}  This discrepancy becomes more pronounced as $N$ decreases.  For $N \lapp 20$, a discrepancy near the peak is visible even for $t = 0.5$.  The approximation visibly diverges as $\alp \to 0$ for $t \lapp 0.2$ and as $\alp \to 1$ for $t \gapp 0.8$.  This effect becomes more pronounced as $N$ decreases.  For $N \lapp 25$, this divergence overtakes the expected behavior of the discrete distribution, and so the approximation becomes poor.
+	
+	\fig{fig1.1}{
+		\includegraphics{Figure1-1}
+		\caption{Comparison of the discrete expression~(\refeq{exact}, blue) and Stirling's approximation to~(\refeq{approx}, orange) $\pN(t, \alp)$ as functions of $\alp \in [0, 1]$ for $N = 100$ and $t = 0.1$.}
+	}
+}
+
+
+\prob{}{
+	In the large-$N$ limit, find the average number $k$ (or the fraction $\alp = k / N$) of particles in the arc of length $t L$ for a given $t \in [0, 1]$, and the fluctuation (variance) of this number, using the Central Limit Theorem.  Plot the corresponding Gaussian distribution over $\alp \in [0, 1]$ and add it to the previous plot.  How good is this approximation?
+}
+
+\sol{
+	The mean of the binomial distribution is $\mu = N p$, and the variance is $\sig^2 = N p q$~\cite{Binomial}.  Thus, the mean and variance of \refeq{exact} are,
+	\al{
+		\ans{\muB} &\ans{= Nt}, &
+		\ans{\sigB^2} &\ans{= N t (1 - t)},
+	}
+	which correspond to the average number of particles in $t L$ and the variance of that number, respectively.
+	
+	By the Central Limit Theorem, we may approximate \refeq{exact} by a Gaussian distribution~\cite{Gaussian}
+	\eq{
+		P(x) = \frac{e^{-(x - \mu)^2 / (2 \sig^2)}}{\sig \sqrt{2\pi}},
+	}
+	with mean $\muG = \muB = Nt$ and standard deviation $\sigG = \sigB / \sqrt{N} = \sqrt{t (1 - t)}$~\cite{CLT}.  (The factor of $1/N$ in the variance is necessary because $\pN(t, \alp)$ is not normalized.)  Since $x$ is equivalent to $k =  \alp N$, this gives us the Gaussian distribution
+	\eqn{CLT}{
+		\pN(t, \alp) \approx \frac{e^{-N^2 (\alp - t)^2 / 2 t (1 - t)}}{\sqrt{2\pi t (1 - t)}}.
+	}
+	This distribution is shown overlaid with the discrete distribution and Stirling's approximation in Fig.~\ref{fig1.2}.  The CLT approximation, being Gaussian, is perfectly symmetrical for all $t$, unlike the discrete function and Stirling's approximation, which both become more skew as $t \to 0$ and $t \to 1$.  This effect is visible in Fig.~\ref{fig1.2}.  The CLT is a worse approximation than Stirling in these cases, except when $N$ is very large~($\gapp 1000$).  In this limit, the quality of both approximations is about the same.  However, the CLT approximation has no singularities, making it a better approximation when $\alp, t \approx 0$ and $\alp, t \approx 1$.
+	
+	\fig{fig1.2}{
+		\includegraphics{Figure1-2}
+		\caption{Comparison of the discrete expression~(\refeq{exact}, blue), Stirling's approximation to~(\refeq{approx}, orange), and CLT approximation to~(\refeq{CLT}, green) $\pN(t, \alp)$ as functions of $\alp \in [0, 1]$ for $N = 100$ and $t = 0.1$.}
+	}
+}
+
+
+\prob{}{
+	Defining the number density $n(x) = \sumiN \del(x - \xii)$, compute
+the two-point correlation function
+	\al{
+		C(x, y) &= \ev{\deln(x) \cdot \deln(y)}, &
+		\deln(x) &= n(x) - \evn,
+	}
+which describes the fluctuations of the density.
+}
+
+\sol{
+	Firstly, the mean $\evn$ is found by
+	\eq{
+		\evn = \frac{1}{L} \intoL n(x) \dx
+		= \frac{1}{L} \intoL \sumiN \del(x - \xii) \dx
+		= \frac{1}{L} \sumiN \intoL \del(x - \xii) \dx
+		= \frac{N}{L}.
+	}
+	Then
+	\al{
+		C(x, y) &= \frac{1}{L^2} \intoL \intoL \deln(x) \, \deln(y) \dx \dy
+		= \frac{1}{L^2} \intoL \left( \sumiN \del(x - \xii) - \frac{N}{L} \right) \dx \intoL \left( \sumiN \del(y - \yii) - \frac{N}{L} \right) \dy \\
+		&= \frac{1}{L^2} \left( \sumiN \intoL \del(x - \xii) \dx - \frac{N}{L} \intoL \dx \right) \left( \sumiN \intoL \del(y - \yii) \dy - \frac{N}{L} \intoL \dy \right) \\
+		&= \frac{1}{L^2} \left( N - \frac{N}{L} \bigg[ x \bigg]_0^L \right) \left( N - \frac{N}{L} \bigg[ y \bigg]_0^L \right) \\
+		&= \ans{0}.
+	}
+	This result suggests that the density does not fluctuate between two different samples of $N$ independent random variables that are uniformly distributed on the circle.
+}
+
+
+
+\clearpage
+\statement{Entropy of simple systems}{}
+
+\prob{Two-level systems}{
+	Consider a gas consisting of an even number $N$ of non-interacting atoms with spins $\sigi$, $i = 1, \ldots, N$.  The spin of each atom can take on the values $\sigi = \pm1$ with equal probability.
+}
+
+\subprob{
+	What is the probability of a state with zero total magnetization?  Determine the leading approximation for this probability in the limit $N \to \infty$.
+}
+
+\subprob{
+	Let us place the atoms in a magnetic field $h$, so that the Hamiltonian becomes
+	\eq{
+		H = -h \sumiN \sigi.
+	}
+	Find the total number of states at a fixed energy $E$ and the entropy per atom in the limit $N \to \infty$ assuming that the energy per atom $\eps = E / N$ is kept fixed.
+}
+
+\subprob{
+	Compute the temperature of this system using $1 / T = (\pdv*{S}{E})_N$.  Show that this result determines $\eps$, the average energy per atom, as a function of temperature.
+}
+
+\subprob{
+	Finally, compute the specific heat $C(T, h)$.
+}
+
+
+\prob{Trapped atoms}{
+	Calculate the volume of the phase space for $N$ classical non-interacting massive particles placed in a harmonic trap (i.e. a potential $V(r) = m \omg^2 r^2 / 2$) with energies of at most $E$.  Use it to calculate the entropy and the temperature.
+}
+
+\prob{Three-level system}{
+	Consider a system of $N$ independent atoms.  Each atom may be in one of three states with energies $-\eps, 0, \eps$.  Assume that the total energy of the gas is $E = M \eps$, $\abs{M} \leq N$.  Calculate the entropy of the system and find the relation between the temperature and the energy.  Also expand the results in the two special limits $T \ll \eps$ and $T \gg \eps$.
+}
+
+
+
+\state{Quantum diatomic ideal gas}{
+	An ideal diatomic gas consists of non-interacting identical molecules $H = \sumiN \hi$ which have three independent degrees of freedom $h = \hK + \hV + \hR$. The first one is the kinetic energy of translational motion $\hK = \vp^2 / 2m$. The second is vibrational, i.e.~each molecule is an oscillator with $\hV = \pi^2/2 + \omg^2 q^2 / 2$. The third is rotational $\hR = \vL^2 / 2 I$, where $\vL$ is the angular momentum.  These three d.o.f.~can be treated independently.  Treat them as independent
+subsystems.
+}
+
+\prob{}{
+	Compute for each d.o.f.~the equilibrium value of entropy as a function of energy.
+}
+
+\prob{}{
+	Compute for each d.o.f.~the equilibrium value of energy as a function of entropy.
+}
+
+\prob{}{
+	Compute for each d.o.f.~the equilibrium value of entropy as a function of temperature.
+}
+
+\prob{}{
+	Compute for each d.o.f.~the equilibrium value of free energy as a function of temperature.
+}
+
+\prob{}{
+	Now consider all systems as quantum and repeat the calculations.  This means that the momentum $\vp$ is quantized, each component of momentum taking the values $\pk = (2 \pi \hbar / L) k$, where $k$ is an arbitrary integer and $L$ is the linear size of the box.  Similarly, the
+energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, and the square of the angular momentum as $L^2 = \hbar^2 l (l + 1)$, where $l$ is a non-negative integer.  Discuss the quantum (low temperature) and the classical (high temperature) limits.
+}
+
+\end{document}
