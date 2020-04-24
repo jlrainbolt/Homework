@@ -1,0 +1,28 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}%
+\makeatletter
+\providecommand{\hrefCMSnoop }[0]{\@secondoftwo}%
+\makeatother
+\providecommand{\doi}{\texttt{doi:}\begingroup \urlstyle{tt}\Url}
+
+\bibitem{Binomial}
+\href {https://mathworld.wolfram.com/BinomialDistribution.html}{E.~W.
+  Weisstein, ``Binomial Distribution''.} From MathWorld---A Wolfram Web
+  Resource.
+\newblock \url {https://mathworld.wolfram.com/BinomialDistribution.html}.
+
+\bibitem{Gaussian}
+\href {https://mathworld.wolfram.com/NormalDistribution.html}{E.~W. Weisstein,
+  ``Normal Distribution''.} From MathWorld---A Wolfram Web Resource.
+\newblock \url {https://mathworld.wolfram.com/NormalDistribution.html}.
+
+\bibitem{CLT}
+\href {https://mathworld.wolfram.com/CentralLimitTheorem.html}{E.~W. Weisstein,
+  ``Central Limit Theorem''.} From MathWorld---A Wolfram Web Resource.
+\newblock \url {https://mathworld.wolfram.com/CentralLimitTheorem.html}.
+
+\bibitem{Landau}
+\hrefCMSnoop {}{L.~Landau and E.~Lifshitz, ``Statistical Physics''}, volume~5,
+  pp.~359--361.
+\newblock Pergamon Press, 2 edition, 1970.
+
+\end{thebibliography}\endgroup
