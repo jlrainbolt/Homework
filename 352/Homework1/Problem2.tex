@@ -1,0 +1,341 @@
+\statement{Entropy of simple systems}{}
+
+\prob{Two-level systems}{
+	Consider a gas consisting of an even number $N$ of non-interacting atoms with spins $\sigi$, $i = 1, \ldots, N$.  The spin of each atom can take on the values $\sigi = \pm1$ with equal probability.
+}
+
+%
+%	2.1.1
+%
+
+\subprob{
+	What is the probability of a state with zero total magnetization?  Determine the leading approximation for this probability in the limit $N \to \infty$.
+}
+
+\sol{
+	The spins of the atoms are distributed binomially.  The probability for atom $i$ to have be spin up (i.e.~$\sigi = +1$) is $p = 1/2$.  Let $N = \Np + \Nm$, where $\Npm$ is the number of atoms with $\sig = \pm 1$.  Then, from \refeq{binomial}, the probability that $\Np$ of the $N$ atoms are spin up is given by
+	\eq{
+		\Ph(\Np \,|\, N) = \frac{N!}{\Np! \,(N - \Np)!} \frac{1}{2^{\Np}} \frac{1}{2^{N - \Np}}
+		= \frac{N!}{\Np! \,\Nm!} \frac{1}{2^{\Np}} \frac{1}{2^{\Nm}}.
+	}
+	The state has zero total magnetization if $\Np = \Nm = N / 2$.  This is the same as Prob.~\ref{prob1.1} with $\alp = t = 1/2$.  Feeding these into Eq.~\refeq{approx}, we find in the large $N$ limit
+	\eq{
+		\Ph(N/2 \,|\, N) = \frac{1}{\sqrt{2 \pi (1/2) (1 - 1/2) N}} \paren{\frac{1/2}{1/2}}^{N/2} \paren{\frac{1 - 1/2}{1 - 1/2}}^{N/2}
+		= \ans{ \sqrt{\frac{2}{\pi N}}. }
+	}
+	\vfix
+}
+
+%
+%	2.1.2
+%
+
+\subprob{
+	Let us place the atoms in a magnetic field $h$, so that the Hamiltonian becomes
+	\eq{
+		H = -h \sumiN \sigi.
+	}
+	Find the total number of states at a fixed energy $E$ and the entropy per atom in the limit $N \to \infty$ assuming that the energy per atom $\eps = E / N$ is kept fixed.
+}
+
+\sol{
+	The total energy of the system is $E = h (\Nm - \Np)$.  The total number of states at this energy is,
+	\eq{
+		\Omg = \mqty( N \\ \Np )
+		= \frac{N!}{\Np! \,\Nm!}
+		\approx \frac{N^N e^{-N} \sqrt{2\pi N}}{\Np^{\Np} e^{-\Np} \sqrt{2\pi \Np} \Nm^{\Nm} e^{-\Nm} \sqrt{2\pi \Nm}}
+		= \ans{ \frac{N^N}{\Np^{\Np} \Nm^{\Nm}} \sqrt{\frac{N}{2\pi \Np \Nm}}, }
+%		= \ans{ \frac{1}{\sqrt{2\pi}} \frac{N^{N + 1/2}}{\Np^{\Np + 1/2} \Nm^{\Nm + 1/2}}. }
+	}
+	in the limit that $N, \Np, \Nm \gg 1$
+	
+	The total entropy is given by $S = \ln \Omg$.  Here we will use Stirling's approximation as $\ln n! \approx n \ln n - n$~\cite{Stirling}.  Then
+	\aln{
+		S &= \ln N! - \ln \Np! - \ln \Nm!
+		\approx N \ln N - N - \Np \ln \Np + \Np - \Nm \ln \Nm + \Nm \notag \\
+		&= N \ln N - \Np \ln \Np - \Nm \ln \Nm, \label{S2.1}
+	}
+	so the entropy per atom is
+	\eq{
+		s = \frac{S}{N}
+		= \frac{N \ln N - \Np \ln \Np - \Nm \ln \Nm}{N}
+		= \ans{ \ln N - \frac{\Np}{N} \ln \Np - \frac{\Nm}{N} \ln \Nm. }
+	}
+	\vfix
+}
+
+%
+%	2.1.3
+%
+
+\subprob{
+	Compute the temperature of this system using $1 / T = (\pdv*{S}{E})_N$.  Show that this result determines $\eps$, the average energy per atom, as a function of temperature.
+}
+
+\sol{
+	By the chain rule,
+	\eq{
+		\frac{1}{T} = \paren{\pdv{S}{E}}_N
+		= \paren{\pdv{S}{\Np} \pdv{\Np}{E}}_N.
+	}
+	Rewriting Eq.~\refeq{S2.1} in terms of $N$ and $\Np$,
+	\eq{
+		S = N \ln N - \Np \ln \Np - (N - \Np) \ln(N - \Np)
+		= N \ln N - \Np \ln \Np - N \ln(N - \Np) + \Np \ln(N - \Np),
+	}
+	so
+	\eq{
+		\pdv{S}{\Np} = -\frac{\Np}{\Np} - \ln \Np + \frac{N}{N - \Np} - \frac{\Np}{N - \Np} + \ln(N - \Np)
+		= \ln(N - \Np) - \ln \Np
+		= \ln(\frac{\Nm}{\Np}).
+	}
+	Also, since $E = h(\Nm - \Np) = h(N - 2\Np) = h(2\Nm - N)$, $\pdv*{E}{\Np} = -2h$.  Then the temperature can be found by
+	\eqn{T2.1}{
+		\frac{1}{T} = -\frac{1}{2h} \ln(\frac{\Nm}{\Np})
+		\qimplies
+		\ans{ T = -\frac{2h}{\ln(\Nm / \Np)}. }
+	}
+	
+	To find $\eps$ as a function of $T$, we first write $\Np$ and $\Nm$ as functions of $E$:
+	\al{
+		\Np &= \frac{N}{2} - \frac{E}{2 h}, &
+		\Nm &= \frac{N}{2} + \frac{E}{2 h}.
+	}
+	Then, substituting into Eq.~\refeq{T2.1} and solving for $E$,
+	\eq{
+		\frac{1}{T} = -\frac{q}{2h} \ln(\frac{N + E / h}{N - E / h})
+%		\qimplies
+%		-\frac{2h}{T} = \ln(\frac{N + E / h}{N - E / h})
+		\qimplies
+		e^{-2h / T} = \frac{N + E / h}{N - E / h}
+%	}
+%	\eq{
+%		\impliesq
+%		\paren{N - \frac{E}{h}} e^{-2h / kT} = N + \frac{E}{h}
+		\qimplies
+		N (1 - e^{-2h / T}) = \frac{E}{h} (1 + e^{-2h / T}),
+	}
+	which implies
+	\eqn{E2.1}{
+		E = Nh \frac{1 - e^{-2h / T}}{1 + e^{-2h / T}}
+		= -Nh \tanh(-\frac{2h}{T})
+		= -Nh \tanh(\frac{2h}{T}).
+	}
+	Then the average energy per atom is
+	\eq{
+		\eps = \frac{E}{N} = \ans{ -h \tanh(\frac{2h}{T}).}
+	}
+	\vfix
+}
+
+%
+%	2.1.4
+%
+
+\subprob{
+	Finally, compute the specific heat $C(T, h)$.
+}
+
+\sol{
+	The Hamiltonian implies that the atoms have no kinetic energy; thus, pressure and volume are both constant, so the specific heat at constant pressure and at constant volume are identical.  The specific heat is then given by~\cite[p.~9]{Pathria},
+	\eq{
+		C = T \paren{\pdv{S}{T}}_N
+		= \paren{\pdv{E}{T}}_N.
+	}
+	From Eq.~\refeq{E2.1},
+	\eq{
+		C(T, h) = -Nh \pdv{T} \tanh(\frac{2h}{T})
+		= \ans{ \frac{2 N h^2}{k T^2} \sec[2](\frac{2h}{T}).}
+	}
+	\vfix
+}
+
+%
+%	2.2
+%
+
+\prob{Trapped atoms}{
+	Calculate the volume of the phase space for $N$ classical non-interacting massive particles placed in a harmonic trap (i.e. a potential $V(r) = m \omg^2 r^2 / 2$) with energies of at most $E$.  Use it to calculate the entropy and the temperature.
+}
+
+\sol{
+	The Hamiltonian of this system is
+	\eqn{ham2.2}{
+		H(\qii, \pii) = \sumiN \paren{ \frac{\pii^2}{2m} + \frac{m \omg^2 \rii^2}{2} },
+	}
+	where $\pii^2 = \pqii^2 + \pwii^2 + \peii^2$ and $\rii^2 = \qqii^2 + \qwii^2 + \qeii^2$.  For a particular energy $E$, the system is confined to a surface in phase space described by $E = H(\qii, \pii)$~\cite[p.~26]{Pathria}.  For Eq.~\refeq{ham2.2}, this looks similar to the equation for an ellipsoid, which can be transformed into a sphere by the appropriate coordinate transformation.  Let
+	\al{
+		\tqqii &= \sqrt{m \omg} \qqii, &
+		\tqwii &= \sqrt{m \omg} \qwii, &
+		\tqeii &= \sqrt{m \omg} \qeii, \\
+		\tpqii &= \frac{\pqii}{\sqrt{m \omg}}, &
+		\tpwii &= \frac{\pwii}{\sqrt{m \omg}}, &
+		\tpeii &= \frac{\peii}{\sqrt{m \omg}}.
+	}
+	Then
+	\al{
+		\trii^2 &= \frac{\tqqii^2}{m\omg} + \frac{\tqwii^2}{m\omg} + \frac{\qeii^2}{m\omg}
+		= \frac{\rii^2}{m\omg}, \\
+		\tpii^2 &= m \omg \tpqii^2 + m \omg \tpwii^2 + m \omg \tpeii^2
+		= m \omg \pii^2,
+	}
+	and so Eq.~\refeq{ham2.2} becomes
+	\eq{
+		H(\tqii, \tpii) = \sumiN \paren{ \frac{m \omg \tpii^2}{2m} + \frac{m \omg^2 \trii^2}{2 m \omg} }
+		= \frac{\omg}{2} \sumiN (\tpii^2 + \trii^2).
+	}
+	Then the surface is described by
+	\eq{
+		\frac{2 E}{\omg} = \sumiN (\tpii^2 + \trii^2),
+	}
+	which is a $6N$-dimensional sphere of radius $R = \sqrt{2 E / \omg}$.  An $n$-dimensional sphere has volume
+	\al{
+		V_n &= \frac{S_n R^{n}}{n}, &\qwhere
+		S_n &= \frac{2 \pi^{n/2}}{(n/2 - 1)!},
+	}
+	for $n$ even~\cite{Hypersphere}.  For $6N$ dimensions,
+	\eq{
+		S_{6N} = \frac{2 \pi^{3N}}{(3N - 1)!}.
+	}
+	Finally, the phase space volume is
+	\eq{
+		\Delpq = \Del\tpii \, \Del\tqii
+		= \frac{2 \pi^{3N}}{(3N - 1)!} \frac{\sqrt{2 E / \omg}^{\,6N}}{6N}
+		= \ans{ \frac{(4 \pi E / \omg)^{3N}} {6N (3N - 1)!}, }
+	}
+	where $\Delpq = \Del\tpii \, \Del\tqii$ by Liouville's theorem.
+	
+	The entropy may be found from the phase space volume by~\cite[p.~24]{Landau}
+	\eq{
+		S = \ln(\frac{\Delpq}{(2\pi \hbar)^{s}}),
+	}
+	where $s = 6N$ is the number of degrees of freedom of the system.  For this system,
+	\eq{
+		S = \ln(\frac{(4 \pi E / \omg)^{3N}} {(2\pi \hbar)^{6N} 6N (3N - 1)!})
+%		= \ln(\frac{(2 E / \omg)^{3N}} {(2\pi)^{3N} \hbar^{6N} 6N (3N - 1)!})
+		= \ans{ \ln(\frac{(E / \pi \hbar^2 \omg)^{3N}} {6N (3N - 1)!}). }
+	}
+	The temperature is then given by
+	\eq{
+		\frac{1}{T} = \paren{ \pdv{S}{E} }_N
+		= \pdv{E} \brac{ 3N \ln E - 3N \ln(\pi \hbar^2 \omg) - \ln 6N - \ln (3N - 1)! }
+		= \frac{3N}{E}
+		\qimplies
+		\ans{ T = \frac{E}{3N}. }
+	}
+	\vfix
+}
+
+%
+%	2.3
+%
+
+\prob{Three-level system}{
+	Consider a system of $N$ independent atoms.  Each atom may be in one of three states with energies $-\eps, 0, \eps$.  Assume that the total energy of the gas is $E = M \eps$, $\abs{M} \leq N$.  Calculate the entropy of the system and find the relation between the temperature and the energy.  Also expand the results in the two special limits $T \ll \eps$ and $T \gg \eps$.
+}
+
+\sol{
+%	Let $\Npm$ denote the number of atoms with energy $\pm\eps$, and $\No$ the number of atoms with energy 0.  Then $N = \Np + \Nm + \No$ and $M = \Np - \Nm$.  Then total number of states is
+%	\eq{
+%		\Omg = \mqty(N \\ \Np) \mqty(N - \Np \\ \Nm)
+%		= \frac{N!}{\Np! \,(N - \Np)!} \frac{(N - \Np)!}{\Nm! \,(N - \Np - \Nm)!}
+%		= \frac{N!}{\Np! \,\Nm! \,\No!},
+%	}
+%	so the entropy of the system is, in the limit $N \to \infty$,
+%	\aln{
+%		S &= \ln \Omg
+%		\approx N \ln N - N - \Np \ln \Np + \Np - \Nm \ln \Nm + \Nm - \No \ln \No + \No \notag \\
+%		&= \ans{ N \ln N - \Np \ln \Np - \Nm \ln \Nm - \No \ln \No. } \label{S2.3}
+%	}
+	
+%	For the relationship between temperature and energy, we can apply the chain rule:
+%	\eq{
+%		\frac{1}{T} = \paren{ \pdv{S}{E} }_N
+%		= \paren{ \pdv{S}{\Np} \pdv{\Np}{E} + \pdv{S}{\Nm} \pdv{\Nm}{E} }_N.
+%	}
+%	Note that $E = \eps (\Np - \Nm)$, so $\pdv*{E}{\Npm} = \pm \eps$.  Note also that Eq.~\refeq{S2.3} can be written
+%	\eq{
+%		S = N \ln N - \Np \ln \Np - \Nm \ln \Nm - (N - \Np - \Nm) \ln(N - \Np - \Nm).
+%	}
+%	Then
+%	\al{
+%		\pdv{S}{\Np} &= -\frac{\Np}{\Np} - \ln \Np + \frac{N - \Np - \Nm}{N - \Np - \Nm} + \ln(N - \Np - \Nm)
+%		= \ln(N - \Np - \Nm) - \ln \Np, \\
+%		\pdv{S}{\Nm} &= -\frac{\Nm}{\Nm} - \ln \Nm + \frac{N - \Np - \Nm}{N - \Np - \Nm} + \ln(N - \Np - \Nm)
+%		= \ln(N - \Np - \Nm) - \ln \Nm, \\
+%	}
+%	so
+%	\eq{
+%		\frac{1}{T} = \frac{1}{\eps} \paren{ \pdv{S}{\Np} - \pdv{S}{\Nm} }
+%		\qimplies
+%		\frac{\eps}{T} = \ln \Nm - \ln \Np
+%		= \ln(\frac{\Nm}{\Np}).
+%	}
+%	Then the relationship between temperature and total energy is
+%	\eq{
+%		\ans{ E = T (\Np - \Nm) (\ln \Nm - \ln \Np). }
+%	}
+	
+	We will use the partition function $\Zii = \sum_n \exp(\eps_n / T)$~\cite[p.~87]{Landau}.  This is admissible even for a classical system because the energy levels in this problem are discrete.  For one particle in the three-level system, the partition function is
+	\eq{
+		\Zii = e^{-\eps / T} + 1 + e^{\eps / T}
+		= 1 + 2 \cosh(\frac{\eps}{T}),
+	}
+	so the total partition function for the system is
+	\eq{
+		Z = \prodiN \Zii = \brac{ 1 + 2 \cosh(\frac{\eps}{T}) }^N.
+	}
+	
+	The Helmholtz free energy can be found by $F = -T \ln Z$~\cite[p.~87]{Landau}.  $F$ relates to the entropy by~\cite[p.~47]{Landau}
+	\eq{
+		S = -\paren{ \pdv{F}{T} }_V.
+	}
+	This gives us an expression for the entropy:
+	\al{
+		S &= \pdv{T}(T \ln Z)
+		= \ln Z + T \pdv{T} (\ln Z)
+		= N \ln(1 + 2 \cosh(\frac{\eps}{T})) + N T \pdv{T} \ln(1 + 2 \cosh(\frac{\eps}{T})) \\
+		&= N \ln(1 + 2 \cosh(\frac{\eps}{T})) - N T \frac{\eps}{T^2} \frac{2 \sinh(\eps / T)}{1 + 2 \cosh(\eps / T)}
+		= \ans{ N \brac{ \ln(1 + 2 \cosh(\frac{\eps}{T})) - \frac{2 \eps}{T} \frac{\sinh(\eps / T)}{1 + 2 \cosh(\eps / T)} }. }
+	}
+	
+	The total energy of the system at equilibrium is, according to the lecture notes,
+	\eq{
+		E = -\pdv{}{\bet} \ln Z,
+	}
+	where $\bet = 1 / T$.  Then we have
+	\eq{
+		E = -N \pdv{}{\bet} \ln(1 + 2 \cosh(\bet \eps))
+		= -N \frac{2\eps \sinh(\bet \eps)}{1 + 2 \cosh(\bet \eps)},
+	}
+	so the relationship between energy and temperature is
+	\eq{
+		\ans{ E = -2N \eps \frac{\sinh(\eps / T)}{1 + 2\cosh(\eps / T)}. }
+	}
+	
+	Let $u = \eps / T$.  Then
+	\al{
+		S(u) &= N \brac{ \ln(1 + 2 \cosh u) - 2 u \frac{\sinh u}{1 + 2 \cosh u} }, &
+		E(u) &= -2N \eps \frac{\sinh u}{1 + 2 \cosh u}.
+	}
+	For the limit $T \gg \eps$, we expand about $u = 0$:
+	\al{
+		S(u) &= S(0) + u \pdv{S(u)}{u} \bigg|\suo + \frac{u^2}{2} \pdv[2]{S(u)}{u} \bigg|\suo + \order{u^3} \\
+		&= N \ln 3 - 2 N u \brac{ u \frac{2 + 2 \cosh u}{(1 + 2 \cosh u)^2} }\suo - N \brac{ \frac{\cosh(2u) + 5 \cosh u - u \sinh(2u) - 7 u \sinh u + 3}{(1 + 2 \cosh u )^2} }\suo + \order{u^3} \\
+		&= \ans{ N \paren{ \ln 3 - \frac{u^2}{3} + \order{u^3} }, } \\[2ex]
+		E(u) &= E(0) + u \pdv{E(u)}{u} \bigg|\suo + \frac{u^2}{2} \pdv[2]{E(u)}{u} \bigg|\suo + \frac{u^3}{6} \pdv[3]{E(u)}{u} \bigg|\suo + \order{u^4} \\
+		&= -2N \eps u \brac{ \frac{2 + \cosh u}{(1 + 2 \cosh u)^2} }\suo + \frac{2 N \eps}{3} u^2 \brac{ \frac{\sinh(2u) + 7 \sinh u}{(1 + 2 \cosh u)^3} }\suo \\
+		&\hspace{2.5in} - \frac{N \eps}{3} u^3 \brac{ \frac{\cosh(3u) + 12 \cosh(2u) - 12 \cosh u - 28}{(1 + 2 \cosh u)^4} }\suo + \order{u^4} \\
+		&= \ans{ N \eps \paren{-\frac{2 u}{3} + \frac{u^3}{9} + \order{u^4} }. }
+	}
+	For the limit $T \ll \eps$, we take the limit as $u \to \infty$:
+	\al{
+		\limui S(u) &= N \limui \brac{ \ln(1 + e^{-u} + e^{u}) - 2 u \frac{\sinh u}{1 + 2 \cosh u} }
+		= N \limui \brac{ \ln(e^{u}) - 2 u \frac{\sinh u}{2 \cosh u} }
+		= N \brac{ u - 2 u \frac{1}{2} }
+		= \ans{ 0 }, \\[2ex]
+		\limui E(u) &= -2N \eps \limui \brac{ \frac{\sinh u}{1 + 2 \cosh u} }
+		= -2N \eps \limui \brac{ \frac{\sinh u}{2 \cosh u} }
+		= \ans{ -N \eps. }
+	}
+}

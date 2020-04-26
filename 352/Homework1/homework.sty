@@ -2,14 +2,15 @@
 
 
 \usepackage[parfill]{parskip}
+\usepackage[cm]{fullpage}
 \usepackage[italicdiff]{physics}
 \usepackage{amsfonts, amsthm, amssymb, mathrsfs}
-\usepackage[cm]{fullpage}
 \usepackage{fancyhdr, titlesec}
 \usepackage{enumitem}
 \usepackage{xcolor, soul}
 \usepackage{siunitx, graphicx}
-\usepackage{cite, hyperref}
+\usepackage{hyperref}
+\usepackage[numbers]{natbib}
 %\allowdisplaybreaks
 
  
@@ -52,7 +53,6 @@
 	\color{darkgray}
 	\ignorespaces
 }
-%\newcommand{\state}[2]{\begin{statement}{#1} #2 \end{statement}}
 
 \newenvironment{problem}[1]
 {
@@ -60,7 +60,6 @@
 	\color{darkgray}
 	\ignorespaces
 }
-%\newcommand{\prob}[1]{\begin{problem} #1 \end{problem}}
 
 \newenvironment{subproblem}
 {
@@ -68,7 +67,6 @@
 	\color{darkgray}
 	\ignorespaces
 }
-%\newcommand{\subprob}[1]{\begin{subproblem} #1 \end{subproblem}}
 
 \newenvironment{solution}
 {
@@ -78,7 +76,6 @@
 {
     \bigskip
 }
-%\newcommand{\sol}[1]{\begin{solution} #1 \end{solution}}
 
 \newcommand{\ans}[1]{{\color{blue} #1}}
 
@@ -104,20 +101,3 @@
 
 \newcommand{\vfix}{\vspace{-\baselineskip}}
 \newcommand{\hfix}{\hspace{-1em}}
-
-
-
-% Greek
-\newcommand{\alp}{\alpha}
-\newcommand{\bet}{\beta}
-\newcommand{\gam}{\gamma}
-\newcommand{\del}{\delta}
-\newcommand{\eps}{\epsilon}
-\newcommand{\lam}{\lambda}
-\newcommand{\sig}{\sigma}
-\newcommand{\tht}{\theta}
-\newcommand{\omg}{\omega}
-
-\newcommand{\Del}{\Delta}
-\newcommand{\Lam}{\Lambda}
-\newcommand{\Tht}{\Theta}

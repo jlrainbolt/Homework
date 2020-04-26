@@ -472,7 +472,7 @@ FUNCTION {output.bibitem}
 FUNCTION {format.title.p}
 { title empty$
     { "" }
-    { "``" title * "''." * }
+    { "``" title * ".''" * }
   if$
 }
 
