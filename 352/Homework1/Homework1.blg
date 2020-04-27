@@ -3,36 +3,36 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Homework1.aux
 The style file: lucas_unsrt.bst
 Database file #1: references.bib
-You've used 7 entries,
+You've used 8 entries,
             2558 wiz_defined-function locations,
-            652 strings with 5555 characters,
-and the built_in function-call counts, 1300 in all, are:
-= -- 109
-> -- 43
+            661 strings with 5651 characters,
+and the built_in function-call counts, 1479 in all, are:
+= -- 126
+> -- 48
 < -- 1
-+ -- 16
-- -- 9
-* -- 79
-:= -- 157
-add.period$ -- 14
-call.type$ -- 7
-change.case$ -- 2
++ -- 18
+- -- 10
+* -- 85
+:= -- 179
+add.period$ -- 16
+call.type$ -- 8
+change.case$ -- 3
 chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 76
-empty$ -- 183
-format.name$ -- 9
-if$ -- 329
+cite$ -- 8
+duplicate$ -- 89
+empty$ -- 209
+format.name$ -- 10
+if$ -- 377
 int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 4
-newline$ -- 35
-num.names$ -- 7
-pop$ -- 59
+int.to.str$ -- 8
+missing$ -- 6
+newline$ -- 39
+num.names$ -- 8
+pop$ -- 69
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 42
+skip$ -- 45
 stack$ -- 0
 substring$ -- 0
 swap$ -- 11
@@ -41,6 +41,6 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 7
-width$ -- 8
-write$ -- 77
+while$ -- 8
+width$ -- 9
+write$ -- 87

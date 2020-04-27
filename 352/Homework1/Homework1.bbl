@@ -22,7 +22,7 @@
 
 \bibitem{Landau}
 L.~D. Landau and E.~M. Lifshitz, ``Statistical Physics'', volume~5.
-\newblock Pergamon Press, 2 edition, 1970.
+\newblock Pergamon Press, 2nd edition, 1970.
 
 \bibitem{Stirling}
 \href {https://mathworld.wolfram.com/StirlingsApproximation.html}{E.~W.
@@ -32,11 +32,15 @@ L.~D. Landau and E.~M. Lifshitz, ``Statistical Physics'', volume~5.
 
 \bibitem{Pathria}
 R.~K. Pathria and P.~D. Beale, ``Statistical Mechanics''.
-\newblock Elsevier, 3 edition, 2011.
+\newblock Elsevier, 3rd edition, 2011.
 
 \bibitem{Hypersphere}
 \href {https://mathworld.wolfram.com/Hypersphere.html}{E.~W. Weisstein,
   ``Hypersphere.''} From MathWorld---A Wolfram Web Resource.
 \newblock \url {https://mathworld.wolfram.com/Hypersphere.html}.
+
+\bibitem{Kardar}
+M.~Kardar, ``Statistical Physics of Particles''.
+\newblock Cambridge University Press, 1st edition, 2007.
 
 \end{thebibliography}\endgroup

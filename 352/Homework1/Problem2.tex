@@ -18,7 +18,7 @@
 		\Ph(\Np \,|\, N) = \frac{N!}{\Np! \,(N - \Np)!} \frac{1}{2^{\Np}} \frac{1}{2^{N - \Np}}
 		= \frac{N!}{\Np! \,\Nm!} \frac{1}{2^{\Np}} \frac{1}{2^{\Nm}}.
 	}
-	The state has zero total magnetization if $\Np = \Nm = N / 2$.  This is the same as Prob.~\ref{prob1.1} with $\alp = t = 1/2$.  Feeding these into Eq.~\refeq{approx}, we find in the large $N$ limit
+	The state has zero total magnetization if $\Np = \Nm = N / 2$.  This is the same as Prob.~{1.1} with $\alp = t = 1/2$.  Feeding these into Eq.~\refeq{approx}, we find in the large $N$ limit
 	\eq{
 		\Ph(N/2 \,|\, N) = \frac{1}{\sqrt{2 \pi (1/2) (1 - 1/2) N}} \paren{\frac{1/2}{1/2}}^{N/2} \paren{\frac{1 - 1/2}{1 - 1/2}}^{N/2}
 		= \ans{ \sqrt{\frac{2}{\pi N}}. }
@@ -41,13 +41,13 @@
 \sol{
 	The total energy of the system is $E = h (\Nm - \Np)$.  The total number of states at this energy is,
 	\eq{
-		\Omg = \mqty( N \\ \Np )
+		\Omg = \binom{N}{\Np}
 		= \frac{N!}{\Np! \,\Nm!}
 		\approx \frac{N^N e^{-N} \sqrt{2\pi N}}{\Np^{\Np} e^{-\Np} \sqrt{2\pi \Np} \Nm^{\Nm} e^{-\Nm} \sqrt{2\pi \Nm}}
-		= \ans{ \frac{N^N}{\Np^{\Np} \Nm^{\Nm}} \sqrt{\frac{N}{2\pi \Np \Nm}}, }
+		= \ans{ \sqrt{\frac{N}{2\pi \Np \Nm}} \frac{N^N}{\Np^{\Np} \Nm^{\Nm}}, }
 %		= \ans{ \frac{1}{\sqrt{2\pi}} \frac{N^{N + 1/2}}{\Np^{\Np + 1/2} \Nm^{\Nm + 1/2}}. }
 	}
-	in the limit that $N, \Np, \Nm \gg 1$
+	in the limit that $N, \Np, \Nm \gg 1$.
 	
 	The total entropy is given by $S = \ln \Omg$.  Here we will use Stirling's approximation as $\ln n! \approx n \ln n - n$~\cite{Stirling}.  Then
 	\aln{
@@ -155,7 +155,7 @@
 %
 
 \prob{Trapped atoms}{
-	Calculate the volume of the phase space for $N$ classical non-interacting massive particles placed in a harmonic trap (i.e. a potential $V(r) = m \omg^2 r^2 / 2$) with energies of at most $E$.  Use it to calculate the entropy and the temperature.
+	Calculate the volume of the phase space for $N$ classical non-interacting massive particles placed in a harmonic trap (i.e.~a potential $V(r) = m \omg^2 r^2 / 2$) with energies of at most $E$.  Use it to calculate the entropy and the temperature.
 }
 
 \sol{
@@ -230,53 +230,12 @@
 %	2.3
 %
 
-\prob{Three-level system}{
+\prob{Three-level system}{ \label{2.3}
 	Consider a system of $N$ independent atoms.  Each atom may be in one of three states with energies $-\eps, 0, \eps$.  Assume that the total energy of the gas is $E = M \eps$, $\abs{M} \leq N$.  Calculate the entropy of the system and find the relation between the temperature and the energy.  Also expand the results in the two special limits $T \ll \eps$ and $T \gg \eps$.
 }
 
 \sol{
-%	Let $\Npm$ denote the number of atoms with energy $\pm\eps$, and $\No$ the number of atoms with energy 0.  Then $N = \Np + \Nm + \No$ and $M = \Np - \Nm$.  Then total number of states is
-%	\eq{
-%		\Omg = \mqty(N \\ \Np) \mqty(N - \Np \\ \Nm)
-%		= \frac{N!}{\Np! \,(N - \Np)!} \frac{(N - \Np)!}{\Nm! \,(N - \Np - \Nm)!}
-%		= \frac{N!}{\Np! \,\Nm! \,\No!},
-%	}
-%	so the entropy of the system is, in the limit $N \to \infty$,
-%	\aln{
-%		S &= \ln \Omg
-%		\approx N \ln N - N - \Np \ln \Np + \Np - \Nm \ln \Nm + \Nm - \No \ln \No + \No \notag \\
-%		&= \ans{ N \ln N - \Np \ln \Np - \Nm \ln \Nm - \No \ln \No. } \label{S2.3}
-%	}
-	
-%	For the relationship between temperature and energy, we can apply the chain rule:
-%	\eq{
-%		\frac{1}{T} = \paren{ \pdv{S}{E} }_N
-%		= \paren{ \pdv{S}{\Np} \pdv{\Np}{E} + \pdv{S}{\Nm} \pdv{\Nm}{E} }_N.
-%	}
-%	Note that $E = \eps (\Np - \Nm)$, so $\pdv*{E}{\Npm} = \pm \eps$.  Note also that Eq.~\refeq{S2.3} can be written
-%	\eq{
-%		S = N \ln N - \Np \ln \Np - \Nm \ln \Nm - (N - \Np - \Nm) \ln(N - \Np - \Nm).
-%	}
-%	Then
-%	\al{
-%		\pdv{S}{\Np} &= -\frac{\Np}{\Np} - \ln \Np + \frac{N - \Np - \Nm}{N - \Np - \Nm} + \ln(N - \Np - \Nm)
-%		= \ln(N - \Np - \Nm) - \ln \Np, \\
-%		\pdv{S}{\Nm} &= -\frac{\Nm}{\Nm} - \ln \Nm + \frac{N - \Np - \Nm}{N - \Np - \Nm} + \ln(N - \Np - \Nm)
-%		= \ln(N - \Np - \Nm) - \ln \Nm, \\
-%	}
-%	so
-%	\eq{
-%		\frac{1}{T} = \frac{1}{\eps} \paren{ \pdv{S}{\Np} - \pdv{S}{\Nm} }
-%		\qimplies
-%		\frac{\eps}{T} = \ln \Nm - \ln \Np
-%		= \ln(\frac{\Nm}{\Np}).
-%	}
-%	Then the relationship between temperature and total energy is
-%	\eq{
-%		\ans{ E = T (\Np - \Nm) (\ln \Nm - \ln \Np). }
-%	}
-	
-	We will use the partition function $\Zii = \sum_n \exp(\eps_n / T)$~\cite[p.~87]{Landau}.  This is admissible even for a classical system because the energy levels in this problem are discrete.  For one particle in the three-level system, the partition function is
+	We will use the single-atom partition function $\Zii = \sum_n \exp(\eps_n / T)$~\cite[p.~87]{Landau}.  This is admissible even for a classical system because the energy levels in this problem are discrete.  For one particle in the three-level system, the partition function is
 	\eq{
 		\Zii = e^{-\eps / T} + 1 + e^{\eps / T}
 		= 1 + 2 \cosh(\frac{\eps}{T}),
@@ -286,21 +245,20 @@
 		Z = \prodiN \Zii = \brac{ 1 + 2 \cosh(\frac{\eps}{T}) }^N.
 	}
 	
-	The Helmholtz free energy can be found by $F = -T \ln Z$~\cite[p.~87]{Landau}.  $F$ relates to the entropy by~\cite[p.~47]{Landau}
-	\eq{
-		S = -\paren{ \pdv{F}{T} }_V.
+	The Helmholtz free energy can be found by $F = -T \ln Z$~\cite[p.~87]{Landau}.  The free energy relates to the entropy by ${S = -(\pdv*{F}{T})_V}$~\cite[p.~47]{Landau}.  This gives us an expression for the entropy:
+	\eqn{SfromZ}{
+		S = \pdv{T}(T \ln Z).
 	}
-	This gives us an expression for the entropy:
+	For the three-level system,
 	\al{
-		S &= \pdv{T}(T \ln Z)
-		= \ln Z + T \pdv{T} (\ln Z)
+		S &= \ln Z + T \pdv{T} (\ln Z)
 		= N \ln(1 + 2 \cosh(\frac{\eps}{T})) + N T \pdv{T} \ln(1 + 2 \cosh(\frac{\eps}{T})) \\
 		&= N \ln(1 + 2 \cosh(\frac{\eps}{T})) - N T \frac{\eps}{T^2} \frac{2 \sinh(\eps / T)}{1 + 2 \cosh(\eps / T)}
 		= \ans{ N \brac{ \ln(1 + 2 \cosh(\frac{\eps}{T})) - \frac{2 \eps}{T} \frac{\sinh(\eps / T)}{1 + 2 \cosh(\eps / T)} }. }
 	}
 	
 	The total energy of the system at equilibrium is, according to the lecture notes,
-	\eq{
+	\eqn{EfromZ}{
 		E = -\pdv{}{\bet} \ln Z,
 	}
 	where $\bet = 1 / T$.  Then we have
@@ -311,6 +269,10 @@
 	so the relationship between energy and temperature is
 	\eq{
 		\ans{ E = -2N \eps \frac{\sinh(\eps / T)}{1 + 2\cosh(\eps / T)}. }
+	}
+	We note also that
+	\eq{
+		S = N \ln(1 + 2 \cosh(\frac{\eps}{T})) + \frac{E}{T}.
 	}
 	
 	Let $u = \eps / T$.  Then
@@ -328,6 +290,7 @@
 		&\hspace{2.5in} - \frac{N \eps}{3} u^3 \brac{ \frac{\cosh(3u) + 12 \cosh(2u) - 12 \cosh u - 28}{(1 + 2 \cosh u)^4} }\suo + \order{u^4} \\
 		&= \ans{ N \eps \paren{-\frac{2 u}{3} + \frac{u^3}{9} + \order{u^4} }. }
 	}
+	
 	For the limit $T \ll \eps$, we take the limit as $u \to \infty$:
 	\al{
 		\limui S(u) &= N \limui \brac{ \ln(1 + e^{-u} + e^{u}) - 2 u \frac{\sinh u}{1 + 2 \cosh u} }

@@ -9,7 +9,7 @@
 %	1.1
 %
 
-\prob{}{ \label{prob1.1}
+\prob{}{
 	Find the probability $\pN(t, \alp)$ of observing exactly $\alp N$ of the $N$ particles in a fixed arc of length $t L$, where $t, \alp \in [0, 1]$.  (For $\alp = 0$ this is called \emph{gap} (or \emph{void}) \emph{formation probability}.)
 	
 	Find the leading behavior of the result in the limit $N \to \infty$ with $t, \alp$ fixed.  (You may use the Stirling formula $n! \approx n^n e^{-n} \sqrt{2\pi n}$.  A good sanity check for the answer is that $\int_0^1 \pN(t, \alp) \dd{\alp}$ evaluated with a computer should be 1.)
@@ -20,7 +20,7 @@
 \sol{
 	Consider a single particle $i$ on the circle.  The probability of observing it in an arc of length $t L$ is $p = t$.  This is equivalent to a Bernoulli trial with failure probability $q = 1 - p = 1 - t$.  The binomial distribution gives the probability of obtaining exactly $k$ successes out of $N$ such trials~\cite{Binomial}:
 	\eqn{binomial}{
-		P_p(k \,|\, N) = \mqty( N \\ k ) p^n q^{N - k}
+		P_p(k \,|\, N) = \binom{N}{k} p^n q^{N - k}
 		= \frac{N!}{k! \,(N - k)!} p^k (1 - p)^{N - k}.
 	}
 	Assuming $k = \alp N$ is an integer, the probability of observing $\alp N$ of the $N$ particles in this arc is given by
@@ -61,8 +61,8 @@
 \sol{
 	The mean of the binomial distribution is $\mu = N p$, and the variance is $\sig^2 = N p q$~\cite{Binomial}.  Thus, the mean and variance of Eq.~\refeq{exact} are,
 	\al{
-		\ans{\muB} &\ans{= Nt}, &
-		\ans{\sigB^2} &\ans{= N t (1 - t)},
+		\ans{\muB\ } &\ans{= Nt}, &
+		\ans{\sigB^2\ } &\ans{= N t (1 - t)},
 	}
 	which correspond to the average number of particles in $t L$ and the variance of that number, respectively.
 	

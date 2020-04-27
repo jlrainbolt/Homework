@@ -18,30 +18,189 @@
 
 
 
-\state{Quantum diatomic ideal gas}{
-	An ideal diatomic gas consists of non-interacting identical molecules $H = \sumiN \hi$ which have three independent degrees of freedom $h = \hK + \hV + \hR$. The first one is the kinetic energy of translational motion $\hK = \vp^2 / 2m$. The second is vibrational, i.e.~each molecule is an oscillator with $\hV = \pi^2/2 + \omg^2 q^2 / 2$. The third is rotational $\hR = \vL^2 / 2 I$, where $\vL$ is the angular momentum.  These three d.o.f.~can be treated independently.  Treat them as independent
-subsystems.
+\state{Quantum diatomic ideal gas}{}
+
+\prob{Classical system}{
+	An ideal diatomic gas consists of non-interacting identical molecules $H = \sumiN \hii$ which have three independent degrees of freedom $h = \hK + \hV + \hR$. The first one is the kinetic energy of translational motion $\hK = \vp^2 / 2m$. The second is vibrational, i.e.~each molecule is an oscillator with ${\hV = \pi^2/2 + \omg^2 q^2 / 2}$. The third is rotational $\hR = \vL^2 / 2 I$, where $\vL$ is the angular momentum.  These three d.o.f.~can be treated independently.  Treat them as independent subsystems.
 }
 
-\prob{}{
-	Compute for each d.o.f.~the equilibrium value of entropy as a function of energy.
+%
+%	3.1
+%
+
+\sol{
+	Let $(\pi, q) \to (\ppV, \qV)$ to avoid confusion.  For the rotational degrees of freedom, we will use the coordinates $\tht, \phi$ and the corresponding momenta $\ptht, \pphi$.  The coordinates are distinct since they concern different subsystems.  The Hamiltonians for each of the subsystems are
+	\al{
+		\HK &= \sumiN \frac{\vpii^2}{2m}, &
+		\HV &= \sumiN \frac{{\ppV}_i^2}{2} + \frac{\omg^2 {\qV}_i^2}{2}, &
+		\HR &= \sumiN \frac{1}{2I} \paren{ {\ptht}_i^2 + \frac{{\pphi}_i^2}{\sin^2\tht_i} }
+	}
+	\clearpage
+	All three subsystems have per-particle energies that are not quantized.  The general expression for the partition function in this case is~\cite[p.~55-56]{Pathria}
+	\eq{
+		Z = \frac{1}{N!} \prodiN \Zii
+		= \frac{1}{N!} \paren{ \frac{1}{(2\pi\hbar)^s} \iint e^{-\bet h} \dd[s]{p} \dd[s]{q} }^N,
+	}
+	where $s$ is the number of degrees of freedom of the particle.  The kinetic subsystem has three d.o.f., the vibrational subsystem has one d.o.f., and the rotational subsystem has two d.o.f.~(since a diatomic molecule is azimuthally symmetric).
+	
+	For each of the three subsystems, we find the single-particle partition functions~\cite[p.~55-56, 65]{Pathria}~\cite[p.~160]{Kardar}
+	\al{
+		\ZKii &= \frac{1}{(2\pi\hbar)^3} \iint e^{-p^2 / 2 m T} \dcp \dcq
+		= \frac{4\pi V}{(2\pi\hbar)^3} \intoi p^2 e^{-p^2 / 2 m T} \dcp
+		= \frac{V}{(2\pi\hbar)^3} \paren{ \frac{2\pi m}{\bet} }^{3/2}
+		= \frac{V}{\hbar^3} \paren{ \frac{m T}{2\pi} }^{3/2}, \\[2ex]
+		\ZVii &= \frac{1}{2\pi\hbar} \iint \exp(-\bet \frac{\ppV^2 + \omg^2 \qV}{2}) \dd{\ppV} \dd{\qV}
+		= \frac{1}{2\pi\hbar} \sqrt{\frac{2\pi}{\bet \omg^2}} \sqrt{\frac{2\pi}{\bet}}
+		= \frac{T}{\hbar \omg}, \\[2ex]
+		\ZRii &= \frac{1}{(2\pi\hbar)^2} \int_0^\pi \dd{\tht} \int_0^{2\pi} \dd{\phi} \iint \exp[-\frac{\bet}{2I} \paren{ \ptht^2 + \frac{\pphi^2}{\sin^2\tht} }] \dd{\ptht} \dd{\pphi}
+		= \frac{2\pi I}{\bet} \frac{4\pi}{(2\pi\hbar)^2}
+		= \frac{2 I T}{\hbar^2},
+	}
+	so the partition functions for each system are
+	\al{
+		\ZK &= \frac{1}{N!} \brac{ \frac{V}{\hbar^3} \paren{ \frac{m T}{2\pi} }^{3/2} }^N, &
+		\ZV &= \frac{1}{N!} \paren{ \frac{T}{\hbar \omg} }^N, &
+		\ZR &= \frac{1}{N!} \paren{ \frac{2 I T}{\hbar^2} }^N.
+	}
+	
+	Let $\EK$, $\EV$ and $\ER$ be the total energies of the respective subsystems.  The energy at equilibrium can be found by Eq.~\refeq{EfromZ}.  This yields
+	\aln{
+		\EK &= -\pdv{\bet} \ln \ZK
+		= -\pdv{\bet} \brac{ N \ln(\frac{V}{\hbar^3}) + \frac{3 N}{2} \ln(\frac{m}{2\pi}) - \frac{3 N}{2} \ln \bet - \ln N! }
+		= -\frac{3}{2} \frac{N}{\beta}
+		= \frac{3}{2} N T, \label{EK3.1} \\[2ex]
+		\EV &= -\pdv{\bet} \ln \ZV
+		= -\pdv{\bet} \paren{ -N \ln(\hbar \omg) - N \ln \bet - \ln N! }
+		= \frac{N}{\bet}
+		= N T, \label{EV3.1} \\[2ex]
+		\ER &= -\pdv{\bet} \ln \ZR
+		= -\pdv{\bet} \paren{ N \ln(\frac{2 I}{\hbar^2}) - N \ln \bet - \ln N!}
+		= \frac{N}{\bet}
+		= NT. \label{ER3.1}
+	}
+	\vfix
 }
 
-\prob{}{
-	Compute for each d.o.f.~the equilibrium value of energy as a function of entropy.
+%
+%	3.1.1
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of entropy as a function of energy.
 }
 
-\prob{}{
-	Compute for each d.o.f.~the equilibrium value of entropy as a function of temperature.
+\sol{
+	The entropy can be found by Eq.~\refeq{SfromZ}.  For each subsystem, we find
+	\aln{
+		\SK &= \pdv{T} (T \ln \ZK)
+		= \ln \ZK + T \pdv{T}(\ln \ZK) \notag \\
+		&= N \ln(\frac{V}{\hbar^3} \paren{ \frac{mT}{2\pi}}^{3/2}) - \ln N! + T \pdv{T} \brac{ N \ln(\frac{V}{\hbar^3}) + \frac{3 N}{2} \ln(\frac{m}{2\pi}) + \frac{3 N}{2} \ln T - \ln N! } \notag \\
+		&\approx N \ln(\frac{V}{\hbar^3} \paren{ \frac{mT}{2\pi}}^{3/2}) - N \ln N + N + T \frac{3}{2} \frac{N}{T}
+		= \ans{ N \ln(\frac{V}{N \hbar^3} \paren{ \frac{m \EK}{3N\pi}}^{3/2}) + \frac{5N}{2}, } \label{SK3.1}
+	}
+	\aln{
+		\SV &= \pdv{T} (T \ln \ZV)
+		= \ln \ZV + T \pdv{T}(\ln \ZV)
+		= N \ln(\frac{T}{\hbar\omg}) - \ln N! + T \pdv{T} \brac{ N \ln(T) - N \ln(\hbar \omg) - \ln N! } \notag \\
+		&\approx N \ln(\frac{T}{\hbar\omg}) - N \ln N + N + T \frac{N}{T}
+		= \ans{ N \ln(\frac{\EV}{N^2 \hbar\omg}) + 2N, } \label{SV3.1} \\[2ex]
+		\SR &= \pdv{T} (T \ln \ZR)
+		= \ln \ZR + T \pdv{T}(\ln \ZR)
+		= N \ln(\frac{2 I T}{\hbar^2}) - \ln N! + T \pdv{T} \paren{ N \ln(\frac{2 I}{\hbar^2}) + N \ln T - \ln N!} \notag \\
+		&\approx N \ln(\frac{2 I T}{\hbar^2}) - N \ln N + N + T \frac{N}{T}
+		= \ans{ N \ln(\frac{2 I \ER}{N^2 \hbar^2}) + 2N, } \label{SR3.1}
+	}
+	where we have eliminated $T$ using Eqs.~(\ref{EK3.1}--\ref{ER3.1}).
 }
 
-\prob{}{
-	Compute for each d.o.f.~the equilibrium value of free energy as a function of temperature.
+%
+%	3.1.2
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of energy as a function of entropy.
 }
 
-\prob{}{
+\sol{
+	We need to solve Eqs.~(\ref{SK3.1}--\ref{SR3.1}) for $\EK$, $\EV$, and $\ER$:
+	\al{
+%		\frac{\SK}{N} - \frac{5}{2} &= \ln(\frac{V}{N \hbar^3} \paren{ \frac{m \EK}{3N\pi}}^{3/2})
+%		\qimplies
+		e^{\SK / N - 5/2} = \frac{V}{N \hbar^3} \paren{ \frac{m \EK}{3N\pi}}^{3/2}
+		&\qimplies
+		\ans{ \EK = \frac{3N \pi}{m} \paren{ \frac{N \hbar^3}{V} e^{\SK / N - 5/2} }^{2/3}, } \\[2ex]
+%		\frac{\SV}{N} - 2 = \ln(\frac{\EV}{N^2 \hbar\omg})
+%		\qimplies
+		e^{\SV / N - 2} = \frac{\EV}{N^2 \hbar\omg}
+		&\qimplies
+		\ans{ \EV = N^2 \hbar \omg e^{\SV / N - 2}, } \\[2ex]
+%		\frac{\SR}{N} - 2 = \ln(\frac{2 I \ER}{N^2 \hbar^2})
+%		\qimplies
+		e^{\SR / N - 2} = \frac{2 I \ER}{N^2 \hbar^2}
+		&\qimplies
+		\ans{ \ER = \frac{N^2 \hbar^2}{2I} e^{\SR / N - 2}. }
+	}
+	\vfix
+}
+
+%
+%	3.1.3
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of entropy as a function of temperature.
+}
+
+\sol{
+	We already did this work in Prob.~{3.1.1}, where we found
+	\al{
+			\ans{ \SK\ } &\ans{\approx N \ln(\frac{V}{N \hbar^2} \paren{ \frac{mT}{2\pi} }^{3/2}) + \frac{5N}{2}, } &
+			\ans{ \SV\ } &\ans{\approx N \ln(\frac{T}{N \hbar \omg}) + 2N, }&
+			\ans{ \SR\ } &\ans{\approx N \ln(\frac{2 I T}{N \hbar^2}) + 2N. }
+	}
+	\vfix
+}
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of free energy as a function of temperature.
+}
+
+\sol{
+	Recall from Prob.{2.1} that $F = -T \ln Z$.  Then we have
+	\al{
+		\FK &= -T \brac{ N \ln(\frac{V}{\hbar^3} \paren{ \frac{m T}{2\pi} }^{3/2}) - \ln N! }
+		\approx \ans{ NT \brac{ \ln(\frac{N \hbar^3}{V} \paren{ \frac{m T}{2\pi} }^{3/2}) - 1 } }, \\[2ex]
+		\FV &= -T \brac{ N \ln(\frac{T}{\hbar \omg}) - \ln N! }
+		\approx \ans{ NT \brac{ \ln(\frac{N \hbar \omg}{T}) - 1 }, } \\[2ex]
+		\FR &= -T \brac{ N \ln(\frac{2 I T}{\hbar^2}) - \ln N! }
+		\approx \ans{ NT \brac{ \ln(\frac{N \hbar^2}{2 I T}) - 1 }. }
+	}
+	\vfix
+}
+
+\prob{Quantum system}{
 	Now consider all systems as quantum and repeat the calculations.  This means that the momentum $\vp$ is quantized, each component of momentum taking the values $\pk = (2 \pi \hbar / L) k$, where $k$ is an arbitrary integer and $L$ is the linear size of the box.  Similarly, the
-energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, and the square of the angular momentum as $L^2 = \hbar^2 l (l + 1)$, where $l$ is a non-negative integer.  Discuss the quantum (low temperature) and the classical (high temperature) limits.
+energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, and the square of the angular momentum as $L^2 = \hbar^2 l (l + 1)$, where $l$ is a non-negative integer.
+}
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of entropy as a function of energy.
+}
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of energy as a function of entropy.
+}
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of entropy as a function of temperature.
+}
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of free energy as a function of temperature.
+}
+
+\subprob{}{
+	Discuss the quantum (low temperature) and the classical (high temperature) limits.
 }
 
 \makebib

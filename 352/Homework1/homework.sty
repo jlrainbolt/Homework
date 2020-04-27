@@ -47,29 +47,35 @@
 
 % Environments
 
+\newcommand{\probcolor}{black!60}
+
 \newenvironment{statement}[1]
 {
+	\color{black}
 	\section{#1}
-	\color{darkgray}
+	\color{\probcolor}
 	\ignorespaces
 }
 
 \newenvironment{problem}[1]
 {
+	\color{black}
 	\subsection{#1}
-	\color{darkgray}
+	\color{\probcolor}
 	\ignorespaces
 }
 
 \newenvironment{subproblem}
 {
+	\color{black}
 	\subsubsection{}
-	\color{darkgray}
+	\color{\probcolor}
 	\ignorespaces
 }
 
 \newenvironment{solution}
 {
+	\color{black}
 	\paragraph{Solution.}
 	\ignorespaces
 }
