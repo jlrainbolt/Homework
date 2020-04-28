@@ -43,4 +43,9 @@ R.~K. Pathria and P.~D. Beale, ``Statistical Mechanics''.
 M.~Kardar, ``Statistical Physics of Particles''.
 \newblock Cambridge University Press, 1st edition, 2007.
 
+\bibitem{Series}
+\href {https://mathworld.wolfram.com/GeometricSeries.html}{E.~W. Weisstein,
+  ``Geometric Series.''} From MathWorld---A Wolfram Web Resource.
+\newblock \url {https://mathworld.wolfram.com/GeometricSeries.html}.
+
 \end{thebibliography}\endgroup

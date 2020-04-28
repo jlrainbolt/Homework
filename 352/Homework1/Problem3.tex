@@ -1,0 +1,374 @@
+\state{Quantum diatomic ideal gas}{}
+
+\prob{Classical system}{
+	An ideal diatomic gas consists of non-interacting identical molecules $H = \sumiN \hii$ which have three independent degrees of freedom $h = \hK + \hV + \hR$. The first one is the kinetic energy of translational motion $\hK = \vp^2 / 2m$. The second is vibrational, i.e.~each molecule is an oscillator with ${\hV = \pi^2/2 + \omg^2 q^2 / 2}$. The third is rotational $\hR = \vL^2 / 2 I$, where $\vL$ is the angular momentum.  These three d.o.f.~can be treated independently.  Treat them as independent subsystems.
+}
+
+%
+%	3.1
+%
+
+\sol{
+	Let $(\pi, q) \to (\ppV, \qV)$ to avoid confusion.  For the rotational degrees of freedom, we will use the coordinates $\tht, \phi$ and the corresponding momenta $\ptht, \pphi$.  The coordinates are distinct since they concern different subsystems.  The Hamiltonians for each of the subsystems are
+	\al{
+		\HK &= \sumiN \frac{\vpii^2}{2m}, &
+		\HV &= \sumiN \frac{{\ppV}_i^2}{2} + \frac{\omg^2 {\qV}_i^2}{2}, &
+		\HR &= \sumiN \frac{1}{2I} \paren{ {\ptht}_i^2 + \frac{{\pphi}_i^2}{\sin^2\tht_i} }
+	}
+	All three subsystems have per-particle energies that are not quantized.  The general expression for the partition function in this case is~\cite[pp.~55--56]{Pathria}
+	\eq{
+		Z = \frac{1}{N!} \prodiN \Zii
+		= \frac{1}{N!} \paren{ \frac{1}{(2\pi\hbar)^s} \iint e^{-\bet h} \dd[s]{p} \dd[s]{q} }^N,
+	}
+	where $s$ is the number of degrees of freedom of the particle.  The kinetic subsystem has three d.o.f., the vibrational subsystem has one d.o.f., and the rotational subsystem has two d.o.f.~(since a diatomic molecule is azimuthally symmetric).
+	
+	For each of the three subsystems, we find the single-particle partition functions~\cite[pp.~55--56, 65]{Pathria}~\cite[pp.~158--160]{Kardar}
+	\al{
+		\ZKii &= \frac{1}{(2\pi\hbar)^3} \iint e^{-\bet p^2 / 2 m} \dcp \dcq
+		= \frac{4\pi V}{(2\pi\hbar)^3} \intoi p^2 e^{-\bet p^2 / 2 m} \dcp
+		= \frac{V}{(2\pi\hbar)^3} \paren{ \frac{2\pi m}{\bet} }^{3/2}
+		= \frac{V}{\hbar^3} \paren{ \frac{m T}{2\pi} }^{3/2}, \\[2ex]
+		\ZVii &= \frac{1}{2\pi\hbar} \iint \exp(-\bet \frac{\ppV^2 + \omg^2 \qV}{2}) \dd{\ppV} \dd{\qV}
+		= \frac{1}{2\pi\hbar} \sqrt{\frac{2\pi}{\bet \omg^2}} \sqrt{\frac{2\pi}{\bet}}
+		= \frac{T}{\hbar \omg}, \\[2ex]
+		\ZRii &= \frac{1}{(2\pi\hbar)^2} \int_0^\pi \dd{\tht} \int_0^{2\pi} \dd{\phi} \iint \exp[-\frac{\bet}{2I} \paren{ \ptht^2 + \frac{\pphi^2}{\sin^2\tht} }] \dd{\ptht} \dd{\pphi}
+		= \frac{2\pi I}{\bet} \frac{4\pi}{(2\pi\hbar)^2}
+		= \frac{2 I T}{\hbar^2},
+	}
+	so the partition functions for each system are
+	\aln{ \label{Z3.1}
+		\ZK &= \frac{1}{N!} \brac{ \frac{V}{\hbar^3} \paren{ \frac{m T}{2\pi} }^{3/2} }^N, &
+		\ZV &= \frac{1}{N!} \paren{ \frac{T}{\hbar \omg} }^N, &
+		\ZR &= \frac{1}{N!} \paren{ \frac{2 I T}{\hbar^2} }^N.
+	}
+	
+	Let $\EK$, $\EV$ and $\ER$ be the total energies of the respective subsystems.  The energy at equilibrium can be found by Eq.~\refeq{EfromZ}.  This yields
+	\aln{
+		\EK &= -\pdv{\bet} \ln \ZK
+		= -\pdv{\bet} \brac{ N \ln(\frac{V}{\hbar^3}) + \frac{3 N}{2} \ln(\frac{m}{2\pi}) - \frac{3 N}{2} \ln \bet - \ln N! }
+		= -\frac{3}{2} \frac{N}{\beta}
+		= \frac{3}{2} N T, \label{EK3.1} \\[2ex]
+		\EV &= -\pdv{\bet} \ln \ZV
+		= -\pdv{\bet} \paren{ -N \ln(\hbar \omg) - N \ln \bet - \ln N! }
+		= \frac{N}{\bet}
+		= N T, \label{EV3.1} \\[2ex]
+		\ER &= -\pdv{\bet} \ln \ZR
+		= -\pdv{\bet} \paren{ N \ln(\frac{2 I}{\hbar^2}) - N \ln \bet - \ln N!}
+		= \frac{N}{\bet}
+		= NT. \label{ER3.1}
+	}
+	\vfix
+}
+
+%
+%	3.1.1
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of entropy as a function of energy.
+}
+
+\sol{
+	The entropy can be found by Eq.~\refeq{SfromZ}.  For each subsystem, we find
+	\aln{
+		\SK &= \pdv{T} (T \ln \ZK)
+		= \ln \ZK + T \pdv{T}(\ln \ZK) \notag \\
+		&= N \ln(\frac{V}{\hbar^3} \paren{ \frac{mT}{2\pi}}^{3/2}) - \ln N! + T \pdv{T} \brac{ N \ln(\frac{V}{\hbar^3}) + \frac{3 N}{2} \ln(\frac{m}{2\pi}) + \frac{3 N}{2} \ln T - \ln N! } \notag \\
+		&\approx N \ln(\frac{V}{\hbar^3} \paren{ \frac{mT}{2\pi}}^{3/2}) - N \ln N + N + T \frac{3}{2} \frac{N}{T}
+		= \ans{ N \ln(\frac{V}{N \hbar^3} \paren{ \frac{m \EK}{3N\pi}}^{3/2}) + \frac{5N}{2}, } \label{SK3.1} \\[2ex]
+		\SV &= \pdv{T} (T \ln \ZV)
+		= \ln \ZV + T \pdv{T}(\ln \ZV)
+		= N \ln(\frac{T}{\hbar\omg}) - \ln N! + T \pdv{T} \brac{ N \ln(T) - N \ln(\hbar \omg) - \ln N! } \notag \\
+		&\approx N \ln(\frac{T}{\hbar\omg}) - N \ln N + N + T \frac{N}{T}
+		= \ans{ N \ln(\frac{\EV}{N^2 \hbar\omg}) + 2N, } \label{SV3.1}
+	}
+	\aln{
+		\SR &= \pdv{T} (T \ln \ZR)
+		= \ln \ZR + T \pdv{T}(\ln \ZR)
+		= N \ln(\frac{2 I T}{\hbar^2}) - \ln N! + T \pdv{T} \paren{ N \ln(\frac{2 I}{\hbar^2}) + N \ln T - \ln N!} \notag \\
+		&\approx N \ln(\frac{2 I T}{\hbar^2}) - N \ln N + N + T \frac{N}{T}
+		= \ans{ N \ln(\frac{2 I \ER}{N^2 \hbar^2}) + 2N, } \label{SR3.1}
+	}
+	where we have eliminated $T$ using Eqs.~(\ref{EK3.1}--\ref{ER3.1}).
+}
+
+%
+%	3.1.2
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of energy as a function of entropy.
+}
+
+\sol{
+	We need to solve Eqs.~(\ref{SK3.1}--\ref{SR3.1}) for $\EK$, $\EV$, and $\ER$:
+	\aln{
+%		\frac{\SK}{N} - \frac{5}{2} &= \ln(\frac{V}{N \hbar^3} \paren{ \frac{m \EK}{3N\pi}}^{3/2})
+%		\qimplies
+		e^{\SK / N - 5/2} = \frac{V}{N \hbar^3} \paren{ \frac{m \EK}{3N\pi}}^{3/2}
+		&\qimplies
+		\ans{ \EK = \frac{3N \pi}{m} \paren{ \frac{N \hbar^3}{V} e^{\SK / N - 5/2} }^{2/3}, } \label{EK3.1.2} \\[2ex]
+%		\frac{\SV}{N} - 2 = \ln(\frac{\EV}{N^2 \hbar\omg})
+%		\qimplies
+		e^{\SV / N - 2} = \frac{\EV}{N^2 \hbar\omg}
+		&\qimplies
+		\ans{ \EV = N^2 \hbar \omg e^{\SV / N - 2}, } \label{EV3.1.2} \\[2ex]
+%		\frac{\SR}{N} - 2 = \ln(\frac{2 I \ER}{N^2 \hbar^2})
+%		\qimplies
+		e^{\SR / N - 2} = \frac{2 I \ER}{N^2 \hbar^2}
+		&\qimplies
+		\ans{ \ER = \frac{N^2 \hbar^2}{2I} e^{\SR / N - 2}. } \label{ER3.1.2}
+	}
+	\vfix
+}
+
+%
+%	3.1.3
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of entropy as a function of temperature.
+}
+
+\sol{
+	We already did this work in Prob.~{3.1.1}, where we found
+	\aln{ \label{S3.1.3}
+			\ans{ \SK\ } &\ans{\approx N \ln(\frac{V}{N \hbar^2} \paren{ \frac{mT}{2\pi} }^{3/2}) + \frac{5N}{2}, } &
+			\ans{ \SV\ } &\ans{\approx N \ln(\frac{T}{N \hbar \omg}) + 2N, }&
+			\ans{ \SR\ } &\ans{\approx N \ln(\frac{2 I T}{N \hbar^2}) + 2N. }
+	}
+	\vfix
+}
+
+%
+%	3.1.4
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of free energy as a function of temperature.
+}
+
+\sol{
+	Recall from Prob.~{2.1} that $F = -T \ln Z$.  Then we have
+	\aln{
+		\FK &= -T \brac{ N \ln(\frac{V}{\hbar^3} \paren{ \frac{m T}{2\pi} }^{3/2}) - \ln N! }
+		\approx \ans{ NT \brac{ \ln(\frac{N \hbar^3}{V} \paren{ \frac{2\pi}{m T} }^{3/2}) - 1 } }, \label{FK3.1.4} \\[2ex]
+		\FV &= -T \brac{ N \ln(\frac{T}{\hbar \omg}) - \ln N! }
+		\approx \ans{ NT \brac{ \ln(\frac{N \hbar \omg}{T}) - 1 }, } \label{FV3.1.4} \\[2ex]
+		\FR &= -T \brac{ N \ln(\frac{2 I T}{\hbar^2}) - \ln N! }
+		\approx \ans{ NT \brac{ \ln(\frac{N \hbar^2}{2 I T}) - 1 }. } \label{FR3.1.4}
+	}
+	\vfix
+}
+
+
+
+%
+%	3.2
+%
+
+\prob{Quantum system}{
+	Now consider all systems as quantum and repeat the calculations.  This means that the momentum $\vp$ is quantized, each component of momentum taking the values $\pk = (2 \pi \hbar / L) k$, where $k$ is an arbitrary integer and $L$ is the linear size of the box.  Similarly, the
+energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, and the square of the angular momentum as $L^2 = \hbar^2 l (l + 1)$, where $l$ is a non-negative integer.  Discuss the quantum (low temperature) and the classical (high temperature) limits.
+}
+
+\sol{
+	The eigenvalues for each Hamiltonian are
+	\al{
+		\EKk &= \frac{(2\pi\hbar)^2 k^2}{2 m L^2}, &
+		\EVn &= \paren{ n + \frac{1}{2} } \hbar \omg, &
+		\ERl &= \frac{\hbar^2 l (l + 1)}{2 I}
+	}
+	where $k = 0, \pm1, \pm2, \ldots$ and $n, l = 0, 1, 2, \ldots$.  In quantum statistical mechanics, the single-particle partition function $\Zii = \Tr[\exp(-\bet H)]$~\cite[p.~87]{Landau}.
+	
+	For the kinetic subsystem, the partition function for a single particle is
+	\al{
+		\ZKii &= \Tr(e^{-\bet \HK})
+		= \sumki e^{-\bet \EKk}
+		= \sumki \exp(-\bet \frac{(2\pi\hbar)^2 k^2}{2 m L^2})
+		= \sumki \exp(-\frac{(2\pi\hbar)^2 k^2}{2 m L^2 T}).
+	}
+	In the high-temperature limit, we assume that the energy levels are closely spaced, so we can approximate the sum as an integral~\cite[p.~124]{Pathria}:
+	\al{
+		\limTi \ZKii &= \int \exp(-\frac{(2\pi\hbar)^2 k^2}{2 m L^2 T}) \dd[3]{k}
+		= \frac{1}{2^3} \intoi 4\pi k^2 \exp(-\frac{(2\pi\hbar)^2 k^2}{2 m L^2 T}) \dd{k}
+%		= \frac{\pi}{2} \frac{2 m L^2 T}{(2\pi \hbar)^2} \intoi u^2 e^{-u} \frac{L \sqrt{2 m T}}{2\pi\hbar} \dd{u} 
+		= \frac{\pi}{2} \frac{L^3 (2 m T)^{3/2}}{(2\pi \hbar)^3} \intoi u^2 e^{-u} \dd{u} \\
+		&= \frac{V}{\hbar^3} \paren{ \frac{m T}{2\pi} }^{3/2},
+	}
+	where we have made the substitution $u = (2\pi \hbar / \sqrt{2 m L^2 T}) k$.  In the low-temperature limit, we may take the first few ($n = 0, \pm 1, \pm 2$) terms of the series:
+	\eq{
+		\limTo \ZKii = 1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) + 6 \exp(-\frac{2 (2\pi\hbar)^2}{m V^{3/2} T}) + \order{\exp(-\frac{9 (2\pi\hbar)^2}{2 m V^{3/2} T})}.
+	}
+
+	For the vibrational subsystem, the partition function for a single particle is
+	\al{
+		\ZVii &= \Tr(e^{-\bet \HV})
+		= \sumni e^{-\bet \EVn}
+		= \sumni \exp[-\bet \hbar \omg \paren{ n + \frac{1}{2} }]
+		= e^{-\bet \hbar \omg / 2} \sumni (e^{-\bet \hbar \omg})^n
+		= \frac{e^{-\bet \hbar \omg / 2}}{1 - e^{-\bet \hbar \omg}} \\
+		&= \frac{e^{-\hbar \omg / 2 T}}{1 - e^{-\hbar \omg / T}}
+	}
+	where we have used the geometric series~\cite{Series}
+	\eq{
+		\sum_{n=0}^k r^k = \frac{1 - r^{n+1}}{1 - r}.
+	}
+	In the high-temperature limit,~\cite[p.~159]{Kardar}
+	\eq{
+		\limTi \ZVii = \frac{T}{\hbar \omg}.
+	}
+	In the low-temperature limit, we take the first few terms of the series:
+	\eq{
+		\limTo \ZVii = e^{-\hbar \omg / 2 T} + e^{-3 \hbar \omg / 2 T} + \order{e^{-5 \hbar \omg / 2 T}}.
+	}
+	
+	For the rotational subsystem, each energy has degeneracy $(2l + 1)$, so the single-particle partition function is~\cite[p.~160]{Kardar}
+	\al{
+		\ZRii &= \Tr[(2l + 1) e^{-\bet \HR}]
+		= \sumli (2l + 1) e^{-\bet \ERl}
+		= \sumli (2l + 1) \exp(-\bet \frac{\hbar^2 l (l + 1)}{2 I}) \\
+		&= \sumli (2l + 1) \exp(-\frac{\hbar^2 l (l + 1)}{2 I T}),
+	}
+	which is not a geometric series, so we will evaluate the low- and high-temperature limits.  For $T \to \infty$, the terms of $\ZRii$ vary slowly, so the sum can be approximated by an integral~\cite[p.~160]{Kardar}:
+	\eq{
+		\limTi \ZRii = \intoi (2l + 1) \exp(-\frac{\hbar^2 l (l + 1)}{2 I T}) \dl
+		= \intoi \exp(-\frac{\hbar^2}{2 I T} u) \du
+		= \frac{2 I T}{\hbar^2},
+	}
+	where we have made the substitution $u = l (l + 1)$, which implies $\du = (2l + 1)\dl$.  For $T \to 0$, we need only consider the first few terms~\cite[p.~161]{Kardar}:
+	\eq{
+		\limTo \ZRii = 1 + 3 e^{-\hbar^2 / I T} + 5 e^{-3 \hbar^2 / I T} + \order{e^{-6 \hbar^2 / I T}}.
+	}
+	
+	In summary, we have the high-energy partition functions
+	\al{
+		\limTi \ZK &= \frac{1}{N!} \brac{ \frac{V}{\hbar^3} \paren{ \frac{m T}{2\pi} }^{3/2} }^N, &
+		\limTi \ZV &= \frac{1}{N!} \paren{ \frac{T}{\hbar \omg} }^N, &
+		\limTi \ZR &= \frac{1}{N!} \paren{ \frac{2 I T}{\hbar^2} }^N,
+	}
+	which are the same as the classical partition functions in Eq.~\refeq{Z3.1}.  Therefore, the energies for this limit are given by Eqs.~(\ref{EK3.1}--\ref{ER3.1}).
+	
+	We also have the low-energy partition functions
+	\al{
+		\limTo \ZK &\approx \brac{ 1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) }^N, &
+		\limTo \ZV &\approx \paren{ e^{-\hbar \omg / 2 T} }^N, &
+		\limTo \ZR &\approx \paren{ 1 + 3 e^{-\hbar^2 / I T} }^N,
+	}
+	whose energies we can find using Eq.~\refeq{EfromZ}.  We find~\cite[p.~161]{Kardar}
+	\aln{
+		\limTo \EK &= -\pdv{\bet} (\ln \ZK)
+		\approx -\pdv{\bet} \brac{ N \ln(1 + 6 e^{-(2\pi\hbar)^2 \bet / 2 m V^{3/2}}) }
+		= N \frac{6 (2\pi\hbar)^2}{2 m V^{3/2}} \frac{e^{-(2\pi\hbar)^2 \bet / 2 m V^{3/2}}}{1 + 6 e^{-(2\pi\hbar)^2 \bet / 2 m V^{3/2}}} \notag \\
+		&\approx 3 N \frac{(2\pi\hbar)^2}{m V^{3/2}} \exp(-\frac{(2\pi\hbar)^2 \bet}{2 m V^{3/2}}), \label{EK3.2} \\[2ex]
+		\limTo \EV &= -\pdv{\bet} (\ln \ZV)
+		\approx -\pdv{\bet} \paren{ -N \frac{\hbar \omg \bet}{2} }
+		= N \frac{\hbar \omg}{2} \label{EV3.2}, \\[2ex]
+		\limTo \ER &= -\pdv{\bet} (\ln \ZR)
+		\approx -\pdv{\bet} \brac{ N \ln(1 + 3 e^{-\hbar^2 \bet / I}) }
+		= -N \frac{3 \hbar^2}{I} \frac{e^{-\hbar^2 \bet / I}}{1 + 3 e^{-\hbar^2 \bet / I}}
+		\approx 3N \frac{\hbar^2}{I} e^{-\hbar^2 \bet / I}. \label{ER3.2}
+	}
+	Solving the expressions for $\bet$, we find
+	\eqn{TK3.1}{
+		\frac{m V^{3/2}}{(2\pi\hbar)^2} \frac{\EK}{3 N} \approx e^{-(2\pi\hbar)^2 \bet / 2 m V^{3/2}}
+		\implies
+		-\frac{(2\pi\hbar)^2 \bet}{2 m V^{3/2}} \approx \ln(\frac{m V^{3/2} \EK}{3 N (2\pi\hbar)^2})
+		\implies
+		\bet \approx \frac{2 m V^{3/2}}{(2\pi\hbar)^2} \ln(\frac{3 N (2\pi\hbar)^2}{m V^{3/2} \EK}),
+	}
+	\eqn{TR3.1}{
+		\frac{\ER}{3N} \frac{I}{\hbar^2} \approx e^{-\hbar^2 \bet / I}
+		\qimplies
+		-\frac{\hbar^2 \bet}{I} \approx \ln(\frac{I \ER}{3 N \hbar^2})
+		\qimplies
+		\bet \approx \frac{I}{\hbar^2} \ln(\frac{3 N \hbar^2}{I \ER}).
+	}
+	\vfix
+}
+
+%
+%	3.2.1
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of entropy as a function of energy.
+}
+
+\sol{
+	In the high-temperature limit, the quantum partition functions are identical to the classical partition functions.  Thus, the entropies as a function of energy for each case are given by \ans{ Eqs.~(\ref{SK3.1}--\ref{SR3.1}). }
+	
+	In the low-temperature limit, we use Eq.~\refeq{SfromZ} to find the entropy:
+	\aln{
+		\limTo \SK &= \pdv{T}(T \ln \ZK) = \ln \ZK + T \pdv{T}(\ln \ZK)
+		\approx \ln\ZK + T \pdv{T} \brac{ N \ln(1 + 6 e^{-(2\pi\hbar)^2 / 2 m V^{3/2} T}) } \notag \\
+		&\approx N \ln(1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) ) + \frac{3 N}{T} \frac{(2\pi\hbar)^2}{m V^{3/2}} \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) \notag \\
+		&= \ans{ N \ln(1 + 2 \frac{m V^{3/2} \EK}{N (2\pi\hbar)^2}) + 2 \frac{m V^{3/2} \EK}{(2\pi\hbar)^2} \ln(\frac{3 N (2\pi\hbar)^2}{m V^{3/2} \EK}), } \label{SK3.2} \\[2ex]
+		\limTo \SV &= \pdv{T}(T \ln \ZV) = \ln \ZV + T \pdv{T}(\ln \ZV)
+		= -N \frac{\hbar \omg}{2 T} + T \pdv{T} \paren{ -N \frac{\hbar \omg}{2 T} }
+		= -N \frac{\hbar \omg}{2 T} + \frac{N}{2} \frac{\hbar \omg}{T}
+		= \ans{ 0, } \label{SV3.2} \\[2ex]
+		\limTo \SR &= \pdv{T}(T \ln \ZR) = \ln \ZR + T \pdv{T}(\ln \ZR)
+		= N \ln(1 + 3 e^{-\hbar^2 / I T}) + T \pdv{T} \brac{ N \ln(1 + 3 e^{-\hbar^2 / I T}) } \notag \\
+		&\approx N \ln(1 + 3 e^{-\hbar^2 / I T}) + \frac{3 N}{T} \frac{\hbar^2}{I} e^{-\hbar^2 \bet / I}
+		= \ans{ N \ln(1 + \frac{I \ER}{N \hbar^2}) + \frac{I \ER}{\hbar^2} \ln(\frac{3 N \hbar^2}{I \ER}), } \label{SR3.2}
+	}
+	where we have eliminated $T$ using Eqs.~(\ref{TK3.1}--\ref{TR3.1}).
+}
+
+%
+%	3.2.2
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of energy as a function of entropy.
+}
+
+\sol{
+	For the high-temperature limit, the results here are the same as the classical ones in \ans{ Eqs.~(\ref{EK3.1.2}--\ref{ER3.1.2}). }
+	
+	For the low temperature limit, we need to solve Eqs.~(\ref{SK3.2}--\ref{SR3.2}) for $\EK$, $\EV$, and $\ER$.  I do not know how to do this.
+}
+
+%
+%	3.2.3
+%
+
+\subprob{}{
+	Compute for each subsystem the equilibrium value of entropy as a function of temperature.
+}
+
+\sol{
+	For the high-temperature limit, the results are the same as the classical ones in \ans{ Eq.~\refeq{S3.1.3}. }
+
+	For the low-temperature limit, we already did this work in Prob.~{3.2.1}, where we found
+	\al{
+		\ans{ \limTo \SK\ } &\ans{\approx N \ln(1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) ) + \frac{3 N}{T} \frac{(2\pi\hbar)^2}{m V^{3/2}} \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}), } \\
+		\ans{ \limTo \SV\ } &\ans{\approx 0, } \\
+		\ans{ \limTo \SR\ } &\ans{\approx N \ln(1 + 3 e^{-\hbar^2 / I T}) + \frac{3 N}{T} \frac{\hbar^2}{I} e^{-\hbar^2 \bet / I} . }
+	}
+	\vfix
+}
+
+%
+%	3.2.4
+%
+\clearpage
+\subprob{}{
+	Compute for each subsystem the equilibrium value of free energy as a function of temperature.
+}
+
+\sol{
+	For the high-temperature limit, the results are the same as the classical ones in \ans{ Eqs.~(\ref{FK3.1.4}--\ref{FR3.1.4}). }
+	
+	For the low-temperature limit, we have
+	\al{
+		\limTo \FK &= -T \ln \ZK
+		\approx \ans{ -N T \ln(1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) ), } \\
+		\limTo \FV &= -T \ln \ZV
+		\approx \ans{ \frac{N}{2} \hbar \omg, } \\
+		\limTo \FR &= -T \ln \ZR
+		\approx \ans{ -N T \ln(1 + 3 e^{-\hbar^2 / I T}) }.
+	}
+	\vfix
+}

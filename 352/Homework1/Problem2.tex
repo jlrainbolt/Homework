@@ -235,7 +235,64 @@
 }
 
 \sol{
-	We will use the single-atom partition function $\Zii = \sum_n \exp(\eps_n / T)$~\cite[p.~87]{Landau}.  This is admissible even for a classical system because the energy levels in this problem are discrete.  For one particle in the three-level system, the partition function is
+	Let $\Npm$ denote the number of atoms with energy $\pm\eps$, and $\No$ the number of atoms with energy 0.  Then $N = \Np + \Nm + \No$ and $M = \Np - \Nm$.  Then total number of states is
+	\eq{
+		\Omg = \mqty(N \\ \Np) \mqty(N - \Np \\ \Nm)
+		= \frac{N!}{\Np! \,(N - \Np)!} \frac{(N - \Np)!}{\Nm! \,(N - \Np - \Nm)!}
+		= \frac{N!}{\Np! \,\Nm! \,\No!},
+	}
+	so the entropy of the system is, in the limit $N \to \infty$,
+	\aln{
+		S &= \ln \Omg
+		\approx N \ln N - N - \Np \ln \Np + \Np - \Nm \ln \Nm + \Nm - \No \ln \No + \No \notag \\
+		&= N \ln N - \Np \ln \Np - \Nm \ln \Nm - \No \ln \No. \label{S2.3}
+	}
+
+	For the relationship between temperature and energy, we can apply the chain rule:
+	\eq{
+		\frac{1}{T} = \paren{ \pdv{S}{E} }_N
+		= \paren{ \pdv{S}{\Np} \pdv{\Np}{E} + \pdv{S}{\Nm} \pdv{\Nm}{E} }_N.
+	}
+	Note that $E = \eps (\Np - \Nm)$, so $\pdv*{E}{\Npm} = \pm \eps$.  Note also that Eq.~\refeq{S2.3} can be written
+	\eq{
+		S = N \ln N - \Np \ln \Np - \Nm \ln \Nm - (N - \Np - \Nm) \ln(N - \Np - \Nm).
+	}
+	Then
+	\al{
+		\pdv{S}{\Np} &= -\frac{\Np}{\Np} - \ln \Np + \frac{N - \Np - \Nm}{N - \Np - \Nm} + \ln(N - \Np - \Nm)
+		= \ln(N - \Np - \Nm) - \ln \Np, \\
+		\pdv{S}{\Nm} &= -\frac{\Nm}{\Nm} - \ln \Nm + \frac{N - \Np - \Nm}{N - \Np - \Nm} + \ln(N - \Np - \Nm)
+		= \ln(N - \Np - \Nm) - \ln \Nm,
+	}
+	so
+	\eq{
+		\frac{1}{T} = \frac{1}{\eps} \paren{ \pdv{S}{\Np} - \pdv{S}{\Nm} }
+		\qimplies
+		\frac{\eps}{T} = \ln \Nm - \ln \Np
+		= \ln(\frac{\Nm}{\Np}).
+	}
+	Note that
+	\eq{
+		\Np = \frac{E}{\eps} + \Nm
+		= M + N - \Np - \No
+		\qimplies
+		\Np = \frac{N - \No + M}{2},
+	}
+	\eq{
+		\Nm = \Np - \frac{E}{\eps}
+		= N - \Nm - \No - M
+		\qimplies
+		\Nm = \frac{N - \No - M}{2},
+	}
+	so
+	\eq{
+		\eps = T \ln(\frac{N - \No - M}{N - \No + M})
+		\qimplies
+		E = M T \ln(\frac{N - \No - M}{N - \No + M})
+	}
+	is the relationship between temperature and total energy.  However, this expression includes the unconstrained variable $\No$.  If we assume the system is at equilibrium, in principle we may solve for $\No$ by maximizing entropy; that is, by fixing $\pdv*{S}{\No} = 0$.  However, this is a problem more easily solved used a canonical ensemble.  In the thermodynamic~($N \to \infty$) limit, the energy range for the canonical distribution becomes very narrow, and so it is essentially equivalent to the microcanonical ensemble~\cite[pp.~78--79]{Landau}.
+
+	For the canonical ensemble, we will use the single-atom partition function $\Zii = \sum_n \exp(\eps_n / T)$~\cite[p.~87]{Landau}.  This is admissible even for a classical system because the energy levels in this problem are discrete.  For one particle in the three-level system, the partition function is
 	\eq{
 		\Zii = e^{-\eps / T} + 1 + e^{\eps / T}
 		= 1 + 2 \cosh(\frac{\eps}{T}),
