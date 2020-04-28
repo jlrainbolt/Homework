@@ -290,16 +290,16 @@
 		\qimplies
 		E = M T \ln(\frac{N - \No - M}{N - \No + M})
 	}
-	is the relationship between temperature and total energy.  However, this expression includes the unconstrained variable $\No$.  If we assume the system is at equilibrium, in principle we may solve for $\No$ by maximizing entropy; that is, by fixing $\pdv*{S}{\No} = 0$.  However, this is a problem more easily solved used a canonical ensemble.  In the thermodynamic~($N \to \infty$) limit, the energy range for the canonical distribution becomes very narrow, and so it is essentially equivalent to the microcanonical ensemble~\cite[pp.~78--79]{Landau}.
+	is the relationship between temperature and total energy.  However, this expression includes the unconstrained variable $\No$.  If we assume the system is at equilibrium, in principle we may solve for $\No$ by maximizing entropy; that is, by fixing $\pdv*{S}{\No} = 0$.  However, this is a problem more easily solved used a canonical ensemble.  In the thermodynamic~($N \to \infty$) limit, the energy range for the canonical distribution becomes very narrow, and so it is practically equivalent to the microcanonical ensemble~\cite[pp.~78--79]{Landau}.
 
-	For the canonical ensemble, we will use the single-atom partition function $\Zii = \sum_n \exp(\eps_n / T)$~\cite[p.~87]{Landau}.  This is admissible even for a classical system because the energy levels in this problem are discrete.  For one particle in the three-level system, the partition function is
+	For the canonical ensemble, we will assume the particles are indistinguishable and use the single-atom partition function $\Zii = \sum_n \exp(\eps_n / T)$~\cite[p.~87]{Landau}.  This is admissible even for a classical system because the energy levels in this problem are discrete.  For one particle in the three-level system, the partition function is
 	\eq{
 		\Zii = e^{-\eps / T} + 1 + e^{\eps / T}
 		= 1 + 2 \cosh(\frac{\eps}{T}),
 	}
 	so the total partition function for the system is
 	\eq{
-		Z = \prodiN \Zii = \brac{ 1 + 2 \cosh(\frac{\eps}{T}) }^N.
+		Z = \frac{1}{N!} \prodiN \Zii = \frac{1}{N!} \brac{ 1 + 2 \cosh(\frac{\eps}{T}) }^N.
 	}
 	
 	The Helmholtz free energy can be found by $F = -T \ln Z$~\cite[p.~87]{Landau}.  The free energy relates to the entropy by ${S = -(\pdv*{F}{T})_V}$~\cite[p.~47]{Landau}.  This gives us an expression for the entropy:
@@ -309,9 +309,9 @@
 	For the three-level system,
 	\al{
 		S &= \ln Z + T \pdv{T} (\ln Z)
-		= N \ln(1 + 2 \cosh(\frac{\eps}{T})) + N T \pdv{T} \ln(1 + 2 \cosh(\frac{\eps}{T})) \\
-		&= N \ln(1 + 2 \cosh(\frac{\eps}{T})) - N T \frac{\eps}{T^2} \frac{2 \sinh(\eps / T)}{1 + 2 \cosh(\eps / T)}
-		= \ans{ N \brac{ \ln(1 + 2 \cosh(\frac{\eps}{T})) - \frac{2 \eps}{T} \frac{\sinh(\eps / T)}{1 + 2 \cosh(\eps / T)} }. }
+		\approx N \ln(1 + 2 \cosh(\frac{\eps}{T})) - N \ln N + N + N T \pdv{T} \left[ \ln(1 + 2 \cosh(\frac{\eps}{T})) - \ln N + 1 \right] \\
+		&= N \ln(\frac{1}{N} + \frac{2}{N} \cosh(\frac{\eps}{T})) + N - N T \frac{\eps}{T^2} \frac{2 \sinh(\eps / T)}{1 + 2 \cosh(\eps / T)} \\
+		&= \ans{ N \brac{ \ln(\frac{1}{N} + \frac{2}{N} \cosh(\frac{\eps}{T})) - \frac{2 \eps}{T} \frac{\sinh(\eps / T)}{1 + 2 \cosh(\eps / T)} + 1 }. }
 	}
 	
 	The total energy of the system at equilibrium is, according to the lecture notes,
@@ -320,7 +320,7 @@
 	}
 	where $\bet = 1 / T$.  Then we have
 	\eq{
-		E = -N \pdv{}{\bet} \ln(1 + 2 \cosh(\bet \eps))
+		E \approx -N \pdv{}{\bet} \brac{ \ln(1 + 2 \cosh(\bet \eps)) - \ln N + 1 }
 		= -N \frac{2\eps \sinh(\bet \eps)}{1 + 2 \cosh(\bet \eps)},
 	}
 	so the relationship between energy and temperature is
@@ -329,12 +329,12 @@
 	}
 	We note also that
 	\eq{
-		S = N \ln(1 + 2 \cosh(\frac{\eps}{T})) + \frac{E}{T}.
+		S = N \ln(\frac{1}{N} + \frac{2}{N} \cosh(\frac{\eps}{T})) + \frac{E}{T} + N.
 	}
 	
 	Let $u = \eps / T$.  Then
 	\al{
-		S(u) &= N \brac{ \ln(1 + 2 \cosh u) - 2 u \frac{\sinh u}{1 + 2 \cosh u} }, &
+		S(u) &= N \brac{ \ln(1 + 2 \cosh u) - 2 u \frac{\sinh u}{1 + 2 \cosh u} - \ln N + 1 }, &
 		E(u) &= -2N \eps \frac{\sinh u}{1 + 2 \cosh u}.
 	}
 	For the limit $T \gg \eps$, we expand about $u = 0$:

@@ -15,7 +15,7 @@
 		\HV &= \sumiN \frac{{\ppV}_i^2}{2} + \frac{\omg^2 {\qV}_i^2}{2}, &
 		\HR &= \sumiN \frac{1}{2I} \paren{ {\ptht}_i^2 + \frac{{\pphi}_i^2}{\sin^2\tht_i} }
 	}
-	All three subsystems have per-particle energies that are not quantized.  The general expression for the partition function in this case is~\cite[pp.~55--56]{Pathria}
+	All three subsystems have per-particle energies that are not quantized.  Assuming the particles are indistinguishable, the general expression for the partition function in this case is~\cite[pp.~55--56]{Pathria}
 	\eq{
 		Z = \frac{1}{N!} \prodiN \Zii
 		= \frac{1}{N!} \paren{ \frac{1}{(2\pi\hbar)^s} \iint e^{-\bet h} \dd[s]{p} \dd[s]{q} }^N,
@@ -75,14 +75,14 @@
 		= \ln \ZK + T \pdv{T}(\ln \ZK) \notag \\
 		&= N \ln(\frac{V}{\hbar^3} \paren{ \frac{mT}{2\pi}}^{3/2}) - \ln N! + T \pdv{T} \brac{ N \ln(\frac{V}{\hbar^3}) + \frac{3 N}{2} \ln(\frac{m}{2\pi}) + \frac{3 N}{2} \ln T - \ln N! } \notag \\
 		&\approx N \ln(\frac{V}{\hbar^3} \paren{ \frac{mT}{2\pi}}^{3/2}) - N \ln N + N + T \frac{3}{2} \frac{N}{T}
-		= \ans{ N \ln(\frac{V}{N \hbar^3} \paren{ \frac{m \EK}{3N\pi}}^{3/2}) + \frac{5N}{2}, } \label{SK3.1} \\[2ex]
+		= \ans{ N \ln(\frac{V}{N \hbar^3} \paren{ \frac{m \EK}{3N\pi}}^{3/2}) + \frac{5N}{2}, } \label{SK3.1}
+	}
+	\aln{
 		\SV &= \pdv{T} (T \ln \ZV)
 		= \ln \ZV + T \pdv{T}(\ln \ZV)
 		= N \ln(\frac{T}{\hbar\omg}) - \ln N! + T \pdv{T} \brac{ N \ln(T) - N \ln(\hbar \omg) - \ln N! } \notag \\
 		&\approx N \ln(\frac{T}{\hbar\omg}) - N \ln N + N + T \frac{N}{T}
-		= \ans{ N \ln(\frac{\EV}{N^2 \hbar\omg}) + 2N, } \label{SV3.1}
-	}
-	\aln{
+		= \ans{ N \ln(\frac{\EV}{N^2 \hbar\omg}) + 2N, } \label{SV3.1} \\[2ex]
 		\SR &= \pdv{T} (T \ln \ZR)
 		= \ln \ZR + T \pdv{T}(\ln \ZR)
 		= N \ln(\frac{2 I T}{\hbar^2}) - \ln N! + T \pdv{T} \paren{ N \ln(\frac{2 I}{\hbar^2}) + N \ln T - \ln N!} \notag \\
@@ -251,23 +251,23 @@ energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, 
 	
 	We also have the low-energy partition functions
 	\al{
-		\limTo \ZK &\approx \brac{ 1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) }^N, &
-		\limTo \ZV &\approx \paren{ e^{-\hbar \omg / 2 T} }^N, &
-		\limTo \ZR &\approx \paren{ 1 + 3 e^{-\hbar^2 / I T} }^N,
+		\limTo \ZK &\approx \frac{1}{N!} \brac{ 1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) }^N, &
+		\limTo \ZV &\approx \frac{1}{N!} \paren{ e^{-\hbar \omg / 2 T} }^N, &
+		\limTo \ZR &\approx \frac{1}{N!} \paren{ 1 + 3 e^{-\hbar^2 / I T} }^N,
 	}
 	whose energies we can find using Eq.~\refeq{EfromZ}.  We find~\cite[p.~161]{Kardar}
 	\aln{
 		\limTo \EK &= -\pdv{\bet} (\ln \ZK)
-		\approx -\pdv{\bet} \brac{ N \ln(1 + 6 e^{-(2\pi\hbar)^2 \bet / 2 m V^{3/2}}) }
+		\approx -\pdv{\bet} \brac{ N \ln(1 + 6 \exp(-\frac{(2\pi\hbar)^2 \bet}{2 m V^{3/2}})) - \ln N! }
 		= N \frac{6 (2\pi\hbar)^2}{2 m V^{3/2}} \frac{e^{-(2\pi\hbar)^2 \bet / 2 m V^{3/2}}}{1 + 6 e^{-(2\pi\hbar)^2 \bet / 2 m V^{3/2}}} \notag \\
 		&\approx 3 N \frac{(2\pi\hbar)^2}{m V^{3/2}} \exp(-\frac{(2\pi\hbar)^2 \bet}{2 m V^{3/2}}), \label{EK3.2} \\[2ex]
 		\limTo \EV &= -\pdv{\bet} (\ln \ZV)
-		\approx -\pdv{\bet} \paren{ -N \frac{\hbar \omg \bet}{2} }
+		\approx -\pdv{\bet} \paren{ -N \frac{\hbar \omg \bet}{2} - \ln N! }
 		= N \frac{\hbar \omg}{2} \label{EV3.2}, \\[2ex]
 		\limTo \ER &= -\pdv{\bet} (\ln \ZR)
-		\approx -\pdv{\bet} \brac{ N \ln(1 + 3 e^{-\hbar^2 \bet / I}) }
-		= -N \frac{3 \hbar^2}{I} \frac{e^{-\hbar^2 \bet / I}}{1 + 3 e^{-\hbar^2 \bet / I}}
-		\approx 3N \frac{\hbar^2}{I} e^{-\hbar^2 \bet / I}. \label{ER3.2}
+		\approx -\pdv{\bet} \brac{ N \ln(1 + 3 e^{-\hbar^2 \bet / I}) - \ln N! }
+		= -N \frac{3 \hbar^2}{I} \frac{e^{-\hbar^2 \bet / I}}{1 + 3 e^{-\hbar^2 \bet / I}} \notag \\
+		&\approx 3N \frac{\hbar^2}{I} e^{-\hbar^2 \bet / I}. \label{ER3.2}
 	}
 	Solving the expressions for $\bet$, we find
 	\eqn{TK3.1}{
@@ -289,7 +289,7 @@ energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, 
 
 %
 %	3.2.1
-%
+% 
 
 \subprob{}{
 	Compute for each subsystem the equilibrium value of entropy as a function of energy.
@@ -301,17 +301,17 @@ energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, 
 	In the low-temperature limit, we use Eq.~\refeq{SfromZ} to find the entropy:
 	\aln{
 		\limTo \SK &= \pdv{T}(T \ln \ZK) = \ln \ZK + T \pdv{T}(\ln \ZK)
-		\approx \ln\ZK + T \pdv{T} \brac{ N \ln(1 + 6 e^{-(2\pi\hbar)^2 / 2 m V^{3/2} T}) } \notag \\
-		&\approx N \ln(1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) ) + \frac{3 N}{T} \frac{(2\pi\hbar)^2}{m V^{3/2}} \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) \notag \\
-		&= \ans{ N \ln(1 + 2 \frac{m V^{3/2} \EK}{N (2\pi\hbar)^2}) + 2 \frac{m V^{3/2} \EK}{(2\pi\hbar)^2} \ln(\frac{3 N (2\pi\hbar)^2}{m V^{3/2} \EK}), } \label{SK3.2} \\[2ex]
+		\approx \ln\ZK + T \pdv{T} \brac{ N \ln(1 + 6 e^{-(2\pi\hbar)^2 / 2 m V^{3/2} T}) - \ln N! } \notag \\
+		&\approx N \ln(1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) ) - N \ln N + N + \frac{3 N}{T} \frac{(2\pi\hbar)^2}{m V^{3/2}} \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) \notag \\
+		&= \ans{ N \ln(\frac{1}{N} + 2 \frac{m V^{3/2} \EK}{N^2 (2\pi\hbar)^2}) + 2 \frac{m V^{3/2} \EK}{(2\pi\hbar)^2} \ln(\frac{3 N (2\pi\hbar)^2}{m V^{3/2} \EK}) + N, } \label{SK3.2} \\[2ex]
 		\limTo \SV &= \pdv{T}(T \ln \ZV) = \ln \ZV + T \pdv{T}(\ln \ZV)
-		= -N \frac{\hbar \omg}{2 T} + T \pdv{T} \paren{ -N \frac{\hbar \omg}{2 T} }
-		= -N \frac{\hbar \omg}{2 T} + \frac{N}{2} \frac{\hbar \omg}{T}
-		= \ans{ 0, } \label{SV3.2} \\[2ex]
+		= -N \frac{\hbar \omg}{2 T} - \ln N! + T \pdv{T} \paren{ -N \frac{\hbar \omg}{2 T} - \ln N! } \notag \\
+		&= -N \frac{\hbar \omg}{2 T} - N \ln N + N + \frac{N}{2} \frac{\hbar \omg}{T}
+		= \ans{ N - N \ln N, } \label{SV3.2} \\[2ex]
 		\limTo \SR &= \pdv{T}(T \ln \ZR) = \ln \ZR + T \pdv{T}(\ln \ZR)
-		= N \ln(1 + 3 e^{-\hbar^2 / I T}) + T \pdv{T} \brac{ N \ln(1 + 3 e^{-\hbar^2 / I T}) } \notag \\
-		&\approx N \ln(1 + 3 e^{-\hbar^2 / I T}) + \frac{3 N}{T} \frac{\hbar^2}{I} e^{-\hbar^2 \bet / I}
-		= \ans{ N \ln(1 + \frac{I \ER}{N \hbar^2}) + \frac{I \ER}{\hbar^2} \ln(\frac{3 N \hbar^2}{I \ER}), } \label{SR3.2}
+		= N \ln(1 + 3 e^{-\hbar^2 / I T}) - \ln N! + T \pdv{T} \brac{ N \ln(1 + 3 e^{-\hbar^2 / I T}) } \notag \\
+		&\approx N \ln(1 + 3 e^{-\hbar^2 / I T}) - \ln N! + \frac{3 N}{T} \frac{\hbar^2}{I} e^{-\hbar^2 / I T}
+		= \ans{ N \ln(\frac{1}{N} + \frac{I \ER}{N^2 \hbar^2}) + \frac{I \ER}{\hbar^2} \ln(\frac{3 N \hbar^2}{I \ER}) + N, } \label{SR3.2}
 	}
 	where we have eliminated $T$ using Eqs.~(\ref{TK3.1}--\ref{TR3.1}).
 }
@@ -327,13 +327,24 @@ energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, 
 \sol{
 	For the high-temperature limit, the results here are the same as the classical ones in \ans{ Eqs.~(\ref{EK3.1.2}--\ref{ER3.1.2}). }
 	
-	For the low temperature limit, we need to solve Eqs.~(\ref{SK3.2}--\ref{SR3.2}) for $\EK$, $\EV$, and $\ER$.  I do not know how to do this.
+	For the low temperature limit, we need to solve Eqs.~(\ref{SK3.2}--\ref{SR3.2}) for $\EK$, $\EV$, and $\ER$.  For Eqs.~(\ref{SK3.2}, \ref{SR3.2}), this is only possible if we eliminate some of the terms in the $T \to 0$ limit.  The $(\alp / T) e^{-\alp / T}$ terms tend to 0 more quickly than the $\ln(1 + e^{-\alp / T})$ terms.  However, even if we kept only these terms, we would have an expression of the form
+	\eq{
+		S = \frac{E}{\alp} \ln(\frac{\alp}{E}),
+	}
+	which does not have a single-valued solution for $E$.
+
+	For $\EV$, however, the energy is not a function of entropy, it is simply
+	\eq{
+		\ans{ \limTo \EV = N \frac{\hbar\omg}{2}, }
+	}
+	as we found in Eq.~\refeq{EV3.2}.
 }
 
 %
 %	3.2.3
 %
 
+\clearpage
 \subprob{}{
 	Compute for each subsystem the equilibrium value of entropy as a function of temperature.
 }
@@ -343,9 +354,9 @@ energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, 
 
 	For the low-temperature limit, we already did this work in Prob.~{3.2.1}, where we found
 	\al{
-		\ans{ \limTo \SK\ } &\ans{\approx N \ln(1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) ) + \frac{3 N}{T} \frac{(2\pi\hbar)^2}{m V^{3/2}} \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}), } \\
-		\ans{ \limTo \SV\ } &\ans{\approx 0, } \\
-		\ans{ \limTo \SR\ } &\ans{\approx N \ln(1 + 3 e^{-\hbar^2 / I T}) + \frac{3 N}{T} \frac{\hbar^2}{I} e^{-\hbar^2 \bet / I} . }
+		\ans{ \limTo \SK\ } &\ans{\approx N \ln(\frac{1}{N} + \frac{6}{N} \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) ) + \frac{3 N}{T} \frac{(2\pi\hbar)^2}{m V^{3/2}} \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) + N, } \\[1.5ex]
+		\ans{ \limTo \SV\ } &\ans{\approx N - N \ln N, } \\[1.5ex]
+		\ans{ \limTo \SR\ } &\ans{\approx N \ln(\frac{1}{N} + 3 e^{-\hbar^2 / I T}) + \frac{3 N}{T} \frac{\hbar^2}{I} e^{-\hbar^2 \bet / I} + N. }
 	}
 	\vfix
 }
@@ -353,7 +364,7 @@ energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, 
 %
 %	3.2.4
 %
-\clearpage
+
 \subprob{}{
 	Compute for each subsystem the equilibrium value of free energy as a function of temperature.
 }
@@ -364,11 +375,11 @@ energy of the vibrational modes is quantized as $\En = \hbar \omg (n + 1 / 2)$, 
 	For the low-temperature limit, we have
 	\al{
 		\limTo \FK &= -T \ln \ZK
-		\approx \ans{ -N T \ln(1 + 6 \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) ), } \\
+		\approx \ans{ -N T \brac{ \ln(\frac{1}{N} + \frac{6}{N} \exp(-\frac{(2\pi\hbar)^2}{2 m V^{3/2} T}) ) + 1 }, } \\[1.5ex]
 		\limTo \FV &= -T \ln \ZV
-		\approx \ans{ \frac{N}{2} \hbar \omg, } \\
+		\approx \ans{ N \paren{ \frac{\hbar \omg}{2} - \ln N + 1}, } \\[1.5ex]
 		\limTo \FR &= -T \ln \ZR
-		\approx \ans{ -N T \ln(1 + 3 e^{-\hbar^2 / I T}) }.
+		\approx \ans{ -N T \brac{ \ln(\frac{1}{N} + \frac{3}{N} e^{-\hbar^2 / I T}) + 1 } }.
 	}
 	\vfix
 }

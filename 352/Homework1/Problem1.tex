@@ -3,8 +3,6 @@
 (i.r.v.) uniformly distributed on the circle.
 }
 
-
-
 %
 %	1.1
 %
@@ -48,8 +46,6 @@
 	}
 }
 
-
-
 %
 %	1.2
 %
@@ -82,8 +78,6 @@
 	}
 }
 
-
-
 %
 %	1.3
 %
@@ -106,12 +100,12 @@ which describes the fluctuations of the density.
 		= \frac{1}{L} \sumiN \intoL \del(x - \xii) \dx
 		= \frac{N}{L}.
 	}
-	Then
+	Then, if $\neq y$,
 	\al{
 		C(x, y) &= \frac{1}{L^2} \intoL \intoL \deln(x) \, \deln(y) \dx \dy
-		= \frac{1}{L^2} \intoL \left( \sumiN \del(x - \xii) - \frac{N}{L} \right) \dx \intoL \left( \sumiN \del(y - \yii) - \frac{N}{L} \right) \dy \\
-		&= \frac{1}{L^2} \left( \sumiN \intoL \del(x - \xii) \dx - \frac{N}{L} \intoL \dx \right) \left( \sumiN \intoL \del(y - \yii) \dy - \frac{N}{L} \intoL \dy \right) \\
-		&= \frac{1}{L^2} \left( N - \frac{N}{L} \bigg[ x \bigg]_0^L \right) \left( N - \frac{N}{L} \bigg[ y \bigg]_0^L \right) \\
+		= \frac{1}{L^2} \intoL \paren{ \sumiN \del(x - \xii) - \frac{N}{L} } \dx \intoL \paren{ \sumiN \del(y - \yii) - \frac{N}{L} } \dy \\
+		&= \frac{1}{L^2} \paren{ \sumiN \intoL \del(x - \xii) \dx - \frac{N}{L} \intoL \dx } \paren{ \sumiN \intoL \del(y - \yii) \dy - \frac{N}{L} \intoL \dy } \\
+		&= \frac{1}{L^2} \paren{ N - \frac{N}{L} \bigg[ x \bigg]_0^L \right) \left( N - \frac{N}{L} \bigg[ y \bigg]_0^L } \\
 		&= \ans{0}.
 	}
 	This result suggests that the positions of different particles on the circles are not correlated~\cite[p.~360]{Landau}.  This is sensible since the locations of the particles are random and uniformly distributed, and the particles do not interact with one another.
