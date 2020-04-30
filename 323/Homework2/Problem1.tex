@@ -1,0 +1,134 @@
+\state{}{\ \vfix}
+
+%
+%	1(a)
+%
+
+\prob{}{
+	Show that the Maxwell equations
+	\eq{
+		\partsm \Fmn = \frac{4\pi}{c} \Jn
+	}
+	can be obtained by varying the Lagrangian
+	\eq{
+		\cL = -\frac{1}{16\pi} \Fsmn \Fmn - \frac{1}{c} \Jsm \Am.
+	}
+	\vfix
+}
+
+\sol{
+	We want to extremize the action,
+	\eq{
+		S[\Asm] = \int \cL(\Asm, \partsm \Asm) \,\dqx.
+	}
+	Let $\delAsm$ denote some arbitrary variation that vanishes at the boundaries of spacetime.  The action for $\Asm + \delAsm$ is
+	\eq{
+		S[\Asm + \delAsm] = \int \cL(\Asm + \delAsm, \partsn\Asm + \partsn\delAsm) \dqx.
+	}
+	Then, to first order in $\delAsm$, the variation of the action is
+	\eq{
+		\delS = S[\Asm + \delAsm] - S[\Asm],
+	}
+	which we want to vanish for all $\delAsm$.  From Jackson~(11.136), $\Fmn = \partm \An - \partn \Am$.  Let $\delFmn = \partm \delAn - \partn \delAm$.  Then
+	\aln{
+		\delS &= \int \paren{ -\frac{1}{16\pi} (\Fsmn + \delFsmn) (\Fmn + \delFmn) - \frac{1}{c} \Jsm (\Am + \delAm) + \frac{1}{16\pi} \Fsmn \Fmn - \frac{1}{c} \Jsm \Am } \dqx \notag \\
+		&\approx \int \paren{ -\frac{1}{16\pi} (\Fsmn \Fmn + \Fsmn \,\delFmn + \delFsmn \,\Fmn) - \frac{1}{c} \Jsm (\Am + \delAm) + \frac{1}{16\pi} \Fsmn \Fmn - \frac{1}{c} \Jsm \Am } \dqx \notag \\
+		&= \int \paren{ -\frac{1}{16\pi} (\Fsmn \,\delFmn + \delFsmn \,\Fmn) - \frac{1}{c} \Jsm \,\delAm } \dqx, \label{delS1.a}
+	}
+	where we have discarded terms of $\order{(\delAm)^2}$.
+	
+	Note that
+	\eq{
+		\delFsmn \,\Fmn = (\partsm \delAsn - \partsn \delAsm) (\partm \An - \partn \Am)
+		= \partsm \delAsn \,\partm \An - \partsm \delAsn \,\partn \Am - \partsn \delAsm \,\partm \An + \partsn \delAsm \,\partn \Am.
+	}
+	Integrating the first term of the expansion by parts, we have
+	\eq{
+		\int \pdv{\,\delAsn}{\xsm} \pdv{\An}{\xm} \dqx = \bigg[ \delAsn \pdv{\An}{\xm} \bigg]_{-\infty}^\infty - \int \delAsn \pdv{\xsm} \pdv{\An}{\xm} \dqx
+		= -\int \delAsn \,\partm \partsm \Asn \dqx,
+	}
+	because $\delAn$ vanishes at $\pm\infty$.  Performing similar integrations for the other terms, we find
+		\al{
+		\int \del\Fsmn \,\Fmn \dqx &= -\int (\delAsn \,\partsm \partm \An - \delAsn \,\partsm \partn \Am - \delAsm \,\partsn \partm \An + \delAsm \,\partsn \partn \Am) \dqx \\
+		&= -\int (\del\Asn \,\partsm \Fmn + \del\Asm \,\partsn \Fnm) \dqx
+		= -\int (\del\Asn \,\partsm \Fmn + \del\Asn \,\partsm \Fmn) \dqx,
+	}
+	where in going to the final equality we have simply swapped the indices.
+	
+	Likewise,
+	\al{
+		\int \Fsmn \,\delFmn \dqx &= -\int ( \delAn \,\partm \partsm \Asn - \delAm \,\partn \partsm\Asn - \delAn \,\partm \partsn \Asm + \delAm \,\partn \partsn \Asm ) \dqx \\
+		&= -\int ( \delAn \,\partm \Fsmn + \delAm \,\partn \Fsnm ) \dqx
+		= -\int ( \delAn \,\partm \Fsmn + \delAn \,\partm \Fsmn ) \dqx \\
+		&= -\int ( \delAsn \,\partsm \Fmn + \delAsn \,\partsm \Fmn ) \dqx,
+	}
+	where in going to the final equality we have swapped contravariant and covariant.
+	
+	Making these substitutions in Eq.~\refeq{delS1.a}, we obtain
+	\eq{
+		\delS = \int \paren{ \frac{1}{16\pi} (4 \,\delAsn \,\partsm \Fmn) - \frac{1}{c} \Jsn \,\delAn } \dqx
+		= \delAsn \int \paren{ \frac{1}{4\pi} \partsm \Fmn - \frac{1}{c} \Jn } \dqx,
+	}
+	where we have changed indices and swapped contravariant and covariant in the final term.  In order for the action to be at a local extremum, we need $\delS = 0$ for any $\delAsn$.  This implies that the integrand is 0.  Finally, we obtain
+	\eq{
+		\frac{1}{4\pi} \partsm \Fmn - \frac{1}{c} \Jn = 0
+		\qimplies
+		\ans{ \partsm \Fmn = \frac{4\pi}{c} \Jn, }
+	}
+	as we sought to prove. \qed
+}
+
+%
+%	1(b)
+%
+
+\prob{}{
+	Suppose we add to $\cL$ the term $\delL = \tht \Fsmn \Ftmn$, where $\tht$ is some constant.  How do the equations of motion of $\cL + \delL$ differ from those of $\cL$?  Can you think of a reason for this?
+}
+
+\sol{
+	With this extra term, Eq.~\refeq{delS1.a} becomes
+	\aln{
+		\delS &= \int \paren{ -\frac{1}{16\pi} (\Fsmn \,\delFmn + \delFsmn \,\Fmn) - \frac{1}{c} \Jsm \,\delAm + \tht (\Fsmn + \delFsmn) (\Ftmn + \delFtmn) - \tht \Fsmn \Ftmn } \dqx \notag \\
+		&\approx \int \paren{ -\frac{1}{16\pi} (\Fsmn \,\delFmn + \delFsmn \,\Fmn) - \frac{1}{c} \Jsm \,\delAm + \tht (\Fsmn \,\delFtmn + \delFsmn \,\Ftmn) } \dqx. \label{delS1.b}
+	}
+	From Jackson~(11.140), $\Ftmn = \epsmnab \Fsab / 2$.  Then
+	\al{
+		\delFsmn \,\Ftmn &= (\partsm \delAsn - \partsn \delAsm) \frac{\epsmnab}{2} (\partsa \Asb - \partsb \Asa) \\
+		&= \frac{\partsm \delAsn \,\epsmnab \,\partsa \Asb - \partsm \delAsn \,\epsmnab \,\partsb \Asa - \partsn \delAsm \,\epsmnab \,\partsa \Asb + \partsn \delAsm \,\epsmnab \,\partsb \Asa}{2}.
+	}
+	Integrating by parts as in Prob.~1(a),
+	\al{
+		\int \delFsmn \,\Ftmn \dqx &= -\frac{1}{2} \int ( \delAsn \,\partsm \,\epsmnab \,\partsa \Asb - \delAsn \,\partsm \,\epsmnab \,\partsb \Asa - \delAsm \,\partsn \,\epsmnab \,\partsa \Asb + \delAsm \,\partsn \,\epsmnab \,\partsb \Asa ) \dqx \\
+		&= -\frac{1}{2} \int (\delAsn \,\partsm \Ftmn - \del\Asm \,\partsn \Ftmn) \dqx
+		= -\frac{1}{2} \int (\delAsn \,\partsm \Ftmn - \del\Asn \,\partsm \Ftnm) \dqx \\
+		&= -\frac{1}{2} \int (\delAsn \,\partsm \Ftmn + \del\Asn \,\partsm \Ftmn) \dqx,
+	}
+	where we have made use of the antisymmetry of $\Ftmn$.
+	
+	Similarly,
+	\al{
+		\int \Fsmn \,\delFtmn \dqx &= -\frac{1}{2} \int ( \delAsb \,\partsa \,\epsmnab \,\partsm \Asn - \delAsa \,\partsb \,\epsmnab \,\partsm \Asn - \delAsb \,\partsa \,\epsmnab \,\partsn \Asm +  \delAsa \,\partsb  \,\epsmnab \,\partsn \Asm) \dqx \\
+		&= -\frac{1}{2} \int ( \delAsb \,\partsa \,\epsabmn \,\partsm \Asn - \delAsa \,\partsb \,\epsabmn \,\partsm \Asn - \delAsb \,\partsa \,\epsabmn \,\partsn \Asm +  \delAsa \,\partsb  \,\epsabmn \,\partsn \Asm) \dqx \\
+		&= -\frac{1}{2} \int ( \delAsb \,\partsa \Ftab - \delAsa \,\partsb \,\Ftab) \dqx
+		= -\frac{1}{2} \int (\delAsn \,\partsm \Ftmn + \del\Asn \,\partsm \Ftmn) \dqx,
+	}
+	where we have used the fact that $\epsabmn = \epsmnab$.
+	
+	Substituting into Eq.~\refeq{delS1.b},
+	\eq{
+		\delS = \int \paren{ \frac{1}{16\pi} (4 \,\delAsn \,\partsm \Fmn) - \frac{1}{c} \Jsn \,\delAn + \tht (4 \delAsn \,\partsm \Ftmn) } \dqx
+		= \delAsn \int \paren{ \frac{1}{4\pi} \partsm \Fmn + 4\tht \partsm \Ftmn - \frac{1}{c} \Jn } \dqx,
+	}
+	so we find the equations of motion
+	\eq{
+		\partsm \Fmn + 16\pi \tht \partsm \Ftmn - \frac{4\pi}{c} \Jn = 0
+		\qimplies
+		\ans{ \partsm \Fmn = \frac{4\pi}{c} \Jn, }
+	}
+	where we have applied the homogeneous Maxwell equations $\partsm \Ftmn = 0$, according to Jackson~(11.142).  So we have once again recovered the inhomogeneous Maxwell equations.  Therefore, the equations of motion of $\cL + \delL$ do not differ from those of $\cL$.
+		
+		The mathematical reason for this is that $\Fsmn \Ftmn$ is a total derivative, as mentioned in the lecture notes on p.~103 of the lecture notes.  This means there exists some quantity $f = f(t, \Asm, \partsm \Asm)$ such that $\Fsmn \Ftmn = \dv*{f}{t}$, and therefore $\delL$ trivially satisfies the Euler-Lagrange equations.
+		
+		A more physical argument is related to the solution of Prob.~5 of the previous homework, in which we showed that $\Fsmn \Ftmn \propto \vE \vdot \vB$.  Since $\vE$ and $\vB$ are both determined completely by $\Am$ and its derivatives, adding a term proportional to $\vE \vdot \vB$ to the Lagrangian cannot provide any new information or stipulations, and thus should not alter the equations of motion.
+}

@@ -1,0 +1,120 @@
+\state{}{
+	In this problem we will derive the form of the stress tensor %on p.~115 of the lecture notes,
+	\eqn{Tmn}{
+		\Tmn = \ddv{\cL}{(\partsm \phii)} \partn \phii - \etamn \cL,
+	}
+	for a system of fields $\phisi(\xm)$, governed by an action
+	\eq{
+		S = \int \cL(\phisi, \partsm \phisi) \dqx.
+	}
+	The fields $\phisi$ transform under translations as $\phisi'(x') = \phisi(x)$, where $\xsm' = \xsm + \asm$ and $\asm$ is an arbitrary four-vector, the amount by which we translate.
+	
+%	Note that in the example done in class the symmetry depended on one continuous parameter ($\tht$ on p.~114.92), and this gave rise to one conserved current, $\Jm$ on p.~114.98.  Here there are four continuous parameters, $\am$, so we expect four conserved currents, one for each of the four translations.  In this problem, it is important not to confuse the index $\mu$ labeling the components of $\Jm$ with a similar index that labels the different translation symmetries~(the different components of the vector $\am$).
+}
+
+%
+%	2(a)
+%
+
+\prob{}{
+	For an infinitesimal translation $\am$, compute $\delphisi(x) = \phisi'(x) - \phisi(x)$.
+}
+
+\sol{
+	We know $\phisi'(x') = \phisi'(x + a) = \phisi(x)$, which implies $\phisi'(x) = \phisi(x - a)$.  Then $\del\phisi(x) = \phisi(x - a) - \phisi(x)$.  We can perform a Taylor series expansion about $a = 0$:
+	\eq{
+		\phisi(x - a) = \phisi(x) + a \brac{ \pdv{\phisi}{x} }_{a=0} + \frac{a^2}{2} \brac{ \pdv[2]{\phisi}{x} }_{a=0} + \order{a^3}.
+	}
+	\clearpage
+	For the purposes of varying the action, we need only concern ourselves with terms of $\order{a}$.  So we have
+	\eq{
+		\ans{ \del\phisi(x) = \am \partsm \phisi(x). }
+	}
+	\vfix
+}
+
+%
+%	2(a)
+%
+
+\prob{}{
+	Compute the variation of the action $S$ under the transformation $\phisi \to \phisi + \delphisi$.  What is $\Km$ for this case?
+}
+
+\sol{
+	From p.~97 in the lecture notes, the variation of the action is
+	\eq{
+		\delS = \int \ddv{S}{\phisi} \del\phisi
+		= \int \paren{ \del\phisi \pdv{\cL}{\phisi} + (\partsm \del\phisi) \pdv{\cL}{(\partsm \phisi)} } \dqx.
+%		= \int \del\phisi \paren{ \pdv{\cL}{\phisi} - \partsm \pdv{\cL}{(\partsm\phisi)} } \dqx.
+	}
+	Note that
+	\eq{
+		\partsm \del\phisi = \an \partsn \partsm \phisi + \partsm \an \,\partsn \phisi.
+	}
+	Now we will vary the action, stipulating that $\phisi$ is a solution of the Euler-Lagrange equations; that is, it extremizes the action for an \emph{arbitrary} variation.  This means $\delS = 0$.  Then, substituting $\del\phisi = \am \partsm \phisi$,
+	\aln{
+		\delS &= \int \paren{ \am \partsm \phisi \pdv{\cL}{\phisi} + (\an \partsn \partsm \phisi + \partsm \an \,\partsn \phisi) \pdv{\cL}{(\partsm \phisi)} } \dqx \notag \\
+		&= \int \paren{ \an \partsn \phisi \pdv{\cL}{\phisi} + \an \partsn \partsm \phisi \pdv{\cL}{(\partsm \phisi)} + \partsm \an \,\partsn \phisi \pdv{\cL}{(\partsm \phisi)} } \dqx. \label{delS2}
+	}
+	Note that~\cite[p.~82]{Landau}
+	\eq{
+		\partsm \cL = \partsm \phisi \pdv{\cL}{\phisi} + \partsm \partsn \phisi \pdv{\cL}{(\partsn \phisi)}.
+	}
+	Substituting into Eq.~\refeq{delS2}, we have
+	\eqn{delS2.2}{
+		\delS = \int \paren{ \an \partsn \cL + \partsm \an \,\partsn \phisi \pdv{\cL}{(\partsm \phisi)} } \dqx
+	}
+	Integrating the second term by parts,
+	\eq{
+		\int \partsm \an \,\partsn \phisi \pdv{\cL}{(\partsm \phisi)} \dqx = \brac{ \an \,\partsn \phisi \pdv{\cL}{(\partsm \phisi)} }_{-\infty}^\infty - \int \an \partsm \paren{ \partsn \phisi \pdv{\cL}{(\partsm \phisi)} } \dqx
+		= -\int \an \partsm \paren{ \partsn \phisi \pdv{\cL}{(\partsm \phisi)} } \dqx.
+	}	
+	Finally, Eq.~\refeq{delS2.2} becomes
+	\aln{
+		\delS &= \int \an \brac{ \partsn \cL - \partsm \paren{ \pdv{\cL}{(\partsm \phisi)} \partsn \phisi} } \dqx
+		= \int \an \brac{ \delmsn \partsm \cL - \partsm \paren{ \pdv{\cL}{(\partsm \phisi)} \partsn \phisi} } \dqx \notag \\
+		&= \int \an \partsm \paren{ \pdv{\cL}{(\partsm \phisi)} \partsn \phisi - \delmsn \cL} \dqx, \label{delS2.3}
+	}
+	where in going to the second equality we have inserted a factor of $\delmsn$~\cite[p.~83]{Landau}.  In the final equality, we have multiplied by $-1$ since $\delS = 0$.  According to Jackson~(11.71), $\eta_{\mu \alp} \eta^{\alp \nu} = \delmsn$.
+	
+	According to p.~114.8 in the lecture notes,
+	\eq{
+		\int \dv{t} \paren{ \pdv{\cL}{\dot{q_i}} \dels q_i - K } \dd{t} = 0.
+	}
+	For a field, this becomes
+	\eq{
+		\int \partsm \paren{ \pdv{\cL}{(\partsm \phisi)} \dels \phisi - \Km } \dd{t} = 0.
+	}
+	Reading off Eq.~\refeq{delS2.3}, we find
+	\eq{
+		\ans{ \Km = \asn \etamn \cL. }
+	}
+}
+
+%
+%	2(c)
+%
+
+\prob{}{
+	Use our general result for the conserved current,% on p.~114.97,
+	\eq{
+		\Jm = \ddv{\cL}{(\partsm \phisi)} \dels \phisi - \Km,
+	}
+	to find the conserved current associated to translational symmetry.  You should reproduce Eq.~\refeq{Tmn}.  % the expression on p.~115,
+	Explain how the fact that translations are four continuous symmetries is related to the fact that $\Tmn$ is a two-index tensor.
+}
+
+\sol{
+	From Eq.~\refeq{delS2.3},
+	\eq{
+		\Jm = \asn \paren{ \pdv{\cL}{(\partsm \phii)} \partn \phii - \etamn \cL }.
+	}
+	We see that $\Jm = \asn \Tmn$, where
+	\eq{
+		\ans{ \Tmn = \pdv{\cL}{(\partsm \phii)} \partn \phii - \etamn \cL, }
+	}
+	as in Eq.~\refeq{Tmn}. \qed
+		
+	For a single continuous symmetry $\tht$ as we discussed in lecture, we found the conserved current $\Jm$, which is a four-vector.  Instead of writing $\am$ as a vector, we could have considered it as four single continuous symmetries: $a^0$, $a^1$, $a^2$, and $a^3$.  We would have found four conserved four-vector currents: $J^{\mu 0}$, $J^{\mu 1}$, $J^{\mu 2}$, and $J^{\mu 3}$.  Together, these currents are specified by sixteen elements.  A more compact way of writing these is as a two-index tensor $\Tmn$, which also has sixteen elements.
+}

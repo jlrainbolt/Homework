@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage{solutions}
+
+\classname{133}
+\homeworknum{4}
+
+
+\begin{document}
+
+\include{definitions}
+
+%
+%	Prob. 1
+%
+
+\newcommand{\freq}{\SI{97.1}{\mega\Hz}}
+\newcommand{\length}{\SI{50.0}{\meter}}
+\newcommand{\lspeed}{\SI{3.00e8}{\meter\per\second}}
+
+\newcommand{\lamo}{\lam_0}
+
+\state{}{
+	Chicago's radio station 97.1 FM ``The Drive'' uses the frequency {\freq}.  Imagine that you are in the pool at the Ratner athletics center, and you want to tune in to this station using an underwater radio.  What is the frequency of the broadcast under the water?  (The index of refraction of water is about $1.333$.)  How long would it take the broadcast to travel from one end of the {\length} pool to the other?  How long would it take to travel the same distance in vacuum?
+}
+
+\sol{
+	Frequency is not affected by refractive index.  Thus, the frequency under the water is still \ans{ {\freq}. }
+	
+	However, wave speed is affected by refractive index.  Under the water, the wave speed is $v = c / n$.  So the time it would take the wave to travel $L = \length$ is
+	\eq{
+		t = \frac{L}{v}
+		= n \frac{L}{c}
+		= 1.333 \frac{\length}{\lspeed}
+		= \frac{4}{3} \frac{5}{3} \times \SI{e-7}{\second}
+		= \frac{20}{9} \times \SI{e-7}{\second}
+		\approx \ans{ \SI{2.22e-7}{\second} }
+		= \ans{ \SI{222}{\nano\second}. }
+	}
+	
+	In vacuum, $v = c$:
+	\eq{
+		t = \frac{L}{c}
+		= \frac{\length}{\lspeed}
+		= \frac{5}{3} \times \SI{e-7}{\second}
+		= \frac{20}{9} \times \SI{e-7}{\second}
+		\approx \ans{ \SI{1.67e-7}{\second} }
+		= \ans{ \SI{167}{\nano\second}. }
+	}
+}
+
+%
+%	Prob. 2
+%
+
+\newcommand{\critang}{\SI{50.0}{\degree}}
+\newcommand{\intang}{\SI{40.0}{\degree}}
+
+\newcommand{\nl}{n_l}
+\newcommand{\na}{n_a}
+\newcommand{\thtl}{\tht_l}
+\newcommand{\thta}{\tht_a}
+\newcommand{\thtc}{\tht_c}
+
+\state{}{
+	Consider the interface between air and some liquid.  The critical angle for total internal reflection at this interface is {\critang}.  A ray of light traveling in the liquid hits the interface at incident angle {\intang} and is refracted in the air.  What is the angle between the refracted ray and the normal to the surface?  Now say that a ray traveling in the \emph{air} hits the interface at incident angle {\intang} and is refracted in the \emph{liquid}.  What is the angle between the refracted ray and the normal?
+}
+
+\sol{
+	First, we need to find the refractive index of the liquid, $\nl$.  We know that liquid in general has a greater refractive index than air, which has $\na = 1$, so total internal reflection will occur inside the liquid.  So we can apply Snell's law at the critical angle $\thtc$ to solve for $\nl$:
+	\eq{
+		\sin\thtc = \frac{\na}{\nl}
+		\qimplies
+		\nl = \frac{\na}{\sin\thtc}
+		= \frac{1}{\sin(\critang)}.
+%		\approx \frac{1}{0.766}
+%		\approx 1.31.
+	}
+	
+	The rest of the problem is just straightforward application of Snell's law,
+	\eq{
+		\na \sin\thta = \nl \sin\thtl.
+	}
+	When the ray comes from within the liquid, $\thtl = \intang$.  To find $\thta$,
+	\eq{
+		\thta = \sin[-1](\frac{\nl}{\na} \sin\thtl)
+		= \sin[-1](\frac{\sin(\intang)}{\sin(\critang)})
+		\approx \sin[-1](\frac{0.643}{0.766})
+		\approx \sin[-1](0.839)
+		\approx \ans{ \SI{57.0}{\degree}. }
+	}
+	Then the ray comes from the air, $\thta = \intang$.  To find $\thtl$,
+	\eq{
+		\thtl = \sin[-1](\frac{\na}{\nl} \sin\thta)
+		= \sin^{-1}\big( \sin(\critang) \sin(\intang) \big)
+		\approx \sin^{-1}\big( (0.766) (0.643) \big)
+		\approx \sin[-1](0.492)
+		\approx \ans{ \SI{29.5}{\degree}. }
+	}
+}
+
+\end{document}
