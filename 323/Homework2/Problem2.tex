@@ -52,16 +52,18 @@
 	\eq{
 		\partsm \del\phisi = \an \partsn \partsm \phisi + \partsm \an \,\partsn \phisi.
 	}
-	Now we will vary the action, stipulating that $\phisi$ is a solution of the Euler-Lagrange equations; that is, it extremizes the action for an \emph{arbitrary} variation.  This means $\delS = 0$.  Then, substituting $\del\phisi = \am \partsm \phisi$,
+	To vary the action, we stipulate that $\phisi$ is a solution of the Euler-Lagrange equations; that is, it extremizes the action for an \emph{arbitrary} variation.  This means $\delS = 0$.
+	
+	Then, substituting $\del\phisi = \am \partsm \phisi$,
 	\aln{
 		\delS &= \int \paren{ \am \partsm \phisi \pdv{\cL}{\phisi} + (\an \partsn \partsm \phisi + \partsm \an \,\partsn \phisi) \pdv{\cL}{(\partsm \phisi)} } \dqx \notag \\
 		&= \int \paren{ \an \partsn \phisi \pdv{\cL}{\phisi} + \an \partsn \partsm \phisi \pdv{\cL}{(\partsm \phisi)} + \partsm \an \,\partsn \phisi \pdv{\cL}{(\partsm \phisi)} } \dqx. \label{delS2}
 	}
-	Note that~\cite[p.~82]{Landau}
-	\eq{
-		\partsm \cL = \partsm \phisi \pdv{\cL}{\phisi} + \partsm \partsn \phisi \pdv{\cL}{(\partsn \phisi)}.
+	Note that
+	\eqn{totder}{
+		\partsm \cL = \partsm \phisi \pdv{\cL}{\phisi} + \partsm \partsn \phisi \pdv{\cL}{(\partsn \phisi)}
 	}
-	Substituting into Eq.~\refeq{delS2}, we have
+	is the total derivative of the Lagrangian~\cite[p.~82]{Landau}.  Substituting into Eq.~\refeq{delS2}, we have
 	\eqn{delS2.2}{
 		\delS = \int \paren{ \an \partsn \cL + \partsm \an \,\partsn \phisi \pdv{\cL}{(\partsm \phisi)} } \dqx
 	}
@@ -76,7 +78,7 @@
 		= \int \an \brac{ \delmsn \partsm \cL - \partsm \paren{ \pdv{\cL}{(\partsm \phisi)} \partsn \phisi} } \dqx \notag \\
 		&= \int \an \partsm \paren{ \pdv{\cL}{(\partsm \phisi)} \partsn \phisi - \delmsn \cL} \dqx, \label{delS2.3}
 	}
-	where in going to the second equality we have inserted a factor of $\delmsn$~\cite[p.~83]{Landau}.  In the final equality, we have multiplied by $-1$ since $\delS = 0$.  According to Jackson~(11.71), $\eta_{\mu \alp} \eta^{\alp \nu} = \delmsn$.
+	where in going to the second equality we have inserted a factor of $\delmsn$~\cite[p.~83]{Landau}.  According to Jackson~(11.71), $\eta_{\mu \alp} \eta^{\alp \nu} = \delmsn$.  In the final equality, we have multiplied by $-1$ since $\delS = 0$.
 	
 	According to p.~114.8 in the lecture notes,
 	\eq{
@@ -116,5 +118,5 @@
 	}
 	as in Eq.~\refeq{Tmn}. \qed
 		
-	For a single continuous symmetry $\tht$ as we discussed in lecture, we found the conserved current $\Jm$, which is a four-vector.  Instead of writing $\am$ as a vector, we could have considered it as four single continuous symmetries: $a^0$, $a^1$, $a^2$, and $a^3$.  We would have found four conserved four-vector currents: $J^{\mu 0}$, $J^{\mu 1}$, $J^{\mu 2}$, and $J^{\mu 3}$.  Together, these currents are specified by sixteen elements.  A more compact way of writing these is as a two-index tensor $\Tmn$, which also has sixteen elements.
+	For a single continuous symmetry $\tht$ as we discussed in lecture, we found a conserved four-vector current $\Jm$.  For this problem, instead of writing $\am$ as a vector, we could have considered it as four single continuous symmetries: $a^0$, $a^1$, $a^2$, and $a^3$.  After varying the action four times, we would have found four conserved four-vector currents: $J^{\mu 0}$, $J^{\mu 1}$, $J^{\mu 2}$, and $J^{\mu 3}$.  Together, these currents are specified by sixteen elements.  A more compact way of writing these is as a two-index tensor $\Tmn$, which also has sixteen elements.
 }

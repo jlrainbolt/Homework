@@ -36,7 +36,7 @@
 		&= \int \paren{ -\frac{1}{16\pi} (\Fsmn \,\delFmn + \delFsmn \,\Fmn) - \frac{1}{c} \Jsm \,\delAm } \dqx \notag \\
 		&= \int \paren{ -\frac{1}{8\pi} (\delFsmn \,\Fmn) - \frac{1}{c} \Jsm \,\delAm } \dqx, \label{delS1.a}
 	}
-	where we have discarded terms of $\order{(\delAm)^2}$, and swapped covariant and contravariant indices.
+	where we have discarded terms of $\order{(\delAm)^2}$, and swapped covariant and contravariant indices in going to the final equality.
 	
 	Note that
 	\eq{
@@ -45,7 +45,7 @@
 	}
 	Integrating the first term of the expansion by parts, we have
 	\eq{
-		\int \pdv{\,\delAsn}{\xm} \pdv{\An}{\xsm} \dqx = \bigg[ \delAsn \pdv{\An}{\xsm} \bigg]_{-\infty}^\infty - \int \delAsn \pdv{\xm} \pdv{\An}{\xsm} \dqx
+		\int \pdv{\,\delAsn}{\xm} \pdv{\An}{\xsm} \dqx = \bigg[ \delAsn \pdv{\An}{\xsm} \bigg]_{-\infty}^\infty - \int \delAsn \pdv{\An}{\xm}{\xsm} \dqx
 		= -\int \delAsn \,\partsm \partm \An \dqx,
 	}
 	because $\delAn$ vanishes at $\pm\infty$.  Performing similar integrations for the other terms, we find
@@ -56,12 +56,14 @@
 	}
 	where in going to the final equality we have simply swapped the indices.
 
-	Making these substitutions in Eq.~\refeq{delS1.a}, we obtain
+	Making this substitution in Eq.~\refeq{delS1.a}, we obtain
 	\eq{
 		\delS = \int \paren{ \frac{1}{16\pi} (4 \,\delAsn \,\partsm \Fmn) - \frac{1}{c} \Jsn \,\delAn } \dqx
 		= \delAsn \int \paren{ \frac{1}{4\pi} \partsm \Fmn - \frac{1}{c} \Jn } \dqx,
 	}
-	where we have changed indices and swapped contravariant and covariant in the final term.  In order for the action to be at a local extremum, we need $\delS = 0$ for any $\delAsn$.  This implies that the integrand is 0.  Finally, we obtain
+	where we have changed indices and swapped contravariant and covariant in the final term.
+	
+	In order for the action to be at a local extremum, we need $\delS = 0$ for any $\delAsn$.  This implies that the integrand is 0.  Finally, we obtain
 	\eq{
 		\frac{1}{4\pi} \partsm \Fmn - \frac{1}{c} \Jn = 0
 		\qimplies
@@ -87,7 +89,7 @@
 	From Jackson~(11.140), $\Ftmn = \epsmnab \Fsab / 2$.  Then
 	\al{
 		\delFsmn \,\Ftmn &= (\partsm \delAsn - \partsn \delAsm) \frac{\epsmnab}{2} (\partsa \Asb - \partsb \Asa) \\
-		&= \frac{\partsm \delAsn \,\epsmnab \,\partsa \Asb - \partsm \delAsn \,\epsmnab \,\partsb \Asa - \partsn \delAsm \,\epsmnab \,\partsa \Asb + \partsn \delAsm \,\epsmnab \,\partsb \Asa}{2}.
+		&= \frac{1}{2} (\partsm \delAsn \,\epsmnab \,\partsa \Asb - \partsm \delAsn \,\epsmnab \,\partsb \Asa - \partsn \delAsm \,\epsmnab \,\partsa \Asb + \partsn \delAsm \,\epsmnab \,\partsb \Asa).
 	}
 	Integrating by parts as in Prob.~1(a),
 	\al{
@@ -120,7 +122,7 @@
 	}
 	where we have applied the homogeneous Maxwell equations $\partsm \Ftmn = 0$, according to Jackson~(11.142).  So we have once again recovered the inhomogeneous Maxwell equations.  Therefore, the equations of motion of $\cL + \delL$ do not differ from those of $\cL$.
 		
-		The mathematical reason for this is that $\Fsmn \Ftmn$ is a total derivative, as mentioned in the lecture notes on p.~103 of the lecture notes.  This means there exists some quantity $f = f(t, \Asm, \partsm \Asm)$ such that $\Fsmn \Ftmn = \dv*{f}{t}$, and therefore $\delL$ trivially satisfies the Euler-Lagrange equations.
+		The mathematical reason for this is that $\Fsmn \Ftmn$ is a total derivative, as mentioned in the lecture notes on p.~103.  This means there exists some quantity $f = f(\Asm, \partsm \Asm)$ such that $\Fsmn \Ftmn = \dv*{f}{t}$, and therefore $\delL$ trivially satisfies the Euler-Lagrange equations.
 		
-		A more physical argument is related to the solution of Prob.~5 of the previous homework, in which we showed that $\Fsmn \Ftmn \propto \vE \vdot \vB$.  Since $\vE$ and $\vB$ are both determined completely by $\Am$ and its derivatives, adding a term proportional to $\vE \vdot \vB$ to the Lagrangian cannot provide any new information or stipulations, and thus should not alter the equations of motion.
+		A more physical argument is related to the solution of Prob.~5 of the previous homework, in which we showed that $\Fsmn \Ftmn \propto \vE \vdot \vB$.  Since $\vE$ and $\vB$ are both determined completely by $\Am$ and its derivatives, adding a term proportional to $\vE \vdot \vB$ to the Lagrangian cannot provide any new information or stipulations, and thus cannot alter the equations of motion.
 }
