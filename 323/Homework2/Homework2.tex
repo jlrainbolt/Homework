@@ -20,10 +20,106 @@
 
 \state{}{\ \vfix}
 
+%
+%	3(a)
+%
+
 \prob{}{
 	Apply the Noether procedure for constructing the energy-momentum tensor to the source-free electromagnetic field and show that the resulting tensor $\Tmn$ satisfies the conservation equation $\partsm \Tmn = 0$.
 }
 
+\sol{
+	Adapting Eq.~\refeq{Lsource}, the Lagrangian for the source-free electromagnetic field is
+	\eq{
+		\cL = -\frac{1}{16\pi} \Fsmn \Fmn.
+	}
+	We want to evaluate
+	\eq{
+		\Tmn = \pdv{\cL}{(\partsm \Al)} \partn \Al - \etamn \cL.
+	}
+	In order to evaluate the derivatives, we can use the variational method to calculate $\pdv*{\cL}{(\partsa \Asb)}$ by letting $\partsa \Asb \to \partsa \Asb + \del \partsa \Asb$~\cite[p.~86]{Landau}.  Let
+	\eq{
+		\delL = \cL(\partsa \Asb) - \cL(\partsa \Asb + \del \partsa \Asb).
+	}
+	Note that
+	\eq{
+		\cL(\partsa \Asb + \del \partsa \Asb) = -\frac{1}{16} (\Fsab + \del\Fsab) (\Fab + \del\Fab)
+		\approx -\frac{1}{16\pi} (\Fsab \Fab + \Fsab \,\del\Fab + \del\Fsab \,\Fab),
+	}
+	so
+	\al{
+		\delL &= -\frac{1}{16\pi} (\Fsab \,\del\Fab + \del\Fsab \,\Fab)
+		= -\frac{1}{8\pi} \del\Fsab \,\Fab
+		= -\frac{1}{8\pi} (\partsa \,\del\Asb - \partsb \,\del\Asa) \Fab \\
+		&= -\frac{1}{8\pi} (\partsa \,\del\Asb + \partsa \,\del\Asb) \Fab
+		= -\frac{1}{4\pi} \partsa \,\del\Asb \,\Fab.
+	}
+	This gives us
+	\eq{
+		\pdv{\cL}{(\partsa \Asb)} = -\frac{1}{4\pi} \Fab
+		\qimplies
+		\pdv{\cL}{(\partsa \Ab)} = -\frac{1}{4\pi} \Fasb,
+	}
+	and then we find
+	\eq{
+		\ans{ \Tmn = -\frac{1}{4\pi} \Fmsl \,\partn \Al - \etamn \Fsab \Fab. }
+	}
+	
+	To show conservation, note that
+	\aln{
+		\partsm \Tmn &= -\frac{1}{4\pi} [\partsm (\Fmsl \,\partn \Al) - \partsm(\etamn \Fsab \Fab)] \notag \\
+		&= -\frac{1}{4\pi} (\partsm \Fmsl \,\partn \Al + \Fmsl \,\partsm \partn \Al - \etamn \partsm \Fsab \,\Fab - \etamn \Fsab \,\partsm \Fab \notag \\
+		&= -\frac{1}{4\pi} (\partsm \Fmsl \,\partn \Al + \Fmsl \,\partsm \partn \Al - \partn \Fsab \,\Fab - \Fsab \,\partn \Fab. \label{cons1}
+	}
+	For the first term,
+	\al{
+		\partsm \Fmsl \,\partn \Al &= \partsm (\partm \Asl - \partsl \Am) \partn \Al \\
+		&= \partsm \partm \Asl \,\partn \Al - \partsm \partsl \Am \,\partn \Al
+		=  \partn \Al \, \partsm \partm \Asl - \partn \Al \, \partsm \partsl \Am \\
+		&= \partsa \parta \Asb \, \partn \Ab - \partsa \partsb \Aa \, \partn \Ab
+		= \partn \partsa \Asb \, \parta \Ab + \partsb \Aa \, \partn \partsa \Ab \\
+		&= 2 \partsa \Asb \,\partn \parta \Ab,
+	}
+	where we have moved derivatives at the cost of a minus sign.
+	
+	For the second,
+	\al{
+		\Fmsl \,\partsm \partn \Al &= (\partm \Asl - \partsl \Am) \partsm \partn \Al \\
+		&= \partm \Asl \,\partsm \partn \Al - \partsl \Am \,\partsm \partn \Al
+%		= \partsm \Asl \,\partm \partn \Al - \partsl \Asm \,\partm \partn \Al \\
+		= \partsa \Asb \,\partn \parta \Ab - \partsa \Asb \,\partn \partb \Aa \\
+		&= \partsa \Asb \,\partn \parta \Ab + \partn \partsa \Asb \, \partb \Aa
+		= 2 \partsa \Asb \,\partn \parta \Ab.
+	}
+	For the third,
+	\al{
+		-\partn \Fsab \,\Fab &= -(\partn \partsa \Asb - \partn \partsb \Asa) (\parta \Ab - \partb \Aa) \\
+		&= -\partn \partsa \Asb \, \parta \Ab + \partn \partsa \Asb \, \partb \Aa + \partn \partsb \Asa \, \parta \Ab - \partn \partsb \Asa \, \partb \Aa \\
+		&= -\partsa \Asb \, \partn \parta \Ab + \partsb \Asa \, \partn \parta \Ab + \partsa \Asb \, \partn \partb \Aa - \partsb \Asa \, \partn \partb \Aa \\
+%		&= -\partsa \Asb \, \partn \parta \Ab + \partsa \Asb \, \partn \partb \Aa + \partsa \Asb \, \partn \partb \Aa - \partsa \Asb \, \partn \parta \Ab \\
+		&= 2 (\partsa \Asb \, \partn \partb \Aa - \partsa \Asb \, \partn \parta \Ab)
+		= -4 \partsa \Asb \, \partn \parta \Ab.
+	}
+	For the fourth,
+	\al{
+		-\Fsab \,\partn \Fab &= -(\partsa \Asb - \partsb \Asa) (\partn \parta \Ab - \partn \partb \Aa) \\
+		&= -\partsa \Asb \, \partn \parta \Ab + \partsb \Asa \, \partn \partb \Aa + \partsb \Asa \, \partn \parta \Ab - \partsb \Asa \, \partn \partb \Aa \\
+		&= -\partsa \Asb \, \partn \parta \Ab + \partsa \Asb \, \partn \parta \Ab + \partsa \Asb \, \partn \partb \Aa - \partsb \Asa \, \partn \partb \Aa \\
+		&= 0.
+	}
+	Applying these results to Eq.~\refeq{cons1}, we see that
+	\eq{
+		\partsm \Tmn = -\frac{1}{4\pi} [ 2 \partsa \Asb \,\partn \parta \Ab + 2 \partsa \Asb \,\partn \parta \Ab - 4 \partsa \Asb \, \partn \parta \Ab ]
+		= \ans{ 0, }
+	}
+	as desired. \qed
+}
+
+%
+%	3(b)
+%
+
+\clearpage
 \prob{}{
 	Show that the ``improvement'' of this tensor discussed in class, that leads to
 	\eq{
@@ -32,9 +128,68 @@
 	does not spoil conservation.
 }
 
+\sol{
+	We have
+	\eq{
+		\partsm \Tmn = \frac{1}{4\pi} \paren{ \partsm (\Fml \Fsln) + \frac{1}{4} \partsm (\etamn \Fsab \Fab) }
+		= \frac{1}{4\pi} \paren{ \partsm \Fml \,\Fsln + \Fml \,\partsm \Fsln + \frac{1}{4} \partsm (\etamn \Fsab \Fab) }.
+	}
+	For the first term,
+	\al{
+		\partsm \Fml \,\Fsln &= (\partsm \partm \Al - \partsm \partl \Am) (\partsl \Al - \partl \Asl) \\
+		&= \partsm \partm \Al \, \partsl \An - \partsm \partm \Al \, \partn \Asl - \partsm \partl \Am \, \partsl \An + \partsm \partl \Am \, \partn \Asl \\
+		&= \partsl \An \, \partsm \partm \Al - \partn \Asl \, \partsm \partm \Al - \partsl \An \, \partsm \partl \Am + \partn \Asl \, \partsm \partl \Am \\
+		&= \partsb \An \, \partsa \parta \Ab - \partn \Asb \, \partsa \parta \Ab - \partsl \An \, \partsm \partl \Am + \partn \Asl \, \partsm \partl \Am \\
+		&= \partsa \partsb \An \, \parta \Ab - \partn \parta \Asb \, \partsa \Ab - \partsl \An \, \partsm \partl \Am + \partn \Asl \, \partsm \partl \Am,
+	}
+	
+	For the second,
+	\al{
+		\Fml \,\partsm \Fsln &= (\partm \Al - \partl \Am) (\partsm \partsl \An - \partsm \partn \Asl) \\
+		&= \partm \Al \, \partsm \partsl \An - \partm \Al \, \partsm \partn \Asl - \partl \Am \, \partsm \partsl \An + \partl \Am \, \partsm \partn \Asl \\
+		&= \parta \Ab \, \partsa \partsb \An - \parta \Ab \, \partsa \partn \Asb - \parta \Ab \, \partsb \partsa \An + \parta \Ab \, \partsb \partn \Asa \\
+		&= \partsa \Asb \, \parta \partb \An - \partsa \Asb \, \partn \parta \Ab - \partsa \Asb \, \parta \partb \An + \partsa \Asb \, \partn \partb \Aa \\
+		&= -\partsa \Asb \, \partn \parta \Ab + \partsa \Asb \, \partn \partb \Aa
+	}
+	For the third term, we know from Prob.~3(a) that
+	\eq{
+		\partsm (\etamn \Fsab \Fab) = -4 \partsa \Asb \, \partn \parta \Ab.
+	}
+}
+
+%
+%	3(c)
+%
+
 \prob{}{
 	Evaluate $\Too$ and $\Toi$ in terms of electric and magnetic fields.  What is the physical interpretation of these quantities?
 }
+%\sol{
+%	According to Jackson~(11.137--138),
+%	\al{
+%		\Fmn &= \mqty[ 0 & -\Ex & -\Ey & -\Ez \\
+%					\Ex & 0 & -\Bz & \By \\
+%					\Ey & \Bz & 0 & -\Bx \\
+%					\Ez & -\By & \Bx & 0 ], &
+%		\Fsmn &= \mqty[ 0 & \Ex & \Ey & \Ez \\
+%					-\Ex & 0 & -\Bz & \By \\
+%					-\Ey & \Bz & 0 & -\Bx \\
+%					-\Ez & -\By & \Bx & 0 ].
+%	}
+%	Then
+%	\al{
+%		\Fsmn \Fmn &= \sum_{\mu, \nu}
+%			 \mqty[ 0 & \Ex & \Ey & \Ez \\
+%				-\Ex & 0 & -\Bz & \By \\
+%				-\Ey & \Bz & 0 & -\Bx \\
+%				-\Ez & -\By & \Bx & 0 ]
+%			\mqty[ 0 & -\Ex & -\Ey & -\Ez \\
+%				\Ex & 0 & -\Bz & \By \\
+%				\Ey & \Bz & 0 & -\Bx \\
+%				\Ez & -\By & \Bx & 0 ]
+%		= \mqty[ 
+%	}
+%}
 
 \prob{}{
 	Calculate the correction to the conservation quantity $\partsm\Tmn = 0$ in the presence of a nonzero current~$\Jm$.

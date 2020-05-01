@@ -10,7 +10,7 @@
 		\partsm \Fmn = \frac{4\pi}{c} \Jn
 	}
 	can be obtained by varying the Lagrangian
-	\eq{
+	\eqn{Lsource}{
 		\cL = -\frac{1}{16\pi} \Fsmn \Fmn - \frac{1}{c} \Jsm \Am.
 	}
 	\vfix
@@ -33,9 +33,10 @@
 	\aln{
 		\delS &= \int \paren{ -\frac{1}{16\pi} (\Fsmn + \delFsmn) (\Fmn + \delFmn) - \frac{1}{c} \Jsm (\Am + \delAm) + \frac{1}{16\pi} \Fsmn \Fmn - \frac{1}{c} \Jsm \Am } \dqx \notag \\
 		&\approx \int \paren{ -\frac{1}{16\pi} (\Fsmn \Fmn + \Fsmn \,\delFmn + \delFsmn \,\Fmn) - \frac{1}{c} \Jsm (\Am + \delAm) + \frac{1}{16\pi} \Fsmn \Fmn - \frac{1}{c} \Jsm \Am } \dqx \notag \\
-		&= \int \paren{ -\frac{1}{16\pi} (\Fsmn \,\delFmn + \delFsmn \,\Fmn) - \frac{1}{c} \Jsm \,\delAm } \dqx, \label{delS1.a}
+		&= \int \paren{ -\frac{1}{16\pi} (\Fsmn \,\delFmn + \delFsmn \,\Fmn) - \frac{1}{c} \Jsm \,\delAm } \dqx \notag \\
+		&= \int \paren{ -\frac{1}{8\pi} (\delFsmn \,\Fmn) - \frac{1}{c} \Jsm \,\delAm } \dqx, \label{delS1.a}
 	}
-	where we have discarded terms of $\order{(\delAm)^2}$.
+	where we have discarded terms of $\order{(\delAm)^2}$, and swapped covariant and contravariant indices.
 	
 	Note that
 	\eq{
@@ -44,8 +45,8 @@
 	}
 	Integrating the first term of the expansion by parts, we have
 	\eq{
-		\int \pdv{\,\delAsn}{\xsm} \pdv{\An}{\xm} \dqx = \bigg[ \delAsn \pdv{\An}{\xm} \bigg]_{-\infty}^\infty - \int \delAsn \pdv{\xsm} \pdv{\An}{\xm} \dqx
-		= -\int \delAsn \,\partm \partsm \Asn \dqx,
+		\int \pdv{\,\delAsn}{\xm} \pdv{\An}{\xsm} \dqx = \bigg[ \delAsn \pdv{\An}{\xsm} \bigg]_{-\infty}^\infty - \int \delAsn \pdv{\xm} \pdv{\An}{\xsm} \dqx
+		= -\int \delAsn \,\partsm \partm \An \dqx,
 	}
 	because $\delAn$ vanishes at $\pm\infty$.  Performing similar integrations for the other terms, we find
 		\al{
@@ -54,16 +55,7 @@
 		= -\int (\del\Asn \,\partsm \Fmn + \del\Asn \,\partsm \Fmn) \dqx,
 	}
 	where in going to the final equality we have simply swapped the indices.
-	
-	Likewise,
-	\al{
-		\int \Fsmn \,\delFmn \dqx &= -\int ( \delAn \,\partm \partsm \Asn - \delAm \,\partn \partsm\Asn - \delAn \,\partm \partsn \Asm + \delAm \,\partn \partsn \Asm ) \dqx \\
-		&= -\int ( \delAn \,\partm \Fsmn + \delAm \,\partn \Fsnm ) \dqx
-		= -\int ( \delAn \,\partm \Fsmn + \delAn \,\partm \Fsmn ) \dqx \\
-		&= -\int ( \delAsn \,\partsm \Fmn + \delAsn \,\partsm \Fmn ) \dqx,
-	}
-	where in going to the final equality we have swapped contravariant and covariant.
-	
+
 	Making these substitutions in Eq.~\refeq{delS1.a}, we obtain
 	\eq{
 		\delS = \int \paren{ \frac{1}{16\pi} (4 \,\delAsn \,\partsm \Fmn) - \frac{1}{c} \Jsn \,\delAn } \dqx
