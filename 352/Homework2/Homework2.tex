@@ -148,11 +148,19 @@
 	
 	The Helmholtz free energy is $F = -T \ln Z$, where $Z$ is the partition function~\cite[p.~87]{Landau}.  According to p.~1 of Lecture 4, the single-particle partition function of the Maxwell distribution can be found by
 	\eq{
-		\ddNvp = \frac{N}{V} \frac{1}{\Zii} e^{-\bet \vp^2 / 2m} \ddcp.
+		\ddNvp = \frac{N}{V} \frac{1}{\Zii} e^{-\bet \vp^2 / 2m} \ddcp
+		\qimplies
+		\Zii = (2\pi m T)^{3/2}.
 	}
 	Applying this procedure to Eq.~\refeq{1.1ans}, we find
 	\eq{
-		\Zii = 4\pi T m^2 c \,K_2(\bet mc^2).
+		\Zii = 4\pi T m^2 c \,K_2(\bet mc^2)
+		\qimplies
+		Z = \frac{1}{N!} [ 4\pi T m^2 c \,K_2(\bet mc^2) ]^N,
+	}
+	assuming the gas molecules are indistinguishable.  It is easier to work with $\ln Z$.  Taking the ultra-relativistic limit,
+	\eq{
+		\limuo \ln Z = \limuo N \ln(4\pi \frac{T}{c^3} m^2 c \,K_2(\bet mc^2)) - \ln N!
 	}
 }
 
