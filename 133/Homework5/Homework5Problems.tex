@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{enumitem}
+%\allowdisplaybreaks
+ 
+\renewcommand{\footrulewidth}{.2pt}
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 5}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\cfoot{\today}
+%\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+
+\begin{document}
+
+\begin{enumerate}
+
+\newcommand{\inlen}{\SI{2.50}{\mm}}
+\newcommand{\angsize}{\SI{0.0500}{\radian}}
+
+% Y&F 34.58
+\item You found a tiny~({\inlen} long) insect in your kitchen, and you want to get a better look at it in order to identify its species.  Luckily, you happen to have on hand a collection of magnifying glasses of various focal lengths.  You plan to place the insect at the focal point of one of your magnifying lenses, and you want its image to have an angular size of $\angsize$.  What focal length should you choose for your lens?
+
+\newcommand{\objheight}{\SI{1.50}{\cm}}
+\newcommand{\odist}{\SI{60.0}{\cm}}
+\newcommand{\flenq}{\SI{50.0}{\cm}}
+\newcommand{\flenw}{\SI{70.0}{\cm}}
+\newcommand{\lensep}{\SI{300.0}{\cm}}
+\newcommand{\Lq}{L_1}
+\newcommand{\Lw}{L_2}
+\newcommand{\Iq}{I_1}
+\newcommand{\Iw}{I_2}
+
+
+% Y&F 34.43
+\item Let's look at what happens when we combine two lenses.  A figurine {\objheight} tall is located {\odist} to the left of a converging lens $\Lq$.  A second converging lens, $\Lw$, is located {\lensep} to the right of $\Lq$.  The focal length of $\Lq$ is $\flenq$, and the focal length of $\Lw$ is $\flenw$.  What is the location and height of $\Iq$, the object formed by $\Lq$?  The final image is the object formed by $\Lw$ with $\Iq$ as the object.  What is the location and height of the final image?
+
+\end{enumerate}
+
+
+
+
+\end{document}
