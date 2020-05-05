@@ -136,15 +136,26 @@
 		= \ans{ 3N T, }
 	}
 	where we integrate from $\eps = 0$ since $mc^2 \to 0$ in this limit, and we have used $\intoi x^n e^{-\mu x} \dd{x} = n!\, \mu^{-n - 1}$~\cite[p.~340]{Integrals}.
-	
-	The second moment of energy can be found similarly:
+
+	The second moment of energy is not an additive quantity, so we cannot simply compute $N \ev{\eps^2}$.  Let $E = \sumiN \epsi$, where $\epsi$ is the energy of a given molecule.  Then
 	\eq{
-		\evEs = N \ev{\eps^2}
-		V \limuo \int \eps^2 \ddNeps
-		= \frac{N}{2 T^3} \intoi \eps^4 e^{-\bet \eps} \dde
-		= \frac{N}{2 T^3} 4!\, T^5
-		= \ans{ 12 N T^2. }
+		E^2 = \paren{ \sumiN \epsi } \paren{ \sumjN \epsj }
+		= \sumiN \epsi^2 + \sum_{i \neq j} \epsi \epsj,
 	}
+	and the second moment of energy can be found by
+	\eq{
+		\evEs = \int \paren{ \sumiN \epsi^2 + \sum_{i \neq j} \epsi \epsj } \prodiN
+	}
+	
+	
+%	The second moment of energy \hl{can be found similarly}:
+%	\eq{
+%		\evEs = N \ev{\eps^2}
+%		V \limuo \int \eps^2 \ddNeps
+%		= \frac{N}{2 T^3} \intoi \eps^4 e^{-\bet \eps} \dde
+%		= \frac{N}{2 T^3} 4!\, T^5
+%		= \ans{ 12 N T^2. }
+%	}
 	
 	The Helmholtz free energy is $F = -T \ln Z$, where $Z$ is the partition function~\cite[p.~87]{Landau}.  According to p.~1 of Lecture 4, the single-particle partition function of the Maxwell distribution can be found by
 	\eq{
@@ -154,13 +165,75 @@
 	}
 	Applying this procedure to Eq.~\refeq{1.1ans}, we find
 	\eq{
-		\Zii = 4\pi T m^2 c \,K_2(\bet mc^2)
-		\qimplies
-		Z = \frac{1}{N!} [ 4\pi T m^2 c \,K_2(\bet mc^2) ]^N,
+		\Zii = 4\pi T m^2 c \,K_2(\bet mc^2).
 	}
-	assuming the gas molecules are indistinguishable.  It is easier to work with $\ln Z$.  Taking the ultra-relativistic limit,
+	Assuming the gas molecules are indistinguishable, this gives the many-particle partition function
 	\eq{
-		\limuo \ln Z = \limuo N \ln(4\pi \frac{T}{c^3} m^2 c \,K_2(\bet mc^2)) - \ln N!
+		Z = \frac{1}{N!} \brac{ 4\pi T m^2 c \,K_2(\bet mc^2) }^N.
+	}
+	
+%	Then the free energy is
+%	\eq{
+%		F = -T \ln Z
+%		\approx -T \brac{ N \ln(4\pi T m^2 c \,K_2(\bet mc^2)) - N \ln N + N }
+%		= -N T \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 },
+%	}
+%	where we have used Stirling's approximation $\ln N! \approx N \ln N - N$.  The entropy is
+%	\al{
+%		S &= -\paren{ \pdv{F}{T} }_V
+%		= N \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 } + N T \pdv{T} \brac{ \ln(\frac{4\pi}{N} m^2 c) + \ln T + \ln K_2(mc^2 / T) + 1 } \\
+%		&= N \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 } + N T \paren{ \frac{1}{T} + m c^2 \frac{K_1(\bet mc^2) + K_3(\bet mc^2)}{2 T^2} } \\
+%		&= N \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 + N + m c^2 \frac{K_1(\bet mc^2) + K_3(\bet mc^2)}{2 T^2}},
+%	}
+%	where we have used $\pdv*{K_\nu(z)}{z} = -[ K_{\nu - 1}(z) + K_{\nu + 1}(z) ]/2$~\cite{Derivative}.
+%	
+%	In the high-temperature limit,
+%	\al{
+%		\limTi F &= \limTi -N T \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(mc^2 / T)) + 1 }
+%		= \limTi -N T \paren{ \ln T + \ln K_2(m c^2 / T) } \\
+%		&= \ans{ \infty, } \\[2ex]
+%		\limTi S &= \limTi N \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 + N + m c^2 \frac{K_1(\bet mc^2) + K_3(\bet mc^2)}{2 T^2}} \\
+%		&= \limTi N \brac{ \ln T + \ln K_2(mc^2 / T) + m c^2 \frac{K_1(mc^2 / T) + K_3(mc^2 / T)}{2 T^2}},
+%	}
+%	where we have used Mathematica to evaluate the limits~(graphically when needed).
+	
+	For the ultra-relativistic case,
+	\eq{
+		\limuo \Zii = 4\pi \frac{T^3}{c^3} \limuo u^2 \,K_2(u)
+		= 8\pi \frac{T^3}{c^3}
+		\qimplies
+		Z = \frac{1}{N!} \paren{ 8\pi \frac{T^3}{c^3} }^N.
+	}
+	Then the free energy is
+	\eq{
+		F = -T \ln Z
+		= -T \paren{ N \ln(8\pi \frac{T^3}{c^3}) - \ln N! }
+		\approx -N T \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 },  
+	}
+	where we have used Stirling's approximation $\ln N! \approx N \ln N - N$.  The entropy can be found by $S = -(\pdv*{F}{T})_V$~\cite[p.~47]{Pathria}, which gives us
+	\al{
+		S &= -\paren{ \pdv{F}{T} }_V
+		= \pdv{T} \brac{ N T \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 } }
+		= N \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 } + N T \pdv{T} \brac{ \ln(\frac{8\pi}{N c^3}) + 3 \ln T + 1 } \\
+		&= N \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 4 }.
+	}	
+	In the high-temperature limit,
+	\al{
+		\limTi F &= \limTi -N T \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 }
+		= \limTi -3 N T \ln T
+		= \infty, \\
+		\limTi S &= \limTi N \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 4 }
+		= \limTi 3 N \ln T
+		= \infty.
+	}
+	In the low-temperature limit,
+	\al{
+		\limTo F &= \limTo -N T \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 }
+		= \limTo -3N T \ln T
+		= 0, \\
+		\limTo S &= \limTo N \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 4 }
+		= \limTo 3 N \ln T
+		= -\infty.
 	}
 }
 
