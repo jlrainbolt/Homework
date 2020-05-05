@@ -1,0 +1,436 @@
+\state{Thermodynamics of a relativistic gas}{\hfix}
+
+%
+%	1.1
+%
+
+\prob{}{
+	Find the statistical distribution of a relativistic gas in momentum space, and in energies.  Discuss the relativistic corrections compared to the Maxwell distribution.
+}
+
+\sol{
+	We will use the Boltzmann distribution for an ideal gas in the classical limit.  The distribution of the density of states in phase space is
+	\eq{
+		\npq = a \exp(-\frac{\epspq}{T}),
+	}
+	where $\npq$ is the mean number of molecules of energy $\epspq$ in a phase space volume element $\ddp \ddq$.  Here $a$ is a normalization constant, determined by normalizing to $N / V$ particles per unit volume, where $N$ is the total number of gas molecules and $V$ is the total volume.  The mean number of molecules contained in a single volume element is
+	\eq{
+		\ddN = \frac{n(p, q)}{(2\pi\hbar)^r} \ddp \ddq,
+	}
+	where $r$ is the number of translational degrees of freedom~\cite[p.~107--108]{Landau}.  We assume $r = 3$.
+	
+	The energy of a single relativistic particle is $\eps = c \sqrt{m^2 c^2 + \vp^2}$, where $m$ is its mass, $\vp$ its three-dimensional momentum, and $c$ the speed of light~\cite[p.~110]{Landau}.  This gives us
+	\eqn{dNp}{
+		\ddNvp = \frac{a}{(2\pi\hbar)^3} \exp(-\frac{c \sqrt{m^2 c^2 + \vp^2}}{T}) \ddcp,
+	}
+	where we are ignoring the coordinate-space volume $\ddq$, because it would disappear anyway upon normalization.
+	
+	Now we must find $a$ by integrating over all of momentum space, which we will carry out  using spherical coordinates with $\ddcp = p^2 \sin\tht \ddp \ddtht \ddphi$.  We find
+	\eqn{thingy2}{
+		\frac{N}{V} = \int \ddNvp
+		= \frac{4\pi a}{(2\pi\hbar)^3} \intoi p^2 \exp(-\frac{c \sqrt{m^2 c^2 + p^2}}{T}) \ddp.
+	}
+	Let $u = \sqrt{m^2 c^2 + p^2}$.  Then the lower bound of integration for $u$ is $m c$, and
+	\eq{
+		\dv{u}{p} = \frac{p}{\sqrt{m^2 c^2 + p^2}} 
+		 = \frac{\sqrt{u^2 - m^2 c^2}}{u}
+		 \qimplies
+		 \ddp = \frac{u}{\sqrt{u^2 - m^2 c^2}} \ddu.
+	}
+	Then we have
+	\eqn{thingy}{
+		\frac{N}{V} = \frac{4\pi a}{(2\pi\hbar)^3} \intmci u \sqrt{u^2 - m^2 c^2} e^{-c u / T} \ddu.
+	}
+	Note that~\cite[p.~351]{Integrals}
+	\eqn{integral}{
+		\int_u^\infty x (x^2 - u^2)^{\nu - 1} e^{-\mu x} \ddx = \frac{2^{\nu - 1/2}}{\sqrt{\pi}} \mu^{1/2 - \nu} u^{\nu + 1/2} \,\Gam(\nu) \,K_{\nu + 1/2}(u\mu)
+	}
+	for $\Re(u \mu) > 0$, where $\Gam(z)$ is the Gamma function and $K_n(z)$ is a modified Bessel function of the second kind~\cite[p.~175]{Pathria}.  Comparing with Eq.~\refeq{thingy}, we have $x \to u$, $u \to mc$, $\nu \to 3/2$, and $\mu \to c/T$.  Note also that $\Gam(3/2) = \sqrt{\pi} / 2$~\cite{Gamma}.  Then, evaluating Eq.~\refeq{thingy},
+	\eq{
+		\frac{N}{V} = \frac{4\pi a}{(2\pi\hbar)^3} T m^2 c \,K_2(\bet mc^2)
+		\qimplies
+		a = \frac{N}{V} \frac{(2\pi\hbar)^3}{4\pi} \frac{1}{T m^2 c \,K_2(\bet mc^2)}.
+	}
+	Substituting into Eq.~\refeq{dNp}, we obtain
+	\eq{
+		\ddNvp = \frac{N}{V} \frac{\exp(-\bet c \sqrt{m^2 c^2 + \vp^2})}{4\pi T m^2 c \,K_2(\bet mc^2)} \ddcp
+	}
+	as the occupation number distribution in momentum space.  Multiplying by $V / N$, we find the momentum distribution, which is normalized to unity:
+	\eqn{1.1ans}{
+		\ans{ \ddP = \frac{\exp(-\bet c \sqrt{m^2 c^2 + \vp^2})}{4\pi T m^2 c \,K_2(\bet mc^2)} \ddcp. }
+	}
+	
+	To find the distribution in energy space, we will change variables in Eq.~\refeq{dNp} to $\eps = c \sqrt{m^2 c^2 + \vp^2}$.  Noting that
+	\eq{
+		\dv{p}{\eps} = \frac{c p}{\sqrt{m^2 c^2 + p^2}}
+		\qimplies
+		\ddp = \frac{\eps}{c^2} \sqrt{\eps^2 / c^2 - m^2 c^2}
+		= \frac{\eps}{c^3} \sqrt{\eps^2 - m^2 c^4},
+	}
+	we have
+	\eq{
+		\ddNeps = \frac{4\pi b}{(2\pi\hbar)^3} \frac{1}{c^3} \eps \sqrt{\eps^2 - m^2 c^4} e^{-\eps / T} \dde,
+	}
+	where $b$ is a normalization constant,which we will find by integration:
+	\eq{
+		\frac{N}{V} = \frac{4\pi b}{(2\pi\hbar)^3} \frac{1}{c^3} \int_{m c^2}^\infty \eps \sqrt{\eps^2 - m^2 c^4} e^{-\eps / T} \dde
+	}
+	Again comparing to Eq.~\refeq{integral}, we have $x \to \eps$, $u \to mc^2$, $\nu \to 3/2$, and $\mu \to \bet$.  This gives us
+	\eq{
+		\frac{N}{V} = \frac{4\pi b}{(2\pi\hbar)^3} T m^2 c \,K_{2}(\bet m c^2)
+		\qimplies b = a,
+	}
+	so the statistical distribution in energy space is
+	\eqn{1.1ans2}{
+		\ddNeps = \frac{N}{V} \frac{e^{-\bet \eps} \eps \sqrt{\eps^2 - m^2 c^4}}{T m^2 c^4 \,K_2(\bet mc^2)} \dde
+		\qimplies
+		\ans{ \ddcE = \frac{e^{-\bet \eps} \eps \sqrt{\eps^2 - m^2 c^4}}{T m^2 c^4 \,K_2(\bet mc^2)} \dde. }
+	}
+
+	
+	The Maxwell distribution in momentum space is~\cite[p.~109]{Landau}
+	\eqn{Maxwellp}{
+		\ddP = \frac{1}{(2\pi m T)^{3/2}} \exp(-\frac{\px^2 + \py^2 + \pz^2}{2m T}) \ddpxyz.
+	}
+	From p.~2 of Lecture 4, the Maxwell distribution in energy space is
+	\eqn{Maxwelle}{
+		\ddcE = \frac{2}{\sqrt{\pi T^3}} e^{-\eps / T} \sqrt{\eps} \dde.
+	}
+	
+	Both distributions are similar to the relativistic ones in Eqs.~(\ref{1.1ans}--\ref{1.1ans2}).  The Maxwell distributions have the kinetic energy $\eps = \vp^2 / 2m$ in the exponent, whereas Eqs.~(\ref{1.1ans}--\ref{1.1ans2}) have the relativistic energy $\eps = c \sqrt{m^2 c^2 + \vp^2}$.  The factor of $\bet$ in the exponent is the same in both cases.  	However, Eq.~\refeq{1.1ans2} goes as $e^{-\bet \eps} \eps^2$ while Eq.~\refeq{Maxwelle} goes as $e^{-\bet \eps} \sqrt{\eps}$.
+	
+	The normalization of Eqs.~(\ref{1.1ans}--\ref{1.1ans2}) is different than that of Eqs.~(\ref{Maxwellp}--\ref{Maxwelle}) in order to account for the relativistic energy.  The factor of $1/K_2{\bet mc^2}$ means that the relativistic ``occupation number densities'' fall off much more rapidly with $T$ than the nonrelativistic ones.  This is sensible because the relativistic particles are able to access a much larger range of momenta at high temperatures, which spreads them out over a larger range of energies.
+}
+
+%
+%	1.2
+%
+
+\clearpage
+\prob{}{
+	Now take the ultra-relativistic limit.  Find the mean energy $\evE$ and the second moment of energy $\evEs$.  Find the free energy and the entropy in the limits of high and low temperature.
+}
+
+\sol{
+	The ultra-relativistic limit is $T \gg m c^2$~\cite[p.~175]{Pathria}.  Let $u = m c^2 / T$.  Then Eq.~\refeq{1.1ans2} becomes
+	\eq{
+		\limuo \ddcE = \limuo \frac{1}{T^2} \frac{e^{-\bet \eps} \eps \sqrt{\eps^2 / T^2 - u^2}}{u^2 \,K_2(u)} \dde
+		= \frac{1}{2 T^3} e^{-\bet \eps} \eps^2 \dde,
+	}
+	where we have used Mathematica to evaluate the limit of the denominator.
+	
+	The mean energy can be found by $\evE = N \eveps$, where $\eveps$ is the mean energy per molecule:
+	\eq{
+		\evE = N \eveps
+		= N \limuo \int \eps \ddcE
+		= \frac{N}{2 T^3} \intoi \eps^3 e^{-\bet \eps} \dde
+		= \frac{N}{2 T^3} 3!\, T^4
+		= \ans{ 3N T, }
+	}
+	where we integrate from $\eps = 0$ since $mc^2 \to 0$ in this limit, and we have used $\intoi x^n e^{-\mu x} \ddx = n!\, \mu^{-n - 1}$~\cite[p.~340]{Integrals}.
+
+	The second moment of energy is not an additive quantity, so we cannot simply compute $N \ev{\eps^2}$.  Let $E = \sumiN \epsi$, where $\epsi$ is the energy of a given molecule.  Then
+	\eq{
+		E^2 = \paren{ \sumiN \epsi } \paren{ \sumjN \epsj }
+		= \sumiN \epsi^2 + \sumiN \sumji \epsi \epsj,
+	}
+	and the second moment of energy can be found by
+	\aln{
+		\evEs &= \int \sumiN \paren{ \epsi^2 + \sumji \epsi \epsj } \prodkN \ddcEk
+		= \sumiN \paren{ \int \epsi^2 \prodkN \ddcEk + \sumji \int \epsi \epsj \prodkN \ddcEk } \notag \\
+		&= \sumiN \paren{ \int \epsi^2 \ddcEi + \sumji \int \epsi \ddcEi \int \epsj \ddcEj }, \label{evEs}
+	}
+	where in going to the final equality we have used the fact that $\int \ddcEk = 1$.  For the first term,
+	\eq{
+		\int \epsi^2 \ddcEi = \limuo \int \epsi^2 \ddcEi
+		= \frac{1}{2 T^3} \intoi \epsi^4 e^{-\bet \epsi} \dde_i
+		= \frac{1}{2 T^3} 4!\, T^5
+		= 12 T^2.
+	}
+	For the second term,
+	\eq{
+		\int \epsi \ddcEi \int \epsj \ddcEj = \ev{\epsi} \ev{\epsj}
+		= 9 T^2.
+	}
+	Then Eq.~\refeq{evEs} becomes
+	\eq{
+		\evEs =  N (12 T^2) + N (N - 1) (9 T^2)
+		= \ans{ 3 N (3N + 1) T^2. }
+	}
+
+	The Helmholtz free energy is $F = -T \ln Z$, where $Z$ is the partition function~\cite[p.~87]{Landau}.  According to p.~1 of Lecture 4, the single-particle partition function of the Maxwell distribution can be found by
+	\eq{
+		\ddP = \frac{e^{-\bet \vp^2 / 2m}}{\Zii} \ddcp
+		\qimplies
+		\Zii = (2\pi m T)^{3/2}.
+	}
+	Applying this procedure to Eq.~\refeq{1.1ans}, and assuming the gas molecules are indistinguishable, we find
+	\eq{
+		\Zii = 4\pi T m^2 c \,K_2(\bet mc^2)
+		\qimplies
+		Z = \frac{1}{N!} \brac{ 4\pi T m^2 c \,K_2(\bet mc^2) }^N.
+	}
+	
+%	Then the free energy is
+%	\eq{
+%		F = -T \ln Z
+%		\approx -T \brac{ N \ln(4\pi T m^2 c \,K_2(\bet mc^2)) - N \ln N + N }
+%		= -N T \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 },
+%	}
+%	where we have used Stirling's approximation $\ln N! \approx N \ln N - N$.  The entropy is
+%	\al{
+%		S &= -\paren{ \pdv{F}{T} }_V
+%		= N \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 } + N T \pdv{T} \brac{ \ln(\frac{4\pi}{N} m^2 c) + \ln T + \ln K_2(mc^2 / T) + 1 } \\
+%		&= N \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 } + N T \paren{ \frac{1}{T} + m c^2 \frac{K_1(\bet mc^2) + K_3(\bet mc^2)}{2 T^2} } \\
+%		&= N \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 + N + m c^2 \frac{K_1(\bet mc^2) + K_3(\bet mc^2)}{2 T^2}},
+%	}
+%	where we have used $\pdv*{K_\nu(z)}{z} = -[ K_{\nu - 1}(z) + K_{\nu + 1}(z) ]/2$~\cite{Derivative}.
+%	
+%	In the high-temperature limit,
+%	\al{
+%		\limTi F &= \limTi -N T \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(mc^2 / T)) + 1 }
+%		= \limTi -N T \paren{ \ln T + \ln K_2(m c^2 / T) } \\
+%		&= \ans{ \infty, } \\[2ex]
+%		\limTi S &= \limTi N \brac{ \ln(\frac{4\pi}{N} T m^2 c \,K_2(\bet mc^2)) + 1 + N + m c^2 \frac{K_1(\bet mc^2) + K_3(\bet mc^2)}{2 T^2}} \\
+%		&= \limTi N \brac{ \ln T + \ln K_2(mc^2 / T) + m c^2 \frac{K_1(mc^2 / T) + K_3(mc^2 / T)}{2 T^2}},
+%	}
+%	where we have used Mathematica to evaluate the limits~(graphically when needed).
+	
+	For the ultra-relativistic case,
+	\eq{
+		\limuo \Zii = 4\pi \frac{T^3}{c^3} \limuo u^2 \,K_2(u)
+		= 8\pi \frac{T^3}{c^3}
+		\qimplies
+		Z = \frac{1}{N!} \paren{ 8\pi \frac{T^3}{c^3} }^N.
+	}
+	Then the free energy is
+	\eq{
+		F = -T \ln Z
+		= -T \paren{ N \ln(8\pi \frac{T^3}{c^3}) - \ln N! }
+		\approx \ans{ -N T \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 }, }
+	}
+	where we have used Stirling's approximation $\ln N! \approx N \ln N - N$.  The entropy can be found by $S = -(\pdv*{F}{T})_V$~\cite[p.~47]{Pathria}, which gives us
+	\al{
+		S &= -\paren{ \pdv{F}{T} }_V
+		= \pdv{T} \brac{ N T \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 } }
+		= N \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 } + N T \pdv{T} \brac{ \ln(\frac{8\pi}{N c^3}) + 3 \ln T + 1 } \\
+		&= \ans{ N \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 4 }. }
+	}	
+	In the high-temperature limit,
+	\al{
+		\limTi F &= \limTi -N T \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 }
+		= \limTi -3 N T \ln T
+		= \ans{ -\infty, } \\
+		\limTi S &= \limTi N \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 4 }
+		= \limTi 3 N \ln T
+		= \ans{ \infty. }
+	}
+	In the low-temperature limit,
+	\al{
+		\limTo F &= \limTo -N T \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 1 }
+		= \limTo -3N T \ln T
+		= \ans{ 0, } \\
+		\limTo S &= \limTo N \paren{ \ln(\frac{8\pi}{N} \frac{T^3}{c^3}) + 4 }
+		= \limTo 3 N \ln T
+		= \ans{ -\infty. }
+	}
+	\vfix
+}
+
+%
+%	1.3
+%
+
+\prob{}{
+	In the non-relativistic Maxwell distribution, the different translational degrees of freedom are independent as the kinetic energy is the sum of three independent terms $K = \sum_{i=1}^3 \pii^2 / 2m$.  This is not so in the relativistic case.  For the ultra-relativistic gas compute the quantities
+	\al{
+		\aij &= \frac{\evpijs}{3 \evpis \evpjs}, &
+		\rij &= \frac{\evpijs}{\sqrt{\evpiq \evpjq}},
+	}
+	in spatial dimensions $d = 2, 3$ (here $i, j$ enumerate spatial dimensions).  [$\rij$ is the uncentered ``correlation coefficient''.  $\aij = 1$ in the classical (Gaussian) case by Wick's theorem.]  Compare them to the non-relativistic case.  Discuss their meaning and dependence on $d$ (at least based on $d = 2, 3$).
+}
+
+\sol{
+	In the ultra-relativistic case, Eq.~\refeq{1.1ans} becomes
+	\eq{
+		\limuo \ddP = \limuo \frac{c^3}{T^3} \frac{\exp(-\sqrt{u^2 + c^2 \vp^2 / T^2})}{4\pi u^2 \,K_2(u)} \ddcp
+		= \frac{c^3}{8\pi T^3} \exp(-\bet c \abs{\vp}) \ddcp.
+%		= \frac{c^3}{T^3} \frac{\exp[-\bet c (\px + \py + \pz)]}{8 \pi} \ddpxyz.
+	}
+	Clearly this represents the three-dimensional case.  For this case,
+		\eq{
+		\evpis = \evpzs
+		= \int \pz^2 \ddP
+		= \frac{c^3}{8\pi T^3} \intotp \ddphi \intqq \cos^2\tht \ddcost \intoi p^4 e^{-\bet c p} \ddp
+		= \frac{c^3}{8\pi T^3} 2\pi \frac{2}{3} \frac{4!}{(\bet c)^5}
+		= 4 \frac{T^2}{c^2},
+	}
+	\al{
+		\evpiq &= \evpiis
+		= \int \pz^4 \ddP
+		= \frac{c^3}{8\pi T^3} \intotp \ddphi \intqq \cos^4\tht \ddcost \intoi p^6 e^{-\bet c p} \ddp
+		= \frac{c^3}{8\pi T^3} 2\pi \frac{2}{5} \frac{6!}{(\bet c)^7}
+		= 72 \frac{T^4}{c^4}, \\[2ex]
+		\evpijs &= \evpxzs
+		= \int \px^2 \pz^2
+		= \frac{c^3}{8\pi T^3} \intotp \cos^2\phi \ddphi \intopi \cos^2\tht \sin^3\tht \ddtht \intoi p^6 e^{-\bet c p} \ddp
+		= 0,
+	}
+	where we have used $\px = p \cos\phi \sin\tht$, $\py = p \sin\phi \sin\tht$, and $\pz = p \cos\tht$.  So we find
+	\aln{
+		\ans{\aij\ }&{\color{blue} = \begin{cases}
+			3/2 & i = j, \\
+			0 & i \neq j,
+			\end{cases}} &
+		\ans{\rij\ }&{\color{blue} = \begin{cases}
+			1 & i = j, \\
+			0 & i \neq j,
+			\end{cases}} \label{ur3d}
+	}
+	for the three-dimensional ultra-relativistic gas.
+	
+	In the two-dimensional case, we need to return to Eq.~\refeq{dNp}, which becomes
+	\eq{
+		\ddNvp = \frac{a}{(2\pi\hbar)^2} \exp(-\frac{c \sqrt{m^2 c^2 + \vp^2}}{T}) \ddsp.
+	}
+	To integrate over all of momentum space and find $a$, we use the plane polar coordinates $\ddsp = p \ddp \ddtht$.  We find
+	\al{
+		\frac{N}{V} &= \int \ddNvp
+		= \frac{2\pi a}{(2\pi\hbar)^2} \intoi p \exp(-\frac{c \sqrt{m^2 c^2 + p^2}}{T}) \ddp
+		= \frac{2\pi a}{(2\pi\hbar)^2} \int_{mc}^\infty u e^{-\bet c u} \ddu \\
+		&= \frac{2\pi a}{(2\pi\hbar)^2}  \paren{ \brac{ -\frac{T}{c} u e^{-\bet c u} }_{mc}^\infty + \frac{T}{c} \int_{mc}^\infty e^{-\bet c u} \ddu }
+		= \frac{2\pi a}{(2\pi\hbar)^2} \paren{ mT e^{-\bet m c^2} - \frac{T}{c} \brac{ \frac{T}{c} e^{-\bet c u} }_{mc}^\infty } \\
+		&= \frac{2\pi a}{(2\pi\hbar)^2} e^{-\bet m c^2} \paren{ mT + \frac{T^2}{c^2} },
+	}
+	so
+	\eq{
+		a = \frac{N}{V} \frac{(2\pi\hbar)^2}{2\pi} \frac{e^{\bet m c^2}}{m T + T^2 / c^2}
+		\qimplies
+		\ddNvp = \frac{N}{V} \frac{1}{2\pi} \frac{e^{\bet m c^2}}{m T + T^2 / c^2} \exp(-\frac{c \sqrt{m^2 c^2 + \vp^2}}{T}) \ddsp
+	}
+	Then we have
+	\eq{
+		\ddP = \frac{1}{2\pi} \frac{e^{\bet m c^2}}{m T + T^2 / c^2} \exp(-\frac{c \sqrt{m^2 c^2 + \vp^2}}{T}) \ddsp.
+	}
+	Taking the ultra-relativistic limit,
+	\eq{
+		\limuo \ddP = \limuo \frac{c^2}{2\pi T^2} \frac{e^{u}}{u + 1} \exp(-\sqrt{u^2 + c^2 \vp^2 / T^2}) \ddsp
+		= \frac{c^2}{2\pi T^2} \exp(-\bet c \abs{\vp}) \ddsp.
+	}
+	For this case,
+	\al{
+		\evpis &= \evpxs
+%		= \frac{c^2}{2\pi T^2} \iint \px^2 \exp(-\bet c \sqrt{\px^2 + \py^2}) \ddpxy
+%		= \frac{c^2}{2\pi T^2} \intotp \intoi p^2 \cos^2\tht \exp(-\bet c p) p \ddp \ddtht \\
+		= \frac{c^2}{2\pi T^2} \intotp \cos^2\tht \ddtht \intoi p^3 e^{-\bet c p} \ddp
+		= \frac{c^2}{2\pi T^2} \frac{3!\,\pi}{(\bet c)^4}
+		= 3 \frac{T^2}{c^2}, \\[2ex]
+		\evpiq &= \evpiis
+%		= \ev{\px^4}
+		= \frac{c^2}{2\pi T^2} \intotp \cos^4\tht \ddtht \intoi p^5 e^{-\bet c p} \ddp
+		= \frac{c^2}{2\pi T^2} \frac{3\pi}{4} \frac{5!}{(\bet c)^6}
+		= 45 \frac{T^4}{c^4}, \\[2ex]
+		\evpijs &= \evpxys
+%		= \frac{c^2}{2\pi T^2} \iint \px^2 \py^2 \exp(-\bet c \sqrt{\px^2 + \py^2}) \ddpxy
+		= \frac{c^2}{2\pi T^2} \intotp \cos^2\tht \sin^2\tht \ddtht \intoi p^5 e^{-\bet c p} \ddp
+		= \frac{c^2}{2\pi T^2} \frac{\pi}{4} \frac{5!}{(\bet c)^6}
+		= 15 \frac{T^4}{c^4},
+	}
+	where we have used $\px = p \cos\tht$ and $\py = p \sin\tht$.  So we find
+	\aln{
+		\ans{\aij\ }&={\color{blue}  \begin{cases}
+			5 / 3 & i = j, \\
+			5 / 9 & i \neq j,
+			\end{cases}} &
+		\ans{\rij\ }&={\color{blue}  \begin{cases}
+			1 & i = j, \\
+			1 / 3 & i \neq j,
+			\end{cases}} \label{ur2d}
+	}
+	for the two-dimensional ultra-relativistic gas.
+	
+	For the non-relativistic case, the three-dimensional momentum distribution is given by Eq.~\refeq{Maxwellp}.  This gives us
+	\al{
+		\evpis &= \evpzs
+%		= \frac{1}{(2\pi m T)^{3/2}} \int \pz^2 \exp(-\frac{\px^2 + \py^2 + \pz^2}{2m T}) \ddpxyz
+		= \frac{1}{(2\pi m T)^{3/2}} \intotp \ddphi \intqq \cos^2\tht \ddcost \intoi p^4 e^{-\bet p^2 / 2m} \ddp
+		= \frac{1}{(2\pi m T)^{3/2}} 2\pi \frac{2}{3} \frac{\Gam(5/2)}{2 (2mT)^{-5/2}} \\
+		&= \frac{1}{(2\pi m T)^{3/2}} \frac{\pi^{3/2} (2mT)^{5/2}}{2}
+		= mT, \\[2ex]
+		\evpiq &= \evpiis
+		= \frac{1}{(2\pi m T)^{3/2}} \intotp \ddphi \intqq \cos^4\tht \ddcost \intoi p^6 e^{-\bet p^2 / 2m} \ddp
+		= \frac{1}{(2\pi m T)^{3/2}} 2\pi \frac{2}{5} \frac{\Gam(7/2)}{2 (2mT)^{-7/2}} \\
+		&= \frac{1}{(2\pi m T)^{3/2}} \frac{3 \pi^{3/2} (2mT)^{7/2}}{4}
+		= 3 m^2 T^2, \\[2ex]
+		\evpijs &= \evpxzs
+		= \frac{1}{(2\pi m T)^{3/2}} \intotp \cos^2\phi \ddphi \intopi \cos^2\tht \sin^3\tht \intoi p^6 e^{-\bet p^2 / 2m} \ddp
+		= 0,
+	}
+	where we have used
+	\al{
+		\intoi x^m \exp(-\bet x^n) \ddx &= \frac{\Gam(\gam)}{n \bet^\gam}, &
+		\gam &= \frac{m + 1}{n},
+	}
+	for $\Re(\bet), \Re(m), \Re(n) > 0$~\cite[p.~337]{Integrals}.  So we find
+	\aln{
+		\ans{\aij\ }&{\color{blue} = \begin{cases}
+			1 & i = j, \\
+			0 & i \neq j,
+			\end{cases}} &
+		\ans{\rij\ }&{\color{blue} = \begin{cases}
+			1 & i = j, \\
+			0 & i \neq j,
+			\end{cases}} \label{nr3d}
+	}
+	for the three-dimensional non-relativistic gas.
+	
+	For the two-dimensional non-relativistic case, we return to Eq.~\refeq{dNp} with $r=2$ and $\eps = \vp^2/2m$:
+	\eq{
+		\ddNvp = \frac{a}{(2\pi\hbar)^2} \exp(-\frac{\vp^2}{2mT}) \ddcp.
+	}
+	Integrating to find $a$,
+	\eq{
+		\frac{N}{V} = \frac{2\pi a}{(2\pi\hbar)^2} \int p e^{-p^2 / 2mT} \ddp
+		= \frac{2\pi a}{(2\pi\hbar)^2} \frac{\Gam(1)}{2 (2mT)^{-1}}
+		= \frac{2\pi a}{(2\pi\hbar)^2} mT
+		\qimplies
+		a = \frac{N}{V} \frac{(2\pi\hbar)^2}{2\pi mT},
+	}
+	which gives us
+	\eq{
+		\ddNvp = \frac{N}{V} \frac{e^{-\vp^2 / 2mT}}{2\pi mT} \ddcp
+		\qimplies
+		\ddP = \frac{e^{-\vp^2 / 2mT}}{2\pi mT} \ddcp.
+	}
+	Then we find
+	\al{
+		\evpis &= \evpxs
+		= \frac{1}{2\pi mT} \intotp \cos^2\tht \ddtht \intoi p^3 e^{-\vp^2 / 2mT} \ddp
+		= \frac{\pi}{2\pi mT} \frac{\Gam(2)}{2 (2mT)^{-2}}
+		= m T, \\[2ex]
+		\evpiq &= \evpiis
+		= \frac{1}{2\pi mT} \intotp \cos^4\tht \ddtht \intoi p^5 e^{-\vp^2 / 2mT} \ddp
+		= \frac{1}{2\pi mT} \frac{3\pi}{4} \frac{\Gam(3)}{2 (2mT)^{-3}}
+		= 3 m^2 T^2, \\[2ex]
+		\evpijs &= \evpxys
+		= \frac{1}{2\pi mT} \intotp \cos^2\tht \sin^2\tht \ddtht \intoi p^5 e^{-\vp^2 / 2mT} \ddp
+		= \frac{1}{2\pi mT} \frac{\pi}{4} \frac{\Gam(3)}{2 (2mT)^{-3}}
+		= m^2 T^2,
+	}
+	which give us
+	\aln{
+		\ans{\aij\ }&{\color{blue} = \begin{cases}
+			1 & i = j, \\
+			1 / 3 & i \neq j,
+			\end{cases}} &
+		\ans{\rij\ }&{\color{blue} = \begin{cases}
+			1 & i = j, \\
+			1 / 3 & i \neq j,
+			\end{cases}} \label{nr2d}
+	}
+	for the two-dimensional non-relativistic gas.
+	
+	Clearly $\rii = 1$ in all cases.  Comparing the three-dimensional cases Eq.~\refeq{ur3d} and Eq.~\refeq{nr3d}, we see that $\aij = \rij = 0$ for both when $i \neq j$.  However, $\aii = \rii = 1$ for the non-relativistic gas, but $\aii < 1$ for the ultra-relativistic gas.  Comparing the two-dimensional cases Eq.~\refeq{ur2d} and Eq.~\refeq{nr2d}, we see that $\rij$ is the same for both.  For the non-relativistic case, $\aij = \rij$ always.  However, in the ultra-relativistic case, they are not the same regardless of whether $i = j$.
+	
+	As expected, we see $\aii = 1$ in the classical case for both $d = 2$ and $d = 3$, as expected.  \hl{What do they actually mean, though?  And their dependence on dimension?  I have no fucking clue.}
+}
