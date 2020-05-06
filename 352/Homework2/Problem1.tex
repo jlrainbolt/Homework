@@ -271,20 +271,21 @@
 		= \frac{c^3}{8\pi T^3} \intotp \ddphi \intqq \cos^4\tht \ddcost \intoi p^6 e^{-\bet c p} \ddp
 		= \frac{c^3}{8\pi T^3} 2\pi \frac{2}{5} \frac{6!}{(\bet c)^7}
 		= 72 \frac{T^4}{c^4}, \\[2ex]
-		\evpijs &= \evpxzs
-		= \int \px^2 \pz^2
-		= \frac{c^3}{8\pi T^3} \intotp \cos^2\phi \ddphi \intopi \cos^2\tht \sin^3\tht \ddtht \intoi p^6 e^{-\bet c p} \ddp
-		= 0,
+		\evpijs &= \evpxys
+		= \int \px^2 \py^2
+		= \frac{c^3}{8\pi T^3} \intotp \cos^2\phi \sin^2\phi \ddphi \intopi \sin^5\tht \ddtht \intoi p^6 e^{-\bet c p} \ddp
+		= \frac{c^3}{8\pi T^3} \frac{\pi}{4} \frac{16}{15} \frac{6!}{(\bet c)^7}
+		= 24 \frac{T^4}{c^4},
 	}
 	where we have used $\px = p \cos\phi \sin\tht$, $\py = p \sin\phi \sin\tht$, and $\pz = p \cos\tht$.  So we find
 	\aln{
 		\ans{\aij\ }&{\color{blue} = \begin{cases}
 			3/2 & i = j, \\
-			0 & i \neq j,
+			1/2 & i \neq j,
 			\end{cases}} &
 		\ans{\rij\ }&{\color{blue} = \begin{cases}
 			1 & i = j, \\
-			0 & i \neq j,
+			1/3 & i \neq j,
 			\end{cases}} \label{ur3d}
 	}
 	for the three-dimensional ultra-relativistic gas.
@@ -339,12 +340,12 @@
 	where we have used $\px = p \cos\tht$ and $\py = p \sin\tht$.  So we find
 	\aln{
 		\ans{\aij\ }&={\color{blue}  \begin{cases}
-			5 / 3 & i = j, \\
-			5 / 9 & i \neq j,
+			5/3 & i = j, \\
+			5/9 & i \neq j,
 			\end{cases}} &
 		\ans{\rij\ }&={\color{blue}  \begin{cases}
 			1 & i = j, \\
-			1 / 3 & i \neq j,
+			1/3 & i \neq j,
 			\end{cases}} \label{ur2d}
 	}
 	for the two-dimensional ultra-relativistic gas.
@@ -362,9 +363,11 @@
 		= \frac{1}{(2\pi m T)^{3/2}} 2\pi \frac{2}{5} \frac{\Gam(7/2)}{2 (2mT)^{-7/2}} \\
 		&= \frac{1}{(2\pi m T)^{3/2}} \frac{3 \pi^{3/2} (2mT)^{7/2}}{4}
 		= 3 m^2 T^2, \\[2ex]
-		\evpijs &= \evpxzs
-		= \frac{1}{(2\pi m T)^{3/2}} \intotp \cos^2\phi \ddphi \intopi \cos^2\tht \sin^3\tht \intoi p^6 e^{-\bet p^2 / 2m} \ddp
-		= 0,
+		\evpijs &= \evpxys
+		= \frac{1}{(2\pi m T)^{3/2}} \intotp \cos^2\phi \sin^2\phi \ddphi \intopi \sin^5\tht \intoi p^6 e^{-\bet p^2 / 2m} \ddp
+		= \frac{1}{(2\pi m T)^{3/2}} \frac{\pi}{4} \frac{16}{15} \frac{\Gam(7/2)}{2 (2mT)^{-7/2}} \\
+		&= \frac{1}{(2\pi m T)^{3/2}} \frac{\pi^{3/2} (2mT)^{7/2}}{4}
+		= m^2 T^2,
 	}
 	where we have used
 	\al{
@@ -375,11 +378,11 @@
 	\aln{
 		\ans{\aij\ }&{\color{blue} = \begin{cases}
 			1 & i = j, \\
-			0 & i \neq j,
+			1/3 & i \neq j,
 			\end{cases}} &
 		\ans{\rij\ }&{\color{blue} = \begin{cases}
 			1 & i = j, \\
-			0 & i \neq j,
+			1/3 & i \neq j,
 			\end{cases}} \label{nr3d}
 	}
 	for the three-dimensional non-relativistic gas.
@@ -430,7 +433,9 @@
 	}
 	for the two-dimensional non-relativistic gas.
 	
-	Clearly $\rii = 1$ in all cases.  Comparing the three-dimensional cases Eq.~\refeq{ur3d} and Eq.~\refeq{nr3d}, we see that $\aij = \rij = 0$ for both when $i \neq j$.  However, $\aii = \rii = 1$ for the non-relativistic gas, but $\aii < 1$ for the ultra-relativistic gas.  Comparing the two-dimensional cases Eq.~\refeq{ur2d} and Eq.~\refeq{nr2d}, we see that $\rij$ is the same for both.  For the non-relativistic case, $\aij = \rij$ always.  However, in the ultra-relativistic case, they are not the same regardless of whether $i = j$.
+	Clearly $\rii = 1$ and $\rij = 1/3$ ($i \neq j$) in four cases.  Thus, we see that $\rij$ has no dependence on dimension or whether the particles are non- or ultra-relativistic.
 	
-	As expected, we see $\aii = 1$ in the classical case for both $d = 2$ and $d = 3$, as expected.  \hl{What do they actually mean, though?  And their dependence on dimension?  I have no fucking clue.}
+	In both the $d = 2$ and $d = 3$ classical cases, $\aii = 1$ and $\aij = 1/3$ ($i \neq j$) as well.  In the ultra-relativistic cases, however, this is not so; $\aii > 1$ and $\aij > 1/3$ ($i \neq j$) for both $d = 2$ and $d = 3$.  Additionally, $\aij$ (in general) is greater for $d = 2$ that for $d = 3$ in the ultra-relativistic case.  This shows that $\aij$ does depend on dimension in this case.
+	
+	\hl{What do they actually mean, though?  And their dependence on dimension?  I have no clue.}
 }

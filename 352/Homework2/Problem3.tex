@@ -1,0 +1,48 @@
+\state{Boltzmann distribution}{
+	Consider an ideal gas consisting of $N$ identical one-dimensional quantum harmonic oscillators with Hamiltonian $H(p, q) = p^2 / 2m + m\omg q^2 / 2$.  Determine the total number of oscillators in states with energies $\eps \geq \epsq = \hbar\omg (\nq + 1/2)$.
+}
+
+\sol{
+	In quantum statistical mechanics, the Boltzmann distribution is
+	\eq{
+		\evnk = a e^{-\epsk / T},
+	}
+	where $\evnk$ is the mean number of molecules in state $k$, which has energy $\epsk$.  To find $a$, we normalize to $\evnk = 1$.  We know that the energy associated with quantum number $n$ is $\epsn = \hbar\omg (n + 1/2)$.  Then
+	\eq{
+		1 = a \sumni e^{-\epsn / T}
+		= a \sumni \exp[-\frac{\hbar\omg}{T} \paren{ n + \frac{1}{2} } ]
+		= a \frac{e^{-\hbar\omg / 2T}}{1 - e^{-\hbar\omg / T}}
+		= a Z,
+	}
+	where $Z$ is the partition function for a one-dimensional quantum harmonic oscillator, and was found in Prob.~{3.2} of Homework~1.  Note that
+	\eq{
+		Z = \frac{e^{-\hbar\omg / 2T}}{1 - e^{-\hbar\omg / T}}
+		= \frac{1}{e^{\hbar\omg / 2T} - e^{-\hbar\omg / 2T}}
+		= \frac{2}{\sinh(\hbar\omg / 2T)},
+	}
+	so we have
+	\eq{
+		\evnk = \frac{\sinh(\hbar\omg / 2T)}{2} e^{-\epsk / T}
+		= \frac{\sinh(\hbar\omg / 2T)}{2} \exp[-\frac{\hbar\omg}{T} \paren{ \nk + \frac{1}{2} } ].
+	}
+	With this normalization, $\evnk$ represents the probability that a single oscillator is in state $k$.  In order to find the probability that a single oscillator has $\eps \geq \epsq$, we simply need to add up the probabilities:
+	\al{
+		P(\eps \geq \epsq) &= \sum_{\nk = \nq}^\infty \evnk
+		= \frac{\sinh(\hbar\omg / 2T)}{2} \sum_{n = \nq}^\infty \exp[-\frac{\hbar\omg}{T} \paren{ n + \frac{1}{2} } ]
+		= \frac{\sinh(\hbar\omg / 2T)}{2} e^{-\hbar\omg / 2T} \sum_{n = \nq}^\infty (e^{-\hbar\omg / T})^n \\
+		&= \frac{\sinh(\hbar\omg / 2T)}{2} e^{-\hbar\omg / 2T} \paren{ \sumni (e^{-\hbar\omg / T})^n - \sum_{n = 0}^{\nq - 1} (e^{-\hbar\omg / T})^n } \\
+		&= \frac{\sinh(\hbar\omg / 2T)}{2} e^{-\hbar\omg / 2T} \paren{ \frac{1}{1 - e^{-\hbar\omg / T}} - \frac{1 - (e^{-\hbar\omg / T})^{\nq}}{1 - e^{-\hbar\omg / T}}}
+		= \frac{\sinh(\hbar\omg / 2T)}{2} e^{-\hbar\omg / 2T} \frac{(e^{-\hbar\omg / T})^{\nq}}{1 - e^{-\hbar\omg / T}} \\
+		&= \frac{\sinh(\hbar\omg / 2T)}{2} \frac{2}{\sinh(\hbar\omg / 2T)} (e^{-\hbar\omg / T})^{\nq}
+		= \exp(-\frac{\hbar\omg}{T} \nq),
+	}
+	where we have used~\cite{Series}
+	\eq{
+		\sum_{k=0}^n r^k = \frac{1 - r^{n+1}}{1 - r}.
+	}
+	To obtain the number of particles with energies $\eps \geq \epsq$, we simply need to multiply the single-particle probability by the total number of particles, $N$:
+	\eq{
+		N(\eps \geq \epsq) = \ans{ N \exp(-\frac{\hbar\omg}{T} \nq). }
+	}
+	\vfix
+}

@@ -14,21 +14,42 @@
 \input{Problem1}
 
 
-
-\clearpage
 \state{Collision frequency and pressure}{
 	Consider an ideal relativistic gas in a container.  Given the rate of the collisions of molecules with the wall of the container per unit area per unit time, find the pressure of the gas in the relativistic, non-relativistic, and ultra-relativistic cases, and compare the results.
 }
 
+%\sol{
+%	In order to find an expression for the number of collisions of molecules with the wall of the container per unit area per unit time, we need to find the statistical distribution in velocity space.  This is very similar to how we found the momentum distribution in Prob.~{1.1}.
+%	
+%	Note that
+%	\eq{
+%		\vp^2 = (\gam m \vv)^2
+%	}
+%	
+%	The energy of a relativistic molecule is
+%	\eq{
+%		\eps = c \sqrt{m^2 c^2 + \frac{m^2 \vv^2}{1 - \vv^2 / c^2}}
+%		= m c^3 \sqrt{\frac{1}{c^2 - \vv^2}}
+%	}
+%	where $\vv$ is its velocity.  Assuming a three-dimensional gas,
+%	\eq{
+%		\ddNvv = \frac{a}{(2\pi\hbar)^2} \exp(-\frac{m c^3}{T} \sqrt{\frac{1}{c^2 - \vv^2}}) \dcv.
+%	}
+%	We find $a$ by integrating over all of velocity space and normalizing to $N/V$:
+%	\eq{
+%		\frac{N}{V} = \int \ddNvv
+%		= \frac{4\pi a}{(2\pi\hbar)^2} \intoi v^2 \exp(-\frac{m c^3}{T} \sqrt{\frac{1}{c^2 - v^2}}) \ddv
+%	}
+%	Let 
+%}
 
 
 
-\state{Boltzmann distribution}{
-	Consider an ideal gas consisting of $N$ identical one-dimensional quantum harmonic oscillators with Hamiltonian $H(p, q) = p^2 / 2m + m\omg q^2 / 2$.  Determine the total number of oscillators in states with energies $\eps \geq \epsq = \hbar\omg (\nq + 1/2)$.
-}
+\clearpage
+\input{Problem3}
 
 
-
+\clearpage
 \state{Boltzmann \texorpdfstring{$H$}{H}-function}{
 	The equilibrium distribution function $f(p, q)$ of a non-interacting gas is a Maxwell-Boltzmann distribution.  Show that the entropy of such a system satisfies $S = -\kB H + \const$, where $H = \int f \ln f \dG$ is the Boltzmann $H$-function.
 }
@@ -49,15 +70,15 @@
 }
 
 \prob{}{
-	Show that $\evnx = -T \,\ddvs{\ln Z}{U(x)}$, where $Z[U(x)]$ is the partition function of the Gibbs distribution treated as a functional of the potential $U$.
+	Show that $\evnx = -T \,\deldvs{\ln Z}{U(x)}$, where $Z[U(x)]$ is the partition function of the Gibbs distribution treated as a functional of the potential $U$.
 }
 
 \prob{}{
 	Show that
 	\eq{
-		C(x, y) = T^2 \ddvm{\ln Z}{U(x)}{U(y)}
-		= -T \ddv{\evnx}{U(y)}
-		= -T \ddv{\evny}{U(x)}.
+		C(x, y) = T^2 \deldvm{\ln Z}{U(x)}{U(y)}
+		= -T \deldv{\evnx}{U(y)}
+		= -T \deldv{\evny}{U(x)}.
 	}
 }
 
