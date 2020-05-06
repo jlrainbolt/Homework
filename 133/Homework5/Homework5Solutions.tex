@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+\usepackage{solutions}
+
+\classname{133}
+\homeworknum{5}
+
+
+\begin{document}
+
+\include{definitions}
+
+%
+%	Prob. 1
+%
+
+\newcommand{\inlen}{\SI{2.50}{\mm}}
+\newcommand{\angsize}{\SI{0.0500}{\radian}}
+
+\newcommand{\li}{\ell_i}
+\newcommand{\ls}{\ell_s}
+\newcommand{\thti}{\tht_i}
+\newcommand{\thts}{\tht_s}
+
+% Y&F 34.58
+\state{}{
+	You found a tiny~({\inlen} long) insect in your kitchen, and you want to get a better look at it in order to identify its species.  Luckily, you happen to have on hand a collection of magnifying glasses of various focal lengths.  You plan to place the insect at the focal point of one of your magnifying lenses, and you want its image to have an angular size of $\angsize$.  What focal length should you choose for your lens?
+}
+
+\sol{
+%	In general, magnification $M$ is defined
+%	\eq{
+%		M = \frac{\li}{\ls},
+%	}
+%	where $\li$ is the length of the image and $\ls$ is the length of the object.  For a thin lens, we also know that
+%	\eq{
+%		M = -\frac{i}{s},
+%	}
+%	where $i$ is the image distance and $s$ is the object distance.  Combining these definitions, we find that
+%	\eq{
+%		\frac{\li}{\ls} = -\frac{i}{s}
+%		\qimplies
+%		\frac{\ls}{s} = -\frac{\li}{i}
+%		\qimplies
+%		\frac{\abs{\ls}}{\abs{s}} = \frac{\abs{\li}}{\abs{i}},
+%	}
+%	meaning that the angular size of the image equals the angular size of the object: $\thti = \thts$.
+%	
+	The angular size of the image, $\thti$, is given by
+	\eq{
+		\thti = \frac{\ls}{f},
+	}
+	where $\ls$ is the height (or length, in this case) of the object and $f$ is the focal length of the lens.  Solving this for the focal length and plugging in numbers,
+	\eq{
+		f = \frac{\ls}{\thti}
+		= \frac{\inlen}{\angsize}
+		= \SI{50.0}{\mm}
+		= \ans{ \SI{5.00}{\cm}. }
+	}
+}
+
+
+
+%
+%	Prob. 2
+%
+
+\newcommand{\oheight}{\SI{1.50}{\cm}}
+\newcommand{\odist}{\SI{60.0}{\cm}}
+\newcommand{\flenq}{\SI{50.0}{\cm}}
+\newcommand{\flenw}{\SI{70.0}{\cm}}
+\newcommand{\lensep}{\SI{400.0}{\cm}}
+\newcommand{\Lq}{L_1}
+\newcommand{\Lw}{L_2}
+\newcommand{\Iq}{I_1}
+\newcommand{\Iw}{I_2}
+
+\newcommand{\hi}{h_i}
+\newcommand{\hs}{h_s}
+
+\newcommand{\sq}{s_1}
+\newcommand{\iq}{i_1}
+\newcommand{\fq}{f_1}
+
+\newcommand{\Mq}{M_1}
+\newcommand{\hiq}{{\hi}_1}
+\newcommand{\hsq}{{\hs}_1}
+
+\newcommand{\sw}{s_2}
+\newcommand{\iw}{i_2}
+\newcommand{\fw}{f_2}
+
+\newcommand{\Mw}{M_2}
+\newcommand{\hiw}{{\hi}_2}
+\newcommand{\hsw}{{\hs}_2}
+
+\newcommand{\iqdist}{\SI{300.0}{\cm}}
+\newcommand{\magq}{\num{-5.00}}
+\newcommand{\iqheight}{\SI{7.50}{\cm}}
+
+\newcommand{\owdist}{\SI{100.0}{\cm}}
+\newcommand{\fidist}{\SI{233}{\cm}}
+\newcommand{\magw}{\num{-2.33}}
+\newcommand{\fiheight}{\SI{17.5}{\cm}}
+
+\clearpage
+% Y&F 34.43
+\state{}{
+	Let's look at what happens when we combine two lenses.  A figurine {\oheight} tall is located {\odist} to the left of a converging lens $\Lq$.  A second converging lens, $\Lw$, is located {\lensep} to the right of $\Lq$.  The focal length of $\Lq$ is $\flenq$, and the focal length of $\Lw$ is $\flenw$.  What is the location and height of $\Iq$, the image formed by $\Lq$?  The final image is formed by $\Lw$ with $\Iq$ as the object.  What is the location and height of the final image?
+}
+
+\sol{
+	We will make good use of the lens object-image relation
+	\eqn{rel}{
+		\frac{1}{s} + \frac{1}{i} = \frac{1}{f},
+	}
+	where $s$ is the distance to the object, $i$ is the distance to the image, and $f$ is the focal length of the lens.  We will also use the definition of magnification $M$, which is
+	\eqn{mag}{
+		M = \frac{\hi}{\hs},
+	}
+	where $\hi$ is the height of the image and $\hs$ is the height of the object.  For a thin lens, we also have
+	\eqn{lensmag}{
+		M = -\frac{i}{s}.
+	}
+	
+	Let's begin with the properties of $\Iq$.  To find its distance from $\Lq$, we solve Eq.~\refeq{rel} for $i$:
+	\eq{
+		\frac{1}{\sq} + \frac{1}{\iq} = \frac{1}{\fq}
+		\qimplies
+		\frac{1}{\iq} = \frac{1}{\fq} - \frac{1}{\sq}
+		\qimplies
+		\iq = \frac{1}{1 / \fq - 1 / \sq}
+		= \frac{\fq \sq}{\sq - \fq}.
+	}
+	Plugging in numbers gives us
+	\eq{
+		\iq = \frac{(\flenq) (\odist)}{(\odist) - (\flenq)}
+		= \frac{\num{3000}}{\num{10.0}} \,\si{\cm}
+		= \iqdist.
+	}
+	Since this number is positive, \ans{ $\Iq$ is located {\iqdist} to the right of $\Lq$. }
+	
+	For the height, we first use Eq.~\refeq{mag} to find the magnification of $\Iq$:
+	\eq{
+		\Mq = -\frac{\iq}{\sq}
+		= -\frac{\iqdist}{\odist}
+		= \magq.
+	}
+	We can solve Eq.~\refeq{lensmag} for $i$ and use our result for $\Mq$ to find the height of $\Iq$:
+	\eq{
+		\Mq = \frac{\hiq}{\hsq}
+		\qimplies
+		\hiq = \Mq \hsq
+		= (\magq) (\oheight)
+		= -\iqheight.
+	}
+	The minus sign tells us that \ans{ $\Iq$ is {\iqheight} tall and inverted. }
+	
+	For the final image, we simply repeat the steps for $\Lw$ with $\Iq$ as the object.  Since $\Iq$ is {\iqdist} to the right of $\Lq$, which is {\lensep} to the left of $\Lw$, $\Iq$ is $\sw = \owdist$ to the right of $\Lw$.  Once again applying Eq.~\refeq{rel}, we find
+	\eq{
+		\iw = \frac{\fw \sw}{\sw - \fw}
+		= \frac{(\flenw) (\owdist)}{(\owdist) - (\flenw)}
+		= \frac{\num{7000}}{\num{30.0}} \,\si{\cm}
+		\approx \fidist.
+	}
+	This tells us that \ans{ the final image is located {\fidist} to the right of $\Lw$. }
+	
+	Now for the height, we use Eqs.~\refeq{mag} and \refeq{lensmag}, and note that $\hsw = \hiq$:
+	\al{
+		\Mw &= -\frac{\iw}{\sw}
+		= -\frac{\fidist}{\owdist}
+		= \magw, \\[2ex]
+		\hiw &= \Mw \hsw
+		= \Mw \hiq
+		= (\magw) (-\iqheight)
+		\approx \fiheight.
+	}
+	So \ans{ the final image is {\fiheight} tall and upright }(with respect to the original object).
+}
+
+
+
+\end{document}
