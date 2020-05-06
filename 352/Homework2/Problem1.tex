@@ -43,16 +43,16 @@
 	}
 	Note that~\cite[p.~351]{Integrals}
 	\eqn{integral}{
-		\int_u^\infty x (x^2 - u^2)^{\nu - 1} e^{-\mu x} \ddx = \frac{2^{\nu - 1/2}}{\sqrt{\pi}} \mu^{1/2 - \nu} u^{\nu + 1/2} \,\Gam(\nu) \,K_{\nu + 1/2}(u\mu)
+		\intui x (x^2 - u^2)^{\nu - 1} e^{-\mu x} \ddx = \frac{2^{\nu - 1/2}}{\sqrt{\pi}} \mu^{1/2 - \nu} u^{\nu + 1/2} \,\Gam(\nu) \,K_{\nu + 1/2}(u\mu)
 	}
-	for $\Re(u \mu) > 0$, where $\Gam(z)$ is the Gamma function and $K_n(z)$ is a modified Bessel function of the second kind~\cite[p.~175]{Pathria}.  Comparing with Eq.~\refeq{thingy}, we have $x \to u$, $u \to mc$, $\nu \to 3/2$, and $\mu \to c/T$.  Note also that $\Gam(3/2) = \sqrt{\pi} / 2$~\cite{Gamma}.  Then, evaluating Eq.~\refeq{thingy},
+	for $\Re(u \mu) > 0$, where $\Gam(z)$ is the Gamma function and $K_n(z)$ is a modified Bessel function of the second kind~\cite[p.~175]{Pathria}.  Comparing with Eq.~\refeq{thingy}, we have $x \to u$, $u \to mc$, $\nu \to 3/2$, and $\mu \to c/T$.  Note also that $\Gam(3/2) = \sqrt{\pi} / 2$.  Then, evaluating Eq.~\refeq{thingy},
 	\eq{
 		\frac{N}{V} = \frac{4\pi a}{(2\pi\hbar)^3} T m^2 c \,K_2(\bet mc^2)
 		\qimplies
 		a = \frac{N}{V} \frac{(2\pi\hbar)^3}{4\pi} \frac{1}{T m^2 c \,K_2(\bet mc^2)}.
 	}
 	Substituting into Eq.~\refeq{dNp}, we obtain
-	\eq{
+	\eqn{ddNvp}{
 		\ddNvp = \frac{N}{V} \frac{\exp(-\bet c \sqrt{m^2 c^2 + \vp^2})}{4\pi T m^2 c \,K_2(\bet mc^2)} \ddcp
 	}
 	as the occupation number distribution in momentum space.  Multiplying by $V / N$, we find the momentum distribution, which is normalized to unity:
@@ -73,7 +73,7 @@
 	}
 	where $b$ is a normalization constant,which we will find by integration:
 	\eq{
-		\frac{N}{V} = \frac{4\pi b}{(2\pi\hbar)^3} \frac{1}{c^3} \int_{m c^2}^\infty \eps \sqrt{\eps^2 - m^2 c^4} e^{-\eps / T} \dde
+		\frac{N}{V} = \frac{4\pi b}{(2\pi\hbar)^3} \frac{1}{c^3} \intmcsi \eps \sqrt{\eps^2 - m^2 c^4} e^{-\eps / T} \dde
 	}
 	Again comparing to Eq.~\refeq{integral}, we have $x \to \eps$, $u \to mc^2$, $\nu \to 3/2$, and $\mu \to \bet$.  This gives us
 	\eq{
@@ -90,7 +90,9 @@
 	
 	The Maxwell distribution in momentum space is~\cite[p.~109]{Landau}
 	\eqn{Maxwellp}{
-		\ddP = \frac{1}{(2\pi m T)^{3/2}} \exp(-\frac{\px^2 + \py^2 + \pz^2}{2m T}) \ddpxyz.
+		\ddNvp = \frac{N}{V} \frac{1}{(2\pi m T)^{3/2}} \exp(-\frac{\px^2 + \py^2 + \pz^2}{2m T}) \ddpxyz
+		\qimplies
+		\ddP = \frac{1}{(2\pi m T)^{3/2}} \exp(-\frac{\vp^2}{2m T}) \ddcp.
 	}
 	From p.~2 of Lecture 4, the Maxwell distribution in energy space is
 	\eqn{Maxwelle}{
@@ -370,7 +372,7 @@
 		= m^2 T^2,
 	}
 	where we have used
-	\al{
+	\aln{ \label{gaussian}
 		\intoi x^m \exp(-\bet x^n) \ddx &= \frac{\Gam(\gam)}{n \bet^\gam}, &
 		\gam &= \frac{m + 1}{n},
 	}
@@ -433,7 +435,7 @@
 	}
 	for the two-dimensional non-relativistic gas.
 	
-	Clearly $\rii = 1$ and $\rij = 1/3$ ($i \neq j$) in four cases.  Thus, we see that $\rij$ has no dependence on dimension or whether the particles are non- or ultra-relativistic.
+	Clearly $\rii = 1$ and $\rij = 1/3$ ($i \neq j$) in four cases.  Thus, we see that $\rij$ has no dependence upon dimension or upon whether the particles are non- or ultra-relativistic.
 	
 	In both the $d = 2$ and $d = 3$ classical cases, $\aii = 1$ and $\aij = 1/3$ ($i \neq j$) as well.  In the ultra-relativistic cases, however, this is not so; $\aii > 1$ and $\aij > 1/3$ ($i \neq j$) for both $d = 2$ and $d = 3$.  Additionally, $\aij$ (in general) is greater for $d = 2$ that for $d = 3$ in the ultra-relativistic case.  This shows that $\aij$ does depend on dimension in this case.
 	
