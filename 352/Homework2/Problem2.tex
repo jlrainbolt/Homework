@@ -1,0 +1,89 @@
+\state{Collision frequency and pressure}{
+	Consider an ideal relativistic gas in a container.  Given the rate of the collisions of molecules with the wall of the container per unit area per unit time, find the pressure of the gas in the relativistic, non-relativistic, and ultra-relativistic cases, and compare the results.
+}
+
+\sol{
+	We will consider particles colliding with a wall located on the $yz$ plane.  The number of particles colliding with an area $A$ of this wall in a time $\delt$ is given by
+	\eq{
+		\ddcNvp = A \vx \,\delt \ddNvp,
+	}
+	where $\vx$ is velocity in the $x$ direction and $\ddNvp$ is the distribution of the number of particles in momentum space.  This expression indicates that a particle must be a distance of no more than $\vx \,\delt$ from the wall in order to collide with it during the time $\delt$~\cite[p.~77]{Kardar}.
+	
+	Each particle that collides with the wall transfers $2\px$ of momentum to it.  Only particles moving toward~(rather than away from) the wall can hit it, so we must integrate $\px$ from $-\infty$ to $0$.  However, on average half of the particles have $\px < 0$, meaning that
+	\eq{
+		\intio \px \ddpx = \frac{1}{2} \intii \px \ddpx.
+	}
+	The net force exerted by all of the particles is the change in the total momentum, $P$, which we can now write as
+	\eq{
+		F = \frac{\del P}{\delt}
+		= \frac{1}{2 \delt} \int 2\px \ddcNvp
+		= A \int \vx \px \ddNvp,
+	}
+	where the integral is over all of momentum space~\cite[p.~77]{Kardar}.  Then the pressure is simply the force per unit area:
+	\eqn{pressure}{
+		P = \frac{F}{A} = \int \vx \px \ddNvp.
+	}
+	
+	In the relativistic case, $\ddNvp$ is given by Eq.~\refeq{ddNvp} and
+	\eqn{velocity}{
+		\vx = \frac{p}{\gam m}
+		= \frac{c^2 p}{\eps}
+		= \frac{c \px}{\sqrt{m^2 c^2 + \vp^2}},
+	}
+	since $\eps = \gam m c^2$.  So Eq.~\refeq{pressure} becomes
+	\al{
+		P &= \frac{N}{V} \frac{1}{{4\pi T m^2 c \,K_2(\bet mc^2)}} \int \frac{c \px^2}{\sqrt{m^2 c^2 + \vp^2}} \exp(-\bet c \sqrt{m^2 c^2 + \vp^2}) \ddcp \\
+%		&= \frac{N}{V} \frac{1}{{4\pi T m^2 c \,K_2(\bet mc^2)}} \intotp \intopi \intoi \frac{c p^2 \cos^2\phi \sin^2\tht}{\sqrt{m^2 c^2 + p^2}} \exp(-\bet c \sqrt{m^2 c^2 + p^2}) p^2 \sin\tht \ddp \ddtht \ddphi \\
+		&= \frac{N}{V} \frac{1}{{4\pi T m^2 c \,K_2(\bet mc^2)}} \intotp \cos^2\phi \ddphi \intopi \sin^3\tht \ddtht \intoi \frac{c p^4}{\sqrt{m^2 c^2 + p^2}} \exp(-\bet c \sqrt{m^2 c^2 + p^2}) \ddp \\
+		&= \frac{N}{V} \frac{1}{{4\pi T m^2 c \,K_2(\bet mc^2)}} \frac{4\pi}{3} \intoi \frac{c p^4}{\sqrt{m^2 c^2 + p^2}} \exp(-\bet c \sqrt{m^2 c^2 + p^2}) \ddp.
+	}
+	Note that $\eps = c \sqrt{m^2 c^2 + p^2}$, and that
+	\eq{
+		\eps^2 = m^2 c^4 + c^2 p^2
+		\qimplies \eps \dde = p c^2 \ddp
+		\qimplies
+		\ddp = \frac{\eps}{p c^2} \dde.
+	}
+	Making this substitution, we find
+	\eq{
+		P = \frac{N}{V} \frac{1}{{4\pi T m^2 c \,K_2(\bet mc^2)}} \frac{4\pi}{3} \intmcsi \frac{c^2 p^4}{\eps} e^{-\bet \eps} \frac{\eps}{p c^2} \dde
+		= \frac{N}{V} \frac{1}{{4\pi T m^2 c \,K_2(\bet mc^2)}} \frac{4\pi}{3} \frac{1}{c^3} \intmcsi (\eps^2 - m^2 c^4)^{3/2} e^{-\bet \eps} \dde.
+	}
+	Using the integral formula~\cite[p.~350]{Integrals}
+	\eq{
+		\intui (x^2 - u^2)^{\nu - 1} e^{-\mu x} \ddx = \frac{1}{\sqrt{\pi}} \paren{ \frac{2u}{\mu} }^{\nu - 1/2} \Gam(\nu) \,K_{\nu - 1/2}(u\ mu),
+	}
+	where $u > 0$, $\Re(\mu), \Re(\nu) > 0$, we see that $x \to \eps$, $u \to mc^2$, $\nu \to 5/2$, $\mu \to \bet$.  Noting that $\Gam(5/2) = 3 \sqrt{\pi} / 4$, We find
+	\eq{
+		P = \frac{N}{V} \frac{1}{{4\pi T m^2 c \,K_2(\bet mc^2)}} \frac{1}{c^3} \frac{4\pi}{3} 4 m^2 c^4 T^2 \frac{3}{4} \,K_2(\bet m c^2)
+		= \ans{ \frac{N T}{V}, }
+	}
+	and so we have recovered the equation of state $P V = N T$ in the relativistic case.
+	
+	In the non-relativistic case, $\vx = \px / m$ and $\ddNvp$ is given by the Maxwell distribution in Eq.~\refeq{Maxwellp}.  So Eq.~\refeq{pressure} becomes in this case
+	\al{
+		P &= \frac{N}{V} \frac{1}{(2\pi m T)^{3/2}} \int \frac{\px^2}{2} \exp(-\frac{\vp^2}{2m T}) \ddcp \\
+		&= \frac{N}{V} \frac{1}{2 (2\pi m T)^{3/2}} \intotp \intopi \intoi p^2 \cos^2\phi \sin^2\tht \exp(-\frac{p^2}{2m T}) p^2 \sin\tht \ddp \ddtht \ddphi \\
+		&= \frac{N}{V} \frac{1}{2 (2\pi m T)^{3/2}} \intotp \cos^2\phi \ddphi \intopi \sin^3\tht \ddtht \intoi p^4 \exp(-\frac{p^2}{2m T}) \ddp \\
+		&= \frac{N}{V} \frac{1}{2 (2\pi m T)^{3/2}} \frac{4 \pi}{3} \frac{\Gam(5/2)}{2 (2mT)^{-5/2}}
+		= \frac{N}{V} \frac{1}{2 (2\pi m T)^{3/2}} \frac{4 \pi}{3} \frac{3 \sqrt{\pi}}{4} \frac{(2mT)^{5/2}}{2}
+		= \ans{ \frac{NV}{T}, }
+	}
+	where we have used Eq.~\refeq{gaussian}.  So we have once again recovered the equation of state.
+
+	In the ultra-relativistic case, $m \to 0$.  Applying this limit to Eq.~\refeq{velocity},
+	\eq{
+		\limmo \vx = \limmo \frac{c \px}{\sqrt{m^2 c^2 + \vp^2}}
+		= \frac{c \px}{\abs{\vp}}.
+	}
+	Also, $\ddNvp = (N / V) \ddP$, where $\ddP$ is given by Eq.~\refeq{ultraddP}.  Equation~\refeq{pressure} then becomes
+	\al{
+		P &= \frac{N}{V} \frac{c^3}{8\pi T^3} \int c \frac{\px^2}{\abs{\vp}} e^{-\bet c \abs{\vp}} \ddcp
+%		= \frac{N}{V} \frac{c^4}{8\pi T^3} c \intotp \intopi \intoi \frac{p^2 \cos^2\phi \sin^2\tht}{\abs{\vp}} e^{-\bet c \abs{\vp}} p^2 \sin\tht \ddp \ddtht \ddphi \\
+		= \frac{N}{V} \frac{c^4}{8\pi T^3} \intotp \cos^2\phi \ddphi \intopi \sin^3\tht \ddtht \intoi p^3 e^{-\bet c p} \ddcp \\
+		&= \frac{N}{V} \frac{c^4}{8\pi T^3} \frac{4\pi}{3} \frac{3!}{(\bet c)^4}
+		= \frac{N}{V} \frac{c^4}{8\pi T^3} \frac{4\pi}{3} \frac{6 T^4}{c^4}
+		= \ans{ \frac{N T}{V}, }
+	}
+	and so we recover the equation of state for a third time.
+}
