@@ -17,7 +17,7 @@
 		= \pdv{T} (T \ln Z)
 		= \ln Z + T \pdv{T} (\ln Z)
 		= \ln Z + T \pdv{T} \paren{ \frac{3N}{2} \ln(2\pi m) + \frac{3N}{2} \ln T - \ln N! } \notag \\
-		&\approx \frac{3N}{2} [ \ln(2\pi m T) + 1 ] + N - N \ln N. \label{S4}
+		&= \frac{3N}{2} [ \ln(2\pi m T) + 1 ] - \ln N!. \label{S4}
 %		&= \frac{3N}{2} \ln(\frac{2\pi m T}{N}) + \frac{5N}{2}.
 	}
 %	The corresponding partition function for single particle is given by Eq.~\refeq{partfunc}.  The entropy of the system is then
@@ -56,12 +56,12 @@
 	
 	Combining Eqs.~\refeq{S4} and \refeq{H4}, we have shown that
 	\eq{
-		S = -H + N - N \ln N
+		S = -H - \ln N!
 		= -H + \const
 	}
 	Throughout we have represented temperature $T$ in energy units.  In order to convert to degrees, we let $S \to S / \kB$~\cite[p.~35]{Landau}.  Then
 	\eq{
-		S = \frac{3 \kB N}{2} [ \ln(2\pi m T) + 1 ] + \kB N - \kB N \ln N
+		S = \frac{3 \kB N}{2} [ \ln(2\pi m T) + 1 ] - \kB \ln N!
 		= \ans{ -\kB H + \const }
 	}
 	as desired. \qed

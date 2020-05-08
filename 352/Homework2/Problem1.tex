@@ -13,11 +13,11 @@
 	\eq{
 		\npq = a \exp(-\frac{\epspq}{T}),
 	}
-	where $\npq$ is the mean number of molecules of energy $\epspq$ in a phase space volume element $\ddp \ddq$.  Here $a$ is a normalization constant, determined by normalizing to $N / V$ particles per unit volume, where $N$ is the total number of gas molecules and $V$ is the total volume.  The mean number of molecules contained in a single volume element is
+	where $\npq$ is the mean number of molecules of energy $\epspq$ in a phase space volume element $\ddp \ddq$.  Here $a$ is a normalization constant, determined by normalizing to $N / V$ where $N$ is the total number of gas molecules and $V$ is the total volume.  The mean number of molecules contained in a single volume element is
 	\eq{
 		\ddN = \frac{n(p, q)}{(2\pi\hbar)^r} \ddp \ddq,
 	}
-	where $r$ is the number of translational degrees of freedom~\cite[p.~107--108]{Landau}.  We assume $r = 3$.
+	where $r$ is the number of translational degrees of freedom~\cite[pp.~107--108]{Landau}.  We assume $r = 3$.
 	
 	The energy of a single relativistic particle is $\eps = c \sqrt{m^2 c^2 + \vp^2}$, where $m$ is its mass, $\vp$ its three-dimensional momentum, and $c$ the speed of light~\cite[p.~110]{Landau}.  This gives us
 	\eqn{dNp}{
@@ -64,14 +64,14 @@
 	\eq{
 		\dv{p}{\eps} = \frac{c p}{\sqrt{m^2 c^2 + p^2}}
 		\qimplies
-		\ddp = \frac{\eps}{c^2} \sqrt{\eps^2 / c^2 - m^2 c^2}
-		= \frac{\eps}{c^3} \sqrt{\eps^2 - m^2 c^4},
+		\ddp = \frac{\eps}{c^2} \sqrt{\eps^2 / c^2 - m^2 c^2} \dde
+		= \frac{\eps}{c^3} \sqrt{\eps^2 - m^2 c^4} \dde,
 	}
 	we have
 	\eq{
 		\ddNeps = \frac{4\pi b}{(2\pi\hbar)^3} \frac{1}{c^3} \eps \sqrt{\eps^2 - m^2 c^4} e^{-\eps / T} \dde,
 	}
-	where $b$ is a normalization constant,which we will find by integration:
+	where $b$ is a normalization constant, which we will find by integration:
 	\eq{
 		\frac{N}{V} = \frac{4\pi b}{(2\pi\hbar)^3} \frac{1}{c^3} \intmcsi \eps \sqrt{\eps^2 - m^2 c^4} e^{-\eps / T} \dde
 	}
@@ -80,7 +80,7 @@
 		\frac{N}{V} = \frac{4\pi b}{(2\pi\hbar)^3} T m^2 c \,K_{2}(\bet m c^2)
 		\qimplies b = a,
 	}
-	so the statistical distribution in energy space is
+	so the statistical distribution in energy space is found by
 	\eqn{1.1ans2}{
 		\ddNeps = \frac{N}{V} \frac{e^{-\bet \eps} \eps \sqrt{\eps^2 - m^2 c^4}}{T m^2 c^4 \,K_2(\bet mc^2)} \dde
 		\qimplies
@@ -88,7 +88,7 @@
 	}
 
 	
-	The Maxwell distribution in momentum space is~\cite[p.~109]{Landau}
+	The Maxwell distribution in momentum space is given by~\cite[p.~109]{Landau}
 	\eqn{Maxwellp}{
 		\ddNvp = \frac{N}{V} \frac{1}{(2\pi m T)^{3/2}} \exp(-\frac{\px^2 + \py^2 + \pz^2}{2m T}) \ddpxyz
 		\qimplies
@@ -101,7 +101,7 @@
 	
 	Both distributions are similar to the relativistic ones in Eqs.~(\ref{1.1ans}--\ref{1.1ans2}).  The Maxwell distributions have the kinetic energy $\eps = \vp^2 / 2m$ in the exponent, whereas Eqs.~(\ref{1.1ans}--\ref{1.1ans2}) have the relativistic energy $\eps = c \sqrt{m^2 c^2 + \vp^2}$.  The factor of $\bet$ in the exponent is the same in both cases.  	However, Eq.~\refeq{1.1ans2} goes as $e^{-\bet \eps} \eps^2$ while Eq.~\refeq{Maxwelle} goes as $e^{-\bet \eps} \sqrt{\eps}$.
 	
-	The normalization of Eqs.~(\ref{1.1ans}--\ref{1.1ans2}) is different than that of Eqs.~(\ref{Maxwellp}--\ref{Maxwelle}) in order to account for the relativistic energy.  The factor of $1/K_2{\bet mc^2}$ means that the relativistic ``occupation number densities'' fall off much more rapidly with $T$ than the nonrelativistic ones.  This is sensible because the relativistic particles are able to access a much larger range of momenta at high temperatures, which spreads them out over a larger range of energies.
+	The normalization of Eqs.~(\ref{1.1ans}--\ref{1.1ans2}) is different than that of Eqs.~(\ref{Maxwellp}--\ref{Maxwelle}) in order to account for the relativistic energy.  The factor of $1/K_2{\bet mc^2}$ means that the relativistic distributions fall off much more rapidly with $T$ than the nonrelativistic ones.  This is sensible because the relativistic particles are able to access a much larger range of momenta at high temperatures, which spreads them out over a larger range of energies.
 }
 
 %
@@ -160,7 +160,7 @@
 		= \ans{ 3 N (3N + 1) T^2. }
 	}
 
-	The Helmholtz free energy is $F = -T \ln Z$, where $Z$ is the partition function~\cite[p.~87]{Landau}.  According to p.~1 of Lecture 4, the single-particle partition function of the Maxwell distribution can be found by
+	The Helmholtz free energy is $F = -T \ln Z$, where $Z$ is the partition function~\cite[p.~87]{Landau}.  The single-particle partition function of the Maxwell distribution is simply the denominator of $\ddP$:
 	\eqn{partfunc}{
 		\ddP = \frac{e^{-\bet \vp^2 / 2m}}{\Zii} \ddcp
 		\qimplies
@@ -309,7 +309,7 @@
 	\eq{
 		a = \frac{N}{V} \frac{(2\pi\hbar)^2}{2\pi} \frac{e^{\bet m c^2}}{m T + T^2 / c^2}
 		\qimplies
-		\ddNvp = \frac{N}{V} \frac{1}{2\pi} \frac{e^{\bet m c^2}}{m T + T^2 / c^2} \exp(-\frac{c \sqrt{m^2 c^2 + \vp^2}}{T}) \ddsp
+		\ddNvp = \frac{N}{V} \frac{1}{2\pi} \frac{e^{\bet m c^2}}{m T + T^2 / c^2} \exp(-\frac{c \sqrt{m^2 c^2 + \vp^2}}{T}) \ddsp.
 	}
 	Then we have
 	\eq{
@@ -341,11 +341,11 @@
 	}
 	where we have used $\px = p \cos\tht$ and $\py = p \sin\tht$.  So we find
 	\aln{
-		\ans{\aij\ }&={\color{blue}  \begin{cases}
+		\ans{\aij\ }&{\color{blue} =  \begin{cases}
 			5/3 & i = j, \\
 			5/9 & i \neq j,
 			\end{cases}} &
-		\ans{\rij\ }&={\color{blue}  \begin{cases}
+		\ans{\rij\ }&{\color{blue} =  \begin{cases}
 			1 & i = j, \\
 			1/3 & i \neq j,
 			\end{cases}} \label{ur2d}
@@ -437,7 +437,7 @@
 	
 	Clearly $\rii = 1$ and $\rij = 1/3$ ($i \neq j$) in four cases.  Thus, we see that $\rij$ has no dependence upon dimension or upon whether the particles are non- or ultra-relativistic.
 	
-	In both the $d = 2$ and $d = 3$ classical cases, $\aii = 1$ and $\aij = 1/3$ ($i \neq j$) as well.  In the ultra-relativistic cases, however, this is not so; $\aii > 1$ and $\aij > 1/3$ ($i \neq j$) for both $d = 2$ and $d = 3$.  Additionally, $\aij$ (in general) is greater for $d = 2$ that for $d = 3$ in the ultra-relativistic case.  This shows that $\aij$ does depend on dimension in this case.
+	In both the $d = 2$ and $d = 3$ classical cases, $\aii = 1$ and $\aij = 1/3$ ($i \neq j$) as well.  In the ultra-relativistic cases, however, this is not so; $\aii > 1$ and $\aij > 1/3$ ($i \neq j$) for both $d = 2$ and $d = 3$.  Additionally, $\aij$ (in general) is greater for $d = 2$ that for $d = 3$ in the ultra-relativistic case.  This shows that $\aij$ does depend on dimension in the ultra-relativistic case, but not in the non-relativistic case.
 	
 	\hl{What do they actually mean, though?  And their dependence on dimension?  I have no clue.}
 }

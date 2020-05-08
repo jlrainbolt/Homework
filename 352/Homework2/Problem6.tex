@@ -1,0 +1,112 @@
+\state{Partition function as a generating functional}{
+	Consider the Gibbs distribution of the system described in Problem~5.  For simplicity neglect the kinetic energy. Let $n(x) = \sumi \del(x - \xii)$ be the density, and $\evnx$ its expectation value. Let $C(x, y) = \ev{\del n(x) \,\del n(y)}$, where $\del n(x) = n(x) - \evn$, be the two-point correlation function.
+}
+
+%
+%	6.1
+%
+
+\prob{}{
+	Show that $\evnx = -T \,\deldvs{\ln Z}{U(x)}$, where $Z[U(x)]$ is the partition function of the Gibbs distribution treated as a functional of the potential $U$.
+}
+
+\sol{
+	The expectation value of $n(x)$ is
+	\eqn{evn}{
+		\evnx = \frac{1}{Z} \int n(x) \,e^{-\bet H} \prodjN \ddxjj
+		= \frac{1}{Z} \int \sumiN \del(x - \xii) \,e^{-\bet H} \prodjN \ddxjj,
+	}
+	where $Z$ is the partition function.
+	\clearpage
+	Adapting the Hamiltonian in Eq.~\refeq{Ham5}, we have
+	\eq{
+		H = \sumiN U(\xii) + \sumiN \sumji V(\xii - \xjj).
+	}
+	The partition function of the Gibbs distribution for this system is then
+	\al{
+		Z &= \int e^{-\bet H} \prodjN \ddxjj
+		= \int \exp( \bet \sumiN U(\xii) + \bet \sumiN \sumji V(\xii - \xjj) ) \prodkN \ddxkk.
+	}
+	The basic definition of the functional derivative in one dimension is~\cite[p.~289]{Peskin}
+	\al{
+		\deldv{J(y)}{J(x)} &= \del(x - y), &
+		\deldv{}{J(x)} \int J(y) \,\phi(y) \dd{y} &= \int \del(x - y) \,\phi(y) \dd{y}
+		= \phi(x).
+	}
+	Note that
+	\eqn{thing5}{
+		\deldv{\ln Z}{U(x)}
+		= \pdv{\ln Z}{Z} \deldv{Z}{U(x)}
+		= \frac{1}{Z} \deldv{Z}{U(x)},
+	}
+	and that
+	\aln{
+		\deldv{Z}{U(x)} &= \deldv{}{U(x)} \int \exp( \bet \sumiN U(\xii) + \bet \sumiN \sumji V(\xii - \xjj) ) \prodkN \ddxkk
+%		&= \int -\bet \sumiN \deldv{U(\xii)}{U(x)} \exp( \bet \sumiN U(\xii) + \bet \sumiN \sumji V(\xii - \xjj) ) \prodkN \ddxkk
+		= \int -\bet \sumiN \deldv{U(\xii)}{U(x)} \, e^{-\bet H} \prodjN \ddxjj \notag \\
+		&= -\frac{1}{T} \int \sumiN \del(x - \xii) \,e^{-\bet H} \prodjN \ddxjj
+		= -\frac{Z}{T} \evnx, \label{ans6.1}
+	}
+	where we have used Eq.~\refeq{evn}.  Then, from Eq.~\refeq{thing5}, we have
+	\eq{
+		-T \deldv{\ln Z}{U(x)} = \frac{T}{Z} \deldv{Z}{U(x)}
+		= \ans{ \evnx, }
+	}
+	as desired. \qed
+}
+
+%
+%	6.2
+%
+
+\prob{}{
+	Show that
+	\eqn{show6.2}{
+		C(x, y) = T^2 \deldvm{\ln Z}{U(x)}{U(y)}
+		= -T \deldv{\evnx}{U(y)}
+		= -T \deldv{\evny}{U(x)}.
+	}
+}
+
+\sol{
+	Firstly,
+	\eq{
+		C(x, y) = \ev{n(x) \,n(y)} - \evn^2
+		= \frac{1}{Z} \int n(x) \,n(y) \,e^{-\bet H} \prodjN \ddxjj - \evn^2.
+	}
+	The final two equalities of Eq.~\refeq{show6.2} follow directly from Eq.~\refeq{ans6.1} and the fact that the order of the derivatives is interchangeable:
+	\al{
+		T^2 \deldvm{\ln Z}{U(x)}{U(y)} &= T \deldv{}{U(y)} \paren{ T \deldv{\ln Z}{U(x)} }
+		= \ans{ -T \deldv{\evnx}{U(y)}, } \\[2ex]
+		T^2 \deldvm{\ln Z}{U(x)}{U(y)} &= T \deldv{}{U(x)} \paren{ T \deldv{\ln Z}{U(y)} }
+		= \ans{ -T \deldv{\evny}{U(x)}. }
+	}
+	To prove the first equality, we will show that $C(x, y) = -T \,\del\evnx / \del U(y)$.  Note that
+	\aln{
+		\deldv{\evnx}{U(y)} &= \deldv{}{U(y)} \paren{ \frac{1}{Z} \int n(x) \,e^{-\bet H} \prodjN \ddxjj } \notag \\
+		&= \deldv{}{U(y)} \paren{ \frac{1}{Z} } \int n(x) \,e^{-\bet H} \prodjN \ddxjj + \frac{1}{Z} \deldv{}{U(y)} \paren{ \int n(x) \,e^{-\bet H} \prodjN \ddxjj }. \label{thing6.2}
+	}
+	For the first term,
+	\eq{
+		\deldv{}{U(y)} \paren{ \frac{1}{Z} } = \pdv{(1/Z)}{Z} \deldv{Z}{U(y)}
+		= -\frac{1}{Z^2} \deldv{Z}{U(y)}
+		= \frac{\evny}{Z T},
+	}
+	where we have used Eq.~\refeq{ans6.1}.  For the second term,
+	\al{
+		\deldv{}{U(y)} \int n(x) \,e^{-\bet H} \prodjN \ddxjj &= \deldv{}{U(y)} \int n(x) \exp( \bet \sumiN U(\xii) + \bet \sumiN \sumji V(\xii - \xjj) ) \prodkN \ddxkk \\
+		&= \int -\bet n(x) \sumiN \deldv{U(\xii)}{U(y)} e^{-\bet H} \prodjN \ddxjj
+		= -\frac{1}{T} \int n(x) \,n(y) e^{-\bet H} \prodjN \ddxjj.
+	}
+	Substituting back into Eq.~\refeq{thing6.2},
+	\eq{
+		\deldv{\evnx}{U(y)} = \frac{\evny}{Z T} \int n(x) \,e^{-\bet H} \prodjN \ddxjj - \frac{1}{Z T} \int n(x) \,n(y) e^{-\bet H} \prodjN \ddxjj
+		= \frac{\evny \evnx}{T} - \frac{\ev{n(x) \,n(y)}}{T}.
+	}
+	Then
+	\eq{
+		-T \deldv{\evnx}{U(y)} = \ev{n(x) \,n(y)} - \evn^2
+		= \ans{ C(x, y), }
+	}
+	as desired.  So we have proven Eq.~\refeq{show6.2} in its entirety. \qed
+}
