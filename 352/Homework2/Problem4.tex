@@ -1,0 +1,68 @@
+\state{Boltzmann \texorpdfstring{$H$}{H}-function}{
+	The equilibrium distribution function $f(p, q)$ of a non-interacting gas is a Maxwell-Boltzmann distribution.  Show that the entropy of such a system satisfies $S = -\kB H + \const$, where $H = \int f \ln f \dG$ is the Boltzmann $H$-function.
+}
+
+\sol{
+	The Maxwell-Boltzmann distribution is given in terms of $p, q$ by the left side of Eq.~\refeq{Maxwellp}, so we have
+	\eq{
+		f(p,q) = \frac{N}{V} \frac{1}{(2\pi m T)^{3/2}} \exp(-\frac{\vp^2}{2m T}).
+	}
+	From Eq.~\refeq{partfunc}, the corresponding partition function for a system of $N$ indistinguishable particles is
+	\eq{
+		Z = \frac{(2\pi m T)^{3N/2}}{N!}.
+	}
+	The entropy of the system is then
+	\aln{
+		S &= -\paren{ \pdv{F}{T} }_V
+		= \pdv{T} (T \ln Z)
+		= \ln Z + T \pdv{T} (\ln Z)
+		= \ln Z + T \pdv{T} \paren{ \frac{3N}{2} \ln(2\pi m) + \frac{3N}{2} \ln T - \ln N! } \notag \\
+		&\approx \frac{3N}{2} [ \ln(2\pi m T) + 1 ] + N - N \ln N. \label{S4}
+%		&= \frac{3N}{2} \ln(\frac{2\pi m T}{N}) + \frac{5N}{2}.
+	}
+%	The corresponding partition function for single particle is given by Eq.~\refeq{partfunc}.  The entropy of the system is then
+%	\al{
+%		S &= -\paren{ \pdv{F}{T} }_V
+%		= \pdv{T} (T \ln Z)
+%		= \ln Z + T \pdv{T} (\ln Z)
+%		= \frac{3}{2} (2\pi m T) + T \pdv{T} \paren{ \frac{3}{2} \ln(2\pi m) + \frac{3}{2} \ln T } \\
+%		&= \frac{3}{2} \ln(2\pi m T) + \frac{3}{2}
+%		&= \frac{3}{2} [ \ln(2\pi m T) + 1 ].
+%	}
+	
+	In a classical system, $\dG = \ddp \ddq$.  % / (2\pi \hbar)^s$, where $s = 6N$ is the number of degrees of freedom of the system~\cite[p.~24, 88]{Landau}.
+	For the Boltzmann $H$-function, then,
+	\al{
+		H &= \int f(p,q)\, \ln f(p,q) \dG
+		= \frac{N}{V} \frac{1}{(2\pi m T)^{3/2}} \int \exp(-\frac{\vp^2}{2m T}) \ln(\frac{1}{(2\pi m T)^{3/2}} \exp(-\frac{\vp^2}{2m T})) \ddcp \ddcq \\
+%		&= -\frac{V}{(2\pi\hbar)^{6N}} \frac{1}{(2\pi m T)^{3/2}} \int \exp(-\frac{\vp^2}{2m T}) \paren{ \frac{3}{2} \ln(2mT) + \frac{\vp^2}{2m T} } \ddcp \\
+		&= -N \frac{4\pi}{(2\pi m T)^{3/2}} \brac{ \frac{3}{2} \ln(2\pi mT) \intoi p^2 \exp(-\frac{p^2}{2m T}) \ddp + \frac{1}{2m T} \intoi p^4 \exp(-\frac{p^2}{2m T}) \ddp },
+	}
+	where the integral over all of space gives us $V$.  For the first integral,
+	\eq{
+		\intoi p^2 \exp(-\frac{p^2}{2m T}) \ddp = \frac{\Gam(3/2)}{2 (2mT)^{-3/2}}
+		= \frac{\sqrt{\pi} (2mT)^{3/2}}{4}.
+	}
+	The second was evaluated in Prob.~2:
+	\eq{
+		\intoi p^4 \exp(-\frac{p^2}{2m T}) \ddp = \frac{3 \sqrt{\pi}}{4} \frac{(2mT)^{5/2}}{2}
+	}
+	So we have
+	\eqn{H4}{
+		H = -N \frac{4\pi}{(2\pi m T)^{3/2}} \brac{ \frac{3}{2} \ln(2\pi mT) \frac{\sqrt{\pi} (2mT)^{3/2}}{4} + \frac{1}{2m T} \frac{3 \sqrt{\pi}}{4} \frac{(2mT)^{5/2}}{2} } \\
+%		&= -N \frac{(2\pi mT)^{3/2}}{(2\pi m T)^{3/2}} \frac{3}{2} \brac{ \ln(2\pi mT) + 1 }
+		= -\frac{3 N}{2} \brac{ \ln(2\pi mT) + 1 }.
+	}
+	
+	Combining Eqs.~\refeq{S4} and \refeq{H4}, we have shown that
+	\eq{
+		S = -H + N - N \ln N
+		= -H + \const
+	}
+	Throughout we have represented temperature $T$ in energy units.  In order to convert to degrees, we let $S \to S / \kB$~\cite[p.~35]{Landau}.  Then
+	\eq{
+		S = \frac{3 \kB N}{2} [ \ln(2\pi m T) + 1 ] + \kB N - \kB N \ln N
+		= \ans{ -\kB H + \const }
+	}
+	as desired. \qed
+}

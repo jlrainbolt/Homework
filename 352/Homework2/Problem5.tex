@@ -1,0 +1,85 @@
+\state{BBGKY}{
+	Consider for simplicity a 1D system (a system on a circle) of $N$ particles with an arbitrary two-body interaction:
+	\eq{
+		H = \sumiN \frac{\pii^2}{2m} + \sumi U(\xii) + \sumij V(\xii - \xjj).
+	}
+	Give a derivation of the first equation of the BBGKY hierarchy at equilibrium for this system, which is a relation between the 1-point and 2-point distribution (correlation) functions.
+}
+
+\sol{
+	Let $H = \Hq + \HNq + H'$, where $\Hq$ is the Hamiltonian for particle $i = 1$, $\HNq$ is the Hamiltonian for the remaining particles, and $H'$ describes interactions between particle $i = 1$ and the remaining particles~\cite[p.~63]{Kardar}.  We have
+	\aln{ \label{ham5}
+		\Hq &= \frac{\pq^2}{2m} + U(\xq), &
+		\HNq &= \sumiwN \paren{ \frac{\pii^2}{2m} + U(\xii) + \sumji V(\xii - \xjj) }, &
+		H' &= \sumiwN V(\xq - \xii).
+	}
+	The one-particle density for particle $i = 1$ is
+	\eq{
+		\fq(p, x, t) = N \iint \rho(p, p_2, p_3, \ldots, p_N, x, x_2, x_3, \ldots, x_N, t) \prodiwN \ddpii \ddxii
+		= N \rhoq(\pq, \xq, t),
+	}
+	where $\rho$ is the unconditional probability density of the system, and we have defined $\rhoq$.  In general, the $s$-particle density is~\cite[p.~62]{Kardar}
+	\eq{
+		f_s(p_1, p_2, \ldots, p_N, x_1, x_2, \ldots, x_N, t) = \frac{N!}{(N - s)!} \rhos(p_1, p_2, \ldots, p_N, x_1, x_2, \ldots, x_N, t).
+	}
+	
+	The time dependence of $\fq$ is controlled by $\rhoq$ as follows:
+	\eqn{brackets}{
+		\pdv{\fq}{t} = N \pdv{\rhoq}{t}
+		= N \iint \pdv{\rho}{t} \prodiwN \ddpii \ddxii
+%		= -N \iint \{ \rho, \Hq + \HNq + H' \} \prodiwN \ddpii \ddxii,
+		= -N \iint ( \{ \rho, \Hq \} + \{ \rho, \HNq \} + \{ \rho, H' \} ) \prodiwN \ddpii \ddxii,
+	}
+	since $\pdv*{\rho}{t} = -\{ \rho, H \}$~\cite[p.~60]{Kardar}.
+	
+	For the first term, we are not integrating over $\pq, \xq$ so it is okay to move the integral inside the Poisson bracket:
+	\eqn{brackets}{
+		\iint \{ \rho, \Hq \} \prodiwN \ddpii \ddxii = \left\{ \int \rho \prodiwN \ddpii \ddxii, \Hq \right\}
+		= \{ \rhoq, \Hq \}.
+	}
+	
+	For the second term,
+	\al{
+		\iint \{ \rho, \HNq \} \prodiwN \ddpii \ddxii &= \iint \sumjN \paren{ \pdv{\rho}{\xjj} \pdv{\HNq}{\pjj} - \pdv{\rho}{\pjj} \pdv{\HNq}{\xjj} } \prodiwN \ddpii \ddxii \\
+		&= \iint \sumjN \brac{ \pdv{\rho}{\xjj} \frac{\pjj}{m} - \pdv{\rho}{\pjj} \paren{ \pdv{U}{\xjj} + \sumkwN \pdv{V(\xjj - \xkk)}{\xjj} } } \prodiwN \ddpii \ddxii,
+	}
+	where we have used Eq.~\refeq{ham5}.  Integrating by parts, we find
+	\eq{
+		\int \pdv{\rho}{\xjj} \frac{\pjj}{m} \ddxjj = \bigg[ \rho \frac{\pjj}{m} \xjj  \bigg]_{-\infty}^\infty - \int \frac{\rho}{m} \pdv{\pjj}{\xjj} \ddxjj
+		= 0,
+	}
+	\al{
+		\int \pdv{\rho}{\pjj} \pdv{U}{\xjj} \ddpjj &= \bigg[ \rho \pdv{U}{\xjj} \pjj \bigg]_{-\infty}^\infty - \int \rho \pdv{U}{\xjj}{\pjj} \ddpjj
+		= 0, \\[2ex]
+		\int \pdv{\rho}{\pjj} \pdv{V(\xjj - \xkk)}{\xjj} \ddpjj &= \bigg[ \rho \pdv{V(\xjj - \xkk)}{\xjj} \pjj \bigg]_{-\infty}^\infty - \int \rho \pdv{V(\xjj - \xkk)}{\xjj}{\pjj} \ddpjj
+		= 0.
+	}
+	
+	For the third term of Eq.~\refeq{brackets},
+	\al{
+		\iint \{ \rho, H' \} \prodiwN \ddpii \ddxii &= \iint \sumjN \paren{ \pdv{\rho}{\xjj} \pdv{H'}{\pjj} - \pdv{\rho}{\pjj} \pdv{H'}{\xjj} } \prodiwN \ddpii \ddxii
+		= -\iint \sumjN \pdv{\rho}{\pjj} \sumkwN \pdv{V(\xq - \xkk)}{\xjj} \prodiwN \ddpii \ddxii \\
+		&= -\iint \paren{ \pdv{\rho}{\pq} \sumjwN \pdv{V(\xq - \xjj)}{\xq} + \sumjwN \pdv{\rho}{\pjj} \pdv{V(\xq - \xq)}{\xjj} } \prodiwN \ddpii \ddxii \\
+		&= -\iint \pdv{\rho}{\pq} \sumjwN \pdv{V(\xq - \xjj)}{\xq} \prodiwN \ddpii \ddxii
+		= -(N - 1) \iint \pdv{\rho}{\pq} \pdv{V(\xq - \xw)}{\xq} \prodiwN \ddpii \ddxii \\
+%		&= -(N - 1) \int \pdv{\pq} \paren{ \int \rho \prodieN \ddpii \ddxii } \pdv{V(\xq - \xw)}{\xq} \ddpw \ddxw \\
+		&= -(N - 1) \int \pdv{\rhow}{\pq} \pdv{V(\xq - \xw)}{\xq} \ddpw \ddxw,
+	}
+	where we have used the symmetry of the particle interactions to write the sum of the $N - 1$ interactions with particle $i = 1$ as a product~\cite[p.~64]{Kardar}.
+	
+	Making these substitutions into Eq.~\refeq{brackets}, we have
+	\eqn{thing5}{
+		\pdv{\fq}{t} = -N \{ \rhoq, \Hq \} + N (N - 1) \int \pdv{\rhow}{\pq} \pdv{V(\xq - \xw)}{\xq} \ddpw \ddxw
+		= - \{ \fq, \Hq \} + \int \pdv{f_2}{\pq} \pdv{V(\xq - \xw)}{\xq} \ddpw \ddxw.
+	}
+	Expanding the Poisson bracket, we find
+	\al{
+		\{ \fq, \Hq \} = \pdv{\fq}{\xq} \pdv{\Hq}{\pq} - \pdv{\fq}{\pq} \pdv{\Hq}{\xq}
+		= \pdv{\fq}{\xq} \frac{\pq}{m} - \pdv{\fq}{\pq} \pdv{U(\xq)}{\xq}.
+	}
+	Finally, Eq.~\refeq{thing5} becomes
+	\eq{
+		\paren{ \pdv{t} + \frac{\pq}{m} \pdv{\xq} - \pdv{U(\xq)}{\xq} \pdv{\pq} } \fq = \int \pdv{f_2}{\pq} \pdv{V(\xq - \xw)}{\xq} \ddpw \ddxw,
+	}
+	which is the first equation of the BBGKY hierarchy~\cite[p.~65]{Kardar}.
+}
