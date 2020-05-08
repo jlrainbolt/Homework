@@ -31,6 +31,38 @@
 	Show that $\evnx = -T \,\deldvs{\ln Z}{U(x)}$, where $Z[U(x)]$ is the partition function of the Gibbs distribution treated as a functional of the potential $U$.
 }
 
+\sol{
+	Adapting the Hamiltonian in Eq.~\refeq{Ham5}, we have
+	\eq{
+		H = \sumiN U(\xii) + \sumiN \sumji V(\xii - \xjj).
+	}
+	\clearpage
+	Assuming indistinguishable particles, the partition function of the Gibbs distribution for this system is given by
+	\al{
+		Z &= \frac{1}{N!} \int e^{-\bet H} \prodjN \ddxjj
+		= \frac{1}{N!} \int \exp( \bet \sumiN U(\xii) + \bet \sumiN \sumji V(\xii - \xjj) ) \prodkN \ddxkk \\
+		&= \frac{1}{N!} \int \prodiN \paren{ e^{\bet U(\xii)} \prodji e^{\bet V(\xii - \xjj)} } \prodkN \ddxkk
+		= \frac{(N - 2) L}{N!} \prodiN \int e^{\bet U(\xii)} \prodji \paren{ \int e^{\bet V(\xii - \xjj)} \ddxjj} \ddxii.
+	}
+%	where the power of $2N$ in the denominator is from the system's $2N$ degrees of freedom~\cite[p.~55--56]{Pathria}.
+	Then
+	\eq{
+		\ln Z = \ln{ }
+	}
+	
+	The basic definition of the functional derivative in one dimension is~\cite[p.~289]{Peskin}
+	\al{
+		\deldv{J(y)}{J(x)} &= \del(x - y), &
+		\deldv{}{J(x)} \int J(y) \,\phi(y) \dd{y} &= \phi(x).
+	}
+	
+	\eq{
+		\evnx = \int n(x | \{ \xii \}) \prodiN \frac{\ddxii}{L}
+		= \int \sumiN \del(x - \xii) \prodiN \frac{\ddxii}{L}
+		= \sumiN \int \del(x - \xii) \prodiN \frac{\ddxii}{L}
+	}
+}
+
 \clearpage
 \prob{}{
 	Show that

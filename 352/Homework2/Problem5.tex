@@ -1,7 +1,7 @@
 \state{BBGKY}{
 	Consider for simplicity a 1D system (a system on a circle) of $N$ particles with an arbitrary two-body interaction:
-	\eq{
-		H = \sumiN \frac{\pii^2}{2m} + \sumi U(\xii) + \sumij V(\xii - \xjj).
+	\eqn{Ham5}{
+		H = \sumiN \frac{\pii^2}{2m} + \sumiN U(\xii) + \sumiN \sumji V(\xii - \xjj).
 	}
 	Give a derivation of the first equation of the BBGKY hierarchy at equilibrium for this system, which is a relation between the 1-point and 2-point distribution (correlation) functions.
 }
@@ -33,7 +33,7 @@
 	since $\pdv*{\rho}{t} = -\{ \rho, H \}$~\cite[p.~60]{Kardar}.
 	
 	For the first term, we are not integrating over $\pq, \xq$ so it is okay to move the integral inside the Poisson bracket:
-	\eqn{brackets}{
+	\eq{
 		\iint \{ \rho, \Hq \} \prodiwN \ddpii \ddxii = \left\{ \int \rho \prodiwN \ddpii \ddxii, \Hq \right\}
 		= \{ \rhoq, \Hq \}.
 	}
