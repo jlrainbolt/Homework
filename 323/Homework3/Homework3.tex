@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{322}
+\homeworknum{3}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+\state{(Jackson 12.3)}{
+	A particle with mass $m$ and charge $e$ moves in a uniform, static, electric field $\vEo$.
+}
+
+%
+%	12.3(a)
+%
+
+\prob{}{
+	Solve for the velocity and position of the particle as explicit functions of time, assuming that the initial velocity $\vvo$ was perpendicular to the electric field.
+}
+
+\sol{
+
+}
+
+\clearpage
+%
+%	12.3(b)
+%
+
+\prob{}{
+	Eliminate the time to obtain the trajectory of the particle in space.  Discuss the shape of the path for short and long times (define ``short'' and ``long'' times).
+}
+
+
+
+\clearpage
+\state{(Jackson 12.5)}{
+	A particle of mass $m$ and charge $e$ moves in the laboratory in crossed, static, uniform, electric and magnetic fields.  $\vE$ is parallel to the $x$ axis; $\vB$ is parallel to the $y$ axis.
+}
+
+\prob{}{
+	For $\abs{\vE} < \abs{\vB}$ make the necessary Lorentz transformation described in Section~12.3 to obtain explicitly parametric equations for the particle's trajectory.
+}
+
+\prob{}{
+	Repeat the calculation of part~(a) for $\abs{\vE} > \abs{\vB}$.
+}
+
+
+
+\state{(Jackson 12.19)}{
+	Source-free electromagnetic fields exist in a localized region of space.  Consider the various conservation laws that are contained in the integral of $\ptsa \Mabg = 0$ over all space, where
+	\eq{
+		\Mabg = \Thab \xg - \Thag \xb.
+	}
+	\vfix
+}
+
+\prob{}{
+	Show that when $\bet$ and $\gam$ are both space indices conservation of the total field angular momentum follows.
+}
+
+\prob{}{
+	Show that when $\bet = 0$ the conservation law is
+	\eq{
+		\dv{\vX}{t} = \frac{c^2 \vPem}{\Eem},
+	}
+	where $\vX$ is the coordinate of the center of mass of the electromagnetic fields, defined by
+	\eq{
+		\vX \int u \dcx = \int \vx u \dcx,
+	}
+	where $u$ is the electromagnetic energy density and $\Eem$ and $\vPem$ are the total energy and momentum of the fields.
+}
+
+
+
+\state{}{
+	We discussed in class the construction of linearly polarized electromagnetic waves.
+}
+
+\prob{}{
+	Generalize the discussion to circularly polarized waves (see also Wald Sec.~{5.5}).  Discuss both right-handed and left-handed polarizations.
+}
+
+\prob{}{
+	Compute the angular momentum of the circularly polarized waves of part~(a) using the formula for angular momentum derived in class.
+}
+
+
+
+\state{}{
+	We wrote in class the Lagrangian of a charged particle coupled to the electromagnetic field (see pp.~159--160) in the lecture notes).
+}
+
+\prob{}{
+	Show that the Euler-Lagrange equations that follow from this Lagrangian give rise to the Lorentz force law %on p.~161.
+	\eq{
+		\dv{\pii}{t} = q \brac{ \Ei + \frac{1}{c} (\vv \cross \vB)^i }.
+	}
+	\vfix
+}
+
+\prob{}{
+	Show that the Lorentz force law can be written covariantly in the form %given on p.~163 of the lecture notes (and Eq.~(11.163) in Jackson).
+	\eq{
+		\dv{\Um}{\tau} = \frac{q}{m c} \Fmn \Usn.
+	}
+	\vfix
+}
+
+
+\makebib
+
+\end{document}
