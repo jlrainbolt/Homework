@@ -18,17 +18,37 @@
 
 
 \state{(Jackson 12.19)}{
-	Source-free electromagnetic fields exist in a localized region of space.  Consider the various conservation laws that are contained in the integral of $\ptsa \Mabg = 0$ over all space, where
+	Source-free electromagnetic fields exist in a localized region of space.  Consider the various conservation laws that are contained in the integral of $\ptsa \Mabg = 0$ over all space, where %$\Mabg$ is defined by (12.117).
 	\eq{
 		\Mabg = \Thab \xg - \Thag \xb.
 	}
 	\vfix
 }
 
+%
+%	12.19(a)
+%
+
 \prob{}{
 	Show that when $\bet$ and $\gam$ are both space indices conservation of the total field angular momentum follows.
 }
 
+\sol{
+	Note that
+	\eq{
+		\ptsa \Mabg = \ptsa(\Thab \xg - \Thag \xb)
+		= \xg \ptsa \Thab + \Thab \ptsa \xg - \xb \ptsa \Thag - \Thag \ptsa \xb
+		= \Thab \ptsa \xg - \Thag \ptsa \xb,
+	}
+	where we have used Jackson~(12.116), $\ptsa \Thab = 0$.
+	\clearpage
+}
+
+%
+%	12.19(b)
+%
+
+\clearpage
 \prob{}{
 	Show that when $\bet = 0$ the conservation law is
 	\eq{
@@ -42,24 +62,36 @@
 }
 
 
-
+\clearpage
 \state{}{
 	We discussed in class the construction of linearly polarized electromagnetic waves.
 }
 
+%
+%	4(a)
+%
+
 \prob{}{
 	Generalize the discussion to circularly polarized waves (see also Wald Sec.~{5.5}).  Discuss both right-handed and left-handed polarizations.
 }
+
+%
+%	4(b)
+%
 
 \prob{}{
 	Compute the angular momentum of the circularly polarized waves of part~(a) using the formula for angular momentum derived in class.
 }
 
 
-
+\clearpage
 \state{}{
 	We wrote in class the Lagrangian of a charged particle coupled to the electromagnetic field (see pp.~159--160) in the lecture notes).
 }
+
+%
+%	5(a)
+%
 
 \prob{}{
 	Show that the Euler-Lagrange equations that follow from this Lagrangian give rise to the Lorentz force law %on p.~161.
@@ -68,6 +100,10 @@
 	}
 	\vfix
 }
+
+%
+%	5(b)
+%
 
 \prob{}{
 	Show that the Lorentz force law can be written covariantly in the form %given on p.~163 of the lecture notes (and Eq.~(11.163) in Jackson).
