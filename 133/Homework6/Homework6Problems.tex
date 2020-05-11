@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{enumitem}
+%\allowdisplaybreaks
+ 
+\renewcommand{\footrulewidth}{.2pt}
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 6}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\cfoot{\today}
+%\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+\DeclareSIUnit{\foot}{ft}
+\DeclareSIUnit{\mile}{mi}
+
+\begin{document}
+
+\begin{enumerate}
+
+\newcommand{\angleq}{\SI{17.0}{\degree}}
+\newcommand{\anglew}{\SI{32.0}{\degree}}
+\newcommand{\inten}{\SI{53.0}{\watt\per\square\cm}}
+
+% Y&F 33.34
+
+\item You have three polarizing filters, which stack on top of one another to see how much light will pass through.  You first arrange the polarizers such that the middle polarizer's axis is {\angleq} clockwise to that of the bottom polarizer, and the top polarizer's axis is {\anglew} counterclockwise to that of the bottom polarizer.  You shine unpolarized light on the stack, and measure the intensity of the light that passes through as {\inten}.  Now you remove the middle polarizer and shine the same light on the remaining two polarizers.  What intensity will you measure?
+
+
+
+
+% Y&F 34.43
+
+\newcommand{\objf}{\SI{100.0}{\cm}}
+\newcommand{\ocuf}{\SI{18.0}{\cm}}
+\newcommand{\bheight}{\SI{200.7}{\foot}}
+\newcommand{\bdist}{\SI{2.00}{\mile}}
+
+\item You have a refracting telescope with an objective lens of focal length {\objf} and an an ocular lens of focal length {\ocuf}.  What is your telescope's angular magnification?  You use your telescope to look at the Rockefeller Chapel, which is {\bheight} tall, from {\bdist} away.  What is the height of the image formed by the objective lens?  What is the angular size of the image that you view through the ocular lens?
+
+\end{enumerate}
+
+
+
+
+\end{document}
