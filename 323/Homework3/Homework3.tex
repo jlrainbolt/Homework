@@ -13,60 +13,7 @@
 
 \input{Problem1}
 
-
-
-%\clearpage
-\state{(Jackson 12.5)}{
-	A particle of mass $m$ and charge $e$ moves in the laboratory in crossed, static, uniform, electric and magnetic fields.  $\vE$ is parallel to the $x$ axis; $\vB$ is parallel to the $y$ axis.
-}
-
-%
-%	12.5(a)
-%
-
-\prob{}{
-	For $\absvEo < \abs{\vB}$ make the necessary Lorentz transformation described in Section~12.3 to obtain explicitly parametric equations for the particle's trajectory.
-}
-
-\sol{
-	The boost described in Section~{12.3} of Jackson is into a frame $K'$, which moves with velocity $\vuu$ with respect to the laboratory frame, where
-	\eq{
-		\vuu = c \frac{\vE \cross \vB}{\vB^2}
-	}
-	is the particle's drift velocity.  In $K'$, the fields are given by
-	\al{
-		\vEpar' &= \vEperp' = \vBpar' = 0, &
-		\vBperp' &= \frac{\absvB}{\gam}
-		= \sqrt{\frac{\vB^2 - \vE^2}{\vB^2}} \absvB,
-	}
-	where $\vEpar'$ and $\vBpar'$ are parallel to $\vuu$, and $\vEperp'$ and $\vBperp'$ are perpendicular to $\vuu$.  This means that the particle's motion in this frame is the same as motion in a uniform, static magnetic field.  The particle's trajectory in this kind of field when $\vB$ points in the $z$ direction is given by Jackson~(12.41),
-	\eq{
-		\vr(t) = \vro + \vpar t \,\zh + i a (\xh - i \,\yh) e^{i \omgB t}
-	}
-	
-	% According to Jackson~(11.17),
-%	\eq{
-%		\gam = \frac{1}{\sqrt{1 - \bet^2}}
-%		= \frac{1}{\sqrt{1 - \vuu^2 / c^2}}.
-%	}
-%	Using both expressions for $\vBperp'$, we can solve for $\vuu$:
-%	\eq{
-%		\frac{1}{\gam} = \sqrt{1 - \frac{\vuu^2}{c^2}} = \sqrt{\frac{\vB^2 - \vE^2}{\vB^2}}
-%		\qimplies
-%		\frac{\vuu^2}{c^2} = 1 + \frac{\vE^2 - \vB^2}{\vB^2}
-%		\qimplies
-%		\absvu = c \sqrt{1 + \frac{\vE^2 - \vB^2}{\vB^2}}.
-%	}
-}
-
-%
-%	12.5(b)
-%
-
-\clearpage
-\prob{}{
-	Repeat the calculation of part~(a) for $\absvEo > \abs{\vB}$.
-}
+\input{Problem2}
 
 
 
