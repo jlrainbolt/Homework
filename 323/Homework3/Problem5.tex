@@ -1,0 +1,133 @@
+\state{}{
+	We wrote in class the Lagrangian of a charged particle coupled to the electromagnetic field (see pp.~159--160) in the lecture notes).
+}
+
+%
+%	5(a)
+%
+
+\prob{}{
+	Show that the Euler-Lagrange equations that follow from this Lagrangian give rise to the Lorentz force law %on p.~161.
+	\eq{
+		\dv{\pii}{t} = q \brac{ \Ei + \frac{1}{c} (\vv \cross \vB)^i }.
+	}
+	\vfix
+}
+
+\sol{
+	The action of a charged particle in an electromagnetic field is given on p.~159 of the lecture notes as
+	\eqn{lagr5}{
+		S[\vr] = \int \paren{ -m c^2 \sqrt{1 - \frac{\vrd^2}{c^2}} - q \phi + \frac{q}{c} \vrd \vdot \vA } \ddt
+		\equiv \int \cL(\vr, \vrd) \ddt,
+	}
+	where we have fixed $\lam = t$, and we have defined $\cL$.  The Euler-Lagrange equations are given on p.~94 of the lecture notes:
+	\eq{
+		\dv{t} \pdv{\cL}{\dot{q}_i} = \pdv{\cL}{q_i}.
+	}
+	For the Lagrangian defined in Eq.~\refeq{lagr5}, we have firstly
+	\eq{
+		\pdv{\cL}{\rdii} = -mc^2 \paren{ \frac{1}{2} \frac{1}{\sqrt{ 1 - \vrd^2 / c^2}} } \paren{ -\frac{2 \rdii}{c^2} } + \frac{q}{c} \Aii
+		= \frac{m \rdii}{\sqrt{1 - \vrd^2 / c^2}} + \frac{q}{c} \Aii
+		= \pii + \frac{q}{c} \Aii,
+	}
+	since $\vp = m \gam \vrd$ and $\bet = \vrd / c$.
+	
+	Secondly, we have~\cite[p.~50]{Landau}
+	\eq{
+		\pdv{\cL}{\vr} = \grad \cL
+		= \frac{q}{c} \grad(\vrd \vdot \vA) - q \grad\phi.
+	}
+	One of the vector identities on the inside cover of Jackson is
+	\eq{
+		\grad(\vaa \vdot \vbb) = (\vaa \vdot \grad) \vbb + (\vbb \vdot \grad) \vaa + \vaa \cross (\grad \cross \vbb) + \vbb \cross (\grad \cross \vaa),
+	}
+	so~\cite[p.~50]{Landau}
+	\eq{
+		\grad(\vrd \vdot \vA) = (\vrd \vdot \grad) \vA + \vrd \cross (\grad \cross \vA)
+		\qimplies
+		\pdv{\cL}{\vr} = \frac{q}{c} [ (\vrd \vdot \grad) \vA + \vrd \cross (\grad \cross \vA) ] - q \grad\phi.
+	}
+	
+	
+	Then the Euler-Lagrange equations become
+	\eqn{el5}{
+		\dv{\vp}{t} + \frac{q}{c} \dv{\vA}{t} = \frac{q}{c} [ (\vrd \vdot \grad) \vA + \vrd \cross (\grad \cross \vA) ] - q \grad\phi.
+	}
+	The total derivative of $\vA$ is given by~\cite[p.~50]{Landau},
+	\eq{
+		\dv{\vA}{t} = \pdv{\vA}{t} + \vrd \vdot \pdv{\vA}{\vrd}
+		= \pdv{\vA}{t} + (\vrd \vdot \grad) \vA.
+	}
+	Then Eq.~\refeq{el5} becomes
+	\eqn{el5.2}{
+		\dv{\vp}{t} = \frac{q}{c} \vrd \cross (\grad \cross \vA) - q \grad\phi - \frac{q}{c} \dv{\vA}{t}.
+	}
+	According to Wald~(5.2--3),
+	\al{
+		\vE &= -\grad \phi - \frac{1}{c} \pdv{\vA}{t}, &
+		\vB &= \grad \cross \vA.
+	}
+	Making these substitutions and $\vrd \to \vv$ in Eq.~\refeq{el5.2}, we have
+	\eqn{Lorentz}{
+		\ans{ \dv{\vp}{t} = q \paren{ \vE + \frac{\vv \cross \vB}{c} } }
+	}
+	as desired. \qed
+}
+
+%
+%	5(b)
+%
+
+\prob{}{
+	Show that the Lorentz force law can be written covariantly in the form %given on p.~163 of the lecture notes (and Eq.~(11.163) in Jackson).
+	\eqn{show5}{
+		\dv{\Um}{\tau} = \frac{q}{m c} \Fmn \Usn.
+	}
+	\vfix
+}
+
+\sol{
+	The 4-velocity $\Um$ is defined by Jackson~(11.36) as $\Um = \gam (c, \vv) = (\Uo, \vU)$.  The 4-momentum is defined by the equation immediately preceding (11.125) as $\Pm = (\cE / c, \vp)$, where $\cE$ is the total energy of the particle.  Also from this equation is the relation $\Pm = m \Um$.
+	
+	According to Jackson~(11.26), $\dd{\tau} = \dd{t} / \gam$.  Making this substitution in Eq.~\refeq{Lorentz} and dividing by $m$, we find~\cite[p.~553]{Jackson}
+	\eqn{spatial}{
+		\frac{1}{\gam} \dv{\vp}{\tau} = q \paren{ \vE + \frac{\vv \cross \vB}{c} }
+		\qimplies
+		\dv{\gam \vv}{\tau} = \dv{\vU}{\tau} = \frac{q \gam}{m c} \paren{ c \vE + \vv \cross \vB }.
+	}
+	
+	From Wald~(5.17),
+	\eq{
+		\dv{\cE}{t} = \vJ \vdot \vE.
+	}
+	For a point charge, $\vJ = q \vv$.  Making this substitution, dividing by $m c$, and changing to a derivative of $\tau$, we find~\cite[p.~553]{Jackson}
+	\eqn{temporal}{
+		\dv{\cE}{t} = q \vv \vdot \vE
+		\qimplies
+		\frac{1}{m c} \dv{\cE}{t} = \dv{\Uo}{\tau} = \frac{q \gam}{m c} \vv \vdot \vE.
+	}
+	This corresponds to the derivative of the temporal part of $\Um$.
+	
+	Now we will work directly from Eq.~\refeq{show5} and write $\Fmn \Usn$ in terms of the fields.  From Jackson~(11.137),
+	\eq{
+		\Fmn = \mqty[
+			0 & -\Ex & -\Ey & -\Ez \\
+			\Ex & 0 & -\Bz & \By \\
+			\Ey & \Bz & 0 & -\Bx \\
+			\Ez & -\By & \Bx & 0 ].
+	}
+	Then we have
+	\eq{
+		\Fmn \Usn = \gam \mqty[
+			\vvx \Ex + \vy \Ey + \vz \Ez \\
+			c \Ex + \vy \Bz - \vz \By \\
+			c \Ey - \vvx \Bz + \vz \Bx \\
+			c \Ez + \vvx \By - \vy \Bx ]
+		= \gam (\vv \vdot \vE, c \vE + \vv \cross \vB ).
+	}
+	Using this result, we may combine Eqs.~\refeq{spatial} and \refeq{temporal} to write
+	\eq{
+		\ans{ \dv{\Um}{d\tau} = \frac{q}{m c} \Fmn \Usn }
+	}
+	as desired. \qed
+}
