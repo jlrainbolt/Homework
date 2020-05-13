@@ -1,0 +1,117 @@
+\state{}{
+	We discussed in class the construction of linearly polarized electromagnetic waves.
+}
+
+%
+%	4(a)
+%
+
+\prob{}{
+	Generalize the discussion to circularly polarized waves (see also Wald Sec.~{5.5}).  Discuss both right-handed and left-handed polarizations.
+}
+
+\sol{
+	The plane waves are given on p.~149 in the lecture notes:
+	\al{
+		\vE(\vr, t) &= C \exp(i \ksm \xm) \vxiq, &
+		\vB(\vr, t) &= C \exp(i \ksm \xm) \vxiw,
+	}
+	where $\kkm = (\omg / c, \vk)$ with $\omg$ being the wave frequency and $\vk$ the wave vector, $C$ is the field strength amplitude, and $\vxiq$ and $\vxiw$ are polarization vectors which are related to the polarization 4-vectors $\ximq$ and $\ximw$.
+	
+	From p.~146 in the lecture notes, the polarization 4-vectors must both satisfy the constraint $\ksm \xim = 0$ and the identification $\xism \sim \xism + \alp \ksm$, where $\alp$ is an arbitrary constant.  We found in class that this means $\xim = (0, \vxi)$.  Then we must have~\cite[p.~299]{Jackson}
+	\al{
+		\vxiq \vdot \kh &= \vxiw \vdot \kh = \vxiq \vdot \vxiw = 0, &
+		\vxiw &= \kh \cross \vxiq,
+	}
+	where $\kh$ is a unit vector in the direction of $\vk$, and the second equality comes from $\vk \propto \vE \cross \vB$.
+	
+	Circularly polarized waves are the linear combination of two linearly-polarized waves that have the same amplitude and are out of phase by $\pi / 2$.  The circularly-polarized fields may then be written as~\cite[p.~299]{Jackson}
+	\aln{ \label{circ1}
+		\ans{ \vE(\vr, t)\ }&\ans{ = C (\vxiq \pm i \vxiw) \exp(i \ksm \xm), } &
+		\ans{ \vB(\vr, t)\ }&\ans{ = C (\vxiw \mp i \vxiq) \exp(i \ksm \xm), }
+	}
+	where the upper signs correspond to left-handed polarization, and the lower signs correspond to right-handed polarization.  Incoming waves with left-handed polarization appear to be rotating counter-clockwise to an observer, while incoming right-handed waves appear to be rotating clockwise~\cite[p.~300]{Jackson}.
+	
+	Taking the real part of Eq.~\refeq{circ1}, and choosing $\vxiq = \xh$, $\vxiw = \yh$, and $\kh = \zh$, we have~\cite[p.~299]{Jackson}
+	\aln{
+		\ans{ \Ex(z, t)\ }&\ans{ = C \cos(k z - \omg t), }&
+		\ans{ \Ey(z, t)\ }&\ans{ = \mp C \sin(k z - \omg t), } \label{circ2.1} \\
+		\ans{ \Bx(z, t)\ }&\ans{ = \pm C \sin(k z - \omg t), } &
+		\ans{ \By(z, t)\ }&\ans{ = C \cos(k z - \omg t). } \label{circ2.2}
+	}
+	We will show that these fields satisfy Maxwell's equations for a source-free region.  From Wald~(5.4--7), the equations are
+	\al{
+		\grad \vdot \vE &= 0, &
+		\grad \cross \vB - \frac{1}{c} \pdv{\vE}{t} &= \vo, &
+		\grad \vdot \vB &= 0, &
+		\grad \cross \vE + \frac{1}{c} \pdv{\vB}{t} &= \vo.
+	}
+	For the first equation,
+	\eq{
+		\grad \vdot \vE = \pdv{\Ex}{x} + \pdv{\Ey}{y}
+		= 0.
+	}
+	For the second,
+	\al{
+		\grad \cross \vB - \frac{1}{c} \pdv{\vE}{t} &= -\pdv{\By}{z} \,\xh + \pdv{\Bx}{z} \,\yh + \paren{ \pdv{\By}{x} - \pdv{\Bx}{y} } \zh - \frac{1}{c} \paren{ \pdv{\Ex}{t} \,\xh + \pdv{\Ey}{t} \,\yh } \\
+		&= C k \sin(k z - \omg t) \,\xh \pm C k \cos(k z - \omg t) \,\yh - \frac{C \omg \sin(k x - \omg t) \,\xh \pm C \omg \cos(k x - \omg t) \,\yh}{c}
+		= \vo,
+	}
+	since $k = \omg / c$ from p.~138.
+	
+	For the third,
+	\eq{
+		\grad \vdot \vB = \pdv{\Bx}{x} + \pdv{\By}{y}
+		= 0.
+	}
+	For the fourth,
+	\al{
+		\grad \cross \vE + \frac{1}{c} \pdv{\vB}{t} &= -\pdv{\Ey}{z} \,\xh + \pdv{\Ex}{z} \,\yh + \paren{ \pdv{\Ey}{x} - \pdv{\Ex}{y} } \zh + \frac{1}{c} \paren{ \pdv{\Bx}{t} \,\xh + \pdv{\By}{t} \,\yh } \\
+		&= \pm C k \cos(k z - \omg t) \,\xh - C k \sin(k z - \omg t) \,\yh - \frac{\pm C \omg \cos(k z - \omg t) \,\xh - C \omg \sin(k x - \omg t)\,\yh}{c}
+		= \vo.
+	}
+	\ans{ Thus, we have shown that the circularly-polarized waves given by Eqs.~(\ref{circ1}--\ref{circ2.2}) are valid solutions to the Maxwell equations for a source-free field. }
+}
+
+%
+%	4(b)
+%
+
+\prob{}{
+	Compute the angular momentum of the circularly polarized waves of part~(a) using the formula for angular momentum derived in class.
+}
+
+\sol{
+	The angular momentum of an electromagnetic field is given by Eq.~\refeq{angmom}.  Define the angular momentum density by~\cite[p.~358]{Griffiths}
+	\eq{
+		\vcL = \frac{\vx \cross (\vE \cross \vB)}{4\pi c},
+	}
+	which implies
+	\eq{
+		\vL = \int \vcL \dcx.
+	}
+	
+	From the inside cover of Jackson, $\vaa \cross (\vbb \cross \vcc) = (\vaa \vdot \vcc) \vbb - (\vaa \vdot \vbb) \vcc$.  So, using the fields in Eqs.~\refeq{circ2.1} and \refeq{circ2.2},
+	\al{
+		\vx \cross (\vE \cross \vB) &= (\vx \vdot \vB) \vE - (\vx \vdot \vE) \vB
+		= (x \Bx + y \By) (\Ex \,\xh + \Ey \,\yh) - (x \Ex + y \Ey) (\Bx \,\xh + \By \,\yh) \\
+		&= [ \Ex (x \Bx + y \By) - \Bx (x \Ex + y \Ey) ]\,\xh + [ \Ey (x \Bx + y \By) - \By (x \Ex + y \Ey) ]\,\yh \\
+		&= (\Ex \By - \Ey \Bx) y \,\xh + (\Ey \Bx - \Ex \By) x \,\yh \\
+		&= C^2 [ \cos[2](k z - \omg t) + \sin[2](k z - \omg t) ] y \,\xh - C^2 [ \sin[2](k z - \omg t) + \cos[2](k z - \omg t) ] x \,\yh \\
+		&= C^2 (y \,\xh - x \,\yh),
+	}
+	which is true for both left- and right-handed polarizations.  Then the angular momentum density is
+	\eq{
+		\vcL = C^2 \frac{y \,\xh - x \,\yh}{4\pi c}.
+	}
+	
+	For the total angular momentum, we integrate over all of space:
+	\al{
+		\vL &= \frac{C^2}{4\pi c} \int (y \,\xh - x \,\yh) \dcx
+		= \frac{C^2}{4\pi c} \paren{ \xh \intii \intii \intii y \dy \dx \dz - \yh \intii \intii \intii x \dx \dy \dz } \\
+		&= \frac{C^2}{4\pi c} \paren{ \xh \intii \intii \brac{ \frac{y^2}{2} }_{-\infty}^\infty \dx \dz - \yh \intii \intii \brac{ \frac{x^2}{2} }_{-\infty}^\infty \dy \dz } \\
+		&= \frac{C^2}{4\pi c} \paren{ \xh \intii \intii 0 \dx \dz - \yh \intii \intii 0 \dy \dz }
+		= \ans{ \vo. }
+	}
+	So we see that the total angular momentum (for all space) is zero.  However, the angular momentum density $\cL$ is nonzero.  If we were to calculate the angular momentum for an arbitrary region of space, it would not necessarily be zero.  Thus, the statement on p.~152 in the lecture notes that circularly polarized waves carry angular momentum is still true.
+}

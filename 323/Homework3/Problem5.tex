@@ -17,8 +17,8 @@
 \sol{
 	The action of a charged particle in an electromagnetic field is given on p.~159 of the lecture notes as
 	\eqn{lagr5}{
-		S[\vr] = \int \paren{ -m c^2 \sqrt{1 - \frac{\vrd^2}{c^2}} - q \phi + \frac{q}{c} \vrd \vdot \vA } \ddt
-		\equiv \int \cL(\vr, \vrd) \ddt,
+		S[\vx] = \int \paren{ -m c^2 \sqrt{1 - \frac{\vxd^2}{c^2}} - q \phi + \frac{q}{c} \vxd \vdot \vA } \ddt
+		\equiv \int \cL(\vx, \vxd) \ddt,
 	}
 	where we have fixed $\lam = t$, and we have defined $\cL$.  The Euler-Lagrange equations are given on p.~94 of the lecture notes:
 	\eq{
@@ -26,16 +26,16 @@
 	}
 	For the Lagrangian defined in Eq.~\refeq{lagr5}, we have firstly
 	\eq{
-		\pdv{\cL}{\rdii} = -mc^2 \paren{ \frac{1}{2} \frac{1}{\sqrt{ 1 - \vrd^2 / c^2}} } \paren{ -\frac{2 \rdii}{c^2} } + \frac{q}{c} \Aii
-		= \frac{m \rdii}{\sqrt{1 - \vrd^2 / c^2}} + \frac{q}{c} \Aii
+		\pdv{\cL}{\xdii} = -mc^2 \paren{ \frac{1}{2} \frac{1}{\sqrt{ 1 - \vxd^2 / c^2}} } \paren{ -\frac{2 \xdii}{c^2} } + \frac{q}{c} \Aii
+		= \frac{m \xdii}{\sqrt{1 - \vxd^2 / c^2}} + \frac{q}{c} \Aii
 		= \pii + \frac{q}{c} \Aii,
 	}
-	since $\vp = m \gam \vrd$ and $\bet = \vrd / c$.
+	since $\vp = m \gam \vxd$ and $\bet = \vxd / c$.
 	
 	Secondly, we have~\cite[p.~50]{Landau}
 	\eq{
-		\pdv{\cL}{\vr} = \grad \cL
-		= \frac{q}{c} \grad(\vrd \vdot \vA) - q \grad\phi.
+		\pdv{\cL}{\vx} = \grad \cL
+		= \frac{q}{c} \grad(\vxd \vdot \vA) - q \grad\phi.
 	}
 	One of the vector identities on the inside cover of Jackson is
 	\eq{
@@ -43,31 +43,30 @@
 	}
 	so~\cite[p.~50]{Landau}
 	\eq{
-		\grad(\vrd \vdot \vA) = (\vrd \vdot \grad) \vA + \vrd \cross (\grad \cross \vA)
+		\grad(\vxd \vdot \vA) = (\vxd \vdot \grad) \vA + \vxd \cross (\grad \cross \vA)
 		\qimplies
-		\pdv{\cL}{\vr} = \frac{q}{c} [ (\vrd \vdot \grad) \vA + \vrd \cross (\grad \cross \vA) ] - q \grad\phi.
+		\pdv{\cL}{\vx} = \frac{q}{c} [ (\vxd \vdot \grad) \vA + \vxd \cross (\grad \cross \vA) ] - q \grad\phi.
 	}
-	
 	
 	Then the Euler-Lagrange equations become
 	\eqn{el5}{
-		\dv{\vp}{t} + \frac{q}{c} \dv{\vA}{t} = \frac{q}{c} [ (\vrd \vdot \grad) \vA + \vrd \cross (\grad \cross \vA) ] - q \grad\phi.
+		\dv{\vp}{t} + \frac{q}{c} \dv{\vA}{t} = \frac{q}{c} [ (\vxd \vdot \grad) \vA + \vxd \cross (\grad \cross \vA) ] - q \grad\phi.
 	}
 	The total derivative of $\vA$ is given by~\cite[p.~50]{Landau},
 	\eq{
-		\dv{\vA}{t} = \pdv{\vA}{t} + \vrd \vdot \pdv{\vA}{\vrd}
-		= \pdv{\vA}{t} + (\vrd \vdot \grad) \vA.
+		\dv{\vA}{t} = \pdv{\vA}{t} + \vxd \vdot \pdv{\vA}{\vxd}
+		= \pdv{\vA}{t} + (\vxd \vdot \grad) \vA.
 	}
 	Then Eq.~\refeq{el5} becomes
 	\eqn{el5.2}{
-		\dv{\vp}{t} = \frac{q}{c} \vrd \cross (\grad \cross \vA) - q \grad\phi - \frac{q}{c} \dv{\vA}{t}.
+		\dv{\vp}{t} = \frac{q}{c} \vxd \cross (\grad \cross \vA) - q \grad\phi - \frac{q}{c} \dv{\vA}{t}.
 	}
 	According to Wald~(5.2--3),
 	\al{
 		\vE &= -\grad \phi - \frac{1}{c} \pdv{\vA}{t}, &
 		\vB &= \grad \cross \vA.
 	}
-	Making these substitutions and $\vrd \to \vv$ in Eq.~\refeq{el5.2}, we have
+	Making these substitutions and $\vxd \to \vv$ in Eq.~\refeq{el5.2}, we have
 	\eqn{Lorentz}{
 		\ans{ \dv{\vp}{t} = q \paren{ \vE + \frac{\vv \cross \vB}{c} } }
 	}
@@ -96,11 +95,7 @@
 		\dv{\gam \vv}{\tau} = \dv{\vU}{\tau} = \frac{q \gam}{m c} \paren{ c \vE + \vv \cross \vB }.
 	}
 	
-	From Wald~(5.17),
-	\eq{
-		\dv{\cE}{t} = \vJ \vdot \vE.
-	}
-	For a point charge, $\vJ = q \vv$.  Making this substitution, dividing by $m c$, and changing to a derivative of $\tau$, we find~\cite[p.~553]{Jackson}
+	From Wald~(5.17), $\dv*{\cE}{t} = \vJ \vdot \vE$.  For a point charge, $\vJ = q \vv$.  Making this substitution, dividing by $m c$, and changing to a derivative of $\tau$, we find~\cite[p.~553]{Jackson}
 	\eqn{temporal}{
 		\dv{\cE}{t} = q \vv \vdot \vE
 		\qimplies
