@@ -15,54 +15,10 @@
 
 \input{Problem2}
 
+\input{Problem3}
 
 
-\state{(Jackson 12.19)}{
-	Source-free electromagnetic fields exist in a localized region of space.  Consider the various conservation laws that are contained in the integral of $\ptsa \Mabg = 0$ over all space, where %$\Mabg$ is defined by (12.117).
-	\eq{
-		\Mabg = \Thab \xg - \Thag \xb.
-	}
-	\vfix
-}
 
-%
-%	12.19(a)
-%
-
-\prob{}{
-	Show that when $\bet$ and $\gam$ are both space indices conservation of the total field angular momentum follows.
-}
-
-\sol{
-	Note that
-	\eq{
-		\ptsa \Mabg = \ptsa(\Thab \xg - \Thag \xb)
-		= \xg \ptsa \Thab + \Thab \ptsa \xg - \xb \ptsa \Thag - \Thag \ptsa \xb
-		= \Thab \ptsa \xg - \Thag \ptsa \xb,
-	}
-	where we have used Jackson~(12.116), $\ptsa \Thab = 0$.
-	\clearpage
-}
-
-%
-%	12.19(b)
-%
-
-\clearpage
-\prob{}{
-	Show that when $\bet = 0$ the conservation law is
-	\eq{
-		\dv{\vX}{t} = \frac{c^2 \vPem}{\Eem},
-	}
-	where $\vX$ is the coordinate of the center of mass of the electromagnetic fields, defined by
-	\eq{
-		\vX \int u \dcx = \int \vx u \dcx,
-	}
-	where $u$ is the electromagnetic energy density and $\Eem$ and $\vPem$ are the total energy and momentum of the fields.
-}
-
-
-\clearpage
 \state{}{
 	We discussed in class the construction of linearly polarized electromagnetic waves.
 }
@@ -151,11 +107,24 @@
 }
 
 \sol{
-	The angular momentum of an electric field is given on p.~128 of the lecture notes as
+	The angular momentum of an electromagnetic field is given on p.~128 of the lecture notes as
 	\eq{
-		\vL = \frac{1}{4\pi c} \int \vr \cross (\vE \cross \vB) \dcx,
+		\vL = \frac{1}{4\pi c} \int \vr \cross (\vE \cross \vB) \dcr,
 	}
 	where $\vr = (x, y, z)$ denotes a point in space.
+	
+	From the inside cover of Jackson, $\vaa \cross (\vbb \cross \vcc) = (\vaa \vdot \vcc) \vbb - (\vaa \vdot \vbb) \vcc$.  So, using the fields in Eqs.~\refeq{circ2.1} and \refeq{circ2.2},
+	\al{
+		\vr \cross (\vE \cross \vB) &= (\vr \vdot \vB) \vE - (\vr \vdot \vE) \vB
+		= (x \Bx + y \By) (\Ex \,\xh + \Ey \,\yh) - (x \Ex + y \Ey) (\Bx \,\xh + \By \,\yh) \\
+		&= [ \Ex (x \Bx + y \By) - \Bx (x \Ex + y \Ey) ]\,\xh + [ \Ey (x \Bx + y \By) - \By (x \Ex + y \Ey) ]\,\yh \\
+		&= (\Ex \By - \Ey \Bx) y \,\xh + (\Ey \Bx - \Ex \By) x \,\yh \\
+		&= \sE^2 [ \cos[2](k z - \omg t) + \sin[2](k z - \omg t) ] y \,\xh - \sE^2 [ \sin[2](k z - \omg t) + \cos[2](k z - \omg t) ] x \,\yh \\
+		&= \sE^2 (y \,\xh - x \,\yh),
+	}
+	which is true for both left- and right-handed polarizations.
+	
+	\hl{But how do I integrate this???}
 }
 
 

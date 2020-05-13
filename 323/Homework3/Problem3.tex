@@ -1,0 +1,119 @@
+\state{(Jackson 12.19)}{
+	Source-free electromagnetic fields exist in a localized region of space.  Consider the various conservation laws that are contained in the integral of $\ptsa \Mabg = 0$ over all space, where %$\Mabg$ is defined by (12.117).
+	\eqn{Mabg}{
+		\Mabg = \Thab \xg - \Thag \xb.
+	}
+	\vfix
+}
+
+%
+%	12.19(a)
+%
+
+\prob{}{
+	Show that when $\bet$ and $\gam$ are both space indices conservation of the total field angular momentum follows.
+}
+
+\sol{
+	Let $\bet = i$ and $\gam = j$, which are both spatial indices.  Note that
+	\eqn{thing3}{
+		\ptsa \Maij = \pdv{\Moij}{(ct)} + \pdv{M^{1 i j}}{x} + \pdv{M^{2 i j}}{y} + \pdv{M^{3 i j}}{z}.
+	}
+	\clearpage
+	Conservation of angular momentum means that $\pdv*{\vL}{t} = 0$, where $\vL$ is defined by the equation just before Jackson~(12.109):
+	\eqn{angmom}{
+		\vL = \frac{1}{4\pi c} \int \vx \cross (\vE \cross \vB) \dcx.
+	}
+	None of the components of $\Maij$ include explicit time derivatives, so from Eq.~\refeq{thing3}, $\ptsa \Maij = 0$ must imply $\pdv*{\Moij}{t} = 0$.  Thus, we need to show that the spatial integral of $\pdv*{\Moij}{t} = 0$ implies conservation of angular momentum.
+	
+	From Jackson~(12.114), $\Tht^{0i} = (\vE \cross \vB)_i / 4\pi$.  Applying this to Eq.~\refeq{Mabg}, we have
+	\eq{
+		\Moij = \Tht^{0 i} \xjj - \Tht^{0 j} \xii
+		= \frac{(\vE \cross \vB)_i}{4\pi} \xjj - \frac{(\vE \cross \vB)_j}{4\pi} \xii
+		= \frac{1}{4\pi} \begin{cases}
+			\!\, [ \vx \cross (\vE \cross \vB) ]_k & i \neq j, \\
+			0 & i = j.
+			\end{cases}
+	}
+	Taking the derivative as described and integrating over all of space, we find
+	\eq{
+		\int \ptsa \Maij \dcx = 0
+		\qimplies
+		0 = \frac{1}{c} \int \pdv{\Moij}{t} \dcx,
+	}
+	which is trivially satisfied when $i = j$.  When $i \neq j$,
+	\eq{
+		0 = \frac{1}{c} \int \pdv{\Moij}{t} \dcx
+		= \frac{1}{4\pi c} \int \pdv{t} [ \vx \cross (\vE \cross \vB) ]_k \dcx
+		= \pdv{t} \paren{ \frac{1}{4\pi c} \int [ \vx \cross (\vE \cross \vB) ]_k \dcx },
+	}
+	where we have moved $\pdv*{t}$ outside the integral since $[ \vx \cross (\vE \cross \vB) ]_k$ has no explicit time dependence.  Then, applying Eq.~\refeq{angmom}, we have
+	\eq{
+		\pdv{L_k}{t} = 0
+		\qimplies
+		\ans{ \pdv{\vL}{t} = \vo }
+	}
+	as desired. \qed
+}
+
+%
+%	12.19(b)
+%
+
+\prob{}{
+	Show that when $\bet = 0$ the conservation law is
+	\eqn{show3b}{
+		\dv{\vX}{t} = \frac{c^2 \vPem}{\Eem},
+	}
+	where $\vX$ is the coordinate of the center of mass of the electromagnetic fields, defined by
+	\eqn{thing3b}{
+		\vX \int u \dcx = \int \vx u \dcx,
+	}
+	where $u$ is the electromagnetic energy density and $\Eem$ and $\vPem$ are the total energy and momentum of the fields.
+}
+
+\sol{
+	From Wald~(5.9--10), the energy density and momentum density of the electromagnetic field are, respectively,
+	\aln{ \label{EP1}
+		u &= \frac{\vE^2 + \vB^2}{8\pi}, &
+		\vcP &= \frac{\vE \cross \vB}{4\pi}.
+	}
+	Then the total energy and momentum of the fields are, respectively,
+	\aln{ \label{EP2}
+		\Eem &= \int u \dcx
+		= \frac{1}{8\pi} \int (\vE^2 + \vB^2) \dcx, &
+		\vPem &= \int \vcP \dcx
+		= \frac{1}{4\pi} \int \vE \cross \vB \dcx.
+	}
+	
+	By the same argument as in Prob.~{3(b)}, we need to show that Eq.~\refeq{show3b} follows from the spatial integral of $\pdv*{\Moog}{t} = 0$.  Applying Eq.~\refeq{Mabg},
+	\eq{
+		\Moog = \Tht^{0 0} \xg - \Tht^{0 \gam} \xo.
+	}
+	Clearly $M^{0 0 0}$, so we need only concern ourselves with the case in which $\gam = i$ is a space index.  From Jackson~(12.114), $\Tht^{0 0} = (\vE^2 + \vB^2) / 8\pi$ and $\Tht^{0i} = (\vE \cross \vB)_i / 4\pi$.  Making these substitutions and applying Eq.~\refeq{EP1},
+	\eq{
+		\Mooi = \frac{\vE^2 + \vB^2}{8\pi} \xii - c t \frac{(\vE \cross \vB)_i}{4\pi}
+		= u \xii - c t \cP_i.
+	}
+	Again taking the derivative and integrating, we find
+	\eq{
+		\int \ptsa M^{\alp 0 i} \dcx = 0
+		\qimplies
+		0 = \frac{1}{c} \int \pdv{\Mooi}{t} \dcx
+		= \frac{1}{c} \int \pdv{t} \paren{ u \xii - ct \cP_i } \dcx.
+	}
+	In vector notation,
+	\al{
+		0 &= \frac{1}{c} \int \pdv{t} (u \vx) \dcx - c \int \pdv{t} (t \vP) \dcx
+		= \frac{1}{c} \pdv{t} \paren{ \int u \vx \dcx } - c \int \vP \dcx
+		= \frac{1}{c} \pdv{t} \paren{ \vX \int u \dcx } - c \int \vP \dcx \\
+		&= \frac{1}{c} \pdv{t} (\vX \Eem) - c \vPem
+		= \frac{1}{c} \paren{ \Eem \pdv{\vX}{t} + \vX \pdv{\Eem}{t} } - c \vPem
+		= \frac{\Eem}{c} \dv{\vX}{t} - c \vPem
+	}
+	where we have applied Eqs.~\refeq{thing3b} and \refeq{EP2}, and the fact that $\pdv*{\Eem}{t} = 0$.  Rearranging, we have
+	\eq{
+		\ans{ \dv{\vX}{t} = \frac{c^2 \vPem}{\Eem} }
+	}
+	as desired. \qed
+}
