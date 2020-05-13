@@ -21,7 +21,7 @@
 		\vBperp' &= \frac{\vB}{\gam}
 		= \sqrt{\frac{\vB^2 - \vE^2}{\vB^2}} \vB,
 	}
-	where $\vEpar'$ and $\vBpar'$ are parallel to $\vuu$, and $\vEperp'$ and $\vBperp'$ are perpendicular to $\vuu$.  This means that the particle's motion in this frame is the same as motion in a uniform, static magnetic field.  The particle's trajectory in a uniform magnetic field $\vB$ that points in the $y$ direction is given by Jackson~(12.41),
+	where $\vEpar'$ and $\vBpar'$ are parallel to $\vuu$, and $\vEperp'$ and $\vBperp'$ are perpendicular to $\vuu$.  This means that the particle's motion in this frame is the same as motion in a uniform, static magnetic field.  The particle's trajectory in a uniform magnetic field $\vB$ that points in the $y$ direction is found by modifying Jackson~(12.41):
 	\eqn{pos2}{
 		\vr(t) = \vro + \vpar t \,\yh + i a (\zh - i \,\xh) e^{-i \omgB t},
 	}
@@ -41,7 +41,7 @@
 	}
 	where $\vperp'$ is the component of the particle's velocity perpendicular to the field in $K'$ and $\Eo'$ its initial energy in $K'$, with $\cE' = \Eo'$ since $\dv*{\cE'}{t} = 0$ in this frame by Jackson~(12.37).
 	
-	Then, since $\vBperp'$ points in the $y'$ direction, Eq.~\refeq{pos2} gives us
+	Then Eq.~\refeq{pos2} gives us
 	\eq{
 		\vr'(t') = \vro' + \vpar' t' \,\yh + i a (\zh - i \,\xh) e^{-i \omgB t'}.
 	}
@@ -63,11 +63,11 @@
 		y &= y', &
 		z &= \gam(z' + \bet c t').
 	}
-	Note that $\vpar' = \vpar$, since $\vpar$ is perpendicular to $\vuu$.  Then, applying these to Eq.~\refeq{K'}, and substituting for $\bet$ and $\gam$, we find the parametric equations
+	Applying these to Eq.~\refeq{K'} and substituting for $\bet$ and $\gam$, we find the parametric equations
 	{\color{blue} \al{
 		t(t') &= \sqrt{1 - \frac{\vE^2}{\vB^2}}^{\,-1} \brac{ t' + \frac{a \absvE}{c \absvB} \sin(\omgB t') }, &
 		x(t') &= a \cos(\omgB t'), \\
-		y(t') &= \vpar t', &
+		y(t') &= \vpar' t', &
 		z(t') &= \sqrt{1 - \frac{\vE^2}{\vB^2}}^{\,-1} \brac{ a \sin(\omgB t') + \frac{c \absvE}{\absvB} t' },
 	}}%
 	where $\omgB$ and $a$ are given by Eq.~\refeq{things2}.
@@ -84,7 +84,7 @@
 \sol{
 	For $\absvEo > \abs{\vB}$, the boost described in Sec.~(12.3) of Jackson is into a frame $K''$ which moves with velocity $\vuu'$ with respect to the laboratory frame, where
 	\eq{
-		\vuu' = c \frac{\vE \cross \vB}{E^2},
+		\vuu' = c \frac{\vE \cross \vB}{\vE^2},
 	}
 	according to Jackson~(12.46).  The electric and magnetic fields in this frame are given by Jackson~(12.46):
 	\aln{ \label{K''}
@@ -94,15 +94,15 @@
 	}
 	where $\vEpar''$ and $\vBpar''$ are parallel to $\vuu'$, and $\vEperp''$ and $\vBperp''$ are perpendicular to $\vuu'$.  Then the particle's trajectory in this frame is described by Eq.~\refeq{r2}.  Since $\vEperp''$ points in the $x$ direction, we have
 	\al{
-		x''(t'') &= \frac{\sqrt{c^2 e^2 {\vEperp''}^2 \,{t''}^2 + {\Eo''}^2} - \Eo''}{e \abs{\vEperp''}} + {v_0''}_{x''} t'', \\[2ex]
-		y''(t'') &= \frac{c {\po''}_{y''}}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''})
-		= \frac{\Eo {v_0''}_{y''}}{c e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}), \\[2ex]
-		z''(t'') &= \frac{c {\po''}_{z''}}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''})
-		= \frac{\Eo {v_0''}_{z''}}{c e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}),
+		x''(t'') &= \frac{\sqrt{c^2 e^2 {\vEperp''}^2 \,{t''}^2 + {\Eo''}^2} - \Eo''}{e \abs{\vEperp''}} + \vox'' t'', \\[2ex]
+		y''(t'') &= \frac{c \poy''}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''})
+		= \frac{\Eo'' \voy''}{c e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}), \\[2ex]
+		z''(t'') &= \frac{c \poz''}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''})
+		= \frac{\Eo'' \voz}{c e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}),
 	}
-	where ${v_0''}_{x''}$, ${v_0''}_{y''}$, and ${v_0''}_{z''}$ are the $x''$, $y''$, and $z''$ components, respectively, of the particle's initial velocity in $K''$, and $\Eo$ is the particle's initial energy in $K''$.
+	where $\vox''$, $\voy''$, and $\voz''$ are the $x''$, $y''$, and $z''$ components, respectively, of the particle's initial velocity in $K''$, and $\Eo''$ is the particle's initial energy in $K''$.
 	
-	We can transform back to the lab frame similarly to in Eq.~\refeq{boost2}, except now we boost by $\bet' = \absvB / \absvE$:
+	We can transform back to the lab frame in a similar way as in Eq.~\refeq{boost2}, except now we boost by $\bet' = \absvB / \absvE$:
 	\al{
 		ct &= \gam' (c t'' + \bet' z''), &
 		x &= x'', &
@@ -111,10 +111,10 @@
 	}
 	Substituting, we find
 	{\color{blue} \al{
-		t(t'') &= \sqrt{1 - \frac{\vB^2}{\vE^2}}^{\,-1} \brac{ t'' + \frac{\absvB}{c \absvE} \frac{c {\po''}_{z''}}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}) }, \\[2ex]
-		x(t'') &= \frac{\sqrt{c^2 e^2 {\vEperp''}^2 \,{t''}^2 + {\Eo''}^2} - \Eo''}{e \abs{\vEperp''}} + \frac{c^2 {\po''}_{x''} t''}{\Eo''}, \\[2ex]
-		y(t'') &= \frac{c {\po''}_{y''}}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}), \\[2ex]
-		z(t'') &= \sqrt{1 - \frac{\vB^2}{\vE^2}}^{\,-1} \brac{ \frac{c {\po''}_{z''}}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}) + \frac{c \absvB}{\absvE} t'' },
+		t(t'') &= \sqrt{1 - \frac{\vB^2}{\vE^2}}^{\,-1} \brac{ t'' + \frac{\Eo'' \voz''}{c^2 e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}) }, \\[2ex]
+		x(t'') &= \frac{\sqrt{c^2 e^2 {\vEperp''}^2 \,{t''}^2 + {\Eo''}^2} - \Eo''}{e \abs{\vEperp''}} + \vox'' t'', \\[2ex]
+		y(t'') &= \frac{\Eo'' \voy''}{c e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}), \\[2ex]
+		z(t'') &= \sqrt{1 - \frac{\vB^2}{\vE^2}}^{\,-1} \brac{ \frac{\Eo'' \voz}{c e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}) + \frac{\absvB}{\absvE} c t'' },
 	}}%
-	where $\vEperp''$ is given by Eq.~\refeq{K''}, $\Eo''$ is given by Eq.~\refeq{Eo2}, and $\vpo''$ is the particle's initial momentum in $K''$.
+	where $\vEperp''$ is given by Eq.~\refeq{K''}.
 }

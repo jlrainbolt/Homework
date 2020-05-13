@@ -69,7 +69,7 @@
 	}
 	where $\vro$ is the initial position of the particle.
 	
-	To make the equation a little neater, we can once again apply Jackson~(11.55) to define the particle's initial energy as $\Eo = \sqrt{m^2 c^4 + c^2 \vpo^2}$.  This gives us
+	To make the equation a little neater, we can write it in terms of the particle's initial energy, which, by another application of Jackson~(11.55), is $\Eo = \sqrt{m^2 c^4 + c^2 \vpo^2}$.  This gives us
 	\eq{
 		\ans{ \vr(t) = \frac{1}{e \absvEo} \brac{ \frac{\vEo}{\absvEo} \paren{ \sqrt{c^2 e^2 \vEo^2 t^2 + \Eo^2} - \Eo } + c \vpo \sinh[-1](\frac{c e \absvEo t}{\Eo}) } + \vro. }
 	}
@@ -121,11 +121,11 @@
 	}
 	so we can conclude that \ans{ $t \ll \Eo / c e \absvEo$ for short times. }  Likewise, \ans{ $t \gg \Eo / c e \absvEo$ for long times. }
 	
-	To obtain the trajectory for short times, we note that $u = \Eo / c e \absvEo \ll 1$ implies that $\rpar \ll 1$.  Thus, we can Taylor expand Eq.~\refeq{traj} around $\rpar = 0$.  The Taylor series for $\cosh$ is~\cite{Cosh}
+	To obtain the trajectory for short times, we note that $u = \Eo / c e \absvEo \ll 1$ implies that $\rpar \ll 1$.  Thus, we can Taylor expand Eq.~\refeq{traj} around $\rpar = 0$.  The Taylor series for $\cosh z$ is~\cite{Cosh}
 	\eq{
 		\cosh z = 1 + \frac{z^2}{2} + \cdots,
 	}
-	so
+	so we find
 	\eq{
 		\ans{ \limuo \rperp = \frac{\Eo}{c \absvEo} \frac{\rpar^2}{2}
 		= \frac{\sqrt{m^2 c^2 + \vpo^2}}{\absvEo} \frac{\rpar^2}{2}, }
@@ -137,7 +137,7 @@
 		\limzi \cosh z = \limzi \frac{e^z + e^{-z}}{2}
 		= \frac{e^z}{2},
 	}
-	so
+	so we find
 	\eq{
 		\ans{ \limui \rperp = \frac{\Eo}{c \absvEo} \frac{e^{\rpar}}{2}
 		= \frac{\sqrt{m^2 c^2 + \vpo^2}}{\absvEo} \frac{e^{\rpar}}{2}, }
