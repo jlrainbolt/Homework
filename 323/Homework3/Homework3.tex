@@ -32,37 +32,33 @@
 }
 
 \sol{
-	The plane waves are given on p.~149--150 in the lecture notes, and by Eq.~(7.8) in Jackson:
+	The plane waves are given on p.~149 in the lecture notes:
 	\al{
-		\vE(\vr, t) &= \vsE \exp(i \ksm \xm), &
-		\vB(\vr, t) &= \vsB \exp(i \ksm \xm),
+		\vE(\vr, t) &= C \exp(i \ksm \xm) \vxiq, &
+		\vB(\vr, t) &= C \exp(i \ksm \xm) \vxiw,
 	}
-	where $\kkm = (\omg / c, \vk)$, with $\omg$ being the wave frequency and $\vk$ the wave vector.  Also, from Jackson~(7.11--12),
-	\al{
-		\vsE &= \sE \vxiq, &
-		\vsB &= \sE \vxiw
-		= \kh \cross \vsE,
-	}
-	where $\sE$ and $\sB$ with $\sE = \sB$ are the field strength amplitudes, and $\vxiq$ and $\vxiw$ are polarization vectors which are related to the polarization 4-vectors $\ximq$ and $\ximw$.  From p.~146 in the lecture notes, the polarization vectors must both satisfy the constraint $\ksm \xim = 0$ and the identification $\xism \sim \xism + \alp \ksm$, where $\alp$ is an arbitrary constant.  We found in class that this means $\ximq = (0, \vxiq)$ and $\ximw = (0, \vxiw)$.  Then we must have~\cite[p.~299]{Jackson}
+	where $\kkm = (\omg / c, \vk)$, with $\omg$ being the wave frequency and $\vk$ the wave vector, $C$ is the field strength amplitude, and $\vxiq$ and $\vxiw$ are polarization vectors which are related to the polarization 4-vectors $\ximq$ and $\ximw$.
+	
+	From p.~146 in the lecture notes, the polarization vectors must both satisfy the constraint $\ksm \xim = 0$ and the identification $\xism \sim \xism + \alp \ksm$, where $\alp$ is an arbitrary constant.  We found in class that this means $\ximq = (0, \vxiq)$ and $\ximw = (0, \vxiw)$.  Then we must have~\cite[p.~299]{Jackson}
 	\al{
 		\vxiq \vdot \kh &= \vxiw \vdot \kh = \vxiq \vdot \vxiw = 0, &
 		\vxiw &= \kh \cross \vxiq,
 	}
-	where $\kh$ is a unit vector in the direction of $\vk$.
+	where the second equality comes from $\vk \propto \vE \cross \vB$, and $\kh$ is a unit vector in the direction of $\vk$.
 	
 	Circularly polarized waves are the linear combination of two linearly-polarized waves that have the same amplitude and are out of phase by $\pi / 2$.  The circularly-polarized fields may then be written as~\cite[p.~299]{Jackson}
 	\aln{ \label{circ1}
-		\ans{ \vE(\vr, t)\ }&\ans{ = \sE (\vxiq \pm i \vxiw) \exp(i \ksm \xm), } &
-		\ans{ \vB(\vr, t)\ }&\ans{ = \sB (\vxiw \mp i \vxiq) \exp(i \ksm \xm), }
+		\ans{ \vE(\vr, t)\ }&\ans{ = C (\vxiq \pm i \vxiw) \exp(i \ksm \xm), } &
+		\ans{ \vB(\vr, t)\ }&\ans{ = C (\vxiw \mp i \vxiq) \exp(i \ksm \xm), }
 	}
 	where the upper signs correspond to left-handed polarization, and the lower signs correspond to right-handed polarization.  Incoming waves with left-handed polarization appear to be rotating counter-clockwise to an observer, while incoming right-handed waves appear to be rotating clockwise~\cite[p.~300]{Jackson}.
 	
 	Taking the real part of Eq.~\refeq{circ1}, and choosing $\vxiq = \xh$, $\vxiw = \yh$, and $\kh = \zh$, we have~\cite[p.~299]{Jackson}
 	\aln{
-		\ans{ \Ex(z, t)\ }&\ans{ = \sE \cos(k z - \omg t), }&
-		\ans{ \Ey(z, t)\ }&\ans{ = \mp \sE \sin(k z - \omg t), } \label{circ2.1} \\
-		\ans{ \Bx(z, t)\ }&\ans{ = \pm \sB \sin(k z - \omg t), } &
-		\ans{ \By(z, t)\ }&\ans{ = \sB \cos(k z - \omg t). } \label{circ2.2}
+		\ans{ \Ex(z, t)\ }&\ans{ = C \cos(k z - \omg t), }&
+		\ans{ \Ey(z, t)\ }&\ans{ = \mp C \sin(k z - \omg t), } \label{circ2.1} \\
+		\ans{ \Bx(z, t)\ }&\ans{ = \pm C \sin(k z - \omg t), } &
+		\ans{ \By(z, t)\ }&\ans{ = C \cos(k z - \omg t). } \label{circ2.2}
 	}
 	We will show that these fields satisfy Maxwell's equations for a source-free region.  From Wald~(5.4--7),
 	\al{
@@ -79,10 +75,10 @@
 	For the second,
 	\al{
 		\grad \cross \vB - \frac{1}{c} \pdv{\vE}{t} &= -\pdv{\By}{z} \,\xh + \pdv{\Bx}{z} \,\yh + \paren{ \pdv{\By}{x} - \pdv{\Bx}{y} } \zh - \frac{1}{c} \paren{ \pdv{\Ex}{t} \,\xh + \pdv{\Ey}{t} \,\yh } \\
-		&= \sB k \sin(k z - \omg t) \,\xh \pm \sB k \cos(k z - \omg t) \,\yh - \frac{\sE \omg \sin(k x - \omg t) \,\xh \pm \sE \omg \cos(k x - \omg t) \,\yh}{c}
+		&= C k \sin(k z - \omg t) \,\xh \pm C k \cos(k z - \omg t) \,\yh - \frac{C \omg \sin(k x - \omg t) \,\xh \pm C \omg \cos(k x - \omg t) \,\yh}{c}
 		= \vo,
 	}
-	since $\sE = \sB$ in Gaussian units and $k = \omg / c$ from p.~138.
+	since $k = \omg / c$ from p.~138.
 	
 	For the third,
 	\eq{
@@ -92,7 +88,7 @@
 	For the fourth,
 	\al{
 		\grad \cross \vE + \frac{1}{c} \pdv{\vB}{t} &= -\pdv{\Ey}{z} \,\xh + \pdv{\Ex}{z} \,\yh + \paren{ \pdv{\Ey}{x} - \pdv{\Ex}{y} } \zh + \frac{1}{c} \paren{ \pdv{\Bx}{t} \,\xh + \pdv{\By}{t} \,\yh } \\
-		&= \pm \sE k \cos(k z - \omg t) \,\xh - \sE k \sin(k z - \omg t) \,\yh - \frac{\pm \sB \omg \cos(k z - \omg t) \,\xh - \sB \omg \sin(k x - \omg t)\,\yh}{c}
+		&= \pm C k \cos(k z - \omg t) \,\xh - C k \sin(k z - \omg t) \,\yh - \frac{\pm C \omg \cos(k z - \omg t) \,\xh - C \omg \sin(k x - \omg t)\,\yh}{c}
 		= \vo.
 	}
 	\ans{ Thus, we have shown that the circularly-polarized waves given by Eqs.~(\ref{circ1}--\ref{circ2.2}) are valid free-field solutions to the Maxwell equations. }
@@ -107,20 +103,16 @@
 }
 
 \sol{
-	The angular momentum of an electromagnetic field is given on p.~128 of the lecture notes as
-	\eq{
-		\vL = \frac{1}{4\pi c} \int \vr \cross (\vE \cross \vB) \dcr,
-	}
-	where $\vr = (x, y, z)$ denotes a point in space.
+	The angular momentum of an electromagnetic field is given by Eq.~\refeq{angmom}.
 	
 	From the inside cover of Jackson, $\vaa \cross (\vbb \cross \vcc) = (\vaa \vdot \vcc) \vbb - (\vaa \vdot \vbb) \vcc$.  So, using the fields in Eqs.~\refeq{circ2.1} and \refeq{circ2.2},
 	\al{
-		\vr \cross (\vE \cross \vB) &= (\vr \vdot \vB) \vE - (\vr \vdot \vE) \vB
+		\vx \cross (\vE \cross \vB) &= (\vx \vdot \vB) \vE - (\vx \vdot \vE) \vB
 		= (x \Bx + y \By) (\Ex \,\xh + \Ey \,\yh) - (x \Ex + y \Ey) (\Bx \,\xh + \By \,\yh) \\
 		&= [ \Ex (x \Bx + y \By) - \Bx (x \Ex + y \Ey) ]\,\xh + [ \Ey (x \Bx + y \By) - \By (x \Ex + y \Ey) ]\,\yh \\
 		&= (\Ex \By - \Ey \Bx) y \,\xh + (\Ey \Bx - \Ex \By) x \,\yh \\
-		&= \sE^2 [ \cos[2](k z - \omg t) + \sin[2](k z - \omg t) ] y \,\xh - \sE^2 [ \sin[2](k z - \omg t) + \cos[2](k z - \omg t) ] x \,\yh \\
-		&= \sE^2 (y \,\xh - x \,\yh),
+		&= C^2 [ \cos[2](k z - \omg t) + \sin[2](k z - \omg t) ] y \,\xh - C^2 [ \sin[2](k z - \omg t) + \cos[2](k z - \omg t) ] x \,\yh \\
+		&= C^2 (y \,\xh - x \,\yh),
 	}
 	which is true for both left- and right-handed polarizations.
 	
