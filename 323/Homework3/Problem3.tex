@@ -15,39 +15,66 @@
 }
 
 \sol{
-	Let $\bet = i$ and $\gam = j$, which are both spatial indices.  Note that
-	\eqn{thing3}{
-		\ptsa \Maij = \pdv{\Moij}{(ct)} + \pdv{M^{1 i j}}{x} + \pdv{M^{2 i j}}{y} + \pdv{M^{3 i j}}{z}.
-	}
-	\clearpage
-	Conservation of angular momentum means that $\pdv*{\vL}{t} = 0$, where $\vL$ is defined by the equation just before Jackson~(12.109):
+Conservation of angular momentum means that $\dv*{\vL}{t} = 0$, where $\vL$ is defined by the equation just before Jackson~(12.109):
 	\eqn{angmom}{
 		\vL = \frac{1}{4\pi c} \int \vx \cross (\vE \cross \vB) \dcx.
 	}
-	None of the components of $\Maij$ include explicit time derivatives, so from Eq.~\refeq{thing3}, $\ptsa \Maij = 0$ must imply $\pdv*{\Moij}{t} = 0$.  Thus, we need to show that the spatial integral of $\pdv*{\Moij}{t} = 0$ implies conservation of angular momentum.
+	\clearpage
+	Let $\bet = i$ and $\gam = j$, which are both spatial indices.  Note that
+	\eqn{thing3}{
+		0 = \ptsa \Maij = \pdv{\Moij}{(ct)} + \pdv{M^{1 i j}}{x} + \pdv{M^{2 i j}}{y} + \pdv{M^{3 i j}}{z},
+	}
+	and from Jackson~(12.114),
+	\aln{ \label{Theta}
+		\Tht^{0 0} &= \frac{\vE^2 + \vB^2}{8\pi}, &
+		\Tht^{0 i} &= \frac{(\vE \cross \vB)_i}{4\pi}, &
+		\Tht^{i j} &= -\frac{\Eii \Ejj + \Bii \Bjj - \delij (\vE^2 + \vB^2) / 2}{4\pi}.
+	}
 	
-	From Jackson~(12.114), $\Tht^{0i} = (\vE \cross \vB)_i / 4\pi$.  Applying this to Eq.~\refeq{Mabg}, we have
+	We will examine each term of Eq.~\refeq{thing3} separately.  For the first term,
 	\eq{
 		\Moij = \Tht^{0 i} \xjj - \Tht^{0 j} \xii
 		= \frac{(\vE \cross \vB)_i}{4\pi} \xjj - \frac{(\vE \cross \vB)_j}{4\pi} \xii
-		= \frac{1}{4\pi} \begin{cases}
-			\!\, [ \vx \cross (\vE \cross \vB) ]_k & i \neq j, \\
-			0 & i = j.
-			\end{cases}
 	}
-	Taking the derivative as described and integrating over all of space, we find
+	and
 	\eq{
-		\int \ptsa \Maij \dcx = 0
-		\qimplies
-		0 = \frac{1}{c} \int \pdv{\Moij}{t} \dcx,
+		\pdv{\Moij}{(ct)} = \frac{1}{4\pi} \begin{cases}
+			\displaystyle \pdv{t}[ \vx \cross (\vE \cross \vB) ]_k & i \neq j, \\[2ex]
+			0 & i = j.
+		\end{cases}
 	}
-	which is trivially satisfied when $i = j$.  When $i \neq j$,
+	
+	For the remaining terms,
+	\eq{
+		M^{kij} = \Tht^{k i} \xjj - \Tht^{k j} \xii
+		= -\frac{\Ekk \Eii + \Bkk \Bii - \delki (\vE^2 + \vB^2) / 2}{4\pi} \xjj + \frac{\Ekk \Ejj + \Bkk \Bjj - \delkj (\vE^2 + \vB^2) / 2}{4\pi} \xii,
+	}
+	and
+	\eq{
+		\pdv{M^{kij}}{\xkk} = \frac{1}{4\pi} \begin{cases}
+			\displaystyle \pdv{\xkk}\brac{ \paren{ \Ekk \Ejj + \Bkk \Bjj - \delkj \frac{\vE^2 + \vB^2}{2} } \xii - \paren{ \Ekk \Eii + \Bkk \Bii - \delki \frac{\vE^2 + \vB^2}{2} } \xjj } & i \neq j, \\[2ex]
+			0 & i = j.
+		\end{cases}
+	}
+	Note that this is also 0 if $k \neq i$ and $k \neq j$.  Summing the only nonzero terms, we have
+	\eq{
+		\pdv{M^{iij}}{\xii} + \pdv{M^{jij}}{\xjj} = \frac{(\Eii \Ejj + \Bii \Bjj) - (\Ejj \Eii + \Bjj \Bii)}{4\pi}
+		= 0.
+	}
+	
+	Combining these results, Eq.~\refeq{thing3} becomes
+	\eq{
+		0 = \frac{1}{4\pi} \pdv{(ct)}[ \vx \cross (\vE \cross \vB) ]_k,
+	}
+	where we have stipulated that $i \neq j$ (otherwise, the equation is trivial).  Integrating over all of space, we find
 	\eq{
 		0 = \frac{1}{c} \int \pdv{\Moij}{t} \dcx
 		= \frac{1}{4\pi c} \int \pdv{t} [ \vx \cross (\vE \cross \vB) ]_k \dcx
 		= \pdv{t} \paren{ \frac{1}{4\pi c} \int [ \vx \cross (\vE \cross \vB) ]_k \dcx },
 	}
-	where we have moved $\pdv*{t}$ outside the integral since $[ \vx \cross (\vE \cross \vB) ]_k$ has no explicit time dependence.  Then, applying Eq.~\refeq{angmom}, we have
+	where we have moved $\pdv*{t}$ outside the integral since $[ \vx \cross (\vE \cross \vB) ]_k$ has no explicit time dependence.
+	
+	Then, applying Eq.~\refeq{angmom}, we have
 	\eq{
 		\pdv{L_k}{t} = 0
 		\qimplies
@@ -86,21 +113,43 @@
 		= \frac{1}{4\pi} \int \vE \cross \vB \dcx.
 	}
 	
-	By the same argument as in Prob.~{3(b)}, we need to show that Eq.~\refeq{show3b} follows from the spatial integral of $\pdv*{\Moog}{t} = 0$.  Applying Eq.~\refeq{Mabg},
+	Note that
+	\eqn{thing3.2}{
+		\ptsa M^{\alp 0 \gam} = \pdv{\Moog}{(ct)} + \pdv{M^{1 0 \gam}}{x} + \pdv{M^{2 0 \gam}}{y} + \pdv{M^{3 0 \gam}}{z}.
+	}
+	Again, we will proceed one term at a time.  Applying Eq.~\refeq{Mabg} to the first,
 	\eq{
 		\Moog = \Tht^{0 0} \xg - \Tht^{0 \gam} \xo.
 	}
-	Clearly $M^{0 0 0}$, so we need only concern ourselves with the case in which $\gam = i$ is a space index.  From Jackson~(12.114), $\Tht^{0 0} = (\vE^2 + \vB^2) / 8\pi$ and $\Tht^{0i} = (\vE \cross \vB)_i / 4\pi$.  Making these substitutions and applying Eq.~\refeq{EP1},
+	Clearly $M^{0 0 0} = 0$, so we need only concern ourselves with the case in which $\gam = i$ is a space index.  Making these substitutions in Eq.~\refeq{Theta} and applying Eq.~\refeq{EP1},
 	\eq{
-		\Mooi = \frac{\vE^2 + \vB^2}{8\pi} \xii - c t \frac{(\vE \cross \vB)_i}{4\pi}
-		= u \xii - c t \cP_i.
+		\Mooi = \frac{\vE^2 + \vB^2}{8\pi} \xii - \frac{(\vE \cross \vB)_i}{4\pi} c t
+		= u \xii - \cP_i c t
+		\qimplies
+		\pdv{\Mooi}{(ct)} = \pdv{(ct)}(u \xii) - \cP_i.
 	}
+	
+	For the remaining terms of Eq.~\refeq{thing3.2}, the $\gam = 0$ case is also trivial.  Taking advantage of the symmetry of $\Thab$, we have
+	\eq{
+		M^{k 0 i} = \Tht^{k 0} \xii - \Tht^{k i} \xo
+		= \Tht^{0 k} \xii - \Tht^{k i} \xo
+		= \frac{(\vE \cross \vB)_k}{4\pi} \xii + \frac{\Ekk \Eii + \Bkk \Bii - \delki (\vE^2 + \vB^2) / 2}{4\pi} ct
+	}
+	and
+	\eq{
+		\pdv{M^{k 0 i}}{\xkk} = \begin{cases}
+			\cP_i & k = i, \\
+			0 & k \neq i.
+		\end{cases}
+	}
+	
+	\clearpage
 	Again taking the derivative and integrating, we find
 	\eq{
 		\int \ptsa M^{\alp 0 i} \dcx = 0
 		\qimplies
 		0 = \frac{1}{c} \int \pdv{\Mooi}{t} \dcx
-		= \frac{1}{c} \int \pdv{t} \paren{ u \xii - ct \cP_i } \dcx.
+		= \frac{1}{c} \int \pdv{t} \paren{ u \xii - ct \cP_i } \dcx
 	}
 	In vector notation,
 	\al{
