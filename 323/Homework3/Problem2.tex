@@ -35,10 +35,12 @@
 	
 	In $K'$, we have
 	\aln{ \label{things2}
-		\vomgB' &= \frac{e c \vBperp'}{\cE'}
-		= \frac{e \vBperp'}{\sqrt{m^2 c^2 + {\vp'}^2}}, &
-		a &= \frac{c \pperp'}{e \abs{\vBperp'}}.
+		\vomgB &= \frac{e c \vBperp'}{\Eo'}, &
+		a &= \frac{c \pperp'}{e \abs{\vBperp'}}
+		= \frac{\Eo \vperp'}{e c \abs{\vBperp'}},
 	}
+	where $\vperp'$ is the component of the particle's velocity perpendicular to the field in $K'$ and $\Eo'$ its initial energy in $K'$, with $\cE' = \Eo'$ since $\dv*{\cE'}{t} = 0$ in this frame by Jackson~(12.37).
+	
 	Then, since $\vBperp'$ points in the $y'$ direction, Eq.~\refeq{pos2} gives us
 	\eq{
 		\vr'(t') = \vro' + \vpar' t' \,\yh + i a (\zh - i \,\xh) e^{-i \omgB t'}.
@@ -91,20 +93,14 @@
 		\vEpar'' &= \vBperp'' = \vBpar'' = \vo,
 	}
 	where $\vEpar''$ and $\vBpar''$ are parallel to $\vuu'$, and $\vEperp''$ and $\vBperp''$ are perpendicular to $\vuu'$.  Then the particle's trajectory in this frame is described by Eq.~\refeq{r2}.  Since $\vEperp''$ points in the $x$ direction, we have
-	\eq{
-		x''(t'') = \frac{\sqrt{c^2 e^2 {\vEperp''}^2 \,{t''}^2 + {\Eo''}^2} - \Eo''}{e \abs{\vEperp''}} + {v_0''}_{x''} t''
-		= \frac{\sqrt{c^2 e^2 {\vEperp''}^2 \,{t''}^2 + {\Eo''}^2} - \Eo''}{e \abs{\vEperp''}} + \frac{c^2 {\po''}_{x''} t''}{\Eo''},
-	}
-	where we have used Eq.~\refeq{velocity1}, and
 	\al{
-		y''(t'') &= \frac{c {\po''}_{y''}}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}), &
-		z''(t'') &= \frac{c {\po''}_{z''}}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}),
+		x''(t'') &= \frac{\sqrt{c^2 e^2 {\vEperp''}^2 \,{t''}^2 + {\Eo''}^2} - \Eo''}{e \abs{\vEperp''}} + {v_0''}_{x''} t'', \\[2ex]
+		y''(t'') &= \frac{c {\po''}_{y''}}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''})
+		= \frac{\Eo {v_0''}_{y''}}{c e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}), \\[2ex]
+		z''(t'') &= \frac{c {\po''}_{z''}}{e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''})
+		= \frac{\Eo {v_0''}_{z''}}{c e \abs{\vEperp''}} \sinh[-1](\frac{c e \abs{\vEperp''} t''}{\Eo''}),
 	}
-	where ${\po''}_{x''}$, ${\po''}_{y''}$, and ${\po''}_{z''}$ are the $x''$, $y''$, and $z''$ components, respectively, of the particle's initial momentum in $K''$, and
-	\eqn{Eo2}{
-		\Eo'' = c \sqrt{m^2 c^2 + {\vpo''}^2}
-	}
-	is the particle's initial energy in $K''$.
+	where ${v_0''}_{x''}$, ${v_0''}_{y''}$, and ${v_0''}_{z''}$ are the $x''$, $y''$, and $z''$ components, respectively, of the particle's initial velocity in $K''$, and $\Eo$ is the particle's initial energy in $K''$.
 	
 	We can transform back to the lab frame similarly to in Eq.~\refeq{boost2}, except now we boost by $\bet' = \absvB / \absvE$:
 	\al{
