@@ -20,7 +20,7 @@
 		\dv{\vp}{t} = e \vEo.
 	}
 		Since $\vEo$ is constant, we can easily find $\vp$ as a function of time by solving this expression as a differential equation.  This gives us
-	\eq{
+	\eqn{blah}{
 		\intoi \dd{\vp} = e \vEo \intoi \ddt
 		\qimplies
 		\vp(t) = e \vEo t + \vpo.
@@ -32,17 +32,17 @@
 		= \frac{c^2 \vp}{\cE}
 		= \frac{c \vp}{\sqrt{m^2 c^2 + \vp^2}}.
 	}
-	Then, substituting into Eq.~\refeq{velocity1}, we have
-	\eq{
+	Then, substituting Eq.~\refeq{blah}, we have
+	\eqn{velo}{
 		\vv(t) = c \frac{e \vEo t + \vpo}{\sqrt{m^2 c^2 + (e \vEo t + \vpo)^2}}
 		= c \frac{e \vEo t + \vpo}{\sqrt{m^2 c^2 + e^2 \vEo^2 t^2 + 2 e \vpo \vdot \vEo t + \vpo^2}}
 		= c \frac{e \vEo t + \vpo}{\sqrt{m^2 c^2 + e^2 \vEo^2 t^2 + \vpo^2}},
 	}
 	where in going to the final equality we have used the fact that $\vpo = \gam m \vvo$ is perpendicular to $\vEo$.
 	
-	Finally, we can solve this as a differential equation to find the position of the particle as a function of time.  Let $\vv(t) = \dv*{\vr}{t}$, where $\vr(t)$ is the position of the particle.  Then
+	Finally, we can solve this as a differential equation to find the position of the particle as a function of time.  Let $\vv(t) = \dv*{\vx}{t}$, where $\vx(t)$ is the position of the particle.  Then
 	\aln{
-		\intoi \dd{\vr} &= c \intoi \frac{e \vEo t + \vpo}{\sqrt{m^2 c^2 + e^2 \vEo^2 t^2 + \vpo^2}} \ddt \notag \\
+		\intoi \dd{\vx} &= c \intoi \frac{e \vEo t + \vpo}{\sqrt{m^2 c^2 + e^2 \vEo^2 t^2 + \vpo^2}} \ddt \notag \\
 		&= c e \vEo \intoi \frac{t}{\sqrt{m^2 c^2 + e^2 \vEo^2 t^2 + \vpo^2}} \ddt + c \vpo \intoi \frac{\ddt}{\sqrt{m^2 c^2 + e^2 \vEo^2 t^2 + \vpo^2}}. \label{thing1.2}
 	}
 	For the first integral on the right side,
@@ -65,18 +65,17 @@
 	
 	With these solutions, Eq.~\refeq{thing1.2} becomes
 	\eq{
-		\ans{ \vr(t) = \frac{c}{e \absvEo} \brac{ \frac{\vEo}{\absvEo} \paren{ \sqrt{e^2 \vEo^2 t^2 + m^2 c^2 + \vpo^2} - \sqrt{m^2 c^2 + \vpo^2} } + \vpo \sinh[-1](\frac{e \absvEo t}{\sqrt{m^2 c^2 + \vpo^2}}) } + \vro, }
+		\vx(t) = \frac{c}{e \absvEo} \brac{ \frac{\vEo}{\absvEo} \paren{ \sqrt{e^2 \vEo^2 t^2 + m^2 c^2 + \vpo^2} - \sqrt{m^2 c^2 + \vpo^2} } + \vpo \sinh[-1](\frac{e \absvEo t}{\sqrt{m^2 c^2 + \vpo^2}}) } + \vxo,
 	}
-	where $\vro$ is the initial position of the particle.
+	where $\vxo$ is the initial position of the particle.
 	
 	To make the equation a little neater, we can write it in terms of the particle's initial energy, which, by another application of Jackson~(11.55), is $\Eo = \sqrt{m^2 c^4 + c^2 \vpo^2}$.  This gives us
 	\eq{
-		\ans{ \vr(t) = \frac{1}{e \absvEo} \brac{ \frac{\vEo}{\absvEo} \paren{ \sqrt{c^2 e^2 \vEo^2 t^2 + \Eo^2} - \Eo } + c \vpo \sinh[-1](\frac{c e \absvEo t}{\Eo}) } + \vro. }
+		\ans{ \vx(t) = \frac{1}{e \absvEo} \brac{ \frac{\vEo}{\absvEo} \paren{ \sqrt{c^2 e^2 \vEo^2 t^2 + \Eo^2} - \Eo } + c \vpo \sinh[-1](\frac{c e \absvEo t}{\Eo}) } + \vxo. }
 	}
-	For the velocity, we have
+	For the velocity, Eq.~\refeq{velo} becomes
 	\eq{
-		\ans{ \vv(t) = \frac{c e \vEo t + c \vpo}{\sqrt{e^2 \vEo^2 t^2 + m^2 c^2 + \vpo^2}}
-		= \frac{c^2 e \vEo t + c^2 \vpo}{\sqrt{c^2 e^2 \vEo^2 t^2 + \Eo^2}}. }
+		\ans{ \vv(t) = \frac{c^2 e \vEo t + c^2 \vpo}{\sqrt{c^2 e^2 \vEo^2 t^2 + \Eo^2}}. }
 	}
 	\vfix
 }
@@ -90,109 +89,57 @@
 }
 
 \sol{
-	Let $\vro = \vo$, and let $\rperp(t)$ and $\rpar(t)$ denote the components of the particle's position that are, respectively, parallel to and perpendicular to its original velocity.  Then
+	Let $\vxo = \vo$, and let $\xperp(t)$ and $\xpar(t)$ denote the components of the particle's position that are, respectively, parallel to and perpendicular to its original velocity.  Then
 	\aln{ \label{r2}
-		\rperp(t) &= \frac{\sqrt{c^2 e^2 \vEo^2 t^2 + \Eo^2} - \Eo}{e \absvEo}, &
-		\rpar(t) &= \frac{c \po}{e \absvEo} \sinh[-1](\frac{c e \absvEo t}{\Eo}).
+		\xperp(t) &= \frac{\sqrt{c^2 e^2 \vEo^2 t^2 + \Eo^2} - \Eo}{e \absvEo}, &
+		\xpar(t) &= \frac{c \po}{e \absvEo} \sinh[-1](\frac{c e \absvEo t}{\Eo}).
 	}
-	It is easiest to solve $\rpar(t)$ for $t$, which gives us
+	It is easiest to solve $\xpar(t)$ for $t$, which gives us
 	\eq{
-		\frac{e \absvEo \rpar}{c \po} = \sinh[-1](\frac{c e \absvEo t}{\Eo})
+		\frac{e \absvEo \xpar}{c \po} = \sinh[-1](\frac{c e \absvEo t}{\Eo})
 		\qimplies
 %		\sinh(\frac{e \absvEo \rpar}{c \po}) = \frac{c e \absvEo t}{\Eo}
 %		\qimplies
-		t = \frac{\Eo}{c e \absvEo} \sinh(\frac{e \absvEo \rpar}{c \po}).
+		t = \frac{\Eo}{c e \absvEo} \sinh(\frac{e \absvEo \xpar}{c \po}).
 	}
-	Substituting into the expression for $\rperp$, we find
+	Substituting into the expression for $\xperp$, we find
 	\al{
-		\rperp &= \frac{1}{e \absvEo} \paren{ \sqrt{c^2 e^2 \vEo^2 \brac{ \frac{\Eo}{c e \absvEo} \sinh(\frac{e \absvEo \rpar}{c \po}) }^2 + \Eo^2} - \Eo }
-		= \frac{\Eo}{e \absvEo} \brac{ \sqrt{\sinh[2](\frac{e \absvEo \rpar}{c \po}) + 1} - 1 } \\
-		&= \frac{\Eo}{c \absvEo} \brac{ \cosh(\frac{e \absvEo \rpar}{c \po}) - 1 },
+		\xperp &= \frac{1}{e \absvEo} \paren{ \sqrt{c^2 e^2 \vEo^2 \brac{ \frac{\Eo}{c e \absvEo} \sinh(\frac{e \absvEo \xpar}{c \po}) }^2 + \Eo^2} - \Eo }
+		= \frac{\Eo}{e \absvEo} \brac{ \sqrt{\sinh[2](\frac{e \absvEo \xpar}{c \po}) + 1} - 1 } \\
+		&= \frac{\Eo}{c \absvEo} \brac{ \cosh(\frac{e \absvEo \xpar}{c \po}) - 1 },
 	}
 	where we have used $\cosh^2 x - \sinh^2 x = 1$~\cite{Hyperbolic}.  Then the trajectory of the particle is given by
 	\eq{
-		\ans{ \rperp = \frac{\Eo}{c \absvEo} \brac{ \cosh(\frac{e \absvEo \rpar}{c \po}) - 1 }
-		= \frac{\sqrt{m c^2 + \vpo^2}}{\absvEo} \brac{ \cosh(\frac{e \absvEo \rpar}{c \po}) - 1 }. }
+		\ans{ \xperp = \frac{\Eo}{c \absvEo} \brac{ \cosh(\frac{e \absvEo \xpar}{c \po}) - 1 }
+		= \frac{\sqrt{m c^2 + \vpo^2}}{\absvEo} \brac{ \cosh(\frac{e \absvEo \xpar}{c \po}) - 1 }. }
 	}
 	
-	For short times, the argument of $\sinh^{-1}$ in Eq.~\refeq{r2} must be small.  Note also that $\rperp(t)$ can be written as
+	For short times, the argument of $\sinh^{-1}$ in Eq.~\refeq{r2} must be small.  Note also that $\xperp(t)$ can be written as
 	\eqn{traj}{
-		\rperp(t) = \Eo \frac{\sqrt{c^2 e^2 \vEo^2 t^2 / \Eo^2 + 1} - 1}{e \absvEo},
+		\xperp(t) = \Eo \frac{\sqrt{c^2 e^2 \vEo^2 t^2 / \Eo^2 + 1} - 1}{e \absvEo},
 	}
 	so we can conclude that \ans{ $t \ll \Eo / c e \absvEo$ for short times. }  Likewise, \ans{ $t \gg \Eo / c e \absvEo$ for long times. }
 	
-	To obtain the trajectory for short times, we note that $u = \Eo / c e \absvEo \ll 1$ implies that $\rpar \ll 1$.  Thus, we can Taylor expand Eq.~\refeq{traj} around $\rpar = 0$.  The Taylor series for $\cosh z$ is~\cite{Cosh}
+	To obtain the trajectory for short times, we note that $u = \Eo / c e \absvEo \ll 1$ implies that $\xpar \ll 1$.  Thus, we can Taylor expand Eq.~\refeq{traj} around $\xpar = 0$.  The Taylor series for $\cosh z$ is~\cite{Cosh}
 	\eq{
 		\cosh z = 1 + \frac{z^2}{2} + \cdots,
 	}
 	so we find
 	\eq{
-		\ans{ \limuo \rperp = \frac{\Eo}{c \absvEo} \frac{\rpar^2}{2}
-		= \frac{\sqrt{m^2 c^2 + \vpo^2}}{\absvEo} \frac{\rpar^2}{2}, }
+		\ans{ \limuo \xperp = \frac{\Eo}{c \absvEo} \frac{\xpar^2}{2}
+		= \frac{\sqrt{m^2 c^2 + \vpo^2}}{\absvEo} \frac{\xpar^2}{2}, }
 	}
 	\ans{ indicating that the trajectory of the particle is parabolic for short times.}  As soon as the field is turned on, it will start pulling the particle in a direction that is perpendicular to its original velocity.  This is just like projectile motion under the influence of gravity.
 	
-	To obtain the trajectory for long times, we note that $\limui \sinh^{-1} u = \infty$~\cite{Arcsinh}, so taking $u$ to be large is the same as taking $\rpar$ to be large.  Note that
+	To obtain the trajectory for long times, we note that $\limui \sinh^{-1} u = \infty$~\cite{Arcsinh}, so taking $u$ to be large is the same as taking $\xpar$ to be large.  Note that
 	\eq{
 		\limzi \cosh z = \limzi \frac{e^z + e^{-z}}{2}
 		= \frac{e^z}{2},
 	}
 	so we find
 	\eq{
-		\ans{ \limui \rperp = \frac{\Eo}{c \absvEo} \frac{e^{\rpar}}{2}
-		= \frac{\sqrt{m^2 c^2 + \vpo^2}}{\absvEo} \frac{e^{\rpar}}{2}, }
+		\ans{ \limui \xperp = \frac{\Eo}{c \absvEo} \frac{e^{\xpar}}{2}
+		= \frac{\sqrt{m^2 c^2 + \vpo^2}}{\absvEo} \frac{e^{\xpar}}{2}, }
 	}
 	\ans{ indicating that the trajectory of the particle is exponential for long times.}  When the field has been turned on for a long time, the particle has been accelerating parallel to the field for a long time.  At infinite time, the particle's original direction of velocity has been completely washed out by the force of the electric field.
-	
-%	To obtain the trajectory for short times, we Taylor expand Eq.~\refeq{r2} about $u = \Eo / c e \absvEo = 0$.  Let
-%	\aln{ \label{ru}
-%		\rperp(u) &= \Eo \frac{\sqrt{u^2 + 1} - 1}{e \absvEo}, &
-%		\rpar(u) &= \frac{c \po}{e \absvEo} \sinh^{-1} u.
-%	}
-%	Note also that
-%	\al{
-%		\dv{(\sinh^{-1} u)}{u} &= \dv{u} \ln(u + \sqrt{u^2 + 1})
-%		= \frac{1}{u + \sqrt{u^2 + 1}} \paren{ 1 + \frac{u}{\sqrt{u^2 + 1}} }
-%		= \frac{1}{\sqrt{u^2 + 1}}, \\[2ex]
-%		\dv[2]{(\sinh^{-1} u)}{u} &= \dv{u} \paren{ \frac{1}{\sqrt{u^2 + 1}} }
-%		= -\frac{u}{(u^2 + 1)^{3/2}}, % \\[2ex]
-%%		\dv[3]{(\sinh^{-1} u)}{u} &= \dv{u} \paren{ -\frac{u}{(u^2 + 1)^{3/2}} }
-%%		= \frac{3 u^2}{(u^2 + 1)^{5/2}} - \frac{u}{(u^2 + 1)^{3/2}},
-%	}
-%	where we have applied the definition of $\sinh^{-1}$~\cite{Arcsinh}
-%	Then
-%	\al{
-%		\rperp(u) &= \rperp(u = 0) + u \bigg[ \dv{\rperp}{u} \bigg]_{u = 0} + \frac{u^2}{2} \bigg[ \dv[2]{\rperp}{u} \bigg]_{u = 0} + \order{u^3} \\
-%		&\approx u \bigg[ \frac{\Eo}{e \absvEo} \frac{u}{\sqrt{u^2 + 1}} \bigg]_{u = 0} + \frac{u^2}{2} \bigg[ \frac{\Eo}{e \absvEo} \paren{ \frac{1}{\sqrt{u^2 + 1}} - \frac{u}{(u^2 + 1)^{3/2}} } \bigg]_{u = 0}
-%		= \frac{\Eo}{e \absvEo} \frac{u^2}{2}, \\[2ex]
-%		\rpar(u) &= \rpar(u = 0) + u \bigg[ \dv{\rpar}{u} \bigg]_{u = 0} + \frac{u^2}{2} \bigg[ \dv[2]{\rpar}{u} \bigg]_{u = 0} + \order{u^3} \\
-%		&\approx u \bigg[ \frac{\Eo}{e \absvEo} \frac{1}{\sqrt{u^2 + 1}} \bigg]_{u = 0} + \frac{u^2}{2} \bigg[ -\frac{\Eo}{e \absvEo} \frac{u}{(u^2 + 1)^{3/2}} \bigg]_{u = 0}
-%		= \frac{\Eo}{e \absvEo} u.
-%	}
-%	Solving $\rpar$ for $u$ and substituting into $\rperp$, we find
-%	\eq{
-%		u = \frac{e \absvEo}{\Eo} \rpar
-%		\qimplies
-%		\ans{ \rperp = \frac{e \absvEo}{2 \Eo} \rpar^2 = \frac{e \absvEo}{2 c \sqrt{m^2 c^2 \vpo^2}} \rpar^2, }
-%	}
-%	\ans{ indicating that the trajectory of the particle is parabolic for short times. }  As soon as the field is turned on, it will start pushing the particle in a direction that is perpendicular to its original velocity.  However, 
-%	
-%	For long times, $u \to \infty$.  In this limit, Eq.~\refeq{ru} becomes
-%	\al{
-%		\limui \rperp &= \limui \Eo \frac{u - 1}{e \absvEo}
-%		= \limui \frac{\Eo}{e \absvEo} u, \\[2ex]
-%		\limui \rpar &= \limui \frac{c \po}{e \absvEo} \ln(u + \sqrt{u^2 + 1})
-%		= \limui \frac{c \po}{e \absvEo} \ln(u + u)
-%		= \limui \frac{c \po}{e \absvEo} \ln(2u).
-%	}
-%	Once again solving $\rpar$ for $u$, we find
-%	\eq{
-%		\frac{e \absvEo}{c \po} \rpar = \ln 2u
-%		\qimplies
-%		u = \frac{1}{2} \exp(\frac{e \absvEo}{c \po})
-%		\qimplies
-%		\ans{ \rperp = \frac{\Eo}{2 e \absvEo} e^{e \absvEo / c \po}
-%		= \frac{c \sqrt{m^2 c^2 + \vpo^2}}{2 e \absvEo} e^{e \absvEo / c \po}, }
-%	}
-%	\ans{ indicating that the trajectory of the particle is exponential for long times. }
 }

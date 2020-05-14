@@ -15,70 +15,49 @@
 }
 
 \sol{
-Conservation of angular momentum means that $\dv*{\vL}{t} = 0$, where $\vL$ is defined by the equation just before Jackson~(12.109):
+Conservation of angular momentum means that $\dv*{\vL}{t} = \vo$, where $\vL$ is defined by the equation just before Jackson~(12.109):
 	\eqn{angmom}{
 		\vL = \frac{1}{4\pi c} \int \vx \cross (\vE \cross \vB) \dcx.
 	}
 	\clearpage
-	Let $\bet = i$ and $\gam = j$, which are both spatial indices.  Note that
-	\eqn{thing3}{
-		0 = \ptsa \Maij = \pdv{\Moij}{(ct)} + \pdv{M^{1 i j}}{x} + \pdv{M^{2 i j}}{y} + \pdv{M^{3 i j}}{z},
+	The field invariants corresponding to the electromagnetic field being invariant under orthochronous Lorentz transformations are summarized by $\Mabg$.  These field invariants are~\cite[pp.184--185]{Gelfand}
+	\al{
+		\int M^{0 \bet \gam} \dcx, &
+		\qq{where} \bet < \gam.
 	}
-	and from Jackson~(12.114),
+	By definition, field invariants do not change with time~\cite[p.~182]{Gelfand}.  That is,
+	\aln{ \label{invariants}
+		\dv{(ct)}(\int M^{0 \bet \gam} \dcx) \dcx &= 0, &
+		\qq{where} \bet &< \gam.
+	}
+	Thus, we need to show that the components of $\vL$ are given by Eq.~\refeq{invariants}. 
+	
+	Let $\bet = i$ and $\gam = j$, which are both spatial indices.  From Jackson~(12.114),
 	\aln{ \label{Theta}
 		\Tht^{0 0} &= \frac{\vE^2 + \vB^2}{8\pi}, &
 		\Tht^{0 i} &= \frac{(\vE \cross \vB)_i}{4\pi}, &
 		\Tht^{i j} &= -\frac{\Eii \Ejj + \Bii \Bjj - \delij (\vE^2 + \vB^2) / 2}{4\pi}.
 	}
-	
-	We will examine each term of Eq.~\refeq{thing3} separately.  For the first term,
+	Applying this to Eq.~\refeq{Mabg} for $\alp = 0$, we have
 	\eq{
 		\Moij = \Tht^{0 i} \xjj - \Tht^{0 j} \xii
 		= \frac{(\vE \cross \vB)_i}{4\pi} \xjj - \frac{(\vE \cross \vB)_j}{4\pi} \xii
+		= \frac{1}{4\pi} \begin{cases}
+			\!\, [ \vx \cross (\vE \cross \vB) ]_k & i \neq j, \\
+			0 & i = j,
+			\end{cases}
 	}
-	and
-	\eq{
-		\pdv{\Moij}{(ct)} = \frac{1}{4\pi} \begin{cases}
-			\displaystyle \pdv{t}[ \vx \cross (\vE \cross \vB) ]_k & i \neq j, \\[2ex]
-			0 & i = j.
-		\end{cases}
-	}
+	where $k$ is orthogonal to both $i$ and $j$.
 	
-	For the remaining terms,
+	Applying Eq.~\refeq{invariants}, we find
 	\eq{
-		M^{kij} = \Tht^{k i} \xjj - \Tht^{k j} \xii
-		= -\frac{\Ekk \Eii + \Bkk \Bii - \delki (\vE^2 + \vB^2) / 2}{4\pi} \xjj + \frac{\Ekk \Ejj + \Bkk \Bjj - \delkj (\vE^2 + \vB^2) / 2}{4\pi} \xii,
+		0 = \dv{(ct)}(\int \Moij \dcx)
+		= \dv{t}(\frac{1}{4\pi c} \int [ \vx \cross (\vE \cross \vB) ]_k \dcx)
+		= \dv{\Lk}{t}.
 	}
-	and
+	In vector notation, we have
 	\eq{
-		\pdv{M^{kij}}{\xkk} = \frac{1}{4\pi} \begin{cases}
-			\displaystyle \pdv{\xkk}\brac{ \paren{ \Ekk \Ejj + \Bkk \Bjj - \delkj \frac{\vE^2 + \vB^2}{2} } \xii - \paren{ \Ekk \Eii + \Bkk \Bii - \delki \frac{\vE^2 + \vB^2}{2} } \xjj } & i \neq j, \\[2ex]
-			0 & i = j.
-		\end{cases}
-	}
-	Note that this is also 0 if $k \neq i$ and $k \neq j$.  Summing the only nonzero terms, we have
-	\eq{
-		\pdv{M^{iij}}{\xii} + \pdv{M^{jij}}{\xjj} = \frac{(\Eii \Ejj + \Bii \Bjj) - (\Ejj \Eii + \Bjj \Bii)}{4\pi}
-		= 0.
-	}
-	
-	Combining these results, Eq.~\refeq{thing3} becomes
-	\eq{
-		0 = \frac{1}{4\pi} \pdv{(ct)}[ \vx \cross (\vE \cross \vB) ]_k,
-	}
-	where we have stipulated that $i \neq j$ (otherwise, the equation is trivial).  Integrating over all of space, we find
-	\eq{
-		0 = \frac{1}{c} \int \pdv{\Moij}{t} \dcx
-		= \frac{1}{4\pi c} \int \pdv{t} [ \vx \cross (\vE \cross \vB) ]_k \dcx
-		= \pdv{t} \paren{ \frac{1}{4\pi c} \int [ \vx \cross (\vE \cross \vB) ]_k \dcx },
-	}
-	where we have moved $\pdv*{t}$ outside the integral since $[ \vx \cross (\vE \cross \vB) ]_k$ has no explicit time dependence.
-	
-	Then, applying Eq.~\refeq{angmom}, we have
-	\eq{
-		\pdv{L_k}{t} = 0
-		\qimplies
-		\ans{ \pdv{\vL}{t} = \vo }
+		\ans{ \dv{\vL}{t} = 0 }
 	}
 	as desired. \qed
 }
@@ -103,64 +82,41 @@ Conservation of angular momentum means that $\dv*{\vL}{t} = 0$, where $\vL$ is d
 	From Wald~(5.9--10), the energy density and momentum density of the electromagnetic field are, respectively,
 	\aln{ \label{EP1}
 		u &= \frac{\vE^2 + \vB^2}{8\pi}, &
-		\vcP &= \frac{\vE \cross \vB}{4\pi}.
+		\vcP &= \frac{\vE \cross \vB}{4\pi c}.
 	}
 	Then the total energy and momentum of the fields are, respectively,
 	\aln{ \label{EP2}
 		\Eem &= \int u \dcx
 		= \frac{1}{8\pi} \int (\vE^2 + \vB^2) \dcx, &
 		\vPem &= \int \vcP \dcx
-		= \frac{1}{4\pi} \int \vE \cross \vB \dcx.
+		= \frac{1}{4\pi c} \int \vE \cross \vB \dcx.
 	}
 	
-	Note that
-	\eqn{thing3.2}{
-		\ptsa M^{\alp 0 \gam} = \pdv{\Moog}{(ct)} + \pdv{M^{1 0 \gam}}{x} + \pdv{M^{2 0 \gam}}{y} + \pdv{M^{3 0 \gam}}{z}.
-	}
-	Again, we will proceed one term at a time.  Applying Eq.~\refeq{Mabg} to the first,
+	Proceeding similarly as in Prob.~{3(b)}, we need to show that Eq.~\refeq{show3b} follows from Eq.~\refeq{invariants}.  Applying Eq.~\refeq{Mabg} with $\alp = \bet = 0$,
 	\eq{
 		\Moog = \Tht^{0 0} \xg - \Tht^{0 \gam} \xo.
 	}
-	Clearly $M^{0 0 0} = 0$, so we need only concern ourselves with the case in which $\gam = i$ is a space index.  Making these substitutions in Eq.~\refeq{Theta} and applying Eq.~\refeq{EP1},
+	Clearly $M^{0 0 0} = 0$, so we need only concern ourselves with the case in which $\gam = i$ is a space index.  Applying Eqs.~\refeq{Theta} and \refeq{EP1},
 	\eq{
-		\Mooi = \frac{\vE^2 + \vB^2}{8\pi} \xii - \frac{(\vE \cross \vB)_i}{4\pi} c t
-		= u \xii - \cP_i c t
-		\qimplies
-		\pdv{\Mooi}{(ct)} = \pdv{(ct)}(u \xii) - \cP_i.
+		\Mooi = \frac{\vE^2 + \vB^2}{8\pi} \xii - c t \frac{(\vE \cross \vB)_i}{4\pi}
+		= u \xii - c^2 t \cPi.
 	}
-	
-	For the remaining terms of Eq.~\refeq{thing3.2}, the $\gam = 0$ case is also trivial.  Taking advantage of the symmetry of $\Thab$, we have
-	\eq{
-		M^{k 0 i} = \Tht^{k 0} \xii - \Tht^{k i} \xo
-		= \Tht^{0 k} \xii - \Tht^{k i} \xo
-		= \frac{(\vE \cross \vB)_k}{4\pi} \xii + \frac{\Ekk \Eii + \Bkk \Bii - \delki (\vE^2 + \vB^2) / 2}{4\pi} ct
-	}
-	and
-	\eq{
-		\pdv{M^{k 0 i}}{\xkk} = \begin{cases}
-			\cP_i & k = i, \\
-			0 & k \neq i.
-		\end{cases}
-	}
-	
-	\clearpage
-	Again taking the derivative and integrating, we find
-	\eq{
-		\int \ptsa M^{\alp 0 i} \dcx = 0
-		\qimplies
-		0 = \frac{1}{c} \int \pdv{\Mooi}{t} \dcx
-		= \frac{1}{c} \int \pdv{t} \paren{ u \xii - ct \cP_i } \dcx
-	}
-	In vector notation,
+	Applying Eq.~\refeq{invariants}, we find
 	\al{
-		0 &= \frac{1}{c} \int \pdv{t} (u \vx) \dcx - c \int \pdv{t} (t \vP) \dcx
-		= \frac{1}{c} \pdv{t} \paren{ \int u \vx \dcx } - c \int \vP \dcx
-		= \frac{1}{c} \pdv{t} \paren{ \vX \int u \dcx } - c \int \vP \dcx \\
-		&= \frac{1}{c} \pdv{t} (\vX \Eem) - c \vPem
-		= \frac{1}{c} \paren{ \Eem \pdv{\vX}{t} + \vX \pdv{\Eem}{t} } - c \vPem
-		= \frac{\Eem}{c} \dv{\vX}{t} - c \vPem
+		0 &= \dv{(ct)}(\int M^{0 0 i} \dcx)
+		= \frac{1}{c} \dv{t}(\int (u \xii - c^2 t \cPi) \dcx)
+		= \frac{1}{c} \dv{t}(\int u \xii \dcx) - \frac{1}{c} \int \dv{t} (c^2 t \cPi) \dcx \\
+		&= \frac{1}{c} \dv{t}(\int u \xii \dcx) - c \int \cPi \dcx,
 	}
-	where we have applied Eqs.~\refeq{thing3b} and \refeq{EP2}, and the fact that $\pdv*{\Eem}{t} = 0$.  Rearranging, we have
+	where in going to the third equality we have moved the derivative inside the integral.  In vector notation,
+	\al{
+		0 &= \frac{1}{c} \dv{t} \paren{ \int u \vx \dcx } - c \int \vP \dcx
+		= \frac{1}{c} \dv{t} \paren{ \vX \int u \dcx } - c \vPem
+		= \frac{1}{c} \dv{t} (\vX \Eem) - c \vPem \\
+		&= \frac{1}{c} \paren{ \Eem \dv{\vX}{t} + \vX \dv{\Eem}{t} } - c \vPem
+		= \frac{\Eem}{c} \dv{\vX}{t} - c \vPem,
+	}
+	where we have applied Eqs.~\refeq{thing3b} and \refeq{EP2}, and the fact that $\dv*{\Eem}{t} = 0$, since the total energy is also a field invariant.  Rearranging, we have
 	\eq{
 		\ans{ \dv{\vX}{t} = \frac{c^2 \vPem}{\Eem} }
 	}

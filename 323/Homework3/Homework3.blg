@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Arch Linux)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Homework3.aux
+The style file: lucas_unsrt.bst
+Database file #1: references.bib
+Warning--empty publisher in Wald
+You've used 8 entries,
+            2558 wiz_defined-function locations,
+            662 strings with 5626 characters,
+and the built_in function-call counts, 1484 in all, are:
+= -- 129
+> -- 48
+< -- 1
++ -- 18
+- -- 10
+* -- 75
+:= -- 182
+add.period$ -- 16
+call.type$ -- 8
+change.case$ -- 3
+chr.to.int$ -- 0
+cite$ -- 9
+duplicate$ -- 95
+empty$ -- 209
+format.name$ -- 10
+if$ -- 382
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 10
+newline$ -- 39
+num.names$ -- 8
+pop$ -- 76
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 37
+stack$ -- 0
+substring$ -- 0
+swap$ -- 7
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 8
+width$ -- 9
+write$ -- 84
+(There was 1 warning)
