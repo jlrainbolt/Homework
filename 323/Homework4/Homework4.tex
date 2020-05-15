@@ -11,64 +11,27 @@
 \input{definitions}
 \input{probdefs}
 
-
-
-\state{(Jackson 14.1)}{
-	Verify by explicit calculation that the {\Lienard}-Wiechert expressions for \emph{all} components of $\vE$ and $\vB$ for a particle moving with constant velocity agree with the ones obtained in the text by means of a Lorentz transformation.  Follow the general method at the end of Section~{14.1}.
-}
-
-\sol{
-	The {\Lienard}-Wiechert expressions for the fields are given by Jackson~(14.13--14):
-	\al{
-		\vB &= [ \vn \cross \vE ]\ret, &
-		\vE(\vx, t) &= e \brac{ \frac{\vn - \vbet}{\gam^2 (1 - \vbet \vdot \vn)^3 R^2} }\ret + \frac{e}{c} \brac{ \frac{\vn \cross \{ (\vn - \vbet) \cross \vbetd \}}{(1 - \vbet \vdot \vn)^3 R} }\ret.
-	}
-	For a particle moving with constant velocity, $\vbetd = 0$ and so $\vE(\vx, t)$ becomes
-	\eq{
-		\vE(\vx, t) = e \brac{ \frac{\vn - \vbet}{\gam^2 (1 - \vbet \vdot \vn)^3 R^2} }\ret.
-	}
-	
-	The expressions for the components of $\vE$ and $\vB$ obtained by a Lorentz transformation are given by Jackson~(11.152):
-	\al{
-		\Eq &= -\frac{e \gam v t}{(b^2 + \gam^2 v^2 t^2)^{3/2}}, &
-		\Ew &= \frac{e \gam b}{(b^2 + \gam^2 v^2 t^2)^{3/2}}, &
-		\Ee &= \Bq = \Bw = 0, &
-		\Be &= \bet \Ew,
-	}
-	where the particle is moving in the $\xq$ direction at impact parameter $b$, as shown in Fig.~\refeq{11.8}.  From Jackson~(14.16), note that
-	\eq{
-		[ (1 - \vbet \vdot \vn) R ]^2 = b^2 + v^2 t^2 - \bet^2 b^2
-		= \frac{b^2 + \gam^2 v^2 t^2}{\gam}
-	}
-	
-	\begin{figure}[b] \centering
-		\includegraphics{11-8}
-		\caption{(Jackson Fig.~11.8) Particle of charge $q$ moving at constant velocity $\vv$ passes an observation point $P$ at impact parameter $b$.}
-		\label{11.8}
-	\end{figure}
-
-	
-}
+\input{Problem1}
 
 
 
-\clearpage
 \state{(Jackson 14.3)}{
 	The Heaviside-Feynman expression for the electric field of a particle of charge $e$ in arbitrary motion, an alternative to the {\Lienard}-Wiechert expression~(14.14) is
 	\eq{
-		\vE = e \brac{ \frac{\vn}{R^2} }\ret + e \brac{ \frac{R}{c} }\ret \dv{t} \brac{ \frac{\vn}{R^2} }\ret + \frac{e^2}{c^2} \dv[2]{t} [ \vn ]\ret,
+		\vE = e \brac{ \frac{\nh}{R^2} }\ret + e \brac{ \frac{R}{c} }\ret \dv{t} \brac{ \frac{\nh}{R^2} }\ret + \frac{e^2}{c^2} \dv[2]{t} [ \nh ]\ret,
 	}
 	where the time derivatives are with respect to the time at the observation point.  The magnetic fields are given by (14.3).
 	
 	Using the fact that the retarded time is $t' = t - R(t') / c$ and that, as a result,
 	\eq{
-		\dv{t}{t'} = 1 - \vbet(t') \vdot \vn(t'),
+		\dv{t}{t'} = 1 - \vbet(t') \vdot \nh(t'),
 	}
 	show that the form above yields (14.14) when the time differentiations are performed.
 }
 
 
 
+\clearpage
 \state{(Jackson 14.4)}{
 	Using the {\Lienard}-Wiechart fields, discuss the time-averaged power radiated per unit solid angle in nonrelativistic motion of a particle with charge $e$.  Sketch the angular distribution of the radiation and determine the total power radiated in each case.
 }
