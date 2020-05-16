@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{homework}
 
-\classname{322}
+\classname{323}
 \homeworknum{4}
 
 
@@ -16,33 +16,34 @@
 
 
 \state{(Jackson 14.3)}{
-	The Heaviside-Feynman expression for the electric field of a particle of charge $e$ in arbitrary motion, an alternative to the {\Lienard}-Wiechert expression~(14.14) is
+	The Heaviside-Feynman expression for the electric field of a particle of charge $e$ in arbitrary motion, an alternative to the {\Lienard}-Wiechert expression in Eq.~\refeq{LWfields}, is
 	\eq{
 		\vE = e \brac{ \frac{\nh}{R^2} }\ret + e \brac{ \frac{R}{c} }\ret \dv{t} \brac{ \frac{\nh}{R^2} }\ret + \frac{e^2}{c^2} \dv[2]{t} [ \nh ]\ret,
 	}
-	where the time derivatives are with respect to the time at the observation point.  The magnetic fields are given by (14.3).
-	
-	Using the fact that the retarded time is $t' = t - R(t') / c$ and that, as a result,
+	where the time derivatives are with respect to the time at the observation point.  Using the fact that the retarded time is $t' = t - R(t') / c$ and that, as a result,
 	\eq{
 		\dv{t}{t'} = 1 - \vbet(t') \vdot \nh(t'),
 	}
-	show that the form above yields (14.14) when the time differentiations are performed.
+	show that the form above yields the expression for $\vE$ in Eq.~\refeq{LWfields} when the time differentiations are performed.
+}
+
+\sol{
+	By the chain rule,
+	\al{
+		\dv{t} &= \dv{t'}{t} \dv{t'}
+		= \frac{1}{1 - \vbet(t') \vdot \nh(t')} \dv{t'}, &
+		\dv[2]{t} &= \paren{ \dv{t'}{t} \dv{t'} }^2
+		= \frac{1}{[ 1 - \vbet(t') \vdot \nh(t') ]^2} \dv[2]{{t'}}.
+	}
+	Note also that $\vbet(t') \vdot \nh(t') = \dv*{R}{t}$.
 }
 
 
 
 \clearpage
-\state{(Jackson 14.4)}{
-	Using the {\Lienard}-Wiechart fields, discuss the time-averaged power radiated per unit solid angle in nonrelativistic motion of a particle with charge $e$.  Sketch the angular distribution of the radiation and determine the total power radiated in each case.
-}
+\input{Problem3}
 
-\prob{}{
-	The particle is moving along the $z$ axis with instantaneous position $z(t) = \alp \cos \omgo t$.
-}
 
-\prob{}{
-	The particle is moving in a circle of radius $R$ in the $xy$ plane with constant angular frequency $\omgo$.
-}
 
 
 \makebib
