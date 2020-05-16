@@ -17,7 +17,7 @@
 
 \state{(Jackson 14.3)}{
 	The Heaviside-Feynman expression for the electric field of a particle of charge $e$ in arbitrary motion, an alternative to the {\Lienard}-Wiechert expression in Eq.~\refeq{LWfields}, is
-	\eq{
+	\eqn{HF}{
 		\vE = e \brac{ \frac{\nh}{R^2} }\ret + e \brac{ \frac{R}{c} }\ret \dv{t} \brac{ \frac{\nh}{R^2} }\ret + \frac{e^2}{c^2} \dv[2]{t} [ \nh ]\ret,
 	}
 	where the time derivatives are with respect to the time at the observation point.  Using the fact that the retarded time is $t' = t - R(t') / c$ and that, as a result,
@@ -35,7 +35,60 @@
 		\dv[2]{t} &= \paren{ \dv{t'}{t} \dv{t'} }^2
 		= \frac{1}{[ 1 - \vbet(t') \vdot \nh(t') ]^2} \dv[2]{{t'}}.
 	}
-	Note also that $\vbet(t') \vdot \nh(t') = \dv*{R}{t}$.
+	Since $R(t') = c(t - t')$, note that
+	\eq{
+		\dv{R(t')}{t'} = c \paren{ \dv{t}{t'} - 1 }
+		= c (1 - \vbet(t') \vdot \nh(t') - 1)
+		= [ -\vv \vdot \nh ]\ret.
+	}
+	The definition of $\nh$ is given on p.~663 of Jackson:
+	\eq{
+		\nh = \frac{\vx - \vr(\tau)}{R}.
+	}
+	From Jackson~(11.26), $\dd{\tau} = \dd{t} / \gam$.  Then
+	\al{
+		\dv{\nh(t')}{t'} &= \frac{1}{R(t')^2} \paren{ R(t') \dv{t'}\brac{ \vx - \vr(\tau') } - [ \vx - \vr(\tau') ] \dv{R(t')}{t'} }
+		= \frac{1}{R^2(t')} \paren{ -\frac{R(t')}{[ \gam ]\ret} \dv{\vr(\tau')}{\tau'} + [\vx - \vr(\tau')] [ \vv \vdot \nh ]\ret } \\
+		&= \frac{1}{R^2(t')} \paren{ \frac{R(t')}{[ \gam ]\ret} [ -\vv ]\ret + R(t') \,\nh(t') [ \vv \vdot \nh ]\ret }
+		= \brac{ \nh \frac{\vv \vdot \nh}{R} - \frac{\vv}{\gam R} }\ret.
+	}
+	
+	For the second term in Eq.~\refeq{HF},
+	\al{
+		\dv{t'}(\frac{\nh(t')}{R^2(t')}) &= \frac{1}{R^2(t')} \paren{ R^2(t') \dv{\nh(t')}{t'} - \nh(t') \dv{t'}[ R^2(t') ] }
+		= \dv{\nh(t')}{t'} - \frac{\nh(t')}{R^2(t')} \paren{ 2 R(t') \dv{R(t')}{t'} } \\
+		&= \brac{ \nh \frac{\vv \vdot \nh}{R} - \frac{\vv}{\gam R} }\ret + 2 \frac{\nh(t')}{R(t')} [ \vv \vdot \nh ]\ret
+		= \brac{ \nh \frac{\vv \vdot \nh}{R} - \frac{\vv}{\gam R} + 2 \nh \frac{\vv \vdot \nh}{R} }\ret
+		= \brac{ 3\nh \frac{\vv \vdot \nh}{R} - \frac{\vv}{\gam R} }\ret.
+	}
+	
+	For the third term in Eq.~\refeq{HF}, note that
+	\al{
+		\dv{t'}(\frac{\vv(\tau')}{R(t')}) &= \frac{1}{R^2(t')} \paren{ R(t') \dv{\vv(\tau')}{t'} - \vv(\tau') \dv{R(t')}{t'} }
+		= \frac{1}{R^2(t')} \paren{ R(t') \brac{ \frac{\vvd}{\gam} }\ret + \vv(\tau') [\vv \vdot \nh ]\ret } \\
+		&= \brac{ \frac{\vvd}{\gam R} + \frac{\vv (\vv \vdot \nh)}{R^2} }\ret,
+	}
+	and that
+	\al{
+		\dv{t'}(\frac{\vv(t') \vdot \nh(t')}{R(t')}) &= \frac{1}{R^2(t')} \paren{ R(t') \dv{t'}\brac{ \vv(t') \vdot \nh(t') } - [ \vv(t') \vdot \nh(t') ] \dv{R(t')}{t'} } \\
+		&= \frac{1}{R(t')} \paren{ \dv{\vv(t')}{t'} \vdot \nh(t') + \vv(t') \vdot \dv{\nh(t')}{t'} } + \frac{[ \vv \vdot \nh ]\ret^2}{R^2(t')} \\
+		&= \frac{1}{R(t')} \paren{ \brac{ \frac{\vvd \vdot \nh}{\gam} }\ret + \vv(t') \vdot \brac{ \nh \frac{\vv \vdot \nh}{R} - \frac{\vv}{\gam R} }\ret } + \brac{ \frac{\vv \vdot \nh}{R} }\ret^2 \\
+		&= \brac{ \frac{\vvd \vdot \nh}{\gam R} - \frac{\vv^2}{\gam R^2} + 2 \paren{ \frac{\vv \vdot \nh}{R} }^2 }\ret.
+	}
+	Then
+	\al{
+		\dv[2]{\nh(t')}{{t'}} &= \dv{t'}\brac{ \nh \frac{\vv \vdot \nh}{R} - \frac{\vv}{\gam R} }\ret
+		= \brac{ \frac{\vv \vdot \nh}{R} }\ret \dv{\nh(t')}{t'} + [ \nh ]\ret \dv{t'}(\frac{\vv(t') \vdot \nh(t')}{R(t')}) - \brac{ \frac{1}{\gam} }\ret \dv{t'}(\frac{\vv(\tau')}{R(t')}) \\
+		&= \brac{ \frac{\vv \vdot \nh}{R} \paren{ \nh \frac{\vv \vdot \nh}{R} - \frac{\vv}{\gam R} } + \nh \frac{\vvd \vdot \nh}{\gam R} - \nh \frac{\vv^2}{\gam R^2} + 2 \nh \paren{ \frac{\vv \vdot \nh}{R} }^2 - \nh \frac{\vv \vdot \nh}{\gam R} - \frac{\vv}{\gam^2 R} }\ret \\
+		&= \brac{ 3 \nh \paren{ \frac{\vv \vdot \nh}{R} }^2 - \vv \frac{\vv \vdot \nh}{\gam R^2} - \nh \frac{\vv^2}{\gam R^2} - \frac{\vv}{\gam^2 R} }\ret.
+	}
+	
+	Substituting into Eq.~\refeq{HF}, we have
+	\al{
+		\vE &= e \brac{ \frac{\nh}{R^2} }\ret + \frac{e}{1 - \vbet(t') \vdot \nh(t')}  \brac{ \frac{R}{c} }\ret \dv{t'} \brac{ \frac{\nh}{R^2} }\ret + \frac{e^2}{c^2 [ 1 - \vbet(t') \vdot \nh(t') ]^2} \dv[2]{{t'}} [ \nh ]\ret \\
+		&= \brac{ e \frac{\nh}{R^2} + \frac{e}{1 - \vbet \vdot \nh} \frac{R}{c} \paren{ 3\nh \frac{\vv \vdot \nh}{R} - \frac{\vv}{\gam R} } + \frac{e^2}{c^2 [ 1 - \vbet \vdot \nh ]^2} \curly{ 3 \nh \paren{ \frac{\vv \vdot \nh}{R} }^2 - \vv \frac{\vv \vdot \nh}{\gam R^2} - \nh \frac{\vv^2}{\gam R^2} - \frac{\vv}{\gam^2 R} } }\ret
+	}
+	\hl{which is just disgusting}
 }
 
 
