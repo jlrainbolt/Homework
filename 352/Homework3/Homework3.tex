@@ -1,0 +1,187 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{352}
+\homeworknum{3}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+\state{Non-equilibrium entropies of Fermi, Bose, and Boltzmann distributions}{
+	Consider a gas out of equilibrium with a slightly non-uniform density in $n(x)$ and mean density $\nb = V^{-1} \int n(x) \ddcx$.  We know that if the gas obeys Boltzmann statistics, its entropy is $S = -\int n \log n \ddV$.
+}
+
+%
+%	1.1
+%
+
+\prob{}{
+	Argue that this formula is valid only if the gradients are small: $\abs{\gradx n} \ll \nb^{4/3}$ (``coarse-graining condition'') and that $\abs{n(x) - \nb} \ll \nb$.
+}
+
+%
+%	1.2
+%
+
+\prob{}{
+	Remove the second condition in {1.1} and obtain the general formula for the entropy for both Fermi and Bose gases.
+}
+
+
+
+\state{Quantum correction to the Boltzmann thermodynamics}{
+	Find the the quantum correction to the free energy of the Boltzmann gas (the leading $\hbar$-dependent term in the expansion of the free energy at small $\hbar$) for Bose and Fermi gases.  From there, find the correction to the pressure.  Does the quantum correction increase or decrease the pressure (and why is the answer predictable)?
+}
+
+
+
+\state{Degenerate Fermi gas}{
+	Consider a Fermi gas in 1, 2, and 3 spatial dimensions with density $\nb = N / V$.
+}
+
+%
+%	3.1
+%
+
+\prob{}{
+	First, set the temperature to zero ($T = 0$) and find the Fermi momentum, Fermi energy, and the total energy in all three cases as a function of density.
+}
+
+%
+%	3.2
+%
+
+\prob{}{
+	Then compute the leading terms of the small temperature corrections to the basic thermodynamic quantities: thermodynamic potential, free energy, energy, pressure, entropy, and specific heat.
+}
+
+
+
+\state{Degenerate Bose gas}{\hfix}
+\vfix
+
+%
+%	4.1
+%
+
+\prob{}{
+	The chemical potential of the degenerate Bose gas vanishes below $\Ts$ (the critical temperature of the BEC).  Find its temperature dependence at temperatures slightly above $\Ts$.
+}
+
+%
+%	4.2
+%
+
+\prob{}{
+	Find the discontinuities in the derivatives of thermodynamic quantities at the BEC transition.  Which order is this phase transition?
+}
+
+%
+%	4.3
+%
+
+\prob{(*)}{
+	Can the ideal Bose gas condense in spatial dimensions 1 and 2?  Discuss what happens in these cases. 
+}
+
+
+
+\state{Thermodynamics of radiation}{
+	Compute the following thermodynamic quantities of a radiation field in a 1D and a 2D cavity and compare it with the textbook example of a 3D cavity.
+}
+
+%
+%	5.1
+%
+
+\prob{}{
+	Planck formula and the Rayleigh-Jeans and Wien limits of the distribution over frequencies.
+}
+
+%
+%	5.2
+%
+
+\prob{}{
+	Free energy and the Stefan-Boltzmann constant.
+}
+
+%
+%	5.3
+%
+
+\prob{}{
+	The relation between the free energy and energy (Boltzmann law).
+}
+
+%
+%	5.4
+%
+
+\prob{}{
+	Specific heat.
+}
+
+%
+%	5.6
+%
+
+\prob{}{
+	Pressure.
+}
+
+%
+%	5.7
+%
+
+\prob{}{
+	The total number of photons in the cavity.
+}
+
+
+
+\state{Thermodynamics of solids}{
+	Compute the following thermodynamic quantities for the harmonic photonic modes in a 1D and a 2D crystal at low temperatures (a.k.a.~phonons) and compare with the textbook example of a 3D crystal.
+}
+
+%
+%	6.1
+%
+
+\prob{}{
+	Free energy.
+}
+
+%
+%	6.2
+%
+
+\prob{}{
+	Entropy.
+}
+
+%
+%	6.3
+%
+
+\prob{}{
+	Energy.
+}
+
+%
+%	6.4
+%
+
+\prob{}{
+	Specific heat.
+}
+
+
+\makebib
+
+\end{document}
