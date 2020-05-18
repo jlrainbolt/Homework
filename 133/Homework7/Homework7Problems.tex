@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{enumitem}
+%\allowdisplaybreaks
+ 
+\renewcommand{\footrulewidth}{.2pt}
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 7}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\cfoot{\today}
+%\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+\DeclareSIUnit{\celsius}{\!C}
+\DeclareSIUnit{\atm}{atm}
+
+\begin{document}
+
+\begin{enumerate}
+
+\newcommand{\diam}{\SI{30.0}{\cm}}
+\newcommand{\temp}{\SI{30.0}{\degree\celsius}}
+\newcommand{\press}{\SI{1.20}{\atm}}
+\newcommand{\Nmass}{\SI{28.0}{\gram\per\mole}}
+
+\newcommand{\Nw}{N$_2$}
+
+% Y&F 18.65
+
+\item A young cousin of yours is having a birthday party, and you have been tasked with inflating balloons.  Say that you are able to inflate a balloon (which is to be treated as a perfect sphere) to a diameter of {\diam}.  Inside the balloon, the temperature is {\temp} and the absolute pressure is {\press}.  Assume that you exhale pure {\Nw}, which has molar mass {\Nmass}.
+
+\begin{enumerate}
+	\item What is the mass of a single {\Nw} molecule?
+	
+	\item What is the (average) kinetic energy per {\Nw} molecule inside the balloon?
+	
+	\item How many {\Nw} molecules are in the balloon?
+	
+	\item What is the total kinetic energy of the gas inside the balloon?
+\end{enumerate}
+
+
+\bigskip
+
+
+\newcommand{\rtemp}{\SI{20.0}{\degree\celsius}}
+\newcommand{\vmass}{\SI{200.0}{\gram}}
+\newcommand{\massq}{\SI{500.0}{\gram}}
+\newcommand{\massw}{\SI{1000.0}{\gram}}
+\newcommand{\wtemp}{\SI{80.0}{\degree\celsius}}
+\newcommand{\tempq}{\SI{58.1}{\degree\celsius}}
+\newcommand{\tempw}{\SI{49.3}{\degree\celsius}}
+
+% Y&F 17.110
+
+\item You have a summer engineering internship at a chemical plant.  One of your assignments is to determine the specific heat capacity of an unknown chemical at the plant using only a small metal vat, hot water, and a thermometer.  The vat weighs {\vmass}.  Both the chemical and the vat are initially at {\rtemp}, and the water is at {\wtemp}.  You pour {\massq} of the chemical and {\massq} of the water into the vat, and wait for the system to reach thermal equilibrium.  You then measure the temperature of both liquids (and the vat) as {\tempq}.  You safely dispose of the mixture, wait for the vat to return to its initial temperature, and repeat the experiment.  This time, you use {\massw} of the chemical and {\massq} of the water, and measure the equilibrium temperature as {\tempw}.  Determine the specific heat of the chemical and of the metal vat.  (Assume that the specific heat capacities of both are constant over this temperature range, and that no heat is lost to your surroundings.)
+
+\end{enumerate}
+
+
+
+
+\end{document}
