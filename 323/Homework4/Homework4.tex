@@ -54,7 +54,7 @@
 	Note that
 	\al{
 		\dv{t'}[ \nh ]\ret &= \brac{ \dv{\nh}{t} }\ret
-		= \brac{ \frac{1}{R^2} \paren{ R \dv{t}\brac{ \vx - \vr(\tau) } - [ \vx - \vr(\tau) ] \dv{R}{t} } }\ret
+		= \brac{ \frac{1}{R^2} \paren{ R \dv{t}(\vx - \vr) - (\vx - \vr) \dv{R}{t} } }\ret
 		= \brac{ \frac{1}{R^2} \paren{ -R \frac{\vv}{\gam} + R (\nh \vdot \vv) \nh } }\ret \\
 		&= \brac{ \frac{(\nh \vdot \vv) \nh}{R} - \frac{\vv}{\gam R} }\ret, %\\[2ex]
 	}
@@ -111,49 +111,8 @@
 		\dv[2]{t} &= \dv{t}(\frac{1}{1 - \vbet(t') \vdot \nh(t')} \dv{t'})
 		= \frac{1}{1 - \vbet(t') \vdot \nh(t')} \dv{t'}(\frac{1}{1 - \vbet(t') \vdot \nh(t')} \dv{t'}) \\
 		&= \frac{1}{1 - \vbet(t') \vdot \nh(t')} \curly{ \dv{t'}(\frac{1}{1 - \vbet(t') \vdot \nh(t')}) \dv{t'} + \frac{1}{1 - \vbet(t') \vdot \nh(t')} \dv[2]{{t'}} } \\
-		&= \frac{1}{c} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3} \paren{ \frac{\vv^2}{\gam R} - \frac{\nh \vdot \vvd}{\gam} - \frac{(\nh \vdot \vv)^2}{R} } }\ret \dv{t'} + \brac{ \frac{1}{[1 - \vbet \vdot \nh]^2} }\ret \dv[2]{{t'}}.
+		&= \frac{1}{c} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3} \paren{ \frac{\vv^2}{\gam R} - \frac{\nh \vdot \vvd}{\gam} - \frac{(\nh \vdot \vv)^2}{R} } }\ret \dv{t'} + \brac{ \frac{1}{(1 - \vbet \vdot \nh)^2} }\ret \dv[2]{{t'}}.
 	}
-	
-	The first term of Eq.~\refeq{HF} can be written
-	\eq{
-		e \brac{ \frac{\nh}{R^2} }\ret = e \brac{ \frac{(1 - \vbet \vdot \nh)^3 \nh}{(1 - \vbet \vdot \nh)^3 R^2} }\ret
-		= e \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ \nh - 3 \frac{(\nh \vdot \vv) \nh}{c} + 3 \frac{(\nh \vdot \vv)^2 \nh}{c^2} - \frac{(\nh \vdot \vv)^3 \nh}{c^3} } }\ret.
-	}
-	
-	The second term of Eq.~\refeq{HF} becomes
-	\al{
-		e \brac{ \frac{R}{c} }\ret \dv{t} \brac{ \frac{\nh}{R^2} }\ret &= \frac{e}{c} \brac{ \frac{R}{1 - \vbet \vdot \nh} }\ret \dv{t'}\!\brac{ \frac{\nh}{R^2} }\ret
-		= \frac{e}{c} \brac{ \frac{R}{1 - \vbet \vdot \nh} \paren{ 3 \frac{(\nh \vdot \vv) \nh}{R^3} - \frac{\vv}{\gam R^3} } }\ret \\
-		&= \frac{e}{c} \brac{ \frac{1}{1 - \vbet \vdot \nh} \paren{ 3 \frac{(\nh \vdot \vv) \nh}{R^2} - \frac{\vv}{\gam R^2} } }\ret
-		= \frac{e}{c} \brac{ \frac{(1 - \vbet \vdot \nh)^2}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 3 (\nh \vdot \vv) \nh - \frac{\vv}{\gam} } }\ret \\
-		&= \frac{e}{c} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 1 - 2 \frac{\nh \vdot \vv}{c} + \frac{(\nh \vdot \vv)^2}{c^2} } \paren{ 3 (\nh \vdot \vv) \nh - \frac{\vv}{\gam} } }\ret \\
-		&= \frac{e}{c} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 3 (\nh \vdot \vv) \nh - \frac{\vv}{\gam} - 6 \frac{(\nh \vdot \vv)^2 \nh}{c} + 2 \frac{ (\nh \vdot \vv)\vv}{c \gam} + 3 \frac{(\nh \vdot \vv)^3 \nh}{c^2} - \frac{(\nh \vdot \vv)^2 \vv}{c^2 \gam} } }\ret.
-	}
-	
-	The third term of Eq.~\refeq{HF} becomes
-	\eqn{thing2}{
-		\frac{e}{c^2} \dv[2]{t} [ \nh ]\ret = \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3} \paren{ \frac{\vv^2}{\gam R} - \frac{\nh \vdot \vvd}{\gam} - \frac{(\nh \vdot \vv)^2}{R} } }\ret \dv{t'}[ \nh ]\ret + \frac{e}{c^2} \brac{ \frac{1}{[1 - \vbet \vdot \nh]^2} }\ret \dv[2]{{t'}} [ \nh ]\ret.
-	}
-	The first term of Eq.~\refeq{thing2} is
-	\al{
-		\frac{e}{c^3} &\brac{ \frac{1}{(1 - \vbet \vdot \nh)^3} \paren{ \frac{\vv^2}{\gam R} - \frac{\nh \vdot \vvd}{\gam} - \frac{(\nh \vdot \vv)^2}{R} } \paren{ \frac{(\nh \vdot \vv) \nh}{R} - \frac{\vv}{\gam R} } }\ret \\
-		&= \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3} \paren{ \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam R^2} - \frac{(\nh \vdot \vvd)(\nh \vdot \vv) \nh}{\gam R} - \frac{(\nh \vdot \vv)^3 \nh}{R^2} - \frac{\vv^2 \vv}{\gam^2 R^2} + \frac{(\nh \vdot \vvd) \vv}{\gam^2 R} + \frac{(\nh \vdot \vv)^2 \vv}{\gam R^2}} }\ret \\
-		&= \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam} - \frac{R (\nh \vdot \vvd)(\nh \vdot \vv) \nh}{\gam} - (\nh \vdot \vv)^3 \nh - \frac{\vv^2 \vv}{\gam^2} + \frac{R (\nh \vdot \vvd) \vv}{\gam^2} + \frac{(\nh \vdot \vv)^2 \vv}{\gam}} }\ret
-	}
-	and the second term of Eq.~\refeq{thing2} is
-	\al{
-		\frac{e}{c^2} &\brac{ \frac{1}{(1 - \vbet \vdot \nh)^2} \paren{ 3 \frac{(\nh \vdot \vv)^2 \nh}{R^2} - 2 \frac{(\nh \vdot \vv) \vv}{\gam R^2} + \frac{(\nh \vdot \vvd) \nh}{\gam R} - \frac{\vv^2 \nh}{\gam R^2} - 2 \frac{\vvd}{\gam^2 R} + \frac{\vvd}{R} } }\ret \\
-		&= \frac{e}{c^2} \brac{ \frac{1 - \vbet \vdot \nh}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 3 (\nh \vdot \vv)^2 \nh - 2 \frac{(\nh \vdot \vv) \vv}{\gam} + \frac{R (\nh \vdot \vvd) \nh}{\gam} - \frac{\vv^2 \nh}{\gam} - 2 \frac{R \vvd}{\gam^2} + R \vvd } }\ret \\
-		&= \frac{e}{c^2} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 3 (\nh \vdot \vv)^2 \nh - 2 \frac{(\nh \vdot \vv) \vv}{\gam} + \frac{R (\nh \vdot \vvd) \nh}{\gam} - \frac{\vv^2 \nh}{\gam} - 2 \frac{R \vvd}{\gam^2} + R \vvd } }\ret \\
-		&\phantom{=\ } + \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ -3 (\nh \vdot \vv)^3 \nh + 2 \frac{(\nh \vdot \vv)^2 \vv}{\gam} - \frac{R (\nh \vdot \vvd) (\nh \vdot \vv) \nh}{\gam} + \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam} + 2 \frac{R (\nh \vdot \vv) \vvd}{\gam^2} - R (\nh \vdot \vv) \vvd } }\ret
-	}
-	Summing the two terms, we find
-	\al{
-	\frac{e}{c^2} \dv[2]{t} [ \nh ]\ret &= \frac{e}{c^2} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 3 (\nh \vdot \vv)^2 \nh - 2 \frac{(\nh \vdot \vv) \vv}{\gam} + \frac{R (\nh \vdot \vvd) \nh}{\gam} - \frac{\vv^2 \nh}{\gam} - 2 \frac{R \vvd}{\gam^2} + R \vvd } }\ret \\
-	&\phantom{=\ } + \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 2 \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam} - 2 \frac{R (\nh \vdot \vvd)(\nh \vdot \vv) \nh}{\gam} - 4 (\nh \vdot \vv)^3 \nh - \frac{\vv^2 \vv}{\gam^2} + \frac{R (\nh \vdot \vvd) \vv}{\gam^2} + 3 \frac{(\nh \vdot \vv)^2 \vv}{\gam} + 2 \frac{R (\nh \vdot \vv) \vvd}{\gam^2} - R (\nh \vdot \vv) \vvd } }\ret
-	}
-	
-	\clearpage
 	
 	One of the vector identities on the inside cover of Jackson is
 	\eq{
@@ -165,10 +124,68 @@
 		= (\nh \vdot \vbetd) \nh - (\nh \vdot \vbetd) \vbet - \vbetd + (\nh \vdot \vbet) \vbetd \\
 		&= \frac{(\nh \vdot \vvd) \nh}{c} - \frac{(\nh \vdot \vvd) \vv}{c^2} - \frac{\vvd}{c} + \frac{(\nh \vdot \vv) \vvd}{c^2}.
 	}
-	Eq.~\refeq{LWfields} can be written
+	Then Eq.~\refeq{LWfields} can be written
 	\al{
 		\vE &= e \brac{ \frac{1}{\gam^2 (1 - \vbet \vdot \nh)^3 R^2} \paren{ \nh - \frac{\vv}{c} } }\ret + \frac{e}{c} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R} \paren{ \frac{(\nh \vdot \vvd) \nh}{c} - \frac{(\nh \vdot \vvd) \vv}{c^2} - \frac{\vvd}{c} + \frac{(\nh \vdot \vv) \vvd}{c^2} } }\ret \\
-		&= e \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ \frac{\nh}{\gam^2} - \frac{\vv}{c \gam^2} + \frac{(\nh \vdot \vvd) \nh}{c^2} - \frac{(\nh \vdot \vvd) \vv}{c^3} - \frac{\vvd}{c^2} + \frac{(\nh \vdot \vv) \vvd}{c^3} } }\ret 
+		&= e \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ \frac{\nh}{\gam^2} - \frac{\vv}{c \gam^2} + \frac{(\nh \vdot \vvd) \nh}{c^2} - \frac{(\nh \vdot \vvd) \vv}{c^3} - \frac{\vvd}{c^2} + \frac{(\nh \vdot \vv) \vvd}{c^3} } }\ret \\
+		&= \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ \frac{c^3 \nh}{\gam^2} - \frac{c^2 \vv}{\gam^2} + c (\nh \vdot \vvd) \nh - (\nh \vdot \vvd) \vv - c \vvd + (\nh \vdot \vv) \vvd } }\ret.
+	}
+	
+	The first term of Eq.~\refeq{HF} can be written
+	\aln{
+		e \brac{ \frac{\nh}{R^2} }\ret &= e \brac{ \frac{(1 - \vbet \vdot \nh)^3 \nh}{(1 - \vbet \vdot \nh)^3 R^2} }\ret
+		= e \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ \nh - 3 \frac{(\nh \vdot \vv) \nh}{c} + 3 \frac{(\nh \vdot \vv)^2 \nh}{c^2} - \frac{(\nh \vdot \vv)^3 \nh}{c^3} } }\ret \notag \\
+		&= \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ c^3 \nh - 3 c^2 (\nh \vdot \vv) \nh + 3c (\nh \vdot \vv)^2 \nh - (\nh \vdot \vv)^3 \nh } }\ret. \label{term1}
+	}
+	
+	The second term of Eq.~\refeq{HF} becomes
+	\aln{
+		e &\brac{ \frac{R}{c} }\ret \dv{t} \brac{ \frac{\nh}{R^2} }\ret = \frac{e}{c} \brac{ \frac{R}{1 - \vbet \vdot \nh} }\ret \dv{t'}\!\brac{ \frac{\nh}{R^2} }\ret
+		= \frac{e}{c} \brac{ \frac{R}{1 - \vbet \vdot \nh} \paren{ 3 \frac{(\nh \vdot \vv) \nh}{R^3} - \frac{\vv}{\gam R^3} } }\ret \notag \\
+		&= \frac{e}{c} \brac{ \frac{1}{1 - \vbet \vdot \nh} \paren{ 3 \frac{(\nh \vdot \vv) \nh}{R^2} - \frac{\vv}{\gam R^2} } }\ret
+		= \frac{e}{c} \brac{ \frac{(1 - \vbet \vdot \nh)^2}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 3 (\nh \vdot \vv) \nh - \frac{\vv}{\gam} } }\ret \notag \\
+		&= \frac{e}{c} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 1 - 2 \frac{\nh \vdot \vv}{c} + \frac{(\nh \vdot \vv)^2}{c^2} } \paren{ 3 (\nh \vdot \vv) \nh - \frac{\vv}{\gam} } }\ret \notag \\
+		&= \frac{e}{c} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 3 (\nh \vdot \vv) \nh - \frac{\vv}{\gam} - 6 \frac{(\nh \vdot \vv)^2 \nh}{c} + 2 \frac{ (\nh \vdot \vv)\vv}{c \gam} + 3 \frac{(\nh \vdot \vv)^3 \nh}{c^2} - \frac{(\nh \vdot \vv)^2 \vv}{c^2 \gam} } }\ret \notag \\
+		&= \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 3 c^2 (\nh \vdot \vv) \nh - \frac{c^2 \vv}{\gam} - 6 c (\nh \vdot \vv)^2 \nh + 2 \frac{c (\nh \vdot \vv)\vv}{\gam} + 3 (\nh \vdot \vv)^3 \nh - \frac{(\nh \vdot \vv)^2 \vv}{\gam} } }\ret. \label{term2}
+	}
+	
+	The third term of Eq.~\refeq{HF} becomes
+	\eqn{thing2}{
+		\frac{e}{c^2} \dv[2]{t} [ \nh ]\ret = \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3} \paren{ \frac{\vv^2}{\gam R} - \frac{\nh \vdot \vvd}{\gam} - \frac{(\nh \vdot \vv)^2}{R} } }\ret \dv{t'}[ \nh ]\ret + \frac{e}{c^2} \brac{ \frac{1}{[1 - \vbet \vdot \nh]^2} }\ret \dv[2]{{t'}} [ \nh ]\ret.
+	}
+	The first term of Eq.~\refeq{thing2} is
+	\al{
+		\frac{e}{c^3} &\brac{ \frac{1}{(1 - \vbet \vdot \nh)^3} \paren{ \frac{\vv^2}{\gam R} - \frac{\nh \vdot \vvd}{\gam} - \frac{(\nh \vdot \vv)^2}{R} } \paren{ \frac{(\nh \vdot \vv) \nh}{R} - \frac{\vv}{\gam R} } }\ret \\
+		&= \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3} \paren{ \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam R^2} - \frac{(\nh \vdot \vvd)(\nh \vdot \vv) \nh}{\gam R} - \frac{(\nh \vdot \vv)^3 \nh}{R^2} - \frac{\vv^2 \vv}{\gam^2 R^2} + \frac{(\nh \vdot \vvd) \vv}{\gam^2 R} + \frac{(\nh \vdot \vv)^2 \vv}{\gam R^2}} }\ret \\
+		&= \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam} - \frac{R (\nh \vdot \vvd)(\nh \vdot \vv) \nh}{\gam} - (\nh \vdot \vv)^3 \nh - \frac{\vv^2 \vv}{\gam^2} + \frac{R (\nh \vdot \vvd) \vv}{\gam^2} + \frac{(\nh \vdot \vv)^2 \vv}{\gam} } }\ret,
+	}
+	and the second term of Eq.~\refeq{thing2} is
+	\al{
+		\frac{e}{c^2} &\brac{ \frac{1}{(1 - \vbet \vdot \nh)^2} \paren{ 3 \frac{(\nh \vdot \vv)^2 \nh}{R^2} - 2 \frac{(\nh \vdot \vv) \vv}{\gam R^2} + \frac{(\nh \vdot \vvd) \nh}{\gam R} - \frac{\vv^2 \nh}{\gam R^2} - 2 \frac{\vvd}{\gam^2 R} + \frac{\vvd}{R} } }\ret \\
+		&= \frac{e}{c^2} \brac{ \frac{1 - \vbet \vdot \nh}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ 3 (\nh \vdot \vv)^2 \nh - 2 \frac{(\nh \vdot \vv) \vv}{\gam} + \frac{R (\nh \vdot \vvd) \nh}{\gam} - \frac{\vv^2 \nh}{\gam} - 2 \frac{R \vvd}{\gam^2} + R \vvd } }\ret \\
+		&= \frac{e}{c^3} \bigg[ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \bigg( 3 c (\nh \vdot \vv)^2 \nh - 2 \frac{c (\nh \vdot \vv) \vv}{\gam} + \frac{c R (\nh \vdot \vvd) \nh}{\gam} - \frac{c \vv^2 \nh}{\gam} - 2 \frac{c R \vvd}{\gam^2} + c R \vvd - 3 (\nh \vdot \vv)^3 \nh \\
+		&\phantom{mmmmmmmmmmmmmm} + 2 \frac{(\nh \vdot \vv)^2 \vv}{\gam} - \frac{R (\nh \vdot \vvd) (\nh \vdot \vv) \nh}{\gam} + \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam} + 2 \frac{R (\nh \vdot \vv) \vvd}{\gam^2} - R (\nh \vdot \vv) \vvd \bigg) \bigg]\ret
+	}
+	Summing the two terms, we find
+	\aln{
+	\frac{e}{c^2} \dv[2]{t} [ \nh ]\ret % &= \frac{e}{c^3} \bigg[ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \bigg( \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam} - \frac{R (\nh \vdot \vvd)(\nh \vdot \vv) \nh}{\gam} - (\nh \vdot \vv)^3 \nh - \frac{\vv^2 \vv}{\gam^2} + \frac{R (\nh \vdot \vvd) \vv}{\gam^2} + \frac{(\nh \vdot \vv)^2 \vv}{\gam} \\
+%	&\phantom{mmmmmm} + 3 c (\nh \vdot \vv)^2 \nh - 2 \frac{c (\nh \vdot \vv) \vv}{\gam} + \frac{c R (\nh \vdot \vvd) \nh}{\gam} - \frac{c \vv^2 \nh}{\gam} - 2 \frac{c R \vvd}{\gam^2} + c R \vvd - 3 (\nh \vdot \vv)^3 \nh \\
+%	&\phantom{mmmmmmmmmm} + 2 \frac{(\nh \vdot \vv)^2 \vv}{\gam} - \frac{R (\nh \vdot \vvd) (\nh \vdot \vv) \nh}{\gam} + \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam} + 2 \frac{R (\nh \vdot \vv) \vvd}{\gam^2} - R (\nh \vdot \vv) \vvd \bigg) \bigg]\ret \\
+%	%
+	&= \frac{e}{c^3} \bigg[ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \bigg( 2 \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam} - 2\frac{R (\nh \vdot \vvd)(\nh \vdot \vv) \nh}{\gam} - 4 (\nh \vdot \vv)^3 \nh - \frac{\vv^2 \vv}{\gam^2} + \frac{R (\nh \vdot \vvd) \vv}{\gam^2} \notag \\
+	&\phantom{mmmmmmmmmmmmmm} + 3 \frac{(\nh \vdot \vv)^2 \vv}{\gam} + 3 c (\nh \vdot \vv)^2 \nh - 2 \frac{c (\nh \vdot \vv) \vv}{\gam} + \frac{c R (\nh \vdot \vvd) \nh}{\gam} - \frac{c \vv^2 \nh}{\gam} \notag \\
+	&\phantom{mmmmmmmmmmmmmmmmmm} - 2 \frac{c R \vvd}{\gam^2} + c R \vvd + 2 \frac{R (\nh \vdot \vv) \vvd}{\gam^2} - R (\nh \vdot \vv) \vvd \bigg) \bigg]\ret. \label{term3}
+	}
+	
+	Summing Eqs.~\refeq{term1} and \refeq{term2},
+	\aln{
+		e \brac{ \frac{\nh}{R^2} }\ret &+ e \brac{ \frac{R}{c} }\ret \dv{t} \brac{ \frac{\nh}{R^2} }\ret \notag \\
+		&= \frac{e}{c^3} \brac{ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \paren{ c^3 \nh - 3c (\nh \vdot \vv)^2 \nh + 2 (\nh \vdot \vv)^3 \nh - \frac{c^2 \vv}{\gam} + 2 \frac{c (\nh \vdot \vv)\vv}{\gam} - \frac{(\nh \vdot \vv)^2 \vv}{\gam} } }\ret. \label{term12}
+	}
+	Summing Eqs.~\refeq{term12} and \refeq{term3},
+	\al{
+		\vE &= \frac{e}{c^3} \bigg[ \frac{1}{(1 - \vbet \vdot \nh)^3 R^2} \bigg( c^3 \nh - 2 (\nh \vdot \vv)^3 \nh - \frac{c^2 \vv}{\gam} + 2 \frac{(\nh \vdot \vv)^2 \vv}{\gam} + 2 \frac{\vv^2 (\nh \vdot \vv) \nh}{\gam} - 2\frac{R (\nh \vdot \vvd)(\nh \vdot \vv) \nh}{\gam} - \frac{\vv^2 \vv}{\gam^2} \\
+	&\phantom{mmmmmmmmmmmm} + \frac{R (\nh \vdot \vvd) \vv}{\gam^2} + \frac{c R (\nh \vdot \vvd) \nh}{\gam} - \frac{c \vv^2 \nh}{\gam} - 2 \frac{c R \vvd}{\gam^2} + c R \vvd + 2 \frac{R (\nh \vdot \vv) \vvd}{\gam^2} - R (\nh \vdot \vv) \vvd \bigg) \bigg]\ret.
 	}
 }
 
