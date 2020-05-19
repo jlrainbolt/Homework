@@ -2,6 +2,7 @@
 	Using the {\Lienard}-Wiechart fields, discuss the time-averaged power radiated per unit solid angle in nonrelativistic motion of a particle with charge $e$, moving as described below.  Sketch the angular distribution of the radiation and determine the total power radiated in each case.
 }
 
+
 %
 %	Jackson 14.4(a)
 %
@@ -15,7 +16,8 @@
 	\eqn{dPdOmg}{
 		\dv{P}{\Omg} = \frac{e^2}{4\pi c^2} \absvvd^2 \sin^2\Tht,
 	}
-	where $\Tht$ is the angle between $\vvd$ and $\nh$, where $\nh$ is a unit vector pointing toward the observer.  The total instantaneous power radiated is given by Jackson~(14.22):
+	\clearpage
+	where $\Tht$ is the angle between $\vvd$ and $\nh$, and $\nh$ is a unit vector pointing toward the observer.  The total instantaneous power radiated is given by Jackson~(14.22):
 	\eqn{Ptot}{
 		P = \frac{2}{3} \frac{e^2}{c^3} \absvvd^2.
 	}
@@ -36,7 +38,25 @@
 		\ev{ \dv{P}{\Omg} } = \frac{e^2}{4\pi c^2} \alp^2 \omgo^4 \ev{\cos^2 \omgo t} \sin^2\tht
 		= \ans{ \frac{e^2 \alp^2 \omgo^4}{8\pi c^2} \sin^2\tht. }
 	}
-	A plot of the angular distribution of the radiation is shown in Fig.~\ref{3a} in the $xz$ plane, and in three dimensions in Fig.~\ref{3a3d}.
+	A plot of the angular distribution of the radiation in the $xz$ plane is shown in Fig.~\ref{3a}, and in three dimensions in Fig.~\ref{3a3d}.  This is the typical pattern for radiation of an accelerating, non-relativistic point charge, as we saw on p.~214 of the lecture notes.  According to Landau \& Lifshitz p.~189, it is also the radiation pattern for a dipole.  This is sensible because an oscillating charge ``looks'' like a dipole from far away.
+		
+	\begin{figure}[b!]
+		\begin{minipage}{0.475\textwidth}
+			\begin{figure}[H] \flushright
+				\includegraphics{3a} $\ $
+				\caption{Plot of Eq.~\refeq{ans3a} in the $xz$ plane.}
+				\label{3a}
+			\end{figure}
+		\end{minipage}%
+		\hspace{0.05\linewidth}%
+		\begin{minipage}{0.475\textwidth}
+			\begin{figure}[H] \flushleft
+				$\quad$ \includegraphics{3a3d}
+				\caption{Three-dimensional plot of Eq.~\refeq{ans3a}.}
+				\label{3a3d}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
 	
 	Equation~\refeq{Ptot} becomes
 	\eq{
@@ -48,43 +68,8 @@
 		\ev{P} = \frac{2}{3} \frac{e^2 \alp^2 \omgo^4}{c^3} \ev{\cos^2 \omgo t}
 		= \ans{ \frac{e^2 \alp^2 \omgo^4}{3 c^3}. }
 	}
+	\vfix
 }
-
-\begin{figure}[b!]
-	\begin{minipage}{0.475\textwidth}
-		\begin{figure}[H] \flushright
-			\includegraphics{3a} $\ $
-			\caption{Plot of Eq.~\refeq{ans3a} in the $xz$ plane.}
-			\label{3a}
-		\end{figure}
-	\end{minipage}%
-	\hspace{0.05\linewidth}%
-	\begin{minipage}{0.475\textwidth}
-		\begin{figure}[H] \flushright
-			\includegraphics{3b} $\ $
-			\caption{Plot of Eq.~\refeq{ans3b} in the $xz$ plane.}
-			\label{3b}
-		\end{figure}
-	\end{minipage}
-	
-	\bigskip
-	
-	\begin{minipage}{0.475\textwidth}
-		\begin{figure}[H] \flushleft
-			$\quad$ \includegraphics{3a3d}
-			\caption{Three-dimensional plot of Eq.~\refeq{ans3a}.}
-			\label{3a3d}
-		\end{figure}
-	\end{minipage}%
-	\hspace{0.05\linewidth}%
-	\begin{minipage}{0.475\textwidth}
-		\begin{figure}[H] \flushleft
-			$\quad$ \includegraphics{3b3d}
-			\caption{Three-dimensional plot of Eq.~\refeq{ans3b}.}
-			\label{3b3d}
-		\end{figure}
-	\end{minipage}
-\end{figure}
 
 %
 %	Jackson 14.4(b)
@@ -97,9 +82,12 @@
 \sol{
 	For a charge moving counter-clockwise,
 	\al{
-		\vx(t) &= R \cos \omgo t \,\xqh - R \sin \omgo t \,\xwh, \\
-		\vv(t) &= -R \omgo \sin \omgo t \,\xqh - R \omgo \cos \omgo t \,\xwh, \\
-		\vvd(t) &= -R \omgo^2 \cos \omgo t \,\xqh + R \omgo^2 \sin \omgo t \,\xwh.
+		\vx(t) &= R \cos \omgo t \,\xqh - R \sin \omgo t \,\xwh, &
+		\vv(t) &= -R \omgo \sin \omgo t \,\xqh - R \omgo \cos \omgo t \,\xwh,
+	}
+	\vfix
+	\eq{
+		\vvd(t) = -R \omgo^2 \cos \omgo t \,\xqh + R \omgo^2 \sin \omgo t \,\xwh.
 	}
 	This system is also azimuthally symmetric, so it is sufficient to restrict the position of the observer to the $yz$~plane.  In polar coordinates, $\nh = \sin\tht \,\xwh + \cos\tht \,\xeh$.  Then $\sin^2\Tht$ can be found by
 	\eq{
@@ -120,7 +108,26 @@
 		= \frac{e^2 R^2 \omgo^4}{4\pi c^2} \paren{ 1 - \frac{1 - \cos^2\tht}{2} } \notag \\
 		&= \ans{ \frac{e^2 R^2 \omgo^4}{8\pi c^2} (1 + \cos^2\tht). } \label{ans3b}
 	}
-	A plot of the angular distribution of the radiation is shown in Fig.~\ref{3b}, in the $xz$ plane, and in three dimensions in Fig.~\ref{3b3d}.
+	A plot of the angular distribution of the radiation in the $xz$ plane is shown in Fig.~\ref{3b}, and in three dimensions in Fig.~\ref{3b3d}.  The magnitude of the radiation on the $xy$ plane is reduced because of the particle's motion in that plane.  According to Landau \& Lifshitz p.~190, this is the radiation pattern for a rotating dipole.  This is sensible because an orbiting charge has similar long-distance behavior to a rotating dipole.
+	
+	\begin{figure}[b!]
+	\vspace{-6pt}
+		\begin{minipage}{0.45\textwidth}
+			\begin{figure}[H] \flushright
+				\includegraphics{3b} $\ $
+				\caption{Plot of Eq.~\refeq{ans3b} in the $xz$ plane.}
+				\label{3b}
+			\end{figure}
+		\end{minipage}%
+		\hspace{0.05\linewidth}%
+		\begin{minipage}{0.475\textwidth}
+			\begin{figure}[H] \flushleft
+				$\quad$ \includegraphics{3b3d}
+				\caption{Three-dimensional plot of Eq.~\refeq{ans3b}.}
+				\label{3b3d}
+			\end{figure}
+		\end{minipage}
+	\end{figure}
 	
 	From Eq.~\refeq{Ptot}, we have
 	\eq{
@@ -128,4 +135,5 @@
 		= \frac{2}{3} \frac{e^2 R^2 \omgo^4}{c^3} (\cos^2 \omgo t + \sin^2 \omgo t)
 		= \ans{ \frac{2}{3} \frac{e^2 R^2 \omgo^4}{c^3} = \ev{P}. }
 	}
+	\vfix
 }
