@@ -1,0 +1,248 @@
+\documentclass[11pt]{article}
+\usepackage{solutions}
+
+\classname{133}
+\homeworknum{7}
+
+
+\DeclareSIUnit{\celsius}{\!C}
+\DeclareSIUnit{\atm}{atm}
+\DeclareSIUnit{\molecules}{molecules}
+
+\begin{document}
+
+\include{definitions}
+
+%
+%	Prob. 1
+%
+
+\newcommand{\diam}{\SI{30.0}{\cm}}
+\newcommand{\radius}{\SI{0.150}{\meter}}
+\newcommand{\temp}{\SI{30.0}{\degree\celsius}}
+\newcommand{\tempSI}{\SI{303.15}{\kelvin}}
+\newcommand{\press}{\SI{1.20}{\atm}}
+\newcommand{\pressSI}{\SI{1.22e5}{\pascal}}
+\newcommand{\Nmass}{\SI{28.0}{\gram\per\mole}}
+\newcommand{\Nmol}{\num{3.08e23}}
+\newcommand{\avke}{\SI{6.28e-21}{\joule}}
+
+\newcommand{\avogadro}{\SI{6.022e23}{\molecules\per\mole}}
+\newcommand{\boltzmann}{\SI{1.38e-23}{\joule\per\kelvin}}
+
+\newcommand{\Nw}{N$_2$}
+\newcommand{\NA}{N_A}
+
+\newcommand{\av}{_\text{av}}
+\newcommand{\rms}{_\text{rms}}
+
+\newcommand{\cE}{\mathcal{E}}
+
+% Y&F 18.65
+
+\state{}{
+	A young cousin of yours is having a birthday party, and you have been tasked with inflating balloons.  Say that you are able to inflate a balloon (which is to be treated as a perfect sphere) to a diameter of {\diam}.  Inside the balloon, the temperature is {\temp} and the absolute pressure is {\press}.  Assume that you exhale pure {\Nw}, which has molar mass {\Nmass}.
+}
+
+%
+%	1(a)
+%
+
+\prob{}{
+	What is the mass of a single {\Nw} molecule?
+}
+
+\sol{
+	We can find the mass $m$ of a single molecule by diving the molar mass $M$ by Avogadro's number:
+	\eq{
+		m = \frac{M}{\NA}
+		= \frac{\Nmass}{\avogadro}
+		= \ans{ \SI{4.65e-23}{\gram}. }
+	}
+	\vfix
+}
+
+%
+%	1(b)
+%
+	
+\prob{}{
+	What is the (average) kinetic energy per {\Nw} molecule inside the balloon?
+}
+
+\sol{
+	The average kinetic energy of a single molecule is given by
+	\eq{
+		\vep\av = \frac{1}{2} m (v^2)\av,
+	}
+	where $(v^2)\av$ can be found using the root-mean-square speed of a molecule, which is
+	\eq{
+		v\rms = \sqrt{(v^2)\rms}
+		= \sqrt{\frac{3 k T}{m}}.
+	}
+	Making this substitution and plugging in numbers, we have
+	\eq{
+		\vep\av = \frac{m}{2} \frac{3 k T}{m}
+		= \frac{3}{2} k T
+		= \frac{3}{2} (\boltzmann) (\tempSI)
+		= \ans{ {\avke}, }
+	}
+	where we have transformed to Kelvin using $\SI{0}{\kelvin} = \SI{-273.15}{\degree\celsius}$.
+}
+
+%
+%	1(c)
+%
+	
+\prob{}{
+	How many {\Nw} molecules are in the balloon?
+}
+
+\sol{
+	We can find the number of molecules $N$ using the ideal gas law, $ P V = N k T$.  The volume $V$ of the balloon is just the volume of a sphere of radius $r = \SI{15.0}{\cm}$, $V = 4 \pi r^3 / 3$.  We also need to write the pressure $P$ in $\si{\pascal}$:
+	\eq{
+		P = (\press) \frac{\SI{1.013e5}{\pascal}}{\SI{1}{\atm}}
+		= \pressSI.
+	}
+	Finally, solving the ideal gas law for $N$ and substituting, we find
+	\eq{
+		N = \frac{P V}{k T}
+		= \frac{4 \pi r^3 P}{3 k T}
+		= \frac{4 \pi (\radius)^3 (\pressSI)}{3 (\boltzmann) (\tempSI)}
+		= \frac{4 \pi (3.38)(1.22) \times \num{e2}}{3 (1.38) (3.0315) \times \num{e-21}}
+		= \frac{51.6}{16.8} \times \num{e23}
+		= \ans{ {\Nmol}, }
+	}
+	where we have used $\SI{1}{\pascal} = \SI{1}{\joule\per\cubic\meter}$.
+}
+
+%
+%	1(d)
+%
+
+\prob{}{
+	What is the total kinetic energy of the gas inside the balloon?
+}
+
+\sol{
+	We can simply multiply the kinetic energy per molecule by the total number of molecules to find the total:
+	\eq{
+		\cE = N \vep
+		= (\Nmol) (\avke)
+		= \ans{ \SI{1930}{\joule}. }
+	}
+	\vfix
+}
+
+
+
+
+%
+%	Problem 2
+%
+
+\newcommand{\rtemp}{\SI{20.0}{\degree\celsius}}
+\newcommand{\vmass}{\SI{200.0}{\gram}}
+\newcommand{\massq}{\SI{500.0}{\gram}}
+\newcommand{\massw}{\SI{1000.0}{\gram}}
+\newcommand{\wtemp}{\SI{80.0}{\degree\celsius}}
+\newcommand{\tempq}{\SI{58.1}{\degree\celsius}}
+\newcommand{\tempw}{\SI{49.3}{\degree\celsius}}
+
+\newcommand{\shw}{\SI{4190}{\joule\per\kg\per\kelvin}}
+\newcommand{\mqSI}{\SI{0.500}{\kg}}
+\newcommand{\mwSI}{\SI{1.00}{\kg}}
+\newcommand{\mvSI}{\SI{0.200}{\kg}}
+
+\newcommand{\Qc}{Q_c}
+\newcommand{\Qw}{Q_w}
+\newcommand{\Qv}{Q_v}
+
+\newcommand{\Tc}{T_c}
+\newcommand{\Tw}{T_w}
+\newcommand{\Tv}{T_v}
+
+\newcommand{\cc}{c_c}
+\newcommand{\cw}{c_w}
+\newcommand{\cv}{c_v}
+
+\newcommand{\mc}{m_c}
+\newcommand{\mw}{m_w}
+\newcommand{\mv}{m_v}
+
+% Y&F 17.110
+
+\state{}{
+	You have a summer engineering internship at a chemical plant.  One of your assignments is to determine the specific heat capacity of an unknown chemical at the plant using only a small metal vat, hot water, and a thermometer.  The vat weighs {\vmass}.  Both the chemical and the vat are initially at {\rtemp}, and the water is at {\wtemp}.  You pour {\massq} of the chemical and {\massq} of the water into the vat, and wait for the system to reach thermal equilibrium.  You then measure the temperature of both liquids (and the vat) as {\tempq}.  You safely dispose of the mixture, wait for the vat to return to its initial temperature, and repeat the experiment.  This time, you use {\massw} of the chemical and {\massq} of the water, and measure the equilibrium temperature as {\tempw}.  Determine the specific heat of the chemical and of the metal vat.  (Assume that the specific heat capacities of both are constant over this temperature range, and that no heat is lost to your surroundings.)
+}
+
+\sol{
+	We will use the relation
+	\eq{
+		\Del Q = C \,\Del T
+		= m c \,\Del T,
+	}
+	where $\Del Q$ is the total change in heat, $\Del T$ is the change in temperature, $C$ is the heat capacity, and $C = m c$ where $m$ is the mass and $c$ is the specific heat capacity.
+	
+	Since no heat is lost to our surroundings in this problem, the total change in heat for all three components of the system must be zero.  That is,
+	\eq{
+		\Del \Qc + \Del \Qw + \Del \Qv = 0,
+	}
+	where $\Qc$, $\Qw$, and and $\Qv$ are the heat of the chemical, water, and vat, respectively.  By writing this equation for each of the two experiments performed, we will obtain two equations in the two unknowns $\cc$ and $\cv$, which are the specific heat of the chemical and of the vat, respectively.  The specific heat of water is $\cw = \shw$.
+	
+	For the first experiment, we have
+	\al{
+		\Del \Qc &= \mc \cc \,\Del \Tc
+		= (\mqSI) \cc (\tempq - \rtemp)
+		= (\SI{19.05}{\kg\kelvin}) \,\cc, \\
+		\Del \Qw &= \mw \cw \,\Del \Tw
+		= (\mqSI) (\shw) (\tempq - \wtemp)
+		= -\SI{4.588e4}{\joule}, \\
+		\Del \Qv &= \mv \cv \,\Del \Tv
+		= (\mvSI) \cv (\tempq - \rtemp)
+		= (\SI{7.62}{\kg\kelvin}) \,\cv,
+	}
+	where we have used $\SI{1}{\kelvin} = \SI{1}{\degree\celsius}$ on a relative scale.  This gives us the equation
+	\eqn{Q1}{
+		\SI{4.588e4}{\joule\per\kg\per\kelvin} = 19.05 \,\cc + 7.62 \,\cv.
+	}
+	
+	For the second experiment,
+	\al{
+		\Del \Qc &= \mc \cc \,\Del \Tc
+		= (\mwSI) \cc (\tempw - \rtemp)
+		= (\SI{29.3}{\kg\kelvin}) \,\cc, \\
+		\Del \Qw &= \mw \cw \,\Del \Tw
+		= (\mqSI) (\shw) (\tempw - \wtemp)
+		= -\SI{6.432e4}{\joule}, \\
+		\Del \Qv &= \mv \cv \,\Del \Tv
+		= (\mvSI) \cv (\tempw - \rtemp)
+		= (\SI{5.86}{\kg\kelvin}) \,\cv,
+	}
+	giving us the equation
+	\eqn{Q2}{
+		\SI{6.432e4}{\joule\per\kg\per\kelvin} = 29.3 \,\cc + 5.86 \,\cv.
+	}
+	Dividing \refeq{Q1} by $19.05$ and \refeq{Q2} by $29.3$, we find
+	\aln{
+		\SI{2408}{\joule\per\kg\per\kelvin} &= \cc + 0.400 \,\cv, \tag{1} \\
+		\SI{2195}{\joule\per\kg\per\kelvin} &= \cc + 0.200 \,\cv. \tag{2}
+	}
+	Subtracting \refeq{Q2} from \refeq{Q1}, we find
+	\eq{
+		\SI{213}{\joule\per\kg\per\kelvin} = 0.200 \,\cv
+		\qimplies
+		\ans{ \cv = \SI{1070}{\joule\per\kg\per\kelvin}. }
+	}
+	Substituting this into \refeq{Q2}, we find
+	\eq{
+		\SI{2195}{\joule\per\kg\per\kelvin} = \cc + \SI{213}{\joule\per\kg\per\kelvin}
+		\qimplies
+		\ans{ \cc = \SI{1980}{\joule\per\kg\per\kelvin}. }
+	}
+	\vfix
+}
+
+
+
+\end{document}
