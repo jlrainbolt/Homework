@@ -64,50 +64,66 @@
 	\eqn{nb}{
 		\nb = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} \ddeps.
 	}
-	The critical temperature $\Ts$ satisfies this relation for $\mu = 0$.  Let $\nbs$ be the density at $\Ts = 0$, which can be found by making the substitution $z = \eps \Ts$:
+	The critical temperature $\Ts$ satisfies this relation for $\mu = 0$, and can be found by making the substitution $z = \eps \Ts$:
 	\eq{
-		\nbs = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{\eps / \Ts} - 1} \ddeps
+		\nb = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{\eps / \Ts} - 1} \ddeps
 		= \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3 {\Ts}^3}{2}} \intoi \frac{\sqrt{z}}{e^z - 1} \ddeps.
 	}
 	The integral may be evaluated using the formula~\cite[p.~156]{Landau}
-	\eq{
+	\eqn{formula}{
 		\intoi \frac{z^{x - 1}}{e^z - 1} \ddz = \Gam(x) \zeta(x),
 	}
 	with $x > 1$.  The relevant values are $\Gam(3/2) = \sqrt{\pi} / 2$, and $\zeta(3/2) = 2.612$~\cite[p.~156]{Landau}.  Thus,
 	\eq{
-		\nbs = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3 {\Ts}^3}{2}} (2.612)\frac{\sqrt{\pi}}{2}
+		\nb = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3 {\Ts}^3}{2}} (2.612)\frac{\sqrt{\pi}}{2}
 		= \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3 {\Ts}^3}{2}} (2.612)\frac{\sqrt{\pi}}{2}
 		= \frac{0.9235 \,g}{\hbar^3} \paren{ \frac{m \Ts}{\pi} }^{3/2}.
 	}
 	
-	Using this result, we can rewrite Eq.~\refeq{nb} as
+	Define the function
 	\eq{
-		\nb = \nbs + \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} \ddeps - \nbs
-		= \nbs + \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \paren{ \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} - \frac{\sqrt{\eps}}{e^{\eps / T} - 1} } \ddeps.
+		\nbs(T) = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{\eps / T} - 1} \ddeps
+		= \frac{0.9235 \,g}{\hbar^3} \paren{ \frac{m T}{\pi} }^{3/2},
 	}
-	It follows from $\mu(\Ts) = 0$ that $\mu \ll 1$ for temperatures such that $T - \Ts \ll 1$.  \hl{Then, somehow,}~\cite[p.~161]{Landau}
+	and note that $\nbs(\Ts) = \nb$.  Then we can rewrite Eq.~\refeq{nb} as
 	\eq{
-		\intoi \paren{ \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} - \frac{\sqrt{\eps}}{e^{\eps / T} - 1} } \ddeps
-		= T \mu \intoi \frac{\ddeps}{\sqrt{\eps} (\eps + \abs{\mu})}
-%		= T \mu \brac{  }\oi
-		= -\pi T \sqrt{\abs{\mu}}.
+		\nb = \nbs(T) + \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} \ddeps - \nbs(T)
+		= \nbs(T) + \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \paren{ \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} - \frac{\sqrt{\eps}}{e^{\eps / T} - 1} } \ddeps.
 	}
-	Making this substitution and solving for $\mu$, we find
+	Expanding the integrand for small exponential powers using $e^x \approx 1 + x$, we find
 	\eq{
-		\nb = \nbs - \frac{g T}{\pi \hbar^3} \sqrt{\frac{\abs{\mu} m^3}{2}}
+		\frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} - \frac{\sqrt{\eps}}{e^{\eps / T} - 1}
+		\approx \frac{\sqrt{\eps}}{1 + (\eps - \mu) / T - 1} - \frac{\sqrt{\eps}}{1 + \eps / T - 1}
+		= \frac{T \sqrt{\eps}}{\eps - \mu} - \frac{T}{\sqrt{\eps}}
+		= \frac{T \eps - T (\eps - \mu)}{\sqrt{\eps} (\eps - \mu)}
+		= \frac{T \mu}{\sqrt{\eps} (\eps - \mu)}.
+	}
+	Then the integral is
+	\eq{
+		T \mu \intoi \frac{\ddeps}{\sqrt{\eps} (\eps - \mu)} = T \mu \frac{\pi}{\sqrt{-\mu}}
+		= \pi T \sqrt{-\mu},
+	}
+	so long as $\mu < 0$, which is true for the Bose distribution~\cite[p.~145]{Landau}.  Making this substitution and solving for $\mu$, we find
+	\eq{
+		\nb = \nbs(T) - \frac{g T}{\pi \hbar^3} \sqrt{\frac{-\mu m^3}{2}}
 %		\qimplies
 %		\sqrt{\frac{\abs{\mu} m^3}{2}} = \frac{\pi \hbar^3 (\nbs - \nb)}{g T}
 		\qimplies
-		\abs{\mu} = \frac{2}{m^3} \paren{ \frac{\pi \hbar^3 (\nbs - \nb)}{g T} }^2
-		= \frac{2 \pi^2 \hbar^6 (\nbs - \nb)^2}{m^3 g^2 T^2}.
+		\mu = -\frac{2}{m^3} \paren{ \frac{\pi \hbar^3 [ \nbs(T) - \nb ]}{g T} }^2
+		= -\frac{2 \pi^2 \hbar^6 [ \nbs(T) - \nb ]^2}{m^3 g^2 T^2}.
 	}
-	For the Bose distribution, we know that $\mu < 0$~\cite[p.~145]{Landau}.  This gives us
+	Note that
 	\eq{
-		\mu = -\frac{2 \pi^2 \hbar^6 (\nbs - \nb)^2}{m^3 g^2 T^2}
-		\qimplies
-		\ans{ \mu \propto -\frac{1}{T^2} }
+		\nbs(T) - \nb = \nb \paren{ \frac{\nbs(T)}{\nb} - 1 }
+		= \nb \paren{ \frac{\nbs(T)}{\nbs(\Ts)} - 1 }
+		= \nb \paren{ \frac{T^{3/2}}{{\Ts}^{3/2}} - 1 },
 	}
-	where $T - \Ts \ll 1$.
+	since $\nbs(\Ts) = \nb$.  Then the relationship between chemical potential and temperature is
+	\eq{
+		\mu = -\frac{2 \pi^2 \hbar^6 \nb^2}{m^3 g^2 T^2} \paren{ \frac{T^{3/2}}{{\Ts}^{3/2}} - 1 }^2
+		= \ans{ -\frac{2 \pi^2 \hbar^6 \nb^2}{m^3 g^2} \paren{ \frac{T^{1/2}}{{\Ts}^{3/2}} - \frac{1}{T} }^2. }
+	}
+	Since $T / \Ts \approx 1$, the leading behavior is \ans{$\mu \propto -1 / T^2$.}
 }
 
 %
@@ -116,10 +132,6 @@
 
 \prob{}{
 	Find the discontinuities in the derivatives of thermodynamic quantities at the BEC transition.  Which order is this phase transition?
-}
-
-\sol{
-	
 }
 
 %
@@ -133,112 +145,7 @@
 
 
 \clearpage
-\state{Thermodynamics of radiation}{
-	Compute the following thermodynamic quantities of a radiation field in a 1D and a 2D cavity and compare it with the textbook example of a 3D cavity.
-}
-
-%
-%	5.1
-%
-
-\prob{}{
-	Planck formula and the Rayleigh-Jeans and Wien limits of the distribution over frequencies.
-}
-
-\sol{
-	Planck's formula gives the spectral energy distribution of blackbody radiation.  We start with Planck's distribution, which gives the mean number of photons in quantum state $k$:
-	\eq{
-		\nkb = \frac{1}{e^{\hbar \omgk / T} - 1},
-	}
-	where $\omgk$ is the eigenfrequency for state $k$ in the cavity of volume $V$~\cite[p.~163]{Landau}.
-	
-	The number of states in the interval $(f, f + \ddf)$, where $f = \omg / c$ is the wave number, is in each case~\cite[p.~163]{Landau}
-	\al{
-		\frac{L}{2\pi} \ddf &= \frac{L}{2\pi c} \ddomg
-		\quad (d = 1), &
-		\frac{2\pi A}{(2\pi)^2} f \ddf &= \frac{A}{2 \pi c^2} \omg \ddomg
-		\quad (d = 2).
-	}
-	(In both 1D and 2D, there is only one polarization direction for photons, so we do not need to multiply these expressions by a constant.)
-	
-	In each case, the number of photons in each interval is~\cite[p.~163]{Landau}
-	\al{
-		\ddNomg &= \frac{L}{2\pi c} \frac{\ddomg}{e^{\hbar \omg / T} - 1}
-		\quad (d = 1), &
-		\ddNomg &= \frac{A}{2 \pi c^2} \frac{\omg}{e^{\hbar \omg / T} - 1} \ddomg
-		\quad (d = 2).
-	}
-	Transforming to total energy $\eps = \hbar \omg$, Planck's distribution is
-	\al{
-		\ans{ \ddEomg\ }&\ans{= \frac{\hbar L}{2\pi c} \frac{\omg}{e^{\hbar \omg / T} - 1} \ddomg }
-		\quad (d = 1), &
-		\ans{ \ddEomg\ }&\ans{= \frac{\hbar A}{2 \pi c^2} \frac{\omg^2}{e^{\hbar \omg / T} - 1} \ddomg }
-		\quad (d = 2).
-	}
-	The 3D equivalent is~\cite[p.~163]{Landau}
-	\eq{
-		\ddEomg = \frac{\hbar V}{\pi^2 c^3} \frac{\omg^3}{e^{\hbar \omg / T} - 1} \ddomg
-		\quad (d = 3).
-	}
-	Comparing the formulae, it appears that
-	\eq{
-		\ddEomg = \frac{\hbar L^d}{\pi^{\min(d - 1, 1)} c^d} \frac{\omg^d}{e^{\hbar \omg / T} - 1} \ddomg
-	}
-	where $d$ is the number of spatial dimensions and $A \equiv L^2$, $V \equiv L^3$.
-	
-	The Rayleigh-Jeans limit is $\hbar \omg \ll T$.  Letting $u = \hbar \omg / T$ and expanding about $u = 0$, we obtain
-	\al{
-		(d = 1) \quad
-		\ddEomg &= \frac{L T}{2\pi c} \frac{u}{e^u - 1} \ddomg
-		\approx \frac{L T}{2\pi c} \curly{ \limuo\paren{ \frac{u}{e^u - 1} } + u \brac{ \pdv{u}(\frac{u}{e^u - 1}) }\uo + \frac{u^2}{2} \brac{ \pdv[2]{u}(\frac{u}{e^u - 1}) }\uo } \ddomg \\
-		&= \frac{L T}{2\pi c} \curly{ 1 + u \brac{ \frac{1}{e^u - 1} - \frac{e^u u}{(e^u - 1)^2} }\uo + \frac{u^2}{2} \brac{ \frac{2 e^u u}{(e^u - 1)^3} - \frac{(2 + u) e^u}{(e^u - 1)^2} }\uo } \ddomg \\
-		&= \frac{L T}{2\pi c} \paren{ 1 - \frac{u}{2} + \frac{u^2}{12} } \ddomg
-		= \ans{ \frac{L}{2\pi c} \paren{ T - \frac{\hbar \omg}{2} + \frac{\hbar^2 \omg^2}{12 T} } \ddomg, }
-		\\[2ex]
-		(d = 2) \quad
-		\ddEomg &= \frac{A T^2}{2 \pi \hbar c^2} \frac{u^2}{e^u - 1} \ddomg
-	}
-}
-
-%
-%	5.2
-%
-
-\prob{}{
-	Free energy and the Stefan-Boltzmann constant.
-}
-
-%
-%	5.3
-%
-
-\prob{}{
-	The relation between the free energy and energy (Boltzmann law).
-}
-
-%
-%	5.4
-%
-
-\prob{}{
-	Specific heat.
-}
-
-%
-%	5.6
-%
-
-\prob{}{
-	Pressure.
-}
-
-%
-%	5.7
-%
-
-\prob{}{
-	The total number of photons in the cavity.
-}
+\input{Problem5}
 
 
 

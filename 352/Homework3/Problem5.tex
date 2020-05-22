@@ -1,0 +1,321 @@
+\state{Thermodynamics of radiation}{
+	Compute the following thermodynamic quantities of a radiation field in a 1D and a 2D cavity and compare it with the textbook example of a 3D cavity.
+}
+
+%
+%	5.1
+%
+
+\prob{}{
+	Planck formula and the Rayleigh-Jeans and Wien limits of the distribution over frequencies.
+}
+
+\sol{
+	Planck's formula gives the spectral energy distribution of blackbody radiation.  We start with Planck's distribution, which gives the mean number of photons in quantum state $k$:
+	\eq{
+		\nkb = \frac{1}{e^{\hbar \omgk / T} - 1},
+	}
+	where $\omgk$ is the eigenfrequency for state $k$ in the cavity of volume $V$~\cite[p.~163]{Landau}.
+	
+	The number of states in the interval $(f, f + \ddf)$, where $f = \omg / c$ is the wave number, is in each case~\cite[p.~163]{Landau}
+	\aln{ \label{omg}
+		\frac{L}{2\pi} \ddf &= \frac{L}{2\pi c} \ddomg
+		\quad (d = 1), &
+		\frac{2\pi A}{(2\pi)^2} f \ddf &= \frac{A}{2 \pi c^2} \omg \ddomg
+		\quad (d = 2).
+	}
+	(In both 1D and 2D, there is only one polarization direction for photons, so we do not need to multiply these expressions by a constant.)
+	
+	In each case, the number of photons in each interval is~\cite[p.~163]{Landau}
+	\aln{ \label{Nomg}
+		\ddNomg &= \frac{L}{2\pi c} \frac{\ddomg}{e^{\hbar \omg / T} - 1}
+		\quad (d = 1), &
+		\ddNomg &= \frac{A}{2 \pi c^2} \frac{\omg}{e^{\hbar \omg / T} - 1} \ddomg
+		\quad (d = 2).
+	}
+	Transforming to total energy $\eps = \hbar \omg$, Planck's distribution is
+	\al{
+		\ans{ \ddEomg\ }&\ans{= \frac{\hbar L}{2\pi c} \frac{\omg}{e^{\hbar \omg / T} - 1} \ddomg }
+		\quad (d = 1), &
+		\ans{ \ddEomg\ }&\ans{= \frac{\hbar A}{2 \pi c^2} \frac{\omg^2}{e^{\hbar \omg / T} - 1} \ddomg }
+		\quad (d = 2).
+	}
+	The 3D equivalent is~\cite[p.~163]{Landau}
+	\eq{
+		\ddEomg = \frac{\hbar V}{\pi^2 c^3} \frac{\omg^3}{e^{\hbar \omg / T} - 1} \ddomg
+		\quad (d = 3).
+	}
+	Comparing the formulae, it appears that
+	\eq{
+		\ans{ \ddEomg \propto \frac{\hbar L^d}{c^d} \frac{\omg^d}{e^{\hbar \omg / T} - 1} \ddomg, }
+	}
+	where $d$ is the number of spatial dimensions and $A \equiv L^2$, $V \equiv L^3$.
+	
+	The Rayleigh-Jeans limit is $\hbar \omg \ll T$.  Letting $u = \hbar \omg / T$ and expanding about $u = 0$, we obtain
+	\al{
+		(d = 1) \quad
+		\ddEomg &= \frac{L T}{2\pi c} \frac{u}{e^u - 1} \ddomg
+		\approx \frac{L T}{2\pi c} \curly{ \limuo \paren{ \frac{u}{e^u - 1} } + u \brac{ \pdv{u}(\frac{u}{e^u - 1}) }\uo } \ddomg \\
+		&= \frac{L T}{2\pi c} \curly{ 1 + u \brac{ \frac{1}{e^u - 1} - \frac{e^u u}{(e^u - 1)^2} }\uo } \ddomg
+		= \frac{L T}{2\pi c} \paren{ 1 - \frac{u}{2} } \ddomg
+		= \ans{ \frac{L}{2\pi c} \paren{ T - \frac{\hbar \omg}{2} } \ddomg, }
+		\\[2ex]
+		(d = 2) \quad
+		\ddEomg &= \frac{A T^2}{2 \pi \hbar c^2} \frac{u^2}{e^u - 1} \ddomg
+		\approx \frac{A T^2}{2 \pi \hbar c^2}  \curly{ \limuo \paren{ \frac{u^2}{e^u - 1} } + u \brac{ \pdv{u}(\frac{u^2}{e^u - 1}) }\uo } \ddomg \\
+		&= \frac{A T^2}{2 \pi \hbar c^2}  \curly{ u \brac{ \frac{2 u}{e^u - 1} - \frac{e^u u^2}{(e^u - 1)^2} }\uo } \ddomg
+		= \frac{A T^2}{2 \pi \hbar c^2} u
+		= \ans{ \frac{A T}{2 \pi c^2} \omg \ddomg. }
+	}
+	The 3D equivalent is~\cite[p.~163]{Landau}
+	\eq{
+		\ddEomg = \frac{V T}{\pi^2 c^3} \omg^2 \ddomg.
+	}
+	Comparing the leading terms, the Rayleigh-Jeans limit seems to follow
+	\eq{
+		\ans{ \ddEomg \propto \frac{L^d T}{2 c^d} \omg^{d - 1} \ddomg. }
+	}
+	
+	The Wien limit is $\hbar \omg \gg T$.  In this limit, $e^{\hbar \omg / T} - 1 \approx e^{\hbar \omg / T}$.  For each case, then,
+	\al{
+		\ans{ \ddEomg\ }&\ans{= \frac{\hbar L}{2\pi c} \omg e^{-\hbar \omg / T} \ddomg }
+		\quad (d = 1), &
+		\ans{ \ddEomg\ }&\ans{= \frac{\hbar A}{2 \pi c^2} \omg^2 e^{-\hbar \omg / T} \ddomg }
+		\quad (d = 2).
+	}
+	The 3D equivalent is~\cite[p.~163]{Landau}
+	\eq{
+		\ddEomg = \frac{\hbar V}{\pi^2 c^3} \omg^3 e^{-\hbar \omg / T} \ddomg,
+	}
+	which suggests
+	\eq{
+		\ans{ \ddEomg \propto \frac{\hbar L^d}{c^d} \omg^d e^{-\hbar \omg / T} \ddomg }
+	}
+	in the Wien limit.
+}
+
+%
+%	5.2
+%
+
+\prob{}{
+	Free energy and the Stefan-Boltzmann constant.
+}
+
+\sol{
+	For a blackbody, $\mu = 0$~\cite[p.~163]{Landau}.  Since $F = N \mu + \Omg$, we have $F = \Omg$~\cite[p.~164]{Landau}.  For a Bose gas~\cite[p.~146]{Landau},
+	\eq{
+		\Omg = T \sumk \ln(1 - e^{(\mu - \epsk) / T})
+		= T \sumk \ln(1 - e^{-\hbar \omgk / T}),
+	}
+	since $\epsk = \hbar \omgk$.  By a similar procedure as in Prob.~{3.2}, we can replace the sum by an integral via Eq.~\refeq{omg}, and make the substitution $u = \hbar \omg / T$~\cite[p.~164]{Landau}.  So
+	\al{
+		(d = 1) \quad
+		F &= \frac{L T}{2\pi c} \intoi \ln(1 - e^{-\hbar \omg / T}) \ddomg
+		= \frac{L T^2}{2\pi \hbar c} \intoi \ln(1 - e^{-u}) \ddu \\
+		&= \frac{L T^2}{2\pi \hbar c} \paren{ \brac{ u \ln(1 - e^{-x}) }\oi - \intoi \frac{u}{e^u - 1} \ddu }
+		= -\frac{L T^2}{2\pi \hbar c} \Gam(2) \zeta(2)
+		= -\frac{L T^2}{2\pi \hbar c} \frac{\pi^2}{6}
+		= \ans{ -\frac{\pi L T^2}{12 \hbar c}, }\\[2ex]
+		(d = 2) \quad
+		F &= \frac{A T}{2 \pi c^2} \intoi \omg \ln(1 - e^{-\hbar \omg / T}) \ddomg
+		= \frac{A T^3}{2 \pi \hbar^2 c^2} \intoi u \ln(1 - e^{-u}) \ddu \\
+		&= \frac{A T^3}{2 \pi \hbar^2 c^2} \paren{ \brac{ \frac{u^2}{2} \ln(1 - e^{-u}) }\oi - \frac{1}{2} \intoi \frac{u^2}{e^u - 1} \ddu }
+		= -\frac{A T^3}{2 \pi \hbar^2 c^2} \Gam(3) \zeta(3)
+		= \ans{ -\frac{0.601 \,A T^3}{\pi \hbar^2 c^2}, }
+	}
+	where we have used Eq.~\refeq{formula}.  The 3D equivalent is~\cite[p.~165]{Landau}
+	\eq{
+		F = -\frac{\pi^2 V T^4}{45 \hbar^3 c^3},
+	}
+	which suggests
+	\eq{
+		\ans{ F \propto \frac{L^d T^{d + 1}}{\hbar^d c^d}. }
+	}
+	
+	For the Stefan-Boltzmann constant $\sig$, the Stefan-Boltzmann law in three dimensions is $\Js = \sig T^4$, where $\Js$ is the energy flux per unit area per unit time.  This may be modeled by photons escaping through a small hole in the wall of the cavity.  This escaping energy flux is given by~\cite[p.~169]{Kardar}
+	\eq{
+		\Js = \evcp \frac{E}{V},
+	}
+	where $E$ is the total energy of the gas and $\evcp$ is the average component of the velocity perpendicular to the hole.  In the 3D case, the cavity can be modeled as a sphere of volume $V$ with a hole in the top at $(x, y, z) = (0, 0, R)$, where $R$ is the sphere's radius.  Then $\cperp = c \cos\tht$ in spherical polar coordinates.  Only photons with a positive $\cperp$ can escape, so we integrate only over the upper hemispherical surface, and normalize by the angular area of the entire spherical surface, which is $4\pi$~\cite[p.~169]{Kardar}:
+	\al{
+		\evcp &= \frac{1}{4\pi} \int_0^{2\pi} \dd{\phi} \int_0^{\pi / 2} c \cos\tht \sin \tht \dd{\tht}
+		= \frac{1}{4\pi} (2\pi) \frac{1}{2}
+		= \frac{c}{4}
+		\quad (d = 3).
+	}
+	In the 2D case, we model the cavity as a circle of area $A$ centered at the origin, with a hole in the top of the boundary at $(x, y) = (0, R)$.  Then $\cperp = c \sin\tht$ in plane polar coordinates.  We integrate only over the upper semicircular boundary and normalize by $2\pi$:
+	\al{
+		\evcp &= \frac{c}{2\pi} \int_0^\pi \sin\tht \dd{\tht}
+		= \frac{c}{\pi}
+		\quad (d = 2).
+	}
+	In the 1D case, we imagine a system on a circle of circumference $L$ with a hole at the origin.  In this case, photons moving in either direction can access the hole from either side.  Thus, $\cperp = 1$ for $d = 1$.
+	
+	The total energy in each case is given by Eqs.~(\ref{E1d}--\ref{E2d}).  Using these results,
+	\al{
+		\Js &= \frac{c}{L} \frac{\pi L T^2}{12 \hbar}
+		= \frac{\pi T^2}{12 \hbar}
+		\equiv \sigma T^2
+		\quad (d = 1), &
+		\Js &= \frac{c}{\pi A} \frac{1.202 \,A T^3}{\pi \hbar^2 c^2}
+		= \frac{1.202 \,T^3}{\pi^2 \hbar^2 c}
+		\equiv \sigma T^3
+		\quad (d = 2).
+	}
+	Thus, if $T$ is measured in degrees,
+	\al{
+		\ans{ \sigma\ }&\ans{= \frac{\pi k^2}{12 \hbar} }
+		\quad (d = 1), &
+		\ans{ \sigma\ }&\ans{= \frac{1.202 k^3}{\pi^2 \hbar^2 c} }
+		\quad (d = 2),
+	}
+	where $k$ is Boltzmann's constant.  In 3D~\cite[p.~165]{Landau},
+	\eq{
+		\sigma = \frac{\pi^2 k^4}{60 \hbar^3 c^2},
+	}
+	which suggests
+	\eq{
+		\ans{ \sigma \propto \frac{k^{d + 1}}{\hbar^d c^{d - 1}}. }
+	}
+	\vfix
+}
+
+%
+%	5.3
+%
+
+\prob{}{
+	The relation between the free energy and energy (Boltzmann law).
+}
+
+\sol{
+	The energy of the gas can be found from the free energy by $E = F + T S$, where $S = -\pdv*{F}{T}$ is the entropy~\cite[p.~165]{Landau}.  For each case, the entropy is
+	\al{
+		S &= -\pdv{T}(-\frac{\pi L T^2}{12 \hbar c})
+		= \frac{\pi L T}{6 \hbar c}
+		\quad (d = 1), &
+		S &= -\pdv{T}(-\frac{0.601 \,A T^3}{\pi \hbar^2 c^2})
+		= \frac{1.803 \,A T^2}{\pi \hbar^2 c^2}
+		\quad (d = 2).
+	}
+	Then the relationship between free energy and energy are
+	\aln{
+		(d = 1) \quad
+		E &= -\frac{\pi L T^2}{12 \hbar c} + \frac{\pi L T^2}{6 \hbar c}
+		= \frac{\pi L T^2}{12 \hbar c}
+		= \ans{ -F, } \label{E1d} \\[2ex]
+		(d = 2) \quad
+		E &= -\frac{0.601 \,A T^3}{\pi \hbar^2 c^2} + \frac{1.803 \,A T^3}{\pi \hbar^2 c^2}
+		= \frac{1.202 \,A T^3}{\pi \hbar^2 c^2}
+		= \ans{ -2 F. } \label{E2d}
+	}
+	In 3D, the relationship is $E = -3 F$~\cite[p.~165]{Landau}.  So the relationship appears to be \ans{$E = -d \, F$.}
+}
+
+%
+%	5.4
+%
+
+\prob{}{
+	Specific heat.
+}
+
+\sol{
+	The specific heat is given by $\Cv = (\pdv*{E}{T})_V$~\cite[p.~165]{Landau}.  Then
+	\al{
+		E &= \pdv{T}(\frac{\pi L T^2}{12 \hbar c})
+		= \ans{ \frac{\pi L T}{6 \hbar c} }
+		\quad (d = 1), &
+		S &= \pdv{T}(\frac{1.202 \,A T^3}{\pi \hbar^2 c^2})
+		= \ans{ \frac{3.606 \,A T^2}{\pi \hbar^2 c^2} }
+		\quad (d = 2).
+	}
+	In 3D, it is~\cite[p.~165]{Landau}
+	\eq{
+		\Cv = \frac{16 \sig V T^3}{c}
+		= \frac{4 \pi^2 V T^3}{15 \hbar^3 c^3},
+	}
+	which suggests
+	\eq{
+		\ans{ \Cv \propto \frac{\sigma L^d T^d}{c}
+		\propto \frac{L^d T^d}{\hbar^d c^d}. }
+	}
+	\vfix
+}
+
+%
+%	5.6
+%
+
+\prob{}{
+	Pressure.
+}
+
+\sol{
+	The pressure can be found by $P = -(\pdv*{F}{V})_T$~\cite[p.~165]{Landau}:
+	\al{
+		S &= -\pdv{L}(-\frac{\pi L T^2}{12 \hbar c})
+		= \ans{ \frac{\pi T^2}{12 \hbar c} }
+		\quad (d = 1), &
+		S &= -\pdv{A}(-\frac{0.601 \,A T^3}{\pi \hbar^2 c^2})
+		= \ans{ \frac{0.601 \,T^3}{\pi \hbar^2 c^2} }
+		\quad (d = 2).
+	}
+	In 3D, it is~\cite[p.~165]{Landau}
+	\eq{
+		P = \frac{4 \sig T^4}{3 c}
+		= \frac{\pi^2 T^4}{45 \hbar^3 c^3},
+	}
+	which suggests
+	\eq{
+		\ans{ P \propto \frac{\sigma T^{d + 1}}{c}
+		\propto \frac{T^{d + 1}}{\hbar^d c^d}. }
+	}
+	\vfix
+}
+
+%
+%	5.7
+%
+
+\prob{}{
+	The total number of photons in the cavity.
+}
+
+\sol{
+	The total number of photons may be found by integrating Eq.~\refeq{Nomg} from $\omg = 0$ to $\infty$.  Changing variables to $u = \hbar \omg / T$, we find
+	\eq{
+		(d = 1) \quad
+		N = \frac{L}{2\pi c} \intoi \frac{\ddomg}{e^{\hbar \omg / T} - 1}
+		= \frac{L T}{2\pi \hbar c} \intoi \frac{\ddu}{e^u - 1}
+		= \frac{L T}{2\pi \hbar c} \bigg[ \ln(1 - e^u) - u \bigg]\oi
+		\to \infty,
+	}
+	This integral's diverging suggests a 1D gas is not physical.  However, in the high-frequency limit, equivalent to the high-energy limit $\hbar \omg \gg T$, the integrand approaches $e^{-u}$:
+	\eq{
+		(d = 1) \quad
+		\limui N = \frac{L T}{2\pi \hbar c} \intoi \frac{\ddu}{e^u}
+		= \frac{L T}{2\pi \hbar c} \bigg[ -e^{-u} \bigg]\oi
+		= \ans{ \frac{L T}{2\pi \hbar c}. }
+	}
+	In the 2D case, the integral converges.  Making the same change of variable and using Eq.~\refeq{integral},
+	\eq{
+		(d = 2) \quad
+		N = \frac{A}{2 \pi c^2} \intoi \frac{\omg}{e^{\hbar \omg / T} - 1} \ddomg
+		= \frac{A T^2}{2 \pi \hbar^2 c^2} \intoi \frac{u}{e^u - 1} \ddomg
+		= \frac{A T^2}{2 \pi \hbar^2 c^2} \Gam(2) \zeta(2)
+		= \frac{A T^2}{2 \pi \hbar^2 c^2} \frac{\pi^2}{6}
+		= \ans{ \frac{\pi A T^2}{12 \hbar^2 c^2}. }
+	}
+	The 3D equivalent is
+	\eq{
+		N = \frac{2 \,\zeta(3) \,V T^3}{\pi^2 \hbar^2 c^3}
+		= \frac{2.404 \,V T^3}{\pi^2 \hbar^2 c^3},
+	}
+	which suggests
+	\eq{
+		\ans{ N \propto \frac{L^d T^d}{\hbar^d c^d}, }
+	}
+	where this is an asymptotic limit in the 1D case.
+}
