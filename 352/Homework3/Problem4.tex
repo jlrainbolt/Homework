@@ -1,0 +1,221 @@
+\state{Degenerate Bose gas}{\hfix}
+
+%
+%	4.1
+%
+
+\prob{}{
+	The chemical potential of the degenerate Bose gas vanishes below $\Ts$ (the critical temperature of the BEC).  Find its temperature dependence at temperatures slightly above $\Ts$.
+}
+
+\sol{
+	In three dimensions, the energy distribution of a Bose gas is~\cite[p.~149]{Landau}
+	\eqn{ddNeps}{
+		\ddNeps = \frac{g V}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} \ddeps.
+	}
+	Integrating over all energies, we find the total number of molecules~\cite[p.~149]{Landau}.  This gives an expression relating the chemical potential $\mu$ and the density $\nb$~\cite[p.~159]{Landau}:
+	\eqn{nb}{
+		\nb = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} \ddeps.
+	}
+	The critical temperature $\Ts$ satisfies this relation for $\mu = 0$, and can be found by making the substitution $z = \eps / T$:
+	\eq{
+		\nb = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{\eps / T} - 1} \ddeps
+		= \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3 T^3}{2}} \intoi \frac{\sqrt{z}}{e^z - 1} \ddeps.
+	}
+	The integral may be evaluated using the formula~\cite[p.~156]{Landau}
+	\eqn{formula}{
+		\intoi \frac{z^{x - 1}}{e^z - 1} \ddz = \Gam(x) \zeta(x),
+	}
+	with $x > 1$.  The relevant values are $\Gam(3/2) = \sqrt{\pi} / 2$, and $\zeta(3/2) = 2.612$~\cite[p.~156]{Landau}.  Thus,
+	\eq{
+		\nb = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3 T^3}{2}} (2.612)\frac{\sqrt{\pi}}{2}
+		= \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3 T^3}{2}} (2.612)\frac{\sqrt{\pi}}{2}
+		= \frac{0.9235 \,g}{\hbar^3} \paren{ \frac{m T}{\pi} }^{3/2},
+	}
+	and
+	\eq{
+		\paren{ \frac{m \Ts}{\pi} }^{3/2} = \frac{\nb \hbar^3}{0.9235 \,g}
+		\qimplies
+		\Ts = \frac{\pi}{m} \paren{ \frac{\nb \hbar^3}{0.9235 \,g} }^{2/3}
+		= \frac{1.054\, \pi}{m \hbar^2} \paren{ \frac{\nb}{g} }^{2/3}.
+	}
+	
+	Define the function
+	\eq{
+		\nbs(T) = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{\eps / T} - 1} \ddeps
+		= \frac{0.9235 \,g}{\hbar^3} \paren{ \frac{m T}{\pi} }^{3/2},
+	}
+	and note that $\nbs(\Ts) = \nb$.  Then we can rewrite Eq.~\refeq{nb} as
+	\eq{
+		\nb = \nbs(T) + \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} \ddeps - \nbs(T)
+		= \nbs(T) + \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \paren{ \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} - \frac{\sqrt{\eps}}{e^{\eps / T} - 1} } \ddeps.
+	}
+	Expanding the integrand for small exponential powers using $e^x \approx 1 + x$, we find
+	\eq{
+		\frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} - \frac{\sqrt{\eps}}{e^{\eps / T} - 1}
+		\approx \frac{\sqrt{\eps}}{1 + (\eps - \mu) / T - 1} - \frac{\sqrt{\eps}}{1 + \eps / T - 1}
+		= \frac{T \sqrt{\eps}}{\eps - \mu} - \frac{T}{\sqrt{\eps}}
+		= \frac{T \eps - T (\eps - \mu)}{\sqrt{\eps} (\eps - \mu)}
+		= \frac{T \mu}{\sqrt{\eps} (\eps - \mu)}.
+	}
+	Then the integral is
+	\eq{
+		T \mu \intoi \frac{\ddeps}{\sqrt{\eps} (\eps - \mu)} = T \mu \frac{\pi}{\sqrt{-\mu}}
+		= \pi T \sqrt{-\mu},
+	}
+	so long as $\mu < 0$, which is true for the Bose distribution~\cite[p.~145]{Landau}.  Making this substitution and solving for $\mu$, we find
+	\eq{
+		\nb = \nbs(T) - \frac{g T}{\pi \hbar^3} \sqrt{\frac{-\mu m^3}{2}}
+%		\qimplies
+%		\sqrt{\frac{\abs{\mu} m^3}{2}} = \frac{\pi \hbar^3 (\nbs - \nb)}{g T}
+		\qimplies
+		\mu = -\frac{2}{m^3} \paren{ \frac{\pi \hbar^3 [ \nbs(T) - \nb ]}{g T} }^2
+		= -\frac{2 \pi^2 \hbar^6 [ \nbs(T) - \nb ]^2}{m^3 g^2 T^2}.
+	}
+	Note that
+	\eq{
+		\nbs(T) - \nb = \nb \paren{ \frac{\nbs(T)}{\nb} - 1 }
+		= \nb \paren{ \frac{\nbs(T)}{\nbs(\Ts)} - 1 }
+		= \nb \paren{ \frac{T^{3/2}}{{\Ts}^{3/2}} - 1 },
+	}
+	since $\nbs(\Ts) = \nb$.  Then the relationship between chemical potential and temperature is
+	\eqn{mu}{
+		\mu = -\frac{2 \pi^2 \hbar^6 \nb^2}{m^3 g^2 T^2} \paren{ \frac{T^{3/2}}{{\Ts}^{3/2}} - 1 }^2
+		= \ans{ -\frac{2 \pi^2 \hbar^6 \nb^2}{m^3 g^2} \paren{ \frac{T^{1/2}}{{\Ts}^{3/2}} - \frac{1}{T} }^2. }
+	}
+	Since $T / \Ts \approx 1$, the leading behavior is \ans{$\mu \sim -1 / T^2$.}
+}
+
+%
+%	4.2
+%
+
+\prob{}{
+	Find the discontinuities in the derivatives of thermodynamic quantities (energy, entropy, thermodynamic potential, and specific heat) at the BEC transition.  Which order is this phase transition?
+}
+
+\sol{
+	Using Eq.~\refeq{ddNeps}, the energy of the Bose gas is
+	\eq{
+		E = \intoi \eps \ddNeps
+		= \frac{g V}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\eps^{3/2}}{e^{(\eps - \mu) / T} - 1} \ddeps.
+	}
+	
+	The thermodynamic potential for a Bose gas is~\cite[p.~146]{Landau}
+	\eq{
+		\Omg = T \sumk \ln(1 - e^{(\mu - \epsk) / T}).
+	}
+	Transforming the sum to an integral as in Prob.~{3.2}, we have~\cite[p.~149]{Landau}
+	\al{
+		\Omg &= \frac{g V T}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \sqrt{\eps} \ln(1 - e^{(\mu - \eps) / T}) \ddeps \\
+		&= \frac{g V T}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \paren{ \brac{ \frac{2}{3} \eps^{3/2} \ln(1 - e^{(\mu - \epsk) / T}) }\oi - \frac{2}{3 T} \intoi \frac{\eps^{3/2}}{e^{(\eps - \mu) / T} - 1} \ddeps } \\
+	&= -\frac{3 g V T}{\pi^2 \hbar^3} \paren{ \frac{m}{2} }^{3/2} \intoi \frac{\eps^{3/2}}{e^{(\eps - \mu) / T} - 1} \ddeps
+	= -\frac{2}{3} E.
+	}
+	
+	Note that $N = -(\pdv*{\Omg}{\mu})_{T, V}$~\cite[p.~24]{Landau}.  Then~\cite[p.~161]{Landau}
+	\eq{
+		\nb = -\frac{1}{V} \pdv{\Omg}{\mu}
+		= \frac{2}{3 V} \pdv{E}{\mu}
+		\approx \nbs,
+	}
+	since the contribution to $\nb$ is small for $\mu \ll 1$.  This gives us
+	\al{
+		\Omg &= \Omgs - \nbs V \mu, &
+		E &= \Es + \frac{3}{2} \nbs V \mu,
+	}
+	where $\Omgs$ and $\Es$ are the thermodynamic potential and the energy at $\mu = 0$.  Using Eq.~\refeq{formula},
+	\al{
+		\Es &= \frac{g V}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\eps^{3/2}}{e^{\eps / T} - 1} \ddeps
+		= \frac{g V}{\pi^2 \hbar^3} \sqrt{\frac{m^3 T^5}{2}} \intoi \frac{z^{3/2}}{e^z - 1} \ddz
+		= \frac{g V}{\pi^2 \hbar^3} \sqrt{\frac{m^3 T^5}{2}} \Gam(5/2) \zeta(5/2) \\
+		&= \frac{0.711 \,g V}{\hbar^3} \sqrt{\frac{m^3 T^5}{\pi^3}}, \\[2ex]
+		\Omgs &= -\frac{0.474 \,g V}{\hbar^3} \sqrt{\frac{m^3 T^5}{\pi^3}},
+	}
+	both of which are continuously differentiable in $T$.  So the discontinuities in the $T$ derivatives of $\Omg$ and $E$ stem from $\mu$, given by Eq.~\refeq{mu}.  Since
+	\eq{
+		\pdv{\mu}{T} \sim -\pdv{T}(\frac{1}{T^2})
+		\propto -\frac{1}{T^3},
+	}
+	we conclude that
+	\ans{
+	\al{
+		\pdv{\Omg}{T} &\sim \frac{1}{T^3}, &
+		\pdv{E}{T} &\sim -\frac{1}{T^3},
+	}
+	which both have infinite discontinuities at $T = 0$.  In particular,
+	\al{
+		\limTopm \pdv{\Omg}{T} &\sim \pm \infty, &
+		\limTopm \pdv{E}{T} &\sim \mp \infty.
+	}
+	}
+	
+	Entropy can be found by $S = -(\pdv*{\Omg}{T})_{V, \mu}$~\cite[p.~150]{Landau}, and the specific heat is given by $\Cv = (\pdv*{E}{T})_V$~\cite[p.~165]{Landau}.  Since
+	\al{
+		S &\sim -\frac{1}{T^3}, &
+		\Cv &\sim -\frac{1}{T^3},
+	}
+	then
+	\ans{
+	\al{
+		\pdv{S}{T} &\sim -\pdv{T}(\frac{1}{T^3})
+		\propto -\frac{1}{T^4}, &
+		\pdv{\Cv}{T} &\sim -\frac{1}{T^4},
+	}
+	which both have infinite discontinuities at $T = 0$.  Specifically,
+	\al{
+		\limTopm \pdv{S}{T} &\sim -\infty, &
+		\limTopm \pdv{\Cv}{T} &\sim -\infty.
+	}
+	}
+	\vfix
+}
+
+%
+%	4.3
+%
+
+\prob{}{
+	Can the ideal Bose gas condense in spatial dimensions 1 and 2?  Discuss what happens in these cases. 
+}
+
+\sol{
+	The ideal Bose gas can condense if the equivalent of Eq.~\refeq{nb} can be solved with $\mu = 0$ to obtain an expression for $\Ts$.  The number of quantum states in the interval $\ddp$ is the same as for a Fermi gas, and so is given by Eq.~\refeq{Nstates}~\cite[p.~148]{Landau}.  Transforming this to the number of states in the interval $\ddeps$ by Eq.~\refeq{transform}, we obtain
+	\aln{ \label{thing4}
+		\frac{g L}{2\pi \hbar} \sqrt{\frac{m}{2}} \frac{1}{\sqrt{\eps}} \ddeps
+		&\quad (d = 1), &
+		\frac{m g A}{2\pi \hbar^2} \ddeps
+		&\quad (d = 2), &
+		\frac{g V}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \eps^{3/2} \ddeps
+		&\quad (d = 3).
+	}
+	Applying the expression for the total number of particles in a Bose gas~\cite[p.~146]{Landau},
+	\eq{
+		N = \sumk \frac{1}{e^{(\epsk - \mu) / T} - 1},
+	}
+	replacing the sum by an integral over $p \in (0, \infty)$, and transforming coordinates to $z = \eps / \Ts$ as in Prob.~{4.1}, we obtain
+	\al{
+		(d = 1) \quad
+		\nb &= \frac{g L}{2\pi \hbar} \sqrt{\frac{m}{2}} \intoi \frac{\ddeps}{\sqrt{\eps} (e^{\eps / \Ts} - 1)}
+		= \frac{g L}{2\pi \hbar} \sqrt{\frac{m \Ts}{2}} \intoi \frac{\ddz}{\sqrt{z} (e^z - 1)}
+		\to \infty, \\[2ex]
+		(d = 2) \quad
+		\nb &= \frac{m g A}{2\pi \hbar^2} \intoi \frac{\ddeps}{e^{\eps / \Ts} - 1}
+		= \frac{m g A \Ts}{2\pi \hbar^2} \intoi \frac{\ddz}{e^z - 1}
+		\to \infty.
+	}
+	Both integrals diverge, making it impossible to solve for $\Ts$ in either case.
+	
+	However, these integrals will converge in the limit that $z \to \infty$, which is equivalent to $T \to 0$.  In this limit,
+		\al{
+		(d = 1) \quad
+		\limTo \nb &= \frac{g L}{2\pi \hbar} \sqrt{\frac{m \Ts}{2}} \intoi \frac{\ddz}{e^z \sqrt{z}}
+		= \frac{g L}{2 \hbar} \sqrt{\frac{m \Ts}{2 \pi}}, \\[2ex]
+		(d = 2) \quad
+		\limTo \nb &= \frac{m g A \Ts}{2 \pi \hbar^3} \intoi \frac{\ddz}{e^z}
+		= \frac{m g A \Ts}{2 \pi \hbar^3}.
+	}
+	Thus, we conclude that, \ans{it is not possible for the 1D and 2D ideal Bose gases to condense above $T = 0$.}
+	
+	Referring back to Eq.~\refeq{thing4}, for $d = 1$ the number of states in the interval $\ddeps$ diverges as $\eps \to 0$.  For $d = 2$, the number of states is independent of $\eps$.  For $d = 3$, the number of states approaches 0 as $\eps \to 0$.  It would seem that, in 1D and in 2D, there are many states with very low energy that may be occupied instead of $\eps = 0$, while this is not the case in 3D.  Since the particles are therefore not ``forced'' into the ground state at nonzero temperature, the gas will not condense.
+}
