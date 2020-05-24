@@ -50,7 +50,7 @@
 		\nb = \nbs(T) + \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} \ddeps - \nbs(T)
 		= \nbs(T) + \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \paren{ \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} - \frac{\sqrt{\eps}}{e^{\eps / T} - 1} } \ddeps.
 	}
-	Expanding the integrand for small exponential powers using $e^x \approx 1 + x$, we find
+	Expanding the integrand for small exponential powers using $e^x \approx 1 + x$, which is vaild for $T - \Ts \ll 1$, we find
 	\eq{
 		\frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} - 1} - \frac{\sqrt{\eps}}{e^{\eps / T} - 1}
 		\approx \frac{\sqrt{\eps}}{1 + (\eps - \mu) / T - 1} - \frac{\sqrt{\eps}}{1 + \eps / T - 1}
@@ -137,17 +137,17 @@
 		\pdv{\mu}{T} \sim -\pdv{T}(\frac{1}{T^2})
 		\propto -\frac{1}{T^3},
 	}
-	we conclude that
+	where $T$ is, by definition, slightly larger than $\Ts$, we conclude that
 	\ans{
 	\al{
-		\pdv{\Omg}{T} &\sim \frac{1}{T^3}, &
-		\pdv{E}{T} &\sim -\frac{1}{T^3},
+		\pdv{\Omg}{T} &\sim \frac{1}{(T - \Ts)^3}, &
+		\pdv{E}{T} &\sim -\frac{1}{(T - \Ts)^3},
 	}
-	which both have infinite discontinuities at $T = 0$.  In particular,
-	\al{
-		\limTopm \pdv{\Omg}{T} &\sim \pm \infty, &
-		\limTopm \pdv{E}{T} &\sim \mp \infty.
-	}
+	which both have infinite discontinuities at $T = \Ts$. % In particular,
+%	\al{
+%		\limTopm \pdv{\Omg}{T} &\sim \pm \infty, &
+%		\limTopm \pdv{E}{T} &\sim \mp \infty.
+%	}
 	}
 	
 	Entropy can be found by $S = -(\pdv*{\Omg}{T})_{V, \mu}$~\cite[p.~150]{Landau}, and the specific heat is given by $\Cv = (\pdv*{E}{T})_V$~\cite[p.~165]{Landau}.  Since
@@ -155,20 +155,21 @@
 		S &\sim -\frac{1}{T^3}, &
 		\Cv &\sim -\frac{1}{T^3},
 	}
-	then
+	again for small $T - \Ts$,
 	\ans{
 	\al{
 		\pdv{S}{T} &\sim -\pdv{T}(\frac{1}{T^3})
-		\propto -\frac{1}{T^4}, &
-		\pdv{\Cv}{T} &\sim -\frac{1}{T^4},
+		\sim -\frac{1}{(T - \Ts)^4}, &
+		\pdv{\Cv}{T} &\sim -\frac{1}{(T - \Ts)^4},
 	}
-	which both have infinite discontinuities at $T = 0$.  Specifically,
-	\al{
-		\limTopm \pdv{S}{T} &\sim -\infty, &
-		\limTopm \pdv{\Cv}{T} &\sim -\infty.
+	which both have infinite discontinuities at $T = \Ts$. % Specifically,
+%	\al{
+%		\limTopm \pdv{S}{T} &\sim -\infty, &
+%		\limTopm \pdv{\Cv}{T} &\sim -\infty.
+%	}
 	}
-	}
-	\vfix
+	
+	The order of a phase transition is determined by whether the first or the second derivative of the free energy with respect to some thermodynamic quantity is discontinuous~\cite{Wikipedia}.  The free energy can be found by $F - \mu N = \Omg$~\cite[p.~69]{Landau}.  Since $\pdv*{\mu}{T}$ and $\pdv*{\Omg}{T}$ are discontinuous, so is $\pdv*{F}{T}$.  Thus, this is a \ans{ first-order phase transition. }
 }
 
 %

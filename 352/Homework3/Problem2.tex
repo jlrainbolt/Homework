@@ -1,0 +1,100 @@
+\state{Quantum correction to the Boltzmann thermodynamics}{
+	Find the quantum correction to the free energy of the Boltzmann gas (the leading $\hbar$-dependent term in the expansion of the free energy at small $\hbar$) for Bose and Fermi gases.  From there, find the correction to the pressure.  Does the quantum correction increase or decrease the pressure (and why is the answer predictable)?
+}
+
+\sol{
+	Quantum mechanical effects become important when the thermal deBroglie wavelength,
+	\eq{
+		\lam = \frac{2\pi \hbar}{\sqrt{2 \pi m T}}
+		= \hbar \sqrt{\frac{2\pi}{m T}},
+	}
+	is close to the average distance between molecules~\cite[pp.~107--108]{Pathria}.  The condition we need, which is equivalent to small $\hbar$, is~\cite[p.~136]{Pathria}
+	\eqn{cond}{
+		\lam \ll \paren{ \frac{V}{N} }^{1/3}
+		\qimplies
+		\nb \lam^3 \ll 1,
+	}
+	where $\nb$ is the density.  The density of a Fermi or Bose gas is given by, as shown in Prob.~{4.1} for a Bose gas~\cite[p.~149]{Landau}
+	\eq{
+		\nb = \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3}{2}} \intoi \frac{\sqrt{\eps}}{e^{(\eps - \mu) / T} \pm 1} \ddeps
+		= \frac{g}{\pi^2 \hbar^3} \sqrt{\frac{m^3 T^3}{2}} \intoi \frac{\sqrt{z}}{e^{z - \mu / T} \pm 1} \ddz
+		= \frac{g}{2 \pi^{7/2} \lam^3} \intoi \frac{\sqrt{z}}{e^{z - \mu / T} \pm 1} \ddz
+		\begin{cases}
+			\text{Fermi}, \\
+			\text{Bose},
+		\end{cases}
+	}
+	where $z = \eps / T$.  From Eq.~\refeq{cond},
+	\eq{
+		\nb \lam^3 = \frac{g}{2 \pi^{7/2}} \intoi \frac{\sqrt{z}}{e^{z - \mu / T} \pm 1} \ddeps \ll 1
+		\qimplies
+		\intoi \frac{\sqrt{z}}{e^{z - \mu / T} \pm 1} \ddeps \ll 1
+		\qimplies e^{\mu / T} \ll 1.
+	}
+	We will use the final relation to expand the expression for the thermodynamic potential and find the correction to that quantity, which is the same as the correction to the free energy.
+	
+	The thermodynamic potential for the Fermi and Bose gases is~\cite[pp.~145--146]{Landau}
+	\eq{
+		\Omg = \mp T \sumk \ln(1 \pm e^{(\mu - \epsk) / T})
+		\begin{cases}
+			\text{Fermi}, \\
+			\text{Bose}.
+		\end{cases}
+	}
+	Replacing the sum by an integral and integrating by parts, as shown in more detail in Prob.~{3.2}, and making the change of variable $\eps / T = z$, we find~\cite[p.~149]{Landau}
+	\eq{
+		\Omg = \mp \frac{g V}{3 \pi^2 \hbar^3} \sqrt{2 m^3} \intoi \frac{\eps^{3/2}}{1 \pm e^{(\eps - \mu) / T}} \ddeps
+		= - \frac{g V}{3 \pi^2 \hbar^3} \sqrt{2 m^3 T^5} \intoi \frac{z^{3/2}}{1 \pm e^{z - \mu / T}} \ddz.
+	}
+	Expanding the integrand for $u = e^{\mu / T} \ll 1$~\cite[p.~151]{Landau},
+	\al{
+		\intoi \frac{z^{3/2}}{1 \pm e^{z - \mu / T}} \ddeps &= \intoi \frac{e^{\mu / T - z} z^{3/2}}{e^{\mu / T - z} \pm 1} \ddz
+		\approx \intoi \paren{ 0 + u \brac{ \pdv{u}(\frac{u z}{u e^{-z} \pm 1}) }\ueo + \frac{u^2}{2} \brac{ \pdv[2]{u}(\frac{u z}{u e^{-z} \pm 1}) }\ueo } \ddz \\
+		&= \intoi \paren{ u \brac{ \frac{z^{3/2}}{e^{-z} u \pm 1} - \frac{u e^{-z} z^{3/2}}{(e^{-z} u \pm 1)^2} }\ueo + \frac{u^2}{2} \brac{ \frac{2 u e^{-z}  z^{3/2}}{(e^{-z} u \pm 1)^3} \mp \frac{2 e^{-z} z^{3/2}}{(u \pm 1)^2} }\ueo } \ddz \\
+		&= \intoi \paren{ u z^{3/2} \mp u^2 e^{-z} z^{3/2} } \ddz
+		= \intoi z^{3/2} e^{\mu / T - z} \ddz \mp \intoi z^{3/2} e^{2 \mu / T - z} \ddz \\
+		&= \frac{3 \sqrt{\pi}}{4} e^{\mu / T} \mp \frac{3}{16} \sqrt{\frac{\pi}{2}} e^{2\mu / T}
+		= \frac{3 \sqrt{\pi}}{4} e^{\mu / T} \paren{ 1 \mp \frac{e^{\mu / T}}{2^{5/2}} }.
+	}
+	Then, in this limit,
+	\eq{
+		\Omg = -\frac{g V}{4 \hbar^3} \sqrt{\frac{2 m^3 T^5}{\pi^3}} e^{\mu / T} \paren{ 1 \mp \frac{e^{\mu / T}}{2^{5/2}} }.
+	}
+	
+	The chemical potential for an ideal (Boltzmann) gas is~\cite[pp.~127, 151]{Landau}
+	\eqn{mu2}{
+		\mu = T \ln(\frac{4 \hbar^3 P}{g} \sqrt{\frac{2 \pi^3}{m^3 T^5}})
+		= T \ln(\frac{4 \hbar^3 \nb}{g} \sqrt{\frac{2 \pi^3}{m^3 T^3}})
+	}
+	which implies
+	\eq{
+		e^{\mu / T} = \frac{4 \hbar^3 P}{g} \sqrt{\frac{2 \pi^3}{m^3 T^5}}
+		\qimplies
+		-P V = -\frac{g V}{4 \hbar^3} \sqrt{\frac{m^3 T^5}{2 \pi^3}}
+		\equiv \Omgo,
+	}
+	where we have used $\Omg = -P V$~\cite[p.~69]{Landau} and defined $\Omgo$ as the Boltzmann thermodynamic potential.  Then~\cite[p.~151]{Landau}
+	\eq{
+		\Omg = \Omgo \pm \frac{g V}{16 \hbar^3} \sqrt{\frac{m^3 T^5}{\pi^3}} e^{2 \mu / T},
+	}
+	where the second term is the quantum correction.  Since $(\del F)_{T, V, N} = (\del \Omg)_{T, V, \mu}$, the correction to $F$ is the same as that to $\Omg$ when it is expressed in terms of $T$, $V$, and $N$~\cite[pp.~69, 151]{Landau}.  Applying Eq.~\refeq{mu2}, we have~\cite[p.~151]{Landau}
+	\eq{
+		\Omg = \Omgo \pm \frac{g V}{16 \hbar^3} \sqrt{\frac{m^3 T^5}{\pi^3}} \paren{ \frac{4 \hbar^3 \nb}{g} \sqrt{\frac{2 \pi^3}{m^3 T^3}} }^2
+		= \Omgo \pm \frac{\hbar^3 N \nb}{2 g} \sqrt{\frac{\pi^3}{m^3 T}}.
+	}
+	Let $\Fo$ be the Boltzmann free energy.  Then the quantum correction is given by
+	\eq{
+		\ans{ F = \Fo \pm \frac{\hbar^3 N \nb}{2 g} \sqrt{\frac{\pi^3}{m^3 T}}\begin{cases}
+			\text{Fermi}, \\
+			\text{Bose}.
+		\end{cases} }
+	}
+	Since $\Omg = -P V$ and the volume is not affected by the expansion, the quantum correction to the pressure is given by
+	\eq{
+		\ans{ P = \Po \pm \frac{\hbar^3 \nb^2}{2 g} \sqrt{\frac{\pi^3}{m^3 T}}\begin{cases}
+			\text{Fermi}, \\
+			\text{Bose},
+		\end{cases} }
+	}
+	where $\Po$ is the Boltzmann pressure.  Therefore, \ans{ the correction increases the pressure for a Fermi gas and decreases it for a Bose gas. } This is predictable because the particles in a Fermi gas have a higher energy on average than those in a Bose gas, since the fermions are forced to occupy excited states by the Pauli exclusion principle.  More~(less) energetic particles have a higher~(lower) rate of collisions with the walls of the container, and therefore a higher~(lower) pressure.
+}
