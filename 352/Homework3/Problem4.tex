@@ -64,10 +64,8 @@
 		= \pi T \sqrt{-\mu},
 	}
 	so long as $\mu < 0$, which is true for the Bose distribution~\cite[p.~145]{Landau}.  Making this substitution and solving for $\mu$, we find
-	\eq{
+	\eqn{density}{
 		\nb = \nbs(T) - \frac{g T}{\pi \hbar^3} \sqrt{\frac{-\mu m^3}{2}}
-%		\qimplies
-%		\sqrt{\frac{\abs{\mu} m^3}{2}} = \frac{\pi \hbar^3 (\nbs - \nb)}{g T}
 		\qimplies
 		\mu = -\frac{2}{m^3} \paren{ \frac{\pi \hbar^3 [ \nbs(T) - \nb ]}{g T} }^2
 		= -\frac{2 \pi^2 \hbar^6 [ \nbs(T) - \nb ]^2}{m^3 g^2 T^2}.
@@ -91,7 +89,7 @@
 %
 
 \prob{}{
-	Find the discontinuities in the derivatives of thermodynamic quantities (energy, entropy, thermodynamic potential, and specific heat) at the BEC transition.  Which order is this phase transition?
+	Find the discontinuities in the derivatives of thermodynamic quantities (energy, particle density, entropy, thermodynamic potential, and specific heat) at the BEC transition.  Which order is this phase transition?
 }
 
 \sol{
@@ -143,12 +141,15 @@
 		\pdv{\Omg}{T} &\sim \frac{1}{(T - \Ts)^3}, &
 		\pdv{E}{T} &\sim -\frac{1}{(T - \Ts)^3},
 	}
-	which both have infinite discontinuities at $T = \Ts$. % In particular,
-%	\al{
-%		\limTopm \pdv{\Omg}{T} &\sim \pm \infty, &
-%		\limTopm \pdv{E}{T} &\sim \mp \infty.
-%	}
+	which both have infinite discontinuities at $T = \Ts$.
 	}
+	
+	The particle density is given in Eq.~\refeq{density}.  Differentiating with respect to chemical potential, we see that
+	\eq{
+		\pdv{\nb}{\mu} = \pdv{\mu}(\nbs(T) - \frac{g T}{\pi \hbar^3} \sqrt{\frac{-\mu m^3}{2}})
+		\propto \ans{ \frac{1}{\sqrt{-\mu}}, }
+	}
+	\ans{which diverges as $\mu \to 0$ from the left} (and is negative for real $\mu$).
 	
 	Entropy can be found by $S = -(\pdv*{\Omg}{T})_{V, \mu}$~\cite[p.~150]{Landau}, and the specific heat is given by $\Cv = (\pdv*{E}{T})_V$~\cite[p.~165]{Landau}.  Since
 	\al{
@@ -162,11 +163,7 @@
 		\sim -\frac{1}{(T - \Ts)^4}, &
 		\pdv{\Cv}{T} &\sim -\frac{1}{(T - \Ts)^4},
 	}
-	which both have infinite discontinuities at $T = \Ts$. % Specifically,
-%	\al{
-%		\limTopm \pdv{S}{T} &\sim -\infty, &
-%		\limTopm \pdv{\Cv}{T} &\sim -\infty.
-%	}
+	which both have infinite discontinuities at $T = \Ts$.
 	}
 	
 	The order of a phase transition is determined by whether the first or the second derivative of the free energy with respect to some thermodynamic quantity is discontinuous~\cite{Wikipedia}.  The free energy can be found by $F - \mu N = \Omg$~\cite[p.~69]{Landau}.  Since $\pdv*{\mu}{T}$ and $\pdv*{\Omg}{T}$ are discontinuous, so is $\pdv*{F}{T}$.  Thus, this is a \ans{ first-order phase transition. }

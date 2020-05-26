@@ -1,0 +1,25 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}%
+\makeatletter
+\providecommand{\hrefCMSnoop }[0]{\@secondoftwo}%
+\makeatother
+\providecommand{\doi}{\texttt{doi:}\begingroup \urlstyle{tt}\Url}
+
+\bibitem{Pathria}
+R.~K. Pathria and P.~D. Beale, ``Statistical Mechanics''.
+\newblock Butterworth-Heinemann, 3rd edition, 2011.
+
+\bibitem{Landau}
+L.~D. Landau and E.~M. Lifshitz, ``Statistical Physics'', volume~5.
+\newblock Pergamon Press, 2nd edition, 1970.
+
+\bibitem{Wikipedia}
+\href
+  {https://en.wikipedia.org/w/index.php?title=Phase_transition}{W.~contributors,
+  ``Phase transition.''} From Wikipedia, the Free Encyclodia.
+\newblock \url {https://en.wikipedia.org/w/index.php?title=Phase_transition}.
+
+\bibitem{Kardar}
+M.~Kardar, ``Statistical Physics of Particles''.
+\newblock Cambridge University Press, 1st edition, 2007.
+
+\end{thebibliography}\endgroup

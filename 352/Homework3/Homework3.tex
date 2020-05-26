@@ -13,7 +13,7 @@
 
 
 \state{Non-equilibrium entropies of Fermi, Bose, and Boltzmann distributions}{
-	Consider a gas out of equilibrium with a slightly non-uniform density in $n(x)$ and mean density $\nb = V^{-1} \int n(x) \ddcx$.  We know that if the gas obeys Boltzmann statistics, its entropy is $S = -\int n \log n \ddV$.
+	Consider a gas out of equilibrium with a slightly non-uniform occupation density in $n(x)$, where $x$ parametrizes points of phase space. 
 }
 
 %
@@ -21,19 +21,19 @@
 %
 
 \prob{}{
-	Argue that this formula is valid only if the gradients are small: $\abs{\gradx n} \ll \nb^{4/3}$ (``coarse-graining condition'') and that $\abs{n(x) - \nb} \ll \nb$.
+	We know that if  the gas obeys Boltzmann statistics, its entropy is $S = -\int n \log n \ddG$.  Argue that this formula is valid only if the gradients are small, $\abs{\gradx n} \ll \nb^{(d + 1) / d}$, with $d$ the phase space dimensionality (``coarse-graining condition''), and $n(x) \ll 1$.
 }
 
 \sol{
-	I have no idea how to approach this problem.
+	We will follow the derivation at the end of Lecture~2.  
 }
 
 %
 %	1.2
 %
-
+\clearpage
 \prob{}{
-	Remove the second condition in {1.1} and obtain the general formula for the entropy for both Fermi and Bose gases.
+	Remove the second condition in item 1 and obtain the formulas for the entropies of Fermi and Bose gases as integrals of some functions of $n(x)$.
 }
 
 
@@ -50,6 +50,6 @@
 \input{Problem6}
 
 
-%\makebib
+\makebib
 
 \end{document}
