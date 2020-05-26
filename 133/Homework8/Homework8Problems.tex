@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+\usepackage{geometry, titlesec}
+\usepackage[parfill]{parskip}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{enumitem}
+%\allowdisplaybreaks
+ 
+\renewcommand{\footrulewidth}{.2pt}
+\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Homework 8}
+\rhead{Physics 133-B}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\cfoot{\today}
+%\rfoot{\thepage}
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+\newcommand{\beqn}{\begin{equation}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\qimplies}{\quad \implies \quad}
+
+
+\DeclareSIUnit{\celsius}{\!C}
+%\DeclareSIUnit{\hour}{h}
+
+\begin{document}
+
+\begin{enumerate}
+
+\newcommand{\energy}{\SI{220}{\kilo\watt\hour}}
+\newcommand{\foodtemp}{\SI{-18.0}{\degree\celsius}}
+\newcommand{\roomtemp}{\SI{22.0}{\degree\celsius}}
+
+% Y&F 20.16
+
+\item Your family is purchasing a new freezer and is considering a model that uses {\energy} of energy per year.  Say the freezer operates for about five hours per day, and keeps its contents at {\foodtemp}.  The room where the freezer will be stored is kept at {\roomtemp}.
+
+\begin{enumerate}
+	\item How much power does the freezer draw while operating?
+	\item If the freezer were a Carnot refrigerator, what would be its coefficient of performance?
+	\item How much ice could such a freezer make from room temperature water ({\roomtemp}) in one hour?
+\end{enumerate}
+
+
+\bigskip
+
+
+\newcommand{\vol}{\SI{500.0}{\milli\liter}}
+\newcommand{\eltemp}{\SI{120.0}{\degree\celsius}}
+\newcommand{\cooltemp}{\SI{10.0}{\degree\celsius}}
+\newcommand{\hottemp}{\SI{95.0}{\degree\celsius}}
+
+% Y&F 20.54
+
+\item You have an electric kettle in your dorm room, which you use to heat water for tea.  You fill the kettle with {\vol} of water, which is the minimum to completely cover the heating element.  Assume that the heating element has a constant temperature of {\eltemp} while you heat the water from {\cooltemp} to {\hottemp}.  (Assume that the specific heat of water is constant over this temperature range, and that no heat is lost to the system's surroundings.)  Calculate the change in entropy of (a) the water, (b) the heating element, and (c) the system of water and heating element.  (d) State whether this process is reversible or irreversible, and explain your reasoning.
+
+\end{enumerate}
+
+
+
+
+\end{document}
