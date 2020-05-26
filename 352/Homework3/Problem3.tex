@@ -12,7 +12,7 @@
 
 \sol{
 	The particles in a completely degenerate Fermi gas ($T = 0$) are distributed among the lowest energy states, which correspond to the lowest momentum states.  These states have momentum less than or equal to the Fermi momentum $\po$.
-	
+	\clearpage
 	The number of quantum states in the interval $(p, p + \ddp)$ is, in each case~\cite[p.~152]{Landau},
 	\aln{ \label{Nstates}
 		\frac{g L}{2\pi \hbar} \ddp &\quad (d = 1), &
@@ -21,7 +21,7 @@
 	}
 	where $g = 2s +1$ with $s$ being the spin of the particle, and $L$, $A$, and $V$ indicate the volume in 1, 2, and 3 spatial dimensions.
 	
-	Let $N$ be the number of particles occupying these states, which is found by integrating these quantities from $p = 0$ to $p = \po$.  For each case,
+	Let $N$ be the number of particles occupying these states, which is found by integrating these quantities over $p \in (0, \po)$.  For each case,
 	\al{
 		(d = 1) \quad
 		N &= \frac{g L}{2\pi \hbar} \intopo \ddp
@@ -38,7 +38,7 @@
 		= \frac{4\pi g V}{(2\pi \hbar)^3} \brac{ \frac{p^3}{3} }\opo
 		= \frac{g V \po^3}{6 \pi^2 \hbar^3}.
 	}
-	Solving each case for $\po$, we find
+	Solving each case for $\po$,
 	\aln{
 		(d = 1) \quad
 		\po &= \frac{2\pi \hbar N}{g L}
@@ -68,7 +68,7 @@
 		= \ans{ \frac{\hbar^2}{2m} \paren{ \frac{6 \pi^2 \nb}{g} }^{2/3}. } \notag
 	}
 	
-	The total energy of the gas is found by multiplying Eq.~\refeq{Nstates} by $\eps = p^2 / m$ and integrating from $p = 0$ to $p = \po$~\cite[p.~153]{Landau}.  This gives us
+	The total energy of the gas is found by multiplying Eq.~\refeq{Nstates} by $\eps = p^2 / m$ and integrating over $p \in (0, \po)$~\cite[p.~153]{Landau}:
 	\al{
 		(d = 1) \quad
 		E &= \frac{g}{2m} \frac{L}{2\pi \hbar} \intopo p^2 \ddp
@@ -81,9 +81,10 @@
 		E &= \frac{g}{2m} \frac{2\pi A}{(2\pi \hbar)^2} \intopo p^3 \ddp
 		= \frac{g}{2m} \frac{2\pi A}{(2\pi \hbar)^2} \brac{ \frac{p^4}{4} }\opo
 		= \frac{g}{8m} \frac{2\pi A}{(2\pi \hbar)^2} \paren{ 2\pi \hbar \sqrt{\frac{\nb}{\pi g}} }^4
-		= \frac{(2\pi \hbar)^2 A}{4\pi m g} \nb^2 \\
-		&= \ans{ \frac{\pi \hbar^2 N \nb}{m g} }, \\[2ex]
-		%
+		= \frac{(2\pi \hbar)^2 A}{4\pi m g} \nb^2
+		= \ans{ \frac{\pi \hbar^2 N \nb}{m g} },
+	}
+	\al{
 		(d = 3) \quad
 		E &= \frac{g}{2m} \frac{4\pi V}{(2\pi \hbar)^3} \intopo p^4 \ddp
 		= \frac{g}{2m} \frac{4\pi V}{(2\pi \hbar)^3} \brac{ \frac{p^5}{5} }\opo
@@ -107,8 +108,8 @@
 	\eq{
 		\Omg = -T \sumk \ln(1 + e^{(\mu - \epsk) / T}),
 	}
-	where $\mu$ is the chemical potential of the gas.  We may replace the sum by an integral from $p = 0$ to $\infty$ using Eq.~\refeq{Nstates}, transform variables to $\eps$, and integrate by parts~\cite[pp.~148--149]{Landau}.  Note that
-	\eqn{transfrm}{
+	where $\mu$ is the chemical potential of the gas.  We may replace the sum by an integral over $p \in (0, \infty)$ using Eq.~\refeq{Nstates}, transform variables to $\eps$, and integrate by parts~\cite[pp.~148--149]{Landau}.  Note that
+	\eqn{transform}{
 		\eps = \frac{p^2}{2m}
 		\qimplies
 		2 m \ddeps = 2 p \ddp
@@ -149,7 +150,7 @@
 		I = \intoi \frac{f(\eps)}{1 + e^{(\eps - \mu) / T}} \ddeps
 		= T \int_{-\mu / T}^\infty \frac{f(\mu + T z)}{1 + e^z} \ddz,
 	}
-	where we have made the substitution $\eps - \mu = T z$.  The first two terms of the Taylor series for this integral are given by~\cite[p.~155]{Landau}
+	where we have made the substitution $\eps - \mu = T z$.  The first two terms of the Taylor series for this integral are~\cite[p.~155]{Landau}
 	\eq{
 		I \approx \intom f(\eps) \ddeps + \frac{\pi^2 T^2}{6} f'(\mu).
 	}
@@ -213,8 +214,9 @@
 		%
 		(d = 2) \quad
 		\Omg &= \Po + \frac{1}{V} \frac{\pi m g N T^2}{12 \hbar^2 \nb}
-		= \ans{ \Po + \frac{\pi m g T^2}{12 \hbar^2}, } \\[2ex]
-		%
+		= \ans{ \Po + \frac{\pi m g T^2}{12 \hbar^2}, }
+	}
+	\al{
 		(d = 3) \quad
 		\Omg &= \Po + \frac{1}{V} \frac{m N T^2}{2 \hbar^2} \paren{ \frac{\pi g}{6 \nb} }^{2/3}
 		= \ans{ \Po + \frac{m T^2}{2 \hbar^2} \nb^{1/3} \paren{ \frac{\pi g}{6} }^{2/3}. }
