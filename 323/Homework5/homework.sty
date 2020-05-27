@@ -1,0 +1,111 @@
+\ProvidesPackage{homework}
+
+
+\usepackage[parfill]{parskip}
+\usepackage[cm]{fullpage}
+\usepackage[italicdiff]{physics}
+\usepackage{amsfonts, amsthm, amssymb, amsbsy, mathrsfs}
+\usepackage{fancyhdr, titlesec}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{xcolor, soul}
+\usepackage{siunitx, graphicx}
+\usepackage{hyperref}
+\usepackage[numbers]{natbib}
+%\allowdisplaybreaks
+
+ 
+ 
+ % Header 
+ 
+\renewcommand{\footrulewidth}{.2pt}
+%\setlist[enumerate]{leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lacey Rainbolt}
+\setlength{\headheight}{11pt}
+\setlength{\headsep}{11pt}
+\setlength{\footskip}{24pt}
+\lfoot{\today}
+\rfoot{\thepage}
+
+\newcommand{\classname}[1]{\lhead{Physics #1}}
+\newcommand{\homeworknum}[1]{\chead{\textbf{Homework #1}}}
+
+
+
+% Section numbering
+
+\titleformat{\section}[runin]{\normalfont\large\bfseries}{Problem \thesection.}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\renewcommand{\thesubsection}{\thesection(\alph{subsection})}
+\titleformat{\subsubsection}[runin]{\normalfont\large\bfseries}{\thesubsubsection}{1em}{}
+
+\titleformat{\subparagraph}[leftmargin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\refeq}[1]{(\ref{#1})}
+
+
+
+% Environments
+
+\newcommand{\probcolor}{black!60}
+
+\newenvironment{statement}[1]
+{
+	\color{black}
+	\section{#1}
+	\color{\probcolor}
+	\ignorespaces
+}
+
+\newenvironment{problem}[1]
+{
+	\color{black}
+	\subsection{#1}
+	\color{\probcolor}
+	\ignorespaces
+}
+
+\newenvironment{subproblem}
+{
+	\color{black}
+	\subsubsection{}
+	\color{\probcolor}
+	\ignorespaces
+}
+
+\newenvironment{solution}
+{
+	\color{black}
+	\paragraph{Solution.}
+	\ignorespaces
+}
+{
+    \bigskip
+}
+
+\newcommand{\ans}[1]{{\color{blue} #1}}
+
+\newcommand{\eq}[1]{\begin{equation*} #1 \end{equation*}}
+\newcommand{\eqn}[2]{\begin{equation} \label{#1} #2 \end{equation}}
+
+\newcommand{\al}[1]{\begin{align*} #1 \end{align*}}
+\newcommand{\aln}[1]{\begin{align} #1 \end{align}}
+
+
+
+% Spacing
+
+% Adjust spacing for cases environment
+\makeatletter
+\renewcommand*\env@cases[1][1.2]{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace
+  \def\arraystretch{#1}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+\newcommand{\vfix}{\vspace{-\baselineskip}}
+\newcommand{\hfix}{\hspace{-1em}}
