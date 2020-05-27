@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{323}
+\homeworknum{5}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+\state{(Jackson 9.1)}{
+	A common textbook example of a radiating system is a configuration of charges fixed relative to each other but in rotation.  The charge density is obviously a function of time, but it is \emph{not} of the form
+	\aln{ \label{rhoJ}
+		\rho(\vx, t) &= \rho(\vx) \,e^{-i \omg t}, &
+		\vJ(\vx, t) &= \vJ(\vx) \,e^{-i \omg t}.
+	}
+	\vfix
+}
+
+%
+%	Jackson 9.1(a)
+%
+
+\prob{}{
+	Show that for rotating charges one alternative is to calculate \emph{real} time-dependent multipole moments using $\rho(\vx, t)$ directly and then compute the multipole moments for a given harmonic frequency with the convention of Eq.~\refeq{rhoJ} by inspection or Fourier decomposition of the time-dependent moments.  Note that care must be taken when calculating $\qlm(t)$ to form linear combinations that are real before making the connection.
+}
+
+\sol{
+	The multipole moments are given by Wald~(2.80),
+	\eqn{qlm}{
+		\qlm = \int \rho(\vx') \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp,
+	}
+	where the spherical harmonics $\Ylm$ are given by Wald~(2.58),
+	\eqn{Ylm}{
+		\Ylm(\tht, \phi) = \sqrt{\frac{2l + 1}{4\pi} \frac{(l - m)!}{(l + m)!}} \Pl(\cos\tht) \,e^{i m \phi},
+	}
+	and $\Pl$ are the Legendre polynomials.
+	
+	We will choose coordinates for a frame $K$ such that the charge distribution rotates counterclockwise about the $z$ axis with angular velocity $\omg$.  Note that a point charge orbiting counterclockwise about $z$ axis has the position vector
+	\eq{
+		\vx(t) = R \,\rh + \thto \,\thh + (\omg t + \phio) \,\phh,
+	}
+	where $R$ is its distance from the origin, $\thto$ its inclination, and $\phio$ its $\phi$ coordinate at $t = 0$.  This means that, if we take a stationary charge distribution $\rho(\vx)$ and set it rotating in this way, we are making the change of variable $\phi \to \phi + \omg t$.  Hence $\rho(\vx, t) = \rho(r, \tht, \phi + \omg t)$.
+	
+	Making this substitution into Eq.~\refeq{qlm}, we obtain the time-dependent multipole moments
+	\eq{
+		\qlm(t) = \int \rho(\vx', t) \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp
+		= \int \rho(r', \tht', \phi' + \omg t) \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp.
+	}
+	Now we will transform to a rotating coordinate frame $\Kt$ with $(\rt, \thtt, \phit) = (r, \tht, \phi + \omg t)$.  In this frame, $\rho(\vx, t)$ is stationary and the time dependence is in $\Ylm$, so
+	\eq{
+		\qtlm(t) = \int \rho(\rt', \thtt', \phit') \,{r'}^l \,\Ylm^*(\thtt', \phit' - \omg t) \dcxp.
+	}
+	From Eq.~\refeq{Ylm},
+	\eq{
+		\Ylm^*(\tht, \phi - \omg t) = \sqrt{\frac{2l + 1}{4\pi} \frac{(l - m)!}{(l + m)!}} \Pl(\cos\tht) \,e^{-i m (\phi - \omg t)}
+		= e^{i m \omg t} \,\Ylm^*(\tht, \phi),
+	}
+	so we have
+	\eq{
+		\qtlm(t) = e^{i m \omg t} \int \rho(\rt', \thtt', \phit') \,{r'}^l \,\Ylm^*(\thtt', \phit') \dcxp
+		= e^{i m \omg t} \,\qtlm.
+	}
+	
+	Since the charge distribution is stationary in $\Kt$, $\qtlm(t) = \qlm$ and $\qlm(t) = \qtlm$.  Switching back to $K$, then, gives us
+	\eq{
+		\qlm(t) = \qlm \,e^{-i m \omg t},
+	}
+	which has the convention of Eq.~\refeq{rhoJ}.  Here, however, we have multiple frequencies $m \omg$, where $m \in [-l, l]$ for integer $m$.
+	
+	To form real linear combinations, we note that $\qlm \Ylm$ is real since the scalar potential defined by Wald~(2.79),
+	\eq{
+		\Phi(\vx) = \sum_{l, m} \frac{4\pi}{2l + 1} \frac{\qlm}{r^{l + 1}} \Ylm(\tht, \phi),
+	}
+	is a linear combination of $\qlm \Ylm$ and is real.  According to Jackson~(3.54) and (4.7), $\Ylnm(\tht, \phi) = (-1)^m \Ylm^*(\tht, \phi)$ and $\qlnm = (-1)^m \qlm^*$.  So
+	\eq{
+		\qlnm(t) \,\Ylnm(\tht, \phi) = (-1)^{2m} \qlm^*(t) \,\Ylm^*(\tht, \phi)
+		= \qlm^*(t) \,\Ylm^*(\tht, \phi).
+	}
+	Let $\qlm(t) \,\Ylm(\tht, \phi) = a + i b$, so $\Re[ \qlm(t) \,\Ylm(\tht, \phi) ] = a$ and $\Im[ \qlm \Ylm ] = b$.  Then
+	\eq{
+		\qlm(t) \,\Ylm(\tht, \phi) + \qlnm(t) \,\Ylnm(\tht, \phi) = a + i b + a - i b
+		= 2a
+		= 2 \Re[ \qlm(t) \,\Ylm(\tht, \phi) ].
+	}
+	
+	Finally, let $\qhlm$ be the multipole moment corresponding to the harmonic frequency $m \omg$, where $m \in [0, l]$.  These multipole moments are given by
+	\ans{ \eq{
+		\qhlm = \begin{cases}
+			2 \qlm & m > 0, \\
+			\qlm & m = 0,
+		\end{cases}
+	} }%
+	where $\qlm$ is defined by Eq.~\refeq{qlm}.
+}
+
+%
+%	Jackson 9.1(b)
+%
+
+\prob{}{
+	Consider a charge density $\rho(\vx, t)$ that is periodic in time with period $T = 2\pi / \omg$.  By making a Fourier \emph{series} expansion, show that it can be written as
+	\eq{
+		\rho(\vx, t) = \rhoo(x) + \sumni \Re[ 2\rhon(\vx) \,e^{-i n \omgo t} ],
+	}
+	where
+	\eq{
+		\rhon(\vx) = \frac{1}{T} \intoT \rho(\vx, t) \,e^{i n \omgo t} \ddt.
+	}
+	This shows explicitly how to establish connection with Eq.~\refeq{rhoJ}.
+}
+
+%
+%	Jackson 9.1(c)
+%
+
+\prob{}{
+	For a single charge $q$ rotating about the origin in the $xy$ place in a circle of radius $R$ at constant angular speed $\omgo$, calculate the $l = 0$ and $l = 1$ multipole moments by the methods of Probs.~{1(a)} and {1(b)} and compare.  In method (b) express the charge density $\rhon(\vx)$ in cylindrical coordinates.  Are there higher multipoles, for example, quadrupole?  At what frequencies?
+}
+
+
+
+\clearpage
+\state{(Jackson 9.2)}{
+	A radiating quadrupole consists of a square of side $a$ with charges $\pm q$ at alternate corners.  The square rotates with angular velocity $\omg$ about an axis normal to the place of the square and through its center.  Calculate the quadrupole moments, the radiation fields, the angular distribution of radiation, and the total radiated power, all in the long-wavelength approximation.  What is the frequency of the radiation?
+}
+
+
+
+\clearpage
+\state{(Jackson 9.4)}{
+	Apply the approach of Prob.~{1(b)} to the current and magnetization densities of the particle of charge $q$ rotating about the origin in the $xy$ plane in a circle of radius $R$ at constant angular speed $\omgo$.  The motion is such that $\omgo R \ll c$.
+}
+
+%
+%	Jackson 9.4(a)
+%
+
+\prob{}{
+	Find $\Jxn$, $\Jyn$, and $\Jzn$ in terms of cylindrical coordinates for all $n$.  Also determine the components of the orbital ``magnetization,'' $(\vx \cross \vJn) / 2$, and its divergence (which plays the role of a magnetic charge density for magnetic multipoles, as in $\Mlm$ (9.172)).
+}
+
+%
+%	Jackson 9.4(b)
+%
+
+\prob{}{
+	What long-wavelength magnetic multipoles $(l, m)$ occur and at what frequencies?  (Remember that the multipole order $l$ does not necessarily equal the harmonic number $n$.)
+}
+
+%
+%	Jackson 9.4(c)
+%
+
+\prob{}{
+	Use linear superposition to generalize your argument to the four charges rotating in Prob.~{2} at radius $R = a / \sqrt{2}$.  What harmonics occur, and what magnetic multipoles at each harmonic?  Is there a magnetic multipole contribution at the $E2$ frequency of Prob.~{2}?  Is it significant relative to the $E2$ radiation?
+}
+
+
+
+%\makebib
+
+\end{document}
