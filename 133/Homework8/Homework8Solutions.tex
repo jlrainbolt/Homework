@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+\usepackage{solutions}
+
+\classname{133}
+\homeworknum{8}
+
+
+\DeclareSIUnit{\celsius}{\!C}
+\DeclareSIUnit{\atm}{atm}
+\DeclareSIUnit{\molecules}{molecules}
+\DeclareSIUnit{\day}{day}
+
+\begin{document}
+
+\include{definitions}
+
+%
+%	Prob. 1
+%
+
+\newcommand{\energy}{\SI{220}{\kilo\watt\hour}}
+\newcommand{\foodtemp}{\SI{-18.0}{\degree\celsius}}
+\newcommand{\roomtemp}{\SI{22.0}{\degree\celsius}}
+
+\newcommand{\Th}{T_H}
+\newcommand{\Tc}{T_C}
+\newcommand{\Kc}{K_\text{Carnot}}
+\newcommand{\Qc}{Q_C}
+\newcommand{\cw}{c_w}
+\newcommand{\Lf}{L_f}
+\newcommand{\absQ}{\abs{Q}}
+
+% Y&F 20.16
+
+\state{}{
+	Your family is purchasing a new freezer and is considering a model that uses {\energy} of energy per year.  Say the freezer operates for about five hours per day, and keeps its contents at {\foodtemp}.  The room where the freezer will be stored is kept at {\roomtemp}.
+}
+
+\prob{}{
+	How much power does the freezer draw while operating?
+}
+
+\sol{
+	In one year, the freezer operates for a total of
+	\eq{
+		\Del t = (\SI{5}{\hour\per\day}) (\SI{365}{\day})
+		= \SI{1825}{\hour}.
+	}
+	Power is defined as energy per unit time, so
+	\eq{
+		P = \frac{E}{\Del t}
+		= \frac{\energy}{\SI{1825}{\hour}}
+		= \SI{0.121}{\kilo\watt}
+		= \ans{ \SI{121}{\watt}. }
+	}
+	\vfix
+}
+
+\prob{}{
+	If the freezer were a Carnot refrigerator, what would be its coefficient of performance?
+}
+
+\sol{
+	The coefficient of performance $K$ for a Carnot refrigerator is defined
+	\eq{
+		\Kc = \frac{\Tc}{\Th - \Tc},
+	}
+	where $\Tc$ is the temperature of the colder reservoir, in this case the inside of the freezer, and $\Th$ is the temperature of the warmer reservoir, in this case the room.
+	
+	Converting the stated temperatures to Kelvin using $\SI{0}{\kelvin} = \SI{-273.15}{\degree\celsius}$, we have $\Th = \SI{295.15}{\kelvin}$ and $\Tc = \SI{255.15}{\kelvin}$.  Then, plugging in numbers,
+	\eq{
+		\Kc = \frac{\SI{255.15}{\kelvin}}{(\SI{295.15}{\kelvin}) - (\SI{255.15}{\kelvin})}
+		= \frac{255.15}{40}
+		= \ans{ 6.38. }
+	}
+	Of course, a real freezer must have a coefficient of performance lower than this.
+}
+
+\prob{}{
+	How much ice could such a freezer make from room temperature water ({\roomtemp}) in one hour?
+}
+
+\sol{
+	The freezer needs to cool the water to its freezing point and then change its phase.  The amount of heat $\absQ$ that the freezer needs to \emph{remove} from the water to make this possible is
+	\eqn{Q}{ \tag{*}
+		\absQ = m \cw \,\Del T + m \Lf,
+	}
+	where $m$ is the mass of the water, $\cw = \SI{4190}{\joule\per\kg\per\kelvin}$ the specific heat of water, $\Lf = \SI{334}{\joule\per\kg}$ is the latent heat of fusion for water, and $\Del T$ is the change in temperature required to bring the water to its freezing point.  Since the room is at {\roomtemp}, $\Del T = \SI{20.0}{\kelvin}$.
+	
+	To find $\absQ$, we can use
+	\eq{
+		K = \frac{\abs{\Qc}}{\abs{W}}
+		\qimplies \abs{\Qc} = K \abs{W},
+	}
+	where $K$ is the freezer's coefficient of performance, $\Qc$ is the heat removed from the inside of the refrigerator, and $W$ is the amount of work done by the freezer.  Since we are pretending the freezer is ideal, $K = \Kc$ from (b).
+	
+	The work the freezer does in one hour can be found by the power we calculated in (a).  Using SI units and recalling that $\SI{1}{\joule} = \SI{1}{\watt\per\second}$,
+	\eq{
+		W = P \,\Del t
+		= (\SI{121}{\watt}) (\SI{3600}{\second})
+		= \SI{436}{\kilo\joule}.
+	}
+
+	Solving \refeq{Q} for $m$, substituting in these expressions, and plugging in numbers,
+	\eq{
+		m = \frac{\abs{Q}}{\cw \,\Del T + \Lf}
+		= \frac{K \abs{W}}{\cw \,\Del T + \Lf}
+		= \frac{6.38 \abs{\SI{436}{\kilo\joule}}}{(\SI{4190}{\joule\per\kg\per\kelvin}) (\SI{20.0}{\kelvin}) + (\SI{334}{\joule\per\kg})}
+%		= \frac{2780}{83800 + 334} \times 10^3 \,\si{\kg}
+		= \frac{2780}{84100} \times 10^3 \,\si{\kg}
+		= \ans{ \SI{33.0}{\kg}, }
+	}
+	which is a lot of ice!  Of course, a non-ideal refrigerator is not able to produce so much.
+}
+\bigskip
+
+
+
+\newcommand{\vol}{\SI{500.0}{\milli\liter}}
+\newcommand{\eltemp}{\SI{120.0}{\degree\celsius}}
+\newcommand{\cooltemp}{\SI{10.0}{\degree\celsius}}
+\newcommand{\hottemp}{\SI{95.0}{\degree\celsius}}
+
+\newcommand{\Sq}{S_1}
+\newcommand{\Sw}{S_w}
+\newcommand{\ddQ}{\dd{Q}}
+\newcommand{\ddT}{\dd{T}}
+\newcommand{\Tq}{T_1}
+\newcommand{\Tw}{T_2}
+
+\newcommand{\Swa}{S_w}
+\newcommand{\Sel}{S_e}
+\newcommand{\Ss}{S_s}
+
+% Y&F 20.54
+
+\state{}{
+	You have an electric kettle in your dorm room, which you use to heat water for tea.  You fill the kettle with {\vol} of water, which is the minimum to completely cover the heating element.  Assume that the heating element has a constant temperature of {\eltemp} while you heat the water from {\cooltemp} to {\hottemp}.  (Assume that the specific heat of water is constant over this temperature range, and that no heat is lost to the system's surroundings.)
+}
+
+\prob{}{
+	Calculate the change in entropy of the water.
+}
+
+\sol{
+	No matter \emph{how} the water is heated, and whether that process is reversible or irreversible, its change in entropy will be the same.  All that matters is its initial and final temperatures.  So we might as well use the expression for the entropy change in a reversible process:
+	\eq{
+		\Del S = \Sw - \Sq
+		= \int_1^2 \frac{\ddQ}{T}.
+	}
+	As in the lecture notes, we have
+	\eq{
+		\Del Q = m \cw \,\Del T
+		\qimplies
+		\ddQ = m \cw \ddT.
+	}
+	The density of water is \SI{1}{\gram\per\milli\liter}, so $m = \SI{500.0}{\gram}$.  As in Prob.~{1}, the specific heat of water is $\cw = \SI{4190}{\joule\per\kg\per\kelvin}$.
+	
+	Evaluating the integral with $\Tq = \cooltemp = \SI{283.15}{\kelvin}$ and $\Tw = \hottemp = \SI{368.15}{\kelvin}$,
+	\al{
+		\Del \Swa &= m \cw \int_{\Tq}^{\Tw} \frac{\ddT}{T}
+		= m \cw \bigg[ \ln(T) \bigg]_{\Tq}^{\Tw}
+		= m \cw \ln(\frac{\Tw}{\Tq})
+		= (\SI{0.500}{\kg}) (\SI{4190}{\joule\per\kg\per\kelvin}) \ln(\frac{\SI{368.15}{\kelvin}}{\SI{283.15}{\kelvin}}) \\
+		&= 2095 (0.263) \,\si{\joule\per\kelvin}
+		= \ans{ \SI{550}{\joule\per\kelvin}. }
+	}
+	\vfix
+}
+
+\prob{}{
+	Calculate the change in entropy of the heating element.
+}
+
+\sol{
+	The heating element stays at a constant temperature, so this is an isothermal process.  We use the expression
+	\eq{
+		\Del S = \frac{\Del Q}{T},
+	}
+	where $\Del Q$ is the change in heat of the element and $T$ its temperature.  In SI units, $T = \SI{393.15}{\kelvin}$.
+	\clearpage
+	Since no heat is lost to the system's surroundings, the heat gained by the water is the heat lost by the element.  Thus, $\Del Q = -m \cw \,\Del T$, where $\Del T = \Tw - \Tq = \SI{85.0}{\kelvin}$.  Plugging in numbers,
+	\eq{
+		\Del \Sel = -\frac{m \cw \,\Del T}{T}
+		= -\frac{(\SI{0.500}{\kg}) (\SI{4190}{\joule\per\kg\per\kelvin}) (\SI{85.0}{\kelvin})}{(\SI{393.15}{\kelvin})}
+		= -\frac{178}{393.15} \times 10^3 \,\si{\joule\per\kelvin}
+		= \ans{ -\SI{453}{\joule\per\kelvin}. }
+	}
+	\vfix
+}
+
+\prob{}{
+	Calculate the change in entropy of the system of water and heating element.
+}
+
+\sol{
+	The change in entropy of the system is the sum of the changes in entropy of its constituents:
+	\eq{
+		\Del \Ss = \Del \Swa + \Del \Sel
+		= (\SI{550.0}{\joule\per\kelvin}) - (\SI{453.0}{\joule\per\kelvin})
+		= \ans{ \SI{97.0}{\joule\per\kelvin}. }
+	}
+	\vfix
+}
+
+\prob{}{
+	State whether this process is reversible or irreversible, and explain your reasoning.
+}
+
+\sol{
+	\ans{The process is irreversible because the entropy of the system as a whole increases.}  For the process to be irreversible, the change in entropy would need to be 0.
+}
+
+
+
+\end{document}
