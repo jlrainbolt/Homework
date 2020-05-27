@@ -1,0 +1,96 @@
+\state{Non-equilibrium entropies of Fermi, Bose, and Boltzmann distributions}{
+	Consider a gas out of equilibrium with a slightly non-uniform occupation density in $n(x)$, where $x$ parametrizes points of phase space. 
+}
+
+%
+%	1.1
+%
+
+\prob{}{
+	We know that if the gas obeys Boltzmann statistics, its entropy is $S = -\int n \log n \ddx$.  Argue that this formula is valid only if the gradients are small, $\abs{\gradx n} \ll \nb^{(d + 1) / d}$, with $d$ the phase space dimensionality (``coarse-graining condition''), and $n(x) \ll 1$.
+}
+
+\sol{
+	We will ``coarse grain'' phase space by dividing it into a countably-infinite number of regions labeled by $j = 1, 2, \ldots$.  Let $\Gj = \Del\Gamj$ be the number of quantum states in the $j$th region, and $\Nj$ the number of particles whose state falls within $j$.  Then the mean occupation number density in region $j$ is $\nbj = \Nj / \Gj$~\cite[p~112]{Landau}.  For a gas obeying Boltzmann statistics, $\nb \ll 1$ and all $\nbj \ll 1$.  However, we divide our region coarsely enough that all $\Nj, \Gj \gg 1$~\cite[p~113]{Landau}.
+	
+	The entropy can be found by $S = \ln \Omg$, where $\Omg$ is the number of possible microstates for the system~\cite[p.~24]{Landau}.  Let $\Omgj$ be the number of microstates possible for each region $j$, so $\Omg = \prodj \Omgj$.  There are $\Omgj = \Gj^{\Nj} / \Nj!$ ways to distribute $\Nj$ indistinguishable particles in region $j$.  Then the entropy of the gas is~\cite[p~113]{Landau}
+	\eq{
+		S = \ln(\prodj \Omgj)
+		= \sumj \ln \Omgj
+		= \sumj \ln \Omgj
+		= \sumj \ln(\frac{\Gj^{\Nj}}{\Nj!})
+		= \sumj (\Nj \ln \Gj - \ln \Nj!).
+	}
+	Since $\Nj \gg 1$, we may use Stirling's approximation: $\ln \Nj! \approx \Nj \ln \Nj - \Nj$.  I am not sure how to quantify this in terms of the given information, but qualitatively \ans{Sterling's approximation becomes poor if we do not grain coarsely enough that $\Nj \gg 1$.}  Then
+	\al{
+		S &\approx \sumj (\Nj \ln \Gj - \Nj \ln \Nj + \Nj)
+		= \sumj \brac{ \Nj \ln(\frac{\Gj}{\Nj}) + \Nj }
+		= \sumj \brac{ \Gj \nbj \ln(\frac{1}{\nbj}) + \Gj \nbj } \\
+		&= \sumj \brac{ \Del\Gamj \,\nbj - \Del\xj \, \nbj \ln \nbj }
+		\approx -\sumj \Del\Gamj \, \nbj \ln \nbj,
+	}
+	where we have made a small error in going to the final equality.  \ans{Ignoring the first term induces an error of $\int n \ddG$ that is not justified unless $n(x) \ll 1$.}
+	
+	Finally, error is also introduced when we approximate this sum by an integral.  If the discrete sum is considered equivalent to a right or left Riemann sum, the error is
+	\eq{
+		\abs{ \sumj \Del\Gamj \, \nbj \ln \nbj - \int_a^b n \ln n \ddG } \leq \frac{\Mq (b - a)^2}{2 k},
+	}
+	where $\Mq$ is the maximum value of $\abs{\gradx (n \ln n)}$ on the interval $[a, b]$, and ~\cite{Riemann}.  In one dimension, to find $\Mq$ we note that
+	\eq{
+		\pdv{x}(n \ln n)
+		= \pdv{n}(n \ln n) \pdv{n}{x}
+		= (\ln n + 1) \pdv{n}{x}
+		\ll \nb^2 (\ln n + 1).
+	}
+	It follows that, in arbitrary dimensions, $\Mq \ll \nb^{(d + 1) / d} (\ln n + 1)$.  Then
+	\eq{
+		\abs{ \sumj \Del\xj \, \nbj \ln \nbj - \int_a^b n \ln n \ddG } \ll \frac{\nb^{(d + 1) / d} (\ln n + 1) (b - a) \Del\Gam}{2}.
+	}
+	\ans{Since $\nb \ll 1$, the number on the right-hand side is very small and the error introduced by integrating is not too large.  However, if instead we had, say, $\abs{\gradx n} \approx \nb^{(d - 1) / d}$, the error would blow up for small $d$.}  But for small gradients, we find
+	\eq{
+		S = -\int n \ln n \ddG
+	}
+	within negligible error.
+	
+	Finally, there is also the fact that if $n(x)$ is \emph{not} coarse-grained, then by Liouville's theorem it is conserved.  This means $\dv*{S}{t} = 0$ exactly, which we do not expect for a system out of equilibrium~\cite[pp.~61, 75]{Frigg}.
+}
+
+%
+%	1.2
+%
+
+\prob{}{
+	Remove the second condition in item 1 and obtain the formulas for the entropies of Fermi and Bose gases as integrals of some functions of $n(x)$.
+}
+
+\sol{
+	We will begin with a Fermi gas and divide phase space into regions containing $\Gj = \Del\Gamj$ quantum states and $\Nj$ particles each.  However, for a Fermi gas, $\Nj \approx \Gj$, and there can be at most one particle in each state (so $\Nj \leq \Gj$).  Then, simply applying definition of the binomial coefficient, there are $\Omgj = \Gj! / [ \Nj! \,(\Gj - \Nj)! ]$ ways to distribute $\Nj$ indistinguishable particles in the $j$th region~\cite[p.~146]{Landau}.  So
+	\al{
+		S &= \sumj \ln(\frac{\Gj!}{\Nj! \,(\Gj - \Nj)})
+		= \sumj \paren{ \ln \Gj! - \ln \Nj! - \ln (\Gj - \Nj)! } \\
+		&\approx \sumj [ \Gj \ln \Gj - \Gj - \Nj \ln \Nj + \Nj - (\Gj - \Nj) \ln(\Gj - \Nj) + \Gj - \Nj ] \\
+		&= \sumj [ \Gj \ln \Gj - \Nj \ln \Nj - (\Gj - \Nj) \ln(\Gj - \Nj) ] \\
+		&= \sumj [ (\Gj - \Nj) \ln \Gj + \Nj \ln \Gj - \Nj \ln \Nj - (\Gj - \Nj) \ln(\Gj - \Nj) ],
+	}
+	where we have used the assertion from Prob.~{1.1} that our coarse-graining yields sufficiently large $\Gj$ and $\Nj$ to justify the use of Stirling's approximation.  Rewriting in terms of $\nbj$, we have~\cite[p.~147]{Landau}
+	\eq{
+		S = \sumj \Gj [ (1 - \nbj) \ln \Gj + \nbj \ln \Gj - \nbj \ln \Nj - (1 - \nbj) \ln(\Gj - \Nj) ]
+		= \ans{ \sumj -\Del\Gamj [ (1 - \nbj) \ln(1 - \nbj) + \nbj \ln \nbj ]. }
+	}
+	
+	For the Bose gas, we will coarse grain in the same way.  However, in this case there is no limit on the number of particles $\Nj$ in each state $\Gj$, so the number of ways to distribute them is $\Omgj = (\Gj + \Nj - 1)! / [(\Gj - 1)! \,\Nj! ]$~\cite[p.~147]{Landau}.  Then
+	\al{
+		S &= \sumj \ln(\frac{(\Gj + \Nj - 1)!}{(\Gj - 1)! \,\Nj!}) \\
+		&\approx \sumj [ (\Gj + \Nj - 1) \ln(\Gj + \Nj - 1) - (\Gj + \Nj - 1) - (\Gj - 1) \ln (\Gj - 1) + (\Gj - 1) - \Nj \ln \Nj + \Nj ] \\
+		&= \sumj [ (\Gj + \Nj - 1) \ln(\Gj + \Nj - 1) - (\Gj + \Nj - 1) \ln (\Gj - 1) + \Nj \ln (\Gj - 1) - \Nj \ln \Nj ] \\
+		&\approx \sumj [ (\Gj + \Nj) \ln(\Gj + \Nj) - (\Gj + \Nj) \ln \Gj + \Nj \ln \Gj - \Nj \ln \Nj ],
+	}
+	where in going to the final line we have once again used our coarse-graining assumption $1 \ll \Gj, \Nj$.
+	
+	Rewriting in terms of $\nbj$, we have~\cite[p.~147]{Landau}
+	\eq{
+		S = \sumj \Gj [ (1 + \nbj) \ln(\Gj + \Nj) - (1 + \nbj) \ln \Gj + \nbj \ln \Gj - \nbj \ln \Nj ]
+		= \ans{ \sumj \Del\Gamj [ (1 + \nbj) \ln(1 + \nbj) - \nbj \ln \nbj ]. }
+	}
+	\vfix
+}

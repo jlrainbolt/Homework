@@ -3,12 +3,12 @@
 }
 
 \sol{
-	Quantum mechanical effects become important when the thermal deBroglie wavelength,
+	We will begin with the Bose and Fermi expressions and expand to leading order in the semiclassical limit, which will recover the Boltzmann expressions with the respective corrections.  Quantum mechanical effects become important when the thermal deBroglie wavelength,
 	\eq{
 		\lam = \frac{2\pi \hbar}{\sqrt{2 \pi m T}}
 		= \hbar \sqrt{\frac{2\pi}{m T}},
 	}
-	is close to the average distance between molecules~\cite[pp.~107--108]{Pathria}.  The condition we need, which is equivalent to small $\hbar$, is~\cite[p.~136]{Pathria}
+	is close to the average distance between molecules~\cite[pp.~107--108]{Pathria}.  The condition we need, which is equivalent to the semiclassical limit of small $\hbar$, is~\cite[p.~136]{Pathria}
 	\eqn{cond}{
 		\lam \ll \paren{ \frac{V}{N} }^{1/3}
 		\qimplies
@@ -31,7 +31,7 @@
 		\intoi \frac{\sqrt{z}}{e^{z - \mu / T} \pm 1} \ddeps \ll 1
 		\qimplies e^{\mu / T} \ll 1.
 	}
-	We will use the final relation to expand the expression for the thermodynamic potential and find the correction to that quantity, which is the same as the correction to the free energy.
+	We will use the final relation to expand the expression for the thermodynamic potential and find the correction to that quantity, which is the same as the correction to the free energy as seen in Prob.~{3.2}.
 	
 	The thermodynamic potential for the Fermi and Bose gases is~\cite[pp.~145--146]{Landau}
 	\eq{
@@ -43,20 +43,21 @@
 	}
 	Replacing the sum by an integral and integrating by parts, as shown in more detail in Prob.~{3.2}, and making the change of variable $\eps / T = z$, we find~\cite[p.~149]{Landau}
 	\eq{
-		\Omg = \mp \frac{g V}{3 \pi^2 \hbar^3} \sqrt{2 m^3} \intoi \frac{\eps^{3/2}}{1 \pm e^{(\eps - \mu) / T}} \ddeps
-		= - \frac{g V}{3 \pi^2 \hbar^3} \sqrt{2 m^3 T^5} \intoi \frac{z^{3/2}}{1 \pm e^{z - \mu / T}} \ddz.
+		\Omg = \mp \frac{g V}{3 \pi^2 \hbar^3} \sqrt{2 m^3} \intoi \frac{\eps^{3/2}}{e^{(\eps - \mu) / T} \pm 1} \ddeps
+		= - \frac{g V}{3 \pi^2 \hbar^3} \sqrt{2 m^3 T^5} \intoi \frac{z^{3/2}}{e^{z - \mu / T} \pm 1} \ddz.
 	}
 	Expanding the integrand for $u = e^{\mu / T} \ll 1$~\cite[p.~151]{Landau},
 	\al{
-		\intoi \frac{z^{3/2}}{1 \pm e^{z - \mu / T}} \ddeps &= \intoi \frac{e^{\mu / T - z} z^{3/2}}{e^{\mu / T - z} \pm 1} \ddz
-		\approx \intoi \paren{ 0 + u \brac{ \pdv{u}(\frac{u z}{u e^{-z} \pm 1}) }\ueo + \frac{u^2}{2} \brac{ \pdv[2]{u}(\frac{u z}{u e^{-z} \pm 1}) }\ueo } \ddz \\
-		&= \intoi \paren{ u \brac{ \frac{z^{3/2}}{e^{-z} u \pm 1} - \frac{u e^{-z} z^{3/2}}{(e^{-z} u \pm 1)^2} }\ueo + \frac{u^2}{2} \brac{ \frac{2 u e^{-z}  z^{3/2}}{(e^{-z} u \pm 1)^3} \mp \frac{2 e^{-z} z^{3/2}}{(u \pm 1)^2} }\ueo } \ddz \\
-		&= \intoi \paren{ u z^{3/2} \mp u^2 e^{-z} z^{3/2} } \ddz
-		= \intoi z^{3/2} e^{\mu / T - z} \ddz \mp \intoi z^{3/2} e^{2 \mu / T - z} \ddz \\
+		\intoi \frac{z^{3/2}}{e^{z - \mu / T} \pm 1} \ddeps &= \intoi \frac{e^{\mu / T - z} z^{3/2}}{1 \pm e^{\mu / T - z}} \ddz
+		\approx \intoi e^{\mu / T - z} z^{3/2} (1 \mp e^{\mu / T - z})
+%		\approx \intoi \paren{ 0 + u \brac{ \pdv{u}(\frac{u z}{u e^{-z} \pm 1}) }\ueo + \frac{u^2}{2} \brac{ \pdv[2]{u}(\frac{u z}{u e^{-z} \pm 1}) }\ueo } \ddz \\
+%		&= \intoi \paren{ u \brac{ \frac{z^{3/2}}{e^{-z} u \pm 1} - \frac{u e^{-z} z^{3/2}}{(e^{-z} u \pm 1)^2} }\ueo + \frac{u^2}{2} \brac{ \frac{2 u e^{-z}  z^{3/2}}{(e^{-z} u \pm 1)^3} \mp \frac{2 e^{-z} z^{3/2}}{(u \pm 1)^2} }\ueo } \ddz \\
+%		&= \intoi \paren{ u z^{3/2} \mp u^2 e^{-z} z^{3/2} } \ddz
+		= \intoi \paren{ z^{3/2} e^{\mu / T - z} \ddz \mp z^{3/2} e^{2 \mu / T - z} } \ddz \\
 		&= \frac{3 \sqrt{\pi}}{4} e^{\mu / T} \mp \frac{3}{16} \sqrt{\frac{\pi}{2}} e^{2\mu / T}
-		= \frac{3 \sqrt{\pi}}{4} e^{\mu / T} \paren{ 1 \mp \frac{e^{\mu / T}}{2^{5/2}} }.
+		= \frac{3 \sqrt{\pi}}{4} e^{\mu / T} \paren{ 1 \mp \frac{e^{\mu / T}}{2^{5/2}} },
 	}
-	Then, in this limit,
+	where we have used $(1 - x)^{-1} \approx 1 + x.$  Then, in this limit,
 	\eq{
 		\Omg = -\frac{g V}{4 \hbar^3} \sqrt{\frac{2 m^3 T^5}{\pi^3}} e^{\mu / T} \paren{ 1 \mp \frac{e^{\mu / T}}{2^{5/2}} }.
 	}
@@ -96,5 +97,5 @@
 			\text{Bose},
 		\end{cases} }
 	}
-	where $\Po$ is the Boltzmann pressure.  Therefore, \ans{ the correction increases the pressure for a Fermi gas and decreases it for a Bose gas. } This is predictable because the particles in a Fermi gas have a higher energy on average than those in a Bose gas, since the fermions are forced to occupy excited states by the Pauli exclusion principle.  More~(less) energetic particles have a higher~(lower) rate of collisions with the walls of the container, and therefore a higher~(lower) pressure.
+	where $\Po$ is the Boltzmann pressure.  Therefore, \ans{ the correction increases the pressure for a Fermi gas and decreases it for a Bose gas. } This is predictable because the particles in a Fermi gas have a higher energy on average than those in a Bose gas, since the fermions are forced by the Pauli exclusion principle to occupy excited states.  More~(less) energetic particles have a higher~(lower) rate of collisions with the walls of the container, and therefore a higher~(lower) pressure.
 }

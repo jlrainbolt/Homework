@@ -59,7 +59,8 @@
 		&= \frac{L T}{2\pi c} \curly{ 1 + u \brac{ \frac{1}{e^u - 1} - \frac{e^u u}{(e^u - 1)^2} }\uo } \ddomg
 		= \frac{L T}{2\pi c} \paren{ 1 - \frac{u}{2} } \ddomg
 		= \ans{ \frac{L}{2\pi c} \paren{ T - \frac{\hbar \omg}{2} } \ddomg, }
-		\\[2ex]
+	}
+	\al{
 		(d = 2) \quad
 		\ddEomg &= \frac{A T^2}{2 \pi \hbar c^2} \frac{u^2}{e^u - 1} \ddomg
 		\approx \frac{A T^2}{2 \pi \hbar c^2}  \curly{ \limuo \paren{ \frac{u^2}{e^u - 1} } + u \brac{ \pdv{u}(\frac{u^2}{e^u - 1}) }\uo } \ddomg \\
@@ -87,11 +88,11 @@
 	\eq{
 		\ddEomg = \frac{\hbar V}{\pi^2 c^3} \omg^3 e^{-\hbar \omg / T} \ddomg,
 	}
-	which suggests
+	which suggests that in this limit
 	\eq{
-		\ans{ \ddEomg \propto \frac{\hbar L^d}{c^d} \omg^d e^{-\hbar \omg / T} \ddomg }
+		\ans{ \ddEomg \propto \frac{\hbar L^d}{c^d} \omg^d e^{-\hbar \omg / T} \ddomg. }
 	}
-	in the Wien limit.
+	\vfix
 }
 
 %
@@ -133,11 +134,9 @@
 		\ans{ F \propto \frac{L^d T^{d + 1}}{\hbar^d c^d}. }
 	}
 	
-	For the Stefan-Boltzmann constant $\sig$, the Stefan-Boltzmann law in three dimensions is $\Js = \sig T^4$, where $\Js$ is the energy flux per unit area per unit time.  This may be modeled by photons escaping through a small hole in the wall of the cavity.  This escaping energy flux is given by~\cite[p.~169]{Kardar}
-	\eq{
-		\Js = \evcp \frac{E}{V},
-	}
-	where $E$ is the total energy of the gas and $\evcp$ is the average component of the velocity perpendicular to the hole.  In the 3D case, the cavity can be modeled as a sphere of volume $V$ with a hole in the top at $(x, y, z) = (0, 0, R)$, where $R$ is the sphere's radius.  Then $\cperp = c \cos\tht$ in spherical polar coordinates.  Only photons with a positive $\cperp$ can escape, so we integrate only over the upper hemispherical surface, and normalize by the angular area of the entire spherical surface, which is $4\pi$~\cite[p.~169]{Kardar}:
+	For the Stefan-Boltzmann constant $\sig$, the Stefan-Boltzmann law in three dimensions is $\Js = \sig T^4$, where $\Js$ is the energy flux per unit area per unit time.  This may be modeled by photons escaping through a small hole in the wall of the cavity.  This escaping energy flux is given by $\Js = \evcp E / V$, where $E$ is the total energy of the gas and $\evcp$ is the average component of the velocity perpendicular to the hole~\cite[p.~169]{Kardar}.
+	
+	In the 3D case, the cavity can be modeled as a sphere of volume $V$ with a hole in the top at $(x, y, z) = (0, 0, R)$, where $R$ is the sphere's radius.  Then $\cperp = c \cos\tht$ in spherical polar coordinates.  Only photons with a positive $\cperp$ can escape, so we integrate only over the upper hemispherical surface, and normalize by the angular area of the entire spherical surface, which is $4\pi$~\cite[p.~169]{Kardar}:
 	\al{
 		\evcp &= \frac{1}{4\pi} \int_0^{2\pi} \dd{\phi} \int_0^{\pi / 2} c \cos\tht \sin \tht \dd{\tht}
 		= \frac{1}{4\pi} (2\pi) \frac{1}{2}
@@ -199,6 +198,7 @@
 		= \frac{1.803 \,A T^2}{\pi \hbar^2 c^2}
 		\quad (d = 2).
 	}
+	\clearpage
 	Then the relationship between free energy and energy are
 	\aln{
 		(d = 1) \quad
@@ -292,14 +292,16 @@
 		= \frac{L T}{2\pi \hbar c} \bigg[ \ln(1 - e^u) - u \bigg]\oi
 		\to \infty,
 	}
-	This integral's diverging suggests a 1D gas is not physical.  However, in the high-frequency limit, equivalent to the high-energy limit $\hbar \omg \gg T$, the integrand approaches $e^{-u}$:
+	This integral diverges, which suggests a 1D gas is not physical.
+	\clearpage
+	However, in the high-frequency limit, equivalent to the high-energy limit $\hbar \omg \gg T$, the integrand approaches $e^{-u}$:
 	\eq{
 		(d = 1) \quad
 		\limui N = \frac{L T}{2\pi \hbar c} \intoi \frac{\ddu}{e^u}
 		= \frac{L T}{2\pi \hbar c} \bigg[ -e^{-u} \bigg]\oi
 		= \ans{ \frac{L T}{2\pi \hbar c}. }
 	}
-	In the 2D case, the integral converges.  Making the same change of variable and using Eq.~\refeq{integral},
+	In the 2D case, the integral converges.  Making the same change of variable and using Eq.~\refeq{formula},
 	\eq{
 		(d = 2) \quad
 		N = \frac{A}{2 \pi c^2} \intoi \frac{\omg}{e^{\hbar \omg / T} - 1} \ddomg
