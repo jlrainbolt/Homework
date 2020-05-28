@@ -32,22 +32,70 @@
 \sol{
 	The current density is given by $\vJ = \rho \vv$, where $\vv$ is the velocity of the particle.  Using Eq.~\refeq{ptch},
 	\eq{
-		\vv = \dv{\vx}{t}
+		\vv = \dv{\vx(t)}{t}
 		= \dv{t}[ R \cos(\omgo t) \,\xh + R \sin(\omgo t) \,\yh ]
 		= -R \omgo \sin(\omgo t) \,\xh + R \omg \cos(\omgo t) \,\yh
 		= R \omgo \Re[ i e^{i \omgo t} \,\xh + e^{i \omgo t} \,\yh ].
 	}
-	Then $\vJ_n(\vx, t) = \rhon(\vx, t) \,\vv(t)$, where $\rhon(\vx, t)$ are given by Eq.~\refeq{decomp}.  Using Eq.~\refeq{rhonpt},
+	Then $\vJ_n(\vx, t) = \rhon(\vx, t) \,\vv(t)$, where $\rhon(\vx, t)$ are given by Eq.~\refeq{decomp}.  Using Eq.~\refeq{rhonpt}, the components are
+	\ans{ \al{
+		\Jxn &= \frac{i}{2\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i n \phi} \, e^{i \omgo t}, &
+		\Jyn &= \frac{1}{2\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i n \phi} \, e^{i \omgo t}, &
+		\Jzn &= 0.
+	} }%
+	
+	Let $\vMn = (\vx \cross \vJn) / 2$, and note that
 	\al{
-		\Jxn &= R \omgo \Re[ i e^{i \omgo t}]  \frac{1}{2\pi} \frac{q}{R^2} \del(r - R) \,\del(z) \,e^{i n \phi}, \\
-		\Jyn &= R \omgo \Re[ i e^{i \omgo t}]  \frac{1}{2\pi} \frac{q}{R^2} \del(r - R) \,\del(z) \,e^{i n \phi}
+		\vMn &= \frac{[ y \,\Jzn - z \,\Jyn ] \,\xh + [ z \,\Jxn - x \,\Jzn ] \,\yh + [ x \,\Jyn - y \,\Jxn ] \,\zh}{2} \\
+		&= \frac{1}{4\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i n \phi} \, e^{i \omgo t} [ -z \,\xh + i z \,\yh + (x - i y) \,\zh ].
 	}
+	Transforming to cylindrical coordinates, in which $x - i y = r \cos\phi - i r \sin\phi = r e^{-i\phi}$, the components are
+	\ans{ \al{
+		\Mxn &= -\frac{1}{4\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i n \phi} \, e^{i \omgo t} z, \\
+		\Myn &= \frac{i}{4\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i n \phi} \, e^{i \omgo t} z, \\
+		\Mzn &= \frac{1}{4\pi} \frac{q \omgo}{R} r \,\del(r - R) \,\del(z) \,e^{i (n - 1) \phi} \, e^{i \omgo t}.
+	} }%
+
+	To find the divergence, we will write $\vM$ in cylindrical coordinates.  According to the inside cover of Griffiths,
+	\al{
+		\xh &= \cos\phi \,\rh - \sin\phi \,\phh, &
+		\yh &= \sin\phi \,\rh + \cos\phi \,\phh, &
+		\zh &= \zh.
+	}
+	Then $\vMn$ becomes
+	\al{
+		\vMn &= \frac{1}{4\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i n \phi} \, e^{i \omgo t} [ -z (\cos\phi \,\rh - \sin\phi \,\phh) + i z (\sin\phi \,\rh + \cos\phi \,\phh) + r (\cos\phi - i \sin\phi) \,\zh ] \\
+		&= \frac{1}{4\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i n \phi} \, e^{i \omgo t} [ z (-\cos\phi + i \sin\phi) \,\rh + z (i \cos\phi + \sin\phi) \,\phh + r (\cos\phi - i \sin\phi) \,\zh ] \\
+		&= \frac{1}{4\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i n \phi} \, e^{i \omgo t} [ -z (\cos\phi - i \sin\phi) \,\rh + i z (\cos\phi - i \sin\phi) \,\phh + r (\cos\phi - i \sin\phi) \,\zh ] \\
+		&= \frac{1}{4\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i (n - 1) \phi} \, e^{i \omgo t} [ -z \,\rh + i z \,\phh + r \,\zh ].
+	}
+	The divergence in cylindrical coordinates is on the inside cover of Jackson:
+	\eq{
+		\grad \vdot \vA = \frac{1}{r} \pdv{r}(r A_r) + \frac{1}{r} \pdv{\phi}{A_\phi} + \pdv{A_z}{z}.
+	}
+	Note that
+	\al{
+		\pdv{r}[ r (M_r)_n) ] &\propto \pdv{r}[ r \,\del(r - R) ]
+		= r \pdv{r}[ \del(r - R) ] + \del(r - R)
+		= \del(r - R) - \del(r - R)
+		= 0, \\
+		\pdv{\phi}[ (M_\phi)_n ] &\propto i \pdv{\phi}(e^{i (n - 1) \phi})
+		= i^2 (n - 1) \,e^{i (n - 1) \phi}
+		= -(n - 1) e^{i (n - 1) \phi}, \\
+		\pdv{z}[ \Mzn ] &\propto \pdv{z}[ \del(z) ]
+		= -\del(z) \pdv{z},
+	}
+	where we have used $\del'(x) = -\del(x) \dv*{x}$ and $x \,\del'(x) = -\del(x)$~\cite{Delta}.  So the divergence is
+	\eq{
+		\ans{ \grad \vdot \vMn = -\frac{1}{4\pi} \frac{q \omgo}{R} \del(r - R) \,\del(z) \,e^{i (n - 1) \phi} \, e^{i \omgo t} \paren{ i (n - 1) \frac{z \,e^{i (n - 1) \phi}}{r} + r \del(z) \pdv{z} }. }
+	}
+	\vfix
 }
 
 %
 %	Jackson 9.4(b)
 %
-\clearpage
+
 \prob{}{
 	What long-wavelength magnetic multipoles $(l, m)$ occur and at what frequencies?  (Remember that the multipole order $l$ does not necessarily equal the harmonic number $n$.)
 }
@@ -62,6 +110,6 @@
 
 
 
-%\makebib
+\makebib
 
 \end{document}

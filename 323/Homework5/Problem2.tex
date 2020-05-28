@@ -90,12 +90,12 @@
 		\nh = \sin\tht \cos\phi \,\xh + \sin\tht \sin\phi \,\yh + \cos\tht \,\zh.
 	}
 	Also,
-	\al{
+	\aln{
 		\Qx &= -3q a^2 \sin\tht e^{-2i \omg t} (\cos\phi + i \sin\phi)
-		= -3q a^2 \sin\tht \,e^{-2i \omg t} \,e^{i\phi}, \\
+		= -3q a^2 \sin\tht \,e^{-2i \omg t} \,e^{i\phi}, \notag \\
 		\Qy &= -3q a^2 \sin\tht e^{-2i \omg t} [ i \cos\phi - \sin\phi ]
-		= -3i q a^2 \sin\tht \,e^{-2i \omg t} \,e^{i \phi}, \\
-		\Qz &= 0.
+		= -3i q a^2 \sin\tht \,e^{-2i \omg t} \,e^{i \phi}, \label{Q} \\
+		\Qz &= 0. \notag
 	}
 	Then
 	\al{
@@ -109,22 +109,20 @@
 		\ans{ \vH = \frac{i c k^3}{16\pi} \frac{q a^2}{r} \exp[ i(kr + \phi - 2\omg t) ] \{ -i \sin(2\tht) \,\xh + \sin(2\tht) \,\yh + i [ 1 - \cos(2\tht) ] \,e^{i\phi} \,\zh \}. }
 	}
 	
-	The electric field for quadrupole radiation is given by Jackson~(9.132),
+	The electric field for quadrupole radiation is given on p.~280 in the lecture notes,
 	\eq{
-		\vE_{l m} = \Zo \vH_{l m} \cross \nh,
+		\vE = \frac{i k}{\mu_0} \Zo (\nh \cross \vA) \cross \nh
+		= \Zo \vH \cross \nh
+		= -\frac{i c k^3}{24\pi} \Zo \frac{e^{i k r}}{r} [ \nh \cross \vQ(\nh) ] \cross \nh.
 	}
-	since pure quadrupole radiation is equivalent to a linear combination of $q_{2 m}$ multipoles as stated on Jackson p.~437.  One of the vector identities on the inside cover is
+	One of the vector identities on the inside cover of Jackson is
 	\eq{
 		\vaa \cross (\vbb \cross \vcc) = (\vaa \vdot \vcc) \vbb - (\vaa \vdot \vbb) \vcc,
 	}
 	so
 	\eq{
 		[ \nh \cross \vQ(\nh) ] \cross \nh = -\nh \cross [ \nh \cross \vQ(\nh) ]
-		= \vQ(\nh) - [ \nh \vdot \vQ(\nh) ] \nh
-	}
-	and
-	\eq{
-		\vE = -\Zo \frac{i c k^3}{24\pi} \frac{e^{i k r}}{r} \{ \vQ(\nh) - [ \nh \vdot \vQ(\nh) ] \nh \}.
+		= \vQ(\nh) - [ \nh \vdot \vQ(\nh) ] \nh.
 	}
 	Note that
 	\eq{
@@ -135,7 +133,6 @@
 	\al{
 		\vQ(\nh) - [ \nh \vdot \vQ(\nh) ] \nh &= -3q a^2 \sin\tht \,e^{-2i \omg t} \,e^{i\phi} (\xh + i \,\yh) + 3q a^2 \sin^2\tht \,e^{-2i \omg t} \,e^{2i\phi} (\sin\tht \cos\phi \,\xh + \sin\tht \sin\phi \,\yh + \cos\tht \,\zh) \\
 		&= 3q a^2 \sin\tht \,e^{-2i \omg t} \,e^{i\phi} [ (\sin^2\tht \cos\phi \,e^{i \phi} - 1) \,\xh + (\sin^2\tht \sin\phi \,e^{i \phi} - i) \,\yh + \sin\tht \cos\tht \,e^{i\phi} \,\zh ].
-%		&= 3q a^2 \sin\tht \,e^{-2i \omg t} \,e^{i\phi} \brac{ \paren{ \frac{1 - \cos(2\tht)}{2} \cos\phi \,e^{i \phi} - 1 } \,\xh + \paren{ \frac{1 - \cos(2\tht)}{2} \sin\phi \,e^{i \phi} - i } \,\yh + \frac{\sin(2\tht)}{2} \,e^{i\phi} \,\zh }
 	}
 	Then
 	\eq{
