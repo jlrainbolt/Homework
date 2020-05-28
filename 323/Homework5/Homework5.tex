@@ -30,7 +30,18 @@
 }
 
 \sol{
-	The charge distribution is given by Eq.~\refeq{rhopt}.
+	The current density is given by $\vJ = \rho \vv$, where $\vv$ is the velocity of the particle.  Using Eq.~\refeq{ptch},
+	\eq{
+		\vv = \dv{\vx}{t}
+		= \dv{t}[ R \cos(\omgo t) \,\xh + R \sin(\omgo t) \,\yh ]
+		= -R \omgo \sin(\omgo t) \,\xh + R \omg \cos(\omgo t) \,\yh
+		= R \omgo \Re[ i e^{i \omgo t} \,\xh + e^{i \omgo t} \,\yh ].
+	}
+	Then $\vJ_n(\vx, t) = \rhon(\vx, t) \,\vv(t)$, where $\rhon(\vx, t)$ are given by Eq.~\refeq{decomp}.  Using Eq.~\refeq{rhonpt},
+	\al{
+		\Jxn &= R \omgo \Re[ i e^{i \omgo t}]  \frac{1}{2\pi} \frac{q}{R^2} \del(r - R) \,\del(z) \,e^{i n \phi}, \\
+		\Jyn &= R \omgo \Re[ i e^{i \omgo t}]  \frac{1}{2\pi} \frac{q}{R^2} \del(r - R) \,\del(z) \,e^{i n \phi}
+	}
 }
 
 %
