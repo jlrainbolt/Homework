@@ -51,7 +51,7 @@
 		\qlm(t) = \int \rho(\vx', t) \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp
 		= \int \rho(r', \tht', \phi' + \omg t) \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp.
 	}
-	To find something that resembles Eq.~\refeq{rhoJ}, we transform to a rotating coordinate frame $\Kt$ with $(\rt, \thtt, \phit) = (r, \tht, \phi + \omg t)$.  In this frame, $\rho(\vx, t)$ is stationary and the time dependence is in $\Ylm$.  Then the complex moments are
+	To find something that resembles Eq.~\refeq{rhoJ}, we transform to a rotating coordinate frame $\Kt$ with $(\rt, \thtt, \phit) = (r, \tht, \phi + \omg t)$.  In this frame, $\rho(\vx, t)$ is stationary and the time dependence is in $\Ylm$.  In this frame, the time-dependent multipole moments are
 	\eq{
 		\qtlm(t) = \int \rho(\rt', \thtt', \phit') \,{r'}^l \,\Ylm^*(\thtt', \phit' - \omg t) \dcxp.
 	}
@@ -69,18 +69,18 @@
 	\eq{
 		\qlm(t) = \qlm \,e^{-i m \omg t},
 	}
-	which has the convention of Eq.~\refeq{rhoJ}.  Here, however, we have multiple frequencies $m \omg$, where $m \in [-l, l]$ for integer $m$.  However, a frequency $m\omg$ is unphysical for $m < 0$.
-	
+	which has the form of Eq.~\refeq{rhoJ}.  Here, we have multiple frequencies $m \omg$, where $m \in [-l, l]$ for integer $m$.  However, a frequency $m\omg$ is unphysical for $m < 0$.
+	\clearpage
 	To form real linear combinations, we note that $\qlm \Ylm$ is real since the scalar potential defined by Wald~(2.79),
 	\eq{
 		\Phi(\vx) = \sum_{l, m} \frac{4\pi}{2l + 1} \frac{\qlm}{r^{l + 1}} \Ylm(\tht, \phi),
 	}
-	is a linear combination of $\qlm \Ylm$ and is real.  According to Jackson~(3.54) and (4.7), $\Ylnm(\tht, \phi) = (-1)^m \Ylm^*(\tht, \phi)$ and $\qlnm = (-1)^m \qlm^*$.  So
+	is a linear combination of $\qlm \Ylm$.  According to Jackson~(3.54) and (4.7), $\Ylnm(\tht, \phi) = (-1)^m \Ylm^*(\tht, \phi)$ and $\qlnm = (-1)^m \qlm^*$.  So
 	\eq{
 		\qlnm(t) \,\Ylnm(\tht, \phi) = (-1)^{2m} \qlm^*(t) \,\Ylm^*(\tht, \phi)
 		= \qlm^*(t) \,\Ylm^*(\tht, \phi).
 	}
-	Let $\qlm(t) \,\Ylm(\tht, \phi) = a + i b$, so $\Re[ \qlm(t) \,\Ylm(\tht, \phi) ] = a$ and $\Im[ \qlm \Ylm ] = b$.  Then
+	Let $\qlm(t) \,\Ylm(\tht, \phi) = a + i b$, so $\Re[ \qlm(t) \,\Ylm(\tht, \phi) ] = a$ and $\Im[ \qlm(t) \,\Ylm(\tht, \phi) ] = b$.  Then
 	\eqn{realpart}{
 		\qlm(t) \,\Ylm(\tht, \phi) + \qlnm(t) \,\Ylnm(\tht, \phi) = a + i b + a - i b
 		= 2a
@@ -96,7 +96,7 @@
 			0 & m < 0,
 		\end{cases} }
 	}
-	where $\qlm$ is defined by Eq.~\refeq{qlm} with $\rho(\vx) \to \rho(\vx, t = 0)$.
+	where $\qlm$ is defined by Eq.~\refeq{qlm} with $\rho(\vx, t = 0) \to \rho(\vx)$.
 }
 
 %
@@ -156,11 +156,11 @@
 		\rhon(\vx, t) \,e^{i n \omgo t} + \rhonn(\vx, t) \,e^{-i n \omgo t} = 2 \Re[ \rhon(\vx, t) \,e^{-i n \omgo t} ].
 	}
 	Making these substitutions in Eq.~\refeq{series}, we have
-	\ans{ \al{
-		\rho(\vx, t) &= \rhoo(\vx, t) + \sumni \Re[ 2\rhon(\vx) \,e^{-i n \omgo t} ], &
-		\text{where} \quad
-		\rhon(\vx) &= \frac{1}{T} \intoT \rho(\vx, t) \,e^{i n \omgo t} \ddt,
-	} }%
+	\aln{ \label{decomp}
+		\ans{ \rho(\vx, t)\ }&\ans{ = \rhoo(\vx, t) + \sumni \Re[ 2\rhon(\vx) \,e^{-i n \omgo t} ], } &
+		\ans{ \text{where} \quad
+		\rhon(\vx)\ }&\ans{= \frac{1}{T} \intoT \rho(\vx, t) \,e^{i n \omgo t} \ddt, }
+	}
 	as desired. \qed
 }
 
@@ -173,26 +173,73 @@
 }
 
 \sol{
-	From Eq.~\refeq{ptch}, the charge distribution for the orbiting point charge is,
+	From Eq.~\refeq{ptch}, the charge distribution for the orbiting point charge is
 	\eq{
-		\rho(\vx, t) = \frac{q}{R^2} \del(r - R) \,\del(\cos\tht) \,\del(\phi - \omgo t)
+		\rho(\vx, t) = \frac{q}{R^2} \del(r - R) \,\del(\tht - \pi / 2) \,\del(\phi - \omgo t)
+		\qimplies
+		\rho(\vx, 0) = \frac{q}{R^2} \del(r - R) \,\del(\tht - \pi / 2) \,\del(\phi).
 	}
-	where $\cos\tht = z = 0$ reflects the fact that the particle is in the $xy$ plane.
 	
-	We want to find $\qhoo$, $\qhqo$, $\qhqq$, and $\qhqnq$.  Using the method of Prob.~{1(a)}, Eq.~\refeq{qhlm} gives us
-	\al{
-		\qhoo &= q_{0 0}
-		= \int \rho(\vx', 0) \,{r'}^0 \,Y_{0 0}^*(\tht', \phi') \dcxp
-		= \frac{1}{\sqrt{4\pi}} \frac{q}{R^2} \intoi \del(r' - R) \,{r'}^2 \ddrp \intopi \del(\tht') \,\sin\tht \ddthtp \intotp \del(\phi') \ddphip
-		= \ans{ \frac{q}{\sqrt{4\pi}}, } \\
-		\qhqo &= q_{1 0}
-		= \int \rho(\vx', 0) \,r' \,Y_{1 0}^*(\tht', \phi') \dcxp
-		= \sqrt{\frac{3}{4\pi}} \frac{q}{R^2} \int \del(r' - R) \,{r'}^3 \ddrp \intopi \del(\tht') \cos\tht \sin\tht \ddthtp \intotp \del(\phi') \ddphip
-		= 
+	We want to find $\qhoo$, $\qhqo$, $\qhqq$, and $\qhqnq$.  According to the table on p.~109 in Jackson, the relevant spherical harmonics are
+	\aln{ \label{sphar}
+		Y_{0 0} &= \frac{1}{\sqrt{4\pi}}, &
+		Y_{1 0} &= \sqrt{\frac{3}{8\pi}} \sin\tht \,e^{i \phi}, &
+		Y_{1 1} &= -\sqrt{\frac{3}{4\pi}} \cos\tht.
 	}
-	where we have used the table of spherical harmonics on p.~109 in Jackson and the fact that 
+	Using the method of Prob.~{1(a)}, Eq.~\refeq{qhlm} gives us
+	\al{
+		\qhoo &= \qoo
+		= \int \rho(\vx', 0) \,{r'}^0 \,Y_{0 0}^*(\tht', \phi') \dcxp
+		= \frac{1}{\sqrt{4\pi}} \frac{q}{R^2} \intoi \del(r' - R) \,{r'}^2 \ddrp \intopi \del(\tht' - \pi / 2) \,\sin\tht \ddthtp \intotp \del(\phi') \ddphip \\
+		&= \frac{1}{\sqrt{4\pi}} \frac{q}{R^2} r^2 \sin(\pi / 2)
+		= \ans{ \frac{q}{\sqrt{4\pi}}, } \\[2ex]
+		\qhqo &= \qqo
+		= \int \rho(\vx', 0) \,r' \,Y_{1 0}^*(\tht', \phi') \dcxp
+		= \sqrt{\frac{3}{4\pi}} \frac{q}{R^2} \int \del(r' - R) \,{r'}^3 \ddrp \intopi \del(\tht' - \pi / 2) \cos\tht \sin\tht \ddthtp \intotp \del(\phi') \ddphip \\
+		&= \sqrt{\frac{3}{4\pi}} \frac{q}{R^2} R^3 \cos(\pi / 2) \sin(\pi / 2)
+		= \ans{ 0, } \\[2ex]
+		\qhqnq &= \ans{ 0, }
+	}
+	\al{
+		\qhqq &= 2 \Re[ \qqq ]
+		= 2 \Re\!\brac{ \int \rho(\vx', 0) \,{r'} \,Y_{1 1}^*(\tht', \phi') \dcxp } \\
+		&= -2 \sqrt{\frac{3}{8\pi}}  \frac{q}{R^2} \Re\!\brac{ \intoi \del(r' - R) \,{r'}^3 \ddrp \intopi \del(\tht' - \pi / 2) \,\sin^2\tht' \ddthtp \intotp \del(\phi') \,e^{i\phi'} \ddphip } \\
+		&= -2 \sqrt{\frac{3}{8\pi}}  \frac{q}{R^2} R^3 \sin^2(\pi / 2)
+		= \ans{ -g R \sqrt{\frac{2}{2\pi}}. }
+	}
+	
+	In cylindrical coordinates $(r, \phi, z)$,
 	\eq{
-		\intopi f(\tht) \sin\tht \dd{\tht} = \intnqq f(\tht) \dd{(\cos\tht)}.
+		\rho(\vx, t) = \frac{q}{R^2} \del(r - R) \,\del(\phi - \omgo t) \,\del(z).
+	}
+	Using the method of Prob.~{1(b)}, the right side of Eq.~\refeq{decomp} becomes
+	\al{
+		\rhon(\vx) &= \frac{1}{T} \frac{q}{R^2} \intoT \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \omgo t} \ddt
+		= \frac{1}{T} \frac{q}{R^2} \intoT \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \omgo t} \frac{\dd{(\omgo t)}}{\omgo} \\
+		&= \frac{1}{2\pi} \frac{q}{R^2} \del(r - R) \,\del(z) \,e^{i n \phi}.
+	}
+	To transform the spherical harmonics to cylindrical coordinates, note that $\phi$ is the same in both and $z = \cos\tht$ for the unit sphere.  Then Eq.~\refeq{sphar} becomes
+	\al{
+		Y_{0 0} &= \frac{1}{\sqrt{4\pi}}, &
+		Y_{1 0} &= \sqrt{\frac{3}{8\pi}} \sqrt{1 - z^2} \,e^{i \phi}, &
+		Y_{1 1} &= -\sqrt{\frac{3}{4\pi}} z,
+	}
+	where we have used $\cos^2\tht + \sin^2\tht = 1$.  Since the $\Ylm$ are mutually orthogonal, the $\qlm$ corresponding to $\rhon(\vx)$ is 0 if $n \neq m$.  Then, applying the left side of Eq.~\refeq{decomp},
+	\al{
+		\qoo &= \int \rho(\vx') \,{r'}^0 \,Y_{0 0}^*(\tht', \phi') \dcxp
+		= \int \rho_0(\vx') \,{r'}^0 \,Y_{0 0}^*(\tht', \phi') \dcxp \\
+		&= \frac{1}{2\pi} \frac{1}{\sqrt{4 \pi}} \frac{q}{R^2} \intoi \del(r' - R) \,{r'}^2 \ddrp \intotp \ddphip \intoi \del(z') \ddzp
+		= \frac{1}{\sqrt{4 \pi}} \frac{1}{2\pi} \frac{q}{R^2} R^2 (2\pi)
+		= \ans{ \frac{q}{\sqrt{4 \pi}}, } \\[2ex]
+		\qqo &= \int \rho(\vx') \,{r'} \,Y_{1 0}^*(\tht', \phi') \dcxp
+		= \int \rho_0(\vx') \,{r'} \,Y_{1 0}^*(\tht', \phi') \dcxp \\
+		&= \frac{1}{2\pi} \sqrt{\frac{3}{8\pi}} \frac{q}{R^2} \intoi \del(r' - R) \,{r'}^3 \ddrp \intotp e^{i \phi} \ddphip \intoi \del(z') \sqrt{1 - {z'}^2} \ddzp
+		= \frac{1}{2\pi} \sqrt{\frac{3}{8\pi}} \frac{q}{R^2} R^3 (e^{2\pi i} - 1) \sqrt{1}
+		= \ans{ 0, } \\[2ex]
+		\qqnq &= \int \rho(\vx') \,{r'} \,Y_{1 \,-1}^*(\tht', \phi') \dcxp
+		= \ans{ 0, } \\[2ex]
+		\qqq &= \int \rho(\vx') \,{r'} \,Y_{1 1}^*(\tht', \phi') \dcxp
+		= \int \Re[ 2 \rho_1(\vx') ] \,{r'} \,Y_{1 1}^*(\tht', \phi') \dcxp
 	}
 }
 
