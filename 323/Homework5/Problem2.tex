@@ -20,7 +20,7 @@
 		\end{tikzpicture}
 	\end{center}
 	
-	Note that each charge is a distance $a / \sqrt{2}$ from the origin.  The locations of each of the point charges are
+	Note that each charge is a distance $a / \sqrt{2}$ from the origin.  For a square rotating counter-clockwise, the locations of each of the point charges are
 	\al{
 		\vxq(t) &= \frac{a}{\sqrt{2}} (\cos \omg t \,\xh + \sin \omg t \,\yh), &
 		\vxw(t) &= \frac{a}{\sqrt{2}} (-\sin \omg t \,\xh + \cos \omg t \,\yh), \\
@@ -151,11 +151,12 @@
 		\abs{ [ \nh \cross \vQ(\nh) ] \cross \nh }^2 &= \abs{ \vQ(\nh) }^2 - \abs{ \nh \vdot \vQ(\nh) }^2 \\
 		&= \abs{ -3q a^2 \sin\tht \,e^{-2i \omg t} \,e^{i\phi} }^2 + \abs{ -3i q a^2 \sin\tht \,e^{-2i \omg t} \,e^{i\phi} }^2 - \abs{ -3q a^2 \sin^2\tht \,e^{-2i \omg t} \,e^{2i\phi} }^2 \\
 		&= 9 q^2 q^4 \sin^2\tht (2 - \sin^2\tht)
-		= 9 q^2 q^4 (1 + \cos^4\tht),
+		= 9 q^2 q^4 (1 - \cos^2\tht) (1 + \cos^2\tht)
+		= 9 q^2 q^4 (1 - \cos^4\tht),
 	}
 	so
 	\eq{
-		\ans{ \dv{P}{\Omg} = \frac{c^2 \Zo}{128 \pi^2} k^6 q^2 q^4 (1 + \cos^4\tht). }
+		\ans{ \dv{P}{\Omg} = \frac{c^2 \Zo}{128 \pi^2} k^6 q^2 q^4 (1 - \cos^4\tht). }
 	}
 	
 	The total radiated power for a quadrupole is given by Jackson~(9.49),
@@ -172,14 +173,16 @@
 		\ans{ P = \frac{c^2 \Zo}{40 \pi} k^6 q^2 a^4. }
 	}
 	
-	Since $\Qij \propto e^{2i \omg t}$, \ans{the frequency of radiation is $2\omg$.}  This means $k = 2 \omg / c$.  Writing the previous results in terms of the frequency, we have
+	Since $\Qij \propto e^{2i \omg t}$, \ans{the frequency of radiation is $2\omg$.}  This means $k = 2 \omg / c$.
+	
+	Writing the previous results in terms of the frequency, we have
 	\ans{ \al{
 		\vH &= \frac{i \omg^3}{2\pi c^2} \frac{q a^2}{r} \exp[ i(kr + \phi - 2\omg t) ] \{ -i \sin(2\tht) \,\xh + \sin(2\tht) \,\yh + i [ 1 - \cos(2\tht) ] \,e^{i\phi} \,\zh \}, \\[2ex]
 		\vE &= -\Zo \frac{i \omg^3}{\pi c^2} \frac{q a^2}{r} \sin\tht \,\exp[i (k r + \phi - 2\omg t)] [ (\sin^2\tht \cos\phi \,e^{i \phi} - 1) \,\xh + (\sin^2\tht \sin\phi \,e^{i \phi} - i) \,\yh + \sin\tht \cos\tht \,e^{i\phi} \,\zh ],
 	}
 	\vfix
 	\al{
-		\dv{P}{\Omg} &= \frac{\Zo}{2 \pi^2 c^4} \omg^6 q^2 q^4 (1 + \cos^4\tht), &
+		\dv{P}{\Omg} &= \frac{\Zo}{2 \pi^2 c^4} \omg^6 q^2 q^4 (1 - \cos^4\tht), &
 		P &= \frac{8 \Zo}{5 \pi c^4} \omg^6 q^2 a^4.
 	} }%
 	\vfix
