@@ -1,0 +1,241 @@
+\state{(Jackson 9.1)}{
+	A common textbook example of a radiating system is a configuration of charges fixed relative to each other but in rotation.  The charge density is obviously a function of time, but it is \emph{not} of the form
+	\aln{ \label{rhoJ}
+		\rho(\vx, t) &= \rho(\vx) \,e^{-i \omg t}, &
+		\vJ(\vx, t) &= \vJ(\vx) \,e^{-i \omg t}.
+	}
+	\vfix
+}
+
+%
+%	Jackson 9.1(a)
+%
+
+\prob{}{
+	Show that for rotating charges one alternative is to calculate \emph{real} time-dependent multipole moments using $\rho(\vx, t)$ directly and then compute the multipole moments for a given harmonic frequency with the convention of Eq.~\refeq{rhoJ} by inspection or Fourier decomposition of the time-dependent moments.  Note that care must be taken when calculating $\qlm(t)$ to form linear combinations that are real before making the connection.
+}
+
+\sol{
+	The multipole moments are given by Wald~(2.80),
+	\eqn{qlm}{
+		\qlm = \int \rho(\vx') \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp,
+	}
+	where the spherical harmonics $\Ylm$ are given by Wald~(2.58),
+	\eqn{Ylm}{
+		\Ylm(\tht, \phi) = \sqrt{\frac{2l + 1}{4\pi} \frac{(l - m)!}{(l + m)!}} \Plm(\cos\tht) \,e^{i m \phi},
+	}
+	and $\Plm$ are the associated Legendre polynomials.
+	
+	We will choose coordinates for a frame $K$ such that the charge distribution rotates counterclockwise about the $z$ axis with angular velocity $\omg$.  Note that a point charge orbiting counterclockwise about $z$ axis in the $xy$ plane has the position vector
+	\eqn{ptch}{
+		\vx(t) = R \cos(\omg t) \,\xh + R \sin(\omg t) \,\yh
+		= R \,\rh + \omg t \,\phh,
+	}
+	where $R$ is its distance from the origin.  This means that, if we take a stationary charge distribution $\rho(\vx)$ and set it rotating in this way, we are making the change of variable $\phi \to \phi + \omg t$.  Hence $\rho(\vx, t) = \rho(r, \tht, \phi + \omg t)$.
+	
+	Making this substitution into Eq.~\refeq{qlm}, we obtain the time-dependent multipole moments
+	\eq{
+		\qlm(t) = \int \rho(\vx', t) \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp
+		= \int \rho(r', \tht', \phi' + \omg t) \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp.
+	}
+	To find something that resembles Eq.~\refeq{rhoJ}, we transform to a rotating coordinate frame $\Kt$ with $(\rt, \thtt, \phit) = (r, \tht, \phi + \omg t)$.  In this frame, $\rho(\vx, t)$ is stationary and the time dependence is in $\Ylm$.  In this frame, the time-dependent multipole moments are
+	\eq{
+		\qtlm(t) = \int \rho(\rt', \thtt', \phit') \,{r'}^l \,\Ylm^*(\thtt', \phit' - \omg t) \dcxp.
+	}
+	From Eq.~\refeq{Ylm},
+	\eq{
+		\Ylm^*(\tht, \phi - \omg t) = \sqrt{\frac{2l + 1}{4\pi} \frac{(l - m)!}{(l + m)!}} \Plm(\cos\tht) \,e^{-i m (\phi - \omg t)}
+		= e^{i m \omg t} \,\Ylm^*(\tht, \phi),
+	}
+	so we have
+	\eq{
+		\qtlm(t) = e^{i m \omg t} \int \rho(\rt', \thtt', \phit') \,{r'}^l \,\Ylm^*(\thtt', \phit') \dcxp
+		= e^{i m \omg t} \,\qtlm.
+	}
+	Since the charge distribution is stationary in $\Kt$, $\qtlm(t) = \qlm$ and $\qlm(t) = \qtlm$.  Switching back to $K$, then, gives us
+	\eq{
+		\qlm(t) = \qlm \,e^{-i m \omg t},
+	}
+	which has the form of Eq.~\refeq{rhoJ}.  Here, we have multiple frequencies $m \omg$, where $m \in [-l, l]$ for integer $m$.  However, a frequency $m\omg$ is unphysical for $m < 0$.
+	\clearpage
+	To form real linear combinations, we note that $\qlm \Ylm$ is real since the scalar potential defined by Wald~(2.79),
+	\eq{
+		\Phi(\vx) = \sum_{l, m} \frac{4\pi}{2l + 1} \frac{\qlm}{r^{l + 1}} \Ylm(\tht, \phi),
+	}
+	is a linear combination of $\qlm \Ylm$.  According to Jackson~(3.54) and (4.7), $\Ylnm(\tht, \phi) = (-1)^m \Ylm^*(\tht, \phi)$ and $\qlnm = (-1)^m \qlm^*$.  So
+	\eq{
+		\qlnm(t) \,\Ylnm(\tht, \phi) = (-1)^{2m} \qlm^*(t) \,\Ylm^*(\tht, \phi)
+		= \qlm^*(t) \,\Ylm^*(\tht, \phi).
+	}
+	Let $\qlm(t) \,\Ylm(\tht, \phi) = a + i b$, so $\Re[ \qlm(t) \,\Ylm(\tht, \phi) ] = a$ and $\Im[ \qlm(t) \,\Ylm(\tht, \phi) ] = b$.  Then
+	\eqn{realpart}{
+		\qlm(t) \,\Ylm(\tht, \phi) + \qlnm(t) \,\Ylnm(\tht, \phi) = a + i b + a - i b
+		= 2a
+		= 2 \Re[ \qlm(t) \,\Ylm(\tht, \phi) ].
+	}
+	This expression gives the real time-dependent multipole moments, which let us avoid negative frequencies.
+	
+	Finally, let $\qhlm$ be the multipole moment corresponding to the harmonic frequency $m \omg$.  These multipole moments are given by
+	\eqn{qhlm}{
+		\ans{ \qhlm = \begin{cases}
+			2 \Re\!\brac{ \displaystyle \int \rho(\vx', 0) \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp } & m > 0, \\[2ex]
+			\displaystyle \int \rho(\vx', 0) \,{r'}^l \,\Ylm^*(\tht', \phi') \dcxp & m = 0, \\[2ex]
+			0 & m < 0,
+		\end{cases} }
+	}
+	where $\rho = \rho(\vx, t)$.
+}
+
+%
+%	Jackson 9.1(b)
+%
+
+\prob{}{
+	Consider a charge density $\rho(\vx, t)$ that is periodic in time with period $T = 2\pi / \omg$.  By making a Fourier \emph{series} expansion, show that it can be written as
+	\eq{
+		\rho(\vx, t) = \rhoo(x) + \sumni \Re[ 2\rhon(\vx) \,e^{-i n \omgo t} ],
+	}
+	where
+	\eq{
+		\rhon(\vx) = \frac{1}{T} \intoT \rho(\vx, t) \,e^{i n \omgo t} \ddt.
+	}
+	This shows explicitly how to establish connection with Eq.~\refeq{rhoJ}.
+}
+
+\sol{
+	The Fourier series is, according to Jackson~(2.36--37),
+	\eq{
+		f(x) = \frac{\Ao}{2} + \summi \brac{ \Am \cos(\frac{2\pi m x}{a}) + \Bm \sin(\frac{2\pi m x}{a}) }
+	}
+	where the interval in $x$ is $(-a/2, a/2)$, and
+	\al{
+		\Am &= \frac{2}{a} \int_{-a / 2}^{a / 2} f(x) \cos(\frac{2\pi m x}{a}) \ddx, &
+		\Bm &= \frac{2}{a} \int_{-a / 2}^{a / 2} f(x) \sin(\frac{2\pi m x}{a}) \ddx.
+	}
+	
+	Making the variables changes $x \to t$, $a \to T$, and $m \to n$, we have
+	\aln{
+		\rho(\vx, t) &%= \frac{\Ao}{2} + \sumni \brac{ \An \cos(\frac{2\pi n t}{T}) + \Bn \sin(\frac{2\pi n t}{T}) }
+		= \frac{\Ao}{2} + \summi [ \An \cos(n \omgo t) + \Bn \sin(n \omgo t) ]
+		= \frac{\Ao}{2} + \sumni \paren{ \An \frac{e^{i n \omgo t} + e^{-i n \omgo t}}{2} + \Bn \frac{e^{i n \omgo t} - e^{-i n \omgo t}}{2 i} } \notag \\
+		&= \frac{\Ao}{2} + \sumni \paren{ \frac{\An - i \Bn}{2} e^{i n \omgo t} + \frac{\An + i \Bn}{2} e^{-i n \omgo t} }. \label{series}
+	}
+	
+	For the coefficients, since the integrands are $T$-periodic, we can freely shift the bounds of integration.  Doing so,
+	\al{
+		\Ao &= \frac{2}{T} \intoT \rho(\vx, t) \ddt, &
+		\An &= \frac{2}{T} \intoT \rho(\vx, t) \cos(n \omgo t) \ddt, &
+		\Bn &= \frac{2}{T} \intoT \rho(\vx, t) \sin(n \omgo t) \ddt.
+	}
+	Then the ``new'' coefficients are
+	\al{
+		\frac{\An - i \Bn}{2} &= \frac{1}{T} \intoT \rho(\vx, t) [ \cos(n \omgo t) - i \sin(n \omgo t) ] \ddt
+		= \frac{1}{T} \intoT \rho(\vx, t) \,e^{-i n \omgo t} \ddt
+		\equiv \rhonn(\vx, t), \\
+		\frac{\Ao}{2} &= \frac{1}{T} \intoT \rho(\vx, t) \ddt
+		\equiv \rhoo(\vx, t), \\
+		\frac{\An + i \Bn}{2} &= \frac{1}{T} \intoT \rho(\vx, t) [ \cos(n \omgo t) + i \sin(n \omgo t) ] \ddt
+		= \frac{1}{T} \intoT \rho(\vx, t) \,e^{i n \omgo t} \ddt
+		\equiv \rhon(\vx, t),
+	}
+	where we have identified each with $\rhon(\vx, t)$.  We note that $\rhonn(\vx, t) = \rhon^*(\vx, t)$, and that $\rhon(\vx, t) \,e^{i n \omgo t}$ is real.  Then, similarly to Eq.~\refeq{realpart},
+	\eq{
+		\rhon(\vx, t) \,e^{i n \omgo t} + \rhonn(\vx, t) \,e^{-i n \omgo t} = 2 \Re[ \rhon(\vx, t) \,e^{-i n \omgo t} ].
+	}
+	Making these substitutions in Eq.~\refeq{series}, we have
+	\aln{ \label{decomp}
+		\ans{ \rho(\vx, t)\ }&\ans{ = \rhoo(\vx, t) + \sumni \Re[ 2\rhon(\vx) \,e^{-i n \omgo t} ], } &
+		\ans{ \text{where} \quad
+		\rhon(\vx)\ }&\ans{= \frac{1}{T} \intoT \rho(\vx, t) \,e^{i n \omgo t} \ddt, }
+	}
+	as desired. \qed
+}
+
+%
+%	Jackson 9.1(c)
+%
+
+\prob{}{
+	For a single charge $q$ rotating about the origin in the $xy$ plane in a circle of radius $R$ at constant angular speed $\omgo$, calculate the $l = 0$ and $l = 1$ multipole moments by the methods of Probs.~{1(a)} and {1(b)} and compare.  In method (b) express the charge density $\rhon(\vx)$ in cylindrical coordinates.  Are there higher multipoles, for example, quadrupole?  At what frequencies?
+}
+
+\sol{
+	From Eq.~\refeq{ptch}, the charge distribution for the orbiting point charge is
+	\eq{
+		\rho(\vx, t) = \frac{q}{R^2} \del(r - R) \,\del(\tht - \pi / 2) \,\del(\phi - \omgo t)
+		\qimplies
+		\rho(\vx, 0) = \frac{q}{R^2} \del(r - R) \,\del(\tht - \pi / 2) \,\del(\phi).
+	}
+	
+	We want to find $\qhoo$, $\qhqo$, $\qhqq$, and $\qhqnq$.  According to the table on p.~109 in Jackson, the relevant spherical harmonics are
+	\aln{ \label{sphar}
+		Y_{0 0} &= \frac{1}{\sqrt{4\pi}}, &
+		Y_{1 0} &= \sqrt{\frac{3}{4\pi}} \cos\tht, &
+		Y_{1 1} &= -\sqrt{\frac{3}{8\pi}} \sin\tht \,e^{i \phi}.
+	}
+	Using the method of Prob.~{1(a)}, Eq.~\refeq{qhlm} gives us
+	\al{
+		\qhoo &= \qoo
+		= \int \rho(\vx', 0) \,{r'}^0 \,Y_{0 0}^*(\tht', \phi') \dcxp
+		= \frac{1}{\sqrt{4\pi}} \frac{q}{R^2} \intoi \del(r' - R) \,{r'}^2 \ddrp \intopi \del(\tht' - \pi / 2) \,\sin\tht \ddthtp \intotp \del(\phi') \ddphip \\
+		&= \frac{1}{\sqrt{4\pi}} \frac{q}{R^2} r^2 \sin(\pi / 2)
+		= \ans{ \frac{q}{\sqrt{4\pi}}, } \\[2ex]
+		\qhqo &= \qqo
+		= \int \rho(\vx', 0) \,r' \,Y_{1 0}^*(\tht', \phi') \dcxp
+		= \sqrt{\frac{3}{4\pi}} \frac{q}{R^2} \int \del(r' - R) \,{r'}^3 \ddrp \intopi \del(\tht' - \pi / 2) \cos\tht \sin\tht \ddthtp \intotp \del(\phi') \ddphip \\
+		&= \sqrt{\frac{3}{4\pi}} \frac{q}{R^2} R^3 \cos(\pi / 2) \sin(\pi / 2)
+		= \ans{ 0, } \\[2ex]
+		\qhqnq &= \ans{ 0, }
+	}
+	\al{
+		\qhqq &= 2 \Re[ \qqq ]
+		= 2 \Re\!\brac{ \int \rho(\vx', 0) \,{r'} \,Y_{1 1}^*(\tht', \phi') \dcxp } \\
+		&= -2 \sqrt{\frac{3}{8\pi}}  \frac{q}{R^2} \Re\!\brac{ \intoi \del(r' - R) \,{r'}^3 \ddrp \intopi \del(\tht' - \pi / 2) \,\sin^2\tht' \ddthtp \intotp \del(\phi') \,e^{i\phi'} \ddphip } \\
+		&= -2 \sqrt{\frac{3}{8\pi}}  \frac{q}{R^2} R^3 \sin^2(\pi / 2)
+		= \ans{ -q R \sqrt{\frac{3}{2\pi}}. }
+	}
+	
+	In cylindrical coordinates $(r, \phi, z)$,
+	\eq{
+		\rho(\vx, t) = \frac{q}{R^2} \del(r - R) \,\del(\phi - \omgo t) \,\del(z).
+	}
+	Using the method of Prob.~{1(b)}, the right side of Eq.~\refeq{decomp} becomes
+	\al{
+		\rhon(\vx) &= \frac{1}{T} \frac{q}{R^2} \intoT \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \omgo t} \ddt
+		= \frac{1}{T} \frac{q}{R^2} \intoT \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \omgo t} \frac{\dd{(\omgo t)}}{\omgo} \\
+		&= \frac{1}{2\pi} \frac{q}{R^2} \del(r - R) \,\del(z) \,e^{i n \phi}.
+	}
+	To transform the spherical harmonics to cylindrical coordinates, note that $\phi$ is the same in both and $z = \cos\tht$ for the unit sphere.  Then Eq.~\refeq{sphar} becomes
+	\al{
+		Y_{0 0} &= \frac{1}{\sqrt{4\pi}}, &
+		Y_{1 0} &= \sqrt{\frac{3}{4\pi}} z, &
+		Y_{1 1} &= -\sqrt{\frac{3}{8\pi}} \sqrt{1 - z^2} \,e^{i \phi},
+	}
+	where we have used $\cos^2\tht + \sin^2\tht = 1$.  Since the $\Ylm$ are mutually orthogonal, the $\qlm$ corresponding to $\rhon(\vx)$ is 0 if $n \neq m$.  Then, applying the left side of Eq.~\refeq{decomp},
+	\al{
+		\qoo &= \int \rho(\vx') \,{r'}^0 \,Y_{0 0}^*(\tht', \phi') \dcxp
+		= \int \rho_0(\vx') \,{r'}^0 \,Y_{0 0}^*(\tht', \phi') \dcxp \\
+		&= \frac{1}{2\pi} \frac{1}{\sqrt{4 \pi}} \frac{q}{R^2} \intoi \del(r' - R) \,{r'}^2 \ddrp \intotp \ddphip \intoi \del(z') \ddzp
+		= \frac{1}{\sqrt{4 \pi}} \frac{1}{2\pi} \frac{q}{R^2} R^2 (2\pi)
+		= \ans{ \frac{q}{\sqrt{4 \pi}}, } \\[2ex]
+		\qqo &= \int \rho(\vx') \,{r'} \,Y_{1 0}^*(\tht', \phi') \dcxp
+		= \int \rho_0(\vx') \,{r'} \,Y_{1 0}^*(\tht', \phi') \dcxp \\
+		&= \frac{1}{2\pi} \sqrt{\frac{3}{4\pi}} \frac{q}{R^2} \intoi \del(r' - R) \,{r'}^3 \ddrp \intotp \ddphip \intoi \del(z') \,z' \ddzp
+		= \ans{ 0, } \\[2ex]
+		\qqnq &= \int \rho(\vx') \,{r'} \,Y_{1 \,-1}^*(\tht', \phi') \dcxp
+		= \ans{ 0, } \\[2ex]
+		\qqq &= \int \rho(\vx') \,{r'} \,Y_{1 1}^*(\tht', \phi') \dcxp
+		= \int \Re[ 2 \rho_1(\vx') ] \,{r'} \,Y_{1 1}^*(\tht', \phi') \dcxp \\
+		&= -\frac{2}{\pi} \sqrt{\frac{3}{8\pi}} \frac{q}{R^2} \intoi \del(r' - R) \,{r'}^3 \ddrp \intotp \cos\phi' e^{i \phi'} \ddphip \intoi \del(z') \,\sqrt{1 - {z'}^2} \ddzp \\
+		&= -\frac{2}{\pi} \sqrt{\frac{3}{8\pi}} \frac{1}{R^2} R^3 \sqrt{1} \intotp (\cos^2\phi' + i \cos\phi' \sin\phi') \ddphip
+		= -2 \frac{q R}{\pi} \sqrt{\frac{3}{8\pi}} (\pi + 0)
+		= \ans{ -q R \sqrt{\frac{3}{2\pi}}, }
+	}
+	which are the same as those calculated using method (a).
+	
+	To determine whether there are higher multipoles, we will examine Eq.~\refeq{qhlm}.  We know from the fact that $\rhon(\vx, t)$ exists for all $n = m \geq 0$, so multipoles for a given $m$ would not exist only if $\Plm(\cos\tht) = 0$ for all $l \geq m$.  However, the associated Legendre polynomials $\Plm$ are given by~\cite{ALP}
+	\eq{
+		\Plm(x) = \frac{(-1)^m}{2^l l!} (1 - x^2)^{m / 2} \dv[l + m]{x}(x^2 - 1)^l.
+	}
+	By inspection, there always exists some allowed $(l, m)$ pair such that $\Plm(x) \neq 0$.  Thus, \ans{higher multipoles exist for all frequencies $m \omgo$ such that $m \geq 0$.}
+}
