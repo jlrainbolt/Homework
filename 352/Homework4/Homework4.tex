@@ -1,0 +1,311 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{352}
+\homeworknum{4}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+\state{H-theorem and Pauli kinetic balance equation}{
+	The Pauli balance equation (a version of the Boltzmann kinetic equation more suitable for a quantum setting) reads
+	\eqn{Pauli}{
+		\dwi = \sumj (\Pij \wj - \Pji \wi),
+	}
+	where $\wi$ is the probability of a system to be in the state $\ki$ and $\Pij$ is a transition probability rate (i.e.~the probability of a state $\ki$ to transition to $\kj$ during unit time).  In addition, a detailed balance condition is imposed: $\Pij = \Pji$.
+}
+
+%
+%	1.1
+%
+
+\setcounter{subsection}{1}
+%\prob{}{\ }
+%
+%	1.1(a)
+%
+
+\subprob{
+	Show that the Pauli balance equation respects the normalization condition $\sumi \wi = 1$.
+}
+
+\sol{
+	Since $\Pij = \Pji$,
+	\eq{
+		\sumi \sumj \Pij \wj = \sumi \sumj \Pji \wj.
+	}
+	Swapping indices on the right side,
+	\eq{
+		\sumi \sumj \Pij \wj = \sumi \sumj \Pij \wi
+		= \sumi \sumj \Pji \wi,
+	}
+	where we have once again applied $\Pij = \Pji$.  Then, by Eq.~\refeq{Pauli},
+	\eqn{d0}{
+		\sumi \dwi = \sumi \sumj (\Pij \wj - \Pij \wi) = 0.
+	}
+	This implies $\sumi \wi = k$, where $k$ is some constant.  If $k \neq 1$, we may redefine $\wi \to \wi / k$ without affecting the validity of the proof.  Thus, we have shown that Eq.~\refeq{Pauli} respects the normalization condition. \qed
+}
+
+%
+%	1.1(b)
+%
+
+\subprob{
+	Show that the Pauli balance equation is time irreversible.
+}
+
+\sol{
+	Under time reversal $t \to -t$, $\dv*{t} \to -\dv*{t}$.  From Eq.~\refeq{Pauli},
+	\eq{
+		-\dwi = \sumj (\Pji \wi - \Pij \wj)
+	}
+	
+	\hl{???}
+}
+
+%
+%	1.1(c)
+%
+
+\subprob{
+	Show that the entropy $S = -\sumi \wi \ln \wi$ is non-decreasing: $\dS \geq 0$. 
+}
+
+\sol{
+	Firstly, note that
+	\eq{
+		\dS = -\sumi \dv{t}(\wi \ln \wi)
+		= -\sumi \dv{\wi}{t} \dv{\wi}(\wi \ln \wi)
+		= -\sumi \dwi (\ln \wi + 1)
+		= -\sumi \dwi \ln \wi,
+	}
+	where we have applied Eq.~\refeq{d0}.  Since all $0 \leq \wi \leq 1$ for all $i$, $\ln \wi \leq 0$.  Since Eq.~\refeq{Pauli} \hl{is time irreversible,} $\dwi > 0$ for all $i$.  Thus, $\dS \geq 0$ as desired. \qed
+}
+
+%
+%	1.2
+%
+
+\prob{}{
+	{\Renyi} entropy of the order $\alp$ is defined by the formula $\Salp = 1 / (1 -\alp) \ln \sumi \wi^\alp$.
+}
+
+\subprob{
+	Show that {\Renyi} entropy of the order 1 is the Boltzmann entropy (in the context of information theory, Boltzmann entropy is called Shannon entropy).
+}
+
+\subprob{
+	Show that {\Renyi} entropy doesn't decrease: $\dSalp \geq 0$.
+}
+
+
+
+
+\clearpage
+\state{Pauli paramagnetism}{
+	Cold atomic gases could be realized by atomic isotopes which are fermions ($^6$Li, $^{40}$K, etc.).  Such isotopes may have a large atomic spin.  Assuming that the Fermi gas is degenerate and its constituents have a spin $s> 1 / 2$, compute the Pauli magnetic susceptibility.
+}
+
+\sol{
+	According to p.~2 of Lecture 12, the magnetic susceptibility is defined
+	\eq{
+		\chi = \frac{1}{V} \pdv{N}{\mu},
+	}
+	where $N = \pdv*{\Omg}{\mu}$, and
+	\eq{
+		\Omg(\mu, B) = \frac{1}{2} \Omgo(\mu + B) + \frac{1}{2} \Omgo(\mu - B)
+		\approx \Omgo(\mu) + \frac{B^2}{2} \pdv[2]{\Omgo}{\mu},
+	}
+	where $B$ is the strength of the magnetic field and $\Omgo$ is the thermodynamic potential with no field present.  \hl{but I think this doesn't work because it is only for spin 1/2}
+	
+	For a Fermi gas, the thermodynamic potential is~\cite[p.~145]{Landau}
+	\eq{
+		\Omgo = -T \sumk \ln(1 + e^{(\mu - \epsk) / T}).
+	}
+	Note that
+	\al{
+		\pdv{\Omgo}{\mu} &= 
+	}
+	Then the thermodynamic potential in the magnetic field is
+	\eq{
+		\Omg = 
+	}
+}
+
+
+
+
+\clearpage
+\state{Landau diamagnetism}{\ }
+
+%
+%	3.1
+%
+
+\prob{}{
+	Compute the Landau diamagnetic susceptibility for ultra-relativistic Fermi gas.
+}
+
+\sol{
+	
+}
+
+%
+%	3.2
+%
+
+\prob{(*)}{
+	Compute the Landau diamagnetic susceptibility for a Fermi gas confined to a box whose linear size in the $z$ direction is $\Lz \ll \Lx, \Ly$.  The magnetic field is directed along the $z$ direction.  Consider two cases when the energy spacing $(2\pi \hbar / \Lz)^2 / 2m$ is much larger/smaller than the cyclotron energy $\muB B$.
+}
+
+
+
+
+\clearpage
+\state{Fluctuations of thermodynamics}{\ }
+
+%
+%	4.1
+%
+
+\prob{}{
+	Find the energy fluctuation $\evDEs = \ev{(E - \evE)^2}$ and the number fluctuation $\evDNs = \ev{(N - \evN)^2}$ for photons in the black body radiation.
+}
+
+%
+%	4.2
+%
+
+\prob{}{
+	Show that the number of particles in a sub-volume of a gas fluctuates according the formula $\evDNs = T \pdv*{\!\evN}{\mu}$.  Furthermore, apply this formula to the Boltzmann, Fermi, and Bose ideal gases.
+}
+
+\sol{
+	Let $p(x)$ denote the probability of a fluctuation in $x$.  Then $p(x) \propto e^{S(x)}$, where $S(x)$ is the entropy of a closed system representing a sub-volume of a gas~\cite[pp.~343, 348]{Landau}.  It follows that $p(x) \propto e^{\Del S(x)}$, where $\Del S(x)$ is the change in the entropy due to the fluctuation~\cite[p.~348]{Landau}.  This change is equal to the difference between $S(x)$ and its equilibrium value, which is given by
+	\eq{
+		\Del S(x) = -\frac{\Del E - T \,\Del S + P \,\Del V}{T},
+	}
+	where $T$ and $P$ are the equilibrium values~\cite[pp.~60, 349]{Landau}.  Assuming small fluctuations and thus small $\Del E$, we can expand $\Del E$ as
+	\al{
+		\Del E &= \pdv{E}{S} \Del S + \pdv{E}{V} \Del V + \frac{1}{2} \brac{ \pdv[2]{E}{S} (\Del S)^2 + 2 \pdv{E}{S}{V} \Del S \,\Del V + \pdv{E}{V} (\Del V)^2 } \\
+		&= T \,\Del S - P \,\Del V + \frac{1}{2} \brac{ \paren{ \Del\pdv{E}{S} }_V \,\Del S + \paren{ \Del\pdv{E}{V} }_S \,\Del V }
+		= T \,\Del S - P \,\Del V + \frac{\Del S \,\Del T - \Del P \,\Del V}{2},
+	}
+	where we have used $\pdv*{E}{S} = T$ and $\pdv*{E}{V} = -P$~\cite[pp.~60, 349]{Landau}.  Then the fluctuation probability has the proportionality
+	\eq{
+		p \propto e^{\Del S(x)}
+		= \exp(\frac{\Del P \,\Del V - \Del S \,\Del T}{2 T}).
+	}
+	Expanding $\Del S$ and $\Del P$ in terms of $V$ and $T$, we find
+	\al{
+		\Del P &= \paren{ \pdv{P}{T} }_V \,\Del T + \paren{ \pdv{P}{V} }_t \,\Del V, &
+		\Del S &= \paren{ \pdv{S}{T} }_V \,\Del T + \paren{ \pdv{S}{V} }_T \,\Del V
+		= \frac{\Cv}{T} \,\Del T + \paren{ \pdv{P}{T} }_V \,\Del V,
+	}
+	where we have used $(\pdv*{S}{V})_T = (\pdv*{P}{T})_V$ and $\Cv = T (\pdv*{S}{T})_V$~\cite[pp.~45, 50, 349]{Landau}.  Making these substitutions,
+	\aln{
+		p &\propto \exp\!\curly{ \frac{1}{2 T} \brac{ \paren{ \pdv{P}{T} }_V \,\Del T \,\Del V + \paren{ \pdv{P}{V} }_t (\Del V)^2 - \pdv{\Cv}{T} (\Del T)^2 - \paren{ \pdv{P}{T} }_V \,\Del V \,\Del T } } \notag \\
+		&= \exp[ \paren{ \frac{1}{2T} \pdv{P}{V} }_t (\Del V)^2 - \frac{\Cv}{2 T^2} (\Del T) ]
+		= \exp[ \paren{ \frac{1}{2T} \pdv{P}{V} }_t (\Del V)^2 ] \exp[ -\frac{\Cv}{2 T^2} (\Del T) ]. \label{thing}
+	}
+	Thus, the expression is separable and fluctuations in $V$ and in $T$ can be regarded as independent~\cite[p.~349]{Landau}.
+	
+	We will focus on fluctuations in volume, and assume their probability to be Gaussian distributed.  The Gaussian distribution is given by~\cite[p.~345]{Landau}
+	\eq{
+		p(x) \ddx = \frac{1}{\sqrt{2\pi \ev*{x^2}}} \exp(-\frac{x^2}{2 \ev*{x^2}}) \ddx.
+	}
+	Comparing Eq.~\refeq{thing}, we find that~\cite[p.~350]{Landau}
+	\eq{
+		\ev*{(\Del V)^2} = -T \paren{ \pdv{V}{P} }_T.
+	}
+	Dividing both sides by $N^2$~\cite[p.~351]{Landau},
+	\eq{
+		\ev{[ \Del(V / N) ]^2} = -\frac{T}{N^2} \paren{ \pdv{V}{P} }_T.
+	}
+	Now we fix $V$ and consider fluctuations in $N$.  Note that
+	\eq{
+		\Del(V / N) = V \,\Del(1 / N)
+		= -\frac{V}{N^2} \,\Del N,
+	}
+	so we have
+	\eq{
+		\evDNs = -\frac{T N^2}{V^2} \paren{ \pdv{V}{P} }_T.
+	}
+	Since $N = V \,f(P, T)$, we can write
+	\eq{
+		 -\frac{N^2}{V^2} \paren{ \pdv{V}{P} }_T = N \brac{ \pdv{P}(\frac{N}{V}) }_{T, N}
+		 = N \brac{ \pdv{P}(\frac{N}{V}) }_{T, v}
+		 = \frac{N}{V} \paren{ \pdv{N}{P} }_{T, v}
+		 = \paren{ \pdv{P}{\mu} }_{T, V} \paren{\pdv{N}{P} }_{T, V}
+		 = \paren{ \pdv{N}{\mu} }_{T, V},
+	}
+	where we have used $N / V = (\pdv*{P}{\mu})_T$~\cite[pp.~351--352]{Landau}.  Since we associated all quantities with those at equilibrium, we have shown that
+	\eq{
+		\ans{ \evDNs = T \pdv{\!\evN}{\mu} }
+	}
+	as desired. \qed
+	
+	\hl{Boltzmann} $\evDNs = N$
+	
+	For the Fermi and Bose gases, the number of particles is given by
+	\eq{
+		N = \frac{g V}{\pi^2 \hbar^2} \sqrt{\frac{m^3 T^3}{2}} \intoi \frac{\sqrt{z}}{e^{z - \mu / T} \pm 1} \ddz
+		\begin{cases}
+			\text{Fermi}, \\
+			\text{Bose},
+		\end{cases}
+	}
+	where $z = \eps / T$~\cite[pp.~149, 354]{Landau}.  Evaluating the integrals using
+	\eq{
+		\intoi \frac{k^s}{e^{k - \mu} \pm 1} \dd{k} = -\Gam(s + 1) \,\Li_{1 + s}(\mp e^{\mu}),
+	}
+	where $\Li$ is the polylogarithm~\cite{Polylog}, we have
+	\eq{
+		N = \mp \frac{g V}{\pi^2 \hbar^2} \sqrt{\frac{m^3 T^3}{2}} \Gam(3/2) \,\Li_{3/2}(\mp e^{\mu / T})
+		= \mp \frac{g V}{\pi^2 \hbar^2} \paren{ \frac{m T}{2} }^{3/2} \Li_{3/2}(\mp e^{\mu / T}).
+	}
+	Using the formula $\dv*{\Li_n(x)}{x} = \Li_{n - 1}(x) / x$~\cite{Polylog}, we find
+	\eq{
+		\pdv{\mu}[ \Li_{3/2}(\mp e^{\mu / T}) ] = \mp \pdv{\mu}(\mp e^{\mu / T}) \frac{\Li_{3/2}(\mp e^{\mu / T})}{e^{\mu / T}}
+		= \frac{\Li_{3/2}(\mp e^{\mu / T})}{T}.
+	}
+	So the fluctuations are
+	\eq{
+		\ans{ \evDNs = \mp \frac{g V}{\pi^2 \hbar^2} \paren{ \frac{m T}{2} }^{3/2} \frac{\Li_{3/2}(\mp e^{\mu / T})}{T}
+		\begin{cases}
+			\text{Fermi}, \\
+			\text{Bose}.
+		\end{cases} }
+	}
+}
+
+
+
+
+\clearpage
+\state{Pair correlation function}{\ }
+
+%
+%	5.1
+%
+
+\prob{}{
+	Compute the  pair correlation of density $C(r)= \ev{\ev{n(r) n(0)}}$ and the fluctuation of the occupation number $\ev*{\absnk^2}$ of the degenerate Fermi gas ($T \ll \EF$) in dimensions $d = 1, 2, 3$. Discuss various distance regimes.
+}
+
+%
+%	5.2
+%
+
+\prob{}{
+	Repeat the above for the Bose gas above the condensation temperature.
+}
+
+
+%\makebib
+
+\end{document}
