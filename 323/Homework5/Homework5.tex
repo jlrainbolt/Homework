@@ -45,19 +45,17 @@
 	\al{
 		\vJn(\vx) &= \frac{1}{T} \intoT \vJ(\vx, t) \,e^{i n \omgo t} \ddt
 		= \frac{1}{T} \intoT \rho(\vx, t) \,\vv(t) \,e^{i n \omgo t} \ddt \\
-%		&= \frac{q \omgo}{R T} \intoT \del(r - R) \,\del(\phi - \omgo t) \,\del(z) [ i e^{i \omgo t} \,\xh + e^{i \omgo t} \,\yh ] \,e^{i n \omgo t} \ddt \\
-		&= \frac{1}{2\pi} \frac{q \omgo^2}{R} \intoT \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i (n + 1) \omgo t} [ i \,\xh + \yh ] \ddt
-		= \frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i (n + 1) \phi} [ i \,\xh + \yh ]
+		&= \frac{1}{2\pi} \frac{q \omgo^2}{R} \intoT \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i (n + 1) \omgo t} [ i \,\xh + \yh ] \ddt \\
+		&= \frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i (n + 1) \phi} [ i \,\xh + \yh ]
 	}
 	where $\rho(\vx, t)$ is given by Eq.~\refeq{rhocy}.  So the components are
-	\ans{ \al{
-		\Jxn &= \frac{i}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i (n + 1) \phi}
-		= -\frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \phi} \sin\phi, \\
-		\Jyn &= \frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i (n + 1) \phi}
-		= \frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \phi} \cos\phi, \\
-		\Jzn &= 0.
-	} }%
-	
+	\aln{
+		\ans{ \Jxn\ }&\ans{= \frac{i}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i (n + 1) \phi}
+		= -\frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \phi} \sin\phi, } \notag \\
+		\ans{ \Jyn\ }&\ans{= \frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i (n + 1) \phi}
+		= \frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \phi} \cos\phi, } \label{Jn} \\
+		\ans{ \Jzn\ }&\ans{= 0. } \notag
+	}
 	Let $\vMn = (\vx \cross \vJn) / 2$, and note that
 	\al{
 		\vMn &= \frac{[ y \,\Jzn - z \,\Jyn ] \,\xh + [ z \,\Jxn - x \,\Jzn ] \,\yh + [ x \,\Jyn - y \,\Jxn ] \,\zh}{2} \\
@@ -71,24 +69,11 @@
 		= -\frac{1}{4\pi} \frac{q \omgo^2}{R} \del(r - R) \,z \,\del(z) \,e^{i n \phi} \sin\phi, \\
 		\Mzn &= \frac{1}{4\pi} \frac{q \omgo^2}{R} r \,\del(r - R) \,\del(z) \,e^{i n \phi}.
 	} }%
-
 	To find the divergence, we will write $\vM$ in cylindrical coordinates.  According to the inside cover of Griffiths, $\rh = \cos\phi \,\xh + \sin\phi \,\yh$.  So we have
-	\eq{
+	\eqn{Mcy}{
 		\vMn = -\frac{1}{4\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(z) \,e^{i n \phi} (z \,\cos\phi \,\xh + z \,\sin\phi \,\yh + r \,\zh)
 		= -\frac{1}{4\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(z) \,e^{i n \phi} (z \,\rh - r \,\zh).
 	}
-%	\al{
-%		\xh &= \cos\phi \,\rh - \sin\phi \,\phh, &
-%		\yh &= \sin\phi \,\rh + \cos\phi \,\phh, &
-%		\zh &= \zh.
-%	}
-%	Then $\vMn$ becomes
-%	\al{
-%		\vMn &= \frac{1}{4\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(z) \,e^{i (n + 1) \phi} [ -z (\cos\phi \,\rh - \sin\phi \,\phh) + i z (\sin\phi \,\rh + \cos\phi \,\phh) + r (\cos\phi - i \sin\phi) \,\zh ] \\
-%		&= \frac{1}{4\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(z) \,e^{i (n + 1) \phi} [ z (-\cos\phi + i \sin\phi) \,\rh + z (i \cos\phi + \sin\phi) \,\phh + r (\cos\phi - i \sin\phi) \,\zh ] \\
-%		&= \frac{1}{4\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(z) \,e^{i (n + 1) \phi} [ -z (\cos\phi - i \sin\phi) \,\rh + i z (\cos\phi - i \sin\phi) \,\phh + r (\cos\phi - i \sin\phi) \,\zh ] \\
-%		&= \frac{1}{4\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(z) \,e^{i n \phi} [ -z \,\rh + i z \,\phh + r \,\zh ].
-%	}
 	The divergence in cylindrical coordinates is on the inside cover of Jackson:
 	\eq{
 		\grad \vdot \vA = \frac{1}{r} \pdv{r}(r A_r) + \frac{1}{r} \pdv{\phi}{A_\phi} + \pdv{A_z}{z}.
@@ -99,9 +84,6 @@
 		= r \pdv{r}[ \del(r - R) ] + \del(r - R)
 		= \del(r - R) - \del(r - R)
 		= 0, \\
-%		\pdv{\phi}[ (M_\phi)_n ] &\propto i \pdv{\phi}(e^{i (n - 1) \phi})
-%		= i^2 (n - 1) \,e^{i n \phi}
-%		= -n e^{i n \phi}, \\
 		\pdv{z}[ \Mzn ] &\propto \pdv{z}[ \del(z) ]
 		= -\del(z) \pdv{z},
 	}
@@ -109,9 +91,6 @@
 	\eqn{div}{
 		\ans{ \grad \vdot \vMn = -\frac{1}{4\pi} \frac{q \omgo^2}{R} r \, \del(r - R) \,e^{i n \phi} \,\del(z) \pdv{z} }.
 	}
-%	\eqn{div}{
-%		\ans{ \grad \vdot \vMn = -\frac{1}{4\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(z) \,e^{i n \phi} \paren{ i n \frac{z}{r} + r \pdv{z} }. }
-%	}
 	\vfix
 }
 
@@ -149,25 +128,6 @@
 			l \int \del(r - R) \,\del(\tht - \pi/2) \,e^{i n \phi} \sin\tht \cos\tht \,r^l \,\Ylm^*(\tht, \phi) \ddcx \\
 			&\phantom{mmmmmmmmmmmmmmmmmmmmmmmm} + \int \del(r - R) \,\del(\tht - \pi/2) \,e^{i n \phi} \sin^3\tht \,r^l \pdv{\Ylm^*(\tht, \phi)}{(\cos\tht)} \ddcx \bigg].
 	}
-%	\al{
-%		\grad \vdot \vMn = -\frac{1}{4\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\tht - \pi/2) \,e^{i n \phi} \paren{ i n \frac{\cos\tht}{\sin\tht} + r \sin\tht \cos\tht \pdv{r} - \sin^2\tht \pdv{\tht} }.
-%	}
-%	Making this substitution in Eq.~\refeq{Mlm}, and noting that
-%	\eq{
-%		\sin\tht \dd{\tht} = -\dd{(\cos\tht)}
-%		\qimplies
-%		\frac{1}{\sin\tht} \pdv{\tht} = -\pdv{}{(\cos\tht)},
-%	}
-%	we find
-%	\al{
-%		\Mlm &= -\frac{1}{l + 1} \int \grad \vdot \vMn \,r^l \,\Ylm^*(\tht, \phi) \ddcx \\
-%		&= \frac{1}{4\pi (l + 1)} \frac{q \omgo^2}{R} \int \del(r - R) \,\del(\tht - \pi/2) \,e^{i n \phi} \brac{ i n \frac{\cos\tht}{\sin\tht} + r \sin\tht \cos\tht \pdv{r} - \sin^2\tht \pdv{\tht} } r^l \,\Ylm^*(\tht, \phi) \ddcx \\
-%		&= \frac{1}{4\pi (l + 1)} \frac{q \omgo^2}{R} \bigg[
-%			i n \int \del(r - R) \,\del(\tht - \pi/2) \,e^{i n \phi} \frac{\cos\tht}{\sin\tht} r^l \,\Ylm^*(\tht, \phi) \ddcx \\
-%			&\phantom{mmmmmmmmmmmmmmmm} + l \int \del(r - R) \,\del(\tht - \pi/2) \,e^{i n \phi} \sin\tht \cos\tht \,r^l \,\Ylm^*(\tht, \phi) \ddcx \\
-%			&\phantom{mmmmmmmmmmmmmmmmmmmmmmmm} + \int \del(r - R) \,\del(\tht - \pi/2) \,e^{i n \phi} \sin^3\tht \,r^l \pdv{\Ylm^*(\tht, \phi)}{(\cos\tht)} \ddcx \bigg].
-%	}
-%	\clearpage
 	Since the spherical harmonics are mutually orthogonal, all of the integrals will be nonzero only for $m = n$.  By inspection, we can also associate the first integral with $Y_{21}$ and the third with $Y_{43}$, where
 	\al{
 		Y_{21}(\tht, \phi) &= -\sqrt{\frac{15}{8\pi}} \sin\tht \cos\tht \,e^{i\phi}, &
@@ -185,9 +145,39 @@
 }
 
 \sol{
+	In cylindrical coordinates, the point charges $q_1$, $q_2$, $q_3$, and $q_4$ defined in Prob.~{2} have charge distributions with the proportionalities
+	\al{
+		\rhoq(\vx, t) &\propto -q \,\del(\phi - \omgo t), &
+		\rhow(\vx, t) &\propto q \,\del(\phi - \omgo t - \pi / 2), \\
+		\rhoe(\vx, t) &\propto -q \,\del(\phi - \omgo t - \pi), &
+		\rhor(\vx, t) &\propto q \,\del(\phi - \omgo t - 3\pi / 2).
+	}
+	Generalizing Eq.~\refeq{Jn}, then, we have
+	\al{
+		(\vJn)_1 &= -\frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \phi} [ -\sin\phi \,\xh + \cos\phi \,\yh ], \\
+		(\vJn)_2 &= \frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \phi} [ \cos\phi \,\xh + \sin\phi \,\yh ], \\
+		(\vJn)_3 &= -\frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \phi} [ \sin\phi \,\xh - \cos\phi \,\yh ], \\
+		(\vJn)_4 &= \frac{1}{2\pi} \frac{q \omgo^2}{R} \del(r - R) \,\del(\phi - \omgo t) \,\del(z) \,e^{i n \phi} [ -\cos\phi \,\xh - \sin\phi \,\yh ].
+	}
+	Using these results to generalize Eq.~\refeq{Mcy}, we find
+	\al{
+		(\vMn)_1 &\propto z \,\rh - r \,\zh, \\[2ex]
+		(\vMn)_4 &\propto -z \sin\phi \,\xh + z \cos\phi \,\yh + (x \sin\phi - y \cos\phi) \,\zh
+		= z \,\phh + (r \cos\phi \sin\phi + r \sin\phi \cos\phi)\,\zh
+		= z \,\phh, \\[2ex]
+		(\vMn)_3 &\propto -(\vMn)_1
+		= -(z \,\rh - r \,\zh), \\[2ex]
+		(\vMn)_4 &\propto -(\vMn)_2
+		= -z \,\phh,
+	}
+	where we have used $\phh = -\sin\phi \,\xh + \cos\phi \,\yh$ from the inside cover of Griffiths. Clearly, the net magnetization
+	\al{
+		(\vMn)_\text{net} = (\vMn)_1 + (\vMn)_2 + (\vMn)_3 + (\vMn)_4
+		= 0,
+	}
+	which implies $\grad \vdot (\vMn)_\text{net} = 0$.  This means that \ans{there is only radiation at the fundamental frequency $\omgo$; in other words, no harmonics and no magnetic multipoles occur.}
 	
-
-	The $E2$ frequency is the electric quadrupole frequency~\cite{Selection}.
+	The $E2$ frequency is the electric quadrupole frequency~\cite{Selection}, which we know from Prob.~{2} is $2\omgo$.  \ans{There is no magnetic multipole contribution at this or any frequency.}
 }
 
 
