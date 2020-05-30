@@ -1,0 +1,146 @@
+\state{\textit{H}-theorem and Pauli kinetic balance equation}{
+	The Pauli balance equation (a version of the Boltzmann kinetic equation more suitable for a quantum setting) reads
+	\eqn{Pauli}{
+		\dwi = \sumj (\Pij \wj - \Pji \wi),
+	}
+	where $\wi$ is the probability of a system to be in the state $\ki$ and $\Pij$ is a transition probability rate (i.e.~the probability of a state $\ki$ to transition to $\kj$ during unit time).  In addition, a detailed balance condition is imposed: $\Pij = \Pji$.
+}
+
+%
+%	1.1
+%
+
+\setcounter{subsection}{1}
+
+%
+%	1.1(a)
+%
+
+\subprob{
+	Show that the Pauli balance equation respects the normalization condition $\sumi \wi = 1$.
+}
+
+\sol{
+	Since $\Pij = \Pji$,
+	\eq{
+		\sumi \sumj \Pij \wj = \sumi \sumj \Pji \wj.
+	}
+	Swapping indices on the right side,
+	\eq{
+		\sumi \sumj \Pij \wj = \sumi \sumj \Pij \wi
+		= \sumi \sumj \Pji \wi,
+	}
+	where we have once again applied $\Pij = \Pji$.  Then, by Eq.~\refeq{Pauli},
+	\eqn{d0}{
+		\sumi \dwi = \sumi \sumj (\Pij \wj - \Pij \wi) = 0.
+	}
+	This implies $\sumi \wi = k$, where $k$ is some constant.  If $k \neq 1$, we may redefine $\wi \to \wi / k$ without affecting the validity of the proof.  Thus, we have shown that Eq.~\refeq{Pauli} respects the normalization condition. \qed
+}
+
+%
+%	1.1(b)
+%
+
+\subprob{
+	Show that the Pauli balance equation is time irreversible.
+}
+
+\sol{
+	We will provide an example to prove that the equation is not time reversible.
+	
+	Consider a two-state system with states $\kq$ and $\kw$, which has
+	\eq{
+		P = \mqty[ 1/2 & 1/2 \\ 1/2 & 1/2 ].
+	}
+	Let $\ket{\psi(t)}$ be the state of the system.  Suppose that at $t = 0$, $\wq = 1$ and $\ww = 0$; that is, $\ket{\psi(0)} = \kq$.  At this instant,
+	\al{
+		\dwq(0) &= [ \Pqq \wq(0) - \Pqq \wq(0) ] + [ \Pqw \ww(0) - \Pwq \wq(0) ]
+		= -\frac{1}{2}, \\
+		\dww(0) &= [ \Pwq \wq(0) - \Pqw \ww(0) ] + [ \Pww \ww(0) - \Pww \ww(0) ]
+		= \frac{1}{2}.
+	}
+	At some later time $\ts$, the system may be in the state $\ket{\psi(\ts)} = ( \kq + \kw) / 2$.  At this instant, $\wq = \ww = 1/2$, and
+	\al{
+		\dwq(\ts) &= [ \Pqq \wq(\ts) - \Pqq \wq(\ts) ] + [ \Pqw \ww(\ts) - \Pwq \wq(\ts) ]
+		= 0, \\
+		\dww(\ts) &= [ \Pwq \wq(\ts) - \Pqw \ww(\ts) ] + [ \Pww \ww(\ts) - \Pww \ww(\ts) ]
+		= 0.
+	}
+	It is now impossible for a transition to occur, so the system cannot return to its initial state $\ket{\psi(0)}$.  Therefore, Eq.~\refeq{Pauli} is not reversible. \qed
+}
+
+%
+%	1.1(c)
+%
+
+\subprob{
+	Show that the entropy $S = -\sumi \wi \ln \wi$ is non-decreasing: $\dS \geq 0$. 
+}
+
+\sol{
+	Note that
+	\eq{
+		\dS = -\sumi \dv{t}(\wi \ln \wi)
+		= -\sumi \dv{\wi}{t} \dv{\wi}(\wi \ln \wi)
+		= -\sumi \dwi (\ln \wi + 1)
+		= -\sumi \dwi \ln \wi,
+	}
+	where we have applied Eq.~\refeq{d0}.  Since $w_i$ represent probabilities, $0 \leq \wi \leq 1$ for all $i$, which implies $\ln \wi \leq 0$.  As shown in Eq.~\refeq{d0}, $\sumi \dwi = 0$.   Thus, $\dS \geq 0$ as desired. \qed
+}
+
+%
+%	1.2
+%
+
+\prob{}{
+	{\Renyi} entropy of the order $\alp$ is defined by the formula $\Salp = 1 / (1 -\alp) \ln \sumi \wi^\alp$.
+}
+
+%
+%	1.2(a)
+%
+
+\subprob{
+	Show that {\Renyi} entropy of the order 1 is the Boltzmann entropy (in the context of information theory, Boltzmann entropy is called Shannon entropy).
+}
+
+\sol{
+	Firstly,
+	\eq{
+		\Salp = \limaq \frac{1}{1 - \alp} \ln \sumi \wi^\alp.
+	}
+	Note that
+	\al{
+		\limaq \ln \sumi \wi^\alp &= \ln \sumi \wi
+		= \ln(1)
+		= 0, &
+		\limaq (1 - \alp) &= 0,
+	}
+	where we have used the result of Prob.~{1.1(a)}.  Applying L'H\^{o}pital's rule, we find
+	\eq{
+		\limaq \Salp = \limaq \frac{\dv*{(\ln \sumi \wi^\alp)}{\alp}}{\dv*{(1 - \alp)}{\alp}}
+		= \limaq -\frac{\dv*{(\sumi \wi^\alp)}{\alp}}{\sumi \wi^\alp}
+		= \limaq -\sumi \wi^\alp \ln \wi
+		= \ans{ -\sumi \wi \ln \wi, }
+	}
+	where we have used $\dv*{(a^x)}{x} = (\ln a) a^x$~\cite{Derivative}.  This is the Shannon entropy, as desired.  \qed
+}
+
+%
+%	1.2(b)
+%
+
+\subprob{
+	Show that {\Renyi} entropy doesn't decrease: $\dSalp \geq 0$.
+}
+
+\sol{
+	We note that
+	\eq{
+		\dSalp = \dv{t}(\frac{1}{1 - \alp} \ln \sumi \wi^\alp)
+		= \frac{1}{1 - \alp} \ln \sumi \dv{(\wi^\alp)}{t}
+		= \frac{1}{1 - \alp} \ln \sumi \dwi \dv{(\wi^\alp)}{\wi}
+		= \frac{\alp}{1 - \alp} \ln \sumi \dwi \,\wi^{\alp - 1}.
+	}
+	As noted in Prob.~{1.1(b)}, $0 \leq \wi \leq 1$ and $\sumi \dwi = 0$.   Thus, $\dS \geq 0$ as desired. \qed
+}

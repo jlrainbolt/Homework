@@ -11,101 +11,10 @@
 \input{definitions}
 \input{probdefs}
 
-\state{H-theorem and Pauli kinetic balance equation}{
-	The Pauli balance equation (a version of the Boltzmann kinetic equation more suitable for a quantum setting) reads
-	\eqn{Pauli}{
-		\dwi = \sumj (\Pij \wj - \Pji \wi),
-	}
-	where $\wi$ is the probability of a system to be in the state $\ki$ and $\Pij$ is a transition probability rate (i.e.~the probability of a state $\ki$ to transition to $\kj$ during unit time).  In addition, a detailed balance condition is imposed: $\Pij = \Pji$.
-}
-
-%
-%	1.1
-%
-
-\setcounter{subsection}{1}
-%\prob{}{\ }
-%
-%	1.1(a)
-%
-
-\subprob{
-	Show that the Pauli balance equation respects the normalization condition $\sumi \wi = 1$.
-}
-
-\sol{
-	Since $\Pij = \Pji$,
-	\eq{
-		\sumi \sumj \Pij \wj = \sumi \sumj \Pji \wj.
-	}
-	Swapping indices on the right side,
-	\eq{
-		\sumi \sumj \Pij \wj = \sumi \sumj \Pij \wi
-		= \sumi \sumj \Pji \wi,
-	}
-	where we have once again applied $\Pij = \Pji$.  Then, by Eq.~\refeq{Pauli},
-	\eqn{d0}{
-		\sumi \dwi = \sumi \sumj (\Pij \wj - \Pij \wi) = 0.
-	}
-	This implies $\sumi \wi = k$, where $k$ is some constant.  If $k \neq 1$, we may redefine $\wi \to \wi / k$ without affecting the validity of the proof.  Thus, we have shown that Eq.~\refeq{Pauli} respects the normalization condition. \qed
-}
-
-%
-%	1.1(b)
-%
-
-\subprob{
-	Show that the Pauli balance equation is time irreversible.
-}
-
-\sol{
-	Under time reversal $t \to -t$, $\dv*{t} \to -\dv*{t}$.  From Eq.~\refeq{Pauli},
-	\eq{
-		-\dwi = \sumj (\Pji \wi - \Pij \wj)
-	}
-	
-	\hl{???}
-}
-
-%
-%	1.1(c)
-%
-
-\subprob{
-	Show that the entropy $S = -\sumi \wi \ln \wi$ is non-decreasing: $\dS \geq 0$. 
-}
-
-\sol{
-	Firstly, note that
-	\eq{
-		\dS = -\sumi \dv{t}(\wi \ln \wi)
-		= -\sumi \dv{\wi}{t} \dv{\wi}(\wi \ln \wi)
-		= -\sumi \dwi (\ln \wi + 1)
-		= -\sumi \dwi \ln \wi,
-	}
-	where we have applied Eq.~\refeq{d0}.  Since all $0 \leq \wi \leq 1$ for all $i$, $\ln \wi \leq 0$.  Since Eq.~\refeq{Pauli} \hl{is time irreversible,} $\dwi > 0$ for all $i$.  Thus, $\dS \geq 0$ as desired. \qed
-}
-
-%
-%	1.2
-%
-
-\prob{}{
-	{\Renyi} entropy of the order $\alp$ is defined by the formula $\Salp = 1 / (1 -\alp) \ln \sumi \wi^\alp$.
-}
-
-\subprob{
-	Show that {\Renyi} entropy of the order 1 is the Boltzmann entropy (in the context of information theory, Boltzmann entropy is called Shannon entropy).
-}
-
-\subprob{
-	Show that {\Renyi} entropy doesn't decrease: $\dSalp \geq 0$.
-}
+\input{Problem1}
 
 
 
-
-\clearpage
 \state{Pauli paramagnetism}{
 	Cold atomic gases could be realized by atomic isotopes which are fermions ($^6$Li, $^{40}$K, etc.).  Such isotopes may have a large atomic spin.  Assuming that the Fermi gas is degenerate and its constituents have a spin $s> 1 / 2$, compute the Pauli magnetic susceptibility.
 }
