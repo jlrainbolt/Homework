@@ -85,6 +85,10 @@
 	Find the energy fluctuation $\evDEs = \ev{(E - \evE)^2}$ and the number fluctuation $\evDNs = \ev{(N - \evN)^2}$ for photons in the black body radiation.
 }
 
+\sol{
+
+}
+
 %
 %	4.2
 %
@@ -153,12 +157,30 @@
 		 = \paren{ \pdv{N}{\mu} }_{T, V},
 	}
 	where we have used $N / V = (\pdv*{P}{\mu})_T$~\cite[pp.~351--352]{Landau}.  Since we associated all quantities with those at equilibrium, we have shown that
-	\eq{
+	\eqn{dvmu}{
 		\ans{ \evDNs = T \pdv{\!\evN}{\mu} }
 	}
 	as desired. \qed
 	
-	\hl{Boltzmann} $\evDNs = N$
+	For a classical Boltzmann gas, the number of particles in a interval $\ddcp$ is~\cite[pp.~108--109]{Landau}
+	\eq{
+		\ddNp = \frac{V}{(2\pi m T)^{3/2}} \exp(\frac{\mu}{T} - \frac{\vp^2}{2 m T}) \ddcp,
+	}
+	so the total number of particles is
+	\eq{
+		N = \frac{V}{(2\pi m T)^{3/2}} \int \exp(\frac{\mu}{T} - \frac{\vp^2}{2 m T}) \ddcp.
+	}
+	To apply Eq.~\refeq{dvmu}, note that
+	\al{
+		T \pdv{\!\evN}{\mu} &= T \pdv{\mu}(\frac{V}{(2\pi m T)^{3/2}} \int \exp(\frac{\mu}{T} - \frac{\vp^2}{2 m T}) \ddcp)
+		= T \frac{V}{(2\pi m T)^{3/2}} \int \dv{T}(e^{\mu / T} e^{-\vp^2 / (2 m T)} \ddcp) \\
+		&= \frac{T}{T} \pdv{\mu}(\frac{V}{(2\pi m T)^{3/2}} \int \exp(\frac{\mu}{T} - \frac{\vp^2}{2 m T}) \ddcp)
+		= N.
+	}
+	Thus,
+	\eq{
+		\ans{ \evDNs - \ev{N}\!. }
+	}
 	
 	For the Fermi and Bose gases, the number of particles is given by
 	\eq{
@@ -184,7 +206,7 @@
 	}
 	So the fluctuations are
 	\eq{
-		\ans{ \evDNs = \mp \frac{g V}{\pi^2 \hbar^2} \paren{ \frac{m T}{2} }^{3/2} \frac{\Li_{3/2}(\mp e^{\mu / T})}{T}
+		\ans{ \evDNs = \mp \frac{g V}{\pi^2 \hbar^2} \sqrt{\frac{m^3}{2^3 T}} \,\Li_{3/2}(\mp e^{\mu / T})
 		\begin{cases}
 			\text{Fermi}, \\
 			\text{Bose}.
@@ -195,7 +217,7 @@
 
 
 
-\clearpage
+
 \state{Pair correlation function}{\ }
 
 %
@@ -203,7 +225,7 @@
 %
 
 \prob{}{
-	Compute the  pair correlation of density $C(r)= \ev{\ev{n(r) n(0)}}$ and the fluctuation of the occupation number $\ev*{\absnk^2}$ of the degenerate Fermi gas ($T \ll \EF$) in dimensions $d = 1, 2, 3$. Discuss various distance regimes.
+	Compute the  pair correlation of density $C(r)= \ev{\ev{n(r) \,n(0)}}$ and the fluctuation of the occupation number $\ev*{\absnk^2}$ of the degenerate Fermi gas ($T \ll \EF$) in dimensions $d = 1, 2, 3$. Discuss various distance regimes.
 }
 
 %

@@ -46,33 +46,60 @@
 }
 
 \sol{
-	We will provide an example to prove that the equation is not time reversible.
+	We will provide a counterexample that shows the equation is \emph{not} time \emph{reversible}.
 	
-	Consider a two-state system with states $\kq$ and $\kw$, which has
+	Assume the probabilities are properly normalized, so $\sumi \Pij = \sumj \Pij = 1$.  Consider a two-state system with states $\kq$ and $\kw$, which has
 	\eq{
-		P = \mqty[ 1/2 & 1/2 \\ 1/2 & 1/2 ].
+		P = \mqty[ 1 - \mu & \mu \\ \mu & 1 - \mu ],
 	}
-	Let $\ket{\psi(t)}$ be the state of the system.  Suppose that at $t = 0$, $\wq = 1$ and $\ww = 0$; that is, $\ket{\psi(0)} = \kq$.  At this instant,
+	where $0 \leq \mu \leq 1$.  Applying Eq.~\refeq{Pauli}, we obtain the system of differential equations
 	\al{
-		\dwq(0) &= [ \Pqq \wq(0) - \Pqq \wq(0) ] + [ \Pqw \ww(0) - \Pwq \wq(0) ]
-		= -\frac{1}{2}, \\
-		\dww(0) &= [ \Pwq \wq(0) - \Pqw \ww(0) ] + [ \Pww \ww(0) - \Pww \ww(0) ]
-		= \frac{1}{2}.
+		\dwq &= (\Pqq \wq - \Pqq \wq) + (\Pqw \ww - \Pwq \wq)
+		= \mu (\ww - \wq), \\
+		\dww &= (\Pwq \wq - \Pqw \ww) + (\Pww \ww - \Pww \ww)
+		= \mu (\wq - \ww).
 	}
-	At some later time $\ts$, the system may be in the state $\ket{\psi(\ts)} = ( \kq + \kw) / 2$.  At this instant, $\wq = \ww = 1/2$, and
+	This system can be written as the matrix equation
+	\eq{
+		\dv{t} \mqty[ \wq \\ \ww ] = \mu \mqty[ -1 & 1 \\ 1 & -1 ] \mqty[ \wq \\ \ww ]
+		\equiv M \mqty[ \wq \\ \ww ],
+	}
+	where we have defined the matrix $M$.  $M$ has eigenvalues $\lam$ given by
+	\eq{
+		0 = \mqty| -(\mu + \lam) & \mu \\ \mu & -(\mu + \lam) |
+		= (\mu + \lam)^2 - \mu^2
+		\qimplies
+		(\mu + \lam)^2 = \mu^2
+		\qimplies
+		\lam = -2\mu, 0.
+	}
+	The respective eigenvectors $u, v$ can be found by
 	\al{
-		\dwq(\ts) &= [ \Pqq \wq(\ts) - \Pqq \wq(\ts) ] + [ \Pqw \ww(\ts) - \Pwq \wq(\ts) ]
-		= 0, \\
-		\dww(\ts) &= [ \Pwq \wq(\ts) - \Pqw \ww(\ts) ] + [ \Pww \ww(\ts) - \Pww \ww(\ts) ]
-		= 0.
+		\mu \mqty[ -1 & 1 \\ 1 & -1 ] \mqty[ \uq \\ \uw ] &= -2\mu \mqty[ \uq \\ \uw ]
+		\qimplies -\uq + \uw = -2\mu \uq
+		\qimplies \uq = 1, \uw = -1, \\
+		\mu \mqty[ -1 & 1 \\ 1 & -1 ] \mqty[ \vq \\ \vw ] &= 0 \mqty[ \vq \\ \vw ]
+		\qimplies -\vq + \vw = 0
+		\qimplies \vq = \vw = 1.
 	}
-	It is now impossible for a transition to occur, so the system cannot return to its initial state $\ket{\psi(0)}$.  Therefore, Eq.~\refeq{Pauli} is not reversible. \qed
+	
+	We can analyze the behavior of the system using stability analysis methods which are well known in applied mathematics, but which we will not prove here~\cite[pp.~127--130]{Strogatz}.  Since one of the eigenvalues is 0, there is a line of fixed points along the direction of the corresponding eigenvector, $\vb{v} = (1, 1)$.  Since the other eigenvalue is negative, these fixed points are stable; all trajectories are along $\vb{u} = (-1, 1)$ and point toward the fixed points.
+	
+	In practice, however, the normalization condition $\sumi \wi = 1$ restricts the system to a line.  Figure~\refeq{pplane} shows trajectories in the $(\wq, \ww)$ phase plane.  The green line indicates the line of stable fixed points.  The orange line indicates the allowed values of $\wq, \ww$.  For any initial condition along the line, the system will tend toward the point $\wq = \ww = 1/2$.  The system can never return to its initial condition (unless it starts at the equilibrium point, in which cases it remains there for all time).  Hence, \ans{the system described by Eq.~\refeq{Pauli} is time irreversible.} \qed
+	
+	\begin{figure} \centering
+		\includegraphics[width=0.5\textwidth]{1-1(b)}
+		\caption{Plot of the $(\wq, \ww)$ phase plane indicating trajectories.  The normalized system is confined to the orange line.  The green line represents stable equilibirum points.}
+		\label{pplane}
+	\end{figure}
+
+	These arguments and the phase space shown in Fig.~\refeq{pplane} are easily generalized to higher dimensions, using the fact that the signs of the trace and determinant of $M$ are sufficient to determine the type of fixed points and their stability~\cite[pp.~136--137]{Strogatz}.  However, one example is sufficient to show that Eq.~\refeq{Pauli} is \emph{not} time \emph{reversible}.
 }
 
 %
 %	1.1(c)
 %
-
+\clearpage
 \subprob{
 	Show that the entropy $S = -\sumi \wi \ln \wi$ is non-decreasing: $\dS \geq 0$. 
 }
@@ -85,7 +112,23 @@
 		= -\sumi \dwi (\ln \wi + 1)
 		= -\sumi \dwi \ln \wi,
 	}
-	where we have applied Eq.~\refeq{d0}.  Since $w_i$ represent probabilities, $0 \leq \wi \leq 1$ for all $i$, which implies $\ln \wi \leq 0$.  As shown in Eq.~\refeq{d0}, $\sumi \dwi = 0$.   Thus, $\dS \geq 0$ as desired. \qed
+	where we have applied Eq.~\refeq{d0}.  We now apply Eq.~\refeq{Pauli}:
+	\eq{
+		\dS = -\sumi \sumj (\Pij \wj - \Pji \wi) \ln \wi
+		= -\frac{1}{2} \paren{ \sumi \sumj (\Pij \wj - \Pji \wi) \ln \wi + \sumj \sumi (\Pji \wi - \Pij \wj) \ln \wj },
+	}
+	where we have split the sum in half and swapped indices for the second half.  Then, using the symmetry of $P$,
+	\al{
+		\dS &= -\frac{1}{2} \sumi \sumj \Pij [ (\wj - \wi) \ln \wi + (\wi - \wj) \ln \wj ]
+		= \frac{1}{2} \sumi \sumj \Pij [ (\wi - \wj) \ln \wi - (\wi - \wj) \ln \wj ] \\
+		&= \frac{1}{2} \sumi \sumj \Pij (\wi - \wj) (\ln \wi - \ln \wj).
+	}
+	Since $w_i$ represent probabilities, $0 \leq \wi \leq 1$ for all $i$, which implies $\ln \wi \leq 0$.  If $\wi > \wj$, $\ln \wj$ is more negative than $\ln \wi$.  That is,
+	\al{
+		\wi \geq \wj &\qimplies \ln \wi - \ln \wj \geq 0 \qq{and} \wi - \wj \geq 0, \\
+		\wi \leq \wj &\qimplies \ln \wi - \ln \wj \leq 0 \qq{and} \wi - \wj \leq 0.
+	}
+	Thus, \ans{$\dS \geq 0$} as desired. \qed
 }
 
 %
@@ -129,18 +172,42 @@
 %
 %	1.2(b)
 %
-
+\clearpage
 \subprob{
 	Show that {\Renyi} entropy doesn't decrease: $\dSalp \geq 0$.
 }
 
 \sol{
 	We note that
-	\eq{
-		\dSalp = \dv{t}(\frac{1}{1 - \alp} \ln \sumi \wi^\alp)
-		= \frac{1}{1 - \alp} \ln \sumi \dv{(\wi^\alp)}{t}
-		= \frac{1}{1 - \alp} \ln \sumi \dwi \dv{(\wi^\alp)}{\wi}
-		= \frac{\alp}{1 - \alp} \ln \sumi \dwi \,\wi^{\alp - 1}.
+	\al{
+		\dSalp &= \dv{t}(\frac{1}{1 - \alp} \ln \sumi \wi^\alp)
+		= \frac{1}{1 - \alp} \dv{t}(\ln \sumi \wi^\alp)
+		= \frac{1}{1 - \alp} \frac{1}{\sumi \wi^\alp} \dv{t}(\sumi \wi^\alp)
+		= \frac{1}{1 - \alp} \frac{1}{\sumi \wi^\alp} \alp \sumi \dwi \wi^{\alp - 1} \\
+		&= \frac{\alp}{1 - \alp} \frac{\sumi \dwi \wi^{\alp - 1}}{\sumi \wi^\alp}.
 	}
-	As noted in Prob.~{1.1(b)}, $0 \leq \wi \leq 1$ and $\sumi \dwi = 0$.   Thus, $\dS \geq 0$ as desired. \qed
+	Applying Eq.~\refeq{Pauli} and the same trick as in Prob.~{1.1(c)},
+	\al{
+		\dSalp &= \frac{\alp}{1 - \alp} \frac{1}{\sumi \wi^\alp} \sumi \wi^{\alp - 1} \sumj (\Pij \wj - \Pji \wi) \\
+		&= \frac{\alp}{1 - \alp} \frac{1}{2 \sumi \wi^\alp} \paren{ \sumi \wi^{\alp - 1} \sumj (\Pij \wj - \Pji \wi) + \sumj \wj^{\alp - 1} \sumi (\Pji \wi - \Pij \wj) } \\
+		&= \frac{\alp}{1 - \alp} \frac{1}{2 \sumi \wi^\alp} \sumi \sumj \Pij [ \wi^{\alp - 1} (\wj - \wi) + \wj^{\alp - 1} (\wi - \wj) ] \\
+%		&= \frac{\alp}{1 - \alp} \frac{1}{2 \sumi \wi^\alp} \sumi \sumj \Pij [ \wi^{\alp - 1} (\wj - \wi) - \wj^{\alp - 1} (\wj - \wi) ] \\
+		&= \frac{\alp}{1 - \alp} \frac{1}{2 \sumi \wi^\alp} \sumi \sumj \Pij [ (\wi^{\alp - 1} - \wj^{\alp - 1}) (\wj - \wi) ].
+	}
+	Keeping in mind that $0 \leq \wi \leq 1$, this result is non-negative in all possible regimes:
+	\al{
+		\wj \geq \wi \qq{and} \alp < 1
+		&\qimplies
+		\frac{\alp}{1 - \alp} > 0 \qq{and} \wi^{\alp - 1} - \wj^{\alp - 1} \geq 0 \qq{and} \wj - \wi \geq 0, \\
+		\wj \geq \wi \qq{and} \alp > 1
+		&\qimplies
+		\frac{\alp}{1 - \alp} < 0 \qq{and} \wi^{\alp - 1} - \wj^{\alp - 1} \leq 0 \qq{and} \wj - \wi \geq 0, \\
+		\wj \leq \wi \qq{and} \alp < 1
+		&\qimplies
+		\frac{\alp}{1 - \alp} > 0 \qq{and} \wi^{\alp - 1} - \wj^{\alp - 1} \leq 0 \qq{and} \wj - \wi \leq 0, \\
+		\wj \leq \wi \qq{and} \alp > 1
+		&\qimplies
+		\frac{\alp}{1 - \alp} < 0 \qq{and} \wi^{\alp - 1} - \wj^{\alp - 1} \geq 0 \qq{and} \wj - \wi \leq 0.
+	}
+	Of course $\sumi \wi^\alp > 0$ in any case.  Thus, \ans{$\dSalp \geq 0$} as desired. \qed
 }
