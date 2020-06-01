@@ -13,117 +13,13 @@
 
 \input{Problem1}
 
+\input{Problem2}
 
 
-\state{(Jackson 10.1)}{\ }
 
-%
-%	Jackson 10.1(a)
-%
-
-\prob{}{
-	Show that for arbitrary initial polarization, the scattering cross section of a perfectly conducting sphere of radius $a$, summed over outgoing polarizations, is given in the long-wavelength limit by
-	\eq{
-		\dv{\sig}{\Omg}(\vepso, \nho, \nh) = k^4 a^6 \brac{ \frac{5}{4} - \abs{\vepso \vdot \nh}^2 - \frac{1}{4} \abs{\nh \vdot (\nho \cross \vepso)}^2 - \nho \vdot \nh },
-	}
-	where $\nho$ and $\nh$ are the directions of the incident and scattered radiations, respectively, while $\vepso$ is the (perhaps complex) unit polarization vector of the incident radiation ($\vepso^* \vdot \vepso = 1$; $\nho \vdot \vepso = 0$).
-}
-
-\sol{
-	Jackson~(10.14) gives the differential cross section for scattering off a small, perfectly conducting sphere with initial polarization $\vepso$ and outgoing polarization $\veps$:
-	\eqn{thing2}{
-		\dv{\sig}{\Omg} {\nh, \veps; \nho, \vepso)} = k^4 a^6 \abs{ (\vepss \vdot \vepso - \frac{1}{2} (\nh \cross \vepss) \vdot (\nho \cross \vepso) }^2.
-	}
-	We will use the polarization vectors $\vepsq$ and $\vepsw$, which are defined in Fig.~\refeq{pol}~\cite[p.~458]{Jackson}.  According to the figure,
-	\al{
-		\vepsw &= \frac{\nh \cross \nho}{\abs{\nh \cross \nho}}
-		= \frac{\nh \cross \nho}{\sqrt{1 - (\nh \vdot \nho)^2}}, \\
-		\vepsq &= \vepsw \cross \nh
-		= \frac{-\nh \cross (\nh \cross \nho)}{\sin\tht}
-		= \frac{(\nh \vdot \nh) \nho - (\nh \vdot \nho) \nh}{\sin\tht}
-		= \frac{\nho - (\nh \vdot \nho) \nh}{\sqrt{1 - (\nh \vdot \nho)^2}},
-	}
-	which are both real.  In the denominator, we have used $\sin^2\tht = 1 + \cos^2\tht = 1 + (\nh \vdot \nho)^2$.  We also note that $\nho$, $\nh$, and $\vepsq$ are in the same plane, and that $\nh \perp \vepsq$.
-
-	The cross section summed over outgoing polarizations is then found by plugging $\veps = \vepsq$ and $\veps = \vepsw$ into Eq.~\refeq{thing2}, and taking the sum.  For the first term,
-	\al{
-		\dv{\sig}{\Omg} {(\nh, \vepsq; \nho, \vepso)} &= k^4 a^6 \abs{ {\vepsq}^* \vdot \vepso - \frac{1}{2} (\nh \cross {\vepsq}^*) \vdot (\nho \cross \vepso) }^2 \\
-		&= k^4 a^6 \abs{ \frac{\nho - (\nh \vdot \nho) \nh}{\sqrt{1 - (\nh \vdot \nho)^2}} \vdot \vepso - \frac{1}{2} \paren{ \nh \cross \frac{\nho - (\nh \vdot \nho) \nh}{\sqrt{1 - (\nh \vdot \nho)^2}} } \vdot (\nho \cross \vepso) }^2 \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \abs{ -(\nh \vdot \nho) (\nh \vdot \vepso) - \frac{1}{2} (\nh \cross \nho) \vdot (\nho \cross \vepso) }^2.
-	}
-	One of the vector identities on the inside cover of Jackson is $(\vaa \cross \vbb) \vdot (\vcc \cross \vdd) = (\vaa \vdot \vcc) (\vbb \vdot \vdd) - (\vaa \vdot \vdd) (\vbb \vdot \vcc)$.  Applying this, we have
-	\al{
-		\dv{\sig}{\Omg} {(\nh, \vepsq; \nho, \vepso)} &= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \abs{ (\nh \vdot \nho) (\nh \vdot \vepso) + \frac{1}{2} (\nh \vdot \nho) (\nho \vdot \vepso) - \frac{1}{2} (\nh \vdot \vepso) (\nho \vdot \nho) }^2 \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \abs{ (\nh \vdot \nho) (\nh \vdot \vepso) - \frac{1}{2} (\nh \vdot \vepso) }^2
-		= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \abs{ \nh \vdot \vepso }^2 \brac{ (\nh \vdot \nho) - \frac{1}{2} }^2 \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \abs{ \nh \vdot \vepso }^2 \brac{ (\nh \vdot \nho)^2 - (\nh \vdot \nho) + \frac{1}{4} }.
-	}
-	
-	For the second term,
-	\al{
-		\dv{\sig}{\Omg} {(\nh, \vepsw; \nho, \vepso)} &= k^4 a^6 \abs{ {\vepsw}^* \vdot \vepso - \frac{1}{2} (\nh \cross {\vepsw}^*) \vdot (\nho \cross \vepso) }^2 \\
-		&= k^4 a^6 \abs{ \frac{\nh \cross \nho}{\sqrt{1 - (\nh \vdot \nho)^2}} \vdot \vepso - \frac{1}{2} \paren{ \nh \cross \frac{\nh \cross \nho}{\sqrt{1 - (\nh \vdot \nho)^2}} } \vdot (\nho \cross \vepso) }^2 \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \abs{ \nh \vdot (\nho \cross \vepso) - \frac{1}{2} [ (\nh \vdot \nho) \nh - (\nh \vdot \nh) \nho ] \vdot (\nho \cross \vepso) }^2 \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \abs{ \nh \vdot (\nho \cross \vepso) - \frac{1}{2} [ (\nh \vdot \nho) \nh - \nho ] \vdot (\nho \cross \vepso) }^2 \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \abs{ \nh \vdot (\nho \cross \vepso) - \frac{1}{2} (\nh \vdot \nho) \nh \vdot (\nho \cross \vepso) + \frac{1}{2} \epso \vdot (\nho \cross \nho) }^2 \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \abs{ \paren{ 1 - \frac{1}{2} (\nh \vdot \nho) } \nh \vdot (\nho \cross \vepso) }^2 \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \brac{ 1 - (\nh \vdot \nho) + \frac{1}{4} (\nh \vdot \nho)^2 } \abs{ \nh \vdot (\nho \cross \vepso) }^2.
-	}
-	
-	Summing the two terms, we find
-	\aln{
-		\dv{\sig}{\Omg} &= \dv{\sig}{\Omg} {(\nh, \vepsq; \nho, \vepso)} + \dv{\sig}{\Omg} {(\nh, \vepsw; \nho, \vepso)} \notag \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \curly{ \abs{ \nh \vdot \vepso }^2 \brac{ (\nh \vdot \nho)^2 - (\nh \vdot \nho) + \frac{1}{4} } + \brac{ 1 - (\nh \vdot \nho) + \frac{1}{4} (\nh \vdot \nho)^2 } \abs{ \nh \vdot (\nho \cross \vepso) }^2 } \notag \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \bigg\{ \abs{ \nh \vdot \vepso }^2 (\nh \vdot \nho)^2 - \abs{ \nh \vdot \vepso }^2 (\nh \vdot \nho) + \frac{\abs{ \nh \vdot \vepso }^2}{4} + \abs{ \nh \vdot (\nho \cross \vepso) }^2 \notag \\
-		&\phantom{mmmmmmmmmmmmmmmmmmmmmmmmmm} - (\nh \vdot \nho) \abs{ \nh \vdot (\nho \cross \vepso) }^2 + \frac{(\nh \vdot \nho)^2 \abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} \bigg\} \notag \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \bigg\{ \frac{5 \abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + \frac{5 \abs{ \nh \vdot \vepso }^2}{4} - (\nh \vdot \nho) \abs{ \nh \vdot (\nho \cross \vepso) }^2 - (\nh \vdot \nho) \abs{ \nh \vdot \vepso }^2 \notag \\
-		&\phantom{mmmmmmmmmmmmmmm} - \frac{\abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} - \frac{\abs{ \nh \vdot \vepso }^2}{4} + \frac{(\nh \vdot \nho)^2 \abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + (\nh \vdot \nho)^2 \abs{ \nh \vdot \vepso }^2 \bigg\} \notag \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \curly{ \brac{ \frac{5}{4} - \nh \vdot \nho } \brac{ \abs{ \nh \vdot (\nho \cross \vepso) }^2 + \abs{ \nh \vdot \vepso }^2 } - \brac{ 1 - (\nh \vdot \nho)^2 } \brac{ \frac{\abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + \abs{ \nh \vdot \vepso }^2 } } \notag \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \brac{ \frac{5}{4} - \nh \vdot \nho } \brac{ \abs{ \nh \vdot (\nho \cross \vepso) }^2 + \abs{ \nh \vdot \vepso }^2 } - k^4 a^6 \brac{ \frac{\abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + \abs{ \nh \vdot \vepso }^2 }. \label{thing2.1}
-	}
-	
-	Since $\nho \vdot \vepso = 0$, we note that
-	\eq{
-		\nh = (\nh \vdot \nho) \,\nho + (\nh \vdot \epso) \,\vepso + [ \nh \vdot (\nho \cross \vepso) ] \,(\nho \cross \vepso)
-		\qimplies
-		1 = (\nh \vdot \nho)^2 + \abs{ \nh \vdot \epso }^2 + \abs{ \nh \vdot (\nho \vdot \vepso) }^2.
-	}
-	Substituting into Eq.~\refeq{thing2.1},
-	\al{
-		\dv{\sig}{\Omg} &= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \brac{ \frac{5}{4} - \nh \vdot \nho } \brac{ 1 - (\nh \vdot \nho)^2 } - k^4 a^6 \brac{ \frac{1}{4} \abs{ \nh \vdot (\nho \cross \vepso) }^2 + \abs{ \nh \vdot \vepso }^2 } \\
-		&= \ans{ k^4 a^6 \brac{ \frac{5}{4} - \abs{ \nh \vdot \vepso }^2 - \frac{1}{4} \abs{ \nh \vdot (\nho \cross \vepso) }^2 - \nh \vdot \nho }, }
-	}
-	as we sought to prove. \qed
-}
-
-%
-%	Jackson 10.1(b)
-
-\prob{}{
-	If the incident radiation is linearly polarized, show that the cross section is
-	\eq{
-		\dv{\sig}{\Omg}(\vepso, \nho, \nh) = k^4 a^6 \brac{ \frac{5}{8} (1 + \cos^2\tht) - \cos\tht - \frac{3}{8} \sin^2\tht \cos(2\phi) },
-	}
-	where $\nh \vdot \nho = \cos\tht$ and the azimuthal angle $\phi$ is measured from the direction of linear polarization.
-}
-
-\sol{
-	We choose coordinates as in Fig.~\ref{pol}, such that the direction of linear polarization $\vepso$ points along the $x$ axis and $\nho$ points along the $z$ axis.  Then $\nho \cross \vepso$ points along the $y$ axis.
-}
-
-%
-%	Jackson 10.1(c)
-%
 \clearpage
-\prob{}{
-	What is the ratio of scattered intensities at $\tht = \pi / 2$, $\phi = 0$ and $\tht = \pi / 2$, $\phi = \pi / 2$?  Explain physically in terms of the induced multipoles and their radiation patterns.
-}
-
-
-
-
 \state{(Jackson 12.15)}{
-	Consider the Proca equation for a localized steady-state distribution of current that has only a static magnetic moment.  This model can be used to study the observable effects of a finite photon mass on the earth's magnetic field.  Note that if the magnetization is $\vcM(\vx)$ the current density can be written as $\vJ = c (\grad \cross \vcM)$.
+	Consider the Proca equation for a localized steady-state distribution of current that has only a static magnetic moment.  This model can be used to study the observable effects of a finite photon mass on the earth's magnetic field.  Note that if the magnetization is $\vcM(\vx)$ the current density can be written as $\vJ = c \,(\grad \cross \vcM)$.
 }
 
 %
@@ -131,17 +27,38 @@
 %
 
 \prob{}{
-	Show that if $\vcM = \vm f(\vx)$, where $\vm$ is a fixed vector and $f(\vx)$ is a localized scalar function, the vector potential is
+	Show that if $\vcM = \vm \,f(\vx)$, where $\vm$ is a fixed vector and $f(\vx)$ is a localized scalar function, the vector potential is
 	\eq{
 		\vA(\vx) = -\vm \cross \grad \int f(\vx') \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp.
 	}
 	\vfix
 }
 
+\sol{
+	The Proca equations of motion in the static limit are given by the equation immediately following Jackson~(12.93),
+	\eq{
+		\lap \Asa - \mu^2 \Asa = -\frac{4\pi}{c} \Jsa,
+	}
+	which implies
+	\eqn{thing3}{	
+		\lap \vA - \mu^2 \vA = -\frac{4\pi}{c} \vJ.
+	}
+	Substituting Eq.~\refeq{show3} into the left side of Eq.~\refeq{thing3}, we have
+	\al{
+		\lap \vA - \mu^2 \vA &= -(\lap - \mu^2) \vm \cross \paren{ \grad \int f(\vx') \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp } \\
+		&= -(\lap - \mu^2) \vm \cross \paren{ \int \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \grad f(\vx') \ddcxp + \int f(\vx') \grad \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp } \\
+		&= (\lap - \mu^2) \vm \cross \int f(\vx') \grad' \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp
+	}
+	
+	\eq{
+		 = 4\pi [ \grad \cross \vm \,f(\vx) ]
+	}
+}
+
 %
 %	Jackson 12.15(b)
 %
-
+\clearpage
 \prob{}{
 	If the magnetic dipole is a point dipole at the origin [$f(\vx) = \del(\vx)$], show that the magnetic field away from the origin is
 	\eq{
