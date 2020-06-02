@@ -46,9 +46,9 @@
 }
 
 \sol{
-	We will provide a counterexample that shows the equation is \emph{not} time \emph{reversible}.
+	We will first provide an example and then give a more general treatment.  We assume the probabilities are properly normalized, so $\sumi \Pij = \sumj \Pij = 1$.
 	
-	Assume the probabilities are properly normalized, so $\sumi \Pij = \sumj \Pij = 1$.  Consider a two-state system with states $\kq$ and $\kw$, which has
+	Consider a two-state system with states $\kq$ and $\kw$, which has
 	\eq{
 		P = \mqty[ 1 - \mu & \mu \\ \mu & 1 - \mu ],
 	}
@@ -60,11 +60,11 @@
 		= \mu (\wq - \ww).
 	}
 	This system can be written as the matrix equation
-	\eq{
+	\eqn{matrix}{
 		\dv{t} \mqty[ \wq \\ \ww ] = \mu \mqty[ -1 & 1 \\ 1 & -1 ] \mqty[ \wq \\ \ww ]
-		\equiv M \mqty[ \wq \\ \ww ],
+		\equiv A \mqty[ \wq \\ \ww ],
 	}
-	where we have defined the matrix $M$.  $M$ has eigenvalues $\lam$ given by
+	where we have defined the matrix $A$.  $A$ has eigenvalues $\lam$ given by
 	\eq{
 		0 = \mqty| -(\mu + \lam) & \mu \\ \mu & -(\mu + \lam) |
 		= (\mu + \lam)^2 - \mu^2
@@ -85,15 +85,47 @@
 	
 	We can analyze the behavior of the system using stability analysis methods which are well known in applied mathematics, but which we will not prove here~\cite[pp.~127--130]{Strogatz}.  Since one of the eigenvalues is 0, there is a line of fixed points along the direction of the corresponding eigenvector, $\vb{v} = (1, 1)$.  Since the other eigenvalue is negative, these fixed points are stable; all trajectories are along $\vb{u} = (-1, 1)$ and point toward the fixed points.
 	
-	In practice, however, the normalization condition $\sumi \wi = 1$ restricts the system to a line.  Figure~\refeq{pplane} shows trajectories in the $(\wq, \ww)$ phase plane.  The green line indicates the line of stable fixed points.  The orange line indicates the allowed values of $\wq, \ww$.  For any initial condition along the line, the system will tend toward the point $\wq = \ww = 1/2$.  The system can never return to its initial condition (unless it starts at the equilibrium point, in which cases it remains there for all time).  Hence, \ans{the system described by Eq.~\refeq{Pauli} is time irreversible.} \qed
+	In practice, however, the normalization condition $\sumi \wi = 1$ restricts the system to a line.  The blue arrows in Fig.~\ref{pplane}~(left) shows trajectories in the $(\wq, \ww)$ phase plane.  The green line indicates the line of stable fixed points.  The orange line indicates the allowed values of $\wq, \ww$ under the normalization condition.  For any initial condition along the line, the system will tend toward the point $\wq = \ww = 1/2$.
+	
+	Under time reversal $t \to -t$, the directions of the trajectories change.  This scenario is shown in Fig.~\ref{pplane}~(right).  Clearly the equilibrium has switched stability under this transformation.  Thus, the system evolves in the opposite direction for any initial condition (unless the systems starts out at equilibrium, in which case it will not evolve in either case).  So this system is time irreversible.
 	
 	\begin{figure} \centering
-		\includegraphics[width=0.5\textwidth]{1-1(b)}
-		\caption{Plot of the $(\wq, \ww)$ phase plane indicating trajectories.  The normalized system is confined to the orange line.  The green line represents stable equilibirum points.}
+		\includegraphics[width=0.45\textwidth]{1-1(a)} \hfill
+		\includegraphics[width=0.45\textwidth]{1-1(b)}
+		\caption{Plot of the $(\wq, \ww)$ phase plane indicating trajectories for (left) the nominal system and (right) the system with $t \to -t$.  The normalization $\sumi \wi = 1$ confines the system to the orange line.  The green line represents the equilibrium, which is stable for the nominal system and unstable for the time-reversed system.}
 		\label{pplane}
 	\end{figure}
-
-	These arguments and the phase space shown in Fig.~\refeq{pplane} are easily generalized to higher dimensions, using the fact that the signs of the trace and determinant of $M$ are sufficient to determine the type of fixed points and their stability~\cite[pp.~136--137]{Strogatz}.  However, one example is sufficient to show that Eq.~\refeq{Pauli} is \emph{not} time \emph{reversible}.
+	
+	Now we will generalize the argument to an $N$-state system.  From Eq.~\refeq{Pauli}, note that
+	\al{
+		\dwi &= \Pii (\wi - \wi) + \sum{j \neq i}^N \Pij (\wj - \wi)
+		= \sum{j \neq i}^N \Pij \wj - \paren{ \sum{j = 1}^N \Pij - \Pii } \wi \\
+		&= \sum{j \neq i}^N \Pij \wj + (\Pii - 1) \wi.
+	}
+	Then $A$ is an $N \times N$ matrix,
+	\eqn{A}{
+		A = \mqty[
+			P_{11} - 1 & P_{12} & P_{13} & \cdots & P_{1N} \\
+			P_{21} & P_{22} - 1 & P_{23} & \cdots & P_{2N} \\
+			P_{31} & P_{32} & 1 - P_{33} & \cdots & P_{3N} \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			P_{N1} & P_{N2} & P_{N3} & \hdots & 1 - P_{NN} ],
+	}
+	and the generalization of Eq.~\refeq{matrix} is
+	\eq{
+		\dv{t} \mqty[ w_1 \\ w_2 \\ w_3 \\ \vdots \\ w_N ]
+		= \mqty[
+			P_{11} - 1 & P_{12} & P_{13} & \cdots & P_{1N} \\
+			P_{21} & P_{22} - 1 & P_{23} & \cdots & P_{2N} \\
+			P_{31} & P_{32} & 1 - P_{33} & \cdots & P_{3N} \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			P_{N1} & P_{N2} & P_{N3} & \hdots & 1 - P_{NN} ]
+			\mqty[ w_1 \\ w_2 \\ w_3 \\ \vdots \\ w_N ].
+	}
+	
+	Another method of analyzing stability in applied mathematics is by analyzing the signs of the trace and determinant of $A$~\cite[pp.~136--137]{Strogatz}.  Let $\tau = \Tr(A)$ and $\Del = \det(A)$.  Referring to Eq.~\refeq{A}, clearly $\tau$ is negative (unless it is precisely 0, which would not be very interesting).  For $\Del$, we note that the sum of the columns of $A$ is the zero vector.  This means that the columns of $A$ are \emph{not} independent, meaning it is not invertible~\cite{Invertible}.  Thus, it is a singular matrix with zero determinant~\cite{Singular}.
+	
+	The stability and type of fixed point(s) of the system can be determined using Fig.~\ref{para}~\cite[p.~137]{Strogatz}.  For $\tau < 0$ and $\Del = 0$, the system has a stable non-isolated fixed point, which manifested as a line of stable fixed point in the two-state example.  Due to the normalization condition, the system is confined to a $N - 1$ dimensional region of the $N$ dimensional phase space.  The equilibrium is a generalization of a stable node, so all trajectories in the $N$-dimensional phase space end on the allowed equilibrium point.  Under $t \to -t$, then, the trajectories change direction as in the two-state example.  (This is in contrast to, say, a stable ``center'' whose trajectories are orbits that would change direction under time reversal, but remain stable.)  In other words, \ans{the stable equilibrium becomes an unstable one, so the system described by Eq.~\refeq{Pauli} is time irreversible.} \qed
 }
 
 %
