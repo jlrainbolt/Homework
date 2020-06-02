@@ -128,7 +128,7 @@
 %
 %	Jackson 9.8(c)
 %
-\clearpage
+
 \prob{}{
 	For a charge $e$ rotating in the $xy$ plane at radius $a$ and angular speed $\omg$, show that there is only a $z$ component of radiated angular momentum with magnitude $\dv*{\Lz}{t} = e^2 k^3 a^2 / 6 \pi \epso$.  What about a charge oscillating along the $z$ axis?
 }
@@ -138,6 +138,7 @@
 	\eq{
 		\vx(t) = a \cos(\omg t) \,\vx + a \sin(\omg t) \,\yh.
 	}
+	\clearpage
 	Then the charge distribution is
 	\eq{
 		\rho(\vx, t) = e \del[ x - a \cos(\omg t) ] \,\del[ y - a \sin(\omg t) ] \,\del(z).
@@ -200,6 +201,7 @@
 		\vH &= \frac{1}{4\pi} \curly{ k^2 (\nh \cross \vm) \cross \nh \frac{e^{i k r}}{r} + [ 3 \nh (\nh \vdot \vm) - \vm ] \paren{ \frac{1}{r^3} - \frac{i k}{r^2} } e^{i k r} }, &
 		\vE &= -\frac{\Zo}{4\pi} k^2 (\nh \cross \vm) \frac{e^{i k r}}{r} \paren{ 1 - \frac{1}{i k r} }.
 	}
+	\clearpage
 	Comparing with Eq.~\refeq{fields1}, we see that $\vH \to -\vE / \Zo$, $\vE \to \Zo \vH$, and $\vp \to \vm / c$ as stated in the book~\cite[p.~413]{Jackson}.  Making these substitutions, the results of Probs.~{1.1(a)} and {(b)} become
 	\al{
 		\ans{ \dv{\vL}{t}\ }&\ans{= \frac{\muo k^3}{12\pi} \Im[ \vms \cross \vm ], } &

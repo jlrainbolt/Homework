@@ -43,28 +43,132 @@
 	\eqn{thing3}{	
 		\lap \vA - \mu^2 \vA = -\frac{4\pi}{c} \vJ.
 	}
-	Substituting Eq.~\refeq{show3} into the left side of Eq.~\refeq{thing3}, we have
+	We will proceed by finding the Green's function for this equation, which satisfies
+	\eqn{green}{
+		(\lap - \mu^2) \,G(\vx) = \del^3(\vx).
+	}
+	We can Fourier transform $G(\vx)$ so long as $\vA$ and its derivatives vanish at infinity~\cite{Poisson}.  The Fourier transform expression and its inverse in one dimension are, according to Jackson~(2.45--46),
 	\al{
-		\lap \vA - \mu^2 \vA &= -(\lap - \mu^2) \vm \cross \paren{ \grad \int f(\vx') \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp } \\
-		&= -(\lap - \mu^2) \vm \cross \paren{ \int \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \grad f(\vx') \ddcxp + \int f(\vx') \grad \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp } \\
-		&= (\lap - \mu^2) \vm \cross \int f(\vx') \grad' \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp
+		A(k) &= \frac{1}{\sqrt{2\pi}} \intnii e^{-i k x} \,f(x) \ddx, &
+		f(x) &= \frac{1}{\sqrt{2\pi}} \intnii A(k) \,e^{i k x} \ddk.
+	}
+	Generalizing to three dimensions, the Green's function transforms as~\cite{Poisson}
+	\eq{
+		G(\vk) = \frac{1}{(2\pi)^{3/2}} \int G(\vx) \,e^{i \vk \vdot \vx} \ddcx.
+	}
+	Transforming both sides of Eq.~\refeq{green} in the same way, we have
+	\al{
+		\frac{1}{(2\pi)^{3/2}} \int (\lap - \mu^2) \,G(\vx) \,e^{i \vk \vdot \vx} \ddcx &= \frac{1}{(2\pi)^{3/2}} \int \lap \,G(\vx) \,e^{i \vk \vdot \vx} \ddcx - \frac{\mu^2}{(2\pi)^{3/2}} \int G(\vx) \,e^{i \vk \vdot \vx} \ddcx \\
+		&= \frac{k^2 - \mu^2}{(2\pi)^{3/2}}  \int G(\vx) \,e^{i \vk \vdot \vx} \ddcx, \\
+		\frac{1}{(2\pi)^{3/2}} \int \del^3(\vx) \,e^{i \vk \vdot \vx} \ddcx &= \frac{1}{(2\pi)^{3/2}},
+	}
+	so
+	\eq{
+		(k^2 - \mu^2) \,G(\vk) = \frac{1}{(2\pi)^{3/2}}
+		\qimplies
+		G(\vk) = \frac{1}{(2\pi)^{3/2} (k^2 - \mu^2)}.
+	}
+	Then we can find $G(\vx)$ using the inverse Fourier transform~\cite{Poisson}:
+	\al{
+		G(\vx) &= \frac{1}{(2\pi)^{3/2}} \int G(\vk) \,e^{i \vk \vdot \vx} \ddck
+		= \frac{1}{(2\pi)^3} \int \frac{e^{i \vk \vdot \vx}}{k^2 - \mu^2} \ddck
+		= \frac{1}{(2\pi)^3} \int_0^{2\pi} \int_0^\pi \intoi \frac{e^{i k \absvx}}{k^2 - \mu^2} k^2 \sin\tht \ddk \dd{\tht} \dd{\phi} \\
+		&= \frac{4\pi}{(2\pi)^3 \absvx} \intoi \frac{k \sin(k \absvx)}{k^2 - \mu^2} k^2 \ddk
+		= \frac{e^{-\mu \absvx}}{4\pi \absvx}.
 	}
 	
+	Then the solution to Eq.~\refeq{thing3} is
 	\eq{
-		 = 4\pi [ \grad \cross \vm \,f(\vx) ]
+		\vA(\vx) = \frac{4\pi}{c} \int \vJ(\vx') \,G(\vx - \vx') \ddcxp
+		= \frac{1}{c} \int \vJ(\vx') \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp.
 	}
+	Note that
+	\eq{
+		\frac{\vJ}{c} = \grad \cross [ \vm \,f(\vx) ]
+		= \grad f(\vx) \cross \vm + f(\vx) \,\grad \cross \vm
+		= \grad f(\vx) \cross \vm
+		= -\vm \cross \grad f(\vx),
+	}
+	where we have used the identity $\grad \cross (\psi \vaa) = \grad \psi \cross \vaa + \psi \grad \cross \vaa$.  Making this substitution,
+	\eqn{thing3.2}{
+		\vA(\vx) = -\int \vm \cross \grad' f(\vx') \,\frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp
+		= -\vm \cross \int \grad' f(\vx') \,\frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp.
+	}
+	Integrating by parts,
+	\eq{
+		\int \grad' f(\vx') \,\frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp = \brac{ f(\vx') \grad' \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} }_{-\infty}^\infty - \int f(\vx') \,\grad' \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp
+		= -\int f(\vx') \,\grad' \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp,
+	}
+	since $f(\vx)$ is a localized scalar function and therefore vanishes at infinity.  Since the Green's function depends only on $\abs{\vx - \vx'}$, we can replace $\grad'$ by $-\grad$:
+	\eq{
+		-\int f(\vx') \,\grad' \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp
+		= \int f(\vx') \,\grad \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp
+		= \grad \int f(\vx') \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp.
+	}
+	Making this substitution in Eq.~\refeq{thing3.2},
+	\eqn{ans3a}{
+		\ans{ \vA(\vx) = -\vm \cross \grad \int f(\vx') \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp, }
+	}
+	as desired. \qed
 }
 
 %
 %	Jackson 12.15(b)
 %
-\clearpage
+
 \prob{}{
 	If the magnetic dipole is a point dipole at the origin [$f(\vx) = \del(\vx)$], show that the magnetic field away from the origin is
 	\eq{
 		\vB(\vx) = [ 3 \,\rh (\rh \vdot \vm) - \vm ] \paren{ 1 + \mu r + \frac{\mu^2 r^2}{3} }\frac{e^{-\mu r}}{r^3} - \frac{2}{3} \mu^2 \vm \frac{e^{-\mu r}}{r}.
 	}
 	\vfix
+}
+
+\sol{
+	Setting $f(\vx) = \del(\vx)$ in Eq.~\refeq{ans3a},
+	\eq{
+		\vA(\vx) = -\vm \cross \grad \int \del(\vx') \frac{e^{-\mu \abs{\vx - \vx'}}}{\abs{\vx - \vx'}} \ddcxp
+		= -\vm \cross \grad \frac{e^{-\mu \absvx}}{\absvx}.
+	}
+	Note that
+	\eq{
+		\grad \frac{e^{-\mu \absvx}}{\absvx} = \paren{ -\frac{e^{-\mu \absvx}}{\absvx^2} - \frac{\mu e^{-\mu \absvx}}{\absvx} } \vx
+		= -(1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^2} \xh
+		= -(1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^3} \vx,
+	}
+	so
+	\eq{
+		\vA(\vx) = (\vm \cross \vx) (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^2}.
+	}
+	
+	The magnetic field is given by $\vB = \grad \cross \vA$:
+	\eq{
+		\vB(\vx) = \grad \cross \brac{ (\vm \cross \vx) (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^3} }
+		= \grad \brac{ (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^3}} \cross (\vm \cross \vx) + (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^3} \grad \cross (\vm \cross \vx).
+	}
+	For the first term,
+	\eq{
+		\grad \brac{ (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^3}}
+		= \brac{ -\mu \frac{e^{-\mu \absvx}}{\absvx^3} + (1 + \mu \absvx) \paren{ -\frac{\mu e^{- \mu \absvx}}{\absvx^3} - \frac{3 e^{-\mu \absvx}}{\absvx^4} } } \xh \\
+		= -(3 + 3\mu \absvx + \mu^2 \absvx^2) \frac{e^{-\mu \absvx}}{\absvx^4} \,\xh.
+	}
+	Then, using the identity $\grad \cross (\vaa \cross \vbb) = \vaa (\grad \vdot \vbb) - \vbb (\grad \vdot \vaa) + (\vbb \vdot \grad) \vaa - (\vaa \vdot \grad) \vbb$,
+	\eq{
+		\grad \cross (\vm \cross \vx) = \vm (\grad \vdot \vx) - \vx (\grad \vdot \vm) + (\vx \vdot \grad) \vm - (\vm \vdot \grad) \vx
+		= \vm (\grad \vdot \vx) - (\vm \vdot \grad) \vx.
+	}
+	Making these substitutions,
+	\al{
+		\vB(\vx) &= -(3 + 3\mu \absvx + \mu^2 \absvx^2) \frac{e^{-\mu \absvx}}{\absvx^3} \,\xh \cross (\vm \cross \xh) + (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^3} [ \vm (\grad \vdot \xh) - (\vm \vdot \grad) \xh ] \\
+		&= -(3 + 3\mu \absvx + \mu^2 \absvx^2) \frac{e^{-\mu \absvx}}{\absvx^3} [ (\xh \vdot \xh) \vm - (\xh \vdot \vm) \xh ] + 2 (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^2} \vm \\
+		&= -3 \paren{ 1 + \mu \absvx + \frac{\mu^2 \absvx^2}{3} } \frac{e^{-\mu \absvx}}{\absvx^3} [ \vm - (\xh \vdot \vm) \xh ] + 2 (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^2} \vm \\
+		&= [ 3 \,\xh (\xh \vdot \vm) - \vm ] \paren{ 1 + \mu \absvx + \frac{\mu^2 \absvx^2}{3} }\frac{e^{-\mu \absvx}}{\absvx^3} - \frac{2}{3} \mu^2 \vm \frac{e^{-\mu \absvx}}{\absvx}.
+	}
+	Letting $\xh \to \rh$ and $\absvx \to r$, we have
+	\eq{
+		\ans{ \vB(\vx) = [ 3 \,\rh (\rh \vdot \vm) - \vm ] \paren{ 1 + \mu r + \frac{\mu^2 r^2}{3} }\frac{e^{-\mu r}}{r^3} - \frac{2}{3} \mu^2 \vm \frac{e^{-\mu r}}{r} }
+	}
+	as we sought to show. \qed
 }
 
 %
