@@ -1,0 +1,39 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}%
+\makeatletter
+\providecommand{\hrefCMSnoop }[0]{\@secondoftwo}%
+\makeatother
+\providecommand{\doi}{\texttt{doi:}\begingroup \urlstyle{tt}\Url}
+
+\bibitem{Jackson}
+J.~D. Jackson, ``Classical Electrodynamics''.
+\newblock Wiley, 3rd edition, 1999.
+
+\bibitem{Poisson}
+\href
+  {https://en.wikipedia.org/w/index.php?title=Screened_Poisson_equation}{{Wikipedia
+  contributors}, ``Screened Poisson equation.''} From Wikipedia, the Free
+  Encyclodia.
+\newblock \url
+  {https://en.wikipedia.org/w/index.php?title=Screened_Poisson_equation}.
+
+\bibitem{Magnetic}
+\href
+  {https://en.wikipedia.org/w/index.php?title=Earth%27s_magnetic_field}{{Wikipedia
+  contributors}, ``Earth's magnetic field.''} From Wikipedia, the Free
+  Encyclodia.
+\newblock \url
+  {https://en.wikipedia.org/w/index.php?title=Earth%27s_magnetic_field}.
+
+\bibitem{Griffiths}
+D.~J. Griffiths, ``Introduction to Electrodynamics''.
+\newblock Prentice Hall, 3rd edition, 1999.
+
+\bibitem{YF}
+H.~D. Young and R.~A. Freedman, ``University Physics with Modern Phyiscs''.
+\newblock Pearson, 15th edition, 2020.
+
+\bibitem{Wald}
+R.~M. Wald, ``Introduction to Advanced Classical Electrodynamics''.
+\newblock March, 2020.
+
+\end{thebibliography}\endgroup

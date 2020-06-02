@@ -159,14 +159,14 @@
 	}
 	Making these substitutions,
 	\al{
-		\vB(\vx) &= -(3 + 3\mu \absvx + \mu^2 \absvx^2) \frac{e^{-\mu \absvx}}{\absvx^3} \,\xh \cross (\vm \cross \xh) + (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^3} [ \vm (\grad \vdot \xh) - (\vm \vdot \grad) \xh ] \\
+		\vB(\vx) &= -(3 + 3\mu \absvx + \mu^2 \absvx^2) \frac{e ^{-\mu \absvx}}{\absvx^3} \,\xh \cross (\vm \cross \xh) + (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^3} [ \vm (\grad \vdot \xh) - (\vm \vdot \grad) \xh ] \\
 		&= -(3 + 3\mu \absvx + \mu^2 \absvx^2) \frac{e^{-\mu \absvx}}{\absvx^3} [ (\xh \vdot \xh) \vm - (\xh \vdot \vm) \xh ] + 2 (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^2} \vm \\
 		&= -3 \paren{ 1 + \mu \absvx + \frac{\mu^2 \absvx^2}{3} } \frac{e^{-\mu \absvx}}{\absvx^3} [ \vm - (\xh \vdot \vm) \xh ] + 2 (1 + \mu \absvx) \frac{e^{-\mu \absvx}}{\absvx^2} \vm \\
 		&= [ 3 \,\xh (\xh \vdot \vm) - \vm ] \paren{ 1 + \mu \absvx + \frac{\mu^2 \absvx^2}{3} }\frac{e^{-\mu \absvx}}{\absvx^3} - \frac{2}{3} \mu^2 \vm \frac{e^{-\mu \absvx}}{\absvx}.
 	}
 	Letting $\xh \to \rh$ and $\absvx \to r$, we have
-	\eq{
-		\ans{ \vB(\vx) = [ 3 \,\rh (\rh \vdot \vm) - \vm ] \paren{ 1 + \mu r + \frac{\mu^2 r^2}{3} }\frac{e^{-\mu r}}{r^3} - \frac{2}{3} \mu^2 \vm \frac{e^{-\mu r}}{r} }
+	\eqn{ans3b}{
+		\ans{ \vB(\vx) = [ 3 \,\rh (\rh \vdot \vm) - \vm ] \paren{ 1 + \mu r + \frac{\mu^2 r^2}{3} } \frac{e^{-\mu r}}{r^3} - \frac{2}{3} \mu^2 \vm \frac{e^{-\mu r}}{r} }
 	}
 	as we sought to show. \qed
 }
@@ -177,6 +177,34 @@
 
 \prob{}{
 	The result of Prob.~{3(b)} shows that at fixed $r = R$ (on the surface of the earth), the earth's magnetic field will appear as a dipole angular distribution, plus an added constant magnetic field (an apparently external field) antiparallel to $\vm$.  Satellite and surface observations lead to the conclusion that the ``external'' field is less than $\num{4e-3}$ times the dipole field at the magnetic equator.  Estimate a lower limit on $\mu^{-1}$ in earth radii and an upper limit on the photon mass in grams from this datum.
+}
+
+\sol{
+	The earth's magnetic field is parallel to its surface at the magnetic equator~\cite{Magnetic}.  Figure~\ref{mag} shows the field of a magnetic dipole $\vm \propto \zh$~\cite[pp.~245--246]{Griffiths}.  Thus, at the magnetic equator, $\vm$ is also parallel to the field, and so the spherical unit vector $\rh$ is perpendicular to $\vm$.  So Eq.~\refeq{ans3b} becomes
+	\eq{
+		\vB(\vx) = -\vm \paren{ 1 + \mu R + \frac{\mu^2 R^2}{3} }\frac{e^{-\mu R}}{R^3} - \frac{2}{3} \mu^2 \vm \frac{e^{-\mu R}}{R}
+		\equiv \vBdip + \vBext,
+	}
+	where we have defined $\vBdip$ as the dipole field and $\vBext$ as the ``external' field.  The identification is made by comparing with Jackson~(5.56), which gives the magnetic field due to a dipole (in SI units):
+	\eq{
+		\vB(\vx) = \frac{\muo}{4\pi} \frac{3 \nh (\nh \vdot \vm)}{\absvx^3}.
+	}
+	As stated in the problem, $\abs{\vBext} < (\num{4e-3}) \abs{\vBdip}$.  This gives us
+	\eq{
+		\frac{2}{3} \mu^2 \frac{e^{-\mu R}}{R} < (\num{4e-3}) \paren{ 1 + \mu R + \frac{\mu^2 R^2}{3} } \frac{e^{-\mu R}}{R^3}
+		\qimplies
+		\frac{2}{3} \mu^2 R^2 < (\num{4e-3}) \paren{ 1 + \mu R + \frac{\mu^2 R^2}{3} }.
+	}
+	Solving the second expression with Mathematica gives the positive $\mu = 0.0806 / R$.  Thus, the lower limit on $\mu^{-1}$ is \ans{$\mu^{-1} > 12 R$.}
+	
+	The parameter $\mu$ is defined by $\mu = \mgam c / \hbar$, where $\mgam$ is the photon mass~\cite[p.~600]{Jackson}.  The earth's radius is $R = \SI{6.37e6}{\meter}$~\cite{YF}, so $\mu < \SI{1.267e-8}{\per\meter}$.  Since $c = \SI{2.998e8}{\meter\per\second}$ and $\hbar = h / (2\pi) = (\SI{6.63e-34}{\joule\second}) / (2\pi) = \SI{1.055e-34}{\joule\second}$~\cite{YF}, we have
+	\eq{
+		\mgam = \frac{\hbar \mu}{c}
+		< \frac{(\SI{1.055e-34}{\joule\second}) (\SI{1.267e-8}{\per\meter})}{\SI{2.998e8}{\meter\per\second}}
+		\approx \SI{4e-51}{\kg}
+		= \SI{4e-48}{\gram}.
+	}
+	So the upper bound on the photon mass is \ans{$\mgam < \SI{4e-48}{\gram}$.}
 }
 
 
