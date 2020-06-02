@@ -126,6 +126,12 @@
 	Another method of analyzing stability in applied mathematics is by analyzing the signs of the trace and determinant of $A$~\cite[pp.~136--137]{Strogatz}.  Let $\tau = \Tr(A)$ and $\Del = \det(A)$.  Referring to Eq.~\refeq{A}, clearly $\tau$ is negative (unless it is precisely 0, which would not be very interesting).  For $\Del$, we note that the sum of the columns of $A$ is the zero vector.  This means that the columns of $A$ are \emph{not} independent, meaning it is not invertible~\cite{Invertible}.  Thus, it is a singular matrix with zero determinant~\cite{Singular}.
 	
 	The stability and type of fixed point(s) of the system can be determined using Fig.~\ref{para}~\cite[p.~137]{Strogatz}.  For $\tau < 0$ and $\Del = 0$, the system has a stable non-isolated fixed point, which manifested as a line of stable fixed point in the two-state example.  Due to the normalization condition, the system is confined to a $N - 1$ dimensional region of the $N$ dimensional phase space.  The equilibrium is a generalization of a stable node, so all trajectories in the $N$-dimensional phase space end on the allowed equilibrium point.  Under $t \to -t$, then, the trajectories change direction as in the two-state example.  (This is in contrast to, say, a stable ``center'' whose trajectories are orbits that would change direction under time reversal, but remain stable.)  In other words, \ans{the stable equilibrium becomes an unstable one, so the system described by Eq.~\refeq{Pauli} is time irreversible.} \qed
+	
+	\begin{figure} \centering
+		\includegraphics{5-2-8}
+		\caption{Fixed point classification scheme using $\tau = \Tr(A)$ and $\Del = \det(A)$~\cite[p.~137]{Strogatz}}
+		\label{para}
+	\end{figure}
 }
 
 %
