@@ -22,7 +22,7 @@
 \sol{
 	According to Jackson~(9.20), the time-averaged angular momentum density is
 	\eq{
-		\vl = \frac{\Re[ \vx \cross (\vE \cross \vHs)}{2 c^2}.
+		\vl = \frac{\Re[ \vx \cross (\vE \cross \vHs) ]}{2 c^2}.
 	}
 	One of the vector identities on the inside cover of Jackson is $\vaa \cross (\vbb \cross \vcc) = (\vaa \vdot \vcc) \vbb - (\vaa \vdot \vbb) \vcc$, so
 	\eqn{l1}{
@@ -65,14 +65,14 @@
 	
 	Let $\vL$ be the angular momentum radiated to a distance $R$.  Then
 	\eq{
-		\vL = \int_R \vl(r) \ddcx
-		= \intopi \intotp \intoR \vl(r) \,r^2 \sin\tht \ddr \ddphi \dd\tht,
+		\vL = \int_R \vl \ddcx
+		= \intopi \intotp \intoR \vl \,r^2 \sin\tht \ddr \ddphi \dd\tht,
 	}
 	and the time derivative is
 	\aln{
-		\dv{\vL}{t} &= \dv{t}(\intopi \intotp \intoR \vl(r) \,r^2 \sin\tht \ddr \ddphi \dd\tht)
-		= \dv{r}{t} \dv{r}(\intopi \intotp \intoR \vl(r) \,r^2 \sin\tht \ddr \ddphi \dd\tht) \notag \\
-		&= c \intopi \intotp \vl(r) \,r^2 \sin\tht \ddphi \dd\tht
+		\dv{\vL}{t} &= \dv{t}(\intopi \intotp \intoR \vl \,r^2 \sin\tht \ddr \ddphi \dd\tht)
+		= \dv{r}{t} \dv{r}(\intopi \intotp \intoR \vl \,r^2 \sin\tht \ddr \ddphi \dd\tht) \notag \\
+		&= c \intopi \intotp \vl \,r^2 \sin\tht \ddphi \dd\tht
 		= \frac{i k^3}{16\pi^2 \epso} \paren{ \frac{1}{k^2 r^2} + 1 } \intopi \intotp (\nh \vdot \vp) (\nh \cross \vps) \sin\tht \ddphi \dd\tht. \label{dLdt}
 	}
 	Note that
@@ -128,7 +128,7 @@
 %
 %	Jackson 9.8(c)
 %
-
+\clearpage
 \prob{}{
 	For a charge $e$ rotating in the $xy$ plane at radius $a$ and angular speed $\omg$, show that there is only a $z$ component of radiated angular momentum with magnitude $\dv*{\Lz}{t} = e^2 k^3 a^2 / 6 \pi \epso$.  What about a charge oscillating along the $z$ axis?
 }
@@ -138,10 +138,9 @@
 	\eq{
 		\vx(t) = a \cos(\omg t) \,\vx + a \sin(\omg t) \,\yh.
 	}
-	\clearpage
 	Then the charge distribution is
 	\eq{
-		\rho(\vx, t) = e \del[ x - a \cos(\omg t) ] \,\del[ y - a \sin(\omg t) ] \,\del(z).
+		\rho(\vx, t) = e \,\del[ x - a \cos(\omg t) ] \,\del[ y - a \sin(\omg t) ] \,\del(z).
 	}
 	
 	According to Jackson~(4.8), the dipole moment is defined
@@ -201,7 +200,6 @@
 		\vH &= \frac{1}{4\pi} \curly{ k^2 (\nh \cross \vm) \cross \nh \frac{e^{i k r}}{r} + [ 3 \nh (\nh \vdot \vm) - \vm ] \paren{ \frac{1}{r^3} - \frac{i k}{r^2} } e^{i k r} }, &
 		\vE &= -\frac{\Zo}{4\pi} k^2 (\nh \cross \vm) \frac{e^{i k r}}{r} \paren{ 1 - \frac{1}{i k r} }.
 	}
-	\clearpage
 	Comparing with Eq.~\refeq{fields1}, we see that $\vH \to -\vE / \Zo$, $\vE \to \Zo \vH$, and $\vp \to \vm / c$ as stated in the book~\cite[p.~413]{Jackson}.  Making these substitutions, the results of Probs.~{1.1(a)} and {(b)} become
 	\al{
 		\ans{ \dv{\vL}{t}\ }&\ans{= \frac{\muo k^3}{12\pi} \Im[ \vms \cross \vm ], } &

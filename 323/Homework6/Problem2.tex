@@ -17,10 +17,10 @@
 	\eqn{thing2}{
 		\dv{\sig}{\Omg} {\nh, \veps; \nho, \vepso)} = k^4 a^6 \abs{ (\vepss \vdot \vepso - \frac{1}{2} (\nh \cross \vepss) \vdot (\nho \cross \vepso) }^2.
 	}
-	We will use the polarization vectors $\vepsq$ and $\vepsw$, which are defined in Fig.~\refeq{pol}~\cite[p.~458]{Jackson}.  According to the figure,
+	We will use the polarization vectors $\vepsq$ and $\vepsw$, which are defined in Fig.~\ref{pol}~\cite[p.~458]{Jackson}.  According to the figure,
 	\al{
 		\vepsw &= \frac{\nh \cross \nho}{\abs{\nh \cross \nho}}
-		= \frac{\nh \cross \nho}{\sqrt{1 - (\nh \vdot \nho)^2}}, \\
+		= \frac{\nh \cross \nho}{\sqrt{1 - (\nh \vdot \nho)^2}}, \\[1.5ex]
 		\vepsq &= \vepsw \cross \nh
 		= \frac{-\nh \cross (\nh \cross \nho)}{\sin\tht}
 		= \frac{(\nh \vdot \nh) \nho - (\nh \vdot \nho) \nh}{\sin\tht}
@@ -61,13 +61,13 @@
 	
 	Summing the two terms, we find
 	\aln{
-		\dv{\sig}{\Omg} &= \dv{\sig}{\Omg} {(\nh, \vepsq; \nho, \vepso)} + \dv{\sig}{\Omg} {(\nh, \vepsw; \nho, \vepso)} \notag \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \curly{ \abs{ \nh \vdot \vepso }^2 \brac{ (\nh \vdot \nho)^2 - (\nh \vdot \nho) + \frac{1}{4} } + \brac{ 1 - (\nh \vdot \nho) + \frac{1}{4} (\nh \vdot \nho)^2 } \abs{ \nh \vdot (\nho \cross \vepso) }^2 } \notag \\
+		\dv{\sig}{\Omg} &= \dv{\sig}{\Omg} {(\nh, \vepsq; \nho, \vepso)} + \dv{\sig}{\Omg} {(\nh, \vepsw; \nho, \vepso)} \notag \\[1.1ex]
+		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \curly{ \abs{ \nh \vdot \vepso }^2 \brac{ (\nh \vdot \nho)^2 - (\nh \vdot \nho) + \frac{1}{4} } + \brac{ 1 - (\nh \vdot \nho) + \frac{1}{4} (\nh \vdot \nho)^2 } \abs{ \nh \vdot (\nho \cross \vepso) }^2 } \notag \\[1.1ex]
 		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \bigg\{ \abs{ \nh \vdot \vepso }^2 (\nh \vdot \nho)^2 - \abs{ \nh \vdot \vepso }^2 (\nh \vdot \nho) + \frac{\abs{ \nh \vdot \vepso }^2}{4} + \abs{ \nh \vdot (\nho \cross \vepso) }^2 \notag \\
-		&\phantom{mmmmmmmmmmmmmmmmmmmmmmmmmm} - (\nh \vdot \nho) \abs{ \nh \vdot (\nho \cross \vepso) }^2 + \frac{(\nh \vdot \nho)^2 \abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} \bigg\} \notag \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmmmmmm} - (\nh \vdot \nho) \abs{ \nh \vdot (\nho \cross \vepso) }^2 + \frac{(\nh \vdot \nho)^2 \abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} \bigg\} \notag \\[1.1ex]
 		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \bigg\{ \frac{5 \abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + \frac{5 \abs{ \nh \vdot \vepso }^2}{4} - (\nh \vdot \nho) \abs{ \nh \vdot (\nho \cross \vepso) }^2 - (\nh \vdot \nho) \abs{ \nh \vdot \vepso }^2 \notag \\
-		&\phantom{mmmmmmmmmmmmmmm} - \frac{\abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} - \frac{\abs{ \nh \vdot \vepso }^2}{4} + \frac{(\nh \vdot \nho)^2 \abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + (\nh \vdot \nho)^2 \abs{ \nh \vdot \vepso }^2 \bigg\} \notag \\
-		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \curly{ \brac{ \frac{5}{4} - \nh \vdot \nho } \brac{ \abs{ \nh \vdot (\nho \cross \vepso) }^2 + \abs{ \nh \vdot \vepso }^2 } - \brac{ 1 - (\nh \vdot \nho)^2 } \brac{ \frac{\abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + \abs{ \nh \vdot \vepso }^2 } } \notag \\
+		&\phantom{mmmmmmmmmmmmmmm} - \frac{\abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} - \frac{\abs{ \nh \vdot \vepso }^2}{4} + \frac{(\nh \vdot \nho)^2 \abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + (\nh \vdot \nho)^2 \abs{ \nh \vdot \vepso }^2 \bigg\} \notag \\[1.1ex]
+		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \curly{ \brac{ \frac{5}{4} - \nh \vdot \nho } \brac{ \abs{ \nh \vdot (\nho \cross \vepso) }^2 + \abs{ \nh \vdot \vepso }^2 } - \brac{ 1 - (\nh \vdot \nho)^2 } \brac{ \frac{\abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + \abs{ \nh \vdot \vepso }^2 } } \notag \\[1.1ex]
 		&= \frac{k^4 a^6}{1 - (\nh \vdot \nho)^2} \brac{ \frac{5}{4} - \nh \vdot \nho } \brac{ \abs{ \nh \vdot (\nho \cross \vepso) }^2 + \abs{ \nh \vdot \vepso }^2 } - k^4 a^6 \brac{ \frac{\abs{ \nh \vdot (\nho \cross \vepso) }^2}{4} + \abs{ \nh \vdot \vepso }^2 }. \label{thing2.1}
 	}
 	
@@ -126,10 +126,10 @@
 }
 
 \sol{
-	Firstly, note that
+	Firstly, we note that
 	\al{
 		\dv{\sig}{\Omg} {(\pi / 2, 0)} &= k^4 a^6 \brac{ \frac{5}{8} - \frac{3}{8} }
-		= \frac{k^4 a^6}{4}, \\
+		= \frac{k^4 a^6}{4}, &
 		\dv{\sig}{\Omg} {(\pi / 2, \pi / 2)} &= k^4 a^6 \brac{ \frac{5}{8} + \frac{3}{8} }
 		= k^4 a^6,
 	}
@@ -154,5 +154,5 @@
 		\vHsc &= \nh \cross \frac{\vEsc}{\Zo}.
 	}
 	
-	When $\phi = 0$, Eq.~\refeq{n2} indicates that $\nh = \vepso$.  Applying the relations above, $\nh$ and $\vp$ therefore point in the same direction.  This means $\nh \cross \vp = \vO$, so $\vEsc$ only has a contribution from the magnetic dipole.  However, When $\phi = \pi / 2$, $\nh = \nho \cross \vepso$ and therefore $\nh$ points in the same direction as $\vm$.  This means $\nh \cross \vm = \vO$, so $\vEsc$ only has a contribution from the electric dipole.  \ans{The ratio $1/4$ indicates that the strength of radiation from a purely electric dipole is four times that from a purely magnetic dipole.}
+	When $\phi = 0$, Eq.~\refeq{n2} indicates that $\nh = \vepso$.  Applying the relations above, $\nh$ and $\vp$ therefore point in the same direction.  This means $\nh \cross \vp = \vO$, so $\vEsc$ only has a contribution from the magnetic dipole.  However, when $\phi = \pi / 2$, $\nh = \nho \cross \vepso$ and therefore $\nh$ points in the same direction as $\vm$.  This means $\nh \cross \vm = \vO$, so $\vEsc$ only has a contribution from the electric dipole.  \ans{The ratio $1/4$ indicates that the strength of radiation from a purely electric dipole is four times that from a purely magnetic dipole.}
 }
