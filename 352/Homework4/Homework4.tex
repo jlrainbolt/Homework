@@ -13,42 +13,11 @@
 
 \input{Problem1}
 
-
-
-\state{Pauli paramagnetism}{
-	Cold atomic gases could be realized by atomic isotopes which are fermions ($^6$Li, $^{40}$K, etc.).  Such isotopes may have a large atomic spin.  Assuming that the Fermi gas is degenerate and its constituents have a spin $s> 1 / 2$, compute the Pauli magnetic susceptibility.
-}
-
-\sol{
-	According to p.~2 of Lecture 12, the magnetic susceptibility is defined
-	\eq{
-		\chi = \frac{1}{V} \pdv{N}{\mu},
-	}
-	where $N = \pdv*{\Omg}{\mu}$, and
-	\eq{
-		\Omg(\mu, B) = \frac{1}{2} \Omgo(\mu + B) + \frac{1}{2} \Omgo(\mu - B)
-		\approx \Omgo(\mu) + \frac{B^2}{2} \pdv[2]{\Omgo}{\mu},
-	}
-	where $B$ is the strength of the magnetic field and $\Omgo$ is the thermodynamic potential with no field present.  \hl{but I think this doesn't work because it is only for spin 1/2}
-	
-	For a Fermi gas, the thermodynamic potential is~\cite[p.~145]{Landau}
-	\eq{
-		\Omgo = -T \sumk \ln(1 + e^{(\mu - \epsk) / T}).
-	}
-	Note that
-	\al{
-		\pdv{\Omgo}{\mu} &= 
-	}
-	Then the thermodynamic potential in the magnetic field is
-	\eq{
-		\Omg = 
-	}
-}
+\input{Problem2}
 
 
 
 
-\clearpage
 \state{Landau diamagnetism}{\ }
 
 %
@@ -88,7 +57,7 @@
 %
 
 \prob{}{
-	Compute the  pair correlation of density $C(r)= \ev{\ev{n(r) \,n(0)}}$ and the fluctuation of the occupation number $\ev*{\absnk^2}$ of the degenerate Fermi gas ($T \ll \EF$) in dimensions $d = 1, 2, 3$. Discuss various distance regimes.
+	Compute the  pair correlation of density $C(r)= \ev{\ev{n(r) \,n(0)}}$ and the fluctuation of the occupation number $\ev*{\absnk^2}$ of the degenerate Fermi gas ($T \ll \EF$) in 2D. Discuss various distance regimes.
 }
 
 %
@@ -96,7 +65,7 @@
 %
 
 \prob{}{
-	Repeat the above for the Bose gas above the condensation temperature.
+	Repeat the above for the Bose gas slightly above the condensation temperature.
 }
 
 

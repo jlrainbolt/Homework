@@ -177,12 +177,14 @@
 	}
 	Using the formula $\dv*{\Li_n(x)}{x} = \Li_{n - 1}(x) / x$~\cite{Polylog}, we find
 	\eq{
-		\pdv{\mu}[ \Li_{3/2}(\mp e^{\mu / T}) ] = \mp \pdv{\mu}(\mp e^{\mu / T}) \frac{\Li_{3/2}(\mp e^{\mu / T})}{e^{\mu / T}}
-		= \frac{\Li_{3/2}(\mp e^{\mu / T})}{T}.
+		\pdv{\mu}[ \Li_{3/2}(\mp e^{\mu / T}) ] = \mp \pdv{\mu}(\mp e^{\mu / T}) \frac{\Li_{1/2}(\mp e^{\mu / T})}{e^{\mu / T}}
+		= \frac{\Li_{1/2}(\mp e^{\mu / T})}{T}.
 	}
 	So the fluctuations are
-	\eq{
-		\ans{ \evDNs = \mp \frac{g V}{\pi^2 \hbar^2} \sqrt{\frac{m^3}{2^3 T}} \,\Li_{3/2}(\mp e^{\mu / T})
+	\al{
+		\evDNs &= \mp \frac{g V}{\pi^2 \hbar^2} \sqrt{\frac{m^3}{2^3 T}} \,\Li_{3/2}(\mp e^{\mu / T})
+		= \mp \frac{g V}{\pi^2 \hbar^2} \sqrt{\frac{m^3}{2^3 T}} \frac{1}{\mp \Gam(1/2)} \intoi \frac{\ddz}{\sqrt{z} (e^{z - \mu / T} \pm 1)} \\
+		&= \ans{ \frac{g V}{\hbar^2 T} \sqrt{\frac{m^3}{2^3 \pi^5}} \intoi \frac{\ddeps}{\sqrt{z} (e^{(\eps - \mu) / T} \pm 1)}
 		\begin{cases}
 			\text{Fermi}, \\
 			\text{Bose}.
