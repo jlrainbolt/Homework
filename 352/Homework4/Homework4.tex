@@ -25,12 +25,9 @@
 %
 
 \prob{}{
-	Compute the Landau diamagnetic susceptibility for ultra-relativistic Fermi gas.
+	Compute the Landau diamagnetic susceptibility for an ultra-relativistic Fermi gas in a weak field.
 }
 
-\sol{
-	
-}
 
 %
 %	3.2
@@ -57,13 +54,56 @@
 %
 
 \prob{}{
-	Compute the  pair correlation of density $C(r)= \ev{\ev{n(r) \,n(0)}}$ and the fluctuation of the occupation number $\ev*{\absnk^2}$ of the degenerate Fermi gas ($T \ll \EF$) in 2D. Discuss various distance regimes.
+	Compute the  pair correlation of density $C(r)= \ev{\ev{n(r) \,n(0)}}$ and the fluctuation of the occupation number $\ev*{\absnk^2}$ of the degenerate Fermi gas ($T \ll \EF$) in 2D.  Discuss various distance regimes.
 }
+
+\sol{
+	 The spatial correlation of the density fluctuations in a 2D Fermi gas is given by
+	 \eq{
+	 	\ev{\Del\nq \,\Del\nw} = \frac{1}{A^2} {\sum_{\sig, \vp, \vp'}}\!' (1 - \ev*{\npps}) \ev{\nps} e^{i (\vp - \vp') (\vrw - \vrq) / \hbar},
+	 }
+	 where $n$ is an occupation number, $\vp$ and $\vp'$ are momenta, and $\sig$ is a spin component~\cite[p.~356]{Landau2}.  We can approximate the sum by an integral using the momentum elements $A \ddsp / (2\pi\hbar)^2$ and $A \ddspp / (2\pi\hbar)^2$:
+	 \eqn{thing5}{
+	 	\ev{\Del\nq \,\Del\nw} = \frac{1}{(2\pi\hbar)^4} \sumsig \iint (1 - \ev*{\npps}) \ev{\nps} e^{i (\vp - \vp') (\vrw - \vrq) / \hbar} \ddsp \ddspp.
+	 }
+	 For the first term~\cite[p.~356]{Landau2},
+	 \al{
+	 	\iint \ev{\nps} e^{i (\vp - \vp') (\vrw - \vrq) / \hbar} \ddsp \ddspp &= \sumsig \int \ev{\nps} e^{i \vp (\vrw - \vrq) / \hbar} \ddcp \int e^{-i \vp' (\vrw - \vrq) / \hbar} \ddspp \\
+	 	&= \sumsig \int \ev{\nps} \del(\vrw - \vrq) \,e^{i \vp (\vrw - \vrq) / \hbar} \ddsp \\
+	 	&= \del(\vrw - \vrq) \sumsig \int \ev{\nps} \ddsp
+	 	= \evn \del(\vrw - \vrq).
+	 }
+	 This is the first term in the definition of the spatial correlation, which is
+	 \eq{
+	 	\ev{\Del\nq \,\Del\nw} = \evn \del(\vrw - \vrq) + \evn C(r),
+	 }
+	 meaning we can associate the pair correlation $C(r)$ with the second term in Eq.~\refeq{thing5}~\cite[pp.~351, 356]{Landau2}.  So the correlation function is
+	 \eq{
+	 	C(r) = -\frac{1}{(2\pi\hbar)^4 \evn} \sumsig \abs{ \int e^{i \vp \vdot \vr / \hbar} \ev{\nps} \ddsp }^2.
+	 }
+	 For a Fermi gas, $\ev{\nps} = \ev{n_{\vp}} = 1 / (e^{(\eps - \mu) / T} + 1)$, which does not depend on $\sigma$.  Then~\cite[p.~356]{Landau}
+	 \al{
+	 	C(r) &= -\frac{g}{\evn (2\pi\hbar)^4} \abs{ \int \frac{e^{i \vp \vdot \vr / \hbar}}{e^{(\eps - \mu) / T} + 1} \ddsp }^2
+	 	= -\frac{g}{\evn (2\pi\hbar)^2} \abs{ \intotp \intoi \frac{p \,e^{i p r \cos\tht / \hbar}}{e^{(\eps - \mu) / T} + 1} \ddp \ddtht }^2 \\
+	 	&= \frac{(2\pi)^2 g}{\evn (2\pi\hbar)^4}  \abs{ \intoi \frac{p\, \Jo(p r / \hbar)}{e^{(\eps - \mu) / T} + 1} \ddp }^2,
+	 }
+	 where $\Jo(x)$ is a Bessel function of the first kind.
+	 
+	 For a degenerate gas, $\mu \approx \epso = \po^2 / 2m$, where $\epso$ and $\po$ are the Fermi energy and momentum, respectively.  Let $x = (\eps - \epso) / T = \po (p - \po) / mT$.  Making this substitution and integrating by parts~\cite[p.~358]{Landau},
+	 \al{
+		\intoi \frac{p\, \Jo(p r / \hbar)}{e^{(\eps - \mu) / T} + 1} \ddp &= \intoi \frac{p\, \Jo(p r / \hbar)}{e^x + 1} \ddp
+		= \brac{ \frac{\hbar p \,\Jq(p r / \hbar)}{r (e^x + 1)} }_0^\infty + \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar) \,e^x}{(e^x + 1)^2} \ddp \\
+		&= \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar)}{(e^x + 1) (e^{-x} + 1)} \ddp
+%		= \frac{\hbar}{r} \pdv{r} \intoi \frac{r \,\Jq(p r / \hbar)}{e^{(\eps - \epso) / T} + 1} \ddp,
+	 }
+	 where we have used $\dv*{[ x^m J_m(x) ]}{x} = x^m J_{m - 1}(x)$ and the fact that $\Jq(0) = 0$~\cite{Bessel}.
+}
+
 
 %
 %	5.2
 %
-
+\clearpage
 \prob{}{
 	Repeat the above for the Bose gas slightly above the condensation temperature.
 }
