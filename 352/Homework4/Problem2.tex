@@ -7,7 +7,7 @@
 	\eqn{thingy}{
 		\Omg(\mu) = \frac{\Omgo(\mu + \muB B)}{2} + \frac{\Omgo(\mu - \muB B)}{2},
 	}
-	where $\Omgo$ is the thermodynamic potential when no magnetic field is present and $\muB$ is the Bohr magneton.  This formulation is due to each particle's picking up extra energy $\pm \muB B$ from the component of its spin in the direction of the field.  Since the thermodynamic potential depends on $\eps - \mu$, we can equivalently make the substitution $\mu \to \mu \mp \muB B$~\cite[p.~172]{Landau2}.
+	where $\Omgo$ is the thermodynamic potential when no magnetic field is present and $\muB = e \hbar / 2 m c$ is the Bohr magneton.  This formulation is due to each particle's picking up extra energy $\pm \muB B$ from the component of its spin in the direction of the field.  Since the thermodynamic potential depends on $\eps - \mu$, we can equivalently make the substitution $\mu \to \mu \mp \muB B$~\cite[p.~172]{Landau2}.
 	
 	For an atom of arbitrary spin $s$, there are $g = 2s + 1$ possible $z$ components of the spin.  They are described by the matrix $\Sz$.  Note that~\cite[p.~375]{Shankar}
 	\al{
@@ -22,56 +22,56 @@
 			0 & 0 & 0 & \cdots & -s ]
 			\quad (s \text{ arbitrary}).
 	}
-	Then, by analogy with Eq.~\refeq{thingy}, for arbitrary $s$
+	Let $\muR = \abs{q} \hbar / 2 m c$, where $q$ and $m$ are the charge and mass of the atom, respectively.  Then, by analogy with Eq.~\refeq{thingy}, for arbitrary $s$
 	\eqn{thing2}{
-		\Omg(\mu) = \frac{1}{g} \sumjs \Omgo[ \mu + 2(s - j) \muB B ]
+		\Omg(\mu) = \frac{1}{g} \sumjs \Omgo[ \mu + 2(s - j) \muR B ]
 		\equiv \frac{1}{g} \sumjs \Omgo(\muj),
 	}
-	where we have defined $\muj = \mu + 2(s - j) \muB B$.
+	where we have defined $\muj = \mu + 2(s - j) \muR B$.
 	
-	Since $B$ is small, we can Taylor expand Eq.~\refeq{thing2} about $\muB B = 0$~\cite[p.~172]{Landau2}:
+	Since $B$ is small, we can Taylor expand Eq.~\refeq{thing2} about $\muR B = 0$~\cite[p.~172]{Landau2}:
 	\eq{
-		\Omg(\mu) \approx \bigg[ \Omg(\mu) \bigg]_{\muB B = 0} + \muB B \brac{ \pdv{\Omg(\mu)}{(\muB B)} }_{\muB B = 0} + \frac{\muB^2 B^2}{2} \brac{ \pdv[2]{\Omg(\mu)}{(\muB B)} }_{\muB B = 0}.
+		\Omg(\mu) \approx \bigg[ \Omg(\mu) \bigg]_{\muR B = 0} + \muR B \brac{ \pdv{\Omg(\mu)}{(\muR B)} }_{\muR B = 0} + \frac{\muR^2 B^2}{2} \brac{ \pdv[2]{\Omg(\mu)}{(\muR B)} }_{\muR B = 0}.
 	}
 	Note that
 	\al{
-		\pdv{\Omg}{(\muB B)} &= \frac{1}{g} \sumjws \pdv{\Omgo(\mu)}{\muj} \pdv{\muj}{(\muB B)}
+		\pdv{\Omg}{(\muR B)} &= \frac{1}{g} \sumjws \pdv{\Omgo(\mu)}{\muj} \pdv{\muj}{(\muR B)}
 		= \frac{1}{g} \sumjws 2(s - j) \pdv{\Omgo(\mu)}{\muj}, \\
-		\pdv[2]{\Omg}{(\muB B)} &= \frac{1}{g} \sumjws 2(s - j) \pdv[2]{\Omgo(\mu)}{\muj} \pdv{\muj}{(\muB B)}
+		\pdv[2]{\Omg}{(\muR B)} &= \frac{1}{g} \sumjws 2(s - j) \pdv[2]{\Omgo(\mu)}{\muj} \pdv{\muj}{(\muR B)}
 		= \frac{1}{g} \sumjws 4 (s - j)^2 \pdv[2]{\Omgo(\mu)}{\muj},
 	}
 	so
 	\al{
-		\brac{ \pdv{\Omg}{(\muB B)} }_{\muB B = 0} &= \frac{1}{g} \sumjws 2(s - j) \brac{ \pdv{\Omgo(\mu)}{\muj} }_{\muB B = 0}
+		\brac{ \pdv{\Omg}{(\muR B)} }_{\muR B = 0} &= \frac{1}{g} \sumjws 2(s - j) \brac{ \pdv{\Omgo(\mu)}{\muj} }_{\muR B = 0}
 		= \frac{1}{g} \sumjs 2(s - j) \pdv{\Omgo(\mu)}{\mu}
 		= 0, \\[1.5ex]
-		\brac{ \pdv[2]{\Omg}{(\muB B)} }_{\muB B = 0} &= \frac{1}{g} \sumjws 4 (s - j)^2 \brac{ \pdv[2]{\Omgo(\mu)}{\muj} }_{\muB B = 0}
+		\brac{ \pdv[2]{\Omg}{(\muR B)} }_{\muR B = 0} &= \frac{1}{g} \sumjws 4 (s - j)^2 \brac{ \pdv[2]{\Omgo(\mu)}{\muj} }_{\muR B = 0}
 		= \frac{1}{g} \sumjws 4 (s - j)^2 \pdv[2]{\Omgo(\mu)}{\mu}
 		= \frac{8}{g} \pdv[2]{\Omgo(\mu)}{\mu} \sumjs (s - j)^2,
 	}
 	where we have used the fact that $s$ is an integer multiple of $1/2$ for a fermion.  So we have
 	\eq{
-		\Omg(\mu) \approx \Omgo(\mu) + \frac{4 \muB^2 B^2}{g} \pdv[2]{\Omgo(\mu)}{\mu} \sumjs (s - j)^2.
+		\Omg(\mu) \approx \Omgo(\mu) + \frac{4 \muR^2 B^2}{g} \pdv[2]{\Omgo(\mu)}{\mu} \sumjs (s - j)^2.
 	}
 	
 	The magnetic moment of the gas is $M = -(\pdv*{\Omg}{B})_{T, V, \mu}$~\cite[p.~172]{Landau2}.  Here,
 	\eq{
-		M = -\frac{8 \muB^2 B}{g} \pdv[2]{\Omgo(\mu)}{\mu} \sumjs (s - j)^2.
+		M = -\frac{8 \muR^2 B}{g} \pdv[2]{\Omgo(\mu)}{\mu} \sumjs (s - j)^2.
 	}
 	According to p.~2 of lecture 12, the paramagnetic susceptibility is defined $\chi = (\pdv*{M}{B}) / V$.  Then
 	\eq{
-		\chi = -\frac{8 \muB^2}{g V} \pdv[2]{\Omgo(\mu)}{\mu} \sumjs (s - j)^2
-		= \frac{8 \muB^2}{g V} \paren{ \pdv{N}{\mu} }_{T, V} \sumjs (s - j)^2,
+		\chi = -\frac{8 \muR^2}{g V} \pdv[2]{\Omgo(\mu)}{\mu} \sumjs (s - j)^2
+		= \frac{8 \muR^2}{g V} \paren{ \pdv{N}{\mu} }_{T, V} \sumjs (s - j)^2,
 	}
 	where we have used $\pdv*{\Omgo}{\mu} = -N$~\cite[p.~172]{Landau2}.  The number of particles in a degenerate Fermi gas is~\cite[p.~152]{Landau}~\cite[p.~173]{Landau2}
 	\eq{
-		N = \frac{g V}{6\pi^2 \hbar^3} (2 m \mu)^{3/2},
+		N = \frac{g V}{6\pi^2 \hbar^3} (2 m \mu)^{3/2}.
 	}
-	where $m$ is the mass of each atom.  So
-	\eq{
-		\chi = \frac{8 \muB^2}{g V} \pdv{\mu}(\frac{g V}{6\pi^2 \hbar^3} (2 m \mu)^{3/2}) \sumjs (s - j)^2
-		= \frac{3}{2} \frac{8 \muB^2}{g V} \frac{g V}{6\pi^2 \hbar^3} \sqrt{2^3 m^3 \mu} \sumjs (s - j)^2
-		= \ans{ \frac{4 \muB^2}{\pi^2 \hbar^3}  \sqrt{2 m^3 \mu} \sumjs (s - j)^2. }
+	So
+	\al{
+		\chi &= \frac{8 \muR^2}{g V} \pdv{\mu}(\frac{g V}{6\pi^2 \hbar^3} (2 m \mu)^{3/2}) \sumjs (s - j)^2
+		= \frac{3}{2} \frac{8 q^2 \hbar^2}{4 m^2 c^2 g V} \frac{g V}{6\pi^2 \hbar^3} \sqrt{2^3 m^3 \mu} \sumjs (s - j)^2 \\
+		&= \ans{ \frac{q^2}{c^2 \pi^2 \hbar}  \sqrt{\frac{2 \mu}{m}} \sumjs (s - j)^2. }
 	}
 	\vfix
 }

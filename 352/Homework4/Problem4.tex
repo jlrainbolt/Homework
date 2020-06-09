@@ -49,20 +49,16 @@
 	}
 	where $N$ is given in the book, and we have evaluated the second integral using Mathematica.
 	
-	Likewise, the radiation energy in the interval $\ddomg$ is~\cite[p.~163]{Landau}
-	\eq{
-		\ddEomg = \frac{V}{\pi^2 c^3} \frac{\omg^3}{e^{\hbar \omg / T} - 1} \ddomg
-		= \frac{V}{\pi^2 c^3} \omg^3 \evnk \ddomg,
-	}
-	so, as before, $\ev{(\Del \ddEomg)^2} = \ddEomg + \evnk \ddEomg$.  Then the total energy is
+	Likewise, the radiation energy in the interval $\ddomg$ is $\ddEomg = \hbar\omg \ddNomg$.  So we need to multiply $\ev{(\Del \ddNomg)^2}$ by $(\hbar \omg)^2$~\cite[p.~346]{Landau}:
 	\al{
-		\evDEs &= \intoi (\ddEomg + \evnk \ddEomg)
-		= E + \frac{V}{\pi^2 c^3} \intoi \frac{\omg^3}{(e^{\hbar \omg / T} - 1)^2} \ddomg
-		= E + \frac{V T^4}{\pi^2 c^3 \hbar^3} \intoi \frac{x^3}{(e^x - 1)^2} \ddx \\
-		&= \frac{\pi^2 V T^4}{15 \hbar^3 c^3} + \frac{V T^4}{\pi^2 c^3 \hbar^3} \paren{ 6 \,\zeta(3) - \frac{\pi^4}{15} }
-		= \frac{6 \,\zeta(3) \,V T^4}{\pi^2 c^3 \hbar^3}
-		= \ans{ \frac{7.212 \,V T^4}{\pi^2 c^3 \hbar^3}. }
+		\evDEs &= \hbar^2 \intoi \omg^2 \ev{(\Del \ddNomg)^2}
+		= \hbar^2 \intoi \omg^2 (\ddNomg + \evnk \ddNomg) \\
+		&= \frac{\hbar^2 V}{\pi^2 c^3} \paren{ \intoi \frac{\omg^4}{e^{\hbar \omg / T} - 1} \ddomg + \intoi \frac{\omg^4}{(e^{\hbar \omg / T} - 1)^2} \ddomg }
+		= \frac{\hbar^2 V}{\pi^2 c^3} \brac{ \frac{24 \,\zeta(5) \,T^5}{h^5} + \paren{ \frac{4\pi^4 T^5}{15 \hbar^5} - \frac{24 \,\zeta(5) \,T^5}{\hbar^5} } } \\
+		&= \frac{\hbar^2 V}{\pi^2 c^3} \frac{4\pi^4 T^5}{15 \hbar^5}
+		= \ans{ \frac{4\pi^2 V T^5}{15 c^3 \hbar^3}. }
 	}
+	\vfix
 }
 
 %
@@ -153,9 +149,9 @@
 		&= \frac{T}{T} \pdv{\mu}(\frac{V}{(2\pi m T)^{3/2}} \int \exp(\frac{\mu}{T} - \frac{\vp^2}{2 m T}) \ddcp)
 		= N.
 	}
-	Thus,
+	Thus, for the Boltzmann gas,
 	\eq{
-		\ans{ \evDNs - \ev{N}\!. }
+		\ans{ \evDNs = \ev{N}\!. }
 	}
 	
 	For the Fermi and Bose gases, the number of particles is given by
@@ -168,7 +164,7 @@
 	}
 	where $z = \eps / T$~\cite[pp.~149, 354]{Landau}.  Evaluating the integrals using
 	\eq{
-		\intoi \frac{k^s}{e^{k - \mu} \pm 1} \dd{k} = -\Gam(s + 1) \,\Li_{1 + s}(\mp e^{\mu}),
+		\intoi \frac{k^s}{e^{k - \mu} \pm 1} \dd{k} = \mp \Gam(s + 1) \,\Li_{1 + s}(\mp e^{\mu}),
 	}
 	where $\Li$ is the polylogarithm~\cite{Polylog}, we have
 	\eq{
@@ -177,14 +173,15 @@
 	}
 	Using the formula $\dv*{\Li_n(x)}{x} = \Li_{n - 1}(x) / x$~\cite{Polylog}, we find
 	\eq{
-		\pdv{\mu}[ \Li_{3/2}(\mp e^{\mu / T}) ] = \mp \pdv{\mu}(\mp e^{\mu / T}) \frac{\Li_{1/2}(\mp e^{\mu / T})}{e^{\mu / T}}
-		= \frac{\Li_{1/2}(\mp e^{\mu / T})}{T}.
+		T \pdv{\mu}[ \Li_{3/2}(\mp e^{\mu / T}) ] = \mp T \pdv{\mu}(\mp e^{\mu / T}) \frac{\Li_{1/2}(\mp e^{\mu / T})}{e^{\mu / T}}
+		= T \frac{\Li_{1/2}(\mp e^{\mu / T})}{T}
+		= \Li_{1/2}(\mp e^{\mu / T}).
 	}
 	So the fluctuations are
 	\al{
-		\evDNs &= \mp \frac{g V}{\pi^2 \hbar^2} \sqrt{\frac{m^3}{2^3 T}} \,\Li_{3/2}(\mp e^{\mu / T})
-		= \mp \frac{g V}{\pi^2 \hbar^2} \sqrt{\frac{m^3}{2^3 T}} \frac{1}{\mp \Gam(1/2)} \intoi \frac{\ddz}{\sqrt{z} (e^{z - \mu / T} \pm 1)} \\
-		&= \ans{ \frac{g V}{\hbar^2 T} \sqrt{\frac{m^3}{2^3 \pi^5}} \intoi \frac{\ddeps}{\sqrt{z} (e^{(\eps - \mu) / T} \pm 1)}
+		\evDNs &= \ans{ \mp \frac{g V}{\pi^2 \hbar^2} \paren{ \frac{m T}{2} }^{3/2} \,\Li_{1/2}(\mp e^{\mu / T}) } \\
+		&= \mp \frac{g V}{\pi^2 \hbar^2} \paren{ \frac{m T}{2} }^{3/2} \frac{1}{\mp \Gam(1/2)} \intoi \frac{\ddz}{\sqrt{z} (e^{z - \mu / T} \pm 1)}
+		= \ans{ \frac{g V T}{\hbar^2} \sqrt{\frac{m^3}{2^3 \pi^5}} \intoi \frac{\ddeps}{\sqrt{\eps} (e^{(\eps - \mu) / T} \pm 1)}
 		\begin{cases}
 			\text{Fermi}, \\
 			\text{Bose}.
