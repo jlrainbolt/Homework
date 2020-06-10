@@ -42,7 +42,7 @@
 		\eps = \pm c \sqrt{2n e B + \pz^2},
 	}
 	which has no degeneracy, since the $\pm$ sign splits the degenerate levels, and we have inserted a factor of $c$.  The number of states in the interval $\ddpz$ for a given $\eps$ is the same as in the nonrelativistic case~\cite[p.~173]{Landau2}:
-	\eq{
+	\eqn{deg}{
 		\frac{2 e V B}{(2\pi\hbar)^2 c} \ddpz,
 	}
 	where $2 = g$ for the electron.
@@ -79,7 +79,7 @@
 		\frac{1}{2} F(a) + \sum_{n = 1}^\infty F(a + n) \approx \int_a^\infty F(x) \ddx - \frac{1}{12} F'(a).
 	}
 	In our case $a = 0$, so
-	\eq{
+	\eqn{sum}{
 		\sum_{n = 0}^\infty F(n) \approx \intoi F(x) \ddx + \frac{1}{2} F(0) - \frac{1}{12} F'(0),
 	}
 	where we have added $F(0) / 2$ to both sides.  Feeding this into Eq.~\refeq{Omg2}~\cite[p.~174]{Landau2},
@@ -93,9 +93,9 @@
 	\eq{
 		M = -\muB \,f(\mu) - \frac{m^2 c \muB^2 B TV}{3\pi^2 \hbar^4} \int_0^{\po} \frac{\ddpz}{\pz (1 + e^{\pz / 2m T - \mu / T })},
 	}
-	and the diamagnetic susceptibility is $\chi = (\pdv*{M}{B}) / V$, so
+	and the diamagnetic susceptibility is $\chidia = (\pdv*{M}{B}) / V$, so
 	\eq{
-		\chi = -\frac{m^2 c \muB^2 T}{3\pi^2 \hbar^4} \intoi \frac{\ddpz}{\pz (1 + e^{\pz / 2m T - \mu / T })}.
+		\chidia = -\frac{m^2 c \muB^2 T}{3\pi^2 \hbar^4} \intoi \frac{\ddpz}{\pz (1 + e^{\pz / 2m T - \mu / T })}.
 	}
 	
 %	We assume the gas is completely degenerate so $T \ll \mu$~\cite[p.~173]{Landau}.  In this case, the integral has nonzero contributions only from $p \approx \po$, where $\po$ is the Fermi momentum.  Then
@@ -109,14 +109,14 @@
 	
 	Note that
 	\eq{
-		\intoi \frac{k^s}{e^{k - \mu} \pm 1} \dd{k} = \mp \Gam(s + 1) \,\Li_{1 + s}(\mp e^{\mu}),
+		\intoi \frac{k^s}{e^{k - \mu} + 1} \dd{k} = -\Gam(s + 1) \,\Li_{1 + s}(-e^{\mu}),
 	}
 	where $\Li$ is the polylogarithm~\cite{Polylog}.  So we have
 	\eq{
-		\chi = -\frac{m^2 c \muB^2}{3\pi^2 \hbar^4 V} \intoi \frac{z^{-1}}{1 + e^{z - \mu / T }} \ddz
+		\chidia = -\frac{m^2 c \muB^2 T}{3\pi^2 \hbar^4} \intoi \frac{z^{-1}}{1 + e^{z - \mu / T }} \ddz
 		= \frac{m^2 c \muB^2 T}{3\pi^2 \hbar^4} \Gam(0) \,\Li_0(-e^\mu),
 	}
-	which 
+	where $\Gam(0)$ diverges.
 	
 %	\al{
 %		\chi \approx -\frac{m^2 c \muB^2 T}{3\pi^2 \hbar^4} \intoi \frac{\ddpz}{\po (1 + e^{\pz / 2m T - \mu / T })}
@@ -134,14 +134,66 @@
 %	3.2
 %
 \clearpage
-\prob{(*)}{
+\prob{\hspace{-1em}*}{
 	Compute the Landau diamagnetic susceptibility for a Fermi gas confined to a box whose linear size in the $z$ direction is $\Lz \ll \Lx, \Ly$.  The magnetic field is directed along the $z$ direction.  Consider two cases when the energy spacing $(2\pi \hbar / \Lz)^2 / 2m$ is much larger/smaller than the cyclotron energy $\muB B$.
 }
 
+\sol{
+	Once again, we will consider an electron gas.  For this geometry, the energy levels are
+	\eq{
+		\eps = \hbar \omg (n + 1/2) + \frac{2 \pi^2 \hbar^2 {n'}^2}{m \Lz^2},
+	}
+	where $\omg = e B / m c$ is the cyclotron frequency, $n = 0, 1, 2, \ldots$, and $n' = 0, \pm 1, \pm 2, \ldots$~\cite[pp.~3--4]{Lopez}.  In terms of the quantities used in Probs.~{4} and {5.1},
+	\eqn{eps3.2}{
+		\eps = \muB B (2n + 1) + \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2 m}.
+	}
+	The degeneracy of a state with a given $n$ is $\Lx \Ly e B / 2 \pi \hbar c$, which is the same as in the textbook case~\cite[p.~243]{Pathria}.  In notation similar to that of Eq.~\refeq{thing3}, we have
+	\eq{
+		\Lx \Ly \frac{e B}{2\pi \hbar c} = \Lx \Ly \frac{2 m c \muB B}{2\pi \hbar^2 c}
+		= \Lz \Ly \frac{m T}{\pi \hbar^2}.
+	}
+	So the analogue of Eq.~\refeq{thing3} in this case is
+	\aln{ \label{thing3.2}
+		\Omg &= 2\muB B \sumni f[ \mu - (2n + 1) \muB B ], &
+		\qq{where}
+		f(\mu) &= -2 \Lx \Ly \frac{m T}{\pi \hbar^2} \sum_{n' = 0}^\infty \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) },
+	}
+	where in the second expression we written the sum over $n' \in (-\infty, \infty)$ as twice the sum over $n' \in (0, \infty)$, since the expression depends only on ${n'}^2$.
+	
+	In the case where the energy spacing is much smaller than the cyclotron energy, it is sufficient to replace the sum in $f(\mu)$ by an integral.  In this limit,
+	\eq{
+		f(\mu) \approx -\Lx \Ly \frac{m T}{\pi \hbar^2} \intnii \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) } \dd{n'} \\
+		= -\frac{T m V}{ 2\pi^2 \hbar^3} \intnii \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \frac{\pz^2}{2m T}) } \ddpz,
+	}
+	where we defined $\pz = 2\pi \hbar n' / \Lz$ and $V = \Lx \Ly \Lz$.  This is exactly the same as the expression for the textbook case in which does not impose the restriction $\Lz \ll \Lx, \Ly$, so the diamagnetic susceptibility is~\cite[pp.~173--174]{Landau2}
+	\eq{
+		\ans{ \chidia = -\frac{\muB^2 \po m}{3 \pi^2 \hbar^3}
+		= -\frac{\chipara}{3} }
+	}
+	when the energy spacing is much smaller than the cyclotron energy.
+	
+	In the case where the energy spacing is much larger than the cyclotron energy, we can replace the expression of $\Omg$ in Eq.~\refeq{thing3.2} with an integral and use the Euler-Maclaurin formula to handle the sum in $F(\mu)$.  Applying Eq.~\refeq{sum} to $f(\mu)$, note that
+	\al{
+		F'(0) &= \brac{ \pdv{n'} \ln\!\curly{ 1 + \exp(\frac{\mu}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) } }_{n' = 0} \\
+		&= \brac{ \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{n'}{2m T} \curly{ 1 + \exp(\frac{4 \pi^2 \hbar^2}{\Lz^2} \frac{{n'}^2}{2m T} - \frac{\mu}{T}) }^{-1} }_{n' = 0}
+		= 0, \\[1.1ex]
+		F(0) &= \ln(1 + e^{\mu / T}).
+	}
+	Then we have
+	\al{
+		\Omg &= -4 \Lx \Ly \frac{m T}{\pi \hbar^2} \muB B \intoi \Bigg\{ \intoi \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - (2x + 1) \frac{\muB B}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) } \dd{n'} \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm} + \ln(1 + e^{\mu / T - (2x + 1) \muB B}) \Bigg\} \ddx,
+	}
+	so
+	\eq{
+		\ans{ \chidia = \frac{1}{V} \pdv{M}{B}
+		= -\frac{1}{V} \pdv[2]{\Omg}{B}
+		= 0 }
+	}
+	when the energy spacing is much larger than the cyclotron energy.
+}
 
 
-
-\clearpage
 \input{Problem4}
 
 
@@ -190,87 +242,126 @@
 		\equiv \frac{g}{4 \pi^2 \hbar^4 \evn} I^2, \label{thing5}
 	}
 	where $\Jo(x)$ is a Bessel function of the first kind, and we have defined $I$.
-	 
-	For a degenerate gas, $\mu \approx \epso = \po^2 / 2m$, where $\epso$ and $\po$ are the Fermi energy and momentum, respectively.  
-	 
-%	No particle will have momentum greater than $\po$, so we can integrate only over $p \in (0, \po)$.  Let $x = (\eps - \epso) / T = (p^2 - \po^2) / 2mT$.  Then
-%	 \eq{
-%	 	\intoi \frac{p\, \Jo(p r / \hbar)}{e^{(\eps - \mu) / T} + 1} \ddp = \intopo \frac{p\, \Jo(p r / \hbar)}{e^x + 1} \ddp.
-%	 }
-%	 We will consider the distance regimes $r \ll \hbar / \po$ and $r \gg \hbar / \po$.  For $r \ll \hbar / \po$, the argument of $\Jo$ is small everywhere, and we can use the asymptotic approximation $J_m(z) \approx z^m / [ 2^m \,\Gam(m + 1) ]$.  For $m = 0$, $J_0(z) \approx 1$.  This gives us
-%	 \eq{
-%	 	\intoi \frac{p\, \Jo(p r / \hbar)}{e^{(\eps - \mu) / T} + 1} \ddp \to \intopo \frac{p}{e^x + 1} \ddp.
-%	 }
-%	 Note that 
-	 
-	Making this substitution and integrating by parts~\cite[p.~358]{Landau2},
-	\al{
-		I &= \intoi \frac{p\, \Jo(p r / \hbar)}{e^{(p^2 - \po^2) / 2m T} + 1} \ddp
-		= \brac{ \frac{\hbar p \,\Jq(p r / \hbar)}{r (e^{(p^2 - \po^2) / 2m T} + 1)} }_0^\infty + \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar) \,e^{(p^2 - \po^2) / 2m T}}{(e^{(p^2 - \po^2) / 2m T} + 1)^2} \ddp \\
-		&= \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar)}{(e^{(p^2 - \po^2) / 2m T} + 1) (e^{-(p^2 - \po^2) / 2m T} + 1)} \ddp,
-	}
-	where we have used $\dv*{[ x^m J_m(x) ]}{x} = x^m J_{m - 1}(x)$ and the fact that $\Jq(0) = 0$~\cite{Bessel}.  Since $T$ is small, $\exp[ (p^2 - \po^2) / 2mT ]$ is dominated by contributions from $p \approx \po$.  Letting $x = \po (p - \po) / m T$ and $\lam = m T / \hbar \po$~\cite[p.~358]{Landau2}, we can write
-	\eq{
-		I \approx \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar)}{(e^x + 1) (e^{-x} + 1)} \ddp
-		= \frac{\hbar \po}{m T r} \intoi (\hbar \lam x + \po) \frac{\Jq(\po r / \hbar + \lam r x)}{(e^x + 1) (e^{-x} + 1)} \ddp.
-	}
-	Since $T$ is small, the size of the argument of $\Jq$ depends on the size of $\po r / \hbar$.  We will consider the distance regimes $r \ll \hbar / \po$ and $r \gg \hbar / \po$.
 	
-	For $r \ll \hbar / \po$, the argument of $\Jo$ is small everywhere, and we can use the asymptotic approximation $J_m(z) \approx z^m / [ 2^m \,\Gam(m + 1) ]$.  For $m = 0$, $J_1(z) \approx z / 2$.  This gives us
-	\al{
-		I &\approx \frac{\hbar \po}{2 m T r} \intoi (\hbar \lam x + \po) \frac{\po r / \hbar + \lam r x}{(e^x + 1) (e^{-x} + 1)} \ddp \\
-		&= \frac{\hbar \po}{2 m T} \paren{ \frac{\po^2}{\hbar} \intoi \frac{\ddp}{(e^x + 1) (e^{-x} + 1)} + 2 \lam \po \intoi \frac{x}{(e^x + 1) (e^{-x} + 1)} \ddp + \hbar \lam^2 \intoi \frac{x^2}{(e^x + 1) (e^{-x} + 1)} \ddp } \\
-		&= \frac{\hbar \po}{2 m T} \paren{ \frac{\po^2}{\hbar} \frac{1}{2} + 2 \lam \po \ln(2) + \hbar \lam^2 \frac{\pi^2}{6} }
-		= \frac{\hbar \po}{2 m T} \paren{ \frac{\po^2}{\hbar} \frac{1}{2} + \frac{2 \ln(2) m T}{\hbar} + \frac{\pi^2 m^2 T^2}{6 \hbar \po^2} }
-		= \frac{\po^3}{4 m T} + \ln(2) + \frac{\pi^2 m T}{12 \po^2},
-	}
-	where we have used Mathematica to evaluate the integrals.  Substituting into Eq.~\refeq{thing5},
+	For $T \ll \EF = \po^2 / 2m$ where $\po$ is the Fermi momentum, the integral has contributions from only $p \in (0, \po)$.  Thus
 	\eq{
-		\nu(r) \approx \frac{g}{4 \pi^2 \hbar^4 \evn} \paren{ \frac{\po^3}{4 m T} + \ln(2) + \frac{\pi^2 m T}{12 \po^2} }^2,
+		I = \intoi \frac{p\, \Jo(p r / \hbar)}{e^{(p^2 - \po^2) / 2m T} + 1} \ddp
+		\approx \intoi \frac{p\, \Jo(p r / \hbar)}{e^{(p^2 - \po^2) / 2m T}} \ddp
+		= m T \exp(\frac{\po^2}{2 m T} - \frac{m T r^2}{2 \hbar^2}),
 	}
-	and feeding this into Eq.~\refeq{C},
+	where we have evaluated the integral using Mathematica.  Substituting into Eq.~\refeq{thing5},
 	\eq{
-		\ans{ C(r) \approx \evn \del(r) + \frac{g}{4 \pi^2 \hbar^4} \paren{ \frac{\po^3}{4 m T} + \ln(2) + \frac{\pi^2 m T}{12 \po^2} }^2 }
+		\nu(r) = \frac{g m^2 T^2}{4 \pi^2 \hbar^4 \evn} \exp(\frac{\po^2}{m T} - \frac{m T r^2}{\hbar^2}),
 	}
-	for $r \ll \po / \hbar$.
+	and feeding this into Eq.~\refeq{C}, we find
+	\eq{
+		\ans{ C(r) = \evn \del(r) + \frac{g m^2 T^2}{4 \pi^2 \hbar^4} \exp(\frac{\po^2}{m T} - \frac{m T r^2}{\hbar^2}). }
+	}
 	
-	For $r \gg \po / \hbar$, the argument of $\Jq$ is large.  This means we can use the asymptotic approximation~\cite{Bessel}
+	For small distances $r \ll \hbar / \sqrt{m T}$, let $r \sqrt{m T} / \hbar = u$.  Then $e^{\po^2 / mT - u^2} = e^{\po^2 / mT} (1 - u^2) + \order{u^4}$.  So for small distances,
 	\eq{
-		J_m(z) \approx \sqrt{\frac{2}{\pi z}} \cos(z - \frac{m \pi}{2} -\frac{\pi}{4}).
+		\ans{ C(r) \approx \evn \del(r) + \frac{g m^2 T^2}{4 \pi^2 \hbar^4} e^{\po^2 / m T}. }
 	}
-	Let $z = \po r / \hbar + \lam r x$.  Then
-	\al{
-		I &\approx \frac{\hbar \po}{m T r} \sqrt{\frac{2}{\pi}} \intoi (\hbar \lam x + \po) \frac{\cos(z - 3\pi / 4)}{\sqrt{z} (e^x + 1) (e^{-x} + 1)} \ddp
-		= \frac{\hbar \po}{m T r} \sqrt{\frac{2}{\pi}} \intoi \frac{\hbar z}{r} \frac{\cos(z - 3\pi / 4)}{\sqrt{z} (e^x + 1) (e^{-x} + 1)} \ddp \\
-		&= \frac{\hbar^2 \po}{m T r^2} \sqrt{\frac{2}{\pi}} \intoi \frac{\sqrt{z} \cos(z - 3\pi / 4)}{(e^x + 1) (e^{-x} + 1)} \ddp
+	
+	For large distances $r \gg \hbar / \sqrt{m T}$, $e^{\po^2 / mT - u^2} \approx e^{-u^2}$.  So in this limit,
+	\eq{
+		\ans{ C(r) \approx \evn \del(r) + \frac{g m^2 T^2}{4 \pi^2 \hbar^4} e^{-m T r^2 / \hbar^2}. }
 	}
-	\hl{idek}
 	 
-	The general expression for the fluctuation of the occupation number is, in three dimensions,
+%	For a degenerate gas, $\mu \approx \epso = \po^2 / 2m$, where $\epso$ and $\po$ are the Fermi energy and momentum, respectively.  
+%	 
+%%	No particle will have momentum greater than $\po$, so we can integrate only over $p \in (0, \po)$.  Let $x = (\eps - \epso) / T = (p^2 - \po^2) / 2mT$.  Then
+%%	 \eq{
+%%	 	\intoi \frac{p\, \Jo(p r / \hbar)}{e^{(\eps - \mu) / T} + 1} \ddp = \intopo \frac{p\, \Jo(p r / \hbar)}{e^x + 1} \ddp.
+%%	 }
+%%	 We will consider the distance regimes $r \ll \hbar / \po$ and $r \gg \hbar / \po$.  For $r \ll \hbar / \po$, the argument of $\Jo$ is small everywhere, and we can use the asymptotic approximation $J_m(z) \approx z^m / [ 2^m \,\Gam(m + 1) ]$.  For $m = 0$, $J_0(z) \approx 1$.  This gives us
+%%	 \eq{
+%%	 	\intoi \frac{p\, \Jo(p r / \hbar)}{e^{(\eps - \mu) / T} + 1} \ddp \to \intopo \frac{p}{e^x + 1} \ddp.
+%%	 }
+%%	 Note that 
+%	 
+%	Making this substitution and integrating by parts~\cite[p.~358]{Landau2},
+%	\al{
+%		I &= \intoi \frac{p\, \Jo(p r / \hbar)}{e^{(p^2 - \po^2) / 2m T} + 1} \ddp
+%		= \brac{ \frac{\hbar p \,\Jq(p r / \hbar)}{r (e^{(p^2 - \po^2) / 2m T} + 1)} }_0^\infty + \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar) \,e^{(p^2 - \po^2) / 2m T}}{(e^{(p^2 - \po^2) / 2m T} + 1)^2} \ddp \\
+%		&= \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar)}{(e^{(p^2 - \po^2) / 2m T} + 1) (e^{-(p^2 - \po^2) / 2m T} + 1)} \ddp,
+%	}
+%	where we have used $\dv*{[ x^m J_m(x) ]}{x} = x^m J_{m - 1}(x)$ and the fact that $\Jq(0) = 0$~\cite{Bessel}.  Since $T$ is small, $\exp[ (p^2 - \po^2) / 2mT ]$ is dominated by contributions from $p \approx \po$.  Letting $x = \po (p - \po) / m T$ and $\lam = m T / \hbar \po$~\cite[p.~358]{Landau2}, we can write
+%	\eq{
+%		I \approx \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar)}{(e^x + 1) (e^{-x} + 1)} \ddp
+%		= \frac{\hbar \po}{m T r} \intoi (\hbar \lam x + \po) \frac{\Jq(\po r / \hbar + \lam r x)}{(e^x + 1) (e^{-x} + 1)} \ddp.
+%	}
+%	Since $T$ is small, the size of the argument of $\Jq$ depends on the size of $\po r / \hbar$.  We will consider the distance regimes $r \ll \hbar / \po$ and $r \gg \hbar / \po$.
+%	
+%	For $r \ll \hbar / \po$, the argument of $\Jo$ is small everywhere, and we can use the asymptotic approximation $J_m(z) \approx z^m / [ 2^m \,\Gam(m + 1) ]$.  For $m = 0$, $J_1(z) \approx z / 2$.  This gives us
+%	\al{
+%		I &\approx \frac{\hbar \po}{2 m T r} \intoi (\hbar \lam x + \po) \frac{\po r / \hbar + \lam r x}{(e^x + 1) (e^{-x} + 1)} \ddp \\
+%		&= \frac{\hbar \po}{2 m T} \paren{ \frac{\po^2}{\hbar} \intoi \frac{\ddp}{(e^x + 1) (e^{-x} + 1)} + 2 \lam \po \intoi \frac{x}{(e^x + 1) (e^{-x} + 1)} \ddp + \hbar \lam^2 \intoi \frac{x^2}{(e^x + 1) (e^{-x} + 1)} \ddp } \\
+%		&= \frac{\hbar \po^2}{2 m^2 T^2} \paren{ \frac{\po^2}{\hbar} \int_a^\infty \frac{\ddx}{(e^x + 1) (e^{-x} + 1)} + 2 \lam \po \intoi \frac{x}{(e^x + 1) (e^{-x} + 1)} \ddp + \hbar \lam^2 \intoi \frac{x^2}{(e^x + 1) (e^{-x} + 1)} \ddp } 
+%%		&= \frac{\hbar \po}{2 m T} \paren{ \frac{\po^2}{\hbar} \frac{1}{2} + 2 \lam \po \ln(2) + \hbar \lam^2 \frac{\pi^2}{6} }
+%%		= \frac{\hbar \po}{2 m T} \paren{ \frac{\po^2}{\hbar} \frac{1}{2} + \frac{2 \ln(2) m T}{\hbar} + \frac{\pi^2 m^2 T^2}{6 \hbar \po^2} }
+%%		= \frac{\po^3}{4 m T} + \ln(2) + \frac{\pi^2 m T}{12 \po^2},
+%	}
+%	where we have used Mathematica to evaluate the integrals.  Substituting into Eq.~\refeq{thing5},
+%	\eq{
+%		\nu(r) \approx \frac{g}{4 \pi^2 \hbar^4 \evn} \paren{ \frac{\po^3}{4 m T} + \ln(2) + \frac{\pi^2 m T}{12 \po^2} }^2,
+%	}
+%	and feeding this into Eq.~\refeq{C},
+%	\eq{
+%		\ans{ C(r) \approx \evn \del(r) + \frac{g}{4 \pi^2 \hbar^4} \paren{ \frac{\po^3}{4 m T} + \ln(2) + \frac{\pi^2 m T}{12 \po^2} }^2 }
+%	}
+%	for $r \ll \po / \hbar$.
+%	
+%	For $r \gg \po / \hbar$, the argument of $\Jq$ is large.  This means we can use the asymptotic approximation~\cite{Bessel}
+%	\eq{
+%		J_m(z) \approx \sqrt{\frac{2}{\pi z}} \cos(z - \frac{m \pi}{2} -\frac{\pi}{4}).
+%	}
+%	Let $z = \po r / \hbar + \lam r x$.  Then
+%	\al{
+%		I &\approx \frac{\hbar \po}{m T r} \sqrt{\frac{2}{\pi}} \intoi (\hbar \lam x + \po) \frac{\cos(z - 3\pi / 4)}{\sqrt{z} (e^x + 1) (e^{-x} + 1)} \ddp
+%		= \frac{\hbar \po}{m T r} \sqrt{\frac{2}{\pi}} \intoi \frac{\hbar z}{r} \frac{\cos(z - 3\pi / 4)}{\sqrt{z} (e^x + 1) (e^{-x} + 1)} \ddp \\
+%		&= \frac{\hbar^2 \po}{m T r^2} \sqrt{\frac{2}{\pi}} \intoi \frac{\sqrt{z} \cos(z - 3\pi / 4)}{(e^x + 1) (e^{-x} + 1)} \ddp
+%	}
+%	\hl{idek}
+	 
+	The general expression for the fluctuation of the occupation number is, in three dimensions~\cite[p.~356]{Landau2},
 	\eq{
 		\ev*{\abs{\Del\nk}^2} = \frac{g}{(2\pi\hbar)^3 V} \int \ev{n_{\vp}} (1 \mp \ev{n_{\vp + \hbar \vk}}) \dd[3]{p}.
 	}
 	The 2D analogue is then
 	\eq{
-		\ev*{\abs{\Del\nk}^2} = \frac{g}{(2\pi\hbar)^2 V} \int \ev{n_{\vp}} (1 \mp \ev{n_{\vp + \hbar \vk}}) \ddsp
+		\ev*{\abs{\Del\nk}^2} = \frac{g}{(2\pi\hbar)^2 V} \int \ev{n_{\vp}} (1 \mp \ev{n_{\vp + \hbar \vk}}) \ddsp.
 	}
-	
-%	\al{
-%		\ev*{\abs{\Del\nk}^2} &= \evnk \frac{1 + \nu(k)}{V}, &
-%		\qq{where}
-%		\nu(k) &= \int v(r) \,e^{-i \vk \vdot \vr} \ddA.
-%	}
-%	Substituting Eq.~\refeq{exp5} into the expression for $\nu(k)$,
-%	\eq{
-%		\nu(k) = -\frac{g}{\evn (2\pi\hbar)^2} \abs{ \intotp \intoi \frac{p \,e^{i p r \cos\tht / \hbar}}{e^{(\eps - \mu) / T} + 1} \ddp \ddtht }^2
-%	}
+	We will assume that we are interested in small wave numbers, $k \ll \po / \hbar$.  Then the integral above is nonzero only for points that are in a circle of radius $\po$, with center at $p = 0$, but not in the circle of radius $\po$ with center at $p = \hbar k$~\cite[p.~357]{Landau}.  The area of the parts of these circles that \emph{intersect} is~\cite{Intersection}
+	\eq{
+		A' = 2 \po^2 \cos[-1](\frac{\hbar k}{2 R}) - \frac{\hbar k}{2} \sqrt{4 R^2 - (\hbar k)^2}
+		= 2 \po^2 \cos[-1](\frac{\hbar k}{2 R}) - \frac{\hbar k \po}{2} \sqrt{4 - \paren{ \frac{\hbar k}{R} }^2}
+		\approx \pi \po^2 - \hbar k \po,
+	}
+	where we have approximated each term to zeroeth order in $\hbar k / \po$.  So the area we are interested in is $A = \pi \po^2 - A' \approx \hbar k \po$.  This gives us
+	\eq{
+		\ev*{\abs{\Del\nk}^2} = \frac{g}{(2\pi\hbar)^2 V} \hbar k \po
+		= \frac{g}{(2\pi\hbar)^2 V} \hbar k 2\hbar \sqrt{\frac{\pi \evn}{g}}
+		= \ans{ \frac{k}{2 \hbar V} \sqrt{\frac{g \evn}{\pi^3}}, }
+	}
+	where we have used $\po = 2\hbar \sqrt{\pi \evn / g}$ from the result of Homework 3, Prob.~{3.1}.
+%	
+%%	\al{
+%%		\ev*{\abs{\Del\nk}^2} &= \evnk \frac{1 + \nu(k)}{V}, &
+%%		\qq{where}
+%%		\nu(k) &= \int v(r) \,e^{-i \vk \vdot \vr} \ddA.
+%%	}
+%%	Substituting Eq.~\refeq{exp5} into the expression for $\nu(k)$,
+%%	\eq{
+%%		\nu(k) = -\frac{g}{\evn (2\pi\hbar)^2} \abs{ \intotp \intoi \frac{p \,e^{i p r \cos\tht / \hbar}}{e^{(\eps - \mu) / T} + 1} \ddp \ddtht }^2
+%%	}
 }
 
 
 %
 %	5.2
 %
-\clearpage
+
 \prob{}{
 	Repeat the above for the Bose gas slightly above the condensation temperature.
 }
