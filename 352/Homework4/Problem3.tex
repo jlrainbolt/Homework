@@ -21,7 +21,7 @@
 	\eq{
 		\eps = \pm c \sqrt{2n e B + m^2 c^2 + \pz^2},
 	}
-	which has no degeneracy, since the $\pm$ sign splits the degenerate levels, and we have inserted factors of $c$.  In practice, however, we need only consider the positive energy levels, since the negative ones only contribute an overall constant.
+	which has no degeneracy, since the $\pm$ sign splits the degenerate levels, and we have inserted factors of $c$.  In practice, however, we need only consider the positive energy levels, since the negative ones have exponentially suppressed contributions at small $T$.
 	
 	The number of states in the interval $\ddpz$ for a given $\eps$ is the same as in the nonrelativistic case~\cite[p.~173]{Landau2}:
 	\eqn{deg}{
@@ -30,7 +30,7 @@
 	where $2 = g$ for the electron.
 	
 	The relevant thermodynamic potential for a nonrelativistic electron gas, for which $\eps = \pz^2 / 2m + (2n + 1) \muB B$, is~\cite[p.~173]{Landau2}
-	\al{
+	\aln{ \label{thing3}
 		\Omg &= 2\muB B \sumni f[ \mu - (2n + 1) \muB B ], &
 		\qq{where}
 		f(\mu) &= -\frac{T m V}{2\pi^2 \hbar^3} \intnii \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \frac{\pz^2}{2m T}) } \ddpz.
@@ -100,7 +100,7 @@
 %
 %	3.2
 %
-\clearpage
+
 \prob{\hspace{-1em}*}{
 	Compute the Landau diamagnetic susceptibility for a Fermi gas confined to a box whose linear size in the $z$ direction is $\Lz \ll \Lx, \Ly$.  The magnetic field is directed along the $z$ direction.  Consider two cases when the energy spacing $(2\pi \hbar / \Lz)^2 / 2m$ is much larger/smaller than the cyclotron energy $\muB B$.
 }
@@ -120,10 +120,10 @@
 		= \Lz \Ly \frac{m T}{\pi \hbar^2}.
 	}
 	So the analogue of Eq.~\refeq{thing3} in this case is
-	\aln{ \label{thing3.2}
-		\Omg &= 2\muB B \sumni f[ \mu - (2n + 1) \muB B ], &
+	\aln{
+		\Omg &= 2\muB B \sumni f[ \mu - (2n + 1) \muB B ], \label{thing3.2} \\
 		\qq{where}
-		f(\mu) &= -2 \Lx \Ly \frac{m T}{\pi \hbar^2} \sum_{n' = 0}^\infty \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) },
+		f(\mu) &= -2 \Lx \Ly \frac{m T}{\pi \hbar^2} \sum_{n' = 0}^\infty \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) } \notag,
 	}
 	where in the second expression we written the sum over $n' \in (-\infty, \infty)$ as twice the sum over $n' \in (0, \infty)$, since the expression depends only on ${n'}^2$.
 	

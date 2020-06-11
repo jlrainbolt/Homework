@@ -63,7 +63,7 @@
 	}
 	which is independent of $r$.
 	
-	For $r \gg \hbar / \po$, the argument of $\Jq$ is large everywhere.  This means we can use the asymptotic approximation~\cite{Bessel}
+	For $r \gg \hbar / \po$, the argument of $\Jq$ is large everywhere.  This means we can use the asymptotic approximation~\cite{BesselJ}
 	\eq{
 		J_m(z) \approx \sqrt{\frac{2}{\pi z}} \cos(z - \frac{m \pi}{2} -\frac{\pi}{4}).
 	}
@@ -86,6 +86,41 @@
 	which are valid for $u \gg 1$~\cite{Fresnel}.  In going to the final line, we have retained only the term in the lowest power of $1 / r$~\cite[p.~357]{Landau}.  So we have
 	\eq{
 		\ans{ C(r) \approx \evn \del(r) + \frac{g \po}{\pi^3 \hbar r^5} \cos[2](\frac{\po r}{\hbar}). }
+	}
+	
+	For small but nonzero temperatures, $\mu \approx \epso = \po^2 / 2m$, where $\epso$ and $\po$ are the Fermi energy and momentum, respectively.  Let $x = (\eps - \epso) / T = \po (p - \po) / mT$, where $\lam = m T / \hbar \po$~\cite[p.~358]{Landau2}.  Making this substitution and integrating by parts~\cite[p.~358]{Landau},
+	\eq{
+		I = \intoi \frac{p\, \Jo(p r / \hbar)}{e^x + 1} \ddp
+		= \brac{ \frac{\hbar p \,\Jq(p r / \hbar)}{r (e^x + 1)} }_0^\infty + \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar) \,e^x}{(e^x + 1)^2} \ddp
+		= \frac{\hbar \po}{m T r} \intoi \frac{p \,\Jq(p r / \hbar)}{(e^x + 1) (e^{-x} + 1)} \ddp
+%		= \frac{\hbar}{r} \pdv{r} \intoi \frac{r \,\Jq(p r / \hbar)}{e^{(\eps - \epso) / T} + 1} \ddp,
+	}
+	where we have used $\dv*{[ x^m J_m(x) ]}{x} = x^m J_{m - 1}(x)$ and the fact that $\Jq(0) = 0$~\cite{BesselJ}.  Once again applying the large-argument asymptotic limit,
+	Let $z = \po r / \hbar + \lam r x$.  Then
+	\al{
+		I &\approx \frac{\hbar \po}{m T r} \sqrt{\frac{2}{\pi}} \intoi (\hbar \lam x + \po) \frac{\cos(z - 3\pi / 4)}{\sqrt{z} (e^x + 1) (e^{-x} + 1)} \ddp
+		= \frac{\hbar \po}{m T r} \sqrt{\frac{2}{\pi}} \intoi \frac{\hbar z}{r} \frac{\cos(z - 3\pi / 4)}{\sqrt{z} (e^x + 1) (e^{-x} + 1)} \ddp \\
+		&= -\frac{\hbar^2 \po}{m T r^2} \sqrt{\frac{2}{\pi}} \pdv{r} \paren{ \frac{\hbar}{r} \intoi \frac{\sin(z - 3\pi / 4)}{\sqrt{z} (e^x + 1) (e^{-x} + 1)} \ddp }
+		\approx -\frac{\hbar^3 \po}{m T r^2} \sqrt{\frac{2}{\pi}} \pdv{r} \paren{ \frac{1}{r} \intnii \frac{\sin(\po r / \hbar + \lam r x - 3\pi / 4)}{(e^x + 1) (e^{-x} + 1)} \ddp },
+	}
+	where the final approximation follows since $\sqrt{z}$ varies slowly.  Then, using the calculations on p.~358 of Ref.~\cite{Landau2},
+	\eq{
+		I = -\frac{\hbar^3 \po}{m T r^2} \pdv{r}\!\brac{ \frac{\pi \lam}{\sinh(\pi \lam r)} \sin(\frac{\po r}{\hbar}) }
+		= -\frac{\hbar^3 \po}{m T r^2} \brac{ \frac{\pi \lam \po \cos(\po r / \hbar)}{\hbar \sinh(\pi \lambda r)} - \frac{\pi^2 \lam^2 \sin(\po r / \hbar)}{\tanh(\pi \lam r) \sinh(\pi \lam r)} },
+	}
+	which yields in the $r \gg \hbar / \po$ limit, upon taking the average of $\cos^2$~\cite[p.~358]{Landau2},
+	\eq{
+		I^2 \approx \frac{\hbar^6 \po^2}{m^2 T^2 r^4} \frac{\pi^2 \lam^2 \po^2}{2 \hbar^2 \sinh[2](\pi \lambda r)}
+		= \frac{\hbar^6 \po^2}{m^2 T^2 r^4} \frac{\pi^2 m^2 T^2}{2 \hbar^4 \sinh[2](\pi m T r / \hbar \po)}
+		= \frac{\pi^2 \hbar^2 \po^2}{2 r^4} \csch[2](\frac{\pi m T r}{\hbar \po}).
+	}
+	Finally, we find the correlation function
+	\eq{
+		\ans{ C(r) \approx \evn \del(r) + \frac{g \po^2}{8 \hbar^2 r^4} \csch[2](\frac{\pi m T r}{\hbar \po}). }
+	}
+	In the limit that $\po r / \hbar$ is also large compared to $\epso / T$~\cite[p.~358]{Landau2},
+	\eq{
+		\ans{ C(r) \approx \evn \del(r) + \frac{g \po^2}{2 \hbar^2 r^4} \exp(-\frac{2 \pi m T r}{\hbar \po}). }
 	}
 
 	The general expression for the fluctuation of the occupation number for a Fermi gas is, in three dimensions~\cite[p.~356]{Landau2},
@@ -115,13 +150,13 @@
 %
 %	5.2
 %
-
+\clearpage
 \prob{}{
 	Repeat the above for the Bose gas slightly above the condensation temperature.
 }
 
 \sol{
-	For a Bose gas, $\ev{\nps} = \ev{n_{\vp}} = 1 / (e^{(\eps - \mu) / T} - 1)$, which does not depend on $\sigma$.  Then the analogue of Eq.~\refeq{exp5}~\cite[p.~356]{Landau2}
+	For a Bose gas, $\ev{\nps} = \ev{n_{\vp}} = 1 / (e^{(\eps - \mu) / T} - 1)$, which does not depend on $\sigma$.  Then the analogue of Eq.~\refeq{exp5} is~\cite[p.~356]{Landau2}
 	\eqn{thing5.2}{
 		\nu(r) = \frac{(2\pi)^2 g}{\evn (2\pi\hbar)^4} \paren{ \intoi \frac{p\, \Jo(p r / \hbar)}{e^{(\eps - \mu) / T} - 1} \ddp }^2
 		\equiv \frac{g}{4 \pi^2 \hbar^4 \evn} I^2,
@@ -134,40 +169,38 @@
 	where we have used $e^x \approx 1 + x$ for small $x$.  Then
 	\eq{
 		I \approx T \intoi \frac{p\, \Jo(p r / \hbar)}{p^2 / 2m + \abs{\mu}} \ddp
-		= \frac{2 T}{m} \Ko\!\paren{ \sqrt{\frac{2 \abs{\mu}}{m}} \frac{r}{\hbar} },
+		= 2m T \Ko\!\paren{ \frac{\sqrt{2m \abs{\mu}} r}{\hbar} },
 	}
 	where we have evaluated the integral using Mathematica, and $\Ko$ is the modified Bessel function of the second kind.  From Eq.~\refeq{thing5.2},
 	\eq{
-		\nu(r) = \frac{g}{4 \pi^2 \hbar^4 \evn} \brac{ \frac{2 T}{m} \Ko\!\paren{ \sqrt{\frac{2 \abs{\mu}}{m}} \frac{r}{\hbar} } }^2
-		= \frac{g T^2}{\pi^2 \hbar^4 m^2 \evn} \Ko^2\!\paren{ \sqrt{\frac{2 \abs{\mu}}{m}} \frac{r}{\hbar} },
+		\nu(r) = \frac{g}{4 \pi^2 \hbar^4 \evn} \brac{ 2m T \Ko\!\paren{ \frac{\sqrt{2m \abs{\mu}} r}{\hbar} } }^2
+		= \frac{g m^2 T^2}{\pi^2 \hbar^4 \evn} \Ko^2\!\paren{ \frac{\sqrt{2m \abs{\mu}} r}{\hbar} },
 	}
 	so from Eq.~\refeq{C},
 	\eq{
-		\ans{ C(r) = \evn \del(r) + \frac{g T^2}{\pi^2 \hbar^4 m^2 \evn} \Ko^2\!\paren{ \sqrt{\frac{2 \abs{\mu}}{m}} \frac{r}{\hbar} }, }
+		\ans{ C(r) = \evn \del(r) + \frac{g m^2 T^2}{\pi^2 \hbar^4} \Ko^2\!\paren{ \frac{\sqrt{2m \abs{\mu}} r}{\hbar} }, }
 	}
 	which is valid for all distance regimes.
 
-	For $r \ll \hbar \sqrt{m / 2 \abs{\mu}}$, we Taylor expand $\Ko(z)$ about $z = 0$.  Using Mathematica, $K(z) = \ln(2) - \gam - \ln z + \order{z^2}$, where $\gam$ is Euler's constant.  Feeding this into Eq.~\refeq{thing5.2}, we find
+	For $r \ll \hbar / \sqrt{2m \abs{\mu}}$, we Taylor expand $\Ko(z)$ about $z = 0$.  Using Mathematica, $K(z) = \ln(2) - \gam - \ln z + \order{z^2}$, where $\gam$ is Euler's constant.  Feeding this into Eq.~\refeq{thing5.2}, we find
 	\eq{
-		\nu(r) \approx \frac{g}{4 \pi^2 \hbar^4 \evn} \brac{ \ln(2) - \gam - \ln(\sqrt{\frac{2 \abs{\mu}}{m}} \frac{r}{\hbar}) }^2
-		= \frac{g}{4 \pi^2 \hbar^4 \evn} \brac{ \ln(\frac{2}{\hbar}) - \gam - \frac{1}{2} \ln(\frac{2 \abs{\mu}}{m}) - \ln r }^2,
+		\nu(r) \approx \frac{g}{4 \pi^2 \hbar^4 \evn} \brac{ \ln(2) - \gam - \ln(\frac{\sqrt{2m \abs{\mu}} r}{\hbar}) }^2
+		= \frac{g}{4 \pi^2 \hbar^4 \evn} \brac{ - \gam - \ln(\sqrt{\frac{m \abs{\mu}}{2}} \frac{r}{\hbar}) }^2,
 	}
 	so, from Eq.~\refeq{C},
 	\eq{
-		\ans{ C(r) = \evn \del(r) + \frac{g}{4 \pi^2 \hbar^4} \brac{ \ln(\frac{2}{\hbar}) - \gam - \frac{1}{2} \ln(\frac{2 \abs{\mu}}{m}) - \ln r }^2 }
+		\ans{ C(r) = \evn \del(r) + \frac{g}{4 \pi^2 \hbar^4} \brac{ \gam + \ln(\sqrt{\frac{m \abs{\mu}}{2}} \frac{r}{\hbar}) }^2. }
 	}
-	for $r \ll \hbar \sqrt{m / 2 \abs{\mu}}$.
 	
-	For $r \gg \hbar \sqrt{m / 2 \abs{\mu}}$, we use the series expansion about $z \to \infty$ $K_\nu(z) \propto e^{-z} \sqrt{\pi / 2 z} + \order{1/z}$, also evaluated with Mathematica.  Equation~\refeq{thing5.2} becomes
+	For $r \gg \hbar \sqrt{m / 2 \abs{\mu}}$, we use the series expansion about $z \to \infty$, $K_\nu(z) \propto e^{-z} \sqrt{\pi / 2 z} + \order{1/z}$, also evaluated with Mathematica.  Equation~\refeq{thing5.2} becomes
 	\eq{
-		\nu(r) \approx \frac{g}{4 \pi^2 \hbar^4 \evn} \brac{ \sqrt{\frac{\pi}{2}} \paren{ \sqrt{\frac{m}{2 \abs{\mu}}} \frac{\hbar}{r} }^{1/2} \exp(\sqrt{\frac{2 \abs{\mu}}{m}} \frac{r}{\hbar}) }^2
-		= \frac{g}{8 \pi \hbar^3 \evn r} \sqrt{\frac{m}{2 \abs{\mu}}} \exp(2 \sqrt{\frac{2 \abs{\mu}}{m}} \frac{r}{\hbar}),
+		\nu(r) \approx \frac{g}{4 \pi^2 \hbar^4 \evn} \brac{ \sqrt{\frac{\pi}{2}} \paren{ \frac{\hbar}{\sqrt{2m \abs{\mu}} r} }^{1/2} \exp(-\frac{\sqrt{2m \abs{\mu}} r}{\hbar}) }^2
+		= \frac{g}{8 \pi \hbar^3 \evn} \frac{1}{\sqrt{2m \abs{\mu}} r} \exp(-2 \frac{\sqrt{2m \abs{\mu}} r}{\hbar}),
 	}
 	so, from Eq.~\refeq{C},
 	\eq{
-		\ans{ C(r) = \evn \del(r) + \frac{g}{8 \pi \hbar^3 r} \sqrt{\frac{m}{2 \abs{\mu}}} \exp(\sqrt{\frac{8 \abs{\mu}}{m}} \frac{r}{\hbar}) }
+		\ans{ C(r) = \evn \del(r) + \frac{g}{8 \pi \hbar^3 r} \frac{1}{\sqrt{2m \abs{\mu}}} \exp(-2 \frac{\sqrt{2m \abs{\mu}} r}{\hbar}). }
 	}
-	for $r \gg \hbar \sqrt{m / 2 \abs{\mu}}$.
 	
 		The general expression for the fluctuation of the occupation number for a Bose gas is, in three dimensions~\cite[p.~356]{Landau2},
 	\eq{
@@ -179,7 +212,8 @@
 	}
 	and, assuming once more that we are interested in small wave numbers, the integrand above is nonzero only for $\ev{n_{\vp}} = 1$ and $\ev{n_{\vp + \hbar \vk}} = 0$~\cite[p.~357]{Landau}.  This yields the same result as in Prob.~{5.1}:
 	\eq{
-		\ans{ \ev*{\abs{\Del\nk}^2} = \frac{k}{2 \hbar V} \sqrt{\frac{g \evn}{\pi^3}}. }
+		\ans{ \ev*{\abs{\Del\nk}^2} = \frac{g}{(2\pi\hbar)^2 V} \hbar k 2\hbar \sqrt{\frac{\pi \evn}{g}}
+		= \frac{k}{2 \hbar V} \sqrt{\frac{g \evn}{\pi^3}}. }
 	}
 	\vfix
 }
