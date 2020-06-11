@@ -1,0 +1,161 @@
+\state{Landau diamagnetism}{\ }
+
+%
+%	3.1
+%
+
+\prob{}{
+	Compute the Landau diamagnetic susceptibility for an ultra-relativistic Fermi gas in a weak field.
+}
+
+\sol{
+	We will assume an electron gas.  The energy levels $\eps$ for a relativistic electron in magnetic field $\vB = B \,\zh$ are given by
+	\eq{
+		\eps^2 - m^2 - \pz^2 = e B (2n + 1) + e B \sig,
+	}
+	where $\sig = \pm 1$ are the eigenvalues of $\sig_z$ and $n = 0, 1, 2, \ldots$ ~\cite[p.~101]{Relativistic}.  Then
+	\eq{
+		\eps^2 = e B (2n + 1 + \sig) + m^2 + \pz^2.
+	}
+	In order to take $\sig$ into account, we renumber the states such that $\eps^2 = 2n e B + \pz^2$, where $n$th state has degeneracy 2 for $n > 0$, and the 0th state is not degenerate.  Then
+	\eq{
+		\eps = \pm c \sqrt{2n e B + m^2 c^2 + \pz^2},
+	}
+	which has no degeneracy, since the $\pm$ sign splits the degenerate levels, and we have inserted factors of $c$.  In practice, however, we need only consider the positive energy levels, since the negative ones only contribute an overall constant.
+	
+	The number of states in the interval $\ddpz$ for a given $\eps$ is the same as in the nonrelativistic case~\cite[p.~173]{Landau2}:
+	\eqn{deg}{
+		\frac{2 e V B}{(2\pi\hbar)^2 c} \ddpz,
+	}
+	where $2 = g$ for the electron.
+	
+	The relevant thermodynamic potential for a nonrelativistic electron gas, for which $\eps = \pz^2 / 2m + (2n + 1) \muB B$, is~\cite[p.~173]{Landau2}
+	\al{
+		\Omg &= 2\muB B \sumni f[ \mu - (2n + 1) \muB B ], &
+		\qq{where}
+		f(\mu) &= -\frac{T m V}{2\pi^2 \hbar^3} \intnii \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \frac{\pz^2}{2m T}) } \ddpz.
+	}
+	For the ultra-relativistic gas, then,
+	\aln{
+		\Omg &= -\frac{\muB B T m V}{\pi^2 \hbar^3} \sumni \intnii \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{2n e B + m^2 c^2 + \pz^2}}{T}) } \ddpz \notag \\
+		&= -\frac{\muB B T m V}{\pi^2 \hbar^3} \sumni \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{2n e B + m^2 c^2 + \pz^2}}{T}) } \ddpz, \label{Omg}
+	}
+	where we have used that fact that $\pz^2 = (-\pz)^2$.
+	
+	The Euler-Maclaurin formula is~\cite[p.~173]{Landau2}
+	\eq{
+		\frac{1}{2} F(a) + \sum_{n = 1}^\infty F(a + n) \approx \int_a^\infty F(x) \ddx - \frac{1}{12} F'(a).
+	}
+	In our case $a = 0$, so
+	\eqn{sum}{
+		\sum_{n = 0}^\infty F(n) \approx \intoi F(x) \ddx + \frac{1}{2} F(0) - \frac{1}{12} F'(0),
+	}
+	where we have added $F(0) / 2$ to both sides.  From Eq.~\refeq{Omg}, note that
+	\al{
+		F(0) &= -\frac{2 \muB B T m V}{\pi^2 \hbar^3} \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{m^2 c^2 + \pz^2}}{T}) } \ddpz, \\[2ex]
+		F'(0) &= -\frac{2 \muB B T m V}{\pi^2 \hbar^3}  \brac{ \dv{n} \intoi \ln\!\curly{ 1 + \exp(\frac{\mu - c \sqrt{2n e B + m^2 c^2 + \pz^2}}{T}) } \ddpz }_{n = 0} \\
+		&= -\frac{2 \muB B T m V}{\pi^2 \hbar^3} \brac{ -\intoi \frac{c e B}{T \sqrt{2 n e B + m^2 c^2 + \pz^2}} \curly{ \exp(\frac{c \sqrt{2 n e B + m^2 c^2 + \pz^2} - \mu}{T}) + 1}^{-1} \ddpz }_{n = 0} \\
+		&= \frac{2 \muB B T m V}{\pi^2 \hbar^3} \frac{c e B}{T} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)} \\
+		&= \frac{4 m^2 c^2 \muB^2 B^2 V}{\pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)}.
+	}
+	Then
+	\al{
+		\Omg &= -\frac{2\muB B T m V}{\pi^2 \hbar^3} \intoi \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{2 e B x + m^2 c^2 + \pz^2}}{T}) } \ddpz \ddx \\
+		&\phantom{mmmmmmmmmmmmm} - \frac{\muB B T m V}{\pi^2 \hbar^3} \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{m^2 c^2 + \pz^2}}{T}) } \ddpz \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmm} + \frac{m^2 c^2 \muB^2 B^2 V}{3 \pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)}.
+	}
+	
+	The magnetic moment of the gas is $M = -(\pdv*{\Omg}{B})_{T, V, \mu}$~\cite[p.~172]{Landau}, so
+	\al{
+		M &= \frac{2\muB T m V}{\pi^2 \hbar^3} \intoi \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{2 e B x + m^2 c^2 + \pz^2}}{T}) } \ddpz \ddx \\
+		&\phantom{mmmmmmmmmmmmm} + \frac{\muB T m V}{\pi^2 \hbar^3} \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{m^2 c^2 + \pz^2}}{T}) } \ddpz \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmm} - \frac{2 m^2 c^2 \muB^2 B V}{3 \pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)},
+	}
+	and the diamagnetic susceptibility is $\chidia = (\pdv*{M}{B}) / V$, so
+	\eq{
+		\chidia = -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)}.
+	}
+	At the limit $T = 0$, the gas is completely degenerate and the occupation number $\evn = 1$ for $\pz < \po$, $\evn = 0$ for $\pz > \po$ where $\po$ is the Fermi momentum~\cite[p.~357]{Landau2}.  In this limit, then,
+	\eq{
+		\chidia \approx -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \int_0^{\po} \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2}}
+		= -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \tanh[-1](\frac{\po}{\sqrt{m^2 c^2 + \po^2}}).
+	}
+	In the non-relativistic limit $m \to \infty$, the leading asymptotic is
+	\eq{
+		\chidia \approx -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \frac{\po}{m c}
+		= -\frac{2 m c \muB^2 \po V}{3 \pi^2 \hbar^4}
+		= -\frac{2 c}{3 \hbar} \chipara^\text{nonrel}
+		= -\frac{2}{3} \chipara^\text{nonrel},
+	}
+	where the final equality is true if we take natural units.
+	
+	In the ultra-relativistic limit, $m \to 0$.  Then, taking the Taylor series expansion for small $m$ using Mathematica, we have
+	\eq{
+		\ans{ \chidia \approx -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \brac{ \tanh[-1](\frac{1}{\po}) + \frac{m^2 c^2}{4 \po^2} }. }
+	}
+	\vfix
+}
+
+
+%
+%	3.2
+%
+\clearpage
+\prob{\hspace{-1em}*}{
+	Compute the Landau diamagnetic susceptibility for a Fermi gas confined to a box whose linear size in the $z$ direction is $\Lz \ll \Lx, \Ly$.  The magnetic field is directed along the $z$ direction.  Consider two cases when the energy spacing $(2\pi \hbar / \Lz)^2 / 2m$ is much larger/smaller than the cyclotron energy $\muB B$.
+}
+
+\sol{
+	Once again, we will consider an electron gas.  For this geometry, the energy levels are
+	\eq{
+		\eps = \hbar \omg (n + 1/2) + \frac{2 \pi^2 \hbar^2 {n'}^2}{m \Lz^2},
+	}
+	where $\omg = e B / m c$ is the cyclotron frequency, $n = 0, 1, 2, \ldots$, and $n' = 0, \pm 1, \pm 2, \ldots$~\cite[pp.~3--4]{Lopez}.  In terms of the quantities used in Probs.~{4} and {5.1},
+	\eqn{eps3.2}{
+		\eps = \muB B (2n + 1) + \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2 m}.
+	}
+	The degeneracy of a state with a given $n$ is $\Lx \Ly e B / 2 \pi \hbar c$, which is the same as in the textbook case~\cite[p.~243]{Pathria}.  In notation similar to that of Eq.~\refeq{thing3}, we have
+	\eq{
+		\Lx \Ly \frac{e B}{2\pi \hbar c} = \Lx \Ly \frac{2 m c \muB B}{2\pi \hbar^2 c}
+		= \Lz \Ly \frac{m T}{\pi \hbar^2}.
+	}
+	So the analogue of Eq.~\refeq{thing3} in this case is
+	\aln{ \label{thing3.2}
+		\Omg &= 2\muB B \sumni f[ \mu - (2n + 1) \muB B ], &
+		\qq{where}
+		f(\mu) &= -2 \Lx \Ly \frac{m T}{\pi \hbar^2} \sum_{n' = 0}^\infty \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) },
+	}
+	where in the second expression we written the sum over $n' \in (-\infty, \infty)$ as twice the sum over $n' \in (0, \infty)$, since the expression depends only on ${n'}^2$.
+	
+	In the case where the energy spacing is much smaller than the cyclotron energy, it is sufficient to replace the sum in $f(\mu)$ by an integral.  In this limit,
+	\eq{
+		f(\mu) \approx -\Lx \Ly \frac{m T}{\pi \hbar^2} \intnii \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) } \dd{n'} \\
+		= -\frac{T m V}{ 2\pi^2 \hbar^3} \intnii \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - \frac{\pz^2}{2m T}) } \ddpz,
+	}
+	where we defined $\pz = 2\pi \hbar n' / \Lz$ and $V = \Lx \Ly \Lz$.  This is exactly the same as the expression for the textbook case in which does not impose the restriction $\Lz \ll \Lx, \Ly$, so the diamagnetic susceptibility is~\cite[pp.~173--174]{Landau2}
+	\eq{
+		\ans{ \chidia = -\frac{\muB^2 \po m}{3 \pi^2 \hbar^3}
+		= -\frac{\chipara}{3} }
+	}
+	when the energy spacing is much smaller than the cyclotron energy.
+	
+	In the case where the energy spacing is much larger than the cyclotron energy, we can replace the expression of $\Omg$ in Eq.~\refeq{thing3.2} with an integral and use the Euler-Maclaurin formula to handle the sum in $F(\mu)$.  Applying Eq.~\refeq{sum} to $f(\mu)$, note that
+	\al{
+		F'(0) &= \brac{ \pdv{n'} \ln\!\curly{ 1 + \exp(\frac{\mu}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) } }_{n' = 0} \\
+		&= \brac{ \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{n'}{2m T} \curly{ 1 + \exp(\frac{4 \pi^2 \hbar^2}{\Lz^2} \frac{{n'}^2}{2m T} - \frac{\mu}{T}) }^{-1} }_{n' = 0}
+		= 0, \\[1.1ex]
+		F(0) &= \ln(1 + e^{\mu / T}).
+	}
+	Then we have
+	\al{
+		\Omg &= -4 \Lx \Ly \frac{m T}{\pi \hbar^2} \muB B \intoi \Bigg\{ \intoi \ln\!\brac{ 1 + \exp(\frac{\mu}{T} - (2x + 1) \frac{\muB B}{T} - \paren{ \frac{2 \pi \hbar}{\Lz} }^2 \frac{{n'}^2}{2m T}) } \dd{n'} \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm} + \ln(1 + e^{\mu / T - (2x + 1) \muB B}) \Bigg\} \ddx,
+	}
+	so
+	\eq{
+		\ans{ \chidia = \frac{1}{V} \pdv{M}{B}
+		= -\frac{1}{V} \pdv[2]{\Omg}{B}
+		= 0 }
+	}
+	when the energy spacing is much larger than the cyclotron energy.
+}

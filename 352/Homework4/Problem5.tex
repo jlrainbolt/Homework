@@ -57,14 +57,6 @@
 	}
 	
 	For $r \ll \hbar / \po$, the argument of $\Jo$ is small everywhere.  This follows because for a degenerate gas, only the range $p \in (0, \po)$ contributes to the integral.  Then we can use the asymptotic approximation $J_m(z) \approx z^m / [ 2^m \,\Gam(m + 1) ]$~\cite{BesselJ}.  In this limit,
-%	\eq{
-%		I \approx \frac{1}{2} \intoi \frac{p}{e^{(p^2 - \po^2) / 2m T} + 1} \ddp
-%		= m T \ln(1 + e^{\po^2 / 2m T}),
-%	}
-%	where we have evaluated the integral using Mathematica.  So Eqs.~\refeq{thing5} and \refeq{C} give us
-%	\eq{
-%		\ans{ C(r) \approx \evn \del(r) + \frac{g m^2 T^2}{4 \pi^2 \hbar^4 \evn} \ln^2(1 + e^{\po^2 / 2m T}) }
-%	}
 	\eq{
 		C(r) \approx \evn \del(r) + \frac{g \po^2}{4 \pi^2 \hbar^2 r^2} \paren{ \frac{1}{2} \frac{\po r}{\hbar} }^2
 		= \ans{ \evn \del(r) + \frac{g \po^4}{16 \pi^2 \hbar^4}, }
@@ -81,7 +73,6 @@
 		= \sqrt{\frac{2 \hbar^3}{\pi r^3}} \pdv{r} \int_0^{\po} \frac{\sin(p r / \hbar - \pi / 4)}{\sqrt{p}} \ddp \\
 		&= \sqrt{\frac{2 \hbar^3}{\pi r^3}} \pdv{r}\!\curly{ \sqrt{\frac{\pi \hbar}{r}} \brac{ S\!\paren{ \sqrt{\frac{2 \po r}{\pi \hbar}} } - C\!\paren{ \sqrt{\frac{2 \po r}{\pi \hbar}} } } }
 		\approx -\sqrt{\frac{2 \hbar^3}{\pi r^3}} \pdv{r}\!\curly{ \sqrt{\frac{\pi \hbar}{r}} \sqrt{\frac{\hbar}{2 \pi \po r}} \brac{ \sin(\frac{\po r}{\hbar}) + \cos(\frac{\po r}{\hbar}) } } \\
-%		&\approx -\sqrt{\frac{\hbar^5}{\pi \po r^3}} \pdv{r}\!\paren{ \frac{\sin(\po r / \hbar) + \cos(\po r / \hbar)}{r} }
 		&= -\sqrt{\frac{2 \hbar^5}{\pi \po r^3}} \pdv{r}\!\paren{ \frac{\sin(\po r / \hbar + \pi / 4)}{r} }
 		= -\sqrt{\frac{4 \hbar^5}{\pi \po r^3}} \paren{ \frac{\po \cos(\po r / \hbar + \pi / 4)}{\hbar r} - \frac{\sin(\po r / \hbar + \pi / 4)}{r^2} } \\
 		&\approx -\sqrt{\frac{4 \hbar^3 \po}{\pi r^5}} \cos(\frac{\po r}{\hbar} + \frac{\pi}{4})
@@ -94,19 +85,8 @@
 	}
 	which are valid for $u \gg 1$~\cite{Fresnel}.  In going to the final line, we have retained only the term in the lowest power of $1 / r$~\cite[p.~357]{Landau}.  So we have
 	\eq{
-		\ans{ C(r) \approx %\evn \del(r) + \frac{g}{4 \pi^2 \hbar^4 \evn} \frac{4 \hbar^3 \po}{\pi r^5} \cos[2](\frac{\po r}{\hbar})
-		\evn \del(r) + \frac{g \po}{\pi^3 \hbar r^5} \cos[2](\frac{\po r}{\hbar}). }
+		\ans{ C(r) \approx \evn \del(r) + \frac{g \po}{\pi^3 \hbar r^5} \cos[2](\frac{\po r}{\hbar}). }
 	}
-	
-%	For small distances $r \ll \hbar / \sqrt{m T}$, let $r \sqrt{m T} / \hbar = u$.  Then $e^{\po^2 / mT - u^2} = e^{\po^2 / mT} (1 - u^2) + \order{u^4}$.  So for small distances,
-%	\eq{
-%		\ans{ C(r) \approx \evn \del(r) + \frac{g m^2 T^2}{4 \pi^2 \hbar^4} e^{\po^2 / m T}. }
-%	}
-%	
-%	For large distances $r \gg \hbar / \sqrt{m T}$, $e^{\po^2 / mT - u^2} \approx e^{-u^2}$.  So in this limit,
-%	\eq{
-%		\ans{ C(r) \approx \evn \del(r) + \frac{g m^2 T^2}{4 \pi^2 \hbar^4} e^{-m T r^2 / \hbar^2}. }
-%	}
 
 	The general expression for the fluctuation of the occupation number for a Fermi gas is, in three dimensions~\cite[p.~356]{Landau2},
 	\eq{
@@ -116,7 +96,7 @@
 	\eq{
 		\ev*{\abs{\Del\nk}^2} = \frac{g}{(2\pi\hbar)^2 V} \int \ev{n_{\vp}} (1 - \ev{n_{\vp + \hbar \vk}}) \ddsp.
 	}
-	We will assume that we are interested in small wave numbers, $k \ll \po / \hbar$.  In the $T =  0$ limit, the integral above is nonzero only for points that are in a circle of radius $\po$, with center at $p = 0$, but not in the circle of radius $\po$ with center at $p = \hbar k$~\cite[p.~357]{Landau}.  The area of the parts of these circles that \emph{intersect} is~\cite{Intersection}
+	We will assume that we are interested in small wave numbers, $k \ll \po / \hbar$.  In the $T =  0$ limit, the integrand above is nonzero only for $\ev{n_{\vp}} = 1$ and $\ev{n_{\vp + \hbar \vk}} = 0$; that is, points that are in a circle of radius $\po$, with center at $p = 0$, but not in the circle of radius $\po$ with center at $p = \hbar k$~\cite[p.~357]{Landau}.  The area of the parts of these circles that \emph{intersect} is~\cite{Intersection}
 	\eq{
 		A' = 2 \po^2 \cos[-1](\frac{\hbar k}{2 R}) - \frac{\hbar k}{2} \sqrt{4 R^2 - (\hbar k)^2}
 		= 2 \po^2 \cos[-1](\frac{\hbar k}{2 R}) - \frac{\hbar k \po}{2} \sqrt{4 - \paren{ \frac{\hbar k}{R} }^2}
@@ -195,6 +175,11 @@
 	}
 	The 2D analogue is then
 	\eq{
-		\ev*{\abs{\Del\nk}^2} = \frac{g}{(2\pi\hbar)^2 V} \int \ev{n_{\vp}} (1 + \ev{n_{\vp + \hbar \vk}}) \ddsp.
+		\ev*{\abs{\Del\nk}^2} = \frac{g}{(2\pi\hbar)^2 V} \int \ev{n_{\vp}} (1 + \ev{n_{\vp + \hbar \vk}}) \ddsp,
 	}
+	and, assuming once more that we are interested in small wave numbers, the integrand above is nonzero only for $\ev{n_{\vp}} = 1$ and $\ev{n_{\vp + \hbar \vk}} = 0$~\cite[p.~357]{Landau}.  This yields the same result as in Prob.~{5.1}:
+	\eq{
+		\ans{ \ev*{\abs{\Del\nk}^2} = \frac{k}{2 \hbar V} \sqrt{\frac{g \evn}{\pi^3}}. }
+	}
+	\vfix
 }
