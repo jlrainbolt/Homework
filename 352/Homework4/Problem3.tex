@@ -55,43 +55,43 @@
 		F(0) &= -\frac{2 \muB B T m V}{\pi^2 \hbar^3} \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{m^2 c^2 + \pz^2}}{T}) } \ddpz, \\[2ex]
 		F'(0) &= -\frac{2 \muB B T m V}{\pi^2 \hbar^3}  \brac{ \dv{n} \intoi \ln\!\curly{ 1 + \exp(\frac{\mu - c \sqrt{2n e B + m^2 c^2 + \pz^2}}{T}) } \ddpz }_{n = 0} \\
 		&= -\frac{2 \muB B T m V}{\pi^2 \hbar^3} \brac{ -\intoi \frac{c e B}{T \sqrt{2 n e B + m^2 c^2 + \pz^2}} \curly{ \exp(\frac{c \sqrt{2 n e B + m^2 c^2 + \pz^2} - \mu}{T}) + 1}^{-1} \ddpz }_{n = 0} \\
-		&= \frac{2 \muB B T m V}{\pi^2 \hbar^3} \frac{c e B}{T} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)} \\
-		&= \frac{4 m^2 c^2 \muB^2 B^2 V}{\pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)}.
+		&= \frac{2 \muB B T m V}{\pi^2 \hbar^3} \frac{c e B}{T} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{(c \sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)} \\
+		&= \frac{4 m^2 c^2 \muB^2 B^2 V}{\pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{(c \sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)}.
 	}
 	Then
 	\al{
 		\Omg &= -\frac{2\muB B T m V}{\pi^2 \hbar^3} \intoi \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{2 e B x + m^2 c^2 + \pz^2}}{T}) } \ddpz \ddx \\
 		&\phantom{mmmmmmmmmmmmm} - \frac{\muB B T m V}{\pi^2 \hbar^3} \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{m^2 c^2 + \pz^2}}{T}) } \ddpz \\
-		&\phantom{mmmmmmmmmmmmmmmmmmmmmm} + \frac{m^2 c^2 \muB^2 B^2 V}{3 \pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)}.
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmm} + \frac{m^2 c^2 \muB^2 B^2 V}{3 \pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{(c \sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)}.
 	}
 	
 	The magnetic moment of the gas is $M = -(\pdv*{\Omg}{B})_{T, V, \mu}$~\cite[p.~172]{Landau}, so
 	\al{
 		M &= \frac{2\muB T m V}{\pi^2 \hbar^3} \intoi \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{2 e B x + m^2 c^2 + \pz^2}}{T}) } \ddpz \ddx \\
 		&\phantom{mmmmmmmmmmmmm} + \frac{\muB T m V}{\pi^2 \hbar^3} \intoi \ln\!\brac{ 1 + \exp(\frac{\mu - c \sqrt{m^2 c^2 + \pz^2}}{T}) } \ddpz \\
-		&\phantom{mmmmmmmmmmmmmmmmmmmmmm} - \frac{2 m^2 c^2 \muB^2 B V}{3 \pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)},
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmm} - \frac{2 m^2 c^2 \muB^2 B V}{3 \pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{(c \sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)},
 	}
 	and the diamagnetic susceptibility is $\chidia = (\pdv*{M}{B}) / V$, so
 	\eq{
-		\chidia = -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{c (\sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)}.
+		\chidia = -\frac{2 m^2 c^2 \muB^2}{3 \pi^2 \hbar^4} \intoi \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2} (e^{(c \sqrt{m^2 c^2 + \pz^2} - \mu) / T} + 1)}.
 	}
-	At the limit $T = 0$, the gas is completely degenerate and the occupation number $\evn = 1$ for $\pz < \po$, $\evn = 0$ for $\pz > \po$ where $\po$ is the Fermi momentum~\cite[p.~357]{Landau2}.  In this limit, then,
-	\eq{
-		\chidia \approx -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \int_0^{\po} \frac{\ddpz}{\sqrt{m^2 c^2 + \pz^2}}
-		= -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \tanh[-1](\frac{\po}{\sqrt{m^2 c^2 + \po^2}}).
+	At the limit $T = 0$, the gas is completely degenerate and the occupation number $\evn = 1$ for $\pz < \po$, $\evn = 0$ for $\pz > \po$ where $\po$ is the Fermi momentum~\cite[p.~357]{Landau2}.  Transforming to a Fermi-Dirac integral and taking this limit,
+	\al{
+		\chidia &= -\frac{2 m^2 c^2 \muB^2}{3 \pi^2 \hbar^4} \frac{c}{T} \int_a^\infty \frac{\ddz}{z (e^{z - \mu / T} + 1)}
+		\approx -\frac{2 m^2 c^3 \muB^2}{3 \pi^2 \hbar^4 T} \int_a^b \frac{\ddz}{z} \\
+		&= -\frac{2 m^2 c^3 \muB^2}{3 \pi^2 \hbar^4 T} \brac{ \ln(\frac{c \sqrt{m^2 c^2 + \po^2}}{T}) - \ln(\frac{m c^2}{T}) }
+		= -\frac{2 m^2 c^3 \muB^2}{3 \pi^2 \hbar^4 T} \ln(\frac{\sqrt{m^2 c^2 + \po^2}}{m c^2}),
 	}
-	In the non-relativistic limit $m \to \infty$, the leading asymptotic is
+	where $z = c \sqrt{m^2 c^2 + p^2} / T$, $a = m c^2 / T$, and $b = c \sqrt{m^2 c^2 + \po^2} / T$.
+
+	In the ultra-relativistic limit, $m \to 0$.  Taking the Taylor series expansion of the argument for small $m$ using Mathematica, we have
 	\eq{
-		\chidia \approx -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \frac{\po}{m c}
-		= -\frac{2 m c \muB^2 \po V}{3 \pi^2 \hbar^4}
-		= -\frac{2 c}{3 \hbar} \chipara^\text{nonrel}
-		= -\frac{2}{3} \chipara^\text{nonrel},
+		\frac{\sqrt{m^2 c^2 + \po^2}}{m c^2} \approx \frac{\po}{m c} + \frac{m c}{2 \po}.
 	}
-	where the final equality is true if we take natural units.
-	
-	In the ultra-relativistic limit, $m \to 0$.  Then, taking the Taylor series expansion for small $m$ using Mathematica, we have
+	Then
 	\eq{
-		\ans{ \chidia \approx -\frac{2 m^2 c^2 \muB^2 V}{3 \pi^2 \hbar^4} \brac{ \tanh[-1](\frac{1}{\po}) + \frac{m^2 c^2}{4 \po^2} }. }
+		\ans{ \chidia \approx -\frac{2 m^2 c^3 \muB^2}{3 \pi^2 \hbar^4 T} \ln(\frac{\po}{m c} + \frac{m c}{2 \po})
+		= -\frac{c e^2}{6 \pi^2 \hbar^2 T} \ln(\frac{\po}{m c} + \frac{m c}{2 \po}). }
 	}
 	\vfix
 }

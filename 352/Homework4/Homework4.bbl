@@ -21,7 +21,7 @@ S.~H. Strogatz, ``Nonlinear Dynamics and Chaos''.
 
 \bibitem{Derivative}
 \href {https://mathworld.wolfram.com/Derivative.html}{E.~W. Weisstein,
-  ``Polylogarithm.''} From MathWorld---A Wolfram Web Resource.
+  ``Derivative.''} From MathWorld---A Wolfram Web Resource.
 \newblock \url {https://mathworld.wolfram.com/Derivative.html}.
 
 \bibitem{Landau2}
@@ -36,19 +36,19 @@ L.~D. Landau and E.~M. Lifshitz, ``Statistical Physics'', volume~5.
 L.~D. Landau and E.~M. Lifshitz, ``Relativistic Quantum Theory'', volume~4.
 \newblock Pergamon Press, 1st edition, 1971.
 
-\bibitem{Polylog}
-\href {https://mathworld.wolfram.com/Polylogarithm.html}{E.~W. Weisstein,
-  ``Polylogarithm.''} From MathWorld---A Wolfram Web Resource.
-\newblock \url {https://mathworld.wolfram.com/Polylogarithm.html}.
-
 \bibitem{Lopez}
 \hrefCMSnoop {}{G.~V. Lopez and J.~A. Lizarraga, ``Charged particle in a flat
-  box with static electromagnetic field and landau's levels'',}
+  box with static electromagnetic field and {Landau}'s levels'',}
   \href{http://www.arXiv.org/abs/2004.00388}{\texttt{arXiv:2004.00388}}.
 
 \bibitem{Pathria}
 R.~K. Pathria and P.~D. Beale, ``Statistical Mechanics''.
 \newblock Butterworth-Heinemann, 3rd edition, 2011.
+
+\bibitem{Polylog}
+\href {https://mathworld.wolfram.com/Polylogarithm.html}{E.~W. Weisstein,
+  ``Polylogarithm.''} From MathWorld---A Wolfram Web Resource.
+\newblock \url {https://mathworld.wolfram.com/Polylogarithm.html}.
 
 \bibitem{BesselJ}
 \href {https://mathworld.wolfram.com/BesselFunctionoftheFirstKind.html}{E.~W.
