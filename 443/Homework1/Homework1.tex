@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{443}
+\homeworknum{1}
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+\state{(Peskin \& Schroeder 2.1)}{
+	Classical electromagnetism (with no sources) follows from the action
+	\al{
+		S &= \int \ddqx \paren{ -\frac{1}{4} \Fsmn \Fmn }, &
+		\where \Fsmn = \ptsm \Asn - \ptsn \Asm.
+	}
+}
+
+
+
+\prob{}{
+	Derive Maxwell's equations as the Euler-Lagrange equations of this action, treating the components $\Asm(x)$ as the dynamical variables.  Write the equations in standard form by identifying $\Ei = -\Foi$ and ${\epsijk \Bk = -\Fij}$.
+}
+
+
+
+\prob{}{
+	Construct the energy-momentum tensor for this theory.  Note that the usual procedure does not result in a symmetric tensor.  To remedy that, we can add to $\Tmn$ a term of the form $\ptsl \Klmn$, where $\Klmn$ is antisymmetric in its first two indices.  Such an object is automatically divergenceless, so
+	\eq{
+		\Thmn = \Tmn + \ptsl \Klmn
+	}
+	is an equally good energy-momentum tensor with the same globally conserved energy and momentum.  Show that this construction, with
+	\eq{
+		\Klmn = \Fmn \An,
+	}
+	leads to an energy-momentum tensor $\Th$ that is symmetric and yields the standard formulae for the electromagnetic energy and momentum densities:
+	\al{
+		\cE &= \frac{E^2 + B^2}{2}; &
+		\vS &= \vE \cross \vB.
+	}
+}
+
+
+
+\state{The complex scalar field (Peskin \& Schroeder 2.2)}{
+	Consider the field theory of a complex-valued scalar field obeying the Klein-Gordon equation.  The action of this theory is
+	\eq{
+		S = \int \ddqx (\ptsm \phis \ptm \phi - m^2 \phis \phi).
+	}
+	It is easiest to analyze this theory by considering $\phix$ and $\phisx$, rather than the real and imaginary parts of $\phix$, as the basic dynamical variables.
+}
+
+
+
+\prob{}{
+	Find the conjugate momenta to $\phix$ and $\phisx$ and the canonical commutation relations.  Show that the Hamiltonian is
+	\eq{
+		H = \int \ddcx (\pis \pi + \grad \phis \vdot  \grad \phi + m^2 \phis \phi).
+	}
+	Compute the Heisenberg equation of motion for $\phix$ and show that it is indeed the Klein-Gordon equation.
+}
+
+
+
+\prob{}{
+	Diagonalize $H$ by introducing creation and annihilation operators.  Show that the theory contains two sets of particles of mass $m$.
+}
+
+
+
+\prob{}{
+	\label{2.3(c)}
+	
+	Rewrite the conserved charge
+	\eq{
+		Q = \int \ddcx \frac{i}{2} (\phis \pis - \pi \phi)
+	}
+	in terms of creation and annihilation operators, and evaluate the charge of the particles of each type.
+}
+
+
+
+\prob{}{
+	Consider the case of two complex Klein-Gordon fields with the same mass.  Label the fields as $\phiax$, where $a = 1, 2$.  Show that there are now four conserved charges, one given by the generalization of part~\ref{2.3(c)}, and the other three given by
+	\eq{
+		\Qi = \int \ddcx \frac{i}{2} (\phias \sigiab \pibs - \pia \sigiab \phib),
+	}
+	where $\sigi$ are the Pauli sigma matrices.  Show that these three charges have the commutation relations of angular momentum ($SU(2)$).  Generalize these results to the case of $n$ identical complex scalar fields.
+}
+
+
+
+
+\state{(Peskin \& Schroeder 2.3)}{
+	\label{3}
+	
+	Evaluate the function
+	\eq{
+		\ev{\phix \, \phiy}{0} = D(x - y)
+	= \int \ddpf \frac{1}{2 \Ep} e^{i p \, (x - y)},
+	}
+	for $(x - y)$ spacelike so that $(x - y)^2 = -r^2$, explicitly in terms of Bessel functions.
+}
+
+
+
+
+
+\state{}{
+	The classical limit of a harmonic oscillator can be described in terms of \emph{coherent states},
+	\eq{
+		\kalp = \exp( \alp \adag - \frac{1}{2} |\alp|^2 ) \ko.
+	}
+	When $\alp$ is large, the oscillator state is semiclassical.  Proceeding similarly for the Fourier modes of the quantum Klein-Gordon field,
+	\al{
+		\kf &= \Nf \exp( i \int \ddpf \fp \, \apdag ) \ko, &
+		\Nf &= \exp( -\frac{1}{2} \int \ddpf | \fp |^2 ).
+	}
+}
+
+
+
+\prob{}{
+	Evaluate the expectation value of the field operator $\ev{\phix}{f}$ and show that it satisfies the Klein-Gordon equation.
+}
+
+
+
+\prob{}{
+	Evaluate the relative mean square fluctuation of the occupation number of the mode with momentum $\vp$ and the relative mean square fluctuation in the total energy:
+	\al{
+		&\frac{\evnhps - \evnhp^2}{\evnhp^2}, &
+		&\frac{\evHs - \evH^2}{\evH^2}.
+	}
+	Is either of these a good measure of the degree to which the field is classical?  Justify your answer.
+}
+
+
+
+\prob{}{
+	Take $\Delta(x - y) = \ev{\phivx \, \phivy}{0}$ (equal times) as a measure of the fluctuations or correlations of the field amplitude.  Use your result from problem~\ref{3} to evaluate this quantity.  What is the meaning of the divergence as $\vx \to \vy$?
+}
+
+
+
+
+%\input{Problem5}
+
+
+%\makebib
+
+\end{document}
