@@ -1,0 +1,213 @@
+\state{(Peskin \& Schroeder 2.1)}{
+	Classical electromagnetism (with no sources) follows from the action
+	\aln{ \label{action1.a}
+		S &= \int \ddqx \paren{ -\frac{1}{4} \Fsmn \Fmn }, &
+		\where \Fsmn = \ptsm \Asn - \ptsn \Asm.
+	}
+\vfix
+}
+
+\prob{}{
+	Derive Maxwell's equations as the Euler-Lagrange equations of this action, treating the components $\Asm(x)$ as the dynamical variables.  Write the equations in standard form by identifying
+	\aln{ \label{identities1.a}
+		\Ei &= -\Foi; &
+		\epsijk \Bk &= -\Fij.
+	}
+\vfix
+}
+
+\sol{
+	We want to extremize the action,
+	\eq{
+		S[\Asm] = \int \ddqx \cL(\Asm, \ptsm \Asm),
+	}
+	where $\cL$ is the integrand of Eq.~\refeq{action1.a}.  Let $\del\Asm$ denote some arbitrary variation that vanishes at the boundaries of spacetime.  The action for $\Asm + \del\Asm$ is
+	\eq{
+		S[\Asm + \del\Asm] = \int \ddqx \cL(\Asm + \del\Asm, \ptsn\Asm + \ptsn\del\Asm).
+	}
+	Then, to first order in $\del\Asm$, the variation of the action is
+	\eq{
+		\del S = S[\Asm + \del\Asm] - S[\Asm],
+	}
+	which we want to vanish for all $\del\Asm$.  Let $\del\Fsmn = \ptsm \, \del\Asn - \ptsn \, \del\Asm$.  Then, applying the definition of $\Fsmn$ given in Eq.~\refeq{action1.a},
+	\aln{
+		\del S &= \int  \ddqx \paren{ -\frac{1}{4} (\Fsmn + \del\Fsmn) (\Fmn + \del\Fmn) + \frac{1}{4} \Fsmn \Fmn } \notag \\
+		&\approx \int \ddqx \paren{ -\frac{1}{4} (\Fsmn \Fmn + \Fsmn \,\del\Fmn + \del\Fsmn \,\Fmn) + \frac{1}{4} \Fsmn \Fmn } \notag \\
+		&= \int \ddqx \paren{ -\frac{1}{4} (\Fsmn \,\del\Fmn + \del\Fsmn \,\Fmn) } \notag \\
+		&= \int \ddqx \paren{ -\frac{1}{2} \del\Fsmn \,\Fmn }, \label{delS1.a}
+	}
+	where we have discarded terms of $\order{(\del\Am)^2}$ and swapped covariant and contravariant indices in going to the final equality.
+	
+	Note that
+	\aln{
+		\del\Fsmn \,\Fmn &= (\ptsm \del\Asn - \ptsn \del\Asm) (\ptm \An - \ptn \Am) \notag \\
+		&= \ptsm \del\Asn \,\ptm \An - \ptsm \del\Asn \,\ptn \Am - \ptsn \del\Asm \,\ptm \An + \ptsn \del\Asm \,\ptn \Am.  \label{exp1.a}
+	}
+	Integrating the first term of Eq.~\refeq{exp1.a} by parts, we have
+	\al{
+		\int \ddqx \pdv{\,\del\Asn}{\xm} \pdv{\An}{\xsm} = \bigg[ \del\Asn \pdv{\An}{\xsm} \bigg]_{-\infty}^\infty - \int \ddqx \del\Asn \pdv{\An}{\xm}{\xsm}
+		= -\int \ddqx \del\Asn \,\ptsm \ptm \An,
+	}
+	because $\del\An$ vanishes at $\pm\infty$.  The other terms follow similarly.  Then we find
+	\al{
+		\int \ddqx \del\Fsmn \,\Fmn &= -\int \ddqx (\del\Asn \,\ptsm \ptm \An - \del\Asn \,\ptsm \ptn \Am - \del\Asm \,\ptsn \ptm \An + \del\Asm \,\ptsn \ptn \Am) \\
+		&= -\int \ddqx (\del\Asn \,\ptsm \Fmn + \del\Asm \,\ptsn \Fnm)
+		= -\int \ddqx (\del\Asn \,\ptsm \Fmn + \del\Asn \,\ptsm \Fmn) \\
+		&= -2 \int \ddqx \del\Asn \,\ptsm \Fmn,
+	}
+	where in going to the second-to-last equality we have simply swapped the indices.
+	
+	Making this substitution in Eq.~\refeq{delS1.a}, we obtain
+	\eq{
+		\del S = \del\Asn \int \ddqx \ptsm \Fmn.
+	}
+	In order for the action to be at a local extremum, we need $\del S = 0$ for any $\del\Asn$.  This implies that the integrand is 0.  Thus, we obtain
+	\eqn{maxwell1.a}{
+		\ans{ \ptsm \Fmn = 0, }
+	}
+	which is the covariant form of the inhomogeneous Maxwell equations in a source-free region~\cite[p.~557]{Jackson}, as we sought to derive. \qed
+	
+	From Eq.~\refeq{identities1.a} and the knowledge that $\Fmn$ is antisymmetric~\cite[p.~556]{Jackson}, we can write
+	\eqn{Fmn}{
+		\Fmn = \mqty[
+			0 & -\Ex & -\Ey & -\Ez \\
+			\Ex & 0 & -\Bz & \By \\
+			\Ey & \Bz & 0 & -\Bx \\
+			\Ez & -\By & \Bx & 0
+		].
+	}
+	The first equation of Eq.~\refeq{identities1.a} is equivalent to $\Ei = \Fio$.  Then the zeroth component of Eq.~\refeq{maxwell1.a} can be written
+	\eq{
+		\ptsm \Fmo = \pdv{\Ex}{x} + \pdv{\Ey}{y} + \pdv{\Ez}{z}
+		= \ans{ \grad \vdot \vE
+		= 0, }
+	}
+	which is the differential form of Gauss's law.
+	
+	For the remaining components of Eq.~\refeq{maxwell1.a}, we apply the second equation of Eq.~\refeq{maxwell1.a} to find
+	\eq{
+		\ptsm \Fmi = -\pdv{\Ei}{t} + \epsijk \pdv{\Bk}{\xj} = 0.
+	}
+	In vector form, this is
+	\eq{
+		\ans{ \grad \cross \vB - \pdv{\vE}{t} = \vo, }
+	}
+	the differential form of Amp\`{e}re's law.
+}
+
+
+
+\prob{}{
+	Construct the energy-momentum tensor for this theory.  Note that the usual procedure does not result in a symmetric tensor.  To remedy that, we can add to $\Tmn$ a term of the form $\ptsl \Klmn$, where $\Klmn$ is antisymmetric in its first two indices.  Such an object is automatically divergenceless, so
+	\eqn{Tmn1.b}{
+		\Thmn = \Tmn + \ptsl \Klmn
+	}
+	is an equally good energy-momentum tensor with the same globally conserved energy and momentum.  Show that this construction, with
+	\eqn{Klmn1.b}{
+		\Klmn = \Fml \An,
+	}
+	leads to an energy-momentum tensor $\Th$ that is symmetric and yields the standard formulae for the electromagnetic energy and momentum densities:
+	\al{
+		\cE &= \frac{E^2 + B^2}{2}; &
+		\vS &= \vE \cross \vB.
+	}
+}
+
+\newcommand{\etamn}{\eta^{\mu \nu}}
+
+\sol{
+	We want to evaluate Eq.~(2.17) of Peskin \& Schroeder,
+	\eqn{Tmn3}{
+		\Tmn = \pdv{\cL}{(\ptsm \phi)} - \cL \delmsn
+		= \pdv{\cL}{(\ptsm \Al)} \ptn \Al - \cL \delmsn,
+	}
+	where we have associated the field $\phi$ with $\Al$.  In order to evaluate the derivatives, we can use the variational method to calculate $\pdv*{\cL}{(\ptsa \Asb)}$ by letting $\ptsa \Asb \to \ptsa \Asb + \del \ptsa \Asb$~\cite[p.~81]{Landau}.  Let
+	\eq{
+		\del\cL = \cL(\ptsa \Asb) - \cL(\ptsa \Asb + \del \ptsa \Asb).
+	}
+	Note that
+	\eq{
+		\cL(\ptsa \Asb + \del \ptsa \Asb) = -\frac{1}{4} (\Fsab + \del\Fsab) (\Fab + \del\Fab)
+		\approx -\frac{1}{4} (\Fsab \Fab + \Fsab \,\del\Fab + \del\Fsab \,\Fab),
+	}
+	so
+	\al{
+		\del\cL &= -\frac{1}{4} (\Fsab \,\del\Fab + \del\Fsab \,\Fab)
+		= -\frac{1}{2} \del\Fsab \,\Fab
+		= -\frac{1}{2} (\ptsa \,\del\Asb - \ptsb \,\del\Asa) \Fab
+		= -\frac{1}{2} (\ptsa \,\del\Asb + \ptsa \,\del\Asb) \Fab \\
+		&= -\ptsa \,\del\Asb \,\Fab,
+	}
+	where we have used the antisymmetry of $\Fab$.  This gives us
+	\eq{
+		\pdv{\cL}{(\ptsa \Asb)} = -\Fab
+		\qimplies
+		\pdv{\cL}{(\ptsa \Ab)} = -\Fasb,
+	}
+	and then we find
+	\eqn{TmnA}{
+		\Tmn = -\Fmsl \,\ptn \Al + \frac{1}{4} \gmn \Fsab \Fab
+		= \ans{ \frac{1}{4} \gmn \Fsab \Fab - \Fmsl \,\ptn \Al. }
+	}
+
+	Adding $\Klmn$ as defined in Eq.~\refeq{Klmn1.b}, Eq.~\refeq{Tmn1.b} becomes
+	\eqn{Thmn2}{
+		\Thmn = \frac{1}{4} \gmn \Fsab \Fab - \Fmsl \,\ptn \Al + \ptsl (\Fml \An).
+	}
+	Applying the product rule to the third term, we find
+	\eq{
+		\ptsl (\Fml \An) = \An \ptsl \Fml + \Fml \ptsl \An
+		= -\An \ptsl \Flm + \Fml \ptsl \An
+		= \Fml \ptsl \An,
+	}
+	where we have applied the antisymmetry of $\Fmn$ and Eq.~\refeq{maxwell1.a}.  Making this substitution in Eq.~\refeq{Thmn2},
+	\aln{
+		\Thmn &= \frac{1}{4} \gmn \Fsab \Fab - \Fmsl \,\ptn \Al + \Fml \ptsl \An \notag \\
+		&= \frac{1}{4} \gmn \Fsab \Fab + \Fmsl \ptl \An - \Fmsl \,\ptn \Al
+		= \frac{1}{4} \gmn \Fsab \Fab + \Fmsl \Fln \notag \\
+		&= \ans{ \frac{1}{4} \gmn \Fsab \Fab - \Fml \Fnsl. } \label{Thmn3}
+	}
+
+	To show that $\Thmn$ is symmetric, note that
+	\eq{
+		\Thnm = \frac{1}{4} \gnm \Fsab \Fab - \Fnl \Fmsl
+		= \frac{1}{4} \gmn \Fsab \Fab - \Fmsl \Fnl
+		= \frac{1}{4} \gmn \Fsab \Fab - \Fml \Fnsl
+		= \Thmn
+	}
+	as desired. \qed
+	
+	For the energy and momentum densities, from Eq.~\refeq{Thmn3} we have
+	\aln{
+		\Thoo &= \frac{1}{4} \goo \Fsab \Fab - \Fol \Fosl
+		= \frac{1}{4} \Fsab \Fab + \Fol \Fslo, \label{Thoo} \\
+		\Thoi &= \frac{1}{4} \goi \Fsab \Fab - \Fol \Fisl + 
+		= \Fol \Fsli. \label{Thoi}
+	}
+	Using Eq.~\refeq{Fmn},
+	\al{
+		\Fsmn \Fmn &= -{\Ex}^2 - {\Ey}^2 - {\Ez}^2 - {\Ex}^2 + {\Bz}^2 + {\By}^2 - {\Ey}^2 + {\Bz}^2 + {\Bx}^2 - {\Ez}^2 + {\By}^2 + {\Bx}^2
+		= 2 (\vB^2 - \vE^2).
+	}
+	Note also from Eq.~\refeq{Fmn} that
+	\al{
+		\Fsln = \gslm \Fmn
+		= \mqty[ 0 & -\Ex & -\Ey & -\Ez \\
+				-\Ex & 0 & -\Bz & \By \\
+				-\Ey & \Bz & 0 & -\Bx \\
+				-\Ez & -\By & \Bx & 0 ],
+	}
+	so
+	\al{
+		\Fol \Fslo &= (-\vE) \vdot (-\vE)
+		= \vE^2, &
+		\Fol \Fsli &= B_j E_k - E_k B_j
+		= (\vE \cross \vB)_i.
+	}
+	Equations~(\ref{Thoo}--\ref{Thoi}) are then
+	\al{
+		\ans{ \Thoo\ }&\ans{= \frac{1}{8\pi} (\vE^2 + \vB^2) = \cE, }&
+		\ans{\Thoi\ }&\ans{= \frac{1}{4\pi} (\vE \cross \vB)_i = \vS, }
+	}
+	as we sought to show. \qed
+}
