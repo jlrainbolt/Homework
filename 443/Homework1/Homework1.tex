@@ -137,44 +137,73 @@
 	}
 	so we can write~\cite[p.~33]{Tong}
 	\al{
-		\phivx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \ap e^{i \vp \vdot \vx} + \aspdag e^{-i \vp \vdot \vx} }, &
-		\phisvx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \asp e^{i \vp \vdot \vx} + \apdag e^{-i \vp \vdot \vx} },
+		\phivx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \ap e^{i \vp \vdot \vx} + \bpdag e^{-i \vp \vdot \vx} }, &
+		\phisvx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \bp e^{i \vp \vdot \vx} + \apdag e^{-i \vp \vdot \vx} },
 	}
-	where $\ap$ and $\asp$ are creation and annihilation operators.  By analogy to Eq.~(2.26) of Peskin \& Schroeder, we can also write
+	where $\apdag, \bpdag$~($\ap, \bp$) are creation~(annihilation) operators.  By analogy to Eq.~(2.26) of Peskin \& Schroeder, we can also write
 	\al{
-		\pivx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \asp e^{i \vp \vdot \vx} - \apdag e^{-i \vp \vdot \vx} }, &
-		\pisvx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \ap e^{i \vp \vdot \vx} - \aspdag e^{-i \vp \vdot \vx} }.
+		\pivx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \bp e^{i \vp \vdot \vx} - \apdag e^{-i \vp \vdot \vx} }, &
+		\pisvx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \ap e^{i \vp \vdot \vx} - \bpdag e^{-i \vp \vdot \vx} }.
 	}
 	Simplifying these expressions as in their Eqs.~(2.27) and (2.28), we have
 	\aln{
-		\phivx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \ap + \asnpdag } e^{i \vp \vdot \vx}, &
-		\phisvx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \asp + \anpdag } e^{i \vp \vdot \vx}, \label{things2.b1} \\
-		\pivx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \asp - \anpdag } e^{i \vp \vdot \vx}, &
-		\pisvx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \ap - \asnpdag } e^{i \vp \vdot \vx}. \label{things2.b2}
+		\phivx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \ap + \bnpdag } e^{i \vp \vdot \vx}, &
+		\phisvx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \bp + \anpdag } e^{i \vp \vdot \vx}, \label{things2.b1} \\
+		\pivx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \bp - \anpdag } e^{i \vp \vdot \vx}, &
+		\pisvx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \ap - \bnpdag } e^{i \vp \vdot \vx}. \label{things2.b2}
 	}
 	Also generalizing their Eq.~(2.24),
 	\al{
-		[\ap, \appdag] &= [\asp, \asppdag] = (2\pi)^3 \, \del^3(\vp - \vp'), &
-		[\ap, \asppdag] &= [\asp, \appdag] = 0.
+		[\ap, \appdag] &= [\bp, \bppdag] = (2\pi)^3 \, \del^3(\vp - \vp'), &
+		[\ap, \bppdag] &= [\bp, \appdag] = 0.
 	}
 	
-	Feeding Eqs.~\refeq{things2.b1} and \refeq{things2.b2} into Eq.~\refeq{ham2.a},
+	Feeding Eqs.~\refeq{things2.b1} and \refeq{things2.b2} into Eq.~\refeq{ham2.a} yields
 	\eq{
-		H = \int \ddcx \int \ddppf e^{i (\vp + \vp') \vdot \vx} \brac{ -\frac{\sqrt{\omgp \omgpp}}{2} \paren{ \ap - \asnpdag } \paren{ \aspp - \anppdag } + \frac{-\vp \vdot \vp' + m^2}{2 \sqrt{\omgp \omgpp}} \paren{ \ap + \asnpdag } \paren{ \aspp + \anppdag } }
+		H = \int \ddcx \int \ddppfs \, e^{i (\vp + \vp') \vdot \vx} \brac{ -\frac{\sqrt{\omgp \omgpp}}{2} \paren{ \ap - \bnpdag } \paren{ \bpp - \anppdag } + \frac{-\vp \vdot \vp' + m^2}{2 \sqrt{\omgp \omgpp}} \paren{ \ap + \bnpdag } \paren{ \bpp + \anppdag } }.
 	}
+	Using the delta function identity~\cite{Dirac}
+	\eq{
+		\del(x - a) = \frac{1}{2\pi} \intii e^{i p (x - a)} \ddp,
+	}
+	this becomes
+	\al{
+		H &= \int \ddppfc \, \del^3(\vp + \vp') \brac{ -\frac{\sqrt{\omgp \omgpp}}{2} \paren{ \ap - \bnpdag } \paren{ \bpp - \anppdag } + \frac{-\vp \vdot \vp' + m^2}{2 \sqrt{\omgp \omgpp}} \paren{ \ap + \bnpdag } \paren{ \bpp + \anppdag } } \\
+		&= \int \ddpf \brac{ -\frac{\omgp}{2} \paren{ \ap - \bnpdag } \paren{ \bnp - \apdag } + \frac{\vp^2 + m^2}{2 \omgp} \paren{ \ap + \bnpdag } \paren{ \bnp + \apdag } } \\
+		&= \int \ddpf \frac{\omgp}{2} \brac{ \ap \bnp + \ap \apdag + \bnpdag \bnp + \bnpdag \apdag - \paren{ \ap \bnp - \ap \apdag - \bnpdag \bnp + \bnpdag \apdag } } \\
+		&= \int \ddpf \, \omgp \paren{ \ap \apdag + \bnpdag \bnp }
+		= \int \ddpf \, \omgp \paren{ \apdag \ap + \bpdag \bp + [\ap, \appdag] }.
+	}
+	Ignoring the infinite constant term~\cite[p.~21]{Peskin}, we have
+	\eqn{diagham2.b}{
+		\ans{ H = \int \ddpf \, \omgp \paren{ \apdag \ap + \bpdag \bp }. }
+	}
+	
+	To show that the theory contains two sets of particles of mass $m$, we evaluate the commutators~\cite[p.~22]{Peskin}:
+	\al{
+		[H, \apdag] &= \brac{ \int \ddppf \omgpp \appdag \app, \apdag } = \omgp \apdag, &
+		[H, \ap] &= \brac{ \int \ddppf \omgpp \appdag \app, \ap } = -\omgp \ap, \\
+		[H, \bpdag] &= \brac{ \int \ddppf \omgpp \bppdag \bpp, \bpdag } = \omgp \bpdag, &
+		[H, \bp] &= \brac{ \int \ddppf \omgpp \bppdag \bpp, \bp } = -\omgp \bp.
+	}
+	Then we can define the eigenstates of the Hamiltonian by
+	\eq{
+		(\apdag)^{\na} \,(\bpdag)^{\nb} \koo \equiv \knanb,
+	}
+	which have eigenvalues $(\na + \nb) \omgp$.  So the expression for the Hamiltonian in Eq.~\refeq{diagham2.b} is diagonal in the occupation number basis $\{ \knanb \}$, where $\na$ indicates the number of particles created with $\apdag$ and $\nb$ the number created with $\bpdag$.  Since each operation of $\apdag$ or $\bpdag$ imparts energy $\omgp = \sqrt{\vp^2 + m^2}$ to the system, we can conclude that $\apdag$ and $\bpdag$ each correspond to a set of particles of mass $m$.
 }
 
 
 
-%\prob{}{
-%	\label{2.2(c)}
-%	
-%	Rewrite the conserved charge
-%	\eq{
-%		Q = \int \ddcx \frac{i}{2} (\phis \pis - \pi \phi)
-%	}
-%	in terms of creation and annihilation operators, and evaluate the charge of the particles of each type.
-%}
+\prob{}{
+	\label{2.2(c)}
+	
+	Rewrite the conserved charge
+	\eq{
+		Q = \int \ddcx \frac{i}{2} (\phis \pis - \pi \phi)
+	}
+	in terms of creation and annihilation operators, and evaluate the charge of the particles of each type.
+}
 
 
 
@@ -243,6 +272,8 @@
 %}
 
 
-%\makebib
+\clearpage
+
+\makebib
 
 \end{document}
