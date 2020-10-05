@@ -16,7 +16,7 @@
 
 \state{The complex scalar field (Peskin \& Schroeder 2.2)}{
 	Consider the field theory of a complex-valued scalar field obeying the Klein-Gordon equation.  The action of this theory is
-	\eq{
+	\eqn{action2}{
 		S = \int \ddqx (\ptsm \phis \ptm \phi - m^2 \phis \phi).
 	}
 	It is easiest to analyze this theory by considering $\phix$ and $\phisx$, rather than the real and imaginary parts of $\phix$, as the basic dynamical variables.
@@ -26,22 +26,148 @@
 
 \prob{}{
 	Find the conjugate momenta to $\phix$ and $\phisx$ and the canonical commutation relations.  Show that the Hamiltonian is
-	\eq{
-		H = \int \ddcx (\pis \pi + \grad \phis \vdot  \grad \phi + m^2 \phis \phi).
+	\eqn{ham2.a}{
+		H = \int \ddcx (\pis \pi + \grad \phis \vdot \grad \phi + m^2 \phis \phi).
 	}
 	Compute the Heisenberg equation of motion for $\phix$ and show that it is indeed the Klein-Gordon equation.
+}
+
+\sol{
+	The momentum density conjugate to $\phix$ is defined in Peskin \& Schroeder~(2.4):
+	\eq{
+		\pix \equiv \pdv{\cL}{\phidx}
+	}
+	Here, $\cL$ is the integrand of Eq.~\refeq{action2}.  Expanding its first term yields
+	\eqn{lagr2.a}{
+		\cL = \phid \phisd - \grad \phi \vdot \grad \phis,
+	}
+	so then
+	\aln{
+		\ans{\pix\ }&\ans{= \phisd, } &
+		\ans{\pisx\ }&\ans{= \phid, } \label{moms2.a}
+	}
+	where $\pisx$ is the momentum conjugate to $\phisx$.  The canonical commutation relations follow from Peskin \& Schroeder~(2.20):
+	\ans{\al{
+		[\phivx, \pivy] &= [\phisvx, \pisvy] = i \,\del^3(\vx - \vy), \\
+		[\phivx, \phivy] &= [\phisvx, \phisvy] = 0, \\
+		[\pivx, \pivy] &= [\pisvx, \pisvy] = 0, \\
+		[\phivx, \pisvy] &= [\phivx, \phisvy] = [\pivx, \pisvy] = 0.
+	}}% 
+	
+	The Hamiltonian is given in general for a single field by Peskin \& Schroeder~(2.5),
+	\eq{
+		H = \int \ddcx \paren{ \pix \, \phidx - \cL }.
+	}
+	For the two fields $\phix$ and $\phisx$, this becomes
+	\al{
+		H &= \int \ddcx \paren{ \pix \, \phidx + \pisx \, \phisdx - \cL } \\
+		&= \int \ddcx \paren{ \pi \phid + \pis \phisd - \phid \phisd + \grad \phi \vdot \grad \phis + m^2 \phis \phi } \\
+		&= \int \ddcx \paren{ \pi \pis + \phid \phisd - \phid \phisd + \grad \phi \vdot \grad \phis + m^2 \phis \phi } \\
+		&= \ans{ \int \ddcx \paren{ \pis \pi + \grad \phi \vdot \grad \phis + m^2 \phis \phi }, }
+	}
+	where we have used Eqs.~\refeq{lagr2.a} and \refeq{moms2.a} as well as the commutation relations.  So we have proven Eq.~\refeq{ham2.a}. \qed
+	
+	The Heisenberg equation of motion is Peskin \& Schroeder~(2.44),
+	\eq{
+		i \pdv{\cO}{t} = [\cO, H],
+	}
+	where $\cO$ is an arbitrary operator.  Then
+	\al{
+		i \pdv{\phix}{t} &= [\phix, H] \\
+		&= \brac{ \phixt, \int \ddcxp \pisxp \, \pixp } + \brac{ \phixt, \int \ddcxp \grad' \phixp \vdot \grad' \phisxp } \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm} + m^2 \brac{ \phixt, \int \ddcxp \phisxp \, \phixp } \\
+		&= \brac{ \phixt, \int \ddcxp \pisxp \, \pixp }
+		= i \int \ddcxp \del^3(\vx - \vx') \, \pisxp
+		= i \pisx, \\[2ex]
+		i \pdv{\phisx}{t} &= [\phisx, H] \\
+		&= \brac{ \phisxt, \int \ddcxp \pisxp \, \pixp }
+		= i \int \ddcxp \del^3(\vx - \vx') \, \pixp
+		= i \pix,
+	}
+	\al{
+		i \pdv{\pix}{t} &= [\pix, H] \\
+		&= \brac{ \pixt, \int \ddcxp \pisxp \, \pixp } + \brac{ \pixt, \int \ddcxp \grad' \phixp \vdot \grad' \phisxp } \\
+		&\phantom{mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm} + m^2 \brac{ \pixt, \int \ddcxp \phisxp \, \phixp } \\
+		&= -i \int \ddcxp \brac{ \grad' \del^3(\vx - \vx') \vdot \grad' \phisxp + m^2 \del^3(\vx - \vx') \, \phisxp } \\
+		&= -i \int \ddcxp \brac{ - \del^3(\vx - \vx') \vdot {\nabla'}^2 \phisxp + m^2 \del^3(\vx - \vx') \, \phisxp }
+		= -i (-\laplacian + m^2) \, \phisx, \\[2ex]
+		i \pdv{\pisx}{t} &= [\pisx, H] \\
+		&= -i \int \ddcxp \brac{ \grad' \phixp \vdot \grad' \del(\vx - \vx') + m^2 \del^3(\vx - \vx') \, \phixp } \\
+		&= -i \int \ddcxp \brac{ - \del^3(\vx - \vx') \vdot {\nabla'}^2 \phixp + m^2 \del^3(\vx - \vx') \, \phixp }
+		= -i (-\laplacian + m^2) \, \phix.
+	}
+	Thus we have obtained
+	\al{
+		\pdv{\phix}{t} &= \pisx, &
+		\pdv{\phisx}{t} &= \pix, &
+		\pdv{\pix}{t} &= (\laplacian - m^2) \,\phisx, &
+		\pdv{\pisx}{t} &= (\laplacian - m^2) \,\phix.
+	}
+	Combining these results yields
+	\ans{\al{
+		\pdv[2]{\phi}{t} &= (\laplacian - m^2) \phi, &
+		\pdv[2]{\phis}{t} &= (\laplacian - m^2) \phis,
+	}}%
+	which is the Klein-Gordon equation and its complex conjugate, as we sought to show. \qed
+}
+
+
+
+\prob{}{
+	Diagonalize $H$ by introducing creation and annihilation operators.  Show that the theory contains two sets of particles of mass $m$.
+}
+
+\sol{
+	Peskin \& Schroeder~(2.21) gives the Klein-Gordon equation in the momentum basis,
+	\eq{
+		\paren{ \pdv[2]{t} + \vp^2 + m^2 } \phipt = 0.
+	}
+	This is the same as the harmonic oscillator equation of motion.  It has solutions~\cite{SHM}
+	\eq{
+		\phipt = \Avp \, e^{i \omgp t} + \Bvp \, e^{-i \omgp t},
+	}
+	where $\omgp = \sqrt{\vp^2 + m^2}$ as in Peskin \& Schroeder Eq.~(2.22), and $\Avp$ and $\Bvp$ are arbitrary functions of $\vp$.  The complex conjugate of this solution is
+	\eq{
+		\phispt = \Bsvp \, e^{i \omgp t} + \Asvp \, e^{-i \omgp t}.
+	}
+	
+	The field $\phi$ in the position basis can be expanded as~\cite[p.~20]{Peskin},
+	\eq{
+		\phixt = \int \ddpf e^{i \vp \vdot \vx} \, \phipt.
+	}
+	so we can write~\cite[p.~33]{Tong}
+	\al{
+		\phivx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \ap e^{i \vp \vdot \vx} + \aspdag e^{-i \vp \vdot \vx} }, &
+		\phisvx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \asp e^{i \vp \vdot \vx} + \apdag e^{-i \vp \vdot \vx} },
+	}
+	where $\ap$ and $\asp$ are creation and annihilation operators.  By analogy to Eq.~(2.26) of Peskin \& Schroeder, we can also write
+	\al{
+		\pivx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \asp e^{i \vp \vdot \vx} - \apdag e^{-i \vp \vdot \vx} }, &
+		\pisvx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \ap e^{i \vp \vdot \vx} - \aspdag e^{-i \vp \vdot \vx} }.
+	}
+	Simplifying these expressions as in their Eqs.~(2.27) and (2.28), we have
+	\aln{
+		\phivx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \ap + \asnpdag } e^{i \vp \vdot \vx}, &
+		\phisvx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \asp + \anpdag } e^{i \vp \vdot \vx}, \label{things2.b1} \\
+		\pivx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \asp - \anpdag } e^{i \vp \vdot \vx}, &
+		\pisvx &= -i \int \ddpf \sqrt{\frac{\omgp}{2}} \paren{ \ap - \asnpdag } e^{i \vp \vdot \vx}. \label{things2.b2}
+	}
+	Also generalizing their Eq.~(2.24),
+	\al{
+		[\ap, \appdag] &= [\asp, \asppdag] = (2\pi)^3 \, \del^3(\vp - \vp'), &
+		[\ap, \asppdag] &= [\asp, \appdag] = 0.
+	}
+	
+	Feeding Eqs.~\refeq{things2.b1} and \refeq{things2.b2} into Eq.~\refeq{ham2.a},
+	\eq{
+		H = \int \ddcx \int \ddppf e^{i (\vp + \vp') \vdot \vx} \brac{ -\frac{\sqrt{\omgp \omgpp}}{2} \paren{ \ap - \asnpdag } \paren{ \aspp - \anppdag } + \frac{-\vp \vdot \vp' + m^2}{2 \sqrt{\omgp \omgpp}} \paren{ \ap + \asnpdag } \paren{ \aspp + \anppdag } }
+	}
 }
 
 
 
 %\prob{}{
-%	Diagonalize $H$ by introducing creation and annihilation operators.  Show that the theory contains two sets of particles of mass $m$.
-%}
-
-
-
-%\prob{}{
-%	\label{2.3(c)}
+%	\label{2.2(c)}
 %	
 %	Rewrite the conserved charge
 %	\eq{
@@ -53,7 +179,7 @@
 
 
 %\prob{}{
-%	Consider the case of two complex Klein-Gordon fields with the same mass.  Label the fields as $\phiax$, where $a = 1, 2$.  Show that there are now four conserved charges, one given by the generalization of part~\ref{2.3(c)}, and the other three given by
+%	Consider the case of two complex Klein-Gordon fields with the same mass.  Label the fields as $\phiax$, where $a = 1, 2$.  Show that there are now four conserved charges, one given by the generalization of part~\ref{2.2(c)}, and the other three given by
 %	\eq{
 %		\Qi = \int \ddcx \frac{i}{2} (\phias \sigiab \pibs - \pia \sigiab \phib),
 %	}
