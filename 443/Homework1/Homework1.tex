@@ -190,7 +190,7 @@
 	\eq{
 		(\apdag)^{\na} \,(\bpdag)^{\nb} \koo \equiv \knanb,
 	}
-	which have eigenvalues $(\na + \nb) \omgp$.  So the expression for the Hamiltonian in Eq.~\refeq{diagham2.b} is diagonal in the occupation number basis $\{ \knanb \}$, where $\na$ indicates the number of particles created with $\apdag$ and $\nb$ the number created with $\bpdag$.  Since each operation of $\apdag$ or $\bpdag$ imparts energy $\omgp = \sqrt{\vp^2 + m^2}$ to the system, we can conclude that $\apdag$ and $\bpdag$ each correspond to a set of particles of mass $m$.
+	which have eigenvalues $(\na + \nb) \omgp$.  So the expression for the Hamiltonian in Eq.~\refeq{diagham2.b} is diagonal in the occupation number basis $\{ \knanb \}$, where $\na$ indicates the number of particles created with $\apdag$ and $\nb$ the number created with $\bpdag$.  The ground state is $\koo$; it has zero energy since its eigenvalue is zero.  Since each operation of $\apdag$ or $\bpdag$ imparts energy $\omgp = \sqrt{\vp^2 + m^2}$ to the system, and each operation of $\ap$ or $\bp$ removes energy $\omgp = \sqrt{\vp^2 + m^2}$ from the system, we can conclude that each of the two sets of operators corresponds to a set of particles of mass $m$. \qed
 }
 
 
@@ -199,21 +199,98 @@
 	\label{2.2(c)}
 	
 	Rewrite the conserved charge
-	\eq{
+	\eqn{Q2.c}{
 		Q = \int \ddcx \frac{i}{2} (\phis \pis - \pi \phi)
 	}
 	in terms of creation and annihilation operators, and evaluate the charge of the particles of each type.
 }
 
+\sol{
+	Applying Eqs.~\refeq{things2.b1} and \refeq{things2.b2}, we find
+	\al{
+		Q &= \frac{1}{4} \int \ddcx \int \ddppfs \, e^{i \vp \vdot \vx} \brac{ \paren{ \bp + \anpdag } \paren{ \app - \bnppdag } - \paren{ \bp - \anpdag } \paren{ \app + \bnppdag } } \\
+		&= \frac{1}{4} \int \ddpf \brac{ \paren{ \bp + \anpdag } \paren{ \anp - \bpdag } - \paren{ \bp - \anpdag } \paren{ \anp + \bpdag } } \\
+		&= \frac{1}{4} \int \ddpf \brac{ \paren{ \bp \anp - \bp \bpdag + \anpdag \anp - \anpdag \bnpdag } - \paren{ \bp \anp + \bp \bpdag - \anpdag \anp - \anpdag \bpdag} } \\
+		&= \frac{1}{2} \int \ddpf \paren{ \anpdag \anp - \bp \bpdag }
+		= \frac{1}{2} \int \ddpf \paren{ \anpdag \anp - \bpdag \bp - [\bp, \bpdag] } \\
+		&= \ans{ \frac{1}{2} \int \ddpf \paren{ \apdag \ap - \bpdag \bp }. }
+	}
+	The particles associated with $\apdag \ap$ must have positive charge, since $\apdag \ap$ represents their number and has the same sign as the conserved charge.  Similarly, the particles associated with $\bpdag \bp$ must have negative charge.
+}
 
 
-%\prob{}{
-%	Consider the case of two complex Klein-Gordon fields with the same mass.  Label the fields as $\phiax$, where $a = 1, 2$.  Show that there are now four conserved charges, one given by the generalization of part~\ref{2.2(c)}, and the other three given by
-%	\eq{
-%		\Qi = \int \ddcx \frac{i}{2} (\phias \sigiab \pibs - \pia \sigiab \phib),
-%	}
-%	where $\sigi$ are the Pauli sigma matrices.  Show that these three charges have the commutation relations of angular momentum ($SU(2)$).  Generalize these results to the case of $n$ identical complex scalar fields.
-%}
+
+\prob{}{
+	Consider the case of two complex Klein-Gordon fields with the same mass.  Label the fields as $\phiax$, where $a = 1, 2$.  Show that there are now four conserved charges, one given by the generalization of part~\ref{2.2(c)}, and the other three given by
+	\eq{
+		\Qi = \int \ddcx \frac{i}{2} (\phias \sigiab \pibs - \pia \sigiab \phib),
+	}
+	where $\sigi$ are the Pauli sigma matrices.  Show that these three charges have the commutation relations of angular momentum ($SU(2)$).  Generalize these results to the case of $n$ identical complex scalar fields.
+}
+
+\sol{
+	Generalizing Eq.~\refeq{action2}, the Lagrangian for the two Klein-Gordon fields is
+	\eqn{lagr2.d}{
+		\cL = \ptsm \phiqs \ptm \phiq - m^2 \phiqs \phiq + \ptsm \phiws \ptm \phiw - m^2 \phiws \phiw.
+	}
+	The conserved charge is given in general by Peskin \& Schroeder~(2.12) and (2.13),
+	\al{
+		Q &\equiv \int_\text{all space} \jo \ddcx, &
+		\where \jmx &= \pdv{\cL}{(\ptsm\phi)} \Del\phi - \Jm,
+	}
+	where $\Jm$ is a 4-divergence that arises when transforming the Lagrangian as in Peskin \& Schroeder~(2.10):
+	\eq{
+		\cLx \to \cLx + \alp \ptsm \Jmx.
+	}
+	
+	For the first conserved charge, we note that the Lagrangian in Eq.~\refeq{lagr2.d} is invariant under the transformations $\phia \to e^{i \alp} \phia$~\cite[p.~18]{Peskin}:
+	\eq{
+		\cL \to \suma \brac{ \ptsm(e^{-i \alp} \phias) \, \ptm(e^{i \alp} \phia) - m^2 e^{-i \alp} \phias \, e^{i \alp} \phia }
+		= \cL,
+	}
+	so $\Jmx = 0$.  The relevant infinitesimal transformations are found by generalizing Peskin \& Schroeder~(2.15):
+	\aln{ \label{infinitesimal2.d}
+		\alp \, \Del\phia &= i \alp \phia, &
+		\alp \, \Del\phias &= -i \alp \phias.
+	}
+	These transformations yield the conserved current
+	\eq{
+		\jm = -\frac{1}{2} \suma \paren{ \pdv{\cL}{(\ptsm\phia)} \Del\phia + \pdv{\cL}{(\ptsm\phias)} \Del\phias }
+		= -\frac{i}{2} \suma \paren{ \phia \ptm\phias -\phias \ptm\phia },
+	}
+	where we have arbitrarily chosen the overall constant~\cite[p.~18]{Peskin}.  Then, generalizing Eq.~\refeq{moms2.a}, the corresponding conserved charge is
+	\al{
+		\Qo &= \int \ddcx \jo
+		= -\frac{i}{2} \int \ddcx \suma \paren{ \phia \phiasd - \phias \phiad }
+		= -\frac{i}{2} \int \ddcx \suma \paren{ \phia \pia - \phias \pias } \\
+		&= \ans{ \int \ddcx \frac{i}{2} \paren{ \phiqs \piqs - \phiq \piq + \phiws \piws - \phiw \piw }, }
+	}
+	which is the generalization of Eq.~\refeq{Q2.c} for two fields.
+	
+	From the problem statement, we make the ansatz that $\cL$ is also invariant under rotations, $\phi \to e^{i \alpi \sigi / 2} \phi$ where $\phi = (\phiq, \phiw)$ is a two-component spinor, from Peskin \& Schroeder~(15.19) and (15.20).  To verify,
+	\eq{
+		\cL \to \suma \brac{ \ptsm(e^{-i \alpi \sigi / 2} \phias) \, \ptm(e^{i \alpi \sigi / 2} \phia) - m^2 e^{-i \alpi \sigi / 2} \phias \, e^{i \alpi \sigi / 2} \phia }
+		= \cL.
+	}
+	Again, $\Jm = 0$.  By analogy with Eq.~\refeq{infinitesimal2.d}, the infinitesimal transformations are
+	\al{
+		\alpi \, \Del\phi &= \frac{i}{2} \phi \alpi \sigi, &
+		\alpi \, \Del\phia &= -\frac{i}{2} \phia \alpi \sigi.
+	}
+	We have the conserved currents
+	\eq{
+		\jmi = -\paren{ \pdv{\cL}{(\ptsm\phi)} \Del\phi + \pdv{\cL}{(\ptsm\phis)} \Del\phis }
+		= \frac{i}{2} \paren{ \phis \sigi \, \ptm\phi - \phi \sigi \, \ptm\phis },
+	}
+	where we have chosen a different overall constant factor.  Then the corresponding conserved charges are
+	\eq{
+		\Qi = \int \ddcx \joi
+		= \int \ddcx \frac{i}{2} \paren{ \phis \sigi \phid - \phi \sigi \phisd }
+		= \int \ddcx \frac{i}{2} \paren{ \phis \sigi \pis - \phi \sigi \pi }
+		= \ans{ \int \ddcx \frac{i}{2} (\phias \sigiab \pibs - \pia \sigiab \phib) },
+	}
+	as desired. \qed
+}
 
 
 
