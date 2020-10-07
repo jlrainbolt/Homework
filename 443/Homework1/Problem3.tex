@@ -1,0 +1,39 @@
+\state{(Peskin \& Schroeder 2.3)}{
+	\label{3}
+	
+	Evaluate the function
+	\eqn{D3}{
+		\ev{\phix \, \phiy}{0} = D(x - y)
+		= \int \ddpf \frac{1}{2 \Ep} e^{i p (x - y)},
+	}
+	for $(x - y)$ spacelike so that $(x - y)^2 = -r^2$, explicitly in terms of Bessel functions.
+}
+
+\sol{
+	We choose our reference frame such that $\xo - \yo = 0$ and let $\vx - \vy = \vr$.  Then
+	\eq{
+		p (x - y) = -\vp \vdot \vr = -p r \cost,
+	}
+	where we have defined $\tht$ as the angle between $\vp$ and $\vr$.  We choose our coordinates such that $\tht$ is also the spherical polar coordinate.  Substituting this expression and $\Ep = \sqrt{\vp^2 + m^2}$~\cite[p.~22]{Peskin} into Eq.~\refeq{D3},
+	\aln{
+		D(x - y) &= \int \ddpf \frac{1}{2 \Ep} e^{-i p r \cost}
+		= \frac{1}{2 (2 \pi)^3} \intoi \ddp \frac{p^2}{\sqrt{p^2 + m^2}} \intqq \ddcost  e^{-i p r \cost} \intotpi \ddphi \notag \\
+		&= \frac{1}{2 (2 \pi)^3} \intoi \ddp \frac{p^2}{\sqrt{p^2 + m^2}} \bigg[ -\frac{i e^{-i p r \cost}}{p r} \bigg]_{-1}^1 \bigg[ \phi \bigg]_0^{2\pi}
+		= \frac{1}{(2 \pi)^2} \intoi \ddp \frac{p \sin(p r)}{r \sqrt{p^2 + m^2}}. \label{3.1}
+	}
+	An integral formula for the modified Bessel function of the second kind of order 0 is~\cite{BesselK}
+	\eq{
+		\Kox = \intoi \dd{t} \frac{\cos(x t)}{\sqrt{t^2 +1}},
+	}
+	which has the derivative
+	\eq{
+		\dv{\Kox}{x} = -\intoi \dd{t} \frac{t \sin(x t)}{\sqrt{t^2 +1}}
+		= -\Kqx,
+	}
+	where we have used the identity $\dv*{[x^{-p} \Kp(x)]}{x} = -x^{-p} \Kppq(x)$~\cite[p.~386]{Olmstead}.  So Eq.~\refeq{3.1} can be written
+	\eq{
+		D(x - y) = \frac{m}{(2 \pi)^2 r} \, \Kqmr
+		= \ans{ \frac{m}{(2 \pi)^2 \abs{x - y}} \, \Kq(m \abs{x - y}). }
+	}
+	\vfix
+}

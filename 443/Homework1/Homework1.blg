@@ -3,46 +3,46 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Homework1.aux
 The style file: lucas_unsrt.bst
 Database file #1: references.bib
-Warning--I didn't find a database entry for "Sakurai"
-You've used 6 entries,
+Warning--empty publisher in Olmstead
+You've used 9 entries,
             2558 wiz_defined-function locations,
-            656 strings with 5606 characters,
-and the built_in function-call counts, 1129 in all, are:
-= -- 97
-> -- 38
+            670 strings with 5907 characters,
+and the built_in function-call counts, 1673 in all, are:
+= -- 145
+> -- 57
 < -- 1
-+ -- 14
-- -- 8
-* -- 61
-:= -- 140
-add.period$ -- 12
-call.type$ -- 6
-change.case$ -- 2
++ -- 21
+- -- 12
+* -- 86
+:= -- 204
+add.period$ -- 18
+call.type$ -- 9
+change.case$ -- 3
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 69
-empty$ -- 157
-format.name$ -- 8
-if$ -- 288
+cite$ -- 10
+duplicate$ -- 105
+empty$ -- 235
+format.name$ -- 12
+if$ -- 431
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 6
-newline$ -- 31
-num.names$ -- 6
-pop$ -- 54
+int.to.str$ -- 9
+missing$ -- 10
+newline$ -- 43
+num.names$ -- 9
+pop$ -- 84
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 31
+skip$ -- 44
 stack$ -- 0
 substring$ -- 0
-swap$ -- 7
+swap$ -- 9
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 6
-width$ -- 7
-write$ -- 66
+warning$ -- 1
+while$ -- 9
+width$ -- 10
+write$ -- 94
 (There was 1 warning)

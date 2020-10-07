@@ -36,4 +36,21 @@ M.~E. Peskin and D.~V. Schroeder, ``An Introduction to Quantum Field Theory''.
 \newblock \url
   {https://en.wikipedia.org/wiki/Creation_and_annihilation_operators}.
 
+\bibitem{Sakurai}
+J.~J. Sakurai, ``Modern Quantum Mechanics''.
+\newblock Addison-Wesley Publishing Company, revised edition, 1994.
+
+\bibitem{BesselK}
+\href
+  {https://mathworld.wolfram.com/ModifiedBesselFunctionoftheSecondKind.html}{E.~W.
+  Weisstein, ``Modified Bessel Function of the Second Kind.''} From
+  MathWorld---A Wolfram Web Resource.
+\newblock \url
+  {https://mathworld.wolfram.com/ModifiedBesselFunctionoftheSecondKind.html}.
+
+\bibitem{Olmstead}
+W.~E. Olmstead and V.~A. Volpert, ``Differential Equations in Applied
+  Mathematics''.
+\newblock 2014.
+
 \end{thebibliography}\endgroup
