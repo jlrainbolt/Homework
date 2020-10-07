@@ -3,46 +3,46 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Homework1.aux
 The style file: lucas_unsrt.bst
 Database file #1: references.bib
-Warning--I didn't find a database entry for "Tong"
-You've used 5 entries,
+Warning--I didn't find a database entry for "Sakurai"
+You've used 6 entries,
             2558 wiz_defined-function locations,
-            652 strings with 5480 characters,
-and the built_in function-call counts, 957 in all, are:
-= -- 83
-> -- 33
+            656 strings with 5606 characters,
+and the built_in function-call counts, 1129 in all, are:
+= -- 97
+> -- 38
 < -- 1
-+ -- 12
-- -- 7
-* -- 50
-:= -- 121
-add.period$ -- 10
-call.type$ -- 5
++ -- 14
+- -- 8
+* -- 61
+:= -- 140
+add.period$ -- 12
+call.type$ -- 6
 change.case$ -- 2
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 59
-empty$ -- 131
-format.name$ -- 7
-if$ -- 244
+cite$ -- 6
+duplicate$ -- 69
+empty$ -- 157
+format.name$ -- 8
+if$ -- 288
 int.to.chr$ -- 0
-int.to.str$ -- 5
+int.to.str$ -- 6
 missing$ -- 6
-newline$ -- 27
-num.names$ -- 5
-pop$ -- 46
+newline$ -- 31
+num.names$ -- 6
+pop$ -- 54
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 24
+skip$ -- 31
 stack$ -- 0
 substring$ -- 0
-swap$ -- 5
+swap$ -- 7
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 5
-width$ -- 6
-write$ -- 56
+while$ -- 6
+width$ -- 7
+write$ -- 66
 (There was 1 warning)

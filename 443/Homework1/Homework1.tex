@@ -47,7 +47,7 @@
 		\ans{\pisx\ }&\ans{= \phid, } \label{moms2.a}
 	}
 	where $\pisx$ is the momentum conjugate to $\phisx$.  The canonical commutation relations follow from Peskin \& Schroeder~(2.20):
-	\ans{\al{
+	\ans{\aln{ \label{comm2.a}
 		[\phivx, \pivy] &= [\phisvx, \pisvy] = i \,\del^3(\vx - \vy), \\
 		[\phivx, \phivy] &= [\phisvx, \phisvy] = 0, \\
 		[\pivx, \pivy] &= [\pisvx, \pisvy] = 0, \\
@@ -135,7 +135,7 @@
 	\eq{
 		\phixt = \int \ddpf e^{i \vp \vdot \vx} \, \phipt.
 	}
-	so we can write~\cite[p.~33]{Tong}
+	so we can write, as explained in class,
 	\al{
 		\phivx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \ap e^{i \vp \vdot \vx} + \bpdag e^{-i \vp \vdot \vx} }, &
 		\phisvx &= \int \ddpf \frac{1}{\sqrt{2 \omgp}} \paren{ \bp e^{i \vp \vdot \vx} + \apdag e^{-i \vp \vdot \vx} },
@@ -190,14 +190,12 @@
 	\eq{
 		(\apdag)^{\na} \,(\bpdag)^{\nb} \koo \equiv \knanb,
 	}
-	which have eigenvalues $(\na + \nb) \omgp$.  So the expression for the Hamiltonian in Eq.~\refeq{diagham2.b} is diagonal in the occupation number basis $\{ \knanb \}$, where $\na$ indicates the number of particles created with $\apdag$ and $\nb$ the number created with $\bpdag$.  The ground state is $\koo$; it has zero energy since its eigenvalue is zero.  Since each operation of $\apdag$ or $\bpdag$ imparts energy $\omgp = \sqrt{\vp^2 + m^2}$ to the system, and each operation of $\ap$ or $\bp$ removes energy $\omgp = \sqrt{\vp^2 + m^2}$ from the system, we can conclude that each of the two sets of operators corresponds to a set of particles of mass $m$. \qed
+	which have eigenvalues $(\na + \nb) \omgp$.  So the expression for the Hamiltonian in Eq.~\refeq{diagham2.b} is diagonal in the occupation number basis $\{ \knanb \}$, where $\na$ indicates the number of particles created with $\apdag$ and $\nb$ the number of antiparticles created with $\bpdag$.  The ground state is $\koo$; it has zero energy since its eigenvalue is zero.  Since each operation of $\apdag$ or $\bpdag$ imparts energy $\omgp = \sqrt{\vp^2 + m^2}$ to the system, and each operation of $\ap$ or $\bp$ removes energy $\omgp = \sqrt{\vp^2 + m^2}$ from the system, we can conclude that each of the two sets of operators corresponds to a set of particles of mass $m$. \qed
 }
 
 
 
-\prob{}{
-	\label{2.2(c)}
-	
+\prob{}{ \label{2.2(c)}
 	Rewrite the conserved charge
 	\eqn{Q2.c}{
 		Q = \int \ddcx \frac{i}{2} (\phis \pis - \pi \phi)
@@ -212,10 +210,11 @@
 		&= \frac{1}{4} \int \ddpf \brac{ \paren{ \bp + \anpdag } \paren{ \anp - \bpdag } - \paren{ \bp - \anpdag } \paren{ \anp + \bpdag } } \\
 		&= \frac{1}{4} \int \ddpf \brac{ \paren{ \bp \anp - \bp \bpdag + \anpdag \anp - \anpdag \bnpdag } - \paren{ \bp \anp + \bp \bpdag - \anpdag \anp - \anpdag \bpdag} } \\
 		&= \frac{1}{2} \int \ddpf \paren{ \anpdag \anp - \bp \bpdag }
-		= \frac{1}{2} \int \ddpf \paren{ \anpdag \anp - \bpdag \bp - [\bp, \bpdag] } \\
-		&= \ans{ \frac{1}{2} \int \ddpf \paren{ \apdag \ap - \bpdag \bp }. }
+		= \frac{1}{2} \int \ddpf \paren{ \ap \apdag - \bp \bpdag } \\
+		&= \frac{1}{2} \int \ddpf \paren{ \ap \apdag - [\ap, \apdag] - \bpdag \bp - [\bp, \bpdag] }
+		= \ans{ \frac{1}{2} \int \ddpf \paren{ \apdag \ap - \bpdag \bp }, }
 	}
-	The particles associated with $\apdag \ap$ must have positive charge, since $\apdag \ap$ represents their number and has the same sign as the conserved charge.  Similarly, the particles associated with $\bpdag \bp$ must have negative charge.
+	where in the fifth line we have used $a = (q + i p) / \sqrt{2}$ and $\adag = (q - i p)$~\cite{Operators}.  The particles associated with $\apdag \ap$ must have positive charge, since $\apdag \ap$ represents their number and has the same sign as the conserved charge.  Similarly, the antiparticles associated with $\bpdag \bp$ must have negative charge.
 }
 
 
@@ -290,6 +289,62 @@
 		= \ans{ \int \ddcx \frac{i}{2} (\phias \sigiab \pibs - \pia \sigiab \phib) },
 	}
 	as desired. \qed
+
+	If $\Qi$ have the commutation relations of angular momentum, then we want to show $[\Qi, \Qj] = i \epsijk \Qk$~\cite[p.~158]{Sakurai}.  Generalizing Eq.~\refeq{comm2.a} to two fields, the canonical commutation relations are
+	\al{
+		[\phiavx, \pibvy] &= [\phiasvx, \pibsvy] = i \,\delab \,\del^3(\vx - \vy), \\
+		[\phiavx, \phibvy] &= [\phiasvx, \phibsvy] = 0, \\
+		[\piavx, \pibvy] &= [\piasvx, \pibsvy] = 0, \\
+		[\phiavx, \pibsvy] &= [\phiavx, \phibsvy] = [\piavx, \pibsvy] = 0.
+	}
+	The commutation relations among the Pauli matrices are $[\sigi, \sigj] = 2 i \epsijk \sigk$~\cite[p.~165]{Sakurai}.
+	
+	Note that
+	\aln{
+		[\Qi, \Qj] &= \brac{ \int \ddcx \frac{i}{2} [ \phiasx \, \sigiab \, \pibsx - \piax \, \sigiab \, \phibx ], \int \ddcxp \frac{i}{2} [ \phicsxp \, \sigjcd \, \pidsxp - \picxp \, \sigjcd \, \phidxp ] } \notag \\
+		&= -\frac{1}{4} \int \ddcx \int \ddcxp \bigg\{ \brac{ \phiasx \, \sigiab \, \pibsx, \phicsxp \, \sigjcd \, \pidsxp } - \brac{ \phiasx \, \sigiab \, \pibsx, \picxp \, \sigjcd \, \phidxp } \notag \\
+		&\phantom{mmmmmmm} - \brac{ \piax \, \sigiab \, \phibx, \phicsxp \, \sigjcd \, \pidsxp } + \brac{ \piax \, \sigiab \, \phibx, \picxp \, \sigjcd \, \phidxp } \bigg\}. \label{fourterms}
+	}
+	For the first term in Eq.~\refeq{fourterms},
+	\al{
+		\int \ddcx \int \ddcxp &\brac{ \phiasx \, \sigiab \, \pibsx, \phicsxp \, \sigjcd \, \pidsxp } \\
+		&= \int \ddcx \int \ddcxp \left\{ \phiasx \, [ \phicsxp \, \pibsx - i \, \delbc \, \del^3(x - x') ] \, \pidsxp \, \sigiab \, \sigjcd \right. \\
+		&\phantom{mmmmmmmmmmmmm} - \left. \phicsxp \, [ \phiasx \, \pidsxp - i \, \delad \, \del^3(x - x') ] \, \pibsx \, \sigjcd \, \sigiab \right\} \\
+		&= \int \ddcx \int \ddcxp \left[ \phiasx \, \pibsx \, \phicsxp \, \pidsxp \, \sigiab \, \sigjcd - i \, \delbc \, \del^3(x - x') \,  \phiasx \, \pidsxp \, \sigiab \, \sigjcd \right. \\
+		&\phantom{mmmmmmmmmmmmm} - \left. \phicsxp \, \pidsxp \, \phiasx \, \pibsx \, \sigjcd \, \sigiab + i \, \delad \, \phicsxp \, \del^3(x - x') \, \pibsx \, \sigjcd \, \sigiab \right] \\
+		&= \int \ddcx \int \ddcxp \, i \del^3(x - x') \brac{ \phicsxp \, \pibsx \, (\sigj \sigi)_{cb} - \phiasx \, \pidsxp \, (\sigi \sigj)_{ad} } \\
+		&= \int \ddcx \, i \brac{ \phiasx \, \pibsx \, (\sigj \sigi)_{ab} - \phiasx \, \pibsx \, (\sigi \sigj)_{ab} }
+		= -\int \ddcx \, i \, \phiasx \, \pibsx \, [\sigi, \sigj]_{ab} \\
+		&= 2 \epsijk \int \ddcx \, \phiasx \, \pibsx \, \sigkab,
+	}
+	where we have interchanged $a \leftrightarrow c$ and $b \leftrightarrow d$ in one of the terms that canceled, and we have also relabeled indices in the second to last line.
+	
+	The second and third terms of Eq.~\refeq{fourterms} both vanish since they consist entirely of fields that commute.  The fourth term may be found using similar arithmetic as for the first:
+	\al{
+		\int \ddcx \int \ddcxp &\brac{ \piax \, \sigiab \, \phibx, \picxp \, \sigjcd \, \phidxp } \\
+		&= 
+	}
+	
+%	where
+%	\al{
+%		\phicsxp \, \pidsxp \, \phiasx \, \pibsx \, \sigjcd \, \sigiab &= \phicsxp \, [ \phiasx \, \pidsxp - i \, \delad \, \del^3(x - x') ] \, \pibsx \, \sigjcd \, \sigiab \\
+%		&= \phiasx \, \phicsxp \, \pibsx \, \pidsxp \, \sigjcd \, \sigiab - i \, \delad \, \del^3(x - x') \, \phicsxp \, \pibsx \, \sigjcd \, \sigiab 
+%	}
+%	and
+%	\al{
+%		\phiasx \, \phicsxp \, \pibsx \, \pidsxp \, \sigjcd \, \sigiab &= \phiasx \, [ \pibsx \, \phicsxp + i \, \delbc \, \del^3(x - x') ] \, \pidsxp \, \sigjcd \, \sigiab \\
+%		&= \phiasx \, \pibsx \, \phicsxp \, \pidsxp \, \sigjcd \, \sigiab + i \, \delbc \, \del^3(x - x') \, \phiasx \, \pidsxp \, \sigjcd \, \sigiab,
+%	}
+%%	and
+%%	\eq{
+%%		\phiasx \, \pibsx \, \phicsxp \, \pidsxp \, \sigjcd \, \sigiab = % \phiasx \, \pibsx \, \phicsxp \, \pidsxp \, ( \sigjab \, \sigicd 
+%%	}
+%	
+%	so
+%	\al{
+%		\int \ddcx \int \ddcxp &\brac{ \phiasx \, \sigiab \, \pibsx, \phicsxp \, \sigjcd \, \pidsxp } \\
+%		&= \int \ddcx \int \ddcxp i \brac{ \del^3(x - x') \, \phicsxp \, \pibsx \, (\sigi \sigj)_{bc} - \del^3(x - x') \, \phiasx \, \pidsxp \, (\sigi \sigj)_{ad} }
+%	}
 }
 
 
@@ -297,56 +352,56 @@
 
 
 
-%\state{(Peskin \& Schroeder 2.3)}{
-%	\label{3}
-%	
-%	Evaluate the function
-%	\eq{
-%		\ev{\phix \, \phiy}{0} = D(x - y)
-%	= \int \ddpf \frac{1}{2 \Ep} e^{i p \, (x - y)},
-%	}
-%	for $(x - y)$ spacelike so that $(x - y)^2 = -r^2$, explicitly in terms of Bessel functions.
-%}
+\state{(Peskin \& Schroeder 2.3)}{
+	\label{3}
+	
+	Evaluate the function
+	\eq{
+		\ev{\phix \, \phiy}{0} = D(x - y)
+		= \int \ddpf \frac{1}{2 \Ep} e^{i p \, (x - y)},
+	}
+	for $(x - y)$ spacelike so that $(x - y)^2 = -r^2$, explicitly in terms of Bessel functions.
+}
 
 
 
 
 
 
-%\state{}{
-%	The classical limit of a harmonic oscillator can be described in terms of \emph{coherent states},
-%	\eq{
-%		\kalp = \exp( \alp \adag - \frac{1}{2} |\alp|^2 ) \ko.
-%	}
-%	When $\alp$ is large, the oscillator state is semiclassical.  Proceeding similarly for the Fourier modes of the quantum Klein-Gordon field,
-%	\al{
-%		\kf &= \Nf \exp( i \int \ddpf \fp \, \apdag ) \ko, &
-%		\Nf &= \exp( -\frac{1}{2} \int \ddpf | \fp |^2 ).
-%	}
-%}
+\state{}{
+	The classical limit of a harmonic oscillator can be described in terms of \emph{coherent states},
+	\eq{
+		\kalp = \exp( \alp \adag - \frac{1}{2} |\alp|^2 ) \ko.
+	}
+	When $\alp$ is large, the oscillator state is semiclassical.  Proceeding similarly for the Fourier modes of the quantum Klein-Gordon field,
+	\al{
+		\kf &= \Nf \exp( i \int \ddpf \fp \, \apdag ) \ko, &
+		\Nf &= \exp( -\frac{1}{2} \int \ddpf | \fp |^2 ).
+	}
+}
 
 
 
-%\prob{}{
-%	Evaluate the expectation value of the field operator $\ev{\phix}{f}$ and show that it satisfies the Klein-Gordon equation.
-%}
+\prob{}{
+	Evaluate the expectation value of the field operator $\ev{\phix}{f}$ and show that it satisfies the Klein-Gordon equation.
+}
 
 
 
-%\prob{}{
-%	Evaluate the relative mean square fluctuation of the occupation number of the mode with momentum $\vp$ and the relative mean square fluctuation in the total energy:
-%	\al{
-%		&\frac{\evnhps - \evnhp^2}{\evnhp^2}, &
-%		&\frac{\evHs - \evH^2}{\evH^2}.
-%	}
-%	Is either of these a good measure of the degree to which the field is classical?  Justify your answer.
-%}
+\prob{}{
+	Evaluate the relative mean square fluctuation of the occupation number of the mode with momentum $\vp$ and the relative mean square fluctuation in the total energy:
+	\al{
+		&\frac{\evnhps - \evnhp^2}{\evnhp^2}, &
+		&\frac{\evHs - \evH^2}{\evH^2}.
+	}
+	Is either of these a good measure of the degree to which the field is classical?  Justify your answer.
+}
 
 
 
-%\prob{}{
-%	Take $\Delta(x - y) = \ev{\phivx \, \phivy}{0}$ (equal times) as a measure of the fluctuations or correlations of the field amplitude.  Use your result from problem~\ref{3} to evaluate this quantity.  What is the meaning of the divergence as $\vx \to \vy$?
-%}
+\prob{}{
+	Take $\Delta(x - y) = \ev{\phivx \, \phivy}{0}$ (equal times) as a measure of the fluctuations or correlations of the field amplitude.  Use your result from problem~\ref{3} to evaluate this quantity.  What is the meaning of the divergence as $\vx \to \vy$?
+}
 
 
 \clearpage
