@@ -1,0 +1,27 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage[parfill]{parskip}
+\pagenumbering{gobble}
+
+
+\title{\Large \vspace{-6ex}
+	Physics 335 project proposal: \\
+	Testing of high-speed hardware track fitting \\ for the ATLAS trigger upgrade}
+\author{\textbf{Student:} Lacey Rainbolt, \texttt{jlrainbolt@uchicago.edu} \\ \textbf{Advisor:} Mel Shochet, \texttt{shochet@hep.uchicago.edu}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Project description}
+
+A Hardware-based Tracking system for the Trigger~(HTT) is being developed for the high-luminosity upgrade of the ATLAS trigger system.  Inclusion of high-speed tracking information at the trigger level can improve the overall trigger efficiency and sensitivity, as well as mitigate the effect of high-pileup conditions on the trigger's performance.  The Track-Fitting Mezzanine~(TFM), a component of the HTT architecture, performs the second of two stages of track fitting.  It includes Associate Memory~(AM) chips for pattern matching and FPGAs for track fitting and other processing functionality.  The TFM is mounted on a Tracking Processor~(TP) board, which in turn is installed in at ATCA shelf.  From the TP, the TFM receives first-stage tracks, which have been fitted to hits from the first eight layers of the tracking detector, and the hits from the remaining five layers of the tracking detector.  Based on the first-stage tracks, the TFM fits hits from all thirteen layers, and passes the results to the TP.
+
+The 335 project will consist of several stages of testing of the TFM design.  Firstly, software and firmware needed to write to and read from the TFM input and output buffers will be developed.  This will make it possible to load test vectors into the TFM input buffers and read the results of track fitting from the output buffers.  Secondly, the validity of the test vectors and fitting constants produced by simulation will be checked, and their formats will be converted to those needed for the hardware implementation.  Thirdly, monitoring software, including error recovery, for high-speed TFM integration with the TP will be developed.  Finally, a TFM board will be mounted on a TP in an ATCA shelf and tested.  The track-fitting firmware will be debugged in order to improve its performance in terms of both speed and FPGA resource usage.
+
+\section*{Signatures}
+
+
+\end{document}
