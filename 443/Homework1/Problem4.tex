@@ -23,10 +23,11 @@
 	}
 	Note that
 	\aln{
-		\ap \kf &= \ap \Nf \exp( i \int \ddppf \fpp \, \appdag ) \ko \notag \\
+		\ap \kf &= \ap \Nf \exp( i \int \ddppf \fpp \, \appdag ) \ko
+		= \Nf \ap \sumni \frac{i}{n!} \int \ddppf \fpp \, \appdag \ko \notag \\
 		&= \Nf \ap \brac{ 1 + i \int \ddppf \fpp \, \appdag + \frac{1}{2} \paren{ i \int \ddppf \fpp \, \appdag }^2 + \cdots } \ko, \label{thing4.a}
 	}
-	where we have used the Maclaurin series expansion for the exponential function~\cite{Maclaurin}.  The first term vanishes.  For the second term,
+	where we have used the Maclaurin series expansion for the exponential function~\cite{Exponential}.  The first term vanishes.  For the second term,
 	\al{
 		i \int \ddppf \fpp \, \ap \appdag \ko
 		&= i \int \ddppf \fpp \brac{ \appdag \ap + (2\pi)^3 \, \del^3(\vp - \vp')} \ko \\
@@ -97,19 +98,19 @@
 		\evnhps &= \ev{\apdag \ap \apdag \ap}{f}
 		= \abs{\fp}^2 \ev{\ap \apdag}{f}
 		= \abs{\fp}^2 \ev{\apdag \ap + [\ap, \apdag]}{f}
-		= \abs{\fp}^4,
-%		= \abs{\fp}^4 + \abs{\fp} \, (2\pi)^3 \, \del^3(0),
+%		= \abs{\fp}^4,
+		= \abs{\fp}^4 + \abs{\fp} \, (2\pi)^3 \, \del^3(0)
 	}
-	where we have dropped the divergent term.  So
-%	so
+%	where we have dropped the divergent term.  So
+	so
 	\eq{
 		\frac{\evnhps - \evnhp^2}{\evnhp^2}
-%		= \frac{ \abs{\fp}^4 + \abs{\fp} \, (2\pi)^3 \, \del^3(0) - \abs{\fp}^4 }{\abs{\fp}^4}
-%		= \ans{ \frac{ (2\pi)^3 \, \del^3(0) }{\abs{\fp}^2}, }
-		= \frac{ \abs{\fp}^4 - \abs{\fp}^4 }{\abs{\fp}^4}
-		= \ans{ 0. }
+		= \frac{ \abs{\fp}^4 + \abs{\fp} \, (2\pi)^3 \, \del^3(0) - \abs{\fp}^4 }{\abs{\fp}^4}
+		= \ans{ \frac{ (2\pi)^3 \, \del^3(0) }{\abs{\fp}^2}, }
+%		= \frac{ \abs{\fp}^4 - \abs{\fp}^4 }{\abs{\fp}^4}
+%		= \ans{ 0. }
 	}
-%	which diverges.
+	which diverges.
 	
 	From Peskin \& Schroeder~(2.31),
 	\eq{
@@ -135,9 +136,7 @@
 		&= \ans{ \left. \dint \ddpf \, \Ep^2 \, \abs{\fp}^2 \middle/ \paren{ \dint \ddpf \, \Ep \, \abs{\fp}^2 \right. }^2. }
 	}
 
-	\hl{Explanation?}
-	
-%	In a classical system, quantum fluctuations do not occur, so we would expect both quantities to be zero.  The fluctuation in number density for this system, although 
+	Both quantities can tell us something about how classical the field is.  Both quantities are zero in a classical system, since quantum fluctuations do not occur.  The infinite mean square fluctuation of the occupation number indicates that, in any given mode, any number of particles may be created or destroyed at any given time.  However, the changing number of particles in each state does not correspond to a large change in the total energy of the system, since the mean square fluctuation in the total energy is finite.  Both mean square fluctuations tend to zero as $\fp \to \infty$.  If $\fp$ is analogous to $\alp$ in that a large $\fp$ indicates a semiclassical system, then this is the expected behavior.  
 }
 
 
