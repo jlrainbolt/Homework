@@ -1,0 +1,155 @@
+\state{}{
+	The classical limit of a harmonic oscillator can be described in terms of \emph{coherent states},
+	\eq{
+		\kalp = \exp( \alp \adag - \frac{1}{2} |\alp|^2 ) \ko.
+	}
+	When $\alp$ is large, the oscillator state is semiclassical.  Proceeding similarly for the Fourier modes of the quantum Klein-Gordon field,
+	\al{
+		\kf &= \Nf \exp( i \int \ddpf \fp \, \apdag ) \ko, &
+		\Nf &= \exp( -\frac{1}{2} \int \ddpf | \fp |^2 ).
+	}
+}
+
+
+
+\prob{}{
+	Evaluate the expectation value of the field operator $\evphif$ and show that it satisfies the Klein-Gordon equation.
+}
+
+\sol{
+	The field operator is given in terms of the creation and annihilation operators by Peskin \& Schroeder~(2.47),
+	\eq{
+		\phix = \int \ddpf \frac{1}{\sqrt{2 \Ep}} \paren{ \ap e^{-i p \cdot x} + \apdag e^{i p \cdot x} } \bigg|_{\po = \Ep}.
+	}
+	Note that
+	\aln{
+		\ap \kf &= \ap \Nf \exp( i \int \ddppf \fpp \, \appdag ) \ko \notag \\
+		&= \Nf \ap \brac{ 1 + i \int \ddppf \fpp \, \appdag + \frac{1}{2} \paren{ i \int \ddppf \fpp \, \appdag }^2 + \cdots } \ko, \label{thing4.a}
+	}
+	where we have used the Maclaurin series expansion for the exponential function~\cite{Maclaurin}.  The first term vanishes.  For the second term,
+	\al{
+		i \int \ddppf \fpp \, \ap \appdag \ko
+		&= i \int \ddppf \fpp \brac{ \appdag \ap + (2\pi)^3 \, \del^3(\vp - \vp')} \ko \\
+		&= i \paren{ \fp + \int \ddppf \fpp \appdag \ap } \ko
+		= i \fp \ko.
+	}
+	For the third,
+	\al{
+		\frac{i^2}{2} \int \ddppf \fpp \, \ap \appdag \int &\ddpppf \fppp \, \apppdag \ko
+		= \frac{i^2}{2} \paren{ \fp + \int \ddppf \fpp \appdag \ap } \int \ddpppf \fppp \, \apppdag \ko \\
+		&= \brac{ \frac{i^2}{2} \fp \int \ddpppf \fppp \, \apppdag + \frac{i^2}{2} \int \ddppf \fpp \appdag \paren{ \fp + \int \ddpppf \fppp \apppdag \ap } } \ko \\
+		&= i^2 \fp \int \ddppf \fpp \, \appdag \ko.
+	}
+	Returning to Eq.~\refeq{thing4.a}, we have
+	\al{
+		\ap \kf &= i \fp \Nf \brac{ 1 + i \int \ddppf \fpp \, \appdag + \frac{1}{2} \paren{ i \int \ddppf \fpp \, \appdag }^2 + \cdots } \ko \\
+		&= i \fp \Nf \exp( i \int \ddppf \fpp \, \appdag ) \ko
+		= i \fp \kf,
+	}
+	where the Maclaurin series has shifted by one term.  Likewise, $\bra{f} \apdag = -i \fsp$.
+
+	Then, using these results, we can evaluate the expectation value:
+	\al{
+		\evphif &= \ev*{ \int \ddpf \frac{1}{\sqrt{2 \Ep}} \paren{ \ap e^{-i p \cdot x} + \apdag e^{i p \cdot x} } }{f}
+		= \int \ddpf \frac{1}{\sqrt{2 \Ep}} \paren{ \evapf e^{-i p \cdot x} + \evapdagf e^{i p \cdot x} } \\
+		&= \ans{ \int \ddpf \frac{i}{\sqrt{2 \Ep}} \brac{ \fp \, e^{-i p \cdot x} - \fsp \, e^{i p \cdot x} }. }
+	}
+	The Klein-Gordon equation is given by Peskin \& Schroeder~(2.7), $(\pdv*[2]{t} - \laplacian + m^2) \phi = 0$.  Then
+	\eqn{KG4.a}{
+		(\ptm \ptsm + m^2) \evphif = 
+		\int \ddpf \frac{i}{\sqrt{2 \Ep}} \paren{ \pdv[2]{t} - \laplacian + m^2 }  \brac{ \fp \, e^{-i (\Ep t - \vp \vdot \vx)} - \fsp \, e^{i (\Ep t - \vp \vdot \vx)} }.
+	}
+	For the time derivative,
+	\al{
+		\pdv[2]{t} \brac{ \fp \, e^{-i (\Ep t - \vp \vdot \vx)} - \fsp \, e^{i (\Ep t - \vp \vdot \vx)} }
+		&= \pdv{t} \brac{ -i \Ep \, \fp \, e^{-i (\Ep t - \vp \vdot \vx)} - i \Ep \, \fsp \, e^{i (\Ep t - \vp \vdot \vx)} } \\
+		&= -\Ep^2  \brac{ \fp \, e^{-i (\Ep t - \vp \vdot \vx)} - \fsp \, e^{i (\Ep t - \vp \vdot \vx)} },
+	}
+	and for the spatial derivative,
+	\eq{
+		\laplacian \brac{ \fp \, e^{-i (\Ep t - \vp \vdot \vx)} - \fsp \, e^{i (\Ep t - \vp \vdot \vx)} } = \vp^2 \brac{ \fp \, e^{-i (\Ep t - \vp \vdot \vx)} - \fsp \, e^{i (\Ep t - \vp \vdot \vx)} }.
+	}
+	Feeding these back into Eq.~\refeq{KG4.a} and using $\Ep = \sqrt{\vp^2 + m^2}$~\cite[p.~22]{Peskin},
+	\al{
+		(\pdv*[2]{t} - \laplacian + m^2) \evphif &= \int \ddpf \frac{i}{\sqrt{2 \Ep}} (\vp^2 + m^2 - \Ep^2) \brac{ \fp \, e^{-i (\Ep t - \vp \vdot \vx)} - \fsp \, e^{i (\Ep t - \vp \vdot \vx)} } \\
+		&= \int \ddpf \frac{i}{\sqrt{2 \Ep}} (\Ep^2 - \Ep^2) \brac{ \fp \, e^{-i (\Ep t - \vp \vdot \vx)} - \fsp \, e^{i (\Ep t - \vp \vdot \vx)} } \\
+		&= \ans{ 0, }
+	}
+	so $\evphif$ satisfies the Klein-Gordon equation. \qed
+}
+
+
+
+\prob{}{
+	Evaluate the relative mean square fluctuation of the occupation number of the mode with momentum $\vp$ and the relative mean square fluctuation in the total energy:
+	\al{
+		&\frac{\evnhps - \evnhp^2}{\evnhp^2}, &
+		&\frac{\evHs - \evH^2}{\evH^2}.
+	}
+	Is either of these a good measure of the degree to which the field is classical?  Justify your answer.
+}
+
+\sol{
+	Note that $\nhp = \apdag \ap$~\cite[p.~90]{Sakurai}.  Then
+	\al{
+		\evnhp &= \ev{\apdag \ap}{f}
+		= \fsp \fp = \abs{\fp}^2, \\
+		\evnhps &= \ev{\apdag \ap \apdag \ap}{f}
+		= \abs{\fp}^2 \ev{\ap \apdag}{f}
+		= \abs{\fp}^2 \ev{\apdag \ap + [\ap, \apdag]}{f}
+		= \abs{\fp}^4,
+%		= \abs{\fp}^4 + \abs{\fp} \, (2\pi)^3 \, \del^3(0),
+	}
+	where we have dropped the divergent term.  So
+%	so
+	\eq{
+		\frac{\evnhps - \evnhp^2}{\evnhp^2}
+%		= \frac{ \abs{\fp}^4 + \abs{\fp} \, (2\pi)^3 \, \del^3(0) - \abs{\fp}^4 }{\abs{\fp}^4}
+%		= \ans{ \frac{ (2\pi)^3 \, \del^3(0) }{\abs{\fp}^2}, }
+		= \frac{ \abs{\fp}^4 - \abs{\fp}^4 }{\abs{\fp}^4}
+		= \ans{ 0. }
+	}
+%	which diverges.
+	
+	From Peskin \& Schroeder~(2.31),
+	\eq{
+		\int \ddpf \, \Ep \apdag \ap,
+	}
+	so
+	\al{
+		\evH = \int \ddpf \, \Ep \ev{\apdag \ap}{f}
+		= \int \ddpf \, \Ep \abs{\fp}^2,
+	}
+	and
+	\al{
+		\evHs &= \int \ddppfs \Ep \Epp \ev{\apdag \ap \appdag \app}{f}
+		= \int \ddppfs \, \Ep \Epp \, \fsp \, \fpp \ev{\ap \appdag}{f} \\
+		&= \int \ddppfs \, \Ep \Epp \, \fsp \, \fpp \ev{\appdag \ap + [\ap, \appdag]}{f} \\
+		&= \int \ddppfs \, \Ep \Epp \, \fsp \, \fpp \brac{ \fsp \fpp + (2\pi)^3 \, \del^3(\vp - \vp') } \\
+%		&= \int \ddppfs \, \Ep \Epp \abs{\fp}^2 \abs{\fpp}^2 + \int \ddpf \, \Ep^2 \abs{\fp}^2 \\
+		&= \paren{ \int \ddpf \, \Ep \abs{\fp}^2 }^2 + \int \ddpf \, \Ep^2 \abs{\fp}^2.
+	}
+	Then
+	\al{
+		\frac{\evHs - \evH^2}{\evH^2} &= \frac{\paren{ \dint \ddpf \, \Ep \, \abs{\fp}^2 }^2 + \dint \ddpf \, \Ep^2 \, \abs{\fp}^2 - \paren{ \dint \ddpf \, \Ep \abs{\fp}^2 }^2}{\paren{ \dint \ddpf \, \Ep \abs{\fp}^2 }^2} \\
+		&= \ans{ \left. \dint \ddpf \, \Ep^2 \, \abs{\fp}^2 \middle/ \paren{ \dint \ddpf \, \Ep \, \abs{\fp}^2 \right. }^2. }
+	}
+
+	\hl{Explanation?}
+	
+%	In a classical system, quantum fluctuations do not occur, so we would expect both quantities to be zero.  The fluctuation in number density for this system, although 
+}
+
+
+
+\prob{}{
+	Take $\Delta(x - y) = \ev{\phivx \, \phivy}{0}$ (equal times) as a measure of the fluctuations or correlations of the field amplitude.  Use your result from problem~\ref{3} to evaluate this quantity.  What is the meaning of the divergence as $\vx \to \vy$?
+}
+
+\sol{
+	Since $x - y$ is described as spacelike, the solution is the same as Eq.~\refeq{sol3}:
+	\eq{
+		\ans{ \Delta(x - y) = \frac{m}{(2 \pi)^2 \abs{x - y}} \, \Kq(m \,\abs{x - y}). }
+	}
+	This quantity represents the amplitude for a particle to propagate from $y$ to $x$~\cite[p.~27]{Peskin}.  When $\xo = \yo$ and $\vx \to \vy$, the divergence means that this amplitude becomes infinite.  This seems to imply that, in this limit, a particle located at $\vx$ would remain there indefinitely.
+}

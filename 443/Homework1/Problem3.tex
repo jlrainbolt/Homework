@@ -4,7 +4,7 @@
 	Evaluate the function
 	\eqn{D3}{
 		\ev{\phix \, \phiy}{0} = D(x - y)
-		= \int \ddpf \frac{1}{2 \Ep} e^{i p (x - y)},
+		= \int \ddpf \frac{1}{2 \Ep} e^{i p \cdot (x - y)},
 	}
 	for $(x - y)$ spacelike so that $(x - y)^2 = -r^2$, explicitly in terms of Bessel functions.
 }
@@ -12,7 +12,7 @@
 \sol{
 	We choose our reference frame such that $\xo - \yo = 0$ and let $\vx - \vy = \vr$.  Then
 	\eq{
-		p (x - y) = -\vp \vdot \vr = -p r \cost,
+		p \cdot (x - y) = -\vp \vdot \vr = -p r \cost,
 	}
 	where we have defined $\tht$ as the angle between $\vp$ and $\vr$.  We choose our coordinates such that $\tht$ is also the spherical polar coordinate.  Substituting this expression and $\Ep = \sqrt{\vp^2 + m^2}$~\cite[p.~22]{Peskin} into Eq.~\refeq{D3},
 	\aln{
@@ -31,7 +31,7 @@
 		= -\Kqx,
 	}
 	where we have used the identity $\dv*{[x^{-p} \Kp(x)]}{x} = -x^{-p} \Kppq(x)$~\cite[p.~386]{Olmstead}.  So Eq.~\refeq{3.1} can be written
-	\eq{
+	\eqn{sol3}{
 		D(x - y) = \frac{m}{(2 \pi)^2 r} \, \Kqmr
 		= \ans{ \frac{m}{(2 \pi)^2 \abs{x - y}} \, \Kq(m \abs{x - y}). }
 	}

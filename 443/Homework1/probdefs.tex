@@ -219,9 +219,9 @@
 \newcommand{\vps}{\vp^*}
 
 \newcommand{\ddcpp}{\dd[3]{p'}}
-\newcommand{\ddppf}{\frac{\ddcpp}{(2\pi)^3}}
-\newcommand{\ddppfs}{\frac{\ddcp \ddcpp}{(2\pi)^6}}
-\newcommand{\ddppfc}{\frac{\ddcp \ddcpp}{(2\pi)^3}}
+\newcommand{\ddppf}{\dfrac{\ddcpp}{(2\pi)^3}}
+\newcommand{\ddppfs}{\dfrac{\ddcp \ddcpp}{(2\pi)^6}}
+\newcommand{\ddppfc}{\dfrac{\ddcp \ddcpp}{(2\pi)^3}}
 
 \newcommand{\omgp}{\omg_{\vp}}
 \newcommand{\omgpp}{\omg_{\vp'}}
@@ -281,6 +281,7 @@
 
 \newcommand{\vp}{\vb{p}}
 \newcommand{\Ep}{E_{\vp}}
+\newcommand{\Epp}{E_{\vp'}}
 
 \newcommand{\phiy}{\phi(y)}
 \newcommand{\piy}{\pi(y)}
@@ -311,18 +312,29 @@
 % Problem 4
 
 \newcommand{\kalp}{\ket{\alp}}
+\newcommand{\bo}{\bra{0}}
 \newcommand{\ko}{\ket{0}}
 \newcommand{\kf}{\ket{f}}
 
 \newcommand{\fp}{f(\vp)}
+\newcommand{\fsp}{f^*(\vp)}
+\newcommand{\fpp}{f(\vp')}
+\newcommand{\fppp}{f(\vp'')}
+\newcommand{\fsps}{{f^*}^2(\vp)}
+\newcommand{\fpps}{f^2(\vp')}
 \newcommand{\Nf}{N_f}
 
 \newcommand{\adag}{a^\dagger}
 \newcommand{\ap}{a_{\vp}}
 \newcommand{\apdag}{\ap^\dagger}
 
+\newcommand{\appp}{a_{p''}}
+\newcommand{\apppdag}{\appp^\dagger}
+
 \newcommand{\ddcp}{\dd[3]{p}}
-\newcommand{\ddpf}{\frac{\ddcp}{(2\pi)^3}}
+\newcommand{\ddcppp}{\dd[3]{p''}}
+\newcommand{\ddpf}{\dfrac{\ddcp}{(2\pi)^3}}
+\newcommand{\ddpppf}{\dfrac{\ddcppp}{(2\pi)^3}}
 
 \newcommand{\phix}{\phi(x)}
 
@@ -338,3 +350,11 @@
 
 \newcommand{\phivx}{\phi(\vx)}
 \newcommand{\phivy}{\phi(\vy)}
+
+\newcommand{\po}{p^0}
+\newcommand{\evphif}{\ev{\phix}{f}}
+\newcommand{\evapf}{\ev{\ap}{f}}
+\newcommand{\evapdagf}{\ev{\apdag}{f}}
+
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\sumni}{\sum_{n = 0}^\infty}
