@@ -1,0 +1,14 @@
+\state{Momentum operator}{
+	Show that the state $\psikr = e^{i \vk \vdot \vr}$ is an eigenstate of the momentum operator $\vph = -i \hbar \grad$ and find the eigenvalue.
+}
+
+\sol{
+	A state $\ka$ is an eigenstate of an operator $A$ if $A \ka = a \ka$, where $a$ is a number and eigenvalue of $\ka$~\cite[p.~12]{Sakurai}.  Note that
+	\eq{
+		\vph \,\psikr = -i \hbar \grad e^{i \vk \vdot \vr}
+		= -i \hbar (i \vk) e^{i \vk \vdot \vr}
+		= \hbar \vk e^{i \vk \vdot \vr}
+		= \ans{ \hbar \vk \,\psikr, }
+	}
+	so we have shown that $\psikr$ is an eigenvector of $\vph$ with eigenvalue \ans{ $\hbar \vk$. } \qed
+}

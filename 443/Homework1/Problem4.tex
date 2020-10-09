@@ -135,8 +135,10 @@
 		\frac{\evHs - \evH^2}{\evH^2} &= \frac{\paren{ \dint \ddpf \, \Ep \, \abs{\fp}^2 }^2 + \dint \ddpf \, \Ep^2 \, \abs{\fp}^2 - \paren{ \dint \ddpf \, \Ep \abs{\fp}^2 }^2}{\paren{ \dint \ddpf \, \Ep \abs{\fp}^2 }^2} \\
 		&= \ans{ \left. \dint \ddpf \, \Ep^2 \, \abs{\fp}^2 \middle/ \paren{ \dint \ddpf \, \Ep \, \abs{\fp}^2 \right. }^2. }
 	}
-
-	Both quantities can tell us something about how classical the field is.  Both quantities are zero in a classical system, since quantum fluctuations do not occur.  The infinite mean square fluctuation of the occupation number indicates that, in any given mode, any number of particles may be created or destroyed at any given time.  However, the changing number of particles in each state does not correspond to a large change in the total energy of the system, since the mean square fluctuation in the total energy is finite.  Both mean square fluctuations tend to zero as $\fp \to \infty$.  If $\fp$ is analogous to $\alp$ in that a large $\fp$ indicates a semiclassical system, then this is the expected behavior.  
+	
+	In the correspondence limit of large $\fp$, we expect both fluctuations to be small.  Since the numerator of the mean square fluctuation of the occupation number diverges, no finite $\fp$ can make it small.  So this quantity indicates that the field is not very ``classical.''  A possible interpretation is that, in any given mode, any number of particles may be created or destroyed at any given time.
+	
+	However, the changing number of particles in each state does not necessarily correspond to a large change in the total energy of the system, since the mean square fluctuation in the total energy is finite if both integrals converge (and the denominator is nonzero).  So, for certain $\fp$ that allow the numerator to converge, this quantity may indicate ``classical'' behavior of the field.
 }
 
 
@@ -150,5 +152,5 @@
 	\eq{
 		\ans{ \Delta(x - y) = \frac{m}{(2 \pi)^2 \abs{x - y}} \, \Kq(m \,\abs{x - y}). }
 	}
-	This quantity represents the amplitude for a particle to propagate from $y$ to $x$~\cite[p.~27]{Peskin}.  When $\xo = \yo$ and $\vx \to \vy$, the divergence means that this amplitude becomes infinite.  This seems to imply that, in this limit, a particle located at $\vx$ would remain there indefinitely.
+	This quantity represents the amplitude for a particle to propagate from $y$ to $x$~\cite[p.~27]{Peskin}.  When $\xo = \yo$ and $\vx \to \vy$, the divergence means that this amplitude becomes infinite.  This seems to imply that, in this limit, a particle located at $\vx$ would remain there indefinitely.  This is not very sensible, however, since probability amplitudes for the particle to propagate to other locations may be nonzero (and since we expect probabilities to be normalizable). 
 }
