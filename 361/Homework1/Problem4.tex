@@ -1,0 +1,49 @@
+\state{Acoustic phonon dispersion in the monatomic chain}{
+	By substituting Eq.~(2.24) in Eq.~(2.23) derive the dispersion relation Eq.~(2.25) for the one-dimensional monatomic chain.
+}
+
+\sol{
+	Equation~(2.23) is
+	\eqn{2.23}{
+		m \pdv[2]{\un}{t} = K (\unpq - \un) + K (\unmq - \un),
+	}
+	and Eq.~(2.24) is
+	\eqn{2.24}{
+		\unt = \uo \cos[ q \rn - \omgq t ].
+	}
+	
+	Using $\rn = n a$ from p.~17 of the lecture notes, note that
+	\al{
+		\frac{2}{\uo} (\unpq - \un) &= 2 \curly{ \cos[ q (n + 1) a - \omgq t ] - \cos[ q n a - \omgq t ] } \\
+%		&= \frac{e^{i q (n + 1) a} e^{-i \omgq t} + e^{-i q (n + 1) a} e^{i \omgq t} - e^{i q n a} e^{-i \omgq t}  - e^{-i q n a} e^{i \omgq t}}{2} \\
+		&= e^{i q n a} e^{i q a} e^{-i \omgq t} + e^{-i q n a} e^{-i q a} e^{i \omgq t} - e^{i q n a} e^{-i \omgq t} - e^{-i q n a} e^{i \omgq t} \\
+		&= e^{i q n a} e^{-i \omgq t} (e^{i q a} - 1) + e^{-i q n a} e^{i \omgq t} (e^{-i q a} - 1),
+	}
+	and likewise
+	\eq{
+		\frac{2}{\uo} (\unmq - \un) = \frac{e^{i q n a} e^{-i \omgq t} (e^{-i q a} - 1) + e^{-i q n a} e^{i \omgq t} (e^{i q a} - 1)}{2}.
+	}
+	Feeding these results into Eq.~\refeq{2.23} yields
+	\aln{
+		\frac{2 m}{K \uo} \pdv[2]{\un}{t} &= e^{i q n a} e^{-i \omgq t} (e^{i q a} - 1) + e^{-i q n a} e^{i \omgq t} (e^{-i q a} - 1) + e^{i q n a} e^{-i \omgq t} (e^{-i q a} - 1) + e^{-i q n a} e^{i \omgq t} (e^{i q a} - 1) \notag \\
+		&= e^{i q n a} e^{-i \omgq t} (e^{i q a} + e^{-i q a} - 2) + e^{-i q n a} e^{i \omgq t} (e^{-i q a} + e^{i q a} - 2) \notag \\
+		&= (e^{i q n a} e^{-i \omgq t} + e^{-i q n a} e^{i \omgq t}) (e^{i q a} + e^{-i q a} - 2) \notag \\
+		&= 2 \cos[ q n a - \omgq t ] [ 2 \cos( q a ) - 2 ]. \label{thing2.4}
+	}
+
+	Differentiating Eq.~\refeq{2.24}, we find
+	\eq{
+		\pdv[2]{\un}{t} = \pdv{t}(\pdv{\un}{t})
+		= \pdv{t}\{ \uo \,\omgq \sin[ q \rn - \omgq t ] \}
+		= -\uo \,\omgsq \cos[ q \rn - \omgq t ].
+	}
+	Making this substitution in Eq.~\refeq{thing2.4} gives us
+	\eq{
+		-\frac{m \omgsq}{K} = 2 [ \cos( q a ) - 1 ],
+	}
+	implying
+	\eq{
+		m \omgsq = 2 K [ 1 - \cos(q a) ] = 4 K \sin[2](\frac{q a}{2}),
+	}
+	which is Eq.~(2.25). \qed
+}

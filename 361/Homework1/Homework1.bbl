@@ -1,0 +1,26 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}%
+\makeatletter
+\providecommand{\hrefCMSnoop }[0]{\@secondoftwo}%
+\makeatother
+\providecommand{\doi}{\texttt{doi:}\begingroup \urlstyle{tt}\Url}
+
+\bibitem{Sakurai}
+J.~J. Sakurai, ``Modern Quantum Mechanics''.
+\newblock Addison-Wesley Publishing Company, revised edition, 1994.
+
+\bibitem{Ashcroft}
+N.~W. Ashcroft and N.~D. Mermin, ``Solid State Physics''.
+\newblock Harcourt College Publishers, 1976.
+
+\bibitem{Kittel}
+C.~Kittel, ``Introduction to Solid State Physics''.
+\newblock Wiley, 8th edition, 2005.
+
+\bibitem{Addition}
+\href {https://mathworld.wolfram.com/TrigonometricAdditionFormulas.html}{E.~W.
+  Weisstein, ``Trigonometric Addition Formulas.''} From MathWorld---A Wolfram
+  Web Resource.
+\newblock \url
+  {https://mathworld.wolfram.com/TrigonometricAdditionFormulas.html}.
+
+\end{thebibliography}\endgroup

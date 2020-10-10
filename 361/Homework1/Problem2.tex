@@ -1,0 +1,109 @@
+\state{Density of states for free electrons}{\hfix}
+
+\prob{}{
+	What is the fermi wavevector and fermi energy as a function of particle density for a free electron gas in one and two dimensions (define density appropriately)?
+}
+
+\sol{
+	In three dimensions, the total number of occupied states inside the fermi sphere is given by Eq.~(2.8) of the lecture notes,
+	\eqn{N2.1}{
+		N = 2 \frac{4 \pi \kF^3 / 3}{(2 \pi / L)^3},
+	}
+	where $\kF$ is the fermi wavevector, $L^3 = V$ is the volume, and 2 is the number of electron spin states.  By inspection, then, the one- and two-dimensional equivalents to this equation are
+	\al{
+		N &= 2 \frac{\kF}{2 \pi / L} \quad (d = 1), &
+		N &= 2 \frac{\pi \kF^2}{(2 \pi / L)^2} \quad (d = 2),
+	}
+	where $\kF$ is the length of a one-dimensional fermi line and $\pi \kF^2$ is the area of a fermi circle of radius $\kF$.  The one-dimensional volume is $L$, and the two-dimensional volume is $L^2$.  Solving for the wavevectors and writing them in terms of particle density $n = N / V$, we obtain
+	\ans{ \al{
+		\kF &= \pi n \quad (d = 1), &
+		\kF &= \sqrt{ 2 \pi n } \quad (d = 2).
+	}}%
+	
+	The fermi momentum is $\pF = \hbar \kF$ and the fermi energy is $\EF = \pF^2 / 2m$~\cite[p.~36]{Ashcroft}.  Both definitions hold regardless of dimension.  So the fermi energy in one and two dimensions is
+	\ans{ \al{
+		\EF &= \frac{\pi^2 \hbar^2 n^2}{2 m} \quad (d = 1), &
+		\EF &= \frac{\pi \hbar^2 n}{m} \quad (d = 2).
+	}}%
+	\vfix
+}
+
+
+
+\prob{}{
+	Calculate the density of states in energy for free electrons in one and two dimensions.
+%	
+%	Answer:
+%	\al{
+%		\frac{2m}{\pi \hbar^2} \sqrt{\frac{\hbar^2}{2 m E}} &\quad (d = 1); &
+%		\frac{m}{\pi \hbar^2} &\quad(d = 2); &
+%		\frac{m}{\pi^2 \hbar^2} \sqrt{\frac{2 m E}{\hbar^2}} &\quad (d = 3).
+%	}
+}
+
+\sol{
+	According to Eq.~(2.10) of the lecture notes, the density of states $\gE$ can be found by
+	\eq{
+		\gE \ddE = 2 \cdot \frac{\text{Volume of shell in $k$ space}}{\text{Volume of $k$ space per state}}
+		= 2 \frac{4 \pi k^2 \ddk}{(2 \pi)^3 / V},
+	}
+	where the final equality is for the three-dimensional case.  For one and two dimensions, the equivalent expressions are
+	\al{
+		\gE \ddE &= 2 \frac{\ddk}{2 \pi / L} \quad (d = 1), &
+		\gE \ddE &= 2 \frac{2 \pi k \ddk}{(2 \pi)^2 / L^2} \quad (d = 2).
+	}
+	Noting that
+	\eq{
+		k = \sqrt{\frac{2 m E}{\hbar^2}}
+		\qimplies
+		\dv{k}{E} = \sqrt{\frac{m}{2 \hbar^2 E}},
+	}
+	which again is true regardless of dimension.  So we find
+	\al{
+		(d = 1) \quad \gE &= \frac{L}{\pi} \dv{k}{E}
+		= \frac{L}{\pi} \sqrt{\frac{m}{2 \hbar^2 E}}, \\
+		(d = 2) \quad \gE &= \frac{L^2 k}{\pi} \dv{k}{E}
+		= \frac{L^2}{\pi} \sqrt{\frac{2 m E}{\hbar^2}} \sqrt{\frac{m}{2 \hbar^2 E}}
+		= \frac{L^2 m}{\pi \hbar^2}.
+	}
+	Per unit volume, we have
+	\ans{ \al{
+		\gE &= \frac{1}{\pi} \sqrt{\frac{m}{2 \hbar^2 E}} \quad (d = 1), &
+		\gE &= \frac{L^2 m}{\pi \hbar^2} \quad (d = 1).
+	}}%
+	\vfix
+}
+
+
+
+\prob{}{
+	Show how the 3D density of states can be rewritten as
+	\eqn{g2.c}{
+		\frac{3}{2} \frac{n}{\EF} \sqrt{\frac{E}{\EF}}
+	}
+	with $n = N / V$.
+}
+
+\sol{
+	The 3D density of states per unit volume is given by Eq.~(2.11) in the lecture notes,
+	\eq{
+		\gE = \frac{V}{\pi^2} \frac{m}{\hbar^2} \sqrt{\frac{2 m E}{\hbar^2}}.
+	}
+	We will work backward to reach this form from Eq.~\refeq{g2.c}.
+	
+	Equation~\refeq{N2.1} can be written as follows:
+	\eq{
+		N = 2 \frac{4 \pi / 3}{(2 \pi)^3 / V} \paren{ \frac{2 m \EF}{\hbar^2} }^{3 / 2}
+		\qimplies
+		n = \frac{(2 m \EF)^{3 / 2}}{3 \pi^2 \hbar^3}
+		\qimplies
+		\EF^3 = \frac{(3 \pi^2 \hbar^3 n)^2}{(2 m)^3},
+	}
+	where we have used $k = \sqrt{2 m E / \hbar^2}$.  Feeding the last expression into Eq.~\refeq{g2.c}, we obtain
+	\eq{
+		\gE = \frac{3}{2} n \sqrt{\frac{E}{\EF^3}}
+		= \frac{3}{2} n \sqrt{E \frac{(2 m)^3}{(3 \pi^2 \hbar^3 n)^2}}
+		= \frac{1}{\pi^2} \frac{m}{\hbar} \sqrt{\frac{2 m E}{\hbar^2}}
+	}
+	as desired. \qed
+}
