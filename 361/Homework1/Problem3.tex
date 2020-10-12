@@ -1,0 +1,160 @@
+\state{Thermodynamic properties of a free electron metal}{\hfix}
+
+\prob{}{
+	Derive the free electron formula for the fermi energy $\EF$, the fermi wavevector $\kF$, and the density of states at the fermi level $\gEF$.
+}
+
+\sol{
+	A free electron has a wave function that is the solution of the time-independent Schr\"{o}dinger equation.  The solutions to this equation, subject to periodic boundary conditions, are plane waves: $\psikr \propto e^{i \vk \vdot \vr}$, where $\vr$ is the electron's position and $\vk$ its wavevector.  The energy associated with such a state is $\epsk = \hbar^2 k^2 / 2 m$, where $k = \abs{\vk}$.  This follows because $\psikr$ is an eigenstate of the momentum operator with eigenvalue $\hbar \vk$, as was shown in problem~\ref{1}~\cite[pp.~32--34]{Ashcroft}.
+	
+	\clearpage
+
+	The allowed values of the components of $\vk$ are $\ki = 2 \pi \ni / L$, where $\nii$ are integers and $V = L^3$ is the volume of the metal.  In the ground state at zero temperature, $N$ free electrons fill the available one-electron energy levels of lowest energy.  Two electrons of opposite spin can occupy each one-electron energy level.  For large $N$, the filled levels occupy a sphere in $k$ space; the shape is a sphere because it minimizes the energy of each state.  The radius of this sphere is the magnitude of the wavevector corresponding to the state of highest energy, the fermi wavevector $\kF$.  So the number of electrons that can occupy the fermi sphere is
+	\eq{
+		N = \frac{4 \pi \kF^3}{3} \frac{V}{(2 \pi)^3},
+	}
+	where the first fraction is the volume of the Fermi sphere and the second is the quantization.  Solving for $\kF$, we find the expression
+	\eq{
+		\ans{ \kF = (3 \pi^2 n)^{1/3}, }
+	}
+	where $n = N / V$ is the density of electrons~\cite[pp.~34--36]{Ashcroft}.
+	
+	From this expression, we can easily write down the expression for the fermi energy:
+	\eqn{EF}{
+		\ans{ \EF = \frac{\hbar^2 \kF^2}{2 m}
+		= \frac{\hbar^2 (3 \pi^2 n)^{2/3}}{2 m}. }
+	}
+	
+	The density of states $\gE$ of a particular energy $E$ represents the quantization of the spherical shell in $k$ space whose radius corresponds to the energy.  Since two electrons can occupy each state, this gives us
+	\eq{
+		\ans{ \gE = 2 (4 \pi k^2) \paren{ \frac{L}{2 \pi} }^3
+		= \frac{k^2 V}{\pi^2}. }
+	}
+	\vfix
+}
+
+
+
+\prob{}{
+	Within the free electron model at zero temperature, show that the total energy for $N$ electrons is $\Eb = 3 N \EF / 5$.
+}
+
+\sol{
+	The general expression for the energy density is Eq.~\refeq{g2.c}.  The internal energy density $u = U / V$ is given by Eq.~(2.14) in the lecture notes:
+	\eq{
+		u = \int \ddE E \gE \fE.
+	}
+	At zero temperature, the fermi distribution $\fE$ is a step function~\cite[p.~45]{Ashcroft}.  So this becomes
+	\eq{
+		u = \intoEF \ddE E \frac{3}{2} \frac{n}{\EF} \sqrt{\frac{E}{\EF}}
+		= \frac{3}{2} \frac{n}{\EF^{3/2}} \intoEF E^{3/2}
+		= \frac{3}{2} \frac{n}{\EF^{3/2}}  \frac{2}{5} \EF^{5/2}
+		= \frac{3}{5} n \EF.
+	}
+	Multiplying both sides by $V$ and noting that $\Eb = V u$, we find
+	\eqn{3a}{
+		\ans{ \Eb = \frac{3}{5} N \EF }
+	}
+	as desired. \qed
+}
+
+
+
+\prob{}{
+	Within the free electron model at zero temperature, calculate the pressure, $p$, using $p = -\!\dv*{\Eb}{\Omg}$, where $\Omg$ is the volume.
+}
+
+\sol{
+	Substituting Eq.~\refeq{EF} into Eq.~\refeq{3a} yields
+	\eq{
+		\Eb = \frac{3}{5} N \frac{\hbar^2 (3 \pi^2 n)^{2/3}}{2 m}
+		= \frac{3}{5} \frac{\hbar^2 (3 \pi^2)^{2/3} N^{5/3}}{2 m \Omg^{2/3}}.
+	}
+	
+	\clearpage
+	
+	Then
+	\eqn{p}{
+		p = -\dv{\Eb}{\Omg}
+		= -\frac{3}{5} \frac{\hbar^2 (3 \pi^2)^{2/3} N^{5/3}}{2 m} \dv{\Omg}(\frac{1}{\Omg^{2/3}})
+		= \frac{2}{5} \frac{\hbar^2 (3 \pi^2)^{2/3} N^{5/3}}{2 m \Omg^{5/3}}
+		= \frac{2}{5} \frac{N}{\Omg} \frac{\hbar^2 (3 \pi^2 N)^{2/3}}{2 m \Omg^{2/3}}
+		= \ans{ \frac{2}{5} n \EF. }
+	}
+	\vfix
+}
+
+
+
+\prob{}{	\label{bulk}
+	Within the free electron model at zero temperature, calculate the bulk modulus $B = -\Omg \dv*{p}{\Omg}$.
+}
+
+\sol{
+	Using Eq.~\refeq{p},
+	\eq{
+		\dv{p}{\Omg} = \frac{2}{5} \frac{\hbar^2 (3 \pi^2)^{2/3} N^{5/3}}{2 m} \dv{\Omg}(\frac{1}{\Omg^{5/3}})
+		= -\frac{2}{3} \frac{\hbar^2 (3 \pi^2)^{2/3} N^{5/3}}{2 m \Omg^{8/3}},
+	}
+	and so
+	\eq{
+		B = -\Omg \dv{p}{\Omg}
+		= \frac{2}{3} \frac{\hbar^2 (3 \pi^2)^{2/3} N^{5/3}}{2 m \Omg^{5/3}}
+		= \ans{ \frac{2}{3} n \EF. }
+	}
+	\vfix
+}
+
+
+
+\prob{}{
+	Potassium is monovalent and has an atomic concentration of \siEe.  Compare the bulk modulus calculated in \ref{bulk} with the experimental value of \SI{3.7e9}{\pascal}.
+}
+
+\sol{
+	Applying $B = -\Omg \dv*{p}{\Omg}$ and Eq.~\refeq{EF}, we find
+	\eq{
+		B = \frac{2}{3} \frac{\hbar^2 (3 \pi^2)^{2/3} n^{5/3}}{2 \me}
+		= \frac{2}{3} \frac{(\sihbar)^2 (3 \pi^2)^{2/3} (\siEe)^{5/3}}{2 (\sime)}
+		= \ans{ \SI{3.2e9}{\pascal}, }
+	}
+	where $\me$ is the electron mass~\cite{PDG}.  This result is within 15\% of the experimental value.
+}
+
+
+
+\prob{}{
+	Estimate $\gEF$ for magnesium, which has a valence of 2 and an atomic concentration of \siEr.  Use this value to estimate the asymptotic low temperature specific heat, compared to the experimental value of $\cv / T = \SI{1.3}{\milli\joule\per\mole\per\square\kelvin}$.
+}
+
+\sol{
+	Using Eqs.~\refeq{g2.c} and \refeq{EF},
+	\eq{
+		\gEF = \frac{3}{2} \frac{n}{\EF} \sqrt{\frac{\EF}{\EF}}
+		= \frac{3}{2} \frac{2 \me n^{1/3}}{\hbar^2 (3 \pi^2)^{2/3}}
+		= \frac{3}{2} \frac{2 (\sime) [ 2 (\siEr) ]^{1/3}}{(\sihbar)^2 (3 \pi^2)^{2/3}}
+		= { \sigEF, }
+	}
+	where $n$ is twice the given concentration since magnesium has a valence of 2.
+	
+	According to Eq.~(2.20) of the lecture notes, the asymptotic low temperature specific heat can be written
+	\eq{
+		\cv = \frac{\pi^2}{3} \kB^2 T \gEF,
+	}
+	so
+	\eq{
+		\frac{\cv}{T} = \frac{\pi^2}{3} (\sikB)^2 (\sigEF)
+		= \sicv.
+	}
+	With the Avogadro constant $\NA$~\cite{PDG}, we can use the given number density to convert between volume and moles:
+	\eq{
+		\frac{n}{\NA} = \frac{\siEr}{\siNA}
+		= \sifrac.
+	}
+	Then we have
+	\eq{
+		\frac{\cv}{T} = \frac{\sicv}{\sifrac}
+		= \ans{ \SI{0.99}{\milli\joule\per\mole\per\square\kelvin}, }
+	}
+	which is within 25\% of the experimental value.
+}

@@ -12,6 +12,13 @@ J.~J. Sakurai, ``Modern Quantum Mechanics''.
 N.~W. Ashcroft and N.~D. Mermin, ``Solid State Physics''.
 \newblock Harcourt College Publishers, 1976.
 
+\bibitem{PDG}
+\hrefCMSnoop {}{P.~D. Group, ``Review of particle physics'',} \textit{ Progress
+  of Theoretical and Experimental Physics} \textbf{ 2020} (8, 2020)
+  \href{http://dx.doi.org/10.1093/ptep/ptaa104}{\doi{10.1093/ptep/ptaa104}},
+  \href{http://www.arXiv.org/abs/https://academic.oup.com/ptep/article-pdf/2020/8/083C01/33653179/ptaa104.pdf}{\texttt{arXiv:https://academic.oup.com/ptep/article-pdf/2020/8/083C01/33653179/ptaa104.pdf}}.
+  083C01.
+
 \bibitem{Kittel}
 C.~Kittel, ``Introduction to Solid State Physics''.
 \newblock Wiley, 8th edition, 2005.
