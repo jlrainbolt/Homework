@@ -19,6 +19,12 @@ N.~W. Ashcroft and N.~D. Mermin, ``Solid State Physics''.
   \href{http://www.arXiv.org/abs/https://academic.oup.com/ptep/article-pdf/2020/8/083C01/33653179/ptaa104.pdf}{\texttt{arXiv:https://academic.oup.com/ptep/article-pdf/2020/8/083C01/33653179/ptaa104.pdf}}.
   083C01.
 
+\bibitem{DoubleAngle}
+\href {https://mathworld.wolfram.com/Double-AngleFormulas.html}{E.~W.
+  Weisstein, ``Double-Angle Formulas.''} From MathWorld---A Wolfram Web
+  Resource.
+\newblock \url {https://mathworld.wolfram.com/Double-AngleFormulas.html}.
+
 \bibitem{Kittel}
 C.~Kittel, ``Introduction to Solid State Physics''.
 \newblock Wiley, 8th edition, 2005.
