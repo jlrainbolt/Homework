@@ -1,0 +1,133 @@
+\state{}{\hfix}
+
+\prob{}{
+	Show by explicit computation the Lorentz invariance of the Dirac Lagrangian, by considering a Lorentz transformation of the fields.
+}
+
+\sol{
+	The Dirac Lagrangian is given by Eq.~(3.34) in Peskin \& Schroder:
+	\eq{
+		\cLDirac = \psib (i \gamm \ptsm - m) \psi.
+	}
+	According to their Eq.~(3.33), $\psib$ transforms as $\psib \to \psib \Lamhi$; also, $\psi \to \Lamh \psi$.  The Lorentz transformation of the Dirac Lagrangian is then~\cite[p.~42]{Peskin}
+	\al{
+		\psibx (i \gamm \ptsm - m) \psix &\to \psibLamix \Lamhi [ i \gamm \Laminsm \ptsn - m) ] \Lamh \psiLamix \\
+		&= \psibLamix [ i \Lamhi \gamm \Lamh \Laminsm \ptsn - m ] \Lamhi \Lamh \psiLamix \\
+		&= \psibLamix [ i \Lammss \gams \Laminsm \ptsn - m ] \psiLamix,
+	}
+	where we have used Peskin \& Schroeder~(3.29), $\Lamhi \gamm \Lamh = \Lammsn \gamn$.  Then
+	\eq{
+		\psibx (i \gamm \ptsm - m) \psix \to \psibLamix [ i \Lammss \gams \Laminsm \ptsn - m) ] \psiLamix
+		= \ans{ \psibLamix (i \gamn \ptsn - m) \psiLamix, }
+	}
+	which has the same form as $\cLDirac$.  So we have shown that the Dirac Lagrangian is Lorentz invariant. \qed
+}
+
+
+
+\prob{}{
+	Consider the chiral rotation of a massless Dirac field $\psi' = e^{i \alp \gamt} \psi$.  Find the corresponding Noether current.  Show that the corresponding Noether charge measures the total helicity of a collection of massless Dirac particles, and that the addition of a mass term to the Lagrangian violates the symmetry.  Find an equation that expresses the violation of current conservation by the mass.
+}
+
+\sol{
+	The conserved charge is given in general by Peskin \& Schroeder~(2.12) and (2.13),
+	\aln{ \label{charge}
+		Q &\equiv \int_\text{all space} \jo \ddcx, &
+		\where \jmx &= \pdv{\cL}{(\ptsm\phi)} \Del\phi - \Jm,
+	}
+	where $\Jm$ is a 4-divergence that arises when transforming the Lagrangian as in Peskin \& Schroeder~(2.10):
+	\eqn{Ltrans}{
+		\cLx \to \cLx + \alp \ptsm \Jmx.
+	}
+	
+	Under the rotation $\psi \to e^{i \alp \gamt} \psi$, $\psidag \to \psidag e^{-i \alp \gamt}$.  Then, using $\psib = \psidag \gamo$ as defined in Peskin \& Schroeder~(3.32),
+	\eq{
+		\psib \to \psidag e^{-i \alp \gamt} \gamo
+		= -\psidag \gamo e^{-i \alp \gamt}
+		= -\psib e^{-i \alp \gamt},
+	}
+	since $\{\gamm, \gamt\} = 0$ from Peskin \& Schroeder~(3.70).  Then, using $m = 0$ in the Dirac Lagrangian, we have
+	\eq{
+		\cLDirac = i \psib \gamm \ptsm \psi
+		\to -i \psib e^{-i \alp \gamt} \gamm \ptsm e^{i \alp \gamt} \psi
+		= i \psib \gamm e^{-i \alp \gamt} \ptsm e^{i \alp \gamt} \psi
+		= i \psib \gamm \ptsm \psi,
+	}
+	so the Dirac Lagrangian is indeed invariant under chiral transformations, and $\Jm = 0$.  
+	
+	The infinitesimal transformations associated with $\psi \to e^{i \alp \gamt} \psi$ are
+	\al{
+		\alp \Del\psi = i \alp \gamt \psi, &
+		\alp \Del\psib = i \alp \psib \gamt.
+	}
+	Then we have the Noether current~\cite[p.~50]{Peskin}
+	\eq{
+		\jm = -\brac{ \pdv{\cLDirac}{(\ptsm\psi)} \Del\psi + \pdv{\cLDirac}{(\ptsm\psib)} \Del\psib }
+		= \ans{ \psib \gamm \gamt \psi, }
+	}
+	where we have multiplied by an arbitrary constant~\cite[p.~18]{Peskin}.
+	
+	Peskin \& Schroeder~(3.76) defines
+	\al{
+		\jLm &= \psib \gamm \frac{1 - \gamt}{2} \psi, &
+		\jRm &= \psib \gamm \frac{1 + \gamt}{2} \psi,
+	}
+	as the electric current densities of left- and right-handed particles.  Note that $\jm = \jRm - \jLm$.  Then we have the conserved charge
+	\eq{
+		Q = \int \ddcx \psib \gamo \gamt \psi
+		= \int \ddcx (\jRo - \jLo),
+	}
+	which tells us the total helicity of a collection of massless Dirac particles. \qed
+	
+	If $m \neq 0$ in the Dirac Lagrangian, then it transforms as
+	\al{
+		\cLDirac = \psib (i \gamm \ptsm - m) \psi
+		&\to -\psib e^{-i \alp \gamt} (i \gamm \ptsm - m) e^{i \alp \gamt} \psi
+		= \psib (\gamm e^{-i \alp \gamt} \ptsm + e^{-i \alp \gamt} m) e^{i \alp \gamt} \psi \\
+		&= \psib (i \gamm \ptsm + m) \psi,
+	}
+	which is not of the same form.  So the symmetry is violated for nonzero $m$. \qed
+	
+	In order for the current to be conserved, we need the divergence $\ptsm \jm = 0$.  Note that
+	\eq{
+		\ptsm \jm = (\ptsm \psib) \gamm \gamt \psi + \psib \gamm \gamt \ptsm \psi.
+	}
+	Since $\psi$ satisfies the Dirac equation, we can make use of the Dirac equation and its conjugate, given by Eqs.~(3.31) and (3.35) in Peskin \& Schroeder:
+	\al{
+		(i \gamm \ptsm - m) \psi &= 0, &
+		-i \ptsm \psib \gamm - m \psib &= 0.
+	}
+	So the divergence can be written~\cite[p.~51]{Peskin}
+	\eq{
+		\ptsm \jm = (\ptsm \psib) \gamm \gamt \psi - \psib \gamt \gamm \ptsm \psi
+		= i m \psib \gamt \psi + \psib \gamt i m \psi
+		= \ans{ 2 i m \psib \gamt \psi, }
+	}
+	which is zero only if $m$ is zero.
+}
+
+
+
+\prob{}{
+	Find the Noether current related to charge conservation by considering a phase rotation of a Dirac field (of arbitrary mass) $\psi' = e^{i \alp} \psi$.
+}
+
+\sol{
+	We will once again use Eqs.~\refeq{charge} and \refeq{Ltrans}.  Under the rotation $\psi \to e^{i \alp} \psi$, $\psib \to \psib e^{-i \alp}$.  Then the Dirac Lagrangian transforms as
+	\eq{
+		\cLDirac \to \psib e^{i \alp} (i \gamm \ptsm - m) e^{-i \alp} \psi
+		= \psib (i \gamm \ptsm - m) \psi,
+	}
+	so again $\Jm = 0$.
+	
+	The infinitesimal translations are
+	\al{
+		\alp \Del\psi &= i \alp \psi,
+		\alp \Del\psib &= -i \alp \psib,
+	}
+	and the Noether current is~\cite[p.~50]{Peskin}
+	\eq{
+		\jm = -\brac{ \pdv{\cLDirac}{(\ptsm\psi)} \Del\psi + \pdv{\cLDirac}{(\ptsm\psib)} \Del\psib }
+		= \ans{ \psib \gamm \psi. }
+	}
+}
