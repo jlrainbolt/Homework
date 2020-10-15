@@ -18,21 +18,8 @@ M.~E. Peskin and D.~V. Schroeder, ``An Introduction to Quantum Field Theory''.
   ``Permutation Symbol.''} From MathWorld---A Wolfram Web Resource.
 \newblock \url {https://mathworld.wolfram.com/PermutationSymbol.html}.
 
-\bibitem{Landau}
-L.~D. Landau and E.~M. Lifshitz, ``The Classical Theory of Fields'', volume~2.
-\newblock Pergamon Press, 3rd edition, 1971.
-
-\bibitem{Jackson}
-J.~D. Jackson, ``Classical Electrodynamics''.
-\newblock Wiley, 3rd edition, 1999.
-
 \bibitem{Sakurai}
 J.~J. Sakurai, ``Modern Quantum Mechanics''.
 \newblock Addison-Wesley Publishing Company, revised edition, 1994.
-
-\bibitem{Olmstead}
-W.~E. Olmstead and V.~A. Volpert, ``Differential Equations in Applied
-  Mathematics''.
-\newblock 2014.
 
 \end{thebibliography}\endgroup

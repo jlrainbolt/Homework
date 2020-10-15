@@ -19,21 +19,21 @@
 
 
 
-\state{(Peskin \& Schroeder 3.1) \hspace{1em} Lorentz group}{
+\state{Lorentz group (Peskin \& Schroeder 3.1)}{
 	Recall from Eq.~(3.17) the Lorentz commutation relations,
 	\eq{
 		[\Jmn, \Jrs] = i (\gnr \Jms - \gmr \Jns - \gns \Jmr + \gms \Jnr).
 	}
 }
 
-\prob{}{
+\prob{}{	\label{3.1a}
 	Define the generators of rotations and boosts as
 	\al{
 		\Li &= \frac{1}{2} \epsijk \Jjk, &
 		\Ki &= \Joi,
 	}
 	where $i, j, k = 1, 2, 3$.  An infinitesimal Lorentz transformation can then be written
-	\eq{
+	\eqn{trans}{
 		\Phi \to (1 - i \vtht \vdot \vL - i \vbet \vdot \vK) \Phi.
 	}
 	Write the commutation relations of these vector operators explicitly.  (For example, $[\Li, \Lj] = i \epsijk \Lk$.)  Show that the combinations
@@ -45,7 +45,7 @@
 }
 
 \sol{
-	Firstly, using the Eq.~(3.18)
+	Firstly, using Eq.~(3.18),
 	\al{
 		[\Li, \Lj] &= \brac{ \frac{1}{2} \epsimn \Jmn, \frac{1}{2} \epsjrs \Jrs }
 		= \frac{1}{4} \epsimn \epsjrs [\Jmn, \Jrs]
@@ -55,15 +55,15 @@
 		&= \frac{i}{4} (\epsimn \epsjrs \gnr \Jms + \epsimn \epsjrs \gnr \Jms + \epsimn \epsjrs \gnr \Jms + \epsimn \epsjrs \gnr \Jms) \\
 		&= i \epsimn \epsjrs \gnr \Jms,
 	}
-	where we have simply relabeled indices.  Then, using $\gsab = \delsab$~\cite{Metric} and $\epsijk \epspqk = \delip \deljq - \deliq \deljp$~\cite{LeviCivita},
+	where we have simply relabeled indices.  Then, using $\gij = -\delij$~\cite{Metric} and $\epsijk \epspqk = \delip \deljq - \deliq \deljp$~\cite{LeviCivita},
 	\al{
-		[\Li, \Lj] &= i \epsimsn \epsjrs \delsnr \Jms
-		= i \epsimsn \epsjns \Jms
+		[\Li, \Lj] &= -i \epsimn \epsjrs \delnr \Jms
+		= -i \epsimn \epsjns \Jms
 		= i \epsimn \epsjsn \Jms
 		= i (\delij \delms - \delis \delmj) \Jms
-		= i (\delij \Jmm - \delis \Jjs)
-		= -i \Jji \\
-		&= i \Jij,
+		= i (\delij \Jmm - \delis \Jjs) \\
+		&= -i \Jji
+		= i \Jij,
 	}
 	where we have used the antisymmetry of $\Jij$.  From $\Li = \frac{1}{2} \epsijk \Jjk$, we can write
 	\eq{
@@ -83,7 +83,7 @@
 		[\Ki, \Kj] = [\Joi, \Joj]
 		= i (\gio \Joj - \goo \Jij - \gij \Joo + \goj \Jio)
 		= -i \Jij
-		= \ans{ -i \epsijk \Lk.=, }
+		= \ans{ -i \epsijk \Lk, }
 	}
 	and thirdly,
 	\al{
@@ -93,31 +93,231 @@
 		&= \frac{i}{2} (\epsjrs \gir \Jos - \epsjrs \gis \Jor)
 		= \frac{i}{2} (\epsjrs \gir \Jos - \epsjsr \gir \Jos)
 		= i \epsjrs \gir \Jos
-		= i \epsjsrs \delsri \Jos
-		= -i \epsijs \Jos \\
-		&= \ans{ -i \epsijk \Kk. }
+		= -i \epsjrs \delir \Jos
+%		= -i \epsjis \Jos
+		= i \epsijs \Jos \\
+		&= \ans{ i \epsijk \Kk. }
 	}
+	
+	Next we want to show that $[\vJp, \vJm] = 0$.  Note that
+	\al{
+		[\Jpi, \Jmj] &= \brac{ \frac{1}{2} (\Li + i \Ki), \frac{1}{2} (\Lj - i \Kj) }
+%		= \frac{1}{4} [ \Li + i \Ki, \Lj - i \Kj ]
+%		= \frac{1}{4} \paren{ [\Li, \Lj] + [\Li, -i \Kj] + [i \Ki, \Lj] + [i \Ki, -i \Kj] } \\
+		= \frac{1}{4} \paren{ [\Li, \Lj] - i [\Li, \Kj] + i [\Ki, \Lj] + [\Ki, \Kj] } \\
+		&= \frac{1}{4} \paren{ i \epsijk \Lk - \epsjik \Kk - \epsijk \Kk - i \epsijk \Lk } \\
+		&= \ans{ 0, }
+	}
+	so $[\vJp, \vJm] = 0$. \qed
+	
+	The angular momentum commutation relations are given by Peskin \& Schroeder Eq.~(3.12): $[\Ji, \Jj] = i \epsijk \Jk$.  We have
+	\al{
+		[\Jpmi, \Jpmj] &= \brac{ \frac{1}{2} (\Li \pm i \Ki), \frac{1}{2} (\Lj \pm i \Kj) }
+%		= \frac{1}{4} [\Li \pm i \Ki, \Lj \pm i \Kj] \\
+%		&= \frac{1}{4} \paren{ [\Li, \Lj] + [\Li, \pm i \Kj] + [\pm i \Ki, \Lj] + [\pm i \Ki, \pm i \Kj] } \\
+		= \frac{1}{4} \paren{ [\Li, \Lj] \pm i [\Li, \Kj] \pm i [\Ki, \Lj] - [\Ki, \Kj] } \\
+		&= \frac{1}{4} \paren{ i \epsijk \Lk \pm \epsjik \Kk \mp \epsijk \Kk + i \epsijk \Lk }
+		= \frac{1}{2} \paren{ i \epsijk \Lk \mp \epsijk \Kk }
+		= \frac{1}{2} i \epsijk \paren{ \Lk \pm i  \Kk } \\
+		&= \ans{ i \epsijk \Jpmk, }
+	}
+	as desired. \qed
 }
 
 
 
-\prob{}
+\prob{}{
+	The finite-dimensional representations of the rotation group correspond precisely to the allowed values for angular momentum: integers or half-integers.  The result of \ref{3.1a} implies that all finite-dimensional representations of the Lorentz group correspond to pairs of integers or half integers, $(\jpp, \jmm)$, corresponding to pairs of representations of the rotation group.  Using the fact that $\vJ = \vsig / 2$ in the spin-$1/2$ representation of angular momentum, write explicitly the transformation laws of the 2-component objects transforming according to the $(\frac{1}{2}, 0)$ and $(0, \frac{1}{2})$ representations of the Lorentz group.  Show that these correspond precisely to the transformations of $\psiL$ and $\psiR$ given in (3.37).
+}
 
+\sol{
+	Equation (3.37) is
+	\al{
+		\psiL &\to \paren{ 1 - i \vtht \vdot \frac{\vsig}{2} - \vbet \vdot \frac{\vsig}{2} } \psiL, &
+		\psiR &\to \paren{ 1 - i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} } \psiR,
+	}
+	where $\psiL$ and $\psiR$ are the left- and right-handed Weyl spinors, respectively.
+	
+	We can rewrite Eq.~\refeq{trans} in terms of $\vJp$ and $\vJm$:
+	\eq{
+		\Phi \to [ 1 - i \vtht \vdot (\vJp + \vJm) - \vbet \vdot (\vJp - \vJm) ] \Phi
+		= [ 1 - (i \vtht + \vbet) \vdot \vJp + (i \vtht - \vbet) \vdot \vJm) ] \Phi.
+	}
+	From the final expression, we associate $\vJp$ and $\vJm$ with $\vsig / 2$ in turn, with $\vJp = \vsig / 2$ corresponding to the $(\frac{1}{2}, 0)$ representation and $\vJm = \vsig / 2$ corresponding to the $(0, \frac{1}{2})$ representation.  The transformation laws are
+	\eq{
+		\Phi \to \begin{cases}
+			\paren{ 1 - i \vtht \vdot \dfrac{\vsig}{2} - \vbet \vdot \dfrac{\vsig}{2} } \Phi & \text{$(\frac{1}{2}, 0)$ representation}, \\[2ex]
+			\paren{ 1 - i \vtht \vdot \dfrac{\vsig}{2} + \vbet \vdot \dfrac{\vsig}{2} } \Phi & \text{$(0, \frac{1}{2})$ representation}.
+		\end{cases}
+	}
+	Comparing to Eq.~(3.37), we see that $\Phi$ transforms as $\psiL$ under the $(\frac{1}{2}, 0)$ representation and as $\psiR$ under the $(0, \frac{1}{2})$ representation. \qed
+}
+
+
+
+\prob{}{
+	The identity $\vsigT = -\sig^2 \vsig \sig^2$ allows us to rewrite the $\psiL$ transformations in the unitarily equivalent form
+	\eq{
+		\psi' \to \psi' \paren{ 1 + i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} },
+	}
+	where $\psi' = \psiLT \sig^2$.  Using this law, we can represent the object that transforms as $(\frac{1}{2}, \frac{1}{2})$ as a $2 \times 2$ matrix that has the $\psiR$ transformations law on the left and, simultaneously, the transposed $\psiL$ transformation on the right.  Parametrize this matrix as
+	\eq{
+		\mqty(
+			\Vo + \Ve & \Vq - i \Ve \\
+			\Vq + i \Vw & \Vo - \Ve
+		).
+	}
+	Show that the object $\Vm$ transforms as a 4-vector.
+}
+
+\sol{
+	Firstly, note that
+	\al{
+		\Vsm \sigm = \mqty( \Vo & 0 \\ 0 & \Vo ) - \mqty( 0 & \Vq \\ \Vq & 0 ) - \mqty( 0 & -i \Vw \\ i \Vw & 0 ) - \mqty( \Ve & 0 \\ 0 & -\Ve )
+		= \mqty(
+			\Vo + \Ve & \Vq - i \Ve \\
+			\Vq + i \Vw & \Vo - \Ve
+		).
+	}
+	Then the transformation is
+	\al{
+		\Vsm \sigm &\to \paren{ 1 - i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} } \Vsm \sigm \paren{ 1 + i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} }
+		= \paren{ 1 + (\vbet - i \vtht) \vdot \frac{\vsig}{2} } \Vsm \sigm \paren{ 1 + (\vbet + i \vtht) \vdot \frac{\vsig}{2} } \\
+		&= \Vsm \sigm + \Vsm \sigm (\vbet + i \vtht) \vdot \frac{\vsig}{2} + (\vbet - i \vtht) \vdot \frac{\vsig}{2} \Vsm \sigm,
+	}
+	where we note that $\tht$ and $\bet$ are infinitesimal angles and drop terms of $\order{\tht^2} = \order{\bet^2} = \order{\tht \bet}$.  Then
+	\al{
+		\Vsm \sigm &\to \Vsm \sigm + \frac{1}{2} \Vsm \sigm (\betsi \sigi + i \thtsj \sigj) + \frac{1}{2} \Vsm (\betsk \sigk - i \thtsl \sigl) \sigm \\
+		&= \Vsm \sigm + \frac{1}{2} \Vsm \paren{ \betsi \sigm \sigi + i \thtsj \sigm \sigj + \betsk \sigk \sigm - i \thtsl \sigl \sigm } \\
+		&= \Vsm \sigm + \frac{1}{2} \Vsm \brac{ \betsi (\sigm \sigi + \sigi \sigm) + i \thtsj (\sigm \sigj - \sigj \sigm) }
+		= \Vsm \sigm + \frac{1}{2} \Vsm \paren{ \betsi \{ \sigm, \sigi \} + i \thtsj [\sigm, \sigj] } \\
+		&= \Vsm \sigm + \Vsm \paren{ \betsi \delmi + i \thtsj \epsmij \sigj }
+		= \Vsm \sigm + \Vsm \betm + i \Vsm \thtsj \epsmij \sigj
+	}
+	where we have used $\{ \sigi, \sigj \} = 2 \delij$ and $[\sigi, \sigj] = 2i \epsijk \sigk$~\cite[p.~165]{Sakurai}.
+	
+	Peskin \& Schroeder~(3.19) shows an infinitesimal Lorentz transformation:
+	\eq{
+		\Va \to \brac{ \delasb - \frac{i}{2} \omgsmn \cJmnasb } \Vb,
+	}
+	where $V$ is a 4-vector, $\omgsmn$ is an antisymmetric tensor that gives the infinitesimal angles, and $\cJmnsasb$ is defined in Peskin \& Schroeder~(3.18): $\cJmnsasb = i (\delmsa \delnsb - \delmsb \delnsa)$.
 }
 
 
 
 
-%\state{Peskin \& Schroeder 3.4}{
-%
+%\state{Majorana fermions (Peskin \& Schroeder 3.4)}{
+%	Recall from Eq.~(3.40) that one can write a relativistic equation for a massless 2-component fermion field that transforms as the upper two components of a Dirac spinor ($\psiL$).  Call such a 2-component field $\chiax$, $a = 1, 2$.
 %}
-%
-%
-%
-%
-%\state{Peskin \& Schroeder 3.7}{
-%
+
+%\prob{}{	\label{3.4a}
+%	Show that it is possible to write an equation for $\chix$ as a massive field in the following way:
+%	\eq{
+%		i \sigb \cdot \partial \chi - i m \sig^2 \chis = 0.
+%	}
+%	That is, show, first, that this equation is relativistically invariant and, second, that it implies the Klein-Gordon equation, $(\partial^2 + m^2) \chi = 0$.  This form of the fermion mass is called a Majorana mass term.
 %}
+
+
+
+%\prob{}{	\label{3.4b}
+%	Does the Majorana equation follow from a Lagrangian?  The mass term would seem to be the variation of $\sigsab \chias \chibs$; however, since $\sig^2$ is antisymmetric, this expression would vanish if $\chix$ were an ordinary c-number field.  When we go to quantum field theory, we know that $\chix$ will become an anticommuting quantum field.  Therefore, it makes sense to develop its classical theory by considering $\chix$ as a classical anticommuting field, that is, as a field that takes as values \emph{Grassmann numbers} which satisfy
+%	\al{
+%		\alp \bet &= -\bet \alp, &
+%		\text{for any } \alp, \bet.
+%	}
+%	Note that this relation implies that $\alp^2 = 0$.  A Grassmann field $\xix$ can be expanded in a basis of functions as
+%	\eq{
+%		\xix = \sumn \alpn \phinx,
+%	}
+%	where the $\phinx$ are orthogonal c-number functions and the $\alpn$ are a set of independent Grassmann numbers.  Define the complex conjugate of a profuct of Grassmann numbers to reverse the order:
+%	\eq{
+%		(\alp \bet)^* = \bets \alps
+%		= -\alps \bets.
+%	}
+%	This rule imitates the Hermitian conjugation of quantum fields.  Show that the classical action,
+%	\eq{
+%		S = \int \ddqx \brac{ \chidag i \sigb \cdot \partial \chi + \frac{i m}{2} \paren{ \chiT \sig^2 \chi - \chidag \sig^2 \chis } },
+%	}
+%	(where $\chidag = (\chis)^T$) is real ($\Ss = S$), and that varying this $S$ with respect to $\chi$ and $\chis$ yields the Majorana equation.
+%}
+
+
+
+%\prob{}{	\label{3.4c}
+%	Let us write a 4-component Dirac field as
+%	\eq{
+%		\psix = \mqty( \psiL \\ \psiR ),
+%	}
+%	and recall that the lower components of $\psi$ transform in a way equivalent by a unitary transformation to the complex conjugate of the representation $\psiL$.  In this way, we can rewrite the 4-component Dirac field in terms of two 2-component spinors:
+%	\al{
+%		\psiLx &= \chiqx, &
+%		\psiRx &= i \sig^2 \chiwsx.
+%	}
+%	Rewrite the Dirac Lagrangian in terms of $\chiq$ and $\chiw$ and note the form of the mass term.
+%}
+
+
+
+%\prob{}{
+%	Show that the action of \ref{3.4c} has a global symmetry.  Compute the divergences of the currents
+%	\al{
+%		\Jm &= \chidag \sigbm \chi, &
+%		\Jm &= \chiqdag \sigbm \chiq - \chiwdag \sigbm \chiw,
+%	}
+%	for the theories of \ref{3.4b} and \ref{3.4c}, respectively, and relate your results to the symmetries of those theories.  Construct a theory of $N$ free massive 2-component fermion fields with $\order{N}$ symmetry (that is, the symmetry of rotations in an $N$-dimensional space).
+%}
+
+
+
+%\prob{}{
+%	Quantize the Majorana theory of \ref{3.4a} and \ref{3.4b}.  That is, promote $\chix$ to a quantum field satisfying the canonical anticommutation relation
+%	\eq{
+%		\{ \chiavx, \chibdagvy \} = \delsab \del^3(\vx - \vy),
+%	}
+%	construct a Hermitian Hamiltonian, and find a representation of the canonical anticommutation relations that diagonalizes the Hamiltonian in terms of a set of creation and annihilation operators.  (Hint: Compare $\chix$ to the top two components of the quantized Dirac field.)
+%}
+
+
+
+
+
+
+%\state{(Peskin \& Schroeder 3.7)}{
+%	This problem concerns the discrete symmetries $P$, $C$, and $T$.
+%}
+
+
+
+%\prob{}{
+%	Compute the transformation properties under $P$, $C$, and $T$ of the antisymmetric tensor fermion bilinears, $\psib \sigmn \psi$, with $\sigmn = \frac{i}{2} [\gamm, \gamn]$.  This completes the table of the transformation properties of bilinears at the end of the chapter.
+%}
+
+
+
+%\prob{}{
+%	Let $\phix$ be a complex-valued Klein-Gordon field, such as we considered in Problem~2.2.  Find unitary operators $P$, $C$, and an antiunitary operator $T$ (all defined in terms of their action on the annihilation operators $\ap$ and $\bp$ for the Klein-Gordon particles and antiparticles) that give the following transformations of the Klein-Gordon field:
+%	\al{
+%		P \phitx P &= \phitmx, &
+%		T \phitx T &= \phimtx, &
+%		C \phitx C &= \phistx.
+%	}
+%	Find the transformation properties of the components of the current
+%	\eq{
+%		\Jm = i (\phis \ptm \phi - \ptm \phis \phi)
+%	}
+%	under $P$, $C$, and $T$.
+%}
+
+
+
+%\prob{}{
+%	Show that any Hermitian Lorentz-scalar local operator built from $\psix$, $\phix$, and their conjugates has $C P T = +1$.
+%}
+
+
+
+
 
 \clearpage
 \makebib

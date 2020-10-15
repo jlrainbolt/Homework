@@ -86,6 +86,9 @@
 \newcommand{\gis}{g^{i \sig}}
 \newcommand{\gos}{g^{0 \sig}}
 
+\newcommand{\Ji}{J^i}
+\newcommand{\Jj}{J^j}
+\newcommand{\Jk}{J^k}
 \newcommand{\Li}{L^i}
 \newcommand{\Lj}{L^j}
 \newcommand{\Lk}{L^k}
@@ -94,21 +97,29 @@
 \newcommand{\Kk}{K^k}
 
 \newcommand{\epsijk}{\eps^{i j k}}
+\newcommand{\epsjik}{\eps^{j i k}}
+\newcommand{\epsmij}{\eps^{\mu i j}}
 \newcommand{\epsijs}{\eps^{i j \sig}}
+\newcommand{\epsjis}{\eps^{j i \sig}}
 \newcommand{\epspqk}{\eps^{p q k}}
 \newcommand{\epsimn}{\eps^{i \mu \nu}}
-\newcommand{\epsimsn}{\eps^{i \mu}{}_\nu}
 \newcommand{\epsinm}{\eps^{i \nu \mu}}
 \newcommand{\epsirs}{\eps^{i \rho \sig}}
 \newcommand{\epsjrs}{\eps^{j \rho \sig}}
-\newcommand{\epsjsrs}{\eps^j{}_\rho{}^\sig}
 \newcommand{\epsjsr}{\eps^{j \sig \rho}}
 \newcommand{\epsjns}{\eps^{j \nu \sig}}
 \newcommand{\epsjsn}{\eps^{j \sig \nu}}
 
-\newcommand{\delsnr}{\del_\nu^\rho}
-\newcommand{\delsab}{\del_\alp^\bet}
-\newcommand{\delsri}{\del_\rho^i}
+\newcommand{\delnr}{\del^{\nu \rho}}
+\newcommand{\delir}{\del^{i \rho}}
+
+\newcommand{\delasb}{\del^\alp{}_\bet}
+\newcommand{\delmsa}{\del^\mu{}_\alp}
+\newcommand{\delmsb}{\del^\mu{}_\bet}
+\newcommand{\delnsa}{\del^\nu{}_\alp}
+\newcommand{\delnsb}{\del^\nu{}_\bet}
+\newcommand{\delmi}{\del^{\mu i}}
+
 \newcommand{\delij}{\del^{i j}}
 \newcommand{\delis}{\del^{i \sig}}
 \newcommand{\delmj}{\del^{\mu j}}
@@ -127,6 +138,118 @@
 \newcommand{\vL}{\vb{L}}
 \newcommand{\vtht}{\boldsymbol{\tht}}
 \newcommand{\vbet}{\boldsymbol{\bet}}
+\newcommand{\vsig}{\boldsymbol{\sig}}
+\newcommand{\vsigT}{\vsig^T}
 
 \newcommand{\vJp}{\vJ_+}
 \newcommand{\vJm}{\vJ_-}
+\newcommand{\jpp}{j_+}
+\newcommand{\jmm}{j_-}
+
+\newcommand{\Jp}{J_+}
+\newcommand{\Jpi}{\Jp^i}
+\newcommand{\Jmj}{J_-^j}
+\newcommand{\Jpm}{J_\pm}
+\newcommand{\Jpmi}{\Jpm^i}
+\newcommand{\Jpmj}{\Jpm^j}
+\newcommand{\Jpmk}{\Jpm^k}
+
+\newcommand{\psiL}{\psi_L}
+\newcommand{\psiLx}{\psiL(x)}
+\newcommand{\psiLT}{\psi_L^T}
+\newcommand{\psiR}{\psi_R}
+\newcommand{\psiRx}{\psiR(x)}
+
+\newcommand{\Va}{V^\alp}
+\newcommand{\Vb}{V^\bet}
+\newcommand{\Vm}{V^\mu}
+\newcommand{\Vsm}{V_\mu}
+\newcommand{\Vo}{V^0}
+\newcommand{\Vq}{V^1}
+\newcommand{\Vw}{V^2}
+\newcommand{\Ve}{V^3}
+
+\newcommand{\sigm}{\sigma^\mu}
+\newcommand{\omgsmn}{\omg_{\mu \nu}}
+
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cJmn}{\cJ^{\mu \nu}}
+\newcommand{\cJmnasb}{(\cJmn)^\alp{}_\bet}
+\newcommand{\cJmnsasb}{(\cJmn)_{\alp \bet}}
+
+\newcommand{\betsi}{\bet_i}
+\newcommand{\betsj}{\bet_j}
+\newcommand{\betsk}{\bet_k}
+\newcommand{\betsl}{\bet_l}
+\newcommand{\thtsi}{\tht_i}
+\newcommand{\thtsj}{\tht_j}
+\newcommand{\thtsk}{\tht_k}
+\newcommand{\thtsl}{\tht_l}
+\newcommand{\sigi}{\sig^i}
+\newcommand{\sigj}{\sig^j}
+\newcommand{\sigk}{\sig^k}
+\newcommand{\sigl}{\sig^l}
+
+\newcommand{\betm}{\bet^\mu}
+
+
+% Problem 3 (P&S 3.4)
+
+\newcommand{\chix}{\chi(x)}
+\newcommand{\xix}{\xi(x)}
+
+\newcommand{\vx}{\vb{x}}
+\newcommand{\vy}{\vb{y}}
+
+\newcommand{\chia}{\chi_a}
+\newcommand{\chias}{\chia^*}
+\newcommand{\chiax}{\chia(x)}
+\newcommand{\chiavx}{\chia(\vx)}
+\newcommand{\chib}{\chi_b}
+\newcommand{\chibs}{\chib^*}
+\newcommand{\chibdag}{\chib^\dagger}
+\newcommand{\chibdagvy}{\chibdag(\vy)}
+
+\newcommand{\chiq}{\chi_1}
+\newcommand{\chiqdag}{\chiq^\dagger}
+\newcommand{\chiqx}{\chiq(x)}
+\newcommand{\chiw}{\chi_2}
+\newcommand{\chiwdag}{\chiw^\dagger}
+\newcommand{\chiws}{\chiw^*}
+\newcommand{\chiwsx}{\chiws(x)}
+
+\newcommand{\sigb}{\bar{\sig}}
+\newcommand{\sigbm}{\sigb^\mu}
+\newcommand{\sigsab}{(\sig^2)_{ab}}
+
+\newcommand{\chis}{\chi^*}
+\newcommand{\chidag}{\chi^\dagger}
+\newcommand{\chiT}{\chi^T}
+
+\newcommand{\sumn}{\sum_n}
+\newcommand{\alpn}{\alp_n}
+\newcommand{\phin}{\phi_n}
+\newcommand{\phinx}{\phin(x)}
+
+\newcommand{\alps}{\alp^*}
+\newcommand{\bets}{\bet^*}
+
+\newcommand{\ddqx}{\dd[4]{x}}
+\newcommand{\Ss}{S^*}
+
+
+% Problem 4 (P&S 3.7)
+
+\newcommand{\sigmn}{\sig^{\mu \nu}}
+
+\newcommand{\phis}{\phi^*}
+\newcommand{\phix}{\phi(x)}
+\newcommand{\phitx}{\phi(t, \vx)}
+\newcommand{\phitmx}{\phi(t, -\vx)}
+\newcommand{\phimtx}{\phi(-t, \vx)}
+\newcommand{\phistx}{\phis(t, \vx)}
+
+\newcommand{\ap}{a_p}
+\newcommand{\bp}{b_p}
+
+\newcommand{\ptm}{\partial^\mu}
