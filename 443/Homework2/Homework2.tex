@@ -14,22 +14,70 @@
 
 \input{Problem1}
 
-\input{Problem2}
+\input{Problem2} 
 
 
 
 
-%\state{Majorana fermions (Peskin \& Schroeder 3.4)}{
-%	Recall from Eq.~(3.40) that one can write a relativistic equation for a massless 2-component fermion field that transforms as the upper two components of a Dirac spinor ($\psiL$).  Call such a 2-component field $\chiax$, $a = 1, 2$.
-%}
+\state{Majorana fermions (Peskin \& Schroeder 3.4)}{
+	Recall from Eq.~(3.40) that one can write a relativistic equation for a massless 2-component fermion field that transforms as the upper two components of a Dirac spinor ($\psiL$).  Call such a 2-component field $\chiax$, $a = 1, 2$.
+}
 
-%\prob{}{	\label{3.4a}
-%	Show that it is possible to write an equation for $\chix$ as a massive field in the following way:
-%	\eq{
-%		i \sigb \cdot \partial \chi - i m \sig^2 \chis = 0.
+\prob{}{	\label{3.4a}
+	Show that it is possible to write an equation for $\chix$ as a massive field in the following way:
+	\eqn{given3a}{
+		i \sigb \cdot \partial \chi - i m \sig^2 \chis = 0.
+	}
+	That is, show, first, that this equation is relativistically invariant and, second, that it implies the Klein-Gordon equation, $(\partial^2 + m^2) \chi = 0$.  This form of the fermion mass is called a Majorana mass term.
+}
+
+\sol{
+	The expression
+	\eq{
+		\paren{ 1 + \frac{i}{2} \omgsrs \Srs } \gamm \paren{ 1 - \frac{i}{2} \omgsrs \Srs } = \brac{ 1 - \frac{i}{2} \omgsrs \cJrs }^\mu_{\phantom{\mu} \nu} \gamn
+	}
+	is the infinitesimal form of Peskin \& Schroeder~(3.29), $\Lamhi \gamm \Lamh = \Lammsn \gamn$~\cite[p.~42]{Peskin}.  We proved a similar expression in \ref{3.1c}:
+	\eqn{thing3.4a}{
+		\paren{ 1 - i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} } \Vsm \sigm \paren{ 1 + i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} } = \brac{ 1 - \frac{i}{2} \omgsrs \cJrs }^\mu_{\phantom{\mu} \nu} \Vn \sigsm.
+	}
+	From Peskin \& Schroeder~(3.41),
+	\al{
+		\sigm &\equiv (1, \vsig), &
+		\sigbm &\equiv (1, -\vsig),
+	}
+	which means we can write
+	\al{
+		\gsmn \sign &= \sigbm, &
+		\gsmn \sigbn &= \sigm.
+	}
+	Then Eq.~\refeq{thing3.4a} can be rewritten as
+	\eq{
+		\paren{ 1 - i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} } \Vsm \gsma \sigba \paren{ 1 + i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} } = \brac{ 1 - \frac{i}{2} \omgsrs \cJrs }^\mu_{\phantom{\mu} \nu} \Vn \gsma \sigba,
+	}
+%	which implies
+%	\eqn{thing4.a2}{
+%		\paren{ 1 - i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} } \sigbm \paren{ 1 + i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} } = \brac{ 1 - \frac{i}{2} \omgsrs \cJrs }^\mu_{\phantom{\mu} \nu} \sigbn.
 %	}
-%	That is, show, first, that this equation is relativistically invariant and, second, that it implies the Klein-Gordon equation, $(\partial^2 + m^2) \chi = 0$.  This form of the fermion mass is called a Majorana mass term.
-%}
+%	Using the notation of \ref{3.1b}, let
+%	\al{
+%		\Lamho &= \exp( -i \vtht \vdot \frac{\vsig}{2} - \vbet \vdot \frac{\vsig}{2} ), &
+%		\Lamoh &= \exp( -i \vtht \vdot \frac{\vsig}{2} + \vbet \vdot \frac{\vsig}{2} ),
+%	}
+%	and then the finite form of Eq.~\refeq{thing4.a2} is
+%	\eq{
+%		\Lamohi  \sigbm \Lamho 
+%	}
+	
+	
+
+
+
+%	Let $\chipx = \chi(\Lami x)$.  Then under the transformation $\chix \to \chipx$, Eq.~\refeq{given3a} becomes
+%	\al{
+%		i \sigbm \ptsm \chix - i m \sigm \sigsm \chipx &\to i \sigbm \Laminsm \ptsn \Lamh \chiLamix - i m \sigm \sigsm \Lamh \chisLamix
+%		= i \sigbm \Laminsm \ptsn \Lamh \chiLamix - i m \sigm \sigsm \Lamh \chisLamix
+%	}
+}
 
 
 
@@ -57,7 +105,7 @@
 
 
 
-%\prob{}{	\label{3.4c}
+%\prob{}{
 %	Let us write a 4-component Dirac field as
 %	\eq{
 %		\psix = \mqty( \psiL \\ \psiR ),
@@ -72,17 +120,7 @@
 
 
 
-%\prob{}{
-%	Show that the action of \ref{3.4c} has a global symmetry.  Compute the divergences of the currents
-%	\al{
-%		\Jm &= \chidag \sigbm \chi, &
-%		\Jm &= \chiqdag \sigbm \chiq - \chiwdag \sigbm \chiw,
-%	}
-%	for the theories of \ref{3.4b} and \ref{3.4c}, respectively, and relate your results to the symmetries of those theories.  Construct a theory of $N$ free massive 2-component fermion fields with $\order{N}$ symmetry (that is, the symmetry of rotations in an $N$-dimensional space).
-%}
-
-
-
+%\stepcounter{subsection}
 %\prob{}{
 %	Quantize the Majorana theory of \ref{3.4a} and \ref{3.4b}.  That is, promote $\chix$ to a quantum field satisfying the canonical anticommutation relation
 %	\eq{
