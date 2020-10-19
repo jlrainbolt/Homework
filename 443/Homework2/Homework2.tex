@@ -17,211 +17,22 @@
 
 \input{Problem2} 
 
+\input{Problem3}
 
 
 
-\state{Majorana fermions (Peskin \& Schroeder 3.4)}{
-	Recall from Eq.~(3.40) that one can write a relativistic equation for a massless 2-component fermion field that transforms as the upper two components of a Dirac spinor ($\psiL$).  Call such a 2-component field $\chiax$, $a = 1, 2$.
-}
 
-\prob{}{	\label{3.4a}
-	Show that it is possible to write an equation for $\chix$ as a massive field in the following way:
-	\eqn{given3a}{
-		i \sigb \cdot \partial \chi - i m  \sigw \chis = 0.
-	}
-	That is, show, first, that this equation is relativistically invariant and, second, that it implies the Klein-Gordon equation, $(\partial^2 + m^2) \chi = 0$.  This form of the fermion mass is called a Majorana mass term.
-}
 
-\sol{
-	Using the result of \ref{3.1b}, let
-	\al{
-		\Lamho &= \exp( -i \vtht \vdot \dfrac{\vsig}{2} - \vbet \vdot \dfrac{\vsig}{2} ), &
-		\Lamoh &= \exp( -i \vtht \vdot \dfrac{\vsig}{2} + \vbet \vdot \dfrac{\vsig}{2} ).
-	}
-	We are told that $\chi$ transforms as $\psiL$, so we know $\chi \to \Lamho \chi$.  So
-	\al{
-		 \sigw \chis &\to  \sigw ( \Lamho \chi )^* \\
-		&=  \sigw \brac{ \exp( -i \vtht \vdot \dfrac{\vsig}{2} - \vbet \vdot \dfrac{\vsig}{2} ) \chi }^*
-		=  \sigw \brac{ \exp( i \vtht \vdot \dfrac{\vsigs}{2} - \vbet \vdot \dfrac{\vsigs}{2} ) } \chis
-		= \brac{ \exp( -i \vtht \vdot \dfrac{\vsig}{2} + \vbet \vdot \dfrac{\vsig}{2} ) }  \sigw \chis \\
-		&= \Lamoh  \sigw \chis,
-	}
-	where we have used Peskin \& Schroeder~(3.38), $ \sigw \vsigs = - \vsig  \sigw$.
-	
-	We also need to know how to manipulate $\sigb$.  From Eqs.~(3.36) and (3.37), we can write a finite Lorentz transformation as
-	\eq{
-		\Lam \psi = \mqty(
-			\Lamho & 0 \\
-			0 & \Lamoh
-		)	\mqty(
-			\psiL \\
-			\psiR
-		)
-		= \mqty(
-			\Lamho \psiL \\
-			\Lamoh \psiR
-		).
-	}
-	Then using Peskin \& Schroeder~(3.42),
-	\eq{
-		\gamm = \mqty(
-			0 & \sigm \\
-			\sigbm & 0
-		),
-	}
-	we can rewrite their Eq.~(3.29), $\Lammsn \gamn = \Lamhi \gamm \Lamh$, in matrix form.  The left side is
-	\eq{
-		\mqty(
-			\Lamh & 0 \\
-			0 & \Lamh
-		) \mqty(
-			0 & \sigm \\
-			\sigbm & 0
-		) = \mqty(
-			0 & \Lammsn \sign \\
-			\Lammsn \sigbn & 0
-		),
-	}
-	and the right side is
-	\eq{ \mqty(
-			\Lamhoi & 0 \\
-			0 & \Lamohi
-		) \mqty(
-			0 & \sigm \\
-			\sigbm & 0
-		) \mqty(
-			\Lamho & 0 \\
-			0 & \Lamoh
-		) = \mqty(
-			\Lamhoi & 0 \\
-			0 & \Lamohi
-		) \mqty(
-			0 & \sigm \Lamho \\
-			\sigbm \Lamoh & 0
-		) = \mqty(
-			0 & \Lamhoi \sigm \Lamoh \\
-			\Lamohi \sigbm \Lamho & 0,
-		)
-	}
-	So we have
-	\al{
-		\Lammsn \sigbn &= \Lamohi \sigbm \Lamho, &
-		\sigbn \Laminsm &= \Lamoh \sigbm \Lamhoi.
-	}
 
-	Then Eq.~\refeq{given3a} transforms as
-	\al{
-		i \sigbm \ptsm \chix - i m  \sigw \chisx &\to i \sigbm \Laminsm \ptsn \Lamho \chiLamix - i m \Lamoh  \sigw \chisLamix \\
-		&= i \Lamoh \sigbm \Lamhoi \Lamho \ptsn \chiLamix - i m \Lamoh  \sigw \chisLamix \\
-		&= \Lamoh \brac{ \sigbm \ptsn \chiLamix - i m  \sigw \chisLamix } \\
-		&= 0,
-	}
-	so this equation is relativistically invariant. \qed
-	
-	The Klein-Gordon equation does not include $\chis$, so we want to eliminate it from the Majorana equation.  From Eq.~\refeq{given3a},
-	\al{
-		i \sigb \cdot \partial \chi = i m  \sigw \chis
-		\qimplies
-		\chis = \frac{ \sigw}{m} \sigb \cdot \partial \chi,
-	}
-	since $\sigi \sigi = 1$~\cite[p.~164]{Sakurai}.  We also need a $\partial^2$ term in the Klein-Gordon equation, so we can feed this expression into the complex conjugate of the Majorana equation:
-	\aln{
-		0 &= -i \sigbs \cdot \partial \chis + i m \sigstw \chi
-		= -i \sigbstm \ptsm \paren{ \frac{ \sigw}{m} \sigb \cdot \partial \chi } + i m \sigstw \chi
-		= -i \sigbstm \frac{ \sigw}{m} \sigbn \ptsm \ptsn \chi + i m \sigstw \chi \notag \\
-		&= \sigbstm \sigw \sigbn \ptsm \ptsn \chi - m^2 \sigstw \chi. \label{ugh}
-	}
-	Since $\sigbm = ( \sigo, -\sigq, -\sigw, -\sige )$, then $\sigbstm = ( \sigo, -\sigq, \sigw, -\sige )$, and so
-	\eq{
-		\sigbstm \sigw = (\sigw, -\sigq \sigw, \sigw \sigw, \sige \sigw)
-		= (\sigw, \sigw \sigq, \sigw \sigw, -\sigw \sige)
-		= \sigw \sigm,
-	}
-	where we have used $\{ \sigi, \sigj \} = 2 \delij$~\cite[p.~165]{Sakurai}.  Using this in Eq.~\refeq{ugh},
-	\eqn{ugh2}{
-		0 = \sigw \sigm \sigbn \ptsm \ptsn \chi - m^2 \sigstw \chi
-		= \sigw \sigw \sigm \sigbn \ptsm \ptsn \chi - m^2 \sigw \sigstw \chi
-		= \sigm \sigbn \ptsm \ptsn \chi + m^2 \chi
-	}
-	since $\sigstw = -\sigw$.  The anticommutation relation also implies that $\sigm \sigbn + \sign \sigbm = 2 \gmn$.  Note that
-	\eq{
-		\sigm \sigbn \ptsm \ptsn = \frac{1}{2} (\sigm \sigbn \ptsm \ptsn + \sigm \sigbn \ptsm \ptsn)
-		= \frac{1}{2} (\sigm \sigbn \ptsm \ptsn + \sign \sigbm \ptsn \ptsm)
-		= \frac{1}{2} (\sigm \sigbn + \sign \sigbm) \ptsm \ptsn
-		= \gmn \ptsm \ptsn
-		= \ptsm \ptm,
-	}
-	where we  have just relabeled indices.  Then we have
-	\eq{
-		\ans{ 0 = \ptsm \ptm \chi + m^2 \chi, }
-	}
-	which is the Klein-Gordon equation. \qed
+\state{(Peskin \& Schroeder 3.7)}{
+	This problem concerns the discrete symmetries $P$, $C$, and $T$.
 }
 
 
 
-\prob{}{	\label{3.4b}
-	Does the Majorana equation follow from a Lagrangian?  The mass term would seem to be the variation of $\sigsab \chias \chibs$; however, since $\sigw$ is antisymmetric, this expression would vanish if $\chix$ were an ordinary c-number field.  When we go to quantum field theory, we know that $\chix$ will become an anticommuting quantum field.  Therefore, it makes sense to develop its classical theory by considering $\chix$ as a classical anticommuting field, that is, as a field that takes as values \emph{Grassmann numbers} which satisfy
-	\al{
-		\alp \bet &= -\bet \alp, &
-		\text{for any } \alp, \bet.
-	}
-	Note that this relation implies that $\alp^2 = 0$.  A Grassmann field $\xix$ can be expanded in a basis of functions as
-	\eq{
-		\xix = \sumn \alpn \phinx,
-	}
-	where the $\phinx$ are orthogonal c-number functions and the $\alpn$ are a set of independent Grassmann numbers.  Define the complex conjugate of a profuct of Grassmann numbers to reverse the order:
-	\eq{
-		(\alp \bet)^* = \bets \alps
-		= -\alps \bets.
-	}
-	This rule imitates the Hermitian conjugation of quantum fields.  Show that the classical action,
-	\eq{
-		S = \int \ddqx \brac{ \chidag i \sigb \cdot \partial \chi + \frac{i m}{2} \paren{ \chiT  \sigw \chi - \chidag  \sigw \chis } },
-	}
-	(where $\chidag = (\chis)^T$) is real ($\Ss = S$), and that varying this $S$ with respect to $\chi$ and $\chis$ yields the Majorana equation.
+\prob{}{
+	Compute the transformation properties under $P$, $C$, and $T$ of the antisymmetric tensor fermion bilinears, $\psib \sigmn \psi$, with $\sigmn = \frac{i}{2} [\gamm, \gamn]$.  This completes the table of the transformation properties of bilinears at the end of the chapter.
 }
-
-
-
-%\prob{}{
-%	Let us write a 4-component Dirac field as
-%	\eq{
-%		\psix = \mqty( \psiL \\ \psiR ),
-%	}{\omg^{\mu \nu}}
-%	and recall that the lower components of $\psi$ transform in a way equivalent by a unitary transformation to the complex conjugate of the representation $\psiL$.  In this way, we can rewrite the 4-component Dirac field in terms of two 2-component spinors:
-%	\al{
-%		\psiLx &= \chiqx, &
-%		\psiRx &= i  \sigw \chiwsx.
-%	}
-%	Rewrite the Dirac Lagrangian in terms of $\chiq$ and $\chiw$ and note the form of the mass term.
-%}
-
-
-
-%\stepcounter{subsection}
-%\prob{}{
-%	Quantize the Majorana theory of \ref{3.4a} and \ref{3.4b}.  That is, promote $\chix$ to a quantum field satisfying the canonical anticommutation relation
-%	\eq{
-%		\{ \chiavx, \chibdagvy \} = \delsab \del^3(\vx - \vy),
-%	}
-%	construct a Hermitian Hamiltonian, and find a representation of the canonical anticommutation relations that diagonalizes the Hamiltonian in terms of a set of creation and annihilation operators.  (Hint: Compare $\chix$ to the top two components of the quantized Dirac field.)
-%}
-
-
-
-
-
-
-%\state{(Peskin \& Schroeder 3.7)}{
-%	This problem concerns the discrete symmetries $P$, $C$, and $T$.
-%}
-
-
-
-%\prob{}{
-%	Compute the transformation properties under $P$, $C$, and $T$ of the antisymmetric tensor fermion bilinears, $\psib \sigmn \psi$, with $\sigmn = \frac{i}{2} [\gamm, \gamn]$.  This completes the table of the transformation properties of bilinears at the end of the chapter.
-%}
 
 
 
