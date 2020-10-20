@@ -17,10 +17,4 @@ M.~E. Peskin and D.~V. Schroeder, ``An Introduction to Quantum Field Theory''.
 J.~J. Sakurai, ``Modern Quantum Mechanics''.
 \newblock Addison-Wesley Publishing Company, revised edition, 1994.
 
-\bibitem{Skew}
-\href {https://en.wikipedia.org/wiki/Skew-Hermitian_matrix}{{Wikipedia
-  contributors}, ``Skew-Hermitian matrix.''} From Wikipedia, the Free
-  Encyclodia.
-\newblock \url {https://en.wikipedia.org/wiki/Skew-Hermitian_matrix}.
-
 \end{thebibliography}\endgroup
