@@ -164,11 +164,11 @@
 	To show that $S$ is real, we take its complex conjugate using the rules for Grassman numbers:
 	\al{
 		\Ss &= \int \ddqx \brac{ -i \paren{ \chidag \sigbm \ptsm \chi }^* - \frac{i m}{2} \paren{ \chiT \sigw \chi - \chidag \sigw \chis }^* }
-		= \int \ddqx \brac{ i \chiT \sigbstm \ptsm \chis + \frac{i m}{2} \paren{ \chidag \sigsw \chis - \chiT \sigsw \chi } } \\
-		&= \int \ddqx \brac{ i \ptsm \chidag \sigbdagm \chi - \frac{i m}{2} \paren{ \chidag \sigw \chis - \chiT \sigw \chi } }
+		= \int \ddqx \brac{ -i \chiT \sigbstm \ptsm \chis + \frac{i m}{2} \paren{ \chidag \sigsw \chis - \chiT \sigsw \chi } } \\
+		&= \int \ddqx \brac{ -i \ptsm \chidag \sigbdagm \chi - \frac{i m}{2} \paren{ \chidag \sigw \chis - \chiT \sigw \chi } }
 		= \int \ddqx \brac{ -i \ptsm \chidag \sigbm \chi + \frac{i m}{2} \paren{ \chiT \sigw \chi - \chidag \sigw \chis } },
 	}
-	where we have transposed the factors in the first term.  This is allowed because it is a c-number, and the sum of the matrix elements is the same if the matrices are transposed.  Then, integrating by parts, note that
+	where we have transposed the factors in the first term.  This is allowed because it is a c-number, and the sum of the matrix elements is the same if the matrices are transposed.  We have also used the fact that $\sigm$ is Hermitian, since all $\sigi$ are~\cite[p.~165]{Sakurai}.  Then, integrating by parts, note that
 	\eq{
 		\int \ddqx \ptsm \chidag \sigbm \chi = \brac{ \chidag \sigbm \chi }\ii - \int \ddqx \chidag \ptsm \chi
 		= \int \ddqx \chidag \ptsm \chi,
@@ -262,12 +262,12 @@
 			i \sigbm \ptsm \chiq - i m \sigw \chiws \\
 			-\sigm \ptsm \sigw \chiws - m \chiq
 		)
-		= i \chiqdag \sigbm \ptsm \chiq - i m \chiqdag \sigw \chiws + i \sigw \chiwT \sigm \ptsm \sigw \chiws + i m \sigw \chiwT \chiq \\
+		= i \chiqdag \sigbm \ptsm \chiq + i m \chiqdag \sigw \chiws + i \sigw \chiwT \sigm \ptsm \sigw \chiws + i m \sigw \chiwT \chiq \\
 		&= i \chiqdag \sigbm \ptsm \chiq + i \chiwT \sigbstm \ptsm \chiws + i m (\chiwT \sigw \chiq - \chiqdag \sigw \chiws)
 		= i \chiqdag \sigbm \ptsm \chiq + i \chiw \sigbdagm \ptsm \chiwdag + i m (\chiwT \sigw \chiq - \chiqdag \sigw \chiws) \\
 		&= i \chiqdag \sigbm \ptsm \chiq - i \chiw \sigbm \ptsm \chiwdag + i m (\chiwT \sigw \chiq - \chiqdag \sigw \chiws),
 	}
-	where we have applied Eq.~\refeq{sigthing}, taken the transpose of the second term.  Since $\cLDirac$ is a Lagrangian density, we may integrate this term by parts to obtain
+	where we have applied Eq.~\refeq{sigthing} and taken the transpose of the second term.  Since $\cLDirac$ is a Lagrangian density, we may integrate this term by parts to obtain
 	\eq{
 		\ans{ \cLDirac = i \chiqdag \sigbm \ptsm \chiq + i \chiwdag \sigbm \ptsm \chiw + i m (\chiwT \sigw \chiq - \chiqdag \sigw \chiws). }
 	}

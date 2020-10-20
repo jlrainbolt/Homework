@@ -34,21 +34,168 @@
 	Compute the transformation properties under $P$, $C$, and $T$ of the antisymmetric tensor fermion bilinears, $\psib \sigmn \psi$, with $\sigmn = \frac{i}{2} [\gamm, \gamn]$.  This completes the table of the transformation properties of bilinears at the end of the chapter.
 }
 
+\sol{
+	For the transformation under $P$,
+	\al{
+		P \psib \sigmn \psi P &= P \psib P P \sigmn P P \psi P
+		= \etaas \psibtmx \gamo P \sigmn P \etaa \gamo \psitmx \\
+		&= \frac{i}{2} \absetaa^2 \psibtmx \gamo [\gamm, \gamn] \gamo \psitmx
+		= \frac{i}{2} \psibtmx \gamo [\gamm, \gamn] \gamo \psitmx,
+	}
+	where we have used Peskin \& Schroeder~(3.125), $\eta \etab = -\etaa \etas = -1$ and $\etabs = -\etaa$~\cite[p.~66]{Peskin}.  We have also use their Eqs.~(3.126) and (3.128),
+	\al{
+		P \psitx P &= \etaa \gamo \psitmx, &
+		P \psibtx P &= \etaas \psibtmx \gamo.
+	}
+	From Eqs.~(3.26) and (3.27),
+	\al{
+		\sigoi &= \frac{i}{2} [\gamo, \gami] = -i \mqty( \sigi & 0 \\ 0 & -\sigi ), &
+		\sigij &= \frac{i}{2} [\gami, \gamj] = \epsijk \mqty( \sigk & 0 \\ 0 & \sigk ).
+	}
+	Note also that
+	\al{
+		\gamo \mqty( \sigi & 0 \\ 0 & \pm\sigi ) \gamo = \mqty( 0 & \sigo \\ \sigo & 0 ) \mqty( \sigi & 0 \\ 0 & \pm\sigi ) \mqty( 0 & \sigo \\ \sigo & 0 )
+		= \mqty( 0 & \sigo \\ \sigo & 0 ) \mqty( 0 & \sigi \\ \pm\sigi & 0 )
+		= \mqty( \pm\sigi & 0 \\ 0 & \sigi ).
+	}
+	for any $\sigi$.  Then
+	\al{
+		P \psib \sigoo \psi P &= 0, \\
+		P \psib \sigoi \psi P &= i \psibtmx \mqty( \sigi & 0 \\ 0 & -\sigi ) \psitmx
+		= -\psibtmx \sigoi \psitmx, \\
+		P \psib \sigio \psi P &= -i \psibtmx \mqty( \sigi & 0 \\ 0 & -\sigi ) \psitmx
+		= -\psibtmx \sigio \psitmx, \\
+		P \psib \sigij \psi P &= \epsijk \psibtmx \mqty( \sigk & 0 \\ 0 & \sigk ) \psitmx
+		= \psibtmx \psib \sigij \psi \psitmx,
+	}
+	or
+	\eq{\ans{
+		P \psib \sigmn \psi P = \begin{cases}
+			0 & \mu = \nu = 0, \\
+			-\psibtmx  \sigmn \psitmx & \mu = 0, \nu \neq 0, \\
+			-\psibtmx \sigmn \psitmx & \mu \neq 0, \nu = 0, \\
+			\psibtmx \sigmn \psitmx & \mu \neq 0, \nu \neq 0.
+		\end{cases}
+	}}%
+	
+	For the transformation under $T$,
+	\eq{
+		T \psib \sigmn \psi T = T \psib T T \sigmn T T \psi T
+		= -\psibmtx \gamq \game T \sigmn T \gamq \game \psimtx
+		= -\psibmtx \gamq \game \sigsmn \gamq \game \psimtx,
+	}
+	where we have used Peskin \& Schroeder~(3.139) and (3.140),
+	\al{
+		T \psitx T &= -\gamq \game \psitmx, &
+		T \psibtx T &= \psibmtx \gamq \game,
+	}
+	and Eq.~(3.133), $T (\text{c-number}) = (\text{c-number})^* T$.  Note that
+	\eq{
+		\gamq \game = \mqty( 0 & \sigq \\ -\sigq & 0 ) \mqty( 0 & \sige \\ -\sige & 0 )
+		= -\mqty( \sigq \sige & 0 \\ 0 & \sigq \sige ),
+	}
+	and that
+	\eq{
+		\gamq \game \mqty( \sigi & 0 \\ 0 & \pm\sigi ) \gamq \game = \mqty( \sigq \sige & 0 \\ 0 & \sigq \sige ) \mqty( \sigi & 0 \\ 0 & \pm\sigi ) \mqty( \sigq \sige & 0 \\ 0 & \sigq \sige )
+		= \mqty( \sigq \sige \sigi \sigq \sige & 0 \\ 0 & \pm \sigq \sige \sigi \sigq \sige ),
+	}
+	Taking each case,
+	\al{
+		\sigq \sige \sigq \sigq \sige &= \sigq \sige \sige
+		= \sigq, \\
+		\sigq \sige \sigw \sigq \sige &= -\sigq \sige \sigq \sigw \sige
+		= \sigq \sige \sigq \sige \sigw
+		= -\sigq \sigq \sige \sige \sigw
+		= -\sigw, \\
+		\sigq \sige \sige \sigq \sige &= \sigq \sigq \sige
+		= \sige.
+	}
+	
+	The case where $\mu = \nu = 0$ is trivially 0.  First we consider the case where $\mu$ or $\nu$ is 0.  Since $\sigow = \sigsow$ and $\sigoi = -\sigsoi$ for $i \in \{1, 3\}$,
+	\al{
+		T \psib \sigow \psi T &= -\psibmtx \gamq \game \sigow \gamq \game \psimtx
+		= \psibmtx \sigow \psimtx, \\
+		T \psib \sigoi \psi T &= \psibmtx \gamq \game \sigoi \gamq \game \psimtx
+		= \psibmtx \sigoi \psimtx.
+	}
+	Now we consider the case where $\mu \neq 0$ and $\nu \neq 0$.  If $i, j \in \{1, 3\}$, $\sigsij = -\sigij$ and $\sigiw = \sigsiw = \sigwi = \sigswi$.  Then
+	\al{
+		T \psib \sigij \psi T &= \psibmtx \gamq \game \sigij \gamq \game \psimtx
+		= -\psibmtx \sigij \psimtx, \\
+		T \psib \sigiw \psi T &= -\psibmtx \gamq \game \sigiw \gamq \game \psimtx
+		= \psibmtx \sigiw \psimtx, \\
+		T \psib \sigwi \psi T &= -\psibmtx \gamq \game \sigwi \gamq \game \psimtx
+		= \psibmtx \sigwi \psimtx.
+	}
+	In summary,
+	\eq{\ans{
+		T \psib \sigmn \psi T = \begin{cases}
+			0 & \mu = \nu = 0, \\
+			\psibmtx  \sigmn \psimtx & \mu = 0, \nu \neq 0, \\
+			\psibmtx \sigmn \psimtx & \mu \neq 0, \nu = 0, \\
+			-\psibmtx \sigmn \psimtx & \mu \neq 0, \nu \neq 0.
+		\end{cases}
+	}}%
+	
+	For the transformation under $C$,
+	\eq{
+		C \psib \sigmn \psi C = C \psib C C \sigmn C C \psi C
+		= -(\gamo \gamw \psi)^T C \sigmn C (\psib \gamo \gamw)^T
+		= -(\gamo \gamw \psi)^T \sigmn (\psib \gamo \gamw)^T
+	}
+	where we have used Peskin \& Schroeder~(3.145) and (3.146),
+	\al{
+		C \psix C &= -i (\psib \gamo \gamw)^T, &
+		C \psibx C &= -i (\gamo \gamw \psi)^T.
+	}
+	Since $\gamo{}^T = \gamo$ and $\gami{}^T = -\gami$,
+	\eq{
+		C \psib \sigmn \psi C = -\psiT \gamw \gamo \sigmn \gamw \gamo \psibT.
+	}
+	Note that
+	\eq{
+		\gamw \gamo = \mqty( 0 & \sigw \\ -\sigw & 0 ) \mqty( 0 & \sigo \\ \sigo & 0 )
+		= \mqty( \sigw & 0 \\ 0 & -\sigw ),
+	}
+	and that
+	\eq{
+		\gamw \gamo \mqty( \sigi & 0 \\ 0 & \pm\sigi ) \gamw \gamo = \mqty( \sigw & 0 \\ 0 & -\sigw ) \mqty( \sigi & 0 \\ 0 & \pm\sigi ) \mqty( \sigw & 0 \\ 0 & -\sigw )
+		= \mqty( \sigw & 0 \\ 0 & -\sigw ) \mqty( 0 & \mp \sigi \sigw \\ \sigi \sigw & 0 )
+		= -\mqty( \sigi & 0 \\ 0 & \pm \sigi ),
+	}
+	so
+	\al{
+		C \psib \sigoi \psi C &= \psiT \sigoi \psibT
+		= -\psib \sigoi \psi, \\
+		C \psib \sigio \psi C &= \psiT \sigio \psibT
+		= -\psib \sigio \psi, \\
+		C \psib \sigij \psi C &= \psiT \sigij \psibT
+		= -\psib \sigij \psi,
+	}
+	where we have used anticommutation of fermions~\cite[p.~70]{Peskin}.  In summary,
+	\eq{ \ans{
+		C \psib \sigmn \psi C = \begin{cases}
+			0 & \mu = \nu = 0, \\
+			-\psib \sigij \psi & \text{otherwise}.
+		\end{cases}
+	}}%
+}
 
 
-%\prob{}{
-%	Let $\phix$ be a complex-valued Klein-Gordon field, such as we considered in Problem~2.2.  Find unitary operators $P$, $C$, and an antiunitary operator $T$ (all defined in terms of their action on the annihilation operators $\ap$ and $\bp$ for the Klein-Gordon particles and antiparticles) that give the following transformations of the Klein-Gordon field:
-%	\al{
-%		P \phitx P &= \phitmx, &
-%		T \phitx T &= \phimtx, &
-%		C \phitx C &= \phistx.
-%	}
-%	Find the transformation properties of the components of the current
-%	\eq{
-%		\Jm = i (\phis \ptm \phi - \ptm \phis \phi)
-%	}
-%	under $P$, $C$, and $T$.
-%}
+
+\prob{}{
+	Let $\phix$ be a complex-valued Klein-Gordon field, such as we considered in Problem~2.2.  Find unitary operators $P$, $C$, and an antiunitary operator $T$ (all defined in terms of their action on the annihilation operators $\ap$ and $\bp$ for the Klein-Gordon particles and antiparticles) that give the following transformations of the Klein-Gordon field:
+	\al{
+		P \phitx P &= \phitmx, &
+		T \phitx T &= \phimtx, &
+		C \phitx C &= \phistx.
+	}
+	Find the transformation properties of the components of the current
+	\eq{
+		\Jm = i (\phis \ptm \phi - \ptm \phis \phi)
+	}
+	under $P$, $C$, and $T$.
+}
 
 
 
