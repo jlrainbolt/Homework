@@ -1,0 +1,26 @@
+\state{Reciprocal lattice cell volume}{
+	Show that the volume of the primitive unit cell of the reciprocal lattice is $(2\pi)^3 / \Omgcell$, where $\Omgcell$ is the volume of the primitive unit cell of the crystal.
+}
+
+\sol{
+	Let $\vaq, \vaw, \vae$ be the primitive unit vectors of the crystal and $\vbq, \vbw, \vbe$ those of the reciprocal lattice.  From Ashcroft \& Mermin~(5.15),
+	\eq{
+		\Omgcell = \vaq \vdot (\vaw \cross \vae).
+	}
+	We want to find $\vbq \vdot (\vbw \cross \vbe)$.  We will use the vector identity~\cite{Quadruple}
+	\eq{
+		(\vA \cross \vB) \vdot (\vC \cross \vD) = (\vA \vdot \vC) (\vB \vdot \vD) - (\vA \vdot \vD) (\vB \vdot \vC),
+	}
+	and Ashcroft \& Mermin~(5.4)~\cite[p.~93]{Ashcroft},
+	\eq{
+		\vbi \vdot \vaj = 2\pi \delij.
+	}
+	Then, applying Eq.~\refeq{recip},
+	\al{
+		\vbq \vdot (\vbw \cross \vbe) &= 2\pi \frac{\vaw \cross \vae}{\vaq \vdot (\vaw \cross \vae)} \vdot (\vbw \cross \vbe) \\
+		&= \frac{2\pi}{\vaq \vdot (\vaw \cross \vae)} [ (\vaw \vdot \vbw) (\vae \vdot \vbe) - (\vaw \vdot \vbe) (\vae \cross \vbw) ] \\
+		&= \frac{(2\pi)^3}{\vaq \vdot (\vaw \cross \vae)} \\
+		&= \ans{ \frac{(2\pi)^3}{\Omgcell}, }
+	}
+	as we wanted to show. \qed
+}
