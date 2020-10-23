@@ -2,4 +2,5 @@
 *.DS_Store
 *.aux
 *.log
-*.aux
+*.out
+*.bbl

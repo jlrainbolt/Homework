@@ -1,0 +1,88 @@
+\state{BCC and FCC lattices}{
+	Show that the reciprocal lattice of a body-centered cubic lattice~(BCC) of spacing $a$ is a face-centered cubic~(FCC) lattice of spacing $4\pi / a$, and that the reciprocal lattice of a FCC lattice of spacing $a$ is a BCC lattice of spacing $4\pi / a$.
+}
+
+\sol{
+	A set of primitive unit vectors for the BCC lattice of lattice spacing $a$ is given by Ashcroft \& Mermin~(4.4),
+	\aln{ \label{bcc}
+		\vaqbcc &= \frac{a}{2} (\yh + \zh - \xh), &
+		\vawbcc &= \frac{a}{2} (\zh + \xh - \yh), &
+		\vaebcc &= \frac{a}{2} (\xh + \yh - \zh).
+	}
+	A set of primitive unit vectors for the FCC lattice of lattice spacing $a$ is given by their~(4.5),
+	\aln{ \label{fcc}
+		\vaqfcc &= \frac{a}{2} (\yh + \zh), &
+		\vawfcc &= \frac{a}{2} (\zh + \xh), &
+		\vaefcc &= \frac{a}{2} (\xh + \yh).
+	}
+	According to their~(5.3), the reciprocal lattice of a direct lattice with primitive vectors $\vaq$, $\vaw$, and $\vae$ has the primitive vectors
+	\aln{ \label{recip}
+		\vbq &= 2\pi \frac{\vaw \cross \vae}{\vaq \vdot (\vaw \cross \vae)}, &
+		\vbw &= 2\pi \frac{\vae \cross \vaq}{\vaq \vdot (\vaw \cross \vae)}, &
+		\vbe &= 2\pi \frac{\vaq \cross \vaw}{\vaq \vdot (\vaw \cross \vae)}.
+	}
+	
+	We begin by finding the lattice reciprocal to the BCC lattice.  For the denominator of Eq.~\refeq{recip}, note that
+	\al{
+		\vawbcc \cross \vaebcc &= \frac{a^2}{4} (\zh + \xh - \yh) \cross (\xh + \yh - \zh) \\
+		&= \frac{a^2}{4} (\zh \cross \xh + \zh \cross \yh + \xh \cross \yh - \xh \cross \zh - \yh \cross \xh + \yh \cross \zh) \\
+		&= \frac{a^2}{2} (\zh \cross \xh + \xh \cross \yh) \\
+		&= \frac{a^2}{2} (\yh + \zh),
+	}
+	so
+	\eq{
+		\vaqbcc \vdot (\vawbcc \cross \vaebcc) = \frac{a^3}{4} (\yh + \zh - \xh) \vdot (\yh + \zh)
+		= \frac{a^3}{4} (\yh \vdot \yh + \zh \vdot \zh)
+		= \frac{a^3}{2}.
+	}
+	For the numerators,
+	\al{
+		\vaebcc \cross \vaqbcc &= \frac{a^2}{4} (\xh + \yh - \zh) \cross (\yh + \zh - \xh) \\
+		&= \frac{a^2}{4} (\xh \cross \yh + \xh \cross \zh + \yh \cross \zh - \yh \cross \xh - \zh \cross \yh + \zh \cross \xh) \\
+		&= \frac{a^2}{2} (\xh \cross \yh + \yh \cross \zh) \\
+		&= \frac{a^2}{2} (\zh + \xh), \\[2ex]
+		\vaqbcc \cross \vawbcc &= \frac{a^2}{4} (\yh + \zh - \xh) \cross (\zh + \xh - \yh) \\
+		&= \frac{a^2}{4} (\yh \cross \zh + \yh \cross \xh + \zh \cross \xh - \zh \cross \yh - \xh \cross \zh + \xh \cross \yh) \\
+		&= \frac{a^2}{2} (\yh \cross \zh + \zh \cross \xh) \\
+		&= \frac{a^2}{2} (\xh + \yh).
+	}
+	So the reciprocal lattice of the BCC lattice has the primitive vectors
+	\al{
+		\vbqbcc &= 2\pi \frac{a^2}{2} \frac{\yh + \zh}{a^3 / 2}
+		= \ans{ \frac{2\pi}{a} (\yh + \zh), } \\
+		\vbwbcc &= 2\pi \frac{a^2}{2} \frac{\zh + \xh}{a^3 / 2}
+		= \ans{ \frac{2\pi}{a} (\zh + \xh), } \\
+		\vbebcc &= 2\pi \frac{a^2}{2} \frac{\xh + \yh}{a^3 / 2}
+		= \ans{ \frac{2\pi}{a} (\xh + \yh), }
+	}
+	which are the primitive unit vectors of Eq.~\refeq{fcc} with $a \to 4\pi / a$.  So we have shown that the BCC reciprocal lattice is the FCC lattice with spacing $4\pi / a$. \qed
+	
+	Next we find the lattice reciprocal to the FCC lattice.  Proceeding similarly as before, note that
+	\al{
+		\vawfcc \cross \vaefcc &= \frac{a^2}{4} (\zh + \xh) \cross (\xh + \yh)
+		= \frac{a^2}{4} (\zh \cross \xh + \zh \cross \yh + \xh \cross \yh)
+		= \frac{a^2}{4} (\yh + \zh - \xh), \\
+		\vaefcc \cross \vaqfcc &= \frac{a^2}{4} (\xh + \yh) \cross (\yh + \zh)
+		= \frac{a^2}{4} (\xh \cross \yh + \xh \cross \zh + \yh \cross \zh)
+		= \frac{a^2}{4} (\zh + \xh - \yh), \\
+		\vaqfcc \cross \vawfcc &= \frac{a^2}{4} (\yh + \zh) \cross (\zh + \xh)
+		= \frac{a^2}{4} (\yh \cross \zh + \yh \cross \xh + \zh \cross \xh)
+		= \frac{a^2}{4} (\xh + \yh - \zh),
+	}
+	and that
+	\eq{
+		\vaqfcc \vdot (\vawfcc \cross \vaefcc) = \frac{a^3}{8} (\yh + \zh) \vdot (\yh + \zh - \xh)
+		= \frac{a^3}{8} (\yh \vdot \yh + \zh \vdot \zh)
+		= \frac{a^3}{4}.
+	}
+	Then the reciprocal lattice of the FCC lattice has the primitive vectors
+	\al{
+		\vbqfcc &= 2\pi \frac{a^2}{4} \frac{\yh + \zh - \xh}{a^3 / 4}
+		= \ans{ \frac{2\pi}{a} (\yh + \zh - \xh), } \\
+		\vbwfcc &= 2\pi \frac{a^2}{4} \frac{\zh + \xh - \yh}{a^3 / 4}
+		= \ans{ \frac{2\pi}{a} (\zh + \xh - \yh), } \\
+		\vbefcc &= 2\pi \frac{a^2}{4} \frac{\xh + \yh - \zh}{a^3 / 4}
+		= \ans{ \frac{2\pi}{a} (\xh + \yh - \zh), }
+	}
+	which are the primitive unit vectors of Eq.~\refeq{bcc} with $a \to 4\pi / a$.  So we have shown that the FCC reciprocal lattice is the BCC lattice with spacing $4\pi / a$. \qed
+}
