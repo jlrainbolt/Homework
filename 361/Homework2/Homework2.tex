@@ -15,25 +15,99 @@
 
 \input{Problem2}
 
-
-
 \state{Bragg’s law}{\hfix}
 
 \prob{}{
 	Show that the reciprocal lattice vector $\vG = h \vbq + k \vbw + l \vbe$ is perpendicular to the $(h k l)$ plane of the crystal lattice.
 }
 
-%\prob{}{
-%	Show that the distance between two adjacent $(h k l)$ planes is $2\pi / \abs{\vG}$.
-%}
+\sol{
+	\fig{3a}{
+		\includegraphics[width=0.75\textwidth,trim=1.5cm 1cm 0 2cm,clip]{3a}
+		\caption{An illustration of the $(h k l)$ plane.  The gray shaded region is a portion of the $(h k l)$ plane, in which the vectors $\xe \vae - \xw \vaw$~(blue) and $\xw \vaw - \xq \vaq$~(green) lie.  The Miller indices are inversely proportional to the $\xii$~\cite[p.~92]{Ashcroft}.}
+	}
+	
+	As shown in Fig.~\ref{3a}, the $(h k l)$ plane intersects the $\vaq, \vaw, \vae$ axes at the points $\xq \vaq$, $\xw \vaw$, and $\xe \vae$.  Let $\vR = \xq \vaq + \xw \vaw + \xe \vae$.  Then, by (3.10) in the lecture notes,
+	\eqn{thing3a}{
+		\vG \vdot \vR = 2\pi m,
+	}
+	where $m$ is an integer.  Then, adapting Ashcroft \& Mermin~(5.13),
+	\aln{ \label{xs}
+		\xq &= \frac{m}{h}, &
+		\xw &= \frac{m}{k}, &
+		\xe &= \frac{m}{l}.
+	}
+	The vectors $\xe \vae - \xw \vaw$ and $\xw \vaw - \xq \vaq$ lie in the $(h k l)$ plane, as shown in Fig.~\ref{3a}.  The cross product of these vectors is therefore perpendicular to the $(h k l)$ plane.  We have
+	\al{
+		(\xe \vae - \xw \vaw) \cross (\xw \vaw - \xq \vaq) &= \xw \xe \vae \cross \vaw - \xq \xe \vae \cross \vaq + \xq \xw \vaw \cross \vaq \\
+		&= -m^2 \paren{ \frac{\vaw \cross \vae}{k l} + \frac{\vae \cross \vaq}{h l} + \frac{\vaq \cross \vaw}{h k} } \\
+		&= -\frac{m^2}{h k l} (h \vaw \cross \vae + k \vae \cross \vaq + l \vaq \cross \vaw) \\
+		&= -\frac{\vaq \vdot (\vaw \cross \vae)}{2\pi} \frac{m^2}{h k l} ( h \vbq + k \vbw + l \vbe ) \\
+		&\propto \vG,
+	}
+	where we have used Eq.~\refeq{recip}.  We have shown that $\vG$ is a scalar multiple of a vector perpendicular to the $(h k l)$ plane; therefore, $\vG$ itself is perpendicular to the $(h k l)$ plane. \qed
+}
 
-%\prob{}{
-%	Show that the condition Eq.~(3.12) may be written as
-%	\eq{
-%		\frac{2\pi}{\lam} \sin\tht = \frac{\pi}{d},
-%	}
-%	where $\lam = 2\pi / k$ and $\tht$ is the angle between the incident beam and the crystal plane.
-%}
+
+
+\prob{}{ \label{3b}
+	Show that the distance between two adjacent $(h k l)$ planes is $2\pi / \abs{\vG}$.
+}
+
+\sol{
+	Let $\vRi$ and $\vRipq$ be vectors in two adjacent $(h k l)$ planes.  With $n$ an arbitrary integer, we can write
+	\al{
+		\vRi &= \frac{n}{h} \vaq + \frac{n}{k} \vaw + \frac{n}{l} \vae, &
+		\vRipq &= \frac{n + 1}{h} \vaq + \frac{n + 1}{k} \vaw + \frac{n + 1}{l} \vae,
+	}
+	where we have consulted Eqs.~\refeq{thing3a} and \refeq{xs}.  Then
+	\eq{
+		\Delta\vR = \vRipq - \vRi
+		= \frac{1}{h} \vaq + \frac{1}{k} \vaw + \frac{1}{l} \vae
+	}
+	is a vector pointing from one adjacent plane to the other.  Note that $\Delta\vR$ satisfies Eq.~\refeq{thing3a} with $m = 1$ via Eq.~\refeq{xs}.  That is,
+	\eq{
+		\vG \vdot \Delta\vR = 2\pi.
+	}
+	The projection of $\Delta\vR$ vector onto any vector perpendicular to one of the planes is the distance between the planes~\cite{PointPlane}.  We know that $\vG$ is normal to any $(h k l)$ plane.  So the distance is
+	\eq{
+		d = \frac{\abs{\vG \vdot \Delta\vR}}{\abs{\vG}}
+		= \ans{ \frac{2\pi}{\abs{\vG}}, }
+	}
+	as we wanted to show. \qed
+}
+
+
+
+\prob{}{
+	Show that the condition Eq.~(3.12) may be written as
+	\eq{
+		\frac{2\pi}{\lam} \sin\tht = \frac{\pi}{d},
+	}
+	where $\lam = 2\pi / k$ and $\tht$ is the angle between the incident beam and the crystal plane.
+}
+
+\sol{
+	Equation~(3.12) is
+	\eq{
+		\vk \vdot \frac{\vG}{2} = \paren{ \frac{G}{2} }^2.
+	}
+	\clearpage
+	Since $\vG$ is perpendicular to the crystal plane and $\vk$ is the scattered wavevector, the angle between them is $\pi / 2 - \tht$.  So we have
+	\eq{
+		\vk \vdot \vG = k G \cos(\frac{\pi}{2} - \tht)
+		= k G \sin\tht.
+	}
+	Then (3.12) becomes
+	\eq{
+		k \sin\tht = \frac{G}{2}.
+	}
+	Substituting the definition of $\lam$ and the result of \ref{3b}, $d = 2\pi / G$, we have
+	\eq{
+		\ans{ \frac{2\pi}{\lam} \sin\tht = \frac{\pi}{d} }
+	}
+	as desired. \qed
+}
 
 \makebib
 
