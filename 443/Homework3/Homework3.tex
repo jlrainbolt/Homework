@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{443}
+\homeworknum{3}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+\state{Supersymmetry (Peskin \& Schroeder 3.5)}{
+	It is possible to write field theories with continuous symmetries linking fermions and bosons; such transformations are called \emph{supersymmetries}.
+}
+
+\prob{}{	\label{3.5a}
+	The simplest example of a supersymmetric field theory is the theory of a free complex boson and a free Weyl fermion, written in the form
+	\eq{
+		\cL = \ptsm \phis \ptm \phi + \chidag i \sigb \cdot \pt \chi + \Fs F.
+	}
+	Here $F$ is an auxiliary complex scalar field whose field equation is $F = 0$.  Show that this Lagrangian is invariant (up to a total divergence) under the infinitesimal transformation
+	\al{
+		\del\phi & = -i \epsT \sigw \chi, &
+		\del\chi &= \eps F + \sig \cdot \pt\phi \sigw \epss, &
+		\del F &= -i \epsdag \sigb \cdot \pt\chi,
+	}
+	where the parameter $\epsa$ is a 2-component spinor of Grassmann numbers.
+}
+
+\sol{
+	Using the supplied transformations and dropping terms of $\order{\del^2}$, we have
+	\aln{
+		\cL &\to \ptsm (\phis + \del\phis) \ptm (\phi + \del\phi) + (\chidag + \del\chidag) i \sigb \cdot \pt (\chi + \del\chi) + (\Fs \del\Fs) (F + \del F) \notag \\
+		&\approx \ptsm \phis \ptm \phi + \ptsm \phis \ptm \del\phi + \ptsm \del\phis \ptm \phi + \chidag i \sigb \cdot \pt \chi + \chidag \sigb \cdot \pt \del\chi + \del\chidag i \sigb \cdot \pt \chi + \Fs F + \Fs \del F + \del \Fs F \notag \\
+		&= \cL + \ptsm \phis \ptm \del\phi + \ptsm \del\phis \ptm \phi + \chidag \sigb \cdot \pt \del\chi + \del\chidag i \sigb \cdot \pt \chi + \Fs \del F + \del \Fs F. \label{lagr1a.1}
+	}
+	Note that Grassmann numbers satisfy $\alp \bet = -\bet \alp$ and $(\alp \bet)^* \equiv \bets \alps = -\alps \bets$ for any $\alp, \bet$~\cite[p.~73]{Peskin}.  Then
+	\al{
+		\del\phis & = i (\epsT \sigw \chi)^*
+		= i \epsdag \sigws \chis
+		= -i \epsdag \sigw \chis
+		= i \chidag \sigw \epss, \\
+		\del\chidag &= (\eps F)^\dag + (\sigm \ptsm\phi \sigw \epss)^\dag
+		= \Fs \epsdag + \epsT \sigwdag \ptsm \phis \sigmdag
+		= \Fs \epsdag + \epsT \sigw \ptsm \phis \sigm, \\
+		\del \Fs &= -i \epsdag \sigb \cdot \pt\chi
+		= i (\epsdag \sigbm \ptsm \chi)^*
+		= -i \epsT \sigbms \ptsm \chis
+		= i \ptsm\chidag \sigbmdag \eps,
+	}
+	where we have transposed as needed to obtain $\chidag$ or $\chis$.  So the $\order{\delta}$ terms in Eq.~\refeq{lagr1a.1} are
+	\aln{
+		\ptsm \phis \ptm \del\phi &= -i \ptsm \phis \ptm(\epsT \sigw \chi), &
+		\ptsm \del\phis \ptm \phi &= i \ptsm(\chidag \sigw \epss) \ptm \phi, \notag \\
+		\chidag i \sigbm \ptsm \del\chi &= i \chidag \sigbm \ptsm (\eps F + \sign \ptsn\phi \sigw \epss), &
+		\del\chidag i \sigb \cdot \pt \chi &= i (\Fs \epsdag + \epsT \sigw \ptsm \phis \sigm) \sigbn \ptsn \chi, \label{thing1a} \\
+		\Fs \del F &= -i \Fs \epsdag \sigbm \ptsm\chi, &
+		\del\Fs F &= i \ptsm\chidag \sigbmdag \eps F. \notag
+	}
+	
+	Adding the fourth and fifth terms above,
+	\eq{
+		\del\chidag i \sigb \cdot \pt \chi + \Fs \del F = i \Fs \epsdag \sigbn \ptsn \chi + i \epsT \sigw \ptsm \phis \sigm \sigbn \ptsn \chi - i \Fs \epsdag \sigbm \ptsm\chi
+		= i \epsT \sigw \ptsm \phis \sigm \sigbn \ptsn \chi.
+	}
+	Adding this to the first term of Eq.~\refeq{thing1a},
+	\eq{
+		\ptsm \phis \ptm \del\phi + \del\chidag i \sigb \cdot \pt \chi + \Fs \del F = -i \ptsm \phis \epsT \sigw \ptm\chi + i \epsT \sigw \ptsm \phis \sigm \sigbn \ptsn \chi.
+	}
+	Note that
+	\eq{
+		\sigm \sigbn = \frac{\sigm \sigbn + \sigbn \sigm + \sigm \sigbn - \sigbn \sigm}{2}
+		= \frac{\{ \sigm, \sigbn \}}{2} + \frac{[\sigm, \sigbn]}{2}
+		= \gmn + \frac{[\sigm, \sigbn]}{2}
+	}
+	where we have used $\{ \sigm, \sigbn \} = 2 \gmn$ since $\{ \sigi, \sigj \} = 2 \delij$~\cite[p.~165]{Sakurai}.  Then
+	\aln{
+		\ptsm \phis \ptm \del\phi + \del\chidag i \sigb \cdot \pt \chi + \Fs \del F &= -i \ptsm \phis \epsT \sigw \ptm\chi + i \epsT \sigw \ptsm \phis \gmn \ptsn \chi + \frac{i}{2} \epsT \sigw \ptsm \phis \ptsn \chi [\sigm, \sigbn] \notag \\
+		&= -i \ptsm \phis \epsT \sigw \ptm\chi + i \epsT \sigw \ptsm \phis \ptm \chi + \frac{i}{2} \epsT \sigw \ptsm \phis \ptsn \chi [\sigm, \sigbn] \notag \\
+		&= \frac{i}{2} \epsT \sigw \ptsm \phis \ptsn \chi [\sigm, \sigbn] \notag \\
+		&= \ptsm \paren{ \frac{i}{2} \epsT \sigw \phis \ptsn \chi [\sigm, \sigbn] }. \label{half1}
+	}
+	
+	Adding the third and sixth terms of Eq.~\refeq{thing1a},
+	\al{
+		\chidag i \sigbm \ptsm \del\chi + \del\Fs F &= i \chidag \sigbm \ptsm (\eps F) + i \chidag \sigbm \ptsm (\sign \ptsn\phi \sigw \epss) + i \ptsm\chidag \sigbmdag \eps F \\
+		&= i \chidag \sigbm \ptsm (\sign \ptsn\phi \sigw \epss) + i \sigbm \ptsm (\chidag \eps F) \\
+		&= i \chidag \sigbm \ptsm (\sign \ptsn\phi \sigw \epss) + \ptsm (i \sigbm \chidag \eps F)
+	}
+	Adding this to the second term of Eq.~\refeq{thing1a},
+	\eq{
+		\chidag i \sigbm \ptsm \del\chi + \del\Fs F + \ptsm \del\phis \ptm \phi = i \chidag \sigbm \sign \ptsm (\ptsn\phi \sigw \epss) + i \ptsm(\chidag \sigw \epss) \ptm \phi + \ptsm (i \sigbm \chidag \eps F).
+	}
+	Similar to before,
+	\eq{
+		\sigbm \sign = \frac{\sigbm \sign + \sign \sigbm + \sigbm \sign - \sign \sigbm}{2}
+		= \frac{\{ \sigbm, \sign \}}{2} + \frac{[\sigbm, \sign]}{2}
+		= \gmn + \frac{[\sigbm, \sign]}{2},
+	}
+	so
+	\eq{
+		\chidag i \sigbm \ptsm \del\chi + \del\Fs F + \ptsm \del\phis \ptm \phi = i \chidag \gmn \ptsm (\ptsn\phi \sigw \epss) + \frac{i}{2} \chidag [\sigbm, \sign] \ptsm (\ptsn\phi \sigw \epss) + i \ptsm(\chidag \sigw \epss) \ptm \phi + \ptsm (i \sigbm \chidag \eps F).
+	}
+	Note that
+	\eq{
+		\chidag [\sigbm, \sign] \ptsm (\ptsn\phi \sigw \epss) = \chidag [\sigbn, \sigm] \ptsn (\ptsm\phi \sigw \epss)
+		= -\chidag [\sigbm, \sign] \ptsm (\ptsn\phi \sigw \epss)
+		= 0,
+	}
+	where we have used $[\sigbm, \sign] = -[\sigbn, \sigm]$, since $\{ \sigi, \sigj \} = 2 \delij$~\cite[p.~165]{Sakurai}.  Then
+	\aln{
+		\chidag i \sigbm \ptsm \del\chi + \del\Fs F + \ptsm \del\phis \ptm \phi &= i \chidag \ptsm (\ptm\phi \sigw \epss) + i \ptsm(\chidag \sigw \epss) \ptm \phi + \ptsm (i \sigbm \chidag \eps F) \notag \\
+		&= \ptsm (i \ptm \chidag \sigw \epss \phi + i \sigbm \chidag \eps F). \label{half2}
+	}
+	
+	Finally, substituting Eqs.~\refeq{half1} and \refeq{half2} into Eq.~\refeq{lagr1a.1},
+	\eq{
+		\ans{ \cL \to \cL + \ptsm \paren{ \frac{i}{2} \epsT \sigw \phis \ptsn \chi [\sigm, \sigbn] + i \ptm \chidag \sigw \epss \phi + i \sigbm \chidag \eps F }, }
+	}
+	which is the same up to a total divergence. \qed
+}
+
+
+
+\prob{}{
+	Show that the term
+	\eq{
+		\Delta\cL = \paren{ m \phi F + \frac{1}{2} i m \chiT \sigw \chi } + (\text{complex conjugate})
+	}
+	is also left invariant by the transformation given in~\ref{3.5a}.  Eliminate $F$ from the complete Lagrangian $\cL + \del\cL$ by solving its field equation, and show that the fermion and boson fields $\phi$ and $\chi$ are given the same mass.
+}
+
+
+
+%\prob{}{
+%	It is possible to write supersymmetric nonlinear field equations by adding cubic and higher-order terms to the Lagrangian.  Show that the following rather general field theory, containing the field $(\phii, \chii)$, $i = 1, \ldots, n$, is supersymmetric:
+%	\eq{
+%		\cL = \ptsm \phiis \ptm \phii + \chiidag i \sigb \cdot \pt\chii + \Fis \Fi + \paren{ \Fi \pdv{\Wphi}{\phii} + \frac{i}{2} \pdv[2]{\Wphi}{\phii}{\phij} \chiiT \sigw \chij + \cc },
+%	}
+%	where $\Wphi$ is an arbitrary function of the $\phii$, called the \emph{superpotential}.  For the simple case $n = 1$ and $W = g \phi^3 / 3$, write out the field equations for $\phi$ and $\chi$ (after elimination of $F$).
+%}
+
+
+
+
+
+
+%\state{(Peskin \& Schroeder 4.1)}{
+%	Let us return to the problem of the creation of Klein-Gordon particles by a classical source.  Recall from Chapter 2 that this process can be described by the Hamiltonian
+%	\eq{
+%		H = \Ho + \int \ddcx [ -\jtx \phix ],
+%	}
+%	where $\Ho$ is the free Kleiin-Gordon Hamiltonian, $\phix$ is the Klein-Gordon field, and $\jx$ is a c-number scalar function.  We found that, if the system is in the vacuum state before the source is turned on, the source will create a mean number of particles
+%	\eq{
+%		\evN = \int \ddcpf \frac{1}{2 \Ep} \abs{\jtp}^2.
+%	}
+%	In this problem we will verify that statement, and extract more detailed information, by using a perturbation expansion in the strength of the source.
+%}
+%
+%\prob{}{
+%	Show that the probability that the source creates \emph{no} particles is given by
+%	\eq{
+%		\Po = \left| \bo T \exp( i \int \ddqx \jx \phiIx ) \ko \right|^2.
+%	}
+%}
+
+
+
+%\prob{}{	\label{4.1b}
+%	Evaluate the term in $\Po$ of order $j^2$, and show that $\Po = 1 - \lam + \order{j^4}$, where $\lam$ equals the expression given above for $\evN$.
+%}
+
+
+%
+%\prob{}{	\label{4.1c}
+%	Represent the term computed in \ref{4.1b} as a Feynman diagram.  Now represent the whole perturbation series for $\Po$ in terms of Feynman diagrams.  Show that this series exponentiates, so that it can be summed exactly: $\Po = e^{-\lam}$.
+%}
+
+
+
+%\prob{}{
+%	Compute the probability that the source creates one particle of momentum $k$.  Perform this computation first to $\order{j}$ and then to all orders, using the trick of \ref{4.1c} to sum the series.
+%}
+
+
+
+%\prob{}{
+%	Show that the probability of producing $n$ particles is given by
+%	\eq{
+%		\Pn = \frac{\lam^n e^{-\lam}}{n!}.
+%	}
+%	This is a \emph{Poisson} distribution.
+%}
+
+
+
+%\prob{}{
+%	Prove the following facts about the Poisson distribution:
+%	\al{
+%		\sumni \Pn &= 1, &
+%		\evN &= \sumni n \Pn = \lam.
+%	}
+%	The first identity says that the $\Pn$s are properly normalized probabilities, while the second confirms our proposal for $\evN$.  Compute the mean square fluctuation $\ev{(N - \evN)^2}$.
+%}
+
+
+
+
+
+
+%\state{Decay of a scalar particle (Peskin \& Schroeder 4.2)}{
+%	Consider the following Lagrangian, involving two real scalar fields $\Phi$ and $\phi$:
+%	\eq{
+%		\cL = \frac{1}{2} (\ptsm\Phi)^2 - \frac{1}{2} M^2 \Phi^2 + \frac{1}{2} (\ptsm\phi)^2 - \frac{1}{2} m^2 \phi^2 - \mu \Phi \phi \phi.
+%	}
+%	The last term is an interaction that allows a $\Phi$ particle to decay into two $\phi$s, provided that $M > 2m$.  Assuming that this condition is met, calculate the lifetime of the $\Phi$ to lowest order in $\mu$.
+%}
+
+
+
+
+
+
+%\state{Aspects of scaling behavior in QFT}{\hfix}
+
+%\prob{}{
+%	As discussed in class, massless free scalar field theory is invariant under scale transformations if we assign the appropriate scale dimension to the field $\phi$.  The action of dilations on coordinates is implemented by the operator $D = i \xm \ptsm$.  Find  the commutation relations of this operator with the operators that implement the Poincar\'{e} algebra of translations $\Psm = i \ptsm$ and Lorentz transformations $\Jsmn = i (\xsm \ptsn - \xsn \ptsm)$.  Find the canonical Noether current and Noether charge for this symmetry in the free field theory, and find the commutation relations of the charge with the field $\phi$ to show that it implements the infinitesimal form of the symmetry on the fields.  Check also that this current has the right commutation relations with the field theory Hamiltonian and momentum generators.
+%}
+
+
+
+%\prob{}{
+%	The sound waves in a solid obey a wave equation, which at low enough wavelengths/energies is described by the action (for simplicity, consider one spatial dimension)
+%	\eq{
+%		\So = \int \ddtx (\ptst \phi \ptst \phi - \cs^2 \ptsx \phi \ptsx \phi)
+%	}
+%	where $\cs$ is the speed of sound in the material.  The field $\phi$ describes the distortion of the lattice away from equilibrium.  Model this situation by a lattice of atoms (mass $m$, lattice spacing $a$) interacting through harmonic nearest-neighbor forces (spring constant $k$).  Find the leading term in the action which corrects the above kinetic energy in a power series in $a \times (\text{derivatives})$ (this can be done for instance by expanding the exact dispersion relation for the chain of masses and springs).  Show that this correction term is an irrelevant perturbation of the action, so that all traces of the lattice structure disappear in the continuum limit $a \to 0$ (e.g.~all traces of the structure of interactions at the atomic level---such as a general potential $\Vr$ between the atoms rather than harmonic forces---disappear, being summarized in the constant $\cs$, and the effective action $\So$ is independent of the cutoff $a$).  Estimate the momentum scale at which the irrelevant corrections amount to 10\% of the total energy of a phonon.
+%}
+
+
+\makebib
+
+\end{document}
