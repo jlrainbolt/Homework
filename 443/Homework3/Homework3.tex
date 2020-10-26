@@ -22,7 +22,7 @@
 		\cL = \ptsm \phis \ptm \phi + \chidag i \sigb \cdot \pt \chi + \Fs F.
 	}
 	Here $F$ is an auxiliary complex scalar field whose field equation is $F = 0$.  Show that this Lagrangian is invariant (up to a total divergence) under the infinitesimal transformation
-	\al{
+	\aln{ \label{given1a}
 		\del\phi & = -i \epsT \sigw \chi, &
 		\del\chi &= \eps F + \sig \cdot \pt\phi \sigw \epss, &
 		\del F &= -i \epsdag \sigb \cdot \pt\chi,
@@ -49,7 +49,7 @@
 		\del \Fs &= -i \epsdag \sigb \cdot \pt\chi
 		= i (\epsdag \sigbm \ptsm \chi)^*
 		= -i \epsT \sigbms \ptsm \chis
-		= i \ptsm\chidag \sigbmdag \eps,
+		= i \ptsm\chidag \sigbm \eps,
 	}
 	where we have transposed as needed to obtain $\chidag$ or $\chis$.  So the $\order{\delta}$ terms in Eq.~\refeq{lagr1a.1} are
 	\aln{
@@ -58,7 +58,7 @@
 		\chidag i \sigbm \ptsm \del\chi &= i \chidag \sigbm \ptsm (\eps F + \sign \ptsn\phi \sigw \epss), &
 		\del\chidag i \sigb \cdot \pt \chi &= i (\Fs \epsdag + \epsT \sigw \ptsm \phis \sigm) \sigbn \ptsn \chi, \label{thing1a} \\
 		\Fs \del F &= -i \Fs \epsdag \sigbm \ptsm\chi, &
-		\del\Fs F &= i \ptsm\chidag \sigbmdag \eps F. \notag
+		\del\Fs F &= i \ptsm\chidag \sigbm \eps F. \notag
 	}
 	
 	Adding the fourth and fifth terms above,
@@ -128,20 +128,121 @@
 \prob{}{
 	Show that the term
 	\eq{
-		\Delta\cL = \paren{ m \phi F + \frac{1}{2} i m \chiT \sigw \chi } + (\text{complex conjugate})
+		\Delta\cL = \paren{ m \phi F + \frac{i}{2} m \chiT \sigw \chi } + (\text{complex conjugate})
 	}
-	is also left invariant by the transformation given in~\ref{3.5a}.  Eliminate $F$ from the complete Lagrangian $\cL + \del\cL$ by solving its field equation, and show that the fermion and boson fields $\phi$ and $\chi$ are given the same mass.
+	is also left invariant by the transformation given in~\ref{3.5a}.  Eliminate $F$ from the complete Lagrangian $\cL + \Del\cL$ by solving its field equation, and show that the fermion and boson fields $\phi$ and $\chi$ are given the same mass.
+}
+
+\sol{
+	Taking the complex conjugate,
+	\eq{
+		\Del\cL = m \phi F + m \phis \Fs + \frac{i}{2} m \chiT \sigw \chi - \frac{i}{2} m \chidag \sigw \chis.
+	}
+	Transforming $\Del\cL$ and dropping terms of $\order{\del^2}$ yields
+	\al{
+		\Del\cL &\to m (\phi + \del\phi) (F + \del F) + m (\phis + \del\phis) (\Fs + \del\Fs) + \frac{i}{2} m (\chiT + \del\chiT) \sigw (\chi + \del\chi) \\
+		&\hspace{5em} \phantom{=\ } - \frac{i}{2} m (\chidag + \del\chidag) \sigw (\chis + \del\chis) \\[1.5ex]
+		&\approx m \phi F + m \phi \del F + m \del\phi F + m \phis \Fs + m \phis \del\Fs + m \del\phis \Fs + \frac{i}{2} m \chiT \sigw \chi + \frac{i}{2} m \chiT \sigw \del\chi + \frac{i}{2} m \del\chiT \sigw \chi \\
+		&\hspace{5em} \phantom{=\ } - \frac{i}{2} m \chidag \sigw \chis - \frac{i}{2} m \chidag \sigw \del\chis - \frac{i}{2} m \chidag \sigw \del\chis \\[1.5ex]
+		&= \Del\cL + m \phi \del F + m \del\phi F + m \phis \del\Fs + m \del\phis \Fs + \frac{i}{2} m \chiT \sigw \del\chi + \frac{i}{2} m \del\chiT \sigw \chi - \frac{i}{2} m \chidag \sigw \del\chis - \frac{i}{2} m \del\chidag \sigw \chis.
+	}
+	Applying Eqs.~\refeq{given1a} and \refeq{thing1a} to each term, we have
+	\aln{
+		m \phi \del F &= -i m \phi \epsdag \sigbm \ptsm\chi, &
+		m \del\phi F &= -i m \epsT \sigw \chi F, \notag \\
+		m \phis \del\Fs &= i m \phis \ptsm \chidag \sigbm \eps, &
+		m \del\phis \Fs &= i m \chidag \sigw \epss \Fs,  \label{thing1b} \\
+		\frac{i}{2} m \chiT \sigw \del\chi &= \frac{i}{2} m \chiT \sigw (\eps F + \sigm \ptsm\phi \sigw \epss), &
+		\frac{i}{2} m \del\chiT \sigw \chi &= \frac{i}{2} m (F \epsT - \epsdag \sigw \ptsm\phi \sigmT) \sigw \chi, \notag \\
+		-\frac{i}{2} m \del\chidag \sigw \chis &= -\frac{i}{2} m (\Fs \epsdag + \epsT \sigw \ptsm \phis \sigm) \sigw \chis, &
+		-\frac{i}{2} m \chidag \sigw \del\chis &= -\frac{i}{2} m \chidag \sigw (\epss \Fs - \sigms \ptsm \phis \sigw \eps). \notag
+	}
+	where we have used
+	\al{
+		\del\chiT &= F \epsT - \epsdag \sigw \ptsm\phi \sigmT, &
+		\del\chis &= \epss \Fs - \sigms \ptsm \phis \sigw \eps.
+	}
+	Since $\chiT \sigw \eps = \epsT \sigw \chi$, adding the second, fifth, and sixth terms of Eq.~\refeq{thing1b} gives us
+	\al{
+		m \del\phi F + \frac{i}{2} m \chiT \sigw \del\chi + \frac{i}{2} m \del\chiT \sigw \chi &= -i m \epsT \sigw \chi F + \frac{i}{2} m \chiT \sigw (\eps F + \sigm \ptsm\phi \sigw \epss) + \frac{i}{2} m (F \epsT - \epsdag \sigw \ptsm\phi \sigmT) \sigw \chi \\
+		&= \frac{i}{2} m \chiT \sigw \sigm \ptsm\phi \sigw \epss - \frac{i}{2} m \epsdag \sigw \ptsm\phi \sigmT \sigw \chi \\
+		&= i m \chiT \sigw \sigm \ptsm\phi \sigw \epss.
+	}
+	Similarly $\chidag \sigw \epss = \epsdag \sigw \chis$, so adding the fourth, seventh, and eighth terms of Eq.~\refeq{thing1b},
+	\al{
+		m \del\phis \Fs - \frac{i}{2} m \del\chidag \sigw \chis - \frac{i}{2} m \chidag \sigw \del\chis &= i m \chidag \sigw \epss \Fs - \frac{i}{2} m (\Fs \epsdag + \epsT \sigw \ptsm \phis \sigm) \sigw \chis - \frac{i}{2} m \chidag \sigw (\epss \Fs - \sigms \ptsm \phis \sigw \eps) \\
+		&= -\frac{i}{2} m \epsT \sigw \ptsm \phis \sigm \sigw \chis + \frac{i}{2} m \chidag \sigw \sigms \ptsm \phis \sigw \eps \\
+		&= -i m \epsT \sigw \ptsm \phis \sigm \sigw \chis.
+	}
+	Then adding all the remaining terms gives us
+	\al{
+		\Del\cL &\to \Del\cL + i m \phis \ptsm \chidag \sigbm \eps - i m \phi \epsdag \sigbm \ptsm\chi + i m \chiT \sigw \sigm \ptsm\phi \sigw \epss - i m \epsT \sigw \ptsm \phis \sigm \sigw \chis \\
+		&= \Del\cL + i m \phis \ptsm \chidag \sigbm \eps - i m \phi \epsdag \sigbm \ptsm\chi + i m \chiT \sigbms \ptsm\phi \epss - i m \epsT \ptsm \phis \sigbms \chis \\
+		&= \Del\cL + i m \sigbm \phis \ptsm \chidag \eps - i m \sigbm \phi \epsdag \ptsm\chi - i m \sigbm \ptsm\phi \epsdag \chi + i m \sigbm \ptsm \phis \chidag \eps
+	}
+	where we have used $\sigw \sigm \sigw = \sigbms$ from Homework 2's~3(a).
+	
+	\hl{fucking complex conjugates}
+	
+	\hl{total divergence}
+	
+	\eq{
+		\cL + \Del\cL = \ptsm \phis \ptm \phi + \chidag i \sigb \cdot \pt \chi + \Fs F + m \phi F + m \phis \Fs + \frac{i}{2} m \chiT \sigw \chi - \frac{i}{2} m \chidag \sigw \chis.
+	}
+	\hl{The Euler-Lagrange equations are} $F = -m \phis$ $\Fs = -m\phi$
+	
+	\al{
+		\cL + \Del\cL &= \ptsm \phis \ptm \phi + \chidag i \sigb \cdot \pt \chi + m^2 \abs{\phi}^2 - m^2 \abs{\phi}^2 - m^2 \abs{\phi}^2 + \frac{i}{2} m \chiT \sigw \chi - \frac{i}{2} m \chidag \sigw \chis \\
+		&= \paren{ \ptsm \phis \ptm \phi - m^2 \phis \phi } + \brac{ i \chidag \sigb \cdot \pt \chi + \frac{i m}{2} \paren{ \chiT \sigw \chi - \chidag \sigw \chis } }.
+	}
+	The first set of parentheses is the Klein-Gordon Lagrangian describing a particle of mass $m$ \hl{(cite)}, and the second set of brackets is the Majorana Lagrangian for a particle of mass $m$ \hl{(cite)}.  \hl{CONCLUDE}
 }
 
 
 
-%\prob{}{
-%	It is possible to write supersymmetric nonlinear field equations by adding cubic and higher-order terms to the Lagrangian.  Show that the following rather general field theory, containing the field $(\phii, \chii)$, $i = 1, \ldots, n$, is supersymmetric:
+\prob{}{
+	It is possible to write supersymmetric nonlinear field equations by adding cubic and higher-order terms to the Lagrangian.  Show that the following rather general field theory, containing the field $(\phii, \chii)$, $i = 1, \ldots, n$, is supersymmetric:
+	\eq{
+		\cL = \ptsm \phiis \ptm \phii + \chiidag i \sigb \cdot \pt\chii + \Fis \Fi + \paren{ \Fi \pdv{\Wphi}{\phii} + \frac{i}{2} \pdv[2]{\Wphi}{\phii}{\phij} \chiiT \sigw \chij + \cc },
+	}
+	where $\Wphi$ is an arbitrary function of the $\phii$, called the \emph{superpotential}.  For the simple case $n = 1$ and $W = g \phi^3 / 3$, write out the field equations for $\phi$ and $\chi$ (after elimination of $F$).
+}
+
+\sol{
+%	The full Lagrangian is
 %	\eq{
-%		\cL = \ptsm \phiis \ptm \phii + \chiidag i \sigb \cdot \pt\chii + \Fis \Fi + \paren{ \Fi \pdv{\Wphi}{\phii} + \frac{i}{2} \pdv[2]{\Wphi}{\phii}{\phij} \chiiT \sigw \chij + \cc },
+%		\cL = \ptsm \phiis \ptm \phii + \chiidag i \sigb \cdot \pt\chii + \Fis \Fi + \Fi \pdv{W}{\phii} + \frac{i}{2} \pdv[2]{W}{\phii}{\phij} \chiiT \sigw \chij + \Fis \pdv{\Ws}{\phiis} - \frac{i}{2} \pdv[2]{\Ws}{\phiis}{\phijs} \chijs \sigw \chiidag
 %	}
-%	where $\Wphi$ is an arbitrary function of the $\phii$, called the \emph{superpotential}.  For the simple case $n = 1$ and $W = g \phi^3 / 3$, write out the field equations for $\phi$ and $\chi$ (after elimination of $F$).
-%}
+
+	We already know that the terms outside of the brackets are supersymmetric because that part is equivalent to the Lagrangian from \ref{3.5a} (but for the indices; at any rate, it will transform the same way).  Then we can say
+	\al{
+		\cL &\to \ptsm \phiis \ptm \phii + \chiidag i \sigb \cdot \pt\chii + \Fis \Fi + \paren{ (\Fi + \del\Fi) \pdv{W[\phi + \del\phi]}{\phii} + \frac{i}{2} \pdv[2]{W[\phi + \del\phi]}{\phii}{\phij} \,\! (\chiiT + \del\chiiT) \sigw (\chij + \del\chij) + \cc } \\[1.5ex]
+		&\approx \ptsm \phiis \ptm \phii + \chiidag i \sigb \cdot \pt\chii + \Fis \Fi + \bigg[ (\Fi + \del\Fi) \pdv{\Wphi}{\phii} + \Fi \pdv{\Wphi}{\phii}{\phij} \del\phij \\
+		&\hspace{5em} \phantom{=\ } + \frac{i}{2} \paren{ \pdv[2]{\Wphi}{\phii}{\phij} + \frac{\pt^3 \Wphi}{\pt\phii \pt\phij \pt\phik} \del\phik } (\chiiT \sigw \chij + \chiiT \sigw \del\chij + \del\chiiT \sigw \chij) + \cc \bigg] \\[1.5ex]
+		&= \cL + \brac{ \del\Fi \pdv{\Wphi}{\phii} + \Fi \pdv{\Wphi}{\phii}{\phij} \del\phij + \frac{i}{2} \paren{ \pdv[2]{\Wphi}{\phii}{\phij} \,\! (\chiiT \sigw \del\chij + \del\chiiT \sigw \chij) + \frac{\pt^3 \Wphi}{\pt\phii \pt\phij \pt\phik} \del\phik \chiiT \sigw \chij } + \cc } \\[1.5ex]
+		&= \cL + \paren{ \del\Fi \pdv{\Wphi}{\phii} + \Fi \pdv{\Wphi}{\phii}{\phij} \del\phij + i \pdv[2]{\Wphi}{\phii}{\phij} \,\! \chiiT \sigw \del\chij + \frac{i}{2} \frac{\pt^3 \Wphi}{\pt\phii \pt\phij \pt\phik} \del\phik \chiiT \sigw \chij + \cc },
+	}
+	where we have used \hl{i j flip thing}.  Feeding in \hl{Eq. 1},
+	\al{
+		\cL &\to \cL + \bigg( -i \epsdag \sigb \cdot \pt\chii \pdv{\Wphi}{\phii} - i \Fi \pdv{\Wphi}{\phii}{\phij} \,\! \epsT \sigw \chij + i \pdv[2]{\Wphi}{\phii}{\phij} \,\! \chiiT \sigw(\eps \Fj + \sig \cdot \pt\phij \sigw \epss) \\
+		&\hspace{5em} \phantom{=\ } + \frac{1}{2} \frac{\pt^3 \Wphi}{\pt\phii \pt\phij \pt\phik} \epsT \sigw \chik \chiiT \sigw \chij + \cc \bigg) \\[1.5ex]
+		&= \cL + \paren{ -i \epsdag \sigbm \ptsm\chii \pdv{\Wphi}{\phii} + i \pdv[2]{\Wphi}{\phii}{\phij} \,\! \chiiT \sigw \sigm \sigw \ptsm\phij \epss + \frac{1}{2} \frac{\pt^3 \Wphi}{\pt\phii \pt\phij \pt\phik} \epsT \sigw \chik \chiiT \sigw \chij + \cc } \\[1.5ex]
+		&= \cL + \paren{ -i \epsdag \sigbm \ptsm\chii \pdv{\Wphi}{\phii} + i \pdv[2]{\Wphi}{\phii}{\phij} \,\! \chiiT \sigbms \ptsm\phij \epss + \frac{1}{2} \frac{\pt^3 \Wphi}{\pt\phii \pt\phij \pt\phik} \epsT \sigw \chik \chiiT \sigw \chij + \cc } 
+	}
+	\hl{since}
+	$$- i \Fj \pdv{\Wphi}{\phij}{\phii} \,\! \chiiT \sigw \eps = - i \Fi \pdv{\Wphi}{\phii}{\phij} \,\! \epsT \sigw \chij $$
+	\hl{Then for the last term, swapping i and j makes it 0}
+	\eq{
+		\frac{\pt^3 \Wphi}{\pt\phii \pt\phij \pt\phik} \epsT \sigw \chik \chiiT \sigw \chij = \frac{\pt^3 \Wphi}{\pt\phij \pt\phii \pt\phik} \epsT \sigw \chik \chijT \sigw \chii
+		= -\frac{\pt^3 \Wphi}{\pt\phii \pt\phij \pt\phik} \epsT \sigw \chik \chiiT \sigw \chij
+		= 0.
+	}
+	\hl{Going back now}
+	\al{
+		\cL &\to \cL + \paren{ -i \epsdag \sigbm \ptsm\chii \pdv{\Wphi}{\phii} + i \pdv[2]{\Wphi}{\phii}{\phij} \,\! \chiiT \sigbms \ptsm\phij \epss + \cc } 
+	}
+	\hl{total divergence}
+}
 
 
 
