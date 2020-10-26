@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{simple}
+	\begin{fmfgraph*}(20, 10)% Note that the size is given in normal parentheses instead of curly brackets.
+	% Define external vertices from bottom to top
+		\fmfleft{i}
+		\fmfright{o}
+		\fmf{fermion,label=$p$}{i,o}
+	\end{fmfgraph*}
+\end{fmffile}
+
+\end{document}
