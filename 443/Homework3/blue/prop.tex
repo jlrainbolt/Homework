@@ -1,6 +1,7 @@
 \documentclass{standalone}
 \usepackage[force]{feynmp-auto}
 \usepackage{grffile}
+\usepackage{xcolor}
 
 
 \begin{document}
@@ -12,7 +13,7 @@
 	% Define external vertices from bottom to top
 		\fmfleft{i}
 		\fmfright{o}
-		\fmf{fermion,label=$p$}{i,o}
+		\fmf{fermion,fore=blue,label={\color{blue} $p$}}{i,o}
 	\end{fmfgraph*}
 \end{fmffile}
 

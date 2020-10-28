@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{simple3}
+	\begin{fmfgraph}(20, 15)% Note that the size is given in normal parentheses instead of curly brackets.
+	% Define external vertices from bottom to top
+		\fmfstraight
+		\fmfleftn{i}{5}
+		\fmfrightn{o}{5}
+		\fmf{fermion,fore=blue}{i[2],o[2]}
+		\fmf{fermion,fore=blue}{i[3],o[3]}
+		\fmf{fermion,fore=blue}{i[4],o[4]}
+	\end{fmfgraph}
+\end{fmffile}
+
+\end{document}

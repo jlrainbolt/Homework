@@ -1,0 +1,77 @@
+\state{Decay of a scalar particle (Peskin \& Schroeder 4.2)}{
+	Consider the following Lagrangian, involving two real scalar fields $\Phi$ and $\phi$:
+	\eq{
+		\cL = \frac{1}{2} (\ptsm\Phi)^2 - \frac{1}{2} M^2 \Phi^2 + \frac{1}{2} (\ptsm\phi)^2 - \frac{1}{2} m^2 \phi^2 - \mu \Phi \phi \phi.
+	}
+	The last term is an interaction that allows a $\Phi$ particle to decay into two $\phi$s, provided that $M > 2m$.  Assuming that this condition is met, calculate the lifetime of the $\Phi$ to lowest order in $\mu$.
+}
+
+\sol{
+	The lifetime of the $\Phi$ is the reciprocal of its decay rate into two $\phi$s, since this is the only allowed decay mode~\cite[p.~101]{Peskin}.  Peskin \& Schroeder~(4.86) gives the decay rate formula
+	\eq{
+		\ddGam = \frac{1}{2\mcA} \paren{ \prodf \ddcpffrac \frac{1}{2 \Ef} } \abs{ \cM(\mcA \to \{ \pf \}) }^2 (2\pi)^4 \del^4\!\paren{ \pcA - \sum \pf },
+	}
+	where $\cM$ can be found by Peskin \& Schroeder~(4.73):
+	\eqn{M}{
+		\mel{\vpq \vpw \cdots}{i T}{\vkcA \vkcB} = (2\pi)^4 \del^4\!\paren{ \kcA + \kcB - \sum \pf } \cdot i \cM(\kcA, \kcB \to \pf).
+	}
+	In turn, (4.90) gives
+	\eq{
+		\mel{\vpq \vpw \cdots}{i T}{\vpcA \vpcB} = \lim_{T \to \infty (1 - i \eps)} \paren{ {}_0\! \bra{\vpq \vpw \cdots} T \curly{ \exp[ -i \intTT \ddt \HIt ] } \ket{\vpcA \vpcB}\!{}_0 }_\text{connected, amputated}.
+	}
+	
+	Here we have one incoming $\Phi$ with mass $\mcA = M$ and momentum $\pcA = \pPhi$, and two outgoing $\phi$s with  momenta $\pf = \pq, \pw$ and energies $\Ef = \Eq, \Ew$.  So we have
+	\eqn{dG}{
+		\ddGam = \frac{1}{16 M \Eq \Ew} \ddcpqpwf \abs{ \cM(M \to \pq \pw) }^2 (2\pi)^4 \del^4(\pPhi - \pq - \pw),
+	}
+	where the initial factor of $1/n! = 1/2$ is needed because we have two identical particles~\cite[p.~108]{Peskin}.  We need to find $\cM(M \to \pq \pw)$, which we can do by evaluating~(4.90).  Since $\Hint = -\Lint$~\cite[p.~77]{Peskin}, $\HIt = \mu \Phi \phi \phi$ and
+	\eq{
+		\mel{\vpq \vpw}{i T}{\vpPhi} = \lim_{T \to \infty (1 - i \eps)} \paren{ \obpqw T \curly{ \exp[ -i \intTT \ddt \mu \Phi \phi \phi ] } \kpPhio }_\text{connected, amputated}.
+	}
+	We will use the series expansion of the exponential function to first order.  The zeroth order term does not contribute to $\cM$, so we consider only the first order term~\cite[p.~110]{Peskin}:
+	\eq{
+		\mel{\vpq \vpw}{i T}{\vpPhi} \approx \obpqw T \curly{ -i \mu \int \ddqx \Phi \phi \phi } \kpPhio = \obpqw N \curly{ -i \mu \int \ddqx \Phi \phi \phi + \contractions } \kpPhio.
+	}
+	We ignore the terms with contracted operators since only fully connected diagrams contribute to the $T$-matrix~\cite[p.~111]{Peskin}.  From there, there are two ways to contract $\phi \phi$ with $\bra{\vpq \vpw}$ and one way to contract $\Phi$ with $\kpPhi$.  Applying Peskin \& Schroeder~(4.94),
+	\al{
+		\wick{ \c\phi_I(x) \c\kvp } &= e^{-i p \cdot x}, &
+		\wick{ \c\bvp \c\phi_I(x) } &= e^{i p \cdot x},
+	}
+	we can write~\cite[p.~112]{Peskin}
+	\eq{
+		\mel{\vpq \vpw}{i T}{\vpPhi} = -2 i \mu \int \ddqx e^{i \pq \cdot x} e^{i \pw \cdot x} e^{-i \pPhi \cdot x}
+		= -2 i \mu \int \ddqx e^{i (\pq + \pw - \pPhi) \cdot x}
+		= -2 i \mu (2\pi)^4 \del^4(\pq + \pw - \pPhi),
+	}
+	where the factor of 2 comes from the two sets of contractions.  Inspecting Eq.~\refeq{M}, we have
+	\eq{
+		\cM(M \to \pq \pw) = -2\mu.
+	}
+	Feeding this into Eq.~\refeq{dG},
+	\eq{
+		\ddGam = \frac{\mu^2}{4 M \Eq \Ew} \ddcpqpwf (2\pi)^4 \del^4(\pPhi - \pq - \pw).
+	}
+	We can use any reference frame to perform the computation~\cite[p.~100]{Peskin}, so we choose the rest frame of the $\Phi$.  In this frame, $\pPhi = (M, \vo)$ and $\vpq = -\vpw$.  Let $p = \abs{\vpq} = \abs{\vpw}$.  Then
+	\eq{
+		\Eq = \sqrt{m^2 + \pq^2}
+		= \sqrt{m^2 + p^2}
+		= \sqrt{m^2 + \pw^2}
+		= \Ew,
+	}
+	so
+	\eq{
+		\ddGam = \frac{\mu^2}{4 M (m^2 + p^2)} \ddcpfw \del^4(M - 2 \sqrt{m^2 + p^2}).
+	}
+	Integrating this expression over momentum space yields
+	\eq{
+		\Gam = \frac{\mu^2}{4 M} \int \ddcpfw \frac{1}{m^2 + p^2} \del^4(M - 2 \sqrt{m^2 + p^2})
+		= \frac{\mu^2}{4 \pi M} \int \ddp \frac{p^2}{m^2 + p^2} \del(M - 2 \sqrt{m^2 + p^2})
+		= \frac{\mu^2}{8 \pi M} \sqrt{ \frac{M^2 - 4 m^2}{M^2} },
+	}
+	so
+	\eq{
+		\tau = \frac{1}{\Gam}
+		= \ans{ \frac{8 \pi M}{\mu^2} \sqrt{ \frac{M^2}{M^2 - 4 m^2} }. }
+	}
+	\qed
+}
