@@ -1,0 +1,284 @@
+\state{(Peskin \& Schroeder 4.1)}{
+	Let us return to the problem of the creation of Klein-Gordon particles by a classical source.  Recall from Chapter 2 that this process can be described by the Hamiltonian
+	\eq{
+		H = \Ho + \int \ddcx [ -\jtx \phix ],
+	}
+	where $\Ho$ is the free Klein-Gordon Hamiltonian, $\phix$ is the Klein-Gordon field, and $\jx$ is a c-number scalar function.  We found that, if the system is in the vacuum state before the source is turned on, the source will create a mean number of particles
+	\eqn{mean}{
+		\evN = \int \ddcpf \frac{1}{2 \Ep} \abs{\jtp}^2.
+	}
+	In this problem we will verify that statement, and extract more detailed information, by using a perturbation expansion in the strength of the source.
+}
+
+\prob{}{	\label{4.1a}
+	Show that the probability that the source creates \emph{no} particles is given by
+	\eq{
+		\Po = \left| \bo T \curly{ \exp( i \int \ddqx \jx \phiIx ) } \ko \right|^2.
+	}
+}
+
+\sol{
+	Both the initial and the final state are the vacuum state.  The probability is
+	\eq{
+		\Po = \abs{ \ev{\Utto}{0} }^2,
+	}
+	where
+	\eq{
+		\Utto = T \curly{ \exp( -i \inttot \ddtp \HItp ) }
+	}
+	from Eq.~(4.22).  A general expression for the interaction Hamiltonian in the interaction picture is given by Peskin \& Schroeder~(4.19):
+	\eq{
+		\HIt = e^{i \Hotto} (\Hint) e^{-i \Hotto}.
+	}
+	
+	For the given Hamiltonian $H = \Ho + \Hint$, we have
+	\eq{
+		\HIt = \int \ddcx [ -\jtx \phiItx ],
+	}
+	where we have used (4.14),
+	\eq{
+		\phiItx = e^{i \Hotto} \phitox e^{-i \Hotto}.
+	}
+	Then we have
+	\eq{
+		\Utto = T \curly{ \exp( -i \inttot \ddtp \int \ddcx [ -\jtx \phiI ] ) }
+		= T \curly{ \exp( i \int \ddqx \jx \phiIx ) },
+	}
+	so the probability of the source's creating no particles is
+	\eq{
+		\ans{ \Po = \abs{ \bo T \curly{ \exp( i \int \ddqx \jx \phiIx ) } \ko }^2, }
+	}
+	as desired. \qed
+}
+
+
+\clearpage
+\prob{}{	\label{4.1b}
+	Evaluate the term in $\Po$ of order $j^2$, and show that $\Po = 1 - \lam + \order{j^4}$, where $\lam$ equals the expression given above for $\evN$.
+}
+
+\sol{
+	The first few terms of the Taylor series expansion for $e^z$ are~\cite{Maclaurin}
+	\eqn{expmac}{
+		e^z \approx 1 + z + \frac{z^2}{2}.
+	}
+	Then
+	\eq{
+		\exp( i \int \ddqx \jx \phiIx ) \approx 1 + i \int \ddqx \jx \phiIx - \frac{1}{2} \iint \ddqx \ddqy \jx \phiIx \jy \phiIy.
+	}
+	Then the probability can be written
+	\aln{
+		\Po &= \abs{ 1 + i \bo \int \ddqx \jx \phiIx \ko - \frac{1}{2} \bo T \curly{ \iint \ddqx \ddqy \jx \phiIx \jy \phiIy } \ko }^2 \notag \\
+		&= \abs{ 1 - \frac{1}{2} \iint \ddqx \ddqy \jx \jy \ev*{T \phiIx \phiIy}{0} }^2, \label{p0}
+	}
+	since $\ev{\phiI}{0} = 0$ (and if we had an $\order{j^3}$ term, it would likewise vanish since there would be an uncontracted operator remaining~\cite[p.~89]{Peskin}).  Applying Peskin \& Schroder~(4.11),
+	\eq{
+		\ev*{T \phiIx \phiIy}{0} = \int \ddqpf \frac{i e^{-i p \cdot (x - y)}}{p^2 - m^2 + i \eps},
+	}
+	we have~\cite[p.~30]{Peskin}
+	\al{
+		\iint \ddqx \ddqy \jx \jy \ev*{T \phiIx \phiIy}{0} &= \iint \ddqx \ddqy \int \ddqpf \jx \jy \frac{i e^{-i p \cdot (x - y)}}{p^2 - m^2 + i \eps} \\
+		&= i \int \ddqpf \int \ddqx e^{-i p \cdot x} \jx \int \ddqy e^{i p \cdot y} \jy \frac{1}{p^2 - m^2 + i \eps} \\
+		&= i \int \ddqpf \frac{\abs{\jtp}^2}{p^2 - m^2 + i \eps} \\
+		&= \int \ddcpf \int \ddpof \frac{i \abs{\jtp}^2}{{\po}^2 - \Ep^2 + i \eps},
+	}
+	where we have used~\cite[p.~32]{Peskin}
+	\aln{ \label{jts}
+		\jtp &= \int \ddqy e^{i p \cdot y} \jy, &
+		\jtsp &= \int \ddqy e^{-i p \cdot y} \jy.
+	}
+	Then we can perform a contour integral.  Letting $\eps = 2 \Ep \eps'$ and neglecting terms of $\order{\eps^2}$~\cite{Evans},
+	\eq{
+		\iint \ddqx \ddqy \jx \jy \ev*{T \phiIx \phiIy}{0} 
+		= \int \ddcpf \int \ddpof \frac{i \abs{\jtp}^2}{({\po} - \Ep + i \eps') (\po + \Ep - i \eps')},
+	}
+	In general the poles are at $\po = \pm(\Ep - i \eps')$~\cite[p.~31]{Peskin}.  When we close the contour in the upper half plane, we enclose only the pole at $\po = -\Ep + i \eps'$.  Then, applying the residue theorem~\cite{Residue},
+	\al{
+		\iint \ddqx \ddqy \jx \jy \ev*{T \phiIx \phiIy}{0} &= \int \ddcpf 2\pi i \Res_{\po = -\Ep + i \eps'}\!\paren{ \frac{i \abs{\jtp}^2}{({\po} - \Ep + i \eps') (\po + \Ep - i \eps')} } \\
+		&= -\int \ddcpf \frac{\abs{\jtp}^2}{-2 \Ep + 2 i \eps'} \\
+		&= \ans{ \int \ddcpf \frac{\abs{\jtp}^2}{2 \Ep}, }
+	}
+	where in the final step we have neglected terms of $\order{\eps}$.  This is identical to the given expression for ${\lam = \evN}$ in Eq.~\refeq{mean}.
+	
+	Making this substitution in Eq.~\refeq{p0},
+	\eq{
+		\Po =  \abs{ 1 - \frac{1}{2} \int \ddcpf \frac{\abs{\jtp}^2}{2 \Ep} }^2
+		= 1 - \frac{1}{2} \int \ddcpf \frac{\abs{\jtp}^2}{2 \Ep} + \order{j^4}
+		= \ans{ 1 - \lam + \order{j^4} }
+	}
+	as we sought to show.
+}
+
+
+
+\prob{}{	\label{4.1c}
+	Represent the term computed in \ref{4.1b} as a Feynman diagram.  Now represent the whole perturbation series for $\Po$ in terms of Feynman diagrams.  Show that this series exponentiates, so that it can be summed exactly: $\Po = e^{-\lam}$.
+}
+
+\sol{
+	From \ref{4.1b}, the term is
+	\eq{
+		-\lam = -\int \ddqpf \abs{\jtp}^2 \frac{i}{p^2 - m^2 + i \eps}.
+	}
+	According to the momentum space Feynman rules~\cite[p.~95]{Peskin}, this term is represented by $\centergraphics{blue/prop}$.
+	
+	We know that we will only have terms in $\Po$ of even powers of $\phi$.  Then for integer $n$, the term of order $j^{2 n}$ is proportional to
+	\eq{
+		-\lam^n = -\int \ddqxq \cdots \ddqxn \jxq \cdots \jxn \ev*{ T \phiq \cdots \phin }{0}
+		= -\int \ddqpf \abs{\jtp}^{2 n} \paren{ \frac{i}{p^2 - m^2 + i \eps} }^n.
+	}
+	So the whole perturbation series can be written as
+	\eq{
+		\ans{ \Po = \abs{ 1 + \centergraphics{blue/prop1} + \centergraphics{blue/prop2} + \centergraphics{blue/prop3} + \centergraphics{blue/prop4} + \cdots }^2, }
+	}
+	where each propagator represents one factor of $\lam$.  For the symmetry factor, there are $2^{2n / 2} = 2^n$ ways the $2n$ vertices can be chosen to be initial or final vertices, and a further $n!$ ways the $n$ initial vertices can be paired with the $n$ final vertices.  This gives us the symmetry factor $2^n n!$.  Then, using the power series~\cite{Exponential}
+	\eqn{exppow}{
+		e^x = \sumni \frac{x^n}{n!},
+	}
+	we can write
+	\eq{
+		\Po = \paren{ \sumni \frac{(-\lam)^n}{2^n n!} }^2
+		= \brac{ \sumni \frac{1}{n!} \paren{ -\frac{\lam}{2} }^n }^2
+		= ( e^{-\lam / 2} )^2
+		= \ans{ e^{-\lam} }
+	}
+	as desired. \qed
+}
+
+
+\clearpage
+\prob{}{	\label{4.1d}
+	Compute the probability that the source creates one particle of momentum $k$.  Perform this computation first to $\order{j}$ and then to all orders, using the trick of \ref{4.1c} to sum the series.
+}
+
+\sol{
+	The initial state is $\ko$ and the final state is $\kk = \sqrt{2 \Ek} \akdag \ko$ from Peskin \& Schroeder~(2.35).  The probability is
+	\eq{
+		\Pk = \abs{ \mel*{\vk}{\Utto}{0} }^2
+		= \abs{ \bk T \curly{ \exp( i \int \ddqx \jx \phiIx ) } \ko + \order{j^2} }^2
+	}
+	from the result of \ref{4.1a}.  To $\order{j}$, this is
+	\eq{
+		\Pk = \abs{ i \bk \int \ddqx \jx \phiIx \ko }^2 + \order{j^3}
+		= \abs{ i \sqrt{2 \Ek} \int \ddqx \ev*{\ak \jx \phiIx }{0} }^2 + \order{j^3}
+	}
+	since $\ev{\ak}{0} = 0$.  At this point we need Peskin \& Schroeder~(2.25)~\cite[p.~83]{Peskin},
+	\eq{
+		\phitox = \int \ddcpf \frac{\sqrt{2 \Ek} }{\sqrt{2 \Ep}} \paren{ \ap e^{i \vp \vdot \vx} + \apdag e^{-i \vp \vdot \vx} },
+	}
+	and (2.29),
+	\eq{
+		[ \ap, \appdag ] = (2\pi)^3 \del^3(\vp - \vp').
+	}
+	Then
+	\al{
+		\Pk &= \abs{ i \int \ddqx \ev*{\ak \jx \int \ddcpf \frac{\sqrt{2 \Ek} }{\sqrt{2 \Ep}} \paren{ \ap e^{i p \cdot x} + \apdag e^{-i p \cdot x} } }{0} }^2 + \order{j^3} \\
+		&= \abs{ i \int \ddqx \ev*{\jx \int \ddcpf \sqrt{\frac{\Ek}{\Ep}} \paren{ \apdag \ak + [\ak, \apdag] } e^{-i p \cdot x} }{0} }^2 + \order{j^3} \\
+		&= \abs{ i \int \ddqx \jx \int \ddcp \sqrt{\frac{\Ek}{\Ep}} e^{-i p \cdot x} \del^3(\vk - \vp) }^2 + \order{j^3} \\
+		&= \abs{ i \int \ddqx \jx e^{-i k \cdot x} }^2 + \order{j^3} \\
+		&= \abs{ i \jtk }^2 + \order{j^3} \\
+		&= \ans{ \abs{\jtk}^2 } + \order{j^3},
+	}
+	since $\ev{\ak \ap}{0} = \ev{\apdag \ak}{0} = 0$, and where we have used Eq.~\refeq{jts}.
+	
+	In order to use the trick of~\ref{4.1c}, we consider the creation of one particle of any momentum.  We integrate $P(k)$ over all possible $k$, inserting a prefactor of $1 / 2 \Ek$ in order to keep Lorentz invariance~\cite[pp.~106--107]{Peskin}:
+	\eqn{jthing}{
+		\Pq = \int \ddckf \frac{\abs{\jtk}^2}{2 \Ek} + \order{j^3}
+		= \lam + \order{j^3},
+	}
+	where we have applied Eq.~\refeq{mean}.  This implies
+	\eq{
+		\Pq = \abs{ i \sqrt{\lam} + \order{j^2} }^2;
+	}
+	in other words, $i \sqrt{\lam}$ is the amplitude corresponding to the creation of a particle at lowest order.  But the higher-order vacuum fluctuations we saw in \ref{4.1c} need to be taken into account as well.  The lowest term of the amplitude in \ref{4.1c} was 1, so the complete perturbation series for the amplitude of $\Pq$ is simply the amplitude for $\Po$ multiplied by the amplitude for creating one particle:
+	\eq{
+		\Pq = \abs{ i \sqrt{\lam} \paren{ 1 + \centergraphics{black/prop1} + \centergraphics{black/prop2} + \centergraphics{black/prop3} + \centergraphics{black/prop4} + \cdots } }^2,
+	}
+	or
+	\eq{
+		\Pq = \abs{ i \sqrt{\lam} \sumni \frac{(-\lam)^n}{2^n n!} }^2
+		= \lam \brac{ \sumni \frac{1}{n!} \paren{ -\frac{\lam}{2} }^n }^2
+		= \lam ( e^{-\lam / 2} )^2
+		= \lam e^{-\lam}.
+	}
+	(The same symmetry factor is the same as in \ref{4.1c}, since there is only one particle with $1! = 1$ arrangements.)
+	
+	But this is the probability to create one particle of any momentum.  The probability to create one particle of momentum $k$ can be retrieved by replacing $\lam$ by $\abs{\jtk}^2$ via Eq.~\refeq{jthing}:
+	\eq{
+		\ans{ \Pk = \abs{\jtk}^2 e^{-\abs{\jtk}^2}. }
+	}
+	\vfix
+}
+
+
+
+\prob{}{	\label{4.1e}
+	Show that the probability of producing $n$ particles is given by
+	\eq{
+		\Pn = \frac{\lam^n e^{-\lam}}{n!}.
+	}
+	This is a \emph{Poisson} distribution.
+}
+
+\sol{
+	In \ref{4.1d} we found that the amplitude to create one particle is $i \sqrt{\lam}$.  It follows that the amplitude to create $n$ particles is $(i \sqrt{\lam})^n$.  The vacuum fluctuations are the same as before, but there is an additional symmetry factor of $n!$ in this case to account for the number of ways to arrange $n$ particles.  Then we have
+	\eq{
+		\Pn = \frac{1}{n!} \abs{ (i \sqrt{\lam})^n \sumni \frac{(-\lam)^n}{2^n n!} }^2
+		= \frac{\lam^n}{n!} \brac{ \sumni \frac{1}{n!} \paren{ -\frac{\lam}{2} }^n }^2
+		= \frac{\lam^n}{n!} ( e^{-\lam / 2} )^2
+		= \ans{ \frac{\lam^n e^{-\lam}}{n!} }
+	}
+	as we wanted to show. \qed
+}
+
+
+
+\prob{}{
+	Prove the following facts about the Poisson distribution:
+	\al{
+		\sumni \Pn &= 1, &
+		\evN &= \sumni n \Pn = \lam.
+	}
+	The first identity says that the $\Pn$s are properly normalized probabilities, while the second confirms our proposal for $\evN$.  Compute the mean square fluctuation $\ev{(N - \evN)^2}$.
+}
+
+\sol{
+	Applying the result of \ref{4.1e} and Eq.~\refeq{exppow},
+	\eq{
+		\sumni \Pn = \sumni \frac{\lam^n e^{-\lam}}{n!}
+		= e^{-\lam} \sumni \frac{\lam^n}{n!}
+		= e^{-\lam} e^\lam
+		= \ans{ 1, }
+	}
+	\clearpage
+	and
+	\eq{
+		\evN = \sumni n \Pn
+		= \sumni n \frac{\lam^n e^{-\lam}}{n!}
+		= e^{-\lam} \sumnqi \frac{\lam^n}{(n - 1)!}
+		= \lam e^{-\lam} \sumnqi \frac{\lam^{n - 1}}{(n - 1)!}
+		= \lam e^{-\lam} \sumni \frac{\lam^n}{n!}
+		= \lam e^{-\lam} e^\lam
+		= \ans{ \lam }
+	}
+	as desired. \qed
+	
+	Note that $\ev{(N - \evN)^2} = \ev{N^2} - \evN^2$, and that
+	\al{
+		\ev{N^2} &= \sumni n^2 \Pn \\
+		&= \sumni n^2 \frac{\lam^n e^{-\lam}}{n!} \\
+		&= \lam e^{-\lam} \sumnqi n \frac{\lam^{n - 1}}{(n - 1)!} \\
+		&= \lam e^{-\lam} \paren{ \sumnqi \frac{\lam^{n - 1}}{(n - 1)!} + \sumnqi (n - 1) \frac{\lam^{n - 1}}{(n - 1)!} } \\
+		&= \lam e^{-\lam} \paren{ e^\lam + \sumnqi \frac{\lam^{n - 1}}{(n - 2)!} } \\
+		&= \lam e^{-\lam} \paren{ e^\lam + \lam \sumnqi \frac{\lam^{n - 2}}{(n - 2)!} } \\
+		&= \lam e^{-\lam} \paren{ e^\lam + \lam e^\lam } \\
+		&= \lam + \lam^2.
+	}
+	Then
+	\eq{
+		\ev{(N - \evN)^2} = \ev{N^2} - \evN^2
+		= \lam + \lam^2 - \lam^2
+		= \ans{ \lam. }
+	}
+	\vfix
+}

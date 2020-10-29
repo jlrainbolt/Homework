@@ -28,7 +28,7 @@
 	\eq{
 		\mel{\vpq \vpw}{i T}{\vpPhi} = \lim_{T \to \infty (1 - i \eps)} \paren{ \obpqw T \curly{ \exp[ -i \intTT \ddt \mu \Phi \phi \phi ] } \kpPhio }_\text{connected, amputated}.
 	}
-	We will use the series expansion of the exponential function to first order.  The zeroth order term does not contribute to $\cM$, so we consider only the first order term~\cite[p.~110]{Peskin}:
+	We will use the series expansion of the exponential function in Eq.~\refeq{expmac} to first order.  The zeroth order term does not contribute to $\cM$, so we consider only the first order term~\cite[p.~110]{Peskin}:
 	\eq{
 		\mel{\vpq \vpw}{i T}{\vpPhi} \approx \obpqw T \curly{ -i \mu \int \ddqx \Phi \phi \phi } \kpPhio = \obpqw N \curly{ -i \mu \int \ddqx \Phi \phi \phi + \contractions } \kpPhio.
 	}
@@ -63,15 +63,16 @@
 		\ddGam = \frac{\mu^2}{4 M (m^2 + p^2)} \ddcpfw \del^4(M - 2 \sqrt{m^2 + p^2}).
 	}
 	Integrating this expression over momentum space yields
-	\eq{
-		\Gam = \frac{\mu^2}{4 M} \int \ddcpfw \frac{1}{m^2 + p^2} \del^4(M - 2 \sqrt{m^2 + p^2})
-		= \frac{\mu^2}{4 \pi M} \int \ddp \frac{p^2}{m^2 + p^2} \del(M - 2 \sqrt{m^2 + p^2})
-		= \frac{\mu^2}{8 \pi M} \sqrt{ \frac{M^2 - 4 m^2}{M^2} },
+	\al{
+		\Gam &= \frac{\mu^2}{4 M} \int \ddcpfw \frac{1}{m^2 + p^2} \del^4(M - 2 \sqrt{m^2 + p^2}) \\
+		&= \frac{\mu^2}{4 \pi M} \int \ddp \frac{p^2}{m^2 + p^2} \del(M - 2 \sqrt{m^2 + p^2}) \\
+		&= \frac{\mu^2}{4 \pi M} \int \ddp \frac{4 (m^2 + p^2) - 4 m^2}{4 (m^2 + p^2)} \del[ M - \sqrt{4 (m^2 + p^2)} ] \\
+		&= \frac{\mu^2}{4 \pi M} \frac{M^2 - 4 m^2}{M^2},
 	}
-	so
+	so the lifetime is
 	\eq{
 		\tau = \frac{1}{\Gam}
-		= \ans{ \frac{8 \pi M}{\mu^2} \sqrt{ \frac{M^2}{M^2 - 4 m^2} }. }
+		= \ans{ \frac{4 \pi}{\mu^2} \frac{M^3}{M^2 - 4 m^2}. }
 	}
 	\qed
 }
