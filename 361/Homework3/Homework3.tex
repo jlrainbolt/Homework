@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{361}
+\homeworknum{3}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+\input{Problem01}
+
+\input{Problem02}
+
+
+
+
+
+
+\stepcounter{section}
+\state{One-dimensional band}{
+	Consider a one-dimensional system which is filled up to the first Brillouin zone boundary at $k = \pi / a$, and assume that there is a small gap produced by a single Fourier component of the lattice potential $U = U_{K = 2\pi / a}$ (small meaning that $U / \EohK \ll 1$).  Considering momenta close to the zone boundary, show that a good approximation for the energy dispersion of the bands is
+	\eq{
+		E = \Eo \paren{ 1 \pm \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } }
+	}
+	where $\Eo = \EohK$ and $k = \pi (1 + x) / a$, with $x \ll 1$.
+	
+	Evaluate the change in electronic energy
+	\eq{
+		\Eelec = \sumkocc [ E(k; \UK) - E(k; \UK = 0) ]
+	}
+	to leading order in $U / \Eo$.  (Hint:  the result is non-analytic---don't try a Taylor series in $U$.)
+}
+
+
+
+
+
+
+\state{Some one-dimensional chemistry}{
+	Consider a diatomic lattice of two atoms labeled $A$ and $B$ in a lattice with period $a$, at the positions $\pm a / 4 (1 - \del)$ in a one-dimensional array with overall period $a$.
+}
+
+\prob{
+	Using the NFE approximation valid for momenta near the zone boundary $k \to \pi / a$, show that the solution of Eq.~(4.47) leads to 
+	\begin{enumerate}
+		\item a gap on the zone boundary is $2 \abs{ \Utpa }$, and
+		\item wavefunctions that satisfy $\cpmk / \cpmkmpa = \pm U / \abs{U}$ as $k \to \pi / a$.
+	\end{enumerate}
+}
+
+
+
+\prob{
+	Hence show that the probability density for the electronic states at $k = \pi / a$ take the form
+	\al{
+		\abs{\psipr}^2 &\propto \cos[2](\frac{\pi x}{a} + \frac{\phi}{2}), &
+		\abs{\psimr}^2 &\propto \sin[2](\frac{\pi x}{a} + \frac{\phi}{2}).
+	}
+}
+
+
+
+\prob{
+	Show that the potential can be written
+	\eq{
+		\Utpa = \sin(\frac{\pi \del}{2}) \paren{ \UAtpa + \UBtpa } - i \cos(\frac{\pi \del}{2}) \paren{ \UAtpa - \UBtpa },
+	}
+	where
+	\eq{
+		\UABtpa = \frac{N}{V} \int \ddr e^{-2 \pi i r / a} \UABr.
+	}
+}
+
+
+
+\prob{
+	The system contains an average of one electron per atom, or equivalently two electrons per unit cell.  Discuss the values of the energy gaps and plot the charge  densities corresponding to the highest filled electron state and the lowest empty electron state in the two cases:
+	\begin{enumerate}
+		\item $\del = 0$, $\UA \neq \UB$;
+		\item identical atoms, $\UA = \UB$, and $\del \neq 0$.
+	\end{enumerate}
+	Explain how this provides a simple model of either an \emph{ionic} or \emph{covalent} solid.
+}
+
+
+
+
+
+
+\state{Tight binding for BCC and FCC lattices}{
+	Show that the tight-binding band structure for a body-centered cubic lattice (include only the hopping to the eight nearest neighbors) is
+	\eq{
+		\Evk = \epso + 8 t \cos(\frac{\kx a}{2}) \cos(\frac{\ky a}{2}) \cos(\frac{\kz a}{2}), 
+	}
+	and for the face-centered cubic lattice (twelve nearest neighbors)
+	\eq{
+		\Evk = \epso + 4 t \brac{ \cos(\frac{\kx a}{2}) \cos(\frac{\ky a}{2}) + \cos(\frac{\kx a}{2}) \cos(\frac{\ky a}{2}) + \cos(\frac{\kz a}{2}) \cos(\frac{\kx a}{2}) }.
+	}
+}
+
+
+
+
+
+
+\state{Pseudopotential}{
+	Show that $\bkchifn = 0$ if we choose $\betn = \bkfnk$.
+	
+	The pseudopotential is not unique.  Show that the valence eigenvalues of a Hamiltonian $H + \VR$ are the same for any operator of the form
+	\eq{
+		\VR \phi = \sumn \bkFnphi \fn,
+	}
+	where the $\Fn$ are \emph{arbitrary} functions.
+}
+
+
+
+
+
+
+\state{Hartree--Fock theory for the two-level atom}{
+	Show that the Hartree--Fock total energy Eq.~(4.83) applied to the two-level atom model of Sec.~4.2.1 gives exactly the direct and exchange energy calculated in Eq.~(4.75).
+}
+
+
+
+
+
+
+\state{Hartree--Fock equations}{
+	Evaluate the energy in the form
+	\eq{
+		\evHsPsi = \frac{\evHPsi}{\bkPsi}
+	}
+	with the determinantal wavefunction of Eq.~(4.82) using an orthonormal set of orbitals $\psii$.
+	
+	Answer:
+	\eq{
+		\evHsPsi = \sumi \ev*{T + \Uion}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }.
+	}
+	
+	Show that by minimizing with respect to the $\psiis$ one obtains the Hartree--Fock equations
+	\eq{
+		\paren{ -\frac{\hbar^2}{2 m} \laplacian + \Uionr + \Ucoulr } \psiir - \sumj \int \ddvrp \frac{e^2}{\absrmrp} \psijsrp \psiirp \psijr \delsigij = \epsi \psiir,
+	}
+	and that the total energy can be written
+	\eq{
+		\evHsPsi = \sumi \epsi - \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }.
+	}
+}
+
+
+
+
+
+
+
+\state{Band structure in the Hartree--Fock approximation}{
+	Using Eq.~(4.91), calculate the density of states near the Fermi energy to leading order in $(E - \EF) / \EF$.  If this result were physically correct, what would be the temperature dependence of the electronic specific heat at low temperature?
+}
+
+
+
+
+
+
+\state{Ferromagnetism in the HF approximation}{
+	Previously, we considered the unpolarized spin state, which is a paramagnet.  Now consider a fully spin polarized state at the same density: the Hartree--Fock Slater determinant corresponds to singly occupying each state in the  Fermi sphere.  In analogy to Eq.~(4.93), compute the total energy of the spin polarized state, and show that this is lower in energy than the unpolarized state if $\rs > 5.45$ in the Hartree--Fock approximation.
+}
+
+
+
+
+
+
+\state{Thomas--Fermi screening}{
+	Check the formulae in Eq.~(4.133) and Eq.~(4.134).  Supposing that the potential $\vext = Q / r$, show that the induced charge density is then of the form
+	\eq{
+		\del\nr \propto \frac{e^{-r / \xi}}{r}
+	}
+	and identify the screening length $\xi$.
+}
+
+
+
+
+
+
+\state{Generalized one-dimensional band theory}{
+	Consider a 1D solid, lattice constant $a$, made of ``building blocks'' ($-a / 2< x < a / 2$) that scatter plane waves with a reflection coefficient $r$ and transmission coefficient $t$ ($\absr^2 + \abst^2 = 1$).  The energy of the plane wave is written as $\eps = \hbar^2 K^2 / 2 m$.  In the solid, the building blocks are stacked together indefinitely in the $x$ direction.
+}
+
+\prob{
+	Write the solution to the {\Schrodinger} equation in the solid $\psix$, as a linear combination of $\psirx$ and $\psilx$ and use Bloch’s theorem to relate the wavefunction at each side of the building block (the same theorem applies to the gradient $\psi'$):
+	\al{
+		\psixpa &= e^{i k a} \psix, &
+		\psipxpa &= e^{i k a} \psipx.
+	}
+	Hence, show
+	\eq{
+		\cos(k a) = \frac{t^2 - r^2}{2 t} e^{i K a} + \frac{1}{2 t} e^{-i K a}.
+	}
+}
+
+
+
+\prob{
+	If the transmission coefficient is $t = \abst e^{i \del}$, it can be shown that $r = \pm i \absr e^{i \del}$.  Use this result to eliminate $r$ and show
+	\eq{
+		\frac{\cos(k a + \del)}{\abst} = \cos(k a).
+	}
+	\vfix
+}
+
+
+
+\prob{
+	Since $\abst < 1$, this result shows there are values of $K$ (and hence $\eps$) for which no Bloch states exist.  Demonstrate this by sketching the left-hand side as a function of $K$ (or preferably $\eps$).  Use your sketch to illustrate the behavior for
+	\begin{enumerate}
+		\item strong scattering, and
+		\item weak scattering.
+	\end{enumerate}
+	Explain why, in general, electron bands tend to get wider and their gaps narrower as the electron energy increases.
+}
+
+
+\makebib
+	
+\end{document}

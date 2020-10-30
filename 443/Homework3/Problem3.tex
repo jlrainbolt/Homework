@@ -60,19 +60,39 @@
 	}
 	so
 	\eq{
-		\ddGam = \frac{\mu^2}{4 M (m^2 + p^2)} \ddcpfw \del^4(M - 2 \sqrt{m^2 + p^2}).
+		\ddGam = \frac{\mu^2}{4 M \Eq \Ew} \ddcpqpwf (2\pi)^4 \del^3(\vpq + \vpw) \del(\Eq + \Ew - M).
 	}
 	Integrating this expression over momentum space yields
 	\al{
-		\Gam &= \frac{\mu^2}{4 M} \int \ddcpfw \frac{1}{m^2 + p^2} \del^4(M - 2 \sqrt{m^2 + p^2}) \\
-		&= \frac{\mu^2}{4 \pi M} \int \ddp \frac{p^2}{m^2 + p^2} \del(M - 2 \sqrt{m^2 + p^2}) \\
-		&= \frac{\mu^2}{4 \pi M} \int \ddp \frac{4 (m^2 + p^2) - 4 m^2}{4 (m^2 + p^2)} \del[ M - \sqrt{4 (m^2 + p^2)} ] \\
-		&= \frac{\mu^2}{4 \pi M} \frac{M^2 - 4 m^2}{M^2},
+		\Gam &= \frac{\mu^2}{4 M} \int \ddcpqpwf \frac{1}{\Eq \Ew} (2\pi)^4 \del^3(\vpq + \vpw) \del(\Eq + \Ew - M) \\
+		&= \frac{\mu^2}{4 M} \int \ddcpqf \frac{1}{\Eq^2} \del(2 \Eq - M) \\
+		&= \frac{\mu^2}{4 M} \int \frac{\ddp \ddtht \ddvph}{(2\pi)^2} \frac{p^2 \sin\tht}{p^2 + m^2} \del(2 \sqrt{p^2 + m^2} - M),
+	}
+	where we have let $\pq = p$.  Now we use~\cite{Delta}
+	\eq{
+		\del[g(x)] = \sum_i \frac{\del(x - \xsi)}{\abs{g'(\xsi)}}
+	}
+	where $\xsi$ are the roots of $\gx$.  We have $\gp = 2 \sqrt{p^2 + m^2} - M$ with roots $p = \pm \sqrt{M^2 / 4 - m^2}$.  Note also that
+	\eq{
+		g'(p) = \frac{4 p}{\sqrt{m^2 + p^2}}
+		\qimplies
+		g'(\pii) = \pm \frac{4 \sqrt{M^2 / 4 - m^2}}{M / 2}
+		= \pm 4 \sqrt{1 - \frac{4 m^2}{M^2}},
+	}
+	which means
+	\eq{
+		\del(2 \sqrt{p^2 + m^2} - M) = \frac{ \del(p + \sqrt{M^2 / 4 - m^2}) + \del(p - \sqrt{M^2 / 4 - m^2})}{2 \sqrt{1 - 4 m^2 / M^2}}.
+	}
+	Then
+	\al{
+		\Gam &= \frac{\mu^2}{8 M \sqrt{1 - 4 m^2 / M^2}} \int \frac{\ddp \ddtht \ddvph}{(2\pi)^2} \frac{p^2 \sin\tht}{p^2 + m^2} \paren{ \del(p + \sqrt{M^2 / 4 - m^2}) + \del(p - \sqrt{M^2 / 4 - m^2}) } \\
+		&= \frac{\mu^2}{16\pi M \sqrt{1 - 4 m^2 / M^2}} \frac{2 (M^2 / 4 - m^2)}{M^2 / 4} \\
+		&= \frac{\mu^2}{8\pi M} \sqrt{1 - \frac{4 m^2}{M^2}}
 	}
 	so the lifetime is
 	\eq{
 		\tau = \frac{1}{\Gam}
-		= \ans{ \frac{4 \pi}{\mu^2} \frac{M^3}{M^2 - 4 m^2}. }
+		= \ans{ \frac{8 \pi M}{\mu^2} \sqrt{1 - \frac{4 m^2}{M^2}}^{-1}. }
 	}
-	\qed
+	\vfix
 }

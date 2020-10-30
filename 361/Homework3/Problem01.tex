@@ -1,0 +1,94 @@
+\state{Bloch's theorem}{	\label{1}
+	Prove Bloch's theorem by operating with the translation operator on $H \psi$ and using the periodic symmetry of the potential.  Show furthermore that $\TR \TRp = \TRp \TR = \TRpRp$; the translation operators commute with themselves.
+}
+
+\sol{
+	Bloch's theorem is given by (8.6) of Ashcroft \& Mermin:
+	\eq{
+		\psirpR = e^{i \vk \vdot \vR} \psir.
+	}
+	Additionally, $H \psir$ is given by (4.1):
+	\eq{
+		H \psir = \paren{ -\frac{\hbar^2}{2 m} \laplacian + \Ur } \psir.
+	}
+	
+	According to (4.5) in the lecture notes, the action of the translation operator is $\TR \fr = \frpR$.  Operating on $H \psi$ yields~\cite[p.~134]{Ashcroft}
+	\al{
+		\TR (H \psi) &= \HrpR \psirpR \\
+		&= \paren{ -\frac{\hbar^2}{2 m} \laplacian + \UrpR } \psirpR \\
+		&= \paren{ -\frac{\hbar^2}{2 m} \laplacian + \Ur } \psirpR \\
+		&= \Hr \psirpR \\
+		&= H \TR \psi,
+	}
+	since $\Ur = \UrpR$ for all $\vR$ in a Bravais lattice according to p.~35 of the lecture notes.  Thus we have shown
+	\eq{
+		\TR H = H \TR;
+	}
+	that is, $H$ and $\TR$ commute.
+	
+	Note also that
+	\eq{
+		\TR \TRp \fr = \TR f(\vr + \vR')
+		= f(\vr + \vR' + \vR)
+		= f(\vr + \vR + \vR')
+		= \TRp f(\vr + \vR)
+		= \TRp \TR \fr
+	}
+	and that
+	\eq{
+		\TRpRp \fr = f(\vr + \vR + \vR'),
+	}
+	so we have shown that
+	\eq{ \eqqed{
+		\ans{ \TR \TRp = \TRp \TR = \TRpRp. } \qedhere
+	}}
+	
+	Since $H$ and $\TR$ commute and the $\TR$s commute with each other, they can be simultaneously diagonalized.  We can apply (4.8) of the lecture notes:
+	\aln{ \label{eigenvals}
+		H \psi &= E \psi, &
+		\TR \psi &= \cR \psi.
+	}
+	Now applying what we have just proven about the $\TR$s,
+	\eqn{cRs}{
+		\cR \cRp \psi = \TR \TRp \psi
+		= \TRpRp \psi
+		= \cRpRp \psi
+		\qimplies
+		\cR \cRp = \cRpRp.
+	}
+	From Ashcroft \& Mermin~(4.1), any position vector $\vR$ on the Bravais lattice can be written
+	\eq{
+		\vR = \nq \vaq + \nw \vaw + \nee \vae,
+	}
+	where the $\nii$ are integers.  So using Eq.~\refeq{cRs}, we can write
+	\eqn{thing1}{
+		\cR = c(\nq \vaq + \nw \vaw + \nee \vae)
+		= c(\nq \vaq) c(\nw \vaw) c(\nee \vae)
+		= c(\vaq)^{\nq} c(\vaw)^{\nw} c(\vae)^{\nee}.
+	}
+	We define the numbers $\ki$ such that (4.10) of the lecture notes is satisfied:
+	\eq{
+		\cai = e^{2\pi i \ki},
+	}
+	where $\vai$ are the primitive vectors of the lattice.  Applying this to Eq.~\refeq{thing1},
+	\eqn{thing1.b}{
+		\cR = (e^{2\pi i \kq})^{\nq} (e^{2\pi i \kw})^{\nw} (e^{2\pi i \ke})^{\nee}
+		= e^{2\pi i (\kq \nq + \kw \nw + \ke \nee)}
+		= e^{i \vk \vdot \vR},
+	}
+	where
+	\eq{
+		\vk = \kq \vbq + \kw \vbw + \ke \vbe
+	}
+	from Ashcroft \& Mermin~(5.6) is any vector on the reciprocal lattice (with primitive vectors $\vbi$), and we have applied their~(4.8),
+	\eq{
+		\vk \vdot \vR = 2\pi ( (\kq \nq + \kw \nw + \ke \nee).
+	}
+	Putting Eq.~\refeq{thing1.b} together with Eq.~\refeq{eigenvals} and the definition of $\TR$, we have
+	\eq{
+		\ans{ \psirpR = \TR \psir
+		= \cR \psir
+		= e^{i \vk \vdot \vR} \psir,}
+	}
+	which is Bloch's theorem~\cite[pp.~134--135]{Ashcroft}. \qed
+}

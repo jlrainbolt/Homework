@@ -1,0 +1,49 @@
+\state{Another proof of Bloch's theorem}{
+	A more elegant way to prove Bloch's theorem is to note that the translation operator can be written
+	\eq{
+		\TR = e^{-i \vp \vdot \vR / \hbar},
+	}
+	where $\vp = -i \hbar \grad$ is the momentum operator.  By multiplying by the bra $\bvk$ (an eigenfunction of momentum), show that either $\bkkpsi = 0$, or $\cR = e^{-i \vk \vdot \vR}$.
+}
+
+\sol{
+	We will proceed in a similar manner as before.  Adapting (4.1) of the lecture notes to Dirac notation, we have
+	\eq{
+		H \kpsi = \paren{ \frac{\vp^2}{2m} + \Ur } \kpsi.
+	}
+	Multiplying by $\TR$ on the left,
+	\al{
+		\TR H \kpsi &= e^{-i \vp \vdot \vR / \hbar} \paren{ \frac{\vp^2}{2m} + \Ur } \kpsi \\
+		&= \paren{ \frac{\vp^2}{2m} e^{-i \vp \vdot \vR / \hbar} + \UrpR } \kpsi \\
+		&= \paren{ \frac{\vp^2}{2m} e^{-i \vp \vdot \vR / \hbar} + \UrmR } \kpsi \\
+		&= H \TR \kpsi,
+	}
+	where we have used
+	\eq{
+		\TR \Ur = \UrpR = \UrmR = \Ur \TR,
+	}
+	which is the unitarity of the translation operator~\cite[p.~45]{Sakurai}, and the fact that $\UrpR = \Ur = \UrmR$.
+	
+	Since $\vk$ is a momentum eigenstate, define $\vk = (\kq, \kw, \ke)$ for constant $\ki$ such that $\vp \kvk = \hbar \vk \kvk$.  Then
+	\eq{
+		\TR \kvk = e^{-i \vp \vdot \vR / \hbar} \kvk
+		= e^{-i \vk \vdot \vR} \kvk.
+	}
+	The proof that $\TR \TRp = \TRp \TR = \TRpRp$ from \ref{1} still applies in the new interpretation, as does the simultaneous diagonalization of $H$ and $\TR$.  Writing (4.8) of the lecture notes in Dirac notation,
+	\al{
+		H \kpsi &= E \kpsi, &
+		\TR \kpsi &= \cR \kpsi.
+	}
+	Multiplying the second of these equations by $\bvk$ on the left,
+	\eq{
+		\cR \bkkpsi = \mel*{\vk}{\cR}{\psi}
+		= \mel*{\vk}{\TR}{\psi}
+		= \mel*{\vk}{e^{-i \vk \vdot \vR}}{\psi}
+		= e^{-i \vk \vdot \vR} \bkkpsi,
+	}
+	which implies
+	\eq{
+		\ans{ \cR = e^{-i \vk \vdot \vR} \qor \bkkpsi = 0}
+	}
+	as we wanted to show. \qed
+}

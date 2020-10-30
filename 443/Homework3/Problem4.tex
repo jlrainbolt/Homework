@@ -1,0 +1,156 @@
+\state{Aspects of scaling behavior in QFT}{\hfix}
+
+\prob{}{
+	As discussed in class, massless free scalar field theory is invariant under scale transformations if we assign the appropriate scale dimension to the field $\phi$.  The action of dilations on coordinates is implemented by the operator $D = i \xm \ptsm$.  Find the commutation relations of this operator with the operators that implement the Poincar\'{e} algebra of translations $\Psm = i \ptsm$ and Lorentz transformations $\Jsmn = i (\xsm \ptsn - \xsn \ptsm)$.  Find the canonical Noether current and Noether charge for this symmetry in the free field theory, and find the commutation relations of the charge with the field $\phi$ to show that it implements the infinitesimal form of the symmetry on the fields.  Check also that this current has the right commutation relations with the field theory Hamiltonian and momentum generators.
+}
+
+\sol{
+	Firstly, the commutators of the operators are
+	\eq{
+		[D, \Psm] = -\xnu \ptsn \ptsm + \ptsm \xnu \ptsn
+		= -\xnu \ptsn \ptsm + \ptsm(\xsn) \ptn + \xnu \ptsn \ptsm
+		= \delsmn \ptn
+		= \ptsm
+		= \ans{ -i \Psm, }
+	}
+	and
+	\al{
+		[D, \Jsmn] &= -\xa \ptsa (\xsm \ptsn - \xsn \ptsm) + (\xsm \ptsn - \xsn \ptsm) \xa \ptsa \\[.5ex]
+		&= -\xa \ptsa(\xsm \ptsn) + \xa \ptsa(\xsn \ptsm) + \xsm \ptsn(\xa \ptsa) - \xsn \ptsm(\xa \ptsa) \\[.5ex]
+		&= -\xa \ptsa(\xsm) \ptsn - \xa \xsm \ptsa \ptsn + \xa \ptsa(\xsn) \ptsm + \xa \xsn \ptsa \ptsm + \xsm \ptsn(\xsa) \pta + \xsm \xa \ptsn \ptsa - \xsn \ptsm(\xsa) \pta \\
+		&\hspace{5em} \phantom{=\ } - \xsn \xa \ptsm \ptsa \\[.5ex]
+		&= -\xa \delsma \ptsn - \xa \xsm \ptsa \ptsn + \xa \delsna \ptsm + \xa \xsn \ptsa \ptsm + \xsm \delsna \pta + \xsm \xa \ptsn \ptsa - \xsn \delsma \pta - \xsn \xa \ptsm \ptsa \\[.5ex]
+		&= -\xsm \ptsn - \xa \xsm \ptsa \ptsn + \xsn \ptsm + \xa \xsn \ptsa \ptsm + \xsm \ptsn + \xsm \xa \ptsn \ptsa - \xsn \ptsm - \xsn \xa \ptsm \ptsa \\[.5ex]
+		&= \ans{ 0. }
+	}
+	
+	The conserved charge is given in general by Peskin \& Schroeder~(2.12) and (2.13),
+	\aln{
+		Q &\equiv \int_\text{all space} \jo \ddcx, &
+		\where \jmx &= \pdv{\cL}{(\ptsm\phi)} \Del\phi - \Jm,
+	}
+	where $\jmx$ is a Noether current and $\Jm$ is a 4-divergence that arises when transforming the Lagrangian as in Peskin \& Schroeder~(2.10):
+	\eq{
+		\cLx \to \cLx + \alp \ptsm \Jmx.
+	}
+	The Lagrangian of the massless free scalar field theory can be written from Peskin \& Schroeder~(2.14),
+	\eq{
+		\cL = \ptm \phis \ptsm \phi.
+	}
+	A dilation can be written $\phi \to e^{i \alp D} \phi$~\cite[p.~18]{Peskin}.  Then
+	\eq{
+		\cL \to \frac{1}{2} \ptsm e^{-i \alp D} \phis \ptm e^{i \alp D} \phi
+		= \frac{1}{2} \ptsm e^{-i \alp D} \phis (e^{i \alp D} \ptsm + i \ptsm) \phi
+	}
+	The infinitesimal transformations, by analogy with Peskin \& Schroeder~(2.15), are
+	\al{
+		\alp \Del\phi &= i \alp D \phi, &
+		\alp \Del\phis &= -i \alp D \phis.
+	}
+	Then the Noether current is
+	\eq{
+		\jmx = \pdv{\cL}{(\ptsm\phi)} \Del\phi + \pdv{\cL}{(\ptsm\phis)} \Del\phis
+		= \ans{ i \ptm(\phis) D \phi - i \ptsm(\phi) D \phis, }
+	}
+	and the Noether charge is
+	\eq{
+		Q = i \int \ddcx [ \pto(\phis) D \phi - \ptso(\phid) D \phis ]
+		= \ans{ i \int \ddcx (\phids D \phi - \phid D \phis). }
+	}
+	
+	From~2(a) of Homework 1, we know the momenta conjugate to $\phi$ and $\phis$,
+	\al{
+		\pi &= \phids, &
+		\pis &= \phid,
+	}
+	and the commutation relations
+	\al{
+		[\phivx, \pivy] &= [\phisvx, \pisvy] = i \,\del^3(\vx - \vy), \\
+		[\phivx, \phivy] &= [\phisvx, \phisvy] = 0, \\
+		[\pivx, \pivy] &= [\pisvx, \pisvy] = 0, \\
+		[\phivx, \pisvy] &= [\phivx, \phisvy] = [\pivx, \pisvy] = 0.
+	}
+
+	The commutation relation between the charge and the field is
+	\al{
+		[ \phiy, \Qx  ] &= i \brac{ \phiy, \int \ddcx [ \pix D \phix - \pisx D \phisx ] } \\
+		&= i \int \ddcx \curly{ [ \phiy, \pix ] D \phix - [ \phiy, \pisx D \phisx ] } \\
+		&= i \int \ddcx \curly{ [ \phiy, \pix ] D \phix - i \pisx [ \phiy, \xm \ptsm \phisx ] } \\
+		&= \int \ddcx \curly{ i [ \phiy, \pix ] D \phix + \pisx [ \phiy, \paren{ t \pix + \xii \ptsi \phisx } ] } \\
+		&= \int \ddcx \curly{ i [ \phiy, \pix ] D \phix + t \pisx [ \phiy, \pix ] } \\
+		&= i \int \ddcx \brac{ i D \phix + t \pisx } \del^3(\vy - \vx) \\
+		&= i t \pisy - D \phiy \\
+		&= i t \pisy - i \xm \ptsm \phiy \\
+		&= i [ t \pisy - t \pisy - \xii \ptsi \phiy ] \\
+		&= \ans{ i [ \vy \vdot \grad \phiy ] }
+	}
+	where $x = (t, \vx)$ and $y = (t, \vy)$.  This is the infinitesimal form of a spatial dilation on the field.
+}
+
+
+
+\prob{}{
+	The sound waves in a solid obey a wave equation, which at low enough wavelengths/energies is described by the action (for simplicity, consider one spatial dimension)
+	\eq{
+		\So = \int \ddtx (\ptst \phi \ptst \phi - \cs^2 \ptsx \phi \ptsx \phi)
+	}
+	where $\cs$ is the speed of sound in the material.  The field $\phi$ describes the distortion of the lattice away from equilibrium.  Model this situation by a lattice of atoms (mass $m$, lattice spacing $a$) interacting through harmonic nearest-neighbor forces (spring constant $k$).  Find the leading term in the action which corrects the above kinetic energy in a power series in $a \times (\text{derivatives})$ (this can be done for instance by expanding the exact dispersion relation for the chain of masses and springs).  Show that this correction term is an irrelevant perturbation of the action, so that all traces of the lattice structure disappear in the continuum limit $a \to 0$.  Estimate the momentum scale at which the irrelevant corrections amount to 10\% of the total energy of a phonon.
+}
+
+\sol{
+	The dispersion relation for a monatomic lattice is
+	\eq{
+		\omg = \sqrt{\frac{4k}{m}} \abs{\sin(\frac{q a}{2})},
+	}
+	where $q$ is the wavenumber.  It has solutions of the form
+	\eqn{phi4}{
+		\phi = A e^{i q x - \omg t}
+	}
+	where $A$ is some constant~\cite[p.~432]{Ashcroft}.
+	
+	We expand the dispersion relation using the Taylor series~\cite{Maclaurin}
+	\eq{
+		\sin x \approx x - \frac{1}{6} x^3
+	}
+	to find
+	\eq{
+		\omg \approx \sqrt{\frac{4k}{m}} \abs{ \frac{q a}{2} - \frac{1}{6} \paren{ \frac{q a}{2} }^3 }
+		= \sqrt{\frac{4k}{m}} \abs{ \frac{q a}{2} - \frac{q^3 a^3}{48} }.
+	}
+	Note that
+	\eq{
+		\omg^2 = \frac{4k}{m} \abs{ \frac{q a}{2} - \frac{q^3 a^3}{48} }^2
+		= \frac{4k}{m} \paren{ \frac{q^2 a^2}{4} - \frac{q^4 a^4}{48} + \frac{q^6 a^6}{48^2} },
+	}
+	where the lowest-order term has $\omg^2 \propto q^2$.  This is the relation we would get from feeding Eq.~\refeq{phi4} into the equation of motion, which is the wave equation~\cite{Wave}:
+	\eq{
+		\pdv[2]{\phi}{t} = \cs^2 \pdv[2]{\phi}{x}
+		\qimplies
+		-\omg^2 A e^{i (q x - \omg t)} = -\cs^2 q^2 A e^{i (q x - \omg t)}
+		\qimplies \omg^2 = \cs^2 q^2.
+	}
+	To account for the next-highest-order term in $\omg^2$, we need a term with higher-order spatial derivatives.  This gives us the equation of motion
+	\eq{
+		0 = \pdv[2]{\phi}{t} - \frac{k a^2}{m} \pdv[2]{\phi}{x} + \frac{k a^4}{12 m} \pdv[4]{\phi}{x}
+		= \pdv[2]{\phi}{t} - \cs^2 \pdv[2]{\phi}{x} + \frac{a^2}{12} \cs^2 \pdv[4]{\phi}{x}.
+	}
+	
+	The Lagrangian that gives us this equation of motion can be found in general from the Euler--Lagrange equations for a single function of two variables with higher derivatives, $\cL[\xq, \xw, f, \fq, \fw, \fqq, \fqw, \fww, \ldots]$ where $\fsi = \pdv*{f}{\xsi}$~\cite{EulerLagrange}:
+	\eq{
+		\pdv{\cL}{f} - \pdv{\xq}(\pdv{\cL}{\fq}) - \pdv{\xw}(\pdv{\cL}{\fw}) + \pdv[2]{\xq}(\pdv{\cL}{\fqq}) + \pdv{}{\xq}{\xw}\!\paren{ \pdv{\cL}{\fqw} } + \pdv[2]{\xw}(\pdv{\cL}{\fww}) + \cdots = 0.
+	}
+	So the Lagrangian including the higher-order term will be
+	\eq{
+		\cL = \ptst \phi \ptst \phi - \cs^2 \ptsx \phi \ptsx \phi - \frac{a^2}{12} \cs^2 \ptsx^2 \phi \ptsx^2 \phi
+	}
+	The leading term in the action that corrects the kinetic energy is highlighted below:
+	\eq{
+		\Sq = \int \ddtx \paren{ \ptst \phi \ptst \phi - \cs^2 \ptsx \phi \ptsx \phi \ans{\ -\ \frac{a^2}{12} \cs^2 \ptsx^2 \phi \ptsx^2 \phi } }.
+	}
+	In terms of mass dimension, $\ptst = \ptsx = [1]$.  We need the kinetic term of the Lagrangian to have mass dimension 0.  Since $\ptst = \ptsx = [1]$ and $\ddt = \ddx = [-1]$, it must be that $\phi = [0]$.  Then
+	\eq{
+		\int \ddtx \ptsx^2 \phi \ptsx^2 \phi = [-1 - 1 + 2 + 0 + 2 + 0]
+		= [2].
+	}
+	This means that this term, neglecting the coupling constant $a^2$, has dimension proportional to $1 / (\text{length})^2$.  In order for this term to contribute at larger length scales, $a$ would need to increase proportionally to the length scale.  However, this spoils the continuum limit $a \to 0$.  Thus, the term is irrelevant.
+}
