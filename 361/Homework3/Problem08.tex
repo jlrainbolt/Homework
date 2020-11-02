@@ -1,0 +1,36 @@
+\state{Hartree--Fock theory for the two-level atom}{
+	Show that the Hartree--Fock total energy Eq.~(4.83) applied to the two-level atom model of Sec.~4.2.1 gives exactly the direct and exchange energy calculated in Eq.~(4.75).
+}
+
+\sol{
+	Equation~(4.83) is
+	\eq{
+		\evHsPsi = \sumi \ev*{(T + \Uion)}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }.
+	}
+	For the two-level atom, $i, j \in \{ 1, 2 \}$.  So we have
+	\aln{
+		\evHsPsi &= \ev*{(T + \Uion)}{1} + \ev*{(T + \Uion)}{2} \notag \\
+		&\hspace{5em} \phantom{=\ }+ \frac{1}{2} \paren{ \ev*{\frac{e^2}{\rqw}}{1 2} - \mel*{1 2}{\frac{e^2}{\rqw}}{2 1} \delsigqw + \ev*{\frac{e^2}{\rwq}}{2 1} - \mel*{2 1}{\frac{e^2}{\rwq}}{1 2} \delsigqw }. \label{evHPsi}
+	}
+	since $\delsigii = 1$.
+
+	Using (4.76) in the lecture notes, the direct energy is
+	\eq{
+		\ev{V}{1 2} = \ev*{\frac{e^2}{\rqw}}{1 2}
+		= \int \ddvr \ddvrp \abs{\psiqrp}^2 \frac{e^2}{\absrmrp} \abs{\psiwr}^2
+		= \int \ddvrp \ddvr \abs{\psiqr}^2 \frac{e^2}{\absrmrp} \abs{\psiwrp}^2
+		= \ev*{\frac{e^2}{\rwq}}{2 1},
+	}
+	where we have simply interchanged $\vr$ and $\vr'$.  Similarly, using (4.77) in the lecture notes, the exchange energy is
+	\al{
+		\mel{2 1}{V}{1 2} &= \mel*{2 1}{\frac{e^2}{\rwq}}{1 2} \\
+		&= \int \ddvr \ddvrp \psiwsr \psiqsrp \frac{e^2}{\absrmrp} \psiqr \psiwrp \\
+		&= \int \ddvrp \ddvr \psiwsrp \psiqsr \frac{e^2}{\absrmrp} \psiqrp \psiwr \\
+		&= \mel*{1 2}{\frac{e^2}{\rqw}}{2 1}.
+	}
+	From p.~53 of the lecture notes, $\Ei = \ev{(T + \Uion)}{i}$.  Finally, Eq.~\refeq{evHPsi} can be written
+	\eq{
+		\ans{ \evHPsi = \Eq + \Ew + \ev{V}{12} + \mel{21}{V}{12} }
+	}
+	which has the same direct and exchange energy as (4.75) in the lecture notes. \qed
+}

@@ -258,17 +258,35 @@
 	where the $\Fn$ are \emph{arbitrary} functions.
 }
 
-
-
-
-
-
-\state{Hartree--Fock theory for the two-level atom}{
-	Show that the Hartree--Fock total energy Eq.~(4.83) applied to the two-level atom model of Sec.~4.2.1 gives exactly the direct and exchange energy calculated in Eq.~(4.75).
+\sol{
+	Equation~(4.59) of the lecture notes defines the basis vectors
+	\eq{
+		\kchivk = \kvk - \sumn \betn \kfnvk.
+	}
+	If we choose $\betn = \bkfnk$ and multiply on the left by $\bfn$, then
+	\eq{
+		\bkfnchi = \bkfnk - \summ \bkfmk \bkfnfm
+		= \bkfnk - \summ \bkfmk \delmn
+		= \bkfnk - \bkfnk
+		= 0.
+	}
+	Since $\bkchifn = \bkfnchi^*$, we have shown that if $\betn = \bkfnk$ then
+	\eq{
+		\ans{ \bkchifn = 0 }
+	}
+	as desired. \qed
+	
+	For the valence eigenvalues,
+	\eq{
+		(H + \VR) \kphi
+		= H \kphi + \sumn \bkFnphi \kfn
+	}
+	\hl{then idk what to do next}
 }
 
 
 
+\input{Problem08}
 
 
 
@@ -278,11 +296,6 @@
 		\evHsPsi = \frac{\evHPsi}{\bkPsi}
 	}
 	with the determinantal wavefunction of Eq.~(4.82) using an orthonormal set of orbitals $\psii$.
-	
-	Answer:
-	\eq{
-		\evHsPsi = \sumi \ev*{T + \Uion}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }.
-	}
 	
 	Show that by minimizing with respect to the $\psiis$ one obtains the Hartree--Fock equations
 	\eq{
@@ -294,6 +307,24 @@
 	}
 }
 
+\sol{
+	Equation (4.82) of the lecture notes is
+	\eq{
+		\PsiHF = \mqty|
+			\psiq(\vrq, \sigq) & \cdots & \psiq(\vrN, \sigN) \\
+			\vdots & & \vdots \\
+			\psiN(\vrq, \sigq) & \cdots & \psiN(\vrN, \sigN)
+		|
+	}
+	
+	Answer:
+	\eq{
+		\ans{ \evHsPsi = \sumi \ev*{T + \Uion}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }. }
+	}
+	
+	\hl{what the fuck}
+}
+
 
 
 
@@ -302,6 +333,32 @@
 
 \state{Band structure in the Hartree--Fock approximation}{
 	Using Eq.~(4.91), calculate the density of states near the Fermi energy to leading order in $(E - \EF) / \EF$.  If this result were physically correct, what would be the temperature dependence of the electronic specific heat at low temperature?
+}
+
+\sol{
+	Equation~(4.91) from the lecture notes is
+	\eq{
+		\epsk = \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} F(k / \kF)
+	}
+	where by (4.92),
+	\eq{
+		\Fx = \frac{1}{2} + \frac{1 - x^2}{4x} \ln\abs{ \frac{1 + x}{1 - x} }.
+	}
+	Making this substitution gives us
+	\eqn{epsk}{
+		\epsk = \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } }
+	}
+	
+	From (4.34), the density of states can be found by
+	\eq{
+		\gE = 2 \frac{4\pi k^2}{(2\pi)^3 / V} \dv{k}{E}.
+	}
+	For our Eq.~\refeq{epsk}, we have
+	\eq{
+		\dv{E}{k} = \frac{\hbar^2 k}{m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } }
+	}
+	
+	\hl{actually what the hell}
 }
 
 
