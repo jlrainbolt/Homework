@@ -1,0 +1,48 @@
+\state{Tight binding for BCC and FCC lattices}{
+	Show that the tight-binding band structure for a body-centered cubic lattice (include only the hopping to the eight nearest neighbors) is
+	\eq{
+		\Evk = \epso + 8 t \cos(\frac{\kx a}{2}) \cos(\frac{\ky a}{2}) \cos(\frac{\kz a}{2}), 
+	}
+	and for the face-centered cubic lattice (twelve nearest neighbors)
+	\eq{
+		\Evk = \epso + 4 t \brac{ \cos(\frac{\kx a}{2}) \cos(\frac{\ky a}{2}) + \cos(\frac{\kx a}{2}) \cos(\frac{\ky a}{2}) + \cos(\frac{\kz a}{2}) \cos(\frac{\kx a}{2}) }.
+	}
+}
+
+\sol{
+	The band energy in the tight-binding description is given by (4.57) in the lecture notes,
+	\eq{
+		\Evk = \epso + t \sumrho e^{-i \vk \vdot \vrho}.
+	}
+
+	In a BCC lattice of spacing $a$, the eight nearest neighbors of the origin are located at
+	\eq{
+		\vrho \in \frac{a}{2} \{ (1, 1, 1),\ (-1, -1, -1),\ (1, 1, -1),\ (-1, -1, 1),\ (1, -1, 1),\ (-1, 1, -1),\ (-1, 1, 1),\ (1, -1, -1) \}.
+	}
+	So the band energy is
+	\al{
+		\Evk &= \epso + t \left( e^{-i a (\kx + \ky + \kz) / 2} + e^{-i a (-\kx - \ky - \kz) / 2} + e^{-i a (\kx + \ky - \kz) / 2} + e^{-i a (-\kx - \ky + \kz) / 2} \right. \\
+		&\hspace{5em} \left. \phantom{=\ } + e^{-i a (\kx - \ky + \kz) / 2} + e^{-i a (-\kx + \ky - \kz) / 2} + e^{-i a (-\kx + \ky + \kz)} / 2 + e^{-i a (\kx - \ky - \kz) / 2} \right) \\[.5ex]
+		&= \epso + t \paren{ e^{-i a \kx / 2} + e^{i a \kx / 2} } \paren{ e^{-i a \ky / 2} + e^{i a \ky / 2} } \paren{ e^{-i a \kz / 2} + e^{i a \kz / 2} } \\[.5ex]
+		&= \epso + t \brac{ 2 \cos(\frac{\kx a}{2}) } \brac{ 2 \cos(\frac{\ky a}{2}) } \brac{ 2 \cos(\frac{\kz a}{2}) } \\[.5ex]
+		&= \ans{ \epso + 8 t \cos(\frac{\kx a}{2}) \cos(\frac{\ky a}{2}) \cos(\frac{\kz a}{2}) }
+	}
+	as we wanted to show. \qed
+
+	In an FCC lattice of spacing $a$, the twelve nearest neighbors of the origin are located at~\cite[p.~182]{Ashcroft}
+	\al{
+		\vrho &\in \frac{a}{2} \{ (1, 1, 0),\ (-1, -1, 0),\ (1, -1, 0),\ (-1, 1, 0),\ (1, 0, 1),\ (-1, 0, -1), \\
+		&\hspace{5em} (1, 0, -1),\ (-1, 0, 1),\ (0, 1, 1),\ (0, -1, -1),\ (0, 1, -1),\ (0, -1, 1) \}.
+	}
+	So the band energy is
+	\al{
+		\Evk &= \epso + t \left( e^{-i a (\kx + \ky) / 2} + e^{-i a (-\kx - \ky) / 2} + e^{-i a (\kx - \ky) / 2} + e^{-i a (-\kx + \ky) / 2} \right. \\
+		&\hspace{5em} \phantom{=\ } + e^{-i a (\kx + \kz) / 2} + e^{-i a (-\kx - \kz) / 2} + e^{-i a (\kx - \kz)} / 2 + e^{-i a (-\kx + \kz) / 2} \\
+		&\hspace{10em} \left. \phantom{=\ } + e^{-i a (\ky + \kz) / 2} + e^{-i a (-\ky - \kz) / 2} + e^{-i a (\ky - \kz)} / 2 + e^{-i a (-\ky + \kz) / 2} \right) \\[.5ex]
+		&= \epso + t \left[ \paren{ e^{-i a \kx / 2} + e^{i a \kx - / 2} } \paren{ e^{-i a \ky / 2} + e^{i a \ky / 2} } + \paren{ e^{-i a \kx / 2} + e^{i a \kx - / 2} } \paren{ e^{-i a \kz / 2} + e^{i a \kz / 2} } \right. \\
+		&\hspace{5em} \left. \phantom{=\ } + \paren{ e^{-i a \ky / 2} + e^{i a \ky - / 2} } \paren{ e^{-i a \kz / 2} + e^{i a \kz / 2} } \right] \\[.5ex]
+		&= \epso + t \curly{ \brac{ 2 \cos(\frac{\kx a}{2}) } \brac{ 2 \cos(\frac{\ky a}{2}) } + \brac{ 2 \cos(\frac{\kx a}{2}) } \brac{ 2 \cos(\frac{\kz a}{2}) } + \brac{ 2 \cos(\frac{\ky a}{2}) } \brac{ 2 \cos(\frac{\kz a}{2}) } } \\[.5ex]
+		&= \ans{ \epso + 4 t \brac{ \cos(\frac{\kx a}{2}) \cos(\frac{\ky a}{2}) + \cos(\frac{\kx a}{2}) \cos(\frac{\ky a}{2}) + \cos(\frac{\kz a}{2}) \cos(\frac{\kx a}{2}) } }
+	}
+	as desired. \qed
+}
