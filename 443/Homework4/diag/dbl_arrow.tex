@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{simple2}
+	\fmfframe(1.5,0)(1.5,0){
+		\begin{fmfgraph*}(20, 5)
+		\fmfstraight
+		\fmfleftn{i}{3}
+		\fmfrightn{o}{3}
+		\fmf{dbl_plain}{i[2],o[2]}
+		\fmf{phantom_arrow}{i[2],o[2]}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

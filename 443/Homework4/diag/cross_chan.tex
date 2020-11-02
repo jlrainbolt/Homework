@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{simple10}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(15, 15)
+			\fmfstraight
+			\fmfleftn{i}{2}
+			\fmfrightn{o}{2}
+			\fmf{phantom}{i[2],c}
+			\fmf{phantom}{o[2],d}
+			\fmf{dbl_plain}{c,d}
+			\fmf{plain}{i[1],c}
+			\fmf{plain}{o[1],d}
+			\fmffreeze
+			\fmf{plain}{i[2],d}
+			\fmf{plain}{o[2],c}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

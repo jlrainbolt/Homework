@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{simple5}
+	\fmfframe(1.5,5)(1.5,5){
+		\begin{fmfgraph*}(15, 15)
+			\fmfsurroundn{v}{12}
+			\fmf{dbl_plain}{v[8],c,v[12]}
+			\fmf{dbl_plain}{c,v[4]}
+			\fmfdot{c}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

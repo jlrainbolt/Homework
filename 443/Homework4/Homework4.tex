@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{443}
+\homeworknum{4}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+
+\state{Linear sigma model (Peskin \& Schroeder 4.3)}{
+	The interactions of pions at low energy can be described by a phenomenological model called the \emph{linear sigma model}.  Essentially, this model consists of $N$ real scalar fields coupled by a $\phi^4$ interaction that is symmetric under rotations of the $N$ fields.  More specifically, let $\Psiix$, $i = 1, \ldots, N$ be a set of $N$ fields, governed by the Hamiltonian
+	\eq{
+		H = \int \ddcx \paren{ \frac{1}{2} (\Pii)^2 + \frac{1}{2} (\grad \Phii)^2 + V(\Phi^2) },
+	}
+	where $(\Phii)^2 = \Phi \cdot \Phi$, and
+	\eq{
+		V(\Phi^2) = \frac{1}{2} m^2 (\Phii)^2 + \frac{\lam}{4} \paren{ (\Phii)^2 }^2
+	}
+	is a function symmetric under rotations of $\Phi$.  For (classical) field configurations of $\Phiix$ that are constant in space and time, this term gives the only contribution to $H$; hence, $V$ is the field potential energy.
+}
+
+\prob{
+	Analyze the linear sigma model for $m^2 > 0$ by noticing that, for $\lam = 0$, the Hamiltonian given above is exactly $N$ copies of the Klein-Gordon Hamiltonian.  We can then calculate scattering amplitudes as perturbation series in the parameter $\lam$.  Show that the propagator is
+	\eq{
+		\wick{\c{\Phi}^i(x) \c{\Phi}^j(y)} = \delij \DF(x - y),
+	}
+	where $\DF$ is the standard Klein-Gordon propagator for mass $m$, and that there is one type of vertex given by
+	\eq{
+		\centergraphics{diag/vertex} = -2 i \lam(\delij \delkl + \delil \deljk + \delik \deljl).
+	}
+	Compute, to leading order in $\lam$, the differential cross sections $\dv*{\sig}{\Omg}$, in the center-of-mass frame, for the scattering processes
+	\al{
+		\Phiq \Phiw &\to \Phiq \Phiw, &
+		\Phiq \Phiq &\to \Phiw \Phiw, &
+		\Phiq \Phiq &\to \Phiq \Phiq
+	}
+	as functions of the center-of-mass energy.
+}
+
+
+
+\prob{
+	Now consider the case $m^2 < 0$: $m^2 = -\mu^2$.  In this case, $V$ has a local maximum, rather than a minimum, at $\Phii = 0$.  Since $V$ is a potential energy, this implies that the ground state of the theory is not near $\Phii = 0$ but rather is obtained by shifting $\Phii$ toward the minimum of $V$.  By rotational invariance, we can consider this shift to be in the $N$th direction.  Write, then,
+	\al{
+		\Phiix &= \piix, \qquad i = 1, \ldots, N - 1, &
+		\PhiNx &= v + \sigx
+	}
+	where $v$ is a constant chosen to minimize $V$.  (The notation $\pii$ suggests a pion field and should not be confused with a canonical momentum.)  Show that, in these new coordinates (and substituting for $v$ its expression in terms of $\lam$ and $\mu$), we have a theory of a massive $\sig$ field and $N - 1$ \emph{massless} pion fields, interacting through cubic and quartic potential energy terms which all become small as $\lam \to 0$.  Construct the Feynman rules by assigning values to the propagators and vertices:
+	\al{
+		\wick{\c{\sig} \c{\sig}} &= \centergraphics{diag/dbl_arrow}, &\qquad
+		& \qquad \qquad \centergraphics{diag/ij_triangle} \qquad \centergraphics{diag/dbl_triangle} \\
+		\wick{\c{\pi}^i \c{\pi}^j} &= \centergraphics{diag/ij_arrow}, &\qquad
+		& \centergraphics{diag/ijkl_vertex} \qquad \centergraphics{diag/ij_vertex} \qquad \centergraphics{diag/dbl_vertex}
+	}
+	\vfix
+}
+
+
+\prob{
+	Compute the scattering amplitude for the process
+	\eq{
+		\pii(\pq) \pij(\pw) \to \pik(\pe) \pil(\pr)
+	}
+	to leading order in $\lam$.  There are now four Feynman diagrams that contribute:
+	\eq{
+		\centergraphics{diag/t_chan} \qq{+} \centergraphics{diag/s_chan} \qq{+} \centergraphics{diag/cross_chan} \qq{+} \centergraphics{diag/vertex}
+	}
+	Show that, at threshold ($\vpsi = 0$), these diagrams sum to \emph{zero}.  Show that, in the special case $N = 2$ (1 species of pion), the term $\order{p^2}$ also cancels.
+}
+
+
+\prob{
+	Add to $V$ a symmetry-breaking term,
+	\eq{
+		\Delta V = -a \Phi^N,
+	}
+	where $a$ is a (small) constant.  Find the new value of $v$ that minimizes $V$, and work out the content of the theory about that point.  Show that the pion acquires a mass such that $\mpi^2 \sim a$, and show that the pion scattering amplitude at threshold is now nonvanishing and also proportional to $a$.
+}
+
+
+%\makebib
+
+\end{document}

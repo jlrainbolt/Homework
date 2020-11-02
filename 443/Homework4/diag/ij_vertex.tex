@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{simple1}
+	\fmfframe(1.5,5)(1.5,5){
+		\begin{fmfgraph*}(15, 15)
+			\fmfstraight
+			\fmfleft{i,k}
+			\fmfright{j,l}
+			\fmflabel{$i$}{i}
+			\fmflabel{$j$}{j}
+			\fmf{plain}{i,c,j}
+			\fmf{dbl_plain}{k,c,l}
+			\fmfdot{c}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}
