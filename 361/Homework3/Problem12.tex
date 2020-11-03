@@ -1,0 +1,41 @@
+\state{Thomas--Fermi screening}{
+	Check the formulae in Eq.~(4.133) and Eq.~(4.134).  Supposing that the potential $\vext = Q / r$, show that the induced charge density is then of the form
+	\eq{
+		\del\nr \propto \frac{e^{-r / \xi}}{r}
+	}
+	and identify the screening length $\xi$.
+}
+
+\sol{
+	Equation~(4.133) is
+	\eq{
+		\del \nvq = -\frac{\vextvq}{\dfrac{4\pi e^2}{q^2} \paren{ 1 + \dfrac{q^2}{\qTF^2} }},
+	}
+	and (4.124) is
+	\eq{
+		\qTF^2 = \frac{4}{\pi} \frac{m e^2}{\hbar^2} \kF.
+	}
+	
+	We must Fourier transform $\vext$ to get an expression in terms of $\vq$.  From Ashcroft \& Mermin~(17.52),
+	\eq{
+		\vextvr = \frac{Q}{r}
+		\qimplies
+		\vextvq = \frac{4\pi Q}{q^2}.
+	}
+	Then
+	\eq{
+		\del\nvq = \frac{4 \pi Q / q^2}{\dfrac{4\pi e^2}{q^2} \paren{ 1 + q^2 \dfrac{\pi}{4} \dfrac{\hbar^2}{m e^2 \kF} }}
+		= \frac{4 \pi Q / q^2}{\dfrac{4\pi e^2}{q^2} + \dfrac{\pi^2 \hbar^2}{m \kF} }
+		= \frac{Q}{e^2 + \dfrac{\pi \hbar^2}{4 m \kF} q^2 }.
+	}
+	The inverse Fourier transform is
+	\al{
+		\del\nr &= \int \frac{\ddvq}{(2\pi)^3} e^{-i \vq \vdot \vr} \frac{Q}{e^2 + \dfrac{\pi \hbar^2}{4 m \kF} \abs{\vq}^2} \\
+		&= Q \int \frac{\ddq}{(2\pi)^3} \intopi \ddtht \intotp \ddphi e^{-i q r \cos\tht} \frac{q^2 \sin\tht}{e^2 + \dfrac{\pi \hbar^2}{4 m \kF} q^2} \\
+		&= 4\pi Q \intoi \frac{\ddq}{(2\pi)^3} \frac{\sin(q r)}{q r} \frac{q^2}{e^2 + \dfrac{\pi \hbar^2}{4 m \kF} q^2} \\
+		&= 4\pi \frac{Q}{r} \intoi \frac{\ddq}{(2\pi)^3} \frac{x \sin x}{e^2 r^2 + \dfrac{\pi \hbar^2}{4 m \kF} x^2} \\
+		&= \frac{2\pi^2}{\pi \hbar^2 / 4 m \kF} \frac{Q}{(2\pi)^3 r} \exp(-\frac{e r}{\sqrt{\pi \hbar^2 / 4 m \kF}}) \\
+		&= \ans{ \frac{m \kF Q}{\pi^2 \hbar^2} \frac{1}{r} \exp(-\frac{r}{\qTF}) }
+	}
+	where we have defined $x = q r$.  Then \ans{$\xi = \qTF$}. \qed
+}

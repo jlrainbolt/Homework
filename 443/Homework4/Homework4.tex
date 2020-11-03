@@ -84,6 +84,55 @@
 }
 
 
+
+
+
+
+
+\state{Rutherford scattering (Peskin \& Schroeder 4.4)}{
+	The cross section for scattering of an electron by the Coulomb field of a nucleus can be computed, to lowest order, without quantizing the electromagnetic field.  Instead, treat the field as a given, classical potential $\Asmx$.  The interaction Hamiltonian is
+	\eq{
+		\HI = \int \ddcx e \psib \gamm \psi \Asm,
+	}
+	where $\psix$ is the usual quantized Dirac field.
+}
+
+\prob{
+	Show that the $T$-matrix element for electron scattering off a localized classical potential is, to lowest order,
+	\eq{
+		\melppiTp = -i e \ubpp \gamm \up \cdot \tAsm(p' - p),
+	}
+	where $\tAsmq$ is the four-dimensional Fourier transform of $\Asmx$.
+}
+
+
+
+\prob{
+	If $\Asmx$ is time independent, its Fourier transform contains a delta function of energy.  It is then natural to define
+	\eq{
+		\melppiTp \equiv i \cM \cdot (2\pi) \del(\Ef - \Ei),
+	}
+	where $\Ei$ and $\Ef$ are the initial and final energies of the particle, and to adopt a new Feynman rule for computing $\cM$:
+	\eq{
+		\centergraphics{diag/boson} = -i e \gamm \tAsmvq,
+	}
+	where $\tAsmvq$ is the three-dimensional Fourier transform of $\Asmx$.  Given this definition of $\cM$, show that the cross section for scattering off a time-independent, localized potential is
+	\eq{
+		\ddsig = \frac{1}{\vi} \frac{1}{2 \Ei} \ddcpff \frac{1}{2 \Ef} \abs{\cM(\pin \to \pf)}^2 (2\pi) \del(\Ef - \Ei),
+	}
+	where $\vi$ is the particle's initial velocity.  This formula is a natural modification of (4.79).  Integrate over $\abs{\pf}$ to find a simple expression for $\dv*{\sig}{\Omg}$.
+}
+
+
+
+\prob{
+	Specialize to the case of electron scattering from a Coulomb potential ($\Ao = Z e / 4\pi r$).  Working in the nonrelativistic limit, derive the Rutherford formula,
+	\eq{
+		\dv{\sig}{\Omg} = \frac{\alp^2 Z^2}{4 m^2 v^4 \sin[4](\tht / 2)}.
+	}
+}
+
+
 %\makebib
 
 \end{document}

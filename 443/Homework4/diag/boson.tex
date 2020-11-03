@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{simple15}
+	\fmfframe(-1,1)(1,1){
+		\begin{fmfgraph*}(25, 20)
+			\fmfstraight
+			\fmfleftn{i}{2}
+			\fmfright{o}
+			\fmf{fermion}{i[1],c,i[2]}
+			\fmf{photon}{c,o}
+			\fmfdot{c}
+			\fmfv{decor.shape=circle,decor.size=0.15w,decor.filled=empty}{o}
+			\fmffreeze
+			\fmfright{o2}
+			\fmf{phantom}{c,o2}
+			\fmfv{decor.shape=cross,decor.size=0.15w}{o2}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

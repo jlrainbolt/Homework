@@ -16,40 +16,17 @@
 
 \input{Problem02}
 
+\input{Problem04}
 
 
 
 
-
-\stepcounter{section}
-\state{One-dimensional band}{
-	Consider a one-dimensional system which is filled up to the first Brillouin zone boundary at $k = \pi / a$, and assume that there is a small gap produced by a single Fourier component of the lattice potential $U = U_{K = 2\pi / a}$ (small meaning that $U / \EohK \ll 1$).  Considering momenta close to the zone boundary, show that a good approximation for the energy dispersion of the bands is
-	\eq{
-		E = \Eo \paren{ 1 \pm \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } }
-	}
-	where $\Eo = \EohK$ and $k = \pi (1 + x) / a$, with $x \ll 1$.
-	
-	Evaluate the change in electronic energy
-	\eq{
-		\Eelec = \sumkocc [ E(k; \UK) - E(k; \UK = 0) ]
-	}
-	to leading order in $U / \Eo$.  (Hint:  the result is non-analytic---don't try a Taylor series in $U$.)
-}
-
-\sol{
-	\hl{???????}
-}
-
-
-
-
-\clearpage
 
 \state{Some one-dimensional chemistry}{
 	Consider a diatomic lattice of two atoms labeled $A$ and $B$ in a lattice with period $a$, at the positions $\pm a (1 - \del) / 4$ in a one-dimensional array with overall period $a$.
 }
 
-\prob{
+\prob{	\label{5a}
 	Using the NFE approximation valid for momenta near the zone boundary $k \to \pi / a$, show that the solution of Eq.~(4.47) leads to 
 	\begin{enumerate}
 		\item a gap on the zone boundary of $2 \abs{ \Utpa }$, and
@@ -239,7 +216,7 @@
 	Assuming $\del$ is small, this is close to 0.
 	
 	\hl{how to draw the things}	
-%	delta is small, smaller band gap, metal/ioinc
+%	delta is small, smaller band gap, metal/ionic
 }
 
 
@@ -253,7 +230,7 @@
 	
 	The pseudopotential is not unique.  Show that the valence eigenvalues of a Hamiltonian $H + \VR$ are the same for any operator of the form
 	\eq{
-		\VR \phi = \sumn \bkFnphi \fn,
+		\VR \kphi = \sumn \bkFnphi \kfn,
 	}
 	where the $\Fn$ are \emph{arbitrary} functions.
 }
@@ -322,7 +299,7 @@
 		\ans{ \evHsPsi = \sumi \ev*{T + \Uion}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }. }
 	}
 	
-	\hl{what the fuck}
+	\hl{what the heck}
 }
 
 
@@ -349,16 +326,58 @@
 		\epsk = \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } }
 	}
 	
+	Then $\EF = \epsFk$ is
+	\eq{
+		\EF = \frac{\hbar^2 \kF^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - \kF^2 / \kF^2}{4 \kF / \kF} \ln\abs{ \frac{1 + \kF / \kF}{1 - \kF / \kF} } }
+		= \frac{\hbar^2 \kF^2}{2 m} - \frac{e^2 \kF}{\pi},
+	}
+	so
+	\eq{
+		\frac{E - \EF}{\EF} = \frac{\dfrac{\hbar^2 k^2}{2 m} - \dfrac{2 e^2 \kF}{\pi} F(k / \kF)}{\dfrac{\hbar^2 \kF^2}{2 m} - \dfrac{e^2 \kF}{\pi}} - 1
+		= \frac{\dfrac{\hbar^2}{2 m} \paren{ \dfrac{k}{\kF} }^2 - \dfrac{2 e^2}{\pi \kF} F(k / \kF)}{\dfrac{\hbar^2}{2 m} - \dfrac{e^2}{\pi \kF}} - 1.
+	}
+	The first term will be close to 1, and thus $(E - \EF) / \EF$ will be very small, when $x = k / \kF \to 1$.
+	
 	From (4.34), the density of states can be found by
 	\eq{
 		\gE = 2 \frac{4\pi k^2}{(2\pi)^3 / V} \dv{k}{E}.
 	}
-	For our Eq.~\refeq{epsk}, we have
+	From our Eq.~\refeq{epsk}, we have
 	\eq{
-		\dv{E}{k} = \frac{\hbar^2 k}{m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } }
+		\dv{E}{k} = \frac{\hbar^2}{m} k - \frac{e^2 \kF}{\pi k} + \frac{e^2}{2\pi} \paren{ 1 + \frac{\kF^2}{k^2} } \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}}.
+	}
+	Then the density of states is
+	\al{
+		\gE &= 2 \frac{4\pi k^2}{(2\pi)^3 / V} \brac{ \frac{\hbar^2}{m} k - \frac{e^2 \kF}{\pi k} + \frac{e^2}{2\pi} \paren{ 1 + \frac{\kF^2}{k^2} } \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} }^{-1} \\
+		&= \frac{\kF^2 V}{\pi^2} x^2 \brac{ \frac{\hbar^2 \kF}{m} x - \frac{e^2}{\pi} \frac{1}{x} + \frac{e^2}{2\pi} \paren{ 1 + \frac{1}{x^2} } \ln\abs{\frac{1 + x}{1 - x}} }^{-1} \\
+		&\approx \frac{\kF^2 V}{\pi^2} \frac{m \pi}{-e^2 m + \pi \hbar^2 \kF + e^2 m \ln\abs{\dfrac{2}{1 - x}} } \\ %+ (x - 1) \frac{\pi m}{2} \frac{-7 e^2 m + 2 \pi \hbar^2 \kF + 5 e^2 m \ln\abs{\dfrac{2}{1 - x}}}{\paren{ -e^2 m + \pi \hbar^2 \kF + e^2 m \ln\abs{\dfrac{2}{1 - x}} }^2 } } \\
+		&\approx \ans{ \frac{\kF^2 V}{\pi} \frac{m}{\pi \hbar^2 \kF + e^2 m \paren{ \ln\abs{\dfrac{2}{1 - k / \kF}} - 1 } }, }
+	}
+	where we have performed a Taylor series expansion to zeroth order using Mathematica.
+	
+	The specific heat can be calculated from Eq.~(2.15) in the lecture notes:
+	\eq{
+		\cv = \int \ddE E \gE \pdv{\fE}{T}.
+	}
+	Transforming this to an integral over $k$, we have
+	\al{
+		\cv &= \int \ddk \dv{E}{k} \epsk \paren{ 2 \frac{4\pi k^2}{(2\pi)^3 / V} \dv{k}{E} } \pdv{\fE}{T} \\
+		&= \int \ddk \brac{ \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } } } \brac{ 2 \frac{4\pi k^2}{(2\pi)^3 / V} } \pdv{\fE}{T}
+	}
+	From (2.17):
+	\eq{
+		\dv{f}{T} = \frac{e^y}{(e^y + 1)^2} \paren{ \frac{y}{T} + \frac{1}{\kB T} \dv{\mu}{T} }
+		= \frac{e^y}{(e^y + 1)^2} \frac{y}{T}
+	}
+	where $y = (E - \mu) / \kB T$, and $\mu$ changes slowly at low temperature.  Note that
+	\al{
+		\exp(\frac{E - \mu}{\kB T}) &= \exp\!\curly{ \frac{1}{\kB T} \brac{ \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } } - \mu } } \\
+		&= \exp(\frac{\hbar^2 k^2}{2 m \kB T}) \exp(-\frac{e^2 \kF}{\pi \kB T}) \exp(- \frac{2 e^2 \kF}{\pi} \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF}} ) \exp(-\frac{\mu}{\kB T})
 	}
 	
-	\hl{actually what the hell}
+	\hl{help}
+	
+	
 }
 
 
@@ -375,13 +394,7 @@
 
 
 
-\state{Thomas--Fermi screening}{
-	Check the formulae in Eq.~(4.133) and Eq.~(4.134).  Supposing that the potential $\vext = Q / r$, show that the induced charge density is then of the form
-	\eq{
-		\del\nr \propto \frac{e^{-r / \xi}}{r}
-	}
-	and identify the screening length $\xi$.
-}
+\input{Problem12}
 
 
 

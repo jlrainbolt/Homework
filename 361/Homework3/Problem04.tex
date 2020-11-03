@@ -1,0 +1,67 @@
+\stepcounter{section}
+\state{One-dimensional band}{
+	Consider a one-dimensional system which is filled up to the first Brillouin zone boundary at $k = \pi / a$, and assume that there is a small gap produced by a single Fourier component of the lattice potential $U = U_{K = 2\pi / a}$ (small meaning that $U / \EohK \ll 1$).  Considering momenta close to the zone boundary, show that a good approximation for the energy dispersion of the bands is
+	\eq{
+		E = \Eo \paren{ 1 \pm \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } }
+	}
+	where $\Eo = \EohK$ and $k = \pi (1 + x) / a$, with $x \ll 1$.
+	
+	Evaluate the change in electronic energy
+	\eq{
+		\Eelec = \sumkocc [ E(k; \UK) - E(k; \UK = 0) ]
+	}
+	to leading order in $U / \Eo$.  (Hint:  the result is non-analytic---don't try a Taylor series in $U$.)
+}
+
+\sol{
+	As evaluated in \ref{5a},
+	\eq{
+		\Epm = \frac{\Eok + \Eokmtpa}{2} \pm \sqrt{ \paren{\frac{\Eok - \Eokmtpa}{2}}^2 + \abs{\Utpa}^2 }.
+	}
+	Sine $\Eok = \hbar^2 k^2 / 2m$ from p.~42 of the lecture notes, $\Eok = E^0_{-\vk}$.  As $k \to \pi / a$, $\Eok \to \Eopa = \Eo$ and $\Eokmtpa \to E_{-\pi / a} = \Eo$.  So $\Eok \approx \Eokmtpa \approx \Eo$, and
+	\eq{
+		\Epm = \Eo \pm \sqrt{ \paren{\frac{\Eok - \Eokmtpa}{2}}^2 + U^2 }.
+	}
+	Now applying $\Eok = \hbar^2 k^2 / 2m$,
+	\al{
+		\Epm &= \Eo \pm \sqrt{ \paren{ \frac{\hbar^2}{4m} }^2 \brac{ k^2 - \paren{ k - \frac{2\pi}{a} }^2 }^2 + U^2 } \\
+		&= \Eo \pm \sqrt{ \paren{ \frac{\hbar^2}{4m} }^2 \paren{ \frac{4\pi}{a} k - \frac{4\pi^2}{a^2} }^2 + U^2 } \\
+		&= \Eo \pm \Eo \sqrt{ \paren{ \frac{\hbar^2}{4m} }^2 \frac{1}{\Eo^2} \paren{ \frac{4\pi}{a} k - \frac{4\pi^2}{a^2} }^2 + \frac{U^2}{\Eo^2} } \\
+		&= \Eo \pm \Eo \sqrt{ \paren{ \frac{\hbar^2}{4m} }^2 \paren{ \frac{2m a^2}{\hbar^2 \pi^2} }^2 \paren{ \frac{4\pi}{a} k - \frac{4\pi^2}{a^2} }^2 + \frac{U^2}{\Eo^2} } \\
+		&= \Eo \pm \Eo \sqrt{ \frac{a^4}{\pi^4} \paren{ \frac{4\pi}{a} k - \frac{4\pi^2}{a^2} }^2 + \frac{U^2}{\Eo^2} } \\
+		&= \Eo \pm \Eo \sqrt{ \paren{ \frac{4 a}{\pi} k - 4 }^2 + \frac{U^2}{\Eo^2} } \\
+		&= \Eo \pm \Eo \sqrt{ 4 \paren{ \frac{a}{\pi} k - 1 }^2 + \frac{U^2}{\Eo^2} } \\
+		&= \ans{ \Eo \pm \Eo \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 }, }
+	}
+	where we have used $x = k a / \pi - 1$. \qed
+	
+	We approximate the sum as an integral from $k = -\pi / a$ to $k = \pi / a$:
+	\eq{
+		\Eelec = \intpa \ddk \paren{ \Eo \pm \Eo \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } - \Eo \mp \Eo \sqrt{ 4 x^2 } } \\
+		= \pm \Eo \intpa \ddk \paren{ \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } - 2 x }.
+	}
+	Transforming the variable of integration from $k$ to $x$ using $\dv*{k}{x} = \pi / a$, we have
+	\eq{
+		\Eelec = \pm \frac{\pi}{a} \Eo \intmwo \ddx \paren{ \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } - 2 x }.
+	}
+	For the first term,
+	\al{
+		\intpa \ddk \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } &= \frac{U}{\Eo} \intmwo \ddx \sqrt{ 1 + 4 \frac{\Eo^2}{U^2} x^2 } \\
+		&= \frac{U}{\Eo} \brac{ \sqrt{1 + 16 \frac{\Eo^2}{U^2} } + \frac{1}{4} \frac{U}{\Eo} \sinh[-1](4 \frac{\Eo}{U}) } \\
+		&= \sqrt{ \frac{U^2}{\Eo^2} + 16 } + \frac{1}{4} \frac{U^2}{\Eo^2}  \sinh[-1](4 \frac{\Eo}{U}).
+	}
+	For the second,
+	\eq{
+		-2 \intmwo x = 4.
+	}
+	So we have
+	\eq{
+		\Eelec = \pm \frac{\pi}{a} \Eo \brac{ \sqrt{ \frac{U^2}{\Eo^2} + 16 } + \frac{1}{4} \frac{U^2}{\Eo^2}  \sinh[-1](4 \frac{\Eo}{U}) + 4 }.
+	}
+	Taylor expanding with Mathematica, we have
+	\al{
+		\Eelec &= \pm \frac{\pi}{a} \Eo \curly{ 4 + 4 + \frac{1}{8} \frac{U^2}{\Eo^2} + \frac{1}{8} \frac{U^2}{\Eo^2} \brac{ \ln(64) - 2 \ln(\frac{U}{\Eo}) } + 4 } \\
+		&= \ans{ \pm \frac{\pi}{a} \brac{ 12 \Eo + \frac{1}{8} \frac{U^2}{\Eo} \brac{ 1 + \ln(64) - 2 \ln(\frac{U}{\Eo}) } } }
+	}
+	which is to second order in $U / \Eo$.
+}
