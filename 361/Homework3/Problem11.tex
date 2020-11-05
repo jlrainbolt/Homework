@@ -1,0 +1,78 @@
+\state{Ferromagnetism in the HF approximation}{
+	Previously, we considered the unpolarized spin state, which is a paramagnet.  Now consider a fully spin polarized state at the same density: the Hartree--Fock Slater determinant corresponds to singly occupying each state in the  Fermi sphere.  In analogy to Eq.~(4.93), compute the total energy of the spin polarized state, and show that this is lower in energy than the unpolarized state if $\rs > 5.45$ in the Hartree--Fock approximation.
+}
+
+\sol{
+	Equation~(4.93) is
+	\eqn{thing11}{
+		E = N \paren{ \frac{3}{5} \frac{\hbar^2 \kF^2}{2m} - \frac{3}{4} \frac{e^2 \kF}{\pi} }
+		= N \paren{ \frac{3}{5} (\kF \aB)^2 - \frac{3}{2\pi} \kF \aB } \Ry,
+	}
+	where we have used the definition of the Rydberg in (4.87):
+	\eq{
+		\SI{1}{\rydberg} = \frac{\hbar^2}{2 m \aB^2}
+		= \frac{e^2}{2 \aB},
+	}
+	where $\aB$ is the Bohr radius~\cite[p.~682]{Ashcroft}.
+	
+	The exchange term of the Hartree-Fock equations (4.84) in the lecture notes is
+	\eq{
+		\sumj \int \ddvrp \frac{e^2}{\absrmrp} \psijsrp \psiirp \psijr \delsigij,
+	}
+	which is nonzero only for electrons of the same spin.  This means we can write an expression like Eq.~\refeq{thing11} for electrons of each spin state~\cite[p.~683]{Ashcroft}:
+	\aln{ \label{energy11}
+		\Eup &= \Nup \paren{ \frac{3}{5} (\kup \aB)^2 - \frac{3}{2\pi} \kup \aB } \Ry, &
+		\Edn &= \Ndn \paren{ \frac{3}{5} (\kdn \aB)^2 - \frac{3}{2\pi} \kdn \aB } \Ry.
+	}
+	Here, $\kup$ and $\kdn$ are the wave vectors corresponding to the highest energy states occupied by spin up and by spin down electrons, respectively.
+	
+	The total energy is the sum of the energies for each spin state: $E = \Eup + \Edn$.  The total electron density is the sum of the densities of spin up and of spin down electrons~\cite[p.~683]{Ashcroft}:
+	\eqn{n11}{
+		n = \frac{N}{V}
+		= \frac{\Nup}{V} + \frac{\Ndn}{V}
+		= \frac{4 \kup^3 / 3}{(2\pi)^3} + \frac{4 \kdn^3 / 3}{(2\pi)^3}
+		= \frac{\kup^3}{6 \pi^2} + \frac{\kdn^3}{6 \pi^2}
+		= \frac{\kF}{3 \pi^2}.
+	}
+	For a fully spin polarized state, either $\Nup$ or $\Ndn$ is 0 and the other $N$; that is, all electrons are in the same spin state.  Say $\Ndn = N$ and $\Nup = 0$.  Then $E = \Edn$, and~\cite[p.~683]{Ashcroft}
+	\eq{
+		\frac{\kdn^3}{6 \pi^2} = \frac{\kF}{3 \pi^2}
+		\qimplies
+		\kdn = 2^{1/3} \kF.
+	}
+	Making these substitutions in Eq.~\refeq{energy11}, we have~\cite[p.~683]{Ashcroft}
+	\aln{
+		E &= N \paren{ \frac{3}{5} (2^{1/3} \kF \aB)^2 - \frac{3}{2\pi} 2^{1/3} \kF \aB } \Ry \notag \\
+		&= N \paren{ \frac{2^{2/3} 3}{5} (\kF \aB)^2 - \frac{2^{1/3} 3}{2 \pi} \kF \aB } \Ry \notag \\
+		&= \ans{ N \paren{ \frac{2^{2/3} 3}{5} \frac{\hbar^2 \kF^2}{2m} - \frac{2^{1/3} 3}{4} \frac{e^2 \kF}{\pi} }. } \label{ans11}
+	}
+	
+	Call the energy for the spin unpolarized state $\Epar$, and the energy for the fully polarized state $\Efer$.  Using Ashcroft \& Mermin~(2.22),
+	\eq{
+		\kF = \frac{(9\pi / 4)^3}{\rs} \approx \frac{1.92}{\rs},
+	}
+	we have
+	\al{
+		\Epar &= N \brac{ \frac{3}{5} \paren{ 1.92 \frac{\aB}{\rs} }^2 - \frac{3}{2\pi} 1.92 \frac{\aB}{\rs} } \Ry, &
+		\Efer &= N \brac{ \frac{2^{2/3} 3}{5} \paren{ 1.92 \frac{\aB}{\rs} }^2 - \frac{2^{1/3} 3}{2 \pi} 1.92 \frac{\aB}{\rs} } \Ry
+	}
+	Then $\Efer < \Epar$ can be written as
+	\eq{
+		\frac{2^{2/3} 3}{5} \paren{ 1.92 \frac{\aB}{\rs} }^2 - \frac{2^{1/3} 3}{2 \pi} 1.92 \frac{\aB}{\rs} < \frac{3}{5} \paren{ 1.92 \frac{\aB}{\rs} }^2 - \frac{3}{2\pi} 1.92 \frac{\aB}{\rs},
+	}
+	which is equivalent to
+	\al{
+		0 > (2^{2/3} - 1) \frac{3}{5} \paren{ 1.92 \frac{\aB}{\rs} }^2 - (2^{1}{3} - 1) \frac{3}{2\pi} 1.92 \frac{\aB}{\rs} \\
+		\approx 1.299 \paren{ \frac{\aB}{\rs} }^2 - 0.238 \frac{\aB}{\rs}.
+	}
+	The solutions of the quadratic equation are 0 and
+	\eq{
+		\frac{\aB}{\rs} < \frac{0.238 + 0.238}{2 \times 1.299}
+		\approx 0.183,
+	}
+	which is equivalent to
+	\eq{
+		\frac{\rs}{\aB} > 5.45.
+	}
+	Thus, we have shown that \ans{$\rs / \aB > 5.45 \implies \Efer < \Epar$}. \qed
+}
