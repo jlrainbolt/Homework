@@ -69,13 +69,7 @@
 		= \ans{ 2 \abs{\Utpa} }
 	}
 	as we wanted to show. \qed
-	
-%	Figure~\ref{5ai} shows a plot of Eq.~\refeq{Epm} as a function of $k$ with $\Epm$ in units of $\abs{\Utpa}$.  The top~(blue) curve corresponds to $\Ep$ and the bottom~(gold) curve to $\Em$.  The dark gray dashed line is the zone boundary at $k = K / 2 = \pi / a$.  The light gray dotted lines indicate the top and bottom of the gap, which has length $2 \abs{\Utpa}$ as we wanted to show~\cite[p.~158]{Ashcroft}. \qed
-%	
-%	\fig{5ai}{
-%		\includegraphics[trim=1.5cm 0 0 0,clip,width=0.4\textwidth]{5ai}
-%		\caption{Equation~\refeq{Epm} as a function of $k$ with $\Epm$ in units of $\abs{\Utpa}$.  The top~(blue) curve corresponds to $\Ep$ and the bottom~(gold) curve to $\Em$.  The dark gray dashed line is the zone boundary at $k = K / 2 = \pi / a$.  The light gray dotted lines indicate the top and bottom of the gap, which has length $2 \abs{\Utpa}$.}
-%	}
+
 	
 	At $k = \pi / a = K / 2$, the energy levels are given by (4.49) in the lecture notes,
 	\eqn{4.49}{
@@ -87,7 +81,7 @@
 		(E - \EokmK) \ckmK &= \UmvK \ck
 		= \UvKs \ck,
 	}
-	where $\ck$ and $\ckmK$ are the coefficients of the wavefunctions.  Substituting $k = \pi / a$ and $K = 2\pi / a$ andEq.~\refeq{4.49} into the first of these expressions, we find
+	where $\ck$ and $\ckmK$ are the coefficients of the wavefunctions.  Substituting $k = \pi / a$ and $K = 2\pi / a$ and Eq.~\refeq{4.49} into the first of these expressions, we find
 	\eq{
 		\Utpa \cpmkmpa = (\Epm - \Eopa) \cpmk
 		= [ (\Eopa \pm \abs{\Utpa}) - \Eopa ] \cpmk
@@ -112,24 +106,24 @@
 }
 
 \sol{
-	We assume the potential is attractive ($\UK < 0$).  The wavefunctions are given by (4.38) in the lecture notes,
+	The wavefunctions are given by (4.38) in the lecture notes,
 	\eq{
 		\psivkr = \sumK \ckmK e^{i (\vk - \vK) \vdot \vr}.
 	}
 	With $k = \pi / a$, this gives us
 	\al{
 		\psipr &= \cpk e^{i k x} + \cpkmpa e^{i (k - 2\pi / a) x}
-		= \cpk (e^{i \pi x / a} - e^{-i \pi x / a})
-		= 2 i \cpk \sin(\frac{\pi x}{a}), \\
-		\psimr &= \cpk e^{i k x} + \cmkmpa e^{i (k - 2\pi /a) x}
 		= \cpk (e^{i \pi x / a} + e^{-i \pi x / a})
-		= 2 \cpk \cos(\frac{\pi x}{a}),
+		= 2 \cpk \cos(\frac{\pi x}{a}), \\
+		\psimr &= \cmk e^{i k x} - \cmkmpa e^{i (k - 2\pi /a) x}
+		= \cmk (e^{i \pi x / a} - e^{-i \pi x / a})
+		= 2 i \cmk \sin(\frac{\pi x}{a}),
 	}
 	where we have used Eq.~\refeq{ratio}.  Then
 	\al{
-		\abs{\psipr}^2 &= -2 \abs{\cpk}^2 \sin[2](\frac{\pi x}{a})
+		\abs{\psipr}^2 &= -2 \abs{\cpk}^2 \cos[2](\frac{\pi x}{a})
 		\propto \ans{ \cos[2](\frac{\pi x}{a} + \frac{\phi}{2}), } \\
-		\abs{\psimr}^2 &= 2 \abs{\cpk}^2 \cos[2](\frac{\pi x}{a})
+		\abs{\psimr}^2 &= 2 \abs{\cmk}^2 \sin[2](\frac{\pi x}{a})
 		\propto \ans{ \sin[2](\frac{\pi x}{a} + \frac{\phi}{2}), }
 	}
 	where we have included a phase shift $\phi / 2$ in order to account for the complex coefficient. \qed
@@ -150,9 +144,9 @@
 
 \sol{
 	Since $\Ur$ is a sum of atomic potentials located at the positions of the atoms, it can be written as Ashcroft \& Mermin~(9.31):
-	\eq{
-		\Ur = \sumvR \brac{ \UA(\vr - \vR - \vdA) + \UB(\vr - \vR - \vdB) }
-		= \sumvR \brac{ \UA\!\paren{ \vr - \vR - \frac{a}{4} (1 - \del) } + \UB\!\paren{ \vr - \vR + \frac{a}{4} (1 - \del) } },
+	\aln{
+		\Ur &= \sumvR \brac{ \UA(\vr - \vR - \vdA) + \UB(\vr - \vR - \vdB) } \notag \\
+		&= \sumvR \brac{ \UA\!\paren{ \vr - \vR - \frac{a}{4} (1 - \del) } + \UB\!\paren{ \vr - \vR + \frac{a}{4} (1 - \del) } }, \label{thing5c}
 	}
 	where $\vdA$ and $\vdB$ are the positions of the atoms.  The momentum components of the potential are given by (4.20) in the lecture notes:
 	\eq{
@@ -396,47 +390,7 @@
 
 \input{Problem12}
 
-
-
-
-
-
-\state{Generalized one-dimensional band theory}{
-	Consider a 1D solid, lattice constant $a$, made of ``building blocks'' ($-a / 2< x < a / 2$) that scatter plane waves with a reflection coefficient $r$ and transmission coefficient $t$ ($\absr^2 + \abst^2 = 1$).  The energy of the plane wave is written as $\eps = \hbar^2 K^2 / 2 m$.  In the solid, the building blocks are stacked together indefinitely in the $x$ direction.
-}
-
-\prob{
-	Write the solution to the {\Schrodinger} equation in the solid $\psix$, as a linear combination of $\psirx$ and $\psilx$ and use Bloch’s theorem to relate the wavefunction at each side of the building block (the same theorem applies to the gradient $\psi'$):
-	\al{
-		\psixpa &= e^{i k a} \psix, &
-		\psipxpa &= e^{i k a} \psipx.
-	}
-	Hence, show
-	\eq{
-		\cos(k a) = \frac{t^2 - r^2}{2 t} e^{i K a} + \frac{1}{2 t} e^{-i K a}.
-	}
-}
-
-
-
-\prob{
-	If the transmission coefficient is $t = \abst e^{i \del}$, it can be shown that $r = \pm i \absr e^{i \del}$.  Use this result to eliminate $r$ and show
-	\eq{
-		\frac{\cos(k a + \del)}{\abst} = \cos(k a).
-	}
-	\vfix
-}
-
-
-
-\prob{
-	Since $\abst < 1$, this result shows there are values of $K$ (and hence $\eps$) for which no Bloch states exist.  Demonstrate this by sketching the left-hand side as a function of $K$ (or preferably $\eps$).  Use your sketch to illustrate the behavior for
-	\begin{enumerate}
-		\item strong scattering, and
-		\item weak scattering.
-	\end{enumerate}
-	Explain why, in general, electron bands tend to get wider and their gaps narrower as the electron energy increases.
-}
+\input{Problem13}
 
 
 \makebib
