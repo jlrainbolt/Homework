@@ -280,7 +280,7 @@
 }
 
 \sol{
-	Equation (4.82) of the lecture notes is
+	Equation (4.82) is
 	\eq{
 		\PsiHF = \mqty|
 			\psiq(\vrq, \sigq) & \cdots & \psiq(\vrN, \sigN) \\
@@ -288,15 +288,54 @@
 			\psiN(\vrq, \sigq) & \cdots & \psiN(\vrN, \sigN)
 		|
 	}
+	The determinant for an $n \times n$ matrix can be expressed using the formula
+	\eq{
+		\det(A) = \sumtauSn \sgn(\tau) \prodin A_{i, \tau(i)}
+		= \sumrhoSn \sgn(\rho) \prodin A_{\sig(i), i},
+	}
+	where $\Sn$ is the set of all permutations of the matrix elements and $\sgn$ is the sign function of the permutation~\cite{Leibniz}.  Since the elements of $\PsiHF$ have the positions and spins of the electrons as their argument, we may permute by interchanging electrons.  Because of the antisymmetry of fermions as shown in (4.70) of the lecture notes, we pick up a minus sign every time two fermions are interchanged.  There are $N$ electrons with $N!$ possible permutations.  This is represented by
+	\eq{
+		\PsiHF = \sumtauSn \sgn(\tau) \psiq(\vr_{\tau(1)}, \sig_{\tau(1)}) \cdots \psiN(\vr_{\tau(N)}, \sig_{\tau(N)}).
+	}
 	
+	The electronic Hamiltonian is given by (4.67) of the lecture notes:
+	\eq{
+		\Helec = \sumiN \paren{ -\frac{\hbar^2}{2 m} \laplacian_i + \Uionri + \Ucoulri },
+	}
+	where by (4.68) and (4.78),
+	\al{
+		\Uionr &= \sumI \frac{\ZI e^2}{\absrimRI}, &
+		\Ucoulr &= e^2 \sumjneqi \int \ddvrp \frac{\abs{\psijrp}^2}{\vr - \vr'}.
+	}
+	Only one term of the Hamiltonian involves particle interactions.  Let $\Helec = \Ho + \Hint$ such that
+	\al{
+		\Ho &= \sumiN \paren{ -\frac{\hbar^2}{2 m} \laplacian_i + \sumI \frac{\ZI e^2}{\absrimRI} }
+		= \sumiN (T + \Uion), &
+		\Hint &= e^2 \sumiN \sumjneqi \int \ddvrp \frac{\abs{\psijrp}^2}{\vr - \vr'}.
+	}
+	Note that
+	\eq{
+		\ev{\Ho}{\Psi} = \int \ddvrq \cdots \ddvrN \Psis \Ho \Psi
+		= \sumtauSn \sumrhoSn \sgn(\tau) \sgn(\rho) \int \prodiN \ddvri \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \Ho \psii(\vr_{\rho(i)}, \sig_{\rho(i)}).
+	}
+	The $\psii$ are orthonormal, so we must have $\rho = \tau$ for nonzero terms.  Since $\sgn(\rho) = \pm 1$, $[\sgn(\rho)]^2 = 1$.  This means we can write
+	\eq{
+		\ev{\Ho}{\Psi} = \sumtauSn \int \prodiN \ddvri \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \Ho \psii(\vr_{\tau(i)}, \sig_{\tau(i)}).
+	}
+	Since there are $N!$ possible permutations of the electrons, which are indistinguishable, we can further write
+	\eq{
+		\ev{\Ho}{\Psi} = \frac{N!}{N!} \sumiN \int \ddvri \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) (T + \Uion) \psii(\vr_{\tau(i)}, \sig_{\tau(i)})
+		= \sumiN \ev*{(T + \Uion)}{i}.
+	}
+	
+	\hl{H int, variations}
+	
+	\clearpage
 	Answer:
 	\eq{
 		\ans{ \evHsPsi = \sumi \ev*{T + \Uion}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }. }
 	}
-	
-	\hl{what the heck}
 }
-
 
 
 
