@@ -1,0 +1,164 @@
+\state{Hartree--Fock equations}{
+	Evaluate the energy in the form
+	\eq{
+		\evHsPsi = \frac{\evHPsi}{\bkPsi}
+	}
+	with the determinantal wavefunction of Eq.~(4.82) using an orthonormal set of orbitals $\psii$.
+	
+	Show that by minimizing with respect to the $\psiis$ one obtains the Hartree--Fock equations
+	\eq{
+		\paren{ -\frac{\hbar^2}{2 m} \laplacian + \Uionr + \Ucoulr } \psiir - \sumj \int \ddvrp \frac{e^2}{\absrmrp} \psijsrp \psiirp \psijr \delsigij = \epsi \psiir,
+	}
+	and that the total energy can be written
+	\eq{
+		\evHsPsi = \sumi \epsi - \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }.
+	}
+}
+
+\sol{
+	Equation (4.82) is
+	\eq{
+		\PsiHF = \mqty|
+			\psiq(\vrq, \sigq) & \cdots & \psiq(\vrN, \sigN) \\
+			\vdots & & \vdots \\
+			\psiN(\vrq, \sigq) & \cdots & \psiN(\vrN, \sigN)
+		|
+	}
+	The determinant for an $n \times n$ matrix can be expressed using the formula
+	\eq{
+		\det(A) = \sumtauSn \sgn(\tau) \prodin A_{i, \tau(i)}
+		= \sumrhoSn \sgn(\rho) \prodin A_{\sig(i), i},
+	}
+	where $\Sn$ is the set of all permutations of the matrix elements and $\sgn$ is the sign function of the permutation~\cite{Leibniz}.  Since the elements of $\PsiHF$ have the positions and spins of the electrons as their argument, we may permute by interchanging electrons.  Because of the antisymmetry of fermions as shown in (4.70) of the lecture notes, we pick up a minus sign every time two fermions are interchanged.  There are $N$ electrons with $N!$ possible permutations.  This is represented by
+	\eq{
+		\PsiHF = \sumtauSn \sgn(\tau) \psiq(\vr_{\tau(1)}, \sig_{\tau(1)}) \cdots \psiN(\vr_{\tau(N)}, \sig_{\tau(N)}).
+	}
+	
+	The electronic Hamiltonian is given by (4.67) of the lecture notes:
+	\eq{
+		\Helec = \sumiN \paren{ -\frac{\hbar^2}{2 m} \laplacian_i + \Uionri + \Ucoulri },
+	}
+	where by (4.68) and (4.78),
+	\al{
+		\Uionr &= \sumI \frac{\ZI e^2}{\absrimRI}, &
+		\Ucoulr &= e^2 \sumjneqi \int \ddvrp \frac{\abs{\psijrp}^2}{\vr - \vr'}.
+	}
+	Only one term of the Hamiltonian involves particle interactions.  Let $\Helec = \Ho + \Hint$ such that
+	\al{
+		\Ho &= \sumiN \paren{ -\frac{\hbar^2}{2 m} \laplacian_i + \sumI \frac{\ZI e^2}{\absrimRI} }
+		= \sumiN (T + \Uion), &
+		\Hint &= \sumiN \Ucoulri
+		= \sumjneqi \int \ddvrp \frac{e^2}{\rij}.
+	}
+	For the first term, note that
+	\eq{
+		\ev{\Ho}{\Psi} = \int \ddvrq \cdots \ddvrN \Psis \Ho \Psi
+		= \sumtauSn \sumrhoSn \sgn(\tau) \sgn(\rho) \int \prodiN \ddvri \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \Ho \psii(\vr_{\rho(i)}, \sig_{\rho(i)}).
+	}
+	The $\psii$ are orthonormal, so we must have $\rho = \tau$ for nonzero terms.  Since $\sgn(\rho) = \pm 1$, $[\sgn(\rho)]^2 = 1$.  This means we can write
+	\eq{
+		\ev{\Ho}{\Psi} = \sumtauSn \int \prodiN \ddvri \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \Ho \psii(\vr_{\tau(i)}, \sig_{\tau(i)}).
+	}
+	Since there are $N!$ possible permutations of the electrons, which are indistinguishable, we can further write
+	\eqn{h0}{
+		\ev{\Ho}{\Psi} = N! \sumiN \int \ddvri \psiis(\vri, \sigi) (T + \Uion) \psii(\vri, \sigi)
+		= N! \sumiN \ev*{(T + \Uion)}{i}.
+	}
+	For the second term of the Hamiltonian, note that
+	\al{
+		\ev{\Hint}{\Psi} &= \int \ddvrq \cdots \ddvrN \Psis \Hint \Psi \\
+		&= \sumtauSn \sumrhoSn \sgn(\tau) \sgn(\rho) \int \ddvrq \cdots \ddvrN \prodiN \prodjN \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \Hint \psij(\vr_{\rho(j)}, \sig_{\rho(j)}).
+	}
+	Feeding in $\Hint$, we have
+	\eq{
+		\ev{\Hint}{\Psi} = \sumiN \sumjneqi \sumtauSn \sumrhoSn \sgn(\tau) \sgn(\rho) \int \ddvrq \cdots \ddvrN \prodiN \prodjN \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \frac{e^2}{\rij} \psij(\vr_{\rho(j)}, \sig_{\rho(j)}).
+	}
+	Since $j \neq i$, interchanging $i$ and $j$ gives a minus sign so long as the electrons have the same spin; if they do not, the term is 0.  Accounting for the $N (N - 1) / 2$ possible pairs of $N$ electrons and their indistinguishability, which gives us $(N - 2)!$ identical terms in the sum, we can write
+	\aln{
+		\ev{\Hint}{\Psi} &= \frac{N!}{2} \sumiN \sumjneqi \int \ddvri \ddvrj \psiis(\vri, \sigi) \psijs(\vrj, \sigj) \frac{e^2}{\rij} \brac{ \psii(\vri, \sigi) \psij(\vrj, \sigj) - \delsigij \psij(\vrj, \sigj) \psii(\vri, \sigi) } \notag \\
+		&= \frac{N!}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }, \label{hint}
+	}
+	where we have included $i = j$ terms in the sum since they are 0.
+	
+	Feeding Eqs.~\refeq{h0} and \refeq{hint} into the expectation value, we find
+	\eq{
+		\ev{H}{\Psi} = \ev{(\Ho + \Hint)}{\Psi}
+		= N! \brac{ \sumi \ev*{(T + \Uion)}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } }.
+	}
+	Since there are $N$ indistinguishable electrons, clearly $\braket{\Psi} = N!$.  So we have the total energy
+	\eq{
+		\evHsPsi = \frac{\evHPsi}{\bkPsi}
+		= \ans{ \sumi \ev*{(T + \Uion)}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } }
+	}
+	as we wanted to show~\cite{Kim}. \qed
+	
+	For the minimization procedure, let $\psii \to \psii + \del\psii$ for all $\psii$.  We know $\bkij = \delij$ is a constraint on the system, so we use the method of Lagrange multipliers $\epsij$ to minimize the Lagrangian~\cite{Lagrange}:
+	\eq{
+		L = \evHsPsi - \sumij \epsij (\bkij - \delij).
+	}
+	To simplify this procedure, we will postulate that the constraint $\bkii = 1$ is sufficient to minimize the Lagrangian, and that the more general condition follows from this procedure.  Let $\epsi$ be the Lagrange multipliers such that
+	\eq{
+		L = \evHsPsi - \sumi \epsi (\bkii - 1)
+		= \sumi \ev*{(T + \Uion)}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } - \sumi \epsi (\bkii - 1).
+	}
+	Now we feed in the variations $\kti \to \kti + \kdeli$.  To $\order{\del}$, this gives us
+	\al{
+		L &\to L + \del L \\[.5ex]
+		&= \sumi (\bi + \bdeli) (T + \Uion) (\kti + \kdeli) + \frac{1}{2} \sumij (\bij + \bidelj + \bdelij) \frac{e^2}{\rij} (\kij + \kidelj + \kdelij) \\
+		&\hspace{5em} \phantom{=\ } - \frac{1}{2} \sumij \delsigij (\bij + \bidelj + \bdelij) \frac{e^2}{\rij} (\kji + \kjdeli + \kdelji) - \sumi \epsi [ (\bi + \bdeli) (\bi + \bdeli) - 1 ].
+	}
+	Subtracting the Lagrangian yields
+	\al{
+		\del L &= \sumi ( \mel*{\del i}{(T + \Uion)}{i} + \mel*{i}{(T + \Uion)}{\del i} ) \\
+		&\hspace{4em} \phantom{=\ } + \frac{1}{2} \sumij ( \mel*{\del i \, j}{\frac{e^2}{\rij}}{i j} + \mel*{i \, \del j}{\frac{e^2}{\rij}}{i j} + \mel*{i j}{\frac{e^2}{\rij}}{\del i \, j} + \mel*{i j}{\frac{e^2}{\rij}}{i \, \del j} ) \\
+		&\hspace{9em} \phantom{=\ } - \delsigij \frac{1}{2} \sumij ( \mel*{\del i \, j}{\frac{e^2}{\rij}}{j i} + \mel*{i \, \del j}{\frac{e^2}{\rij}}{j i} + \mel*{i j}{\frac{e^2}{\rij}}{\del j \, i} + \mel*{i j}{\frac{e^2}{\rij}}{j \, \del i} ) \\
+		&\hspace{14em} \phantom{=\ } - \sumi \epsi ( \braket{\del i}{i} + \braket{i}{\del i} ).
+	}
+	Since $\rij = \rji$ and we can relabel indices, we note that
+	\al{
+		\mel*{\del i \, j}{\frac{e^2}{\rij}}{i j} &= \paren{ \mel*{i j}{\frac{e^2}{\rij}}{\del i \, j} }^*, &
+		\mel*{\del i \, j}{\frac{e^2}{\rij}}{i j} &= \mel*{i \, \del j}{\frac{e^2}{\rij}}{i j}.
+	}
+	Then we have
+	\eq{
+		\del L = \brac{ \sumi \mel*{\del i}{(T + \Uion)}{i} + \sumij \paren{ \mel*{\del i \, j}{\frac{e^2}{\rij}}{i j} - \delsigij \mel*{\del i \, j}{\frac{e^2}{\rij}}{j i} } - \sumi \epsi \braket{\del i}{i} } + \cc.
+	}
+	Using integral notation, this is
+	\al{
+		\del L &= \left[ \sumi \int \ddvr \del\psiisr (T + \Uion) \psiir \right. \\
+		&\hspace{4em} \phantom{=\ } + \sumij \iint \ddvr \ddvrp \del\psiisr \psijsrp \frac{e^2}{\absrmrp} \curly{ \psiir \psijrp - \delsigij \psijr \psiirp } \\
+		&\hspace{9em} \left. \phantom{=\ } - \sumi \epsi \int \ddvr \del\psiisr \psiir \right] + \cc \\[1ex]
+		%
+		&= \int \ddvr \del\psiisr \left\{ \brac{ \sumi (T + \Uion) + e^2 \sumij \int \frac{\abs{\psijrp}^2}{\absrmrp} - \sumi \epsi } \psiir \right. \\
+		&\hspace{9em} \left. \phantom{=\ } - \sumij \delsigij \int \ddvrp \psijsrp \frac{e^2}{\absrmrp} \psijr \psiirp \right\} + \cc \\[1ex]
+		%
+		&= \int \ddvr \del\psiisr \left\{ \brac{ \sumi \paren{ -\frac{\hbar^2}{2 m} \laplacian + \Uionr + \Ucoulr - \epsi } } \psiir \right. \\
+		&\hspace{9em} \left. \phantom{=\ } - \sumij \delsigij \int \ddvrp \psijsrp \frac{e^2}{\absrmrp} \psijr \psiirp \right\} + \cc
+	}
+	Since $\del\psiis$ is an arbitrary variation, this expression must hold when $\epsi = 0$ for all $i$.  This gives us the equations
+	\eqn{epsi}{
+		\ans{ \paren{ -\frac{\hbar^2}{2 m} \laplacian + \Uionr + \Ucoulr } \psiir - \sumj \int \ddvrp \frac{e^2}{\absrmrp} \psijsrp \psiirp \psijr \delsigij = \epsi \psiir }
+	}
+	as we wanted to show~\cite{Kim}. \qed
+	
+	We showed that the total energy is
+	\al{
+		\evHsPsi &= \sumi \ev*{(T + \Uion)}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } \\
+		&= \sumi \ev*{(T + \Uion)}{i} + \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } - \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }.
+	}
+	Note that
+	\al{
+		\sumij \ev*{\frac{e^2}{\rij}}{i j} &= \sumij \iint \ddvr \ddvrp \psiisr \psijsrp \frac{e^2}{\absrmrp} \psiir \psijrp
+		= \sumi \iint \ddvr \psiisr \Ucoul \psiir
+		= \sumi \ev*{\Ucoul}{i}, \\
+		\sumij \mel*{i j}{\frac{e^2}{\rij}}{j i} &= \sumij \iint \ddvr \ddvrp \psiisr \psijsrp \frac{e^2}{\absrmrp} \psijr \psiirp.
+	}
+	So we have
+	\al{
+		\evHsPsi &= \sumi \ev*{(T + \Uion + \Ucoul)}{i} - \sumij \iint \ddvr \ddvrp \psiisr \psijsrp \frac{e^2}{\absrmrp} \psijr \psiirp \delsigij \\
+		&\hspace{5em} \phantom{=\ } - \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } \\[1ex]
+		&= \sumi \ev*{\epsi}{i} - \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } \\[1ex]
+		&= \ans{ \sumi \epsi - \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } }
+	}
+	as we wanted to show. \qed
+}

@@ -37,12 +37,12 @@
 	
 	We approximate the sum as an integral from $k = -\pi / a$ to $k = \pi / a$:
 	\eq{
-		\Eelec = \intpa \ddk \paren{ \Eo \pm \Eo \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } - \Eo \mp \Eo \sqrt{ 4 x^2 } } \\
-		= \pm \Eo \intpa \ddk \paren{ \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } - 2 x }.
+		\Eelec = \frac{L}{2\pi} \intpa \ddk \paren{ \Eo \pm \Eo \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } - \Eo \mp \Eo \sqrt{ 4 x^2 } } \\
+		= \pm \frac{L}{2\pi} \Eo \intpa \ddk \paren{ \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } - 2 x },
 	}
-	Transforming the variable of integration from $k$ to $x$ using $\dv*{k}{x} = \pi / a$, we have
+	where $L$ is the one-dimensional volume.  Transforming the variable of integration from $k$ to $x$ using $\dv*{k}{x} = \pi / a$, we have
 	\eq{
-		\Eelec = \pm \frac{\pi}{a} \Eo \intmwo \ddx \paren{ \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } - 2 x }.
+		\Eelec = \pm \frac{L}{2 a} \Eo \intmwo \ddx \paren{ \sqrt{ \frac{U^2}{\Eo^2} + 4 x^2 } - 2 x }.
 	}
 	For the first term,
 	\al{
@@ -56,12 +56,12 @@
 	}
 	So we have
 	\eq{
-		\Eelec = \pm \frac{\pi}{a} \Eo \brac{ \sqrt{ \frac{U^2}{\Eo^2} + 16 } + \frac{1}{4} \frac{U^2}{\Eo^2}  \sinh[-1](4 \frac{\Eo}{U}) + 4 }.
+		\Eelec = \pm \frac{L}{2 a} \Eo \brac{ \sqrt{ \frac{U^2}{\Eo^2} + 16 } + \frac{1}{4} \frac{U^2}{\Eo^2}  \sinh[-1](4 \frac{\Eo}{U}) + 4 }.
 	}
 	Taylor expanding with Mathematica, we have
 	\al{
-		\Eelec &= \pm \frac{\pi}{a} \Eo \curly{ 4 + 4 + \frac{1}{8} \frac{U^2}{\Eo^2} + \frac{1}{8} \frac{U^2}{\Eo^2} \brac{ \ln(64) - 2 \ln(\frac{U}{\Eo}) } + 4 } \\
-		&= \ans{ \pm \frac{\pi}{a} \brac{ 12 \Eo + \frac{1}{8} \frac{U^2}{\Eo} \brac{ 1 + \ln(64) - 2 \ln(\frac{U}{\Eo}) } } }
+		\Eelec &= \pm \frac{L}{2 a} \Eo \curly{ 4 + 4 + \frac{1}{8} \frac{U^2}{\Eo^2} + \frac{1}{8} \frac{U^2}{\Eo^2} \brac{ \ln(64) - 2 \ln(\frac{U}{\Eo}) } + 4 } \\
+		&= \ans{ \pm \frac{L}{2 a} \brac{ 12 \Eo + \frac{1}{8} \frac{U^2}{\Eo} \brac{ 1 + \ln(64) - 2 \ln(\frac{U}{\Eo}) } } }
 	}
 	which is to second order in $U / \Eo$.
 }

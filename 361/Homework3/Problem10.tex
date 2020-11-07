@@ -1,0 +1,72 @@
+\state{Band structure in the Hartree--Fock approximation}{
+	Using Eq.~(4.91), calculate the density of states near the Fermi energy to leading order in $(E - \EF) / \EF$.  If this result were physically correct, what would be the temperature dependence of the electronic specific heat at low temperature?
+}
+
+\sol{
+	Equation~(4.91) from the lecture notes is
+	\eq{
+		\epsk = \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} F(k / \kF)
+	}
+	where by (4.92),
+	\eq{
+		\Fx = \frac{1}{2} + \frac{1 - x^2}{4x} \ln\abs{ \frac{1 + x}{1 - x} }.
+	}
+	Making this substitution gives us
+	\eqn{epsk}{
+		\epsk = \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } }
+	}
+	
+	Then $\EF = \eps(\vkF)$ is
+	\eq{
+		\EF = \frac{\hbar^2 \kF^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - \kF^2 / \kF^2}{4 \kF / \kF} \ln\abs{ \frac{1 + \kF / \kF}{1 - \kF / \kF} } }
+		= \frac{\hbar^2 \kF^2}{2 m} - \frac{e^2 \kF}{\pi},
+	}
+	so
+	\eq{
+		\frac{E - \EF}{\EF} = \frac{\dfrac{\hbar^2 k^2}{2 m} - \dfrac{2 e^2 \kF}{\pi} F(k / \kF)}{\dfrac{\hbar^2 \kF^2}{2 m} - \dfrac{e^2 \kF}{\pi}} - 1
+		= \frac{\dfrac{\hbar^2}{2 m} \paren{ \dfrac{k}{\kF} }^2 - \dfrac{2 e^2}{\pi \kF} F(k / \kF)}{\dfrac{\hbar^2}{2 m} - \dfrac{e^2}{\pi \kF}} - 1.
+	}
+	The first term will be close to 1, and thus $(E - \EF) / \EF$ will be very small, when $x = k / \kF \to 1$.
+	
+	From (4.34), the density of states can be found by
+	\eq{
+		\gE = 2 \frac{4\pi k^2}{(2\pi)^3 / V} \dv{k}{E}.
+	}
+	From our Eq.~\refeq{epsk}, we have
+	\eq{
+		\dv{E}{k} = \frac{\hbar^2}{m} k - \frac{e^2 \kF}{\pi k} + \frac{e^2}{2\pi} \paren{ 1 + \frac{\kF^2}{k^2} } \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}}.
+	}
+	Then the density of states is
+	\al{
+		\gE = 2 \frac{4\pi k^2}{(2\pi)^3 / V} \brac{ \frac{\hbar^2}{m} k - \frac{e^2 \kF}{\pi k} + \frac{e^2}{2\pi} \paren{ 1 + \frac{\kF^2}{k^2} } \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} }^{-1}
+		\approx \ans{ \frac{2 V k^2}{\pi e^2} \brac{ \paren{ 1 + \frac{\kF^2}{k^2} } \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} }^{-1}, }
+	}
+	where the leading order term in the denominator is the logarithmic divergence.
+	
+	I cannot figure out how to write $\gE$ in terms of $E$ and $\EF$, so based on $E \propto k^2$ to leading order I will guess that
+	\eq{
+		g \sim \frac{E}{\ln|E|}
+	}
+	and attempt to determine the proportionality of the specific heat using a heuristic argument.
+	
+	The specific heat can be calculated from Eq.~(2.15) in the lecture notes:
+	\eq{
+		\cv = \int \ddE E \gE \pdv{\fE}{T}.
+	}
+	From (2.17),
+	\eq{
+		\dv{f}{T} = \frac{e^y}{(e^y + 1)^2} \paren{ \frac{y}{T} + \frac{1}{\kB T} \dv{\mu}{T} }
+		= \frac{e^y}{(e^y + 1)^2} \frac{y}{T}
+	}
+	where $y = (E - \mu) / \kB T$.  At low temperature, $\dv*{\mu}{T} \approx 0$ and the chemical potential $\mu = \EF$.  This approximation is valid below the degeneracy temperature $\kB T \approx \EF$~\cite[pp.~167--168]{Landau}.  Since $\gE$ is sharply peaked near $k = \kF$ or $E = \EF$, we can write $y \approx (E - \EF) / \EF$ with little error.  Further, we can say the behavior of $\gE$ is like a delta function that picks out $\kB T \approx E$.  Expanding to leading order in $y$, which we know is small,
+	\eq{
+		\dv{f}{T} \approx \frac{y}{4 T}.
+	}
+	Assuming this argument is at all legitimate, the behavior of $\cv$ is like
+	\eq{
+		\cv \sim \int \ddE E \del(E - T) \frac{E}{\ln(E)} \frac{y}{T}
+		\sim \frac{T^2}{\ln|T|} \frac{y}{T}
+		\sim \ans{ \frac{T}{\abs{\ln T}}, }
+	}
+	which is in agreement with Ashcroft \& Mermin~\cite[p.~337]{Ashcroft}.
+}
