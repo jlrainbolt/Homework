@@ -1,0 +1,54 @@
+\state{Pseudopotential}{
+	Show that $\bkchifn = 0$ if we choose $\betn = \bkfnk$.
+	
+	The pseudopotential is not unique.  Show that the valence eigenvalues of a Hamiltonian $H + \VR$ are the same for any operator of the form
+	\eqn{VR}{
+		\VR \phi = \sumn \bkFnphi \fn,
+	}
+	where the $\Fn$ are \emph{arbitrary} functions.
+}
+
+\sol{
+	Equation~(4.59) of the lecture notes defines the basis vectors
+	\eq{
+		\kchivk = \kvk - \sumn \betn \kfnvk.
+	}
+	If we choose $\betn = \bkfnk$ and multiply on the left by $\bfn$, then
+	\eq{
+		\bkfnchi = \bkfnk - \summ \bkfmk \bkfnfm
+		= \bkfnk - \summ \bkfmk \delmn
+		= \bkfnk - \bkfnk
+		= 0.
+	}
+	Since $\bkchifn = \bkfnchi^*$, we have shown that if $\betn = \bkfnk$ then
+	\eqn{thing7a}{
+		\ans{ \bkchifn = 0 }
+	}
+	as desired. \qed
+	
+	Let $E'$ be the valence eigenvalues of $H + \VR$, where $\psi$ is the valence wavefunction.  We want to show that
+	\eq{
+		(H + \VR) \kpsi = E' \kpsi
+	}
+	for any $\VR$ given by Eq.~\refeq{VR}.  Applying the {\Schrodinger} equation $H \kpsi = E \kpsi$ yields
+	\eq{
+		\VR \kpsi = (E' - E) \kpsi.
+	}
+	Multiplying on the left by $\bra{\phi}$ and applying Eq.~\refeq{VR},
+	\eqn{thing7b}{
+		\mel*{\phi}{\VR}{\psi} = \mel*{\phi}{(E' - E)}{\psi}
+		\qimplies
+		\sumn \bkFnphi^* \braket{\fn}{\psi} = (E' - E) \bkphipsi
+		\qimplies
+		0 = E' - E
+	}
+	since $\psi$ and $\fn$ are orthogonal, but $\psi$ and $\phi$ are not.  We know this since $\kpsi$ can be written as a linear combination of $\ket{\chi}$ by (4.60) of the lecture notes,
+	\eq{
+		\kpsik = \sumvG \alp_{\vk - \vG} \ket{\chi_{\vk - \vG}},
+	}
+	and we showed in Eq.~\refeq{thing7a} that $\bkchifn = 0$.  On the contrary, (4.62) shows that $\phi$ and $\psi$ cannot be orthogonal since
+	\eq{
+		\kpsi = \kphi - \sumn \bkfnphi \kfn.
+	}
+	Equation~\refeq{thing7b} holds for any $\Fn$.  So we have shown that the valence eigenvalues $E'$ are the same for arbitrary $\Fn$. \qed
+}

@@ -19,244 +19,11 @@
 
 \input{Problem04}
 
-
-
-
-
-\state{Some one-dimensional chemistry}{
-	Consider a diatomic lattice of two atoms labeled $A$ and $B$ in a lattice with period $a$, at the positions $\pm a (1 - \del) / 4$ in a one-dimensional array with overall period $a$.
-}
-
-\prob{	\label{5a}
-	Using the NFE approximation valid for momenta near the zone boundary $k \to \pi / a$, show that the solution of Eq.~(4.47) leads to 
-	\begin{enumerate}
-		\item a gap on the zone boundary of $2 \abs{ \Utpa }$, and
-		\item wavefunctions that satisfy $\cpmk / \cpmkmpa = \pm U / \abs{U}$ as $k \to \pi / a$.
-	\end{enumerate}
-}
-
-\sol{
-	Equation~(4.47) is
-	\eq{
-		\mqty( \Eok - E & \UvK \\ \UvKs & \EokmK - E ) \mqty( \ck \\ \ckmK ) = 0.
-	}
-	According to p.~43 of the lecture notes, the Brillouin zone boundary is at $\vK / 2$, so $\vK = 2\pi / a$.  Then Eq.~(4.47) is
-	\eq{
-		\mqty( \Eok - E & \Utpa \\ \Utpas & \Eokmtpa - E ) \mqty( \ck \\ \ckmK ) = 0
-	}
-	which implies that the determinant of the $2 \times 2$ matrix is 0~\cite[p.~158]{Ashcroft}:
-	\al{
-		0 &= \mqty| \Eok - E & \Utpa \\ \Utpas & \Eokmtpa - E | \\
-		&= (\Eok - E) (\Eokmtpa - E) - \abs{\Utpa}^2 \\
-		&= E^2 - (\Eok + \Eokmtpa) E + \Eok \Eokmtpa - \abs{\Utpa}^2.
-	}
-	Solving for $E$ using the quadratic equation yields
-	\eq{
-		\Epm = \frac{\Eok + \Eokmtpa}{2} \pm \sqrt{ \paren{\frac{\Eok - \Eokmtpa}{2}}^2 + \abs{\Utpa}^2 }.
-	}
-	Applying $\Eok = \hbar^2 k^2 / 2m$ from p.~42 of the lecture notes, this is
-	\eqn{Epm}{
-		\Epm = \frac{\hbar^2}{4m} \brac{ k^2 + \paren{ k - \frac{2\pi}{a} }^2 } \pm \sqrt{ \paren{ \frac{\hbar^2}{4m} }^2 \brac{ k^2 - \paren{ k - \frac{2\pi}{a} }^2 }^2 + \abs{\Utpa}^2 }.
-	}
-	At the zone boundary $k = \pi / a$, and
-	\al{
-		\Epm &= \frac{\hbar^2}{4m} \brac{ \paren{ \frac{\pi}{a} }^2 + \paren{ \frac{\pi}{a} - \frac{2\pi}{a} }^2 } \pm \sqrt{ \paren{ \frac{\hbar^2}{4m} }^2 \brac{ \paren{ \frac{\pi}{a} }^2 - \paren{ \frac{\pi}{a} - \frac{2\pi}{a} }^2 }^2 + \abs{\Utpa}^2 } \\
-		&= \frac{\hbar^2}{4m} \paren{ 2 \frac{\pi^2}{a^2} } \pm \sqrt{ \abs{\Utpa}^2 } \\
-		&= \frac{\hbar^2}{2m} \frac{\pi^2}{a^2} \pm \abs{\Utpa}.
-	}
-	Then the gap is
-	\eq{
-		\Ep - \Em = \paren{ \frac{\hbar^2}{2m} \frac{\pi^2}{a^2} + \abs{\Utpa} } - \paren{ \frac{\hbar^2}{2m} \frac{\pi^2}{a^2} - \abs{\Utpa} }
-		= \ans{ 2 \abs{\Utpa} }
-	}
-	as we wanted to show. \qed
-
-	
-	At $k = \pi / a = K / 2$, the energy levels are given by (4.49) in the lecture notes,
-	\eqn{4.49}{
-		\Epm(K / 2) = \EohK \pm \abs{\UK}.
-	}
-	The leading corrections in $U$ for two energy levels are given by Ashcroft \& Mermin~(9.22),
-	\al{
-		(E - \Eok) \ck &= \UvK \ckmK, &
-		(E - \EokmK) \ckmK &= \UmvK \ck
-		= \UvKs \ck,
-	}
-	where $\ck$ and $\ckmK$ are the coefficients of the wavefunctions.  Substituting $k = \pi / a$ and $K = 2\pi / a$ and Eq.~\refeq{4.49} into the first of these expressions, we find
-	\eq{
-		\Utpa \cpmkmpa = (\Epm - \Eopa) \cpmk
-		= [ (\Eopa \pm \abs{\Utpa}) - \Eopa ] \cpmk
-		= \pm \abs{\Utpa} \cpmk
-	}
-	which implies
-	\eqn{ratio}{
-		\ans{ \frac{\cpmk}{\cpmkmpa} = \pm \frac{\Utpa}{\abs{\Utpa}} }
-	}
-	as desired~\cite[p.~159]{Ashcroft}. \qed
-	
-}
-
-
-
-\prob{
-	Hence show that the probability density for the electronic states at $k = \pi / a$ take the form
-	\al{
-		\abs{\psipr}^2 &\propto \cos[2](\frac{\pi x}{a} + \frac{\phi}{2}), &
-		\abs{\psimr}^2 &\propto \sin[2](\frac{\pi x}{a} + \frac{\phi}{2}).
-	}
-}
-
-\sol{
-	The wavefunctions are given by (4.38) in the lecture notes,
-	\eq{
-		\psivkr = \sumK \ckmK e^{i (\vk - \vK) \vdot \vr}.
-	}
-	With $k = \pi / a$, this gives us
-	\al{
-		\psipr &= \cpk e^{i k x} + \cpkmpa e^{i (k - 2\pi / a) x}
-		= \cpk (e^{i \pi x / a} + e^{-i \pi x / a})
-		= 2 \cpk \cos(\frac{\pi x}{a}), \\
-		\psimr &= \cmk e^{i k x} - \cmkmpa e^{i (k - 2\pi /a) x}
-		= \cmk (e^{i \pi x / a} - e^{-i \pi x / a})
-		= 2 i \cmk \sin(\frac{\pi x}{a}),
-	}
-	where we have used Eq.~\refeq{ratio}.  Then
-	\al{
-		\abs{\psipr}^2 &= -2 \abs{\cpk}^2 \cos[2](\frac{\pi x}{a})
-		\propto \ans{ \cos[2](\frac{\pi x}{a} + \frac{\phi}{2}), } \\
-		\abs{\psimr}^2 &= 2 \abs{\cmk}^2 \sin[2](\frac{\pi x}{a})
-		\propto \ans{ \sin[2](\frac{\pi x}{a} + \frac{\phi}{2}), }
-	}
-	where we have included a phase shift $\phi / 2$ in order to account for the complex coefficient. \qed
-}
-
-
-
-\prob{
-	Show that the potential can be written
-	\eqn{Utpa}{
-		\Utpa = \sin(\frac{\pi \del}{2}) \paren{ \UAtpa + \UBtpa } - i \cos(\frac{\pi \del}{2}) \paren{ \UAtpa - \UBtpa },
-	}
-	where
-	\eq{
-		\UABtpa = \frac{N}{V} \int \ddr e^{-2 \pi i r / a} \UABr.
-	}
-}
-
-\sol{
-	Since $\Ur$ is a sum of atomic potentials located at the positions of the atoms, it can be written as Ashcroft \& Mermin~(9.31):
-	\aln{
-		\Ur &= \sumvR \brac{ \UA(\vr - \vR - \vdA) + \UB(\vr - \vR - \vdB) } \notag \\
-		&= \sumvR \brac{ \UA\!\paren{ \vr - \vR - \frac{a}{4} (1 - \del) } + \UB\!\paren{ \vr - \vR + \frac{a}{4} (1 - \del) } }, \label{thing5c}
-	}
-	where $\vdA$ and $\vdB$ are the positions of the atoms.  The momentum components of the potential are given by (4.20) in the lecture notes:
-	\eq{
-		\UvG = \frac{N}{V} \intuc \ddvr e^{-i \vG \vdot \vr} \Uvr.
-	}
-	Feeding in Eq.~\refeq{thing5c} and $K = 2 \pi / a$,
-	\al{
-		\UK &= \frac{N}{V} \intuc \ddr e^{-i K r} \sumR \brac{ \UA\!\paren{ r - R - \frac{a}{4} (1 - \del) } + \UB\!\paren{ r - R + \frac{a}{4} (1 - \del) } } \\
-		&= \frac{N}{V} \brac{ \intas \ddr e^{-i K r} \UA\!\paren{ r - \frac{a}{4} (1 - \del) } + \intas \ddr e^{-i K r} \UB\!\paren{ r  + \frac{a}{4} (1 - \del) } }.
-	}
-	Let $r' = r \mp a (1 - \del) / 4$.  Then
-	\eq{
-		\UK = \frac{N}{V} \intas \ddrp e^{-i K r'} \brac{ e^{-i K a (1 - \del) / 4} \UArp + e^{-i K a (1 + \del) / 4} \UBrp }.
-	}
-	Renaming $r' \to r$ and applying $K = 2\pi / a$, we have
-	\al{
-		\Utpa &= \frac{N}{V} \intas \ddr e^{-i 2\pi r / a} \brac{ e^{-i 2\pi (1 - \del) / 4} \UAr + e^{-i 2\pi (1 + \del) / 4} \UBr } \\
-		&= e^{-i \pi / 2} \frac{N}{V} \intas \ddr e^{-i 2\pi r / a} \brac{ e^{i \pi \del / 2} \UAr - e^{-i \pi \del / 2} \UBr } \\
-		&= i \frac{N}{V} \brac{ \int \ddr e^{-i \pi (2 r / a + \del / 2)} \UBr - \int \ddr e^{-i \pi (2 r / a - \del / 2)} \UAr } \\
-		&= i \frac{N}{V} \brac{ e^{-i \pi \del / 2} \int \ddr e^{-2 \pi i r / a} \UBr - e^{i \pi \del / 2} \int \ddr e^{-2 \pi i r / a} \UAr } \\
-		&= i \brac{ e^{-i \pi \del / 2} \UBtpa - e^{i \pi \del / 2} \UAtpa } \\
-		&= \frac{i}{2} \brac{ e^{-i \pi \del / 2} (\UAtpa + \UBtpa - \UAtpa + \UBtpa) - e^{i \pi \del / 2} (\UAtpa + \UBtpa + \UAtpa - \UBtpa) } \\
-		&= \frac{i}{2} (e^{-i \pi \del / 2} - e^{i \pi \del / 2}) \paren{ \UAtpa + \UBtpa } - \frac{i}{2} (e^{-i \pi \del / 2} + e^{i \pi \del / 2}) \paren{ \UAtpa - \UBtpa } \\
-		&= \ans{ \sin(\frac{\pi \del}{2}) \paren{ \UAtpa + \UBtpa } - i \cos(\frac{\pi \del}{2}) \paren{ \UAtpa - \UBtpa } }
-	}
-	as we wanted to show. \qed
-}
-
-
-
-\prob{
-	The system contains an average of one electron per atom, or equivalently two electrons per unit cell.  Discuss the values of the energy gaps and plot the charge densities corresponding to the highest filled electron state and the lowest empty electron state in the two cases:
-	\begin{enumerate}
-		\item $\del = 0$, $\UsA \neq \UsB$;
-		\item identical atoms, $\UsA = \UsB$, and $\del \neq 0$.
-	\end{enumerate}
-	Explain how this provides a simple model of either an \emph{ionic} or \emph{covalent} solid.
-}
-
-\sol{
-	We know that the energy gap is $2 \abs{\Utpa}$.  In the first case, substituting $\del = 0$ into Eq.~\refeq{Utpa} gives us
-	\eq{
-		\Utpa = \sin(0) \paren{ \UAtpa + \UBtpa } - i \cos(0) \paren{ \UAtpa - \UBtpa }
-		= -i \paren{ \UAtpa - \UBtpa }
-	}
-	so the energy gap is
-	\eq{
-		2 \abs{\Utpa} = \ans{ 2 \abs{ \UAtpa - \UBtpa }. }
-	}
-	This is small only if $\UA \approx \UB$.
-	
-	In the second case, substituting $\UsA = \UsB$ into Eq.~\refeq{Utpa} yields
-	\eq{
-		\Utpa = \sin(\frac{\pi \del}{2}) \paren{ \UAtpa + \UAtpa } - i \cos(\frac{\pi \del}{2}) \paren{ \UAtpa - \UAtpa }
-		= 2 \sin(\frac{\pi \del}{2}) \UAtpa,
-	}
-	so the energy gap is
-	\eq{
-		2 \abs{\Utpa} = \ans{ 4 \abs{ \sin(\frac{\pi \del}{2}) \UAtpa }. }
-	}
-	Assuming $\del$ is small, this is close to 0.
-	
-	\hl{how to draw the things}	
-%	delta is small, smaller band gap, metal/ionic
-}
-
-
+\input{Problem05}
 
 \input{Problem06}
 
-
-
-\state{Pseudopotential}{
-	Show that $\bkchifn = 0$ if we choose $\betn = \bkfnk$.
-	
-	The pseudopotential is not unique.  Show that the valence eigenvalues of a Hamiltonian $H + \VR$ are the same for any operator of the form
-	\eq{
-		\VR \kphi = \sumn \bkFnphi \kfn,
-	}
-	where the $\Fn$ are \emph{arbitrary} functions.
-}
-
-\sol{
-	Equation~(4.59) of the lecture notes defines the basis vectors
-	\eq{
-		\kchivk = \kvk - \sumn \betn \kfnvk.
-	}
-	If we choose $\betn = \bkfnk$ and multiply on the left by $\bfn$, then
-	\eq{
-		\bkfnchi = \bkfnk - \summ \bkfmk \bkfnfm
-		= \bkfnk - \summ \bkfmk \delmn
-		= \bkfnk - \bkfnk
-		= 0.
-	}
-	Since $\bkchifn = \bkfnchi^*$, we have shown that if $\betn = \bkfnk$ then
-	\eq{
-		\ans{ \bkchifn = 0 }
-	}
-	as desired. \qed
-	
-	For the valence eigenvalues,
-	\eq{
-		(H + \VR) \kphi
-		= H \kphi + \sumn \bkFnphi \kfn
-	}
-	\hl{then idk what to do next}
-}
-
-
+\input{Problem07}
 
 \input{Problem08}
 
@@ -311,9 +78,10 @@
 	\al{
 		\Ho &= \sumiN \paren{ -\frac{\hbar^2}{2 m} \laplacian_i + \sumI \frac{\ZI e^2}{\absrimRI} }
 		= \sumiN (T + \Uion), &
-		\Hint &= e^2 \sumiN \sumjneqi \int \ddvrp \frac{\abs{\psijrp}^2}{\vr - \vr'}.
+		\Hint &= \sumiN \Ucoulri
+		= \sumjneqi \int \ddvrp \frac{e^2}{\rij}.
 	}
-	Note that
+	For the first term, note that
 	\eq{
 		\ev{\Ho}{\Psi} = \int \ddvrq \cdots \ddvrN \Psis \Ho \Psi
 		= \sumtauSn \sumrhoSn \sgn(\tau) \sgn(\rho) \int \prodiN \ddvri \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \Ho \psii(\vr_{\rho(i)}, \sig_{\rho(i)}).
@@ -323,18 +91,55 @@
 		\ev{\Ho}{\Psi} = \sumtauSn \int \prodiN \ddvri \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \Ho \psii(\vr_{\tau(i)}, \sig_{\tau(i)}).
 	}
 	Since there are $N!$ possible permutations of the electrons, which are indistinguishable, we can further write
+	\eqn{h0}{
+		\ev{\Ho}{\Psi} = N! \sumiN \int \ddvri \psiis(\vri, \sigi) (T + \Uion) \psii(\vri, \sigi)
+		= N! \sumiN \ev*{(T + \Uion)}{i}.
+	}
+	For the second term of the Hamiltonian, note that
+	\al{
+		\ev{\Hint}{\Psi} &= \int \ddvrq \cdots \ddvrN \Psis \Hint \Psi \\
+		&= \sumtauSn \sumrhoSn \sgn(\tau) \sgn(\rho) \int \ddvrq \cdots \ddvrN \prodiN \prodjN \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \Hint \psij(\vr_{\rho(j)}, \sig_{\rho(j)}).
+	}
+	Feeding in $\Hint$, we have
 	\eq{
-		\ev{\Ho}{\Psi} = \frac{N!}{N!} \sumiN \int \ddvri \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) (T + \Uion) \psii(\vr_{\tau(i)}, \sig_{\tau(i)})
-		= \sumiN \ev*{(T + \Uion)}{i}.
+		\ev{\Hint}{\Psi} = \sumiN \sumjneqi \sumtauSn \sumrhoSn \sgn(\tau) \sgn(\rho) \int \ddvrq \cdots \ddvrN \prodiN \prodjN \psiis(\vr_{\tau(i)}, \sig_{\tau(i)}) \frac{e^2}{\rij} \psij(\vr_{\rho(j)}, \sig_{\rho(j)}).
+	}
+	Since $j \neq i$, interchanging $i$ and $j$ gives a minus sign so long as the electrons have the same spin; if they do not, the term is 0.  Accounting for the $N (N - 1) / 2$ possible pairs of $N$ electrons and their indistinguishability, which gives us $(N - 2)!$ identical terms in the sum, we can write
+	\aln{
+		\ev{\Hint}{\Psi} &= \frac{N!}{2} \sumiN \sumjneqi \int \ddvri \ddvrj \psiis(\vri, \sigi) \psijs(\vrj, \sigj) \frac{e^2}{\rij} \brac{ \psii(\vri, \sigi) \psij(\vrj, \sigj) - \delsigij \psij(\vrj, \sigj) \psii(\vri, \sigi) } \notag \\
+		&= \frac{N!}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }, \label{hint}
+	}
+	where we have included $i = j$ terms in the sum since they are 0.
+	
+	Feeding Eqs.~\refeq{h0} and \refeq{hint} into the expectation value, we find
+	\eq{
+		\ev{H}{\Psi} = \ev{(\Ho + \Hint)}{\Psi}
+		= N! \brac{ \sumi \ev*{(T + \Uion)}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } }.
+	}
+	Since there are $N$ indistinguishable electrons, clearly $\braket{\Psi} = N!$.  So we have the total energy
+	\eq{
+		\evHsPsi = \frac{\evHPsi}{\bkPsi}
+		= \ans{ \sumi \ev*{(T + \Uion)}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } }
+	}
+	as we wanted to show~\cite{Kim}. \qed
+	
+	For the minimization procedure, let $\psii \to \psii + \del\psii$ for all $\psii$.  We know $\bkij = \delij$ is a constraint on the system, so we use the method of Lagrange multipliers $\lamij$ to minimize the Lagrangian~\cite{Lagrange}:
+	\eq{
+		L = \evHsPsi - \sumij \lamij (\bkij - \delij).
+	}
+	To simplify this procedure, we will postulate that the constraint $\bkii = 1$ is sufficient to minimize the Lagrangian, and that the more general condition follows from this procedure.  Let $\lami$ be the Lagrange multipliers such that
+	\eq{
+		L = \evHsPsi - \sumi \lami (\bkii - 1)
+		= \sumi \ev*{(T + \Uion)}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij } - \sumi \lami (\bkii - 1).
+	}
+	Now we feed in the variations $\kti \to \kti + \kdeli$.  To $\order{\del}$, this gives us
+	\al{
+		L &\to L + \del L \\[.5ex]
+		&= \sumi (\bi + \bdeli) (T + \Uion) (\kti + \kdeli) \\
+		&\hspace{5em} \phantom{=\ } + \frac{1}{2} \sumij \paren{ (\bij + \bidelj + \bdelij) \frac{e^2}{\rij} (\kij + \kidelj + \kdelij) - (\bij + \bidelj + \bdelij) \frac{e^2}{\rij} (\kji + \kjdeli + \kdelij) } - \sumi \lami (\bkii - 1) 
 	}
 	
-	\hl{H int, variations}
-	
-	\clearpage
-	Answer:
-	\eq{
-		\ans{ \evHsPsi = \sumi \ev*{T + \Uion}{i} + \frac{1}{2} \sumij \paren{ \ev*{\frac{e^2}{\rij}}{i j} - \mel*{i j}{\frac{e^2}{\rij}}{j i} \delsigij }. }
-	}
+	\hl{ugh}
 }
 
 
@@ -360,7 +165,7 @@
 		\epsk = \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } }
 	}
 	
-	Then $\EF = \epsFk$ is
+	Then $\EF = \eps(\vkF)$ is
 	\eq{
 		\EF = \frac{\hbar^2 \kF^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - \kF^2 / \kF^2}{4 \kF / \kF} \ln\abs{ \frac{1 + \kF / \kF}{1 - \kF / \kF} } }
 		= \frac{\hbar^2 \kF^2}{2 m} - \frac{e^2 \kF}{\pi},
@@ -382,34 +187,38 @@
 	}
 	Then the density of states is
 	\al{
-		\gE &= 2 \frac{4\pi k^2}{(2\pi)^3 / V} \brac{ \frac{\hbar^2}{m} k - \frac{e^2 \kF}{\pi k} + \frac{e^2}{2\pi} \paren{ 1 + \frac{\kF^2}{k^2} } \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} }^{-1} \\
-		&= \frac{\kF^2 V}{\pi^2} x^2 \brac{ \frac{\hbar^2 \kF}{m} x - \frac{e^2}{\pi} \frac{1}{x} + \frac{e^2}{2\pi} \paren{ 1 + \frac{1}{x^2} } \ln\abs{\frac{1 + x}{1 - x}} }^{-1} \\
-		&\approx \frac{\kF^2 V}{\pi^2} \frac{m \pi}{-e^2 m + \pi \hbar^2 \kF + e^2 m \ln\abs{\dfrac{2}{1 - x}} } \\ %+ (x - 1) \frac{\pi m}{2} \frac{-7 e^2 m + 2 \pi \hbar^2 \kF + 5 e^2 m \ln\abs{\dfrac{2}{1 - x}}}{\paren{ -e^2 m + \pi \hbar^2 \kF + e^2 m \ln\abs{\dfrac{2}{1 - x}} }^2 } } \\
-		&\approx \ans{ \frac{\kF^2 V}{\pi} \frac{m}{\pi \hbar^2 \kF + e^2 m \paren{ \ln\abs{\dfrac{2}{1 - k / \kF}} - 1 } }, }
+		\gE &= 2 \frac{4\pi k^2}{(2\pi)^3 / V} \brac{ \frac{\hbar^2}{m} k - \frac{e^2 \kF}{\pi k} + \frac{e^2}{2\pi} \paren{ 1 + \frac{\kF^2}{k^2} } \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} }^{-1} \\[.5ex]
+		&= 4 \frac{4\pi k}{(2\pi)^3 / V} \brac{ \frac{\hbar^2 k^2}{2 m} - \frac{e^2 \kF}{2 \pi} + \frac{e^2 k}{4\pi} \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} + \frac{e^2 \kF^2}{4\pi k} \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} }^{-1} \\[.5ex]
+		&= 4 \frac{4\pi k}{(2\pi)^3 / V} \left[ \frac{\hbar^2 k^2}{2 m} - \frac{e^2 \kF}{\pi} - \frac{e^2 \kF^2}{2\pi k} \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} + \frac{e^2 k}{2\pi} \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} \right. \\
+		&\hspace{10em} \left. \phantom{=\ } + \frac{e^2 \kF}{2 \pi} + \frac{3 e^2 \kF^2}{4\pi k} \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} - \frac{e^2 k}{4\pi} \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} \right]^{-1} \\[.5ex]
+		&= 4 \frac{4\pi k}{(2\pi)^3 / V} \brac{ E + \frac{e^2 \kF}{2 \pi} - \frac{e^2 k}{4\pi} \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} + \frac{3 e^2 \kF^2}{4\pi k} \ln\abs{\frac{1 + k / \kF}{1 - k / \kF}} }^{-1} \\[.5ex]
+%		&= \frac{\kF^2 V}{\pi^2} x^2 \brac{ \frac{\hbar^2 \kF}{m} x - \frac{e^2}{\pi} \frac{1}{x} + \frac{e^2}{2\pi} \paren{ 1 + \frac{1}{x^2} } \ln\abs{\frac{1 + x}{1 - x}} }^{-1} \\
+%		&\approx \frac{\kF^2 V}{\pi^2} \frac{m \pi}{-e^2 m + \pi \hbar^2 \kF + e^2 m \ln\abs{\dfrac{2}{1 - x}} } \\ %+ (x - 1) \frac{\pi m}{2} \frac{-7 e^2 m + 2 \pi \hbar^2 \kF + 5 e^2 m \ln\abs{\dfrac{2}{1 - x}}}{\paren{ -e^2 m + \pi \hbar^2 \kF + e^2 m \ln\abs{\dfrac{2}{1 - x}} }^2 } } \\
+%		&\approx \ans{ \frac{\kF^2 V}{\pi} \frac{m}{\pi \hbar^2 \kF + e^2 m \paren{ \ln\abs{\dfrac{2}{1 - k / \kF}} - 1 } }, }
 	}
-	where we have performed a Taylor series expansion to zeroth order using Mathematica.
+%	where we have performed a Taylor series expansion to zeroth order using Mathematica.
 	
-	The specific heat can be calculated from Eq.~(2.15) in the lecture notes:
-	\eq{
-		\cv = \int \ddE E \gE \pdv{\fE}{T}.
-	}
-	Transforming this to an integral over $k$, we have
-	\al{
-		\cv &= \int \ddk \dv{E}{k} \epsk \paren{ 2 \frac{4\pi k^2}{(2\pi)^3 / V} \dv{k}{E} } \pdv{\fE}{T} \\
-		&= \int \ddk \brac{ \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } } } \brac{ 2 \frac{4\pi k^2}{(2\pi)^3 / V} } \pdv{\fE}{T}
-	}
-	From (2.17):
-	\eq{
-		\dv{f}{T} = \frac{e^y}{(e^y + 1)^2} \paren{ \frac{y}{T} + \frac{1}{\kB T} \dv{\mu}{T} }
-		= \frac{e^y}{(e^y + 1)^2} \frac{y}{T}
-	}
-	where $y = (E - \mu) / \kB T$, and $\mu$ changes slowly at low temperature.  Note that
-	\al{
-		\exp(\frac{E - \mu}{\kB T}) &= \exp\!\curly{ \frac{1}{\kB T} \brac{ \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } } - \mu } } \\
-		&= \exp(\frac{\hbar^2 k^2}{2 m \kB T}) \exp(-\frac{e^2 \kF}{\pi \kB T}) \exp(- \frac{2 e^2 \kF}{\pi} \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF}} ) \exp(-\frac{\mu}{\kB T})
-	}
-	
-	\hl{help}
+%	The specific heat can be calculated from Eq.~(2.15) in the lecture notes:
+%	\eq{
+%		\cv = \int \ddE E \gE \pdv{\fE}{T}.
+%	}
+%	Transforming this to an integral over $k$, we have
+%	\al{
+%		\cv &= \int \ddk \dv{E}{k} \epsk \paren{ 2 \frac{4\pi k^2}{(2\pi)^3 / V} \dv{k}{E} } \pdv{\fE}{T} \\
+%		&= \int \ddk \brac{ \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } } } \brac{ 2 \frac{4\pi k^2}{(2\pi)^3 / V} } \pdv{\fE}{T}
+%	}
+%	From (2.17):
+%	\eq{
+%		\dv{f}{T} = \frac{e^y}{(e^y + 1)^2} \paren{ \frac{y}{T} + \frac{1}{\kB T} \dv{\mu}{T} }
+%		= \frac{e^y}{(e^y + 1)^2} \frac{y}{T}
+%	}
+%	where $y = (E - \mu) / \kB T$, and $\mu$ changes slowly at low temperature.  Note that
+%	\al{
+%		\exp(\frac{E - \mu}{\kB T}) &= \exp\!\curly{ \frac{1}{\kB T} \brac{ \frac{\hbar^2 k^2}{2 m} - \frac{2 e^2 \kF}{\pi} \paren{ \frac{1}{2} + \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF} } } - \mu } } \\
+%		&= \exp(\frac{\hbar^2 k^2}{2 m \kB T}) \exp(-\frac{e^2 \kF}{\pi \kB T}) \exp(- \frac{2 e^2 \kF}{\pi} \frac{1 - k^2 / \kF^2}{4 k / \kF} \ln\abs{ \frac{1 + k / \kF}{1 - k / \kF}} ) \exp(-\frac{\mu}{\kB T})
+%	}
+%	
+%	\hl{help}
 	
 	
 }
