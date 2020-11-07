@@ -18,11 +18,11 @@
 	\eq{
 		H = \int \ddcx \paren{ \frac{1}{2} (\Pii)^2 + \frac{1}{2} (\grad \Phii)^2 + V(\Phi^2) },
 	}
-	where $(\Phii)^2 = \Phi \cdot \Phi$, and
-	\eq{
+	where $(\Phii)^2 = \vPhi \vdot \vPhi$, and
+	\eqn{V1}{
 		V(\Phi^2) = \frac{1}{2} m^2 (\Phii)^2 + \frac{\lam}{4} \paren{ (\Phii)^2 }^2
 	}
-	is a function symmetric under rotations of $\Phi$.  For (classical) field configurations of $\Phiix$ that are constant in space and time, this term gives the only contribution to $H$; hence, $V$ is the field potential energy.
+	is a function symmetric under rotations of $\vPhi$.  For (classical) field configurations of $\Phiix$ that are constant in space and time, this term gives the only contribution to $H$; hence, $V$ is the field potential energy.
 }
 
 \prob{
@@ -31,8 +31,8 @@
 		\wick{\c{\Phi}^i(x) \c{\Phi}^j(y)} = \delij \DF(x - y),
 	}
 	where $\DF$ is the standard Klein-Gordon propagator for mass $m$, and that there is one type of vertex given by
-	\eq{
-		\centergraphics{diag/vertex} = -2 i \lam(\delij \delkl + \delil \deljk + \delik \deljl).
+	\eqn{diag1a}{
+		\centergraphics{diag/ijkl_vertex} = -2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl).
 	}
 	Compute, to leading order in $\lam$, the differential cross sections $\dv*{\sig}{\Omg}$, in the center-of-mass frame, for the scattering processes
 	\al{
@@ -41,6 +41,104 @@
 		\Phiq \Phiq &\to \Phiq \Phiq
 	}
 	as functions of the center-of-mass energy.
+}
+
+\sol{
+	The Klein-Gordon Hamiltonian is given by Peskin \& Schroeder~(2.8),
+	\eqn{KG}{
+		H = \int \ddcx \paren{ \frac{1}{2} \pi^2 + \frac{1}{2} (\grad \phi)^2 + \frac{1}{2} m^2 \phi^2 }
+	}
+	For $\lam = 0$, the linear sigma model has the Hamiltonian
+	\eq{
+		H = \int \ddcx \paren{ \frac{1}{2} (\Pii)^2 + \frac{1}{2} (\grad \Phii)^2 + \frac{1}{2} m^2 (\Phii)^2 }
+	}
+	which is clearly $N$ copies of the Klein-Gordon Hamiltonian, one for each $i$.
+	
+	From (4.36) we know that the Feynman propagator is the contraction of two fields:
+	\eq{
+		\wick{\c\phi(x) \c\phi(y)} = \DF(x - y).
+	}
+	No terms $\Phii \Phij$ for $i \neq j$ appear in the Hamiltonian, so fields with $i \neq j$ cannot be contracted.  Moreover, each field is governed by its own independent Klein-Gordon Hamiltonian to zeroth order.  So the propagator must be
+	\eq{
+		\ans{ \wick{\c{\Phi}^i(x) \c{\Phi}^j(y)} = \delij \DF(x - y) }
+	}
+	where $\DF(x - y)$ is the Klein-Gordon propagator. \qed
+	
+	In order to determine the Feynman rules, we use Peskin \& Schroeder~(4.90),
+	\eq{
+		\mel*{\vpsq \cdots \vpsn}{i T}{\vpsA \vpsB} = \lim_{T \to \infty (1 - i \eps)} \sOi \mel*{\vpsq \cdots \vpsn}{T \curly{ \exp(-i \intmTT \ddt \HIt)}}{\vpsA \vpsB} \sOf.
+	}
+	Our interaction Hamiltonian is
+	\eq{
+		\HI = \int \ddcx \frac{\lam}{4} \paren{ (\Phii)^2 }^2
+		= \int \ddcx \frac{\lam}{4} (\vPhi \vdot \vPhi)^2
+		= \frac{\lam}{4} \int \ddcx \paren{ \sumi (\Phii)^4 + 2 \suminj (\Phii)^2 (\Phij)^2 },
+	}
+	W have two final momenta, $\vpsq$ and $\vpsw$.  Now we have
+	\eq{
+		\mel*{\vpsq \vpsw}{i T}{\vpsA \vpsB} = \lim_{T \to \infty (1 - i \eps)} \sOi \mel*{\vpsq \vpsw}{T \curly{ \exp[ -i \int \ddqx \frac{\lam}{4} \paren{  \sumi (\Phii)^4 + 2 \suminj (\Phii)^2 (\Phij)^2 } ] }}{\vpsA \vpsB} \sOf.
+	}
+	The first term that contributes to leading order is, by analogy to (4.92),
+	\al{
+		&\sOi \mel*{\vpsq \vpsw}{T \curly{ -i \int \ddqx \frac{\lam}{4} \paren{ \sumi (\Phii)^4 + 2 \suminj (\Phii)^2 (\Phij)^2 } }}{\vpsA \vpsB} \sOf \\
+		&\hspace{5em} = \sOi \mel*{\vpsq \vpsw}{N \curly{ -i \int \ddqx \frac{\lam}{4} \paren{ \sumi (\Phii)^4 + 2 \suminj (\Phii)^2 (\Phij)^2 } + \contractions }}{\vpsA \vpsB} \sOf,
+	}
+	but only the terms in which none of the fields are contracted with each other will contribute~\cite[p.~111]{Peskin}.
+	
+	The first term represents the process $\Phii \Phii \to \Phii \Phii$:
+	\eq{
+		\sOi \mel*{\vpsq \vpsw}{N \curly{ -i \int \ddqx \frac{\lam}{4} \sumi \Phii \Phii \Phii \Phii + \contractions }}{\vpsA \vpsB} \sOf.
+	}
+	The fields are all the same, so there are $4!$ ways of contracting the fields with the momenta, and we will obtain a diagram similar to (4.98).  Adapting that expression, we find
+	\eq{
+		-4! i \int \frac{\lam}{4} \ddqx e^{-i (\psA + \psB - \psq - \psw) \cdot x}
+		= -6 i \lam (4 \pi)^4 \del^4(\psA + \psB - \psq - \psw).
+	}
+	The diagram in Eq.~\refeq{diag1a} is $\Phii \Phij \to \Phik \Phil$.  Since $i = j = k = l$ for this term, we have
+	\eq{
+		\centergraphics{diag/ijkl_vertex} = -6 i \lam
+		= -2 i \lam (1 + 1 + 1)
+		= \ans{ -2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl). }
+	}
+	The second term can represent the processes $\Phii \Phii \to \Phij \Phij$ or $\Phii \Phij \to \Phii \Phij$ (where the indices and the order of the fields on either side is interchangeable):
+	\eq{
+		\sOi \mel*{\vpsq \vpsw}{N \curly{ -i \int \ddqx \frac{\lam}{4} 2 \suminj \Phii \Phii \Phij \Phij + \contractions }}{\vpsA \vpsB} \sOf.
+	}
+	Now there are only $2! \times 2! = 4$ ways to contract the fields with the momenta.  We have
+	\eq{
+		-4 i \int \frac{\lam}{2} \ddqx e^{-i (\psA + \psB - \psq - \psw) \cdot x}
+		= -2 i \lam (4 \pi)^4 \del^4(\psA + \psB - \psq - \psw).
+	}
+	Here, either $i = j$ and $k = l$, $i = l$ and $j = k$, or $i = k$ and $j = l$.  We have
+	\eq{
+		\centergraphics{diag/ijkl_vertex} = -2 i \lam
+		= -2 i \lam (1 + 0 + 0)
+		= \ans{ -2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl). }
+	}
+	Both of the terms can therefore be represented by Eq.~\refeq{diag1a} as we wanted to show. \qed
+	
+	When all four of the particles in the interaction have the same mass, the differential cross section in the center-of-mass frame is given by Peskin \& Schroeder~(4.85)
+	\eq{
+		\paren{ \dv{\sig}{\Omg} }_\CM = \frac{\abs{\cM}^2}{64 \pi^2 \Ecm^2},
+	}
+	where $\Ecm$ is the center-of-mass energy and $\cM$ is the invariant matrix element.  We know that the diagrams we calculated before have the form $i \cM (2\pi)^4 \del^4(\psA + \psB - \psq - \psw)$~\cite[p.~112]{Peskin}.  Then
+	\al{
+		\cM = -6 \lam &\qq{for} \Phiq \Phiq \to \Phiq \Phiq, &
+		\cM = -2 \lam &\qq{for} \Phiq \Phiw \to \Phiq \Phiw \text{ and } \Phiq \Phiq \to \Phiw \Phiw.
+	}
+	So the differential cross sections are, to leading order in $\lam$,
+	\al{
+		(\Phiq \Phiw \to \Phiq \Phiw) &\quad
+		\paren{ \dv{\sig}{\Omg} }_\CM = \frac{\abs{-2 \lam}^2}{64 \pi^2 \Ecm^2}
+		= \ans{ \frac{\lam^2}{16 \pi^2 \Ecm^2}, } \\
+		(\Phiq \Phiw \to \Phiq \Phiw) &\quad
+		\paren{ \dv{\sig}{\Omg} }_\CM = \frac{\abs{-6 \lam}^2}{64 \pi^2 \Ecm^2}
+		= \ans{ \frac{9 \lam^2}{16 \pi^2 \Ecm^2}, } \\
+		(\Phiq \Phiq \to \Phiw \Phiw) &\quad
+		\paren{ \dv{\sig}{\Omg} }_\CM = \frac{\abs{-6 \lam}^2}{64 \pi^2 \Ecm^2}
+		= \ans{ \frac{9 \lam^2}{16 \pi^2 \Ecm^2}. }
+	}
+	\vfix
 }
 
 
@@ -53,13 +151,76 @@
 	}
 	where $v$ is a constant chosen to minimize $V$.  (The notation $\pii$ suggests a pion field and should not be confused with a canonical momentum.)  Show that, in these new coordinates (and substituting for $v$ its expression in terms of $\lam$ and $\mu$), we have a theory of a massive $\sig$ field and $N - 1$ \emph{massless} pion fields, interacting through cubic and quartic potential energy terms which all become small as $\lam \to 0$.  Construct the Feynman rules by assigning values to the propagators and vertices:
 	\al{
-		\wick{\c{\sig} \c{\sig}} &= \centergraphics{diag/dbl_arrow}, &\qquad
+		\wick{\c{\sig} \c{\sig}} &= \centergraphics{diag/dbl_arrow} &\qquad
 		& \qquad \qquad \centergraphics{diag/ij_triangle} \qquad \centergraphics{diag/dbl_triangle} \\
-		\wick{\c{\pi}^i \c{\pi}^j} &= \centergraphics{diag/ij_arrow}, &\qquad
+		\wick{\c{\pi}^i \c{\pi}^j} &= \centergraphics{diag/ij_arrow} &\qquad
 		& \centergraphics{diag/ijkl_vertex} \qquad \centergraphics{diag/ij_vertex} \qquad \centergraphics{diag/dbl_vertex}
 	}
 	\vfix
 }
+
+\sol{
+	With the negative mass, Eq.~\refeq{V1} becomes
+	\eq{
+		V(\Phi^2) = -\frac{1}{2} \mu^2 (\Phii)^2 + \frac{\lam}{4} \paren{ (\Phii)^2 }^2.
+	}
+	To find the minimum of $V$, we differentiate with respect to $\PhiN$.  We stipulate
+	\eq{
+		0 = \pdv{V}{\PhiN} = -\mu^2 \PhiN + \lam (\vPhi \vdot \vPhi) \PhiN
+		= -\mu^2 \PhiN + \lam (\PhiN)^3,
+	}
+	where we have used the chain rule to evaluate the second term, and the fact that $V$ is minimal for all $\Phii = 0$ with $i \neq N$.  This implies $\PhiN = 0$ or
+	\eq{
+		(\PhiN)^2 = \frac{\mu^2}{\lam}
+	}
+	when $V$ is minimal.  Thus
+	\eq{
+		v = \frac{\mu}{\sqrt{\lam}}.
+	}
+	In order to determine the form of the theory, we need to rewrite $V(\Phi^2)$ in the new coordinates.  Note that $\vPhi = (\vpi, v + \sig)$.  Then
+	\al{
+		V(\Phi^2) &= -\frac{1}{2} \mu^2 \brac{ \vpi^2 + (v + \sig)^2 } + \frac{\lam}{4} \brac{ \vpi^2 + (v + \sig)^2 }^2 \\[1ex]
+		%
+		&= -\frac{1}{2} \mu^2 \paren{ \vpi^2 + \frac{\mu^2}{\lam} + 2 \frac{\mu \sig}{\sqrt{\lam}} + \sig^2 } + \frac{\lam}{4} \paren{ \vpi^2 + \frac{\mu^2}{\lam} + 2 \frac{\mu \sig}{\sqrt{\lam}} + \sig^2 }^2 \\[1ex]
+		%
+		&= -\frac{1}{2} \mu^2 \paren{ \vpi^2 + \frac{\mu^2}{\lam} + 2 \frac{\mu \sig}{\sqrt{\lam}} + \sig^2 } \\
+		&\hspace{5em} \phantom{=\ } + \frac{\lam}{4} \paren{ (\vpi^2)^2 + 2 \frac{\vpi^2 \mu^2}{\lam} + \frac{\mu^4}{\lam^2} + 4 \frac{\vpi^2 \mu \sig}{\sqrt{\lam}} + 4 \frac{\mu^3 \sig}{\lam^{3/2}} + 2 \vpi^2 \sig^2 + 6 \frac{\mu^2 \sig^2}{\lam} + 4 \frac{\mu \sig^3}{\sqrt{\lam}} + \sig^4 } \\[1ex]
+		%
+		&= -\frac{\vpi^2 \mu^2}{2} - \frac{\mu^4}{2 \lam} - \frac{\mu^3 \sig}{\sqrt{\lam}} - \frac{\mu^2 \sig^2}{2} + \frac{(\vpi^2)^2 \lam}{4} + \frac{\vpi^2 \mu^2}{2} + \frac{\mu^4}{4 \lam} \\
+		&\hspace{5em} \phantom{=\ } + \vpi^2 \mu \sig \sqrt{\lam} + \frac{\mu^3 \sig}{\sqrt{\lam}} + \frac{\vpi^2 \sig^2 \lam}{2} + \frac{3 \mu^2 \sig^2}{2} + \mu \sig^3 \sqrt{\lam} + \frac{\sig^4 \lam}{4} \\[1ex]
+		%
+		&= \ans{ -\frac{\mu^4}{4 \lam} + \mu^2 \sig^2 + \frac{(\vpi^2)^2 \lam}{4} + \vpi^2 \mu \sig \sqrt{\lam} + \frac{\vpi^2 \sig^2 \lam}{2} + \mu \sig^3 \sqrt{\lam} + \frac{\sig^4 \lam}{4}. }
+	}
+	This expression includes a $\mu^2 \sig^2$ term, which indicates a massive sigma field.  Comparing with Eq.~\refeq{KG}, the pion mass is $\sqrt{2} \mu$.  However, there is no $\mu^2 \vpi^2$ term, which indicates that the pion field is massless.  The terms of $\order{\sqrt{\lam}}$ and $\order{\lam}$ have factors of $\vpi^4$, $\vpi^2 \sig$, $\vpi^2 \sig^2$, $\sig^3$, and $\sig^4$; these are all cubic and quartic factors.  Since they are of $\order{\sqrt{\lam}}$ and $\order{\lam}$, they become small as $\lam \to 0$.  This is what we wanted to show. \qed
+	
+	For the propagators, we can use (4.46) of Peskin \& Schroeder:
+	\eq{
+		\DF(x - y) = \int \ddqpf \frac{i e^{-i p \cdot (x - y)}}{p^2 - m^2 + i \eps}.
+	}
+	Then we can write
+	\al{
+		\centergraphics{diag/dbl_arrow} &= \ans{ \int \ddqpf \frac{i e^{-i p \cdot (x - y)}}{p^2 - 2 \mu^2 + i \eps}, } &
+		\centergraphics{diag/ij_arrow} &= \ans{ \delij \int \ddqpf \frac{i e^{-i p \cdot (x - y)}}{p^2 - 2 \mu^2 + i \eps}. }
+	}
+	We can associate each of the vertices with a term in $V(\Psi^2)$.  The symmetry factors for each of the terms are
+	\al{
+		\vpi^2 \mu \sig \sqrt{\lam} &: 2! = 2, &
+		\mu \sig^3 \sqrt{\lam} &: 3! = 6, &
+		\frac{(\vpi^2)^2 \lam}{4} &: 4! = 24, &
+		\frac{\vpi^2 \sig^2 \lam}{2} &: 2! 2! = 4, &
+		\frac{\sig^4 \lam}{4} &: 4! = 24.
+	}
+	Then the vertices are
+	\al{
+		\centergraphics{diag/ij_triangle} &= \ans{ -2i \mu \sqrt{\lam} \delij, } &
+		\centergraphics{diag/dbl_triangle} &= \ans{ -6i \mu \sqrt{\lam} }, \\
+		\centergraphics{diag/ijkl_vertex} &= \ans{ -2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl), } &
+		\centergraphics{diag/ij_vertex} &= \ans{-2 i \lam \delij, } &
+		\centergraphics{diag/dbl_vertex} &= \ans{ -6i \lam. }
+	}
+	\vfix
+}
+
 
 
 \prob{
@@ -69,19 +230,19 @@
 	}
 	to leading order in $\lam$.  There are now four Feynman diagrams that contribute:
 	\eq{
-		\centergraphics{diag/t_chan} \qq{+} \centergraphics{diag/s_chan} \qq{+} \centergraphics{diag/cross_chan} \qq{+} \centergraphics{diag/vertex}
+		\centergraphics{diag/t_chan} \qq{+} \centergraphics{diag/s_chan} \qq{+} \centergraphics{diag/u_chan} \qq{+} \centergraphics{diag/vertex}
 	}
 	Show that, at threshold ($\vpsi = 0$), these diagrams sum to \emph{zero}.  Show that, in the special case $N = 2$ (1 species of pion), the term $\order{p^2}$ also cancels.
 }
 
 
-\prob{
-	Add to $V$ a symmetry-breaking term,
-	\eq{
-		\Delta V = -a \Phi^N,
-	}
-	where $a$ is a (small) constant.  Find the new value of $v$ that minimizes $V$, and work out the content of the theory about that point.  Show that the pion acquires a mass such that $\mpi^2 \sim a$, and show that the pion scattering amplitude at threshold is now nonvanishing and also proportional to $a$.
-}
+%\prob{
+%	Add to $V$ a symmetry-breaking term,
+%	\eq{
+%		\Delta V = -a \Phi^N,
+%	}
+%	where $a$ is a (small) constant.  Find the new value of $v$ that minimizes $V$, and work out the content of the theory about that point.  Show that the pion acquires a mass such that $\mpi^2 \sim a$, and show that the pion scattering amplitude at threshold is now nonvanishing and also proportional to $a$.
+%}
 
 
 
@@ -89,50 +250,50 @@
 
 
 
-\state{Rutherford scattering (Peskin \& Schroeder 4.4)}{
-	The cross section for scattering of an electron by the Coulomb field of a nucleus can be computed, to lowest order, without quantizing the electromagnetic field.  Instead, treat the field as a given, classical potential $\Asmx$.  The interaction Hamiltonian is
-	\eq{
-		\HI = \int \ddcx e \psib \gamm \psi \Asm,
-	}
-	where $\psix$ is the usual quantized Dirac field.
-}
+%\state{Rutherford scattering (Peskin \& Schroeder 4.4)}{
+%	The cross section for scattering of an electron by the Coulomb field of a nucleus can be computed, to lowest order, without quantizing the electromagnetic field.  Instead, treat the field as a given, classical potential $\Asmx$.  The interaction Hamiltonian is
+%	\eq{
+%		\HI = \int \ddcx e \psib \gamm \psi \Asm,
+%	}
+%	where $\psix$ is the usual quantized Dirac field.
+%}
 
-\prob{
-	Show that the $T$-matrix element for electron scattering off a localized classical potential is, to lowest order,
-	\eq{
-		\melppiTp = -i e \ubpp \gamm \up \cdot \tAsm(p' - p),
-	}
-	where $\tAsmq$ is the four-dimensional Fourier transform of $\Asmx$.
-}
-
-
-
-\prob{
-	If $\Asmx$ is time independent, its Fourier transform contains a delta function of energy.  It is then natural to define
-	\eq{
-		\melppiTp \equiv i \cM \cdot (2\pi) \del(\Ef - \Ei),
-	}
-	where $\Ei$ and $\Ef$ are the initial and final energies of the particle, and to adopt a new Feynman rule for computing $\cM$:
-	\eq{
-		\centergraphics{diag/boson} = -i e \gamm \tAsmvq,
-	}
-	where $\tAsmvq$ is the three-dimensional Fourier transform of $\Asmx$.  Given this definition of $\cM$, show that the cross section for scattering off a time-independent, localized potential is
-	\eq{
-		\ddsig = \frac{1}{\vi} \frac{1}{2 \Ei} \ddcpff \frac{1}{2 \Ef} \abs{\cM(\pin \to \pf)}^2 (2\pi) \del(\Ef - \Ei),
-	}
-	where $\vi$ is the particle's initial velocity.  This formula is a natural modification of (4.79).  Integrate over $\abs{\pf}$ to find a simple expression for $\dv*{\sig}{\Omg}$.
-}
+%\prob{
+%	Show that the $T$-matrix element for electron scattering off a localized classical potential is, to lowest order,
+%	\eq{
+%		\melppiTp = -i e \ubpp \gamm \up \cdot \tAsm(p' - p),
+%	}
+%	where $\tAsmq$ is the four-dimensional Fourier transform of $\Asmx$.
+%}
 
 
 
-\prob{
-	Specialize to the case of electron scattering from a Coulomb potential ($\Ao = Z e / 4\pi r$).  Working in the nonrelativistic limit, derive the Rutherford formula,
-	\eq{
-		\dv{\sig}{\Omg} = \frac{\alp^2 Z^2}{4 m^2 v^4 \sin[4](\tht / 2)}.
-	}
-}
+%\prob{
+%	If $\Asmx$ is time independent, its Fourier transform contains a delta function of energy.  It is then natural to define
+%	\eq{
+%		\melppiTp \equiv i \cM \cdot (2\pi) \del(\Ef - \Ei),
+%	}
+%	where $\Ei$ and $\Ef$ are the initial and final energies of the particle, and to adopt a new Feynman rule for computing $\cM$:
+%	\eq{
+%		\centergraphics{diag/boson} = -i e \gamm \tAsmvq,
+%	}
+%	where $\tAsmvq$ is the three-dimensional Fourier transform of $\Asmx$.  Given this definition of $\cM$, show that the cross section for scattering off a time-independent, localized potential is
+%	\eq{
+%		\ddsig = \frac{1}{\vi} \frac{1}{2 \Ei} \ddcpff \frac{1}{2 \Ef} \abs{\cM(\pin \to \pf)}^2 (2\pi) \del(\Ef - \Ei),
+%	}
+%	where $\vi$ is the particle's initial velocity.  This formula is a natural modification of (4.79).  Integrate over $\abs{\pf}$ to find a simple expression for $\dv*{\sig}{\Omg}$.
+%}
 
 
-%\makebib
+
+%\prob{
+%	Specialize to the case of electron scattering from a Coulomb potential ($\Ao = Z e / 4\pi r$).  Working in the nonrelativistic limit, derive the Rutherford formula,
+%	\eq{
+%		\dv{\sig}{\Omg} = \frac{\alp^2 Z^2}{4 m^2 v^4 \sin[4](\tht / 2)}.
+%	}
+%}
+
+
+\makebib
 
 \end{document}
