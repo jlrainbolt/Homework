@@ -198,7 +198,7 @@
 		\DF(x - y) = \int \ddqpf \frac{i e^{-i p \cdot (x - y)}}{p^2 - m^2 + i \eps}.
 	}
 	Then we can write
-	\al{
+	\aln{ \label{props}
 		\centergraphics{diag/dbl_arrow} &= \ans{ \int \ddqpf \frac{i e^{-i p \cdot (x - y)}}{p^2 - 2 \mu^2 + i \eps}, } &
 		\centergraphics{diag/ij_arrow} &= \ans{ \delij \int \ddqpf \frac{i e^{-i p \cdot (x - y)}}{p^2 - 2 \mu^2 + i \eps}. }
 	}
@@ -211,12 +211,12 @@
 		\frac{\sig^4 \lam}{4} &: 4! = 24.
 	}
 	Then the vertices are
-	\al{
+	\aln{
 		\centergraphics{diag/ij_triangle} &= \ans{ -2i \mu \sqrt{\lam} \delij, } &
-		\centergraphics{diag/dbl_triangle} &= \ans{ -6i \mu \sqrt{\lam} }, \\
+		\centergraphics{diag/dbl_triangle} &= \ans{ -6i \mu \sqrt{\lam} }, \label{verts} \\
 		\centergraphics{diag/ijkl_vertex} &= \ans{ -2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl), } &
 		\centergraphics{diag/ij_vertex} &= \ans{-2 i \lam \delij, } &
-		\centergraphics{diag/dbl_vertex} &= \ans{ -6i \lam. }
+		\centergraphics{diag/dbl_vertex} &= \ans{ -6i \lam. } \notag
 	}
 	\vfix
 }
@@ -230,9 +230,70 @@
 	}
 	to leading order in $\lam$.  There are now four Feynman diagrams that contribute:
 	\eq{
-		\centergraphics{diag/t_chan} \qq{+} \centergraphics{diag/s_chan} \qq{+} \centergraphics{diag/u_chan} \qq{+} \centergraphics{diag/vertex}
+		\centergraphics{diag/s_chan} \qq{+} \centergraphics{diag/t_chan} \qq{+} \centergraphics{diag/u_chan} \qq{+} \centergraphics{diag/vertex}
 	}
 	Show that, at threshold ($\vpsi = 0$), these diagrams sum to \emph{zero}.  Show that, in the special case $N = 2$ (1 species of pion), the term $\order{p^2}$ also cancels.
+}
+
+\sol{
+	Using the propagators and vertices of Eqs.~\refeq{props} and \refeq{verts}, the contributions from each diagram are
+	\eq{
+		\centergraphics{diag/ijkl_s_chan} = (-2i \mu \sqrt{\lam} \delij) \frac{i}{(\pq + \pw)^2 - 2 \mu^2} (-2i \mu \sqrt{\lam} \delkl)
+		= -\frac{4 i \mu^2 \lam}{(\pq + \pw)^2 - 2 \mu^2} \delij \delkl,
+	}
+	\al{
+		\centergraphics{diag/ijkl_t_chan} &= (-2i \mu \sqrt{\lam} \delik) \frac{i}{(\pq - \pe)^2 - 2 \mu^2} (-2i \mu \sqrt{\lam} \deljl)
+		= -\frac{4 i \mu^2 \lam}{(\pq - \pe)^2 - 2 \mu^2} \delik \deljl, \\
+		%
+		\centergraphics{diag/ijkl_u_chan} &= (-2i \mu \sqrt{\lam} \delil) \frac{i}{(\pq - \pr)^2 - 2 \mu^2} (-2i \mu \sqrt{\lam} \deljk)
+		= -\frac{4 i \mu^2 \lam}{(\pq - \pr)^2 - 2 \mu^2} \delil \deljk, \\
+		%
+		\centergraphics{diag/ijkl_vertex} &= -2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl),
+	}
+	so the total amplitude is
+	\al{
+		i \cM &= -\frac{4 i \mu^2 \lam}{(\pq + \pw)^2 - 2 \mu^2} \delij \delkl - \frac{4 i \mu^2 \lam}{(\pq - \pe)^2 - 2 \mu^2} \delik \deljl - \frac{4 i \mu^2 \lam}{(\pq - \pr)^2 - 2 \mu^2} \delil \deljk - 2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl) \\
+		&= \ans{ -4 i \mu^2 \lam \paren{ \frac{\delij \delkl}{(\pq + \pw)^2 - 2 \mu^2} + \frac{\delik \deljl}{(\pq - \pe)^2 - 2 \mu^2} + \frac{\delil \deljk}{(\pq - \pr)^2 - 2 \mu^2} } - 2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl), }
+	}
+	where we have referred to (4.119) of Peskin \& Schroeder.
+	
+	When $\vpsi = 0$, $p_i = 0$.  This is because $p_i = (\Ei, \vpsi)$ and $\mpi = 0$, so $\Ei = 0$ at zero momentum.  Then the amplitude is
+	\al{
+		i \cM &= 4 i \mu^2 \lam \paren{ \frac{\delij \delkl}{2 \mu^2} + \frac{\delik \deljl}{2 \mu^2} + \frac{\delil \deljk}{2 \mu^2} } - 2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl) \\
+		&= 2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl) - 2 i \lam (\delij \delkl + \delil \deljk + \delik \deljl) \\
+		&= \ans{ 0 }
+	}
+	as we wanted to show. \qed
+	
+	When there is only one species of pion, $i = j = k = l$.  So the amplitude is
+	\eq{
+		i \cM = -4 i \mu^2 \lam \paren{ \frac{1}{(\pq + \pw)^2 - 2 \mu^2} + \frac{1}{(\pq - \pe)^2 - 2 \mu^2} + \frac{1}{(\pq - \pr)^2 - 2 \mu^2} } - 6 i \lam.
+	}
+	Assuming that the pions have similar momenta, $(p_i \pm p-j)^2 \ll \mu^2$.  Let $x = (p_i \pm p-j)^2 / \mu^2$.  Then the first three terms of $i \cM$ each look like
+	\eq{
+		\frac{1}{2 \mu^2} \frac{1}{x - 1} = -\frac{1 + x}{2 \mu^2} + \order{x^2},
+	}
+	where we have performed a Taylor series expansion about 0 to first order in $x$~\cite{Maclaurin}.  Then the amplitude is
+	\aln{
+		i \cM &= -2 i \lam \paren{ -1 - \frac{(\pq + \pw)^2}{2 \mu^2} - 1 - \frac{(\pq - \pe)^2}{2 \mu^2} - 1 - \frac{(\pq - \pr)^2}{2 \mu^2} } - 6 i \lam + \order{p^4} \notag \\
+		&= \frac{i \lam}{\mu^2} \brac{ (\pq + \pw)^2 + (\pq - \pe)^2 + (\pq - \pr)^2 } + \order{p^4}. \label{thing1c}
+	}
+	From Peskin \& Schroeder (5.69), we can write the Mandelstam variables
+	\al{
+		s &= (\pq + \pw)^2 = (\pe + \pr)^2, &
+		t &= (\pe - \pq)^2 = (\pr - \pw)^2, &
+		u &= (\pr - \pq)^2 = (\pe - \pw)^2.
+	}
+	For four particles of the same mass $m$~\cite[p.~159]{Peskin},
+	\eq{
+		s + t + u = 4 m^2.
+	}
+	The pion has mass $\mpi = 0$, so $s + t + u = 0$ for the pions.  Substituting the Mandelstam variables into Eq.~\refeq{thing1c}, we have
+	\eq{
+		i \cM = \frac{i \lam}{\mu^2} \brac{ s + t + u } + \order{p^4}
+		= \ans{ \order{p^4}. }
+	}
+	So we have shown that the $\order{p^2}$ terms cancel, as desired. \qed
 }
 
 

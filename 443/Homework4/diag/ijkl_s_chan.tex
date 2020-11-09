@@ -7,12 +7,16 @@
 
 \unitlength = 1mm
 
-\begin{fmffile}{simple10}
-	\fmfframe(-1,1)(-1,1){
+\begin{fmffile}{simple21}
+	\fmfframe(1.5,5)(1.5,5){
 		\begin{fmfgraph*}(15, 15)
 			\fmfstraight
 			\fmfleftn{i}{2}
 			\fmfrightn{o}{2}
+			\fmflabel{$i$}{i[1]}
+			\fmflabel{$j$}{o[1]}
+			\fmflabel{$k$}{i[2]}
+			\fmflabel{$l$}{o[2]}
 			\fmf{plain}{i[1],c,o[1]}
 			\fmf{dbl_plain}{c,d}
 			\fmf{plain}{i[2],d,o[2]}
