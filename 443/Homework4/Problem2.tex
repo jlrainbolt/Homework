@@ -1,0 +1,187 @@
+\state{Rutherford scattering (Peskin \& Schroeder 4.4)}{
+	The cross section for scattering of an electron by the Coulomb field of a nucleus can be computed, to lowest order, without quantizing the electromagnetic field.  Instead, treat the field as a given, classical potential $\Asmx$.  The interaction Hamiltonian is
+	\eq{
+		\HI = \int \ddcx e \psib \gamm \psi \Asm,
+	}
+	where $\psix$ is the usual quantized Dirac field.
+}
+
+\prob{
+	Show that the $T$-matrix element for electron scattering off a localized classical potential is, to lowest order,
+	\eqn{given2a}{
+		\melppiTp = -i e \ubpp \gamm \up \cdot \tAsm(p' - p),
+	}
+	where $\tAsmq$ is the four-dimensional Fourier transform of $\Asmx$.
+}
+
+\sol{
+	We use Peskin \& Schroder (4.94) and the fermion contractions on p.~118 to write
+	\al{
+		\wick{ \c{\psi} \ket{\c{\vp}, s} } &= u^s(p) e^{-i p \cdot x}, &
+		\wick{ \bra{\c{\vp}, s} \c{\psib} } &= \ub^s(p) e^{i p \cdot x}.
+	}
+	We again apply (4.90) in Peskin and Schroeder and the knowledge that only the terms in which none of the fields are contracted with each other will contribute~\cite[p.~111]{Peskin}.  Since $\Asm$ is classical, it cannot be contracted.  The matrix element is
+	\al{
+		\melppiTp &= \sOi \mel*{p'}{T \paren{ -i e \int \ddqx \psib \gamm \psi \Asmx}}{p} \sOf \\
+		&= -i e \int \ddqx \wick{ \sOi \mel*{\c p'}{\c{\psib} \gamm \c{\psi}}{\c{p}} \sOf \Asmx } \\
+		&= -i e \int \ddqx \ubpp e^{i p' \cdot x} \gamm \up e^{-i p \cdot x} \Asmx \\
+		&= -i e \ubpp \gamm \up \int \ddqx e^{i (p' - p) \cdot x} \Asmx \\
+		&= \ans{ -i e \ubpp \gamm \up \tAsm(p' - p), }
+	}
+	as desired. \qed
+}
+
+
+
+\prob{
+	If $\Asmx$ is time independent, its Fourier transform contains a delta function of energy.  It is then natural to define
+	\eqn{given2b}{
+		\melppiTp \equiv i \cM \cdot (2\pi) \del(\Ef - \Ei),
+	}
+	where $\Ei$ and $\Ef$ are the initial and final energies of the particle, and to adopt a new Feynman rule for computing $\cM$:
+	\eq{
+		\centergraphics{diag/boson} = -i e \gamm \tAsmvq,
+	}
+	where $\tAsmvq$ is the three-dimensional Fourier transform of $\Asmx$.  Given this definition of $\cM$, show that the cross section for scattering off a time-independent, localized potential is
+	\eq{
+		\ddsig = \frac{1}{\vi} \frac{1}{2 \Ei} \ddcpff \frac{1}{2 \Ef} \abs{\cM(\pin \to \pf)}^2 (2\pi) \del(\Ef - \Ei),
+	}
+	where $\vi$ is the particle's initial velocity.  This formula is a natural modification of (4.79).  Integrate over $\abs{\pf}$ to find a simple expression for $\dv*{\sig}{\Omg}$.
+}
+
+\sol{
+	Equation~\refeq{given2b} resembles Peskin \& Schroeder~(4.73).  In order to calculate the cross section, we first need to compute the probability for the initial state to scatter into the final state.  Peskin \& Schroeder~(4.74) gives the general probability for scattering into a state of $n$ particles:
+	\eqn{prob}{
+		\cP(\cA \cB \to 1 2 \ldots n) = \paren{ \prodf \ddcpff \frac{1}{2 \Ef} } \abs{ \stout \braket*{\vpsq \ldots \vpsn}{\phisA \phisB} \stin }^2,
+	}
+	where $\ket{\phisA \phisB} \stin$ is the initial state given by (4.68):
+	\eq{
+		\ket{\phisA \phisB} \stin = \int \frac{\dd[3]{\ksA}}{(2\pi)^3} \int \frac{\dd[3]{\ksB}}{(2\pi)^3} \frac{\phisA(\vksA) \phisB(\vksB) e^{-i \vbb \vdot \vksB}}{\sqrt{(2 \EA) (2 \EB)}} \ket{\vksA \vksB} \stin.
+	}
+	In this expression, $\cA$ represents the target and $\cB$ the incoming particle.  But for the Rutherford scattering problem, we do not explicitly consider $\cA$, only the electron $\cB$.  Letting $\ksB \to p$, our initial state is
+	\eq{
+		\kpsi \stin = \int \ddcpfr \frac{\psivp e^{-i \vbb \vdot \vp}}{\sqrt{2 \Evp}} \kvp \stin.
+	}
+	The out state is also the electron, now with 4-momentum $p'$.  So our adaptation of Eq.~\refeq{prob} is
+	\al{
+		\cP &= \ddcppf \frac{1}{2 \Evpp} \abs{ \stout \braket*{\vp'}{\psi} \stin }^2 \\
+		&= \ddcppf \frac{1}{2 \Evpp} \abs{ \stout \mel*{\vp'}{\int \ddcpfr \frac{\psivp e^{-i \vbb \vdot \vp}}{\sqrt{2 \Evp}} }{\vp} \stin }^2 \\
+		&= \ddcppf \frac{1}{2 \Evpp} \abs{ \stout \mel*{\vp'}{\int \ddcpfr \frac{\psivp e^{-i \vbb \vdot \vp}}{\sqrt{2 \Evp}} }{\vp} \stin }^2 \\
+		&= \ddcppf \frac{1}{2 \Evpp} \int \ddcpfr \frac{\psivp e^{-i \vbb \vdot \vp}}{\sqrt{2 \Evp}} \stout \braket*{\vp'}{\vp} \stin \int \ddcpbf \frac{\psisvpb e^{i \vbb \vdot \vpb}}{\sqrt{2 \Evpb}} \stout \braket*{\vp'}{\vpb} \stin \!\!\!{}^* \\
+		&= \ddcppf \frac{1}{2 \Evpp} \int \ddcppbf \frac{\psivp \psisvpb e^{i \vbb \vdot (\vpb - \vp)}}{2 \sqrt{\Evp \Evpb}} \mel*{\vp'}{S}{\vp} \mel*{\vp'}{S}{\vpb}^*,
+	}
+	where $\pbb$ is a real integration variable, and we have used Peskin \& Schroeder~(4.71):
+	\eq{
+		\stout \braket*{\vpsq \ldots \vpsn}{\vksA \vksB} \stin \equiv \mel*{\vpsq \ldots \vpsn}{S}{\vksA \vksB}.
+	}
+	We note that $S = \identity + i T$ by (4.72), the nontrivial part of the matrix element is given by Eq.~\refeq{given2b}~\cite[pp.~104--105]{Peskin}.  This gives us
+	\al{
+		\cP &= \ddcppf \frac{1}{2 \Evpp} \int \ddcppbf \frac{\psivp \psisvpb e^{i \vbb \vdot (\vpb - \vp)}}{2 \sqrt{\Evp \Evpb}} \brac{ i \cM (2\pi) \del(\Evpp - \Evp) } \brac{ i \cM (2\pi) \del(\Evpp - \Evpb) }^* \\
+		&= \ddcppfq \frac{1}{2 \Evpp} \int \ddcppbf \frac{\psivp \psisvpb e^{i \vbb \vdot (\vpb - \vp)}}{2 \sqrt{\Evp \Evpb}} \abs{\cM}^2 \del(\Evpp - \Evp) \del(\Evpp - \Evpb).
+	}
+	The cross section is defined by (4.75),
+	\eq{
+		\sig = \int \ddsb \cPvb.
+	}
+	The infinitesimal cross section is then~\cite[p.~105]{Peskin}
+	\al{
+		\ddsig &= \ddcppfq \frac{1}{2 \Evpp}  \int \ddsb \int \ddcppbf \frac{\psivp \psisvpb e^{i \vbb \vdot (\vpb - \vp)}}{2 \sqrt{\Evp \Evpb}} \abs{\cM}^2 \del(\Evpp - \Evp) \del(\Evpp - \Evpb) \\
+		&= \ddcppfq \frac{1}{2 \Evpp} \int \ddcppbf \frac{\psivp \psisvpb}{2 \sqrt{\Evp \Evpb}} \abs{\cM}^2 \del(\Evpp - \Evp) \del(\Evpp - \Evpb) (2\pi)^2 \del^2(\pperp - \pbperp).
+	}
+	Peskin \& Schroeder~(4.77) gives
+	\eq{
+		\int \dd{\kbzsA} \dd{\kbzsB} \del\!\paren{ \kbzsA + \kbzsB - \sum \pfz } \del\!\paren{ \EbA + \EbB + \sum \Ef } = \frac{1}{\abs{\vA - \vB}}.
+	}
+	Using this, we find
+	\eq{
+		\ddsig = \ddcppf \frac{2\pi}{\vsp} \frac{1}{2 \Evpp} \int \ddcpff \frac{\abs{\psivp}^2}{2 \Evp} \abs{\cM}^2 \del(\Evpp - \Evp).
+	}
+	Then, pulling everything except the delta function outside the integral, and using the normalization condition~\cite[pp.~102, 106]{Peskin}
+	\eq{
+		\int \ddckf \abs{\psi(\vk)}^2 = 1,
+	}
+	we can write
+	\eq{
+		\ddsig = \ddcppf \frac{2\pi}{\vsp} \frac{1}{2 \Evpp} \frac{1}{2 \Evp} \abs{\cM}^2 \del(\Evpp - \Evp).
+	}
+	Noting that the subscripts $\vp \leftrightarrow i$ and $\vp' \leftrightarrow f$, we have
+	\eq{
+		\ans{ \ddsig = \frac{1}{\vi} \frac{1}{2 \Ei} \ddcpff \frac{1}{2 \Ef} \abs{\cM(\pin \to \pf)}^2 (2\pi) \del(\Ef - \Ei) }
+	}
+	as we wanted to show. \qed
+	
+	Integrating over $\abs{\pf}$, we have
+	\al{
+		\ddsig &= \frac{1}{\vi} \frac{1}{2 \Ei} \int \ddcpf \pf^2 \ddOmg \frac{1}{2 \Ef} \abs{\cM}^2 (2\pi) \del(\Ef - \Ei) \\
+		&= \frac{1}{\vi} \frac{1}{2 \Ei} \int \ddcpf \pf^2 \ddOmg \frac{1}{2 \Ef} \abs{\cM}^2 (2\pi) \frac{\Ei}{\pin} \del(\pf - \pin) \\
+		&= \frac{1}{\vi} \frac{1}{2 \Ei} \ddOmg \frac{\pin^2}{2 \Ei} \frac{\abs{\cM}^2}{(2\pi)^2} \frac{\Ei}{\pin} \\
+		&= \ddOmg \frac{\abs{\cM}^2}{4 (2\pi)^2} \frac{\pin}{\vi \Ei} \\
+		&= \ddOmg \frac{\abs{\cM}^2}{4 (2\pi)^2}
+	}
+	where we have followed the steps in (4.81) and (4.82).  Thus,
+	\eqn{dsigOmg}{
+		\ans{ \dv{\sig}{\Omg} = \frac{\abs{\cM}^2}{16 \pi^2}. }
+	}
+	\vfix
+}
+
+
+
+\prob{
+	Specialize to the case of electron scattering from a Coulomb potential ($\Ao = Z e / 4\pi r$).  Working in the nonrelativistic limit, derive the Rutherford formula,
+	\eq{
+		\dv{\sig}{\Omg} = \frac{\alp^2 Z^2}{4 m^2 v^4 \sin[4](\tht / 2)}.
+	}
+	\vfix
+}
+
+\sol{
+	From Eq.~\refeq{given2a},
+	\eq{
+		\cM = -i e \ubpp \gamm \up \cdot \tAsm(p' - p).
+	}
+	The Coulomb potential is similar to the Yukawa potential of Peskin \& Schroeder~(4.127), whose Fourier transform is given by~(4.125):
+	\al{
+		V(r) &= -\frac{g^2}{4 \pi} \frac{e^{-\mphi r}}{r}, &
+		\tilde{V}(\vq) &= -\frac{g^2}{\abs{\vq}^2 + \mphi^2}.
+	}
+	When $\mphi = 0$, this has the same form as the Coulomb potential.  Thus
+	\eq{
+		\tAsok = \frac{Z e}{4\pi} \frac{4\pi}{\abs{\vk}^2}
+		= \frac{Z e}{\abs{\vk}^2}.
+	}
+	So our matrix element is given by
+	\eq{
+		\cM = -i e \ubpp \gamo \up \tAso(\vp' - \vp)
+		= -\frac{i e^2 Z}{(\vp' - \vp)^2} \ubpp \gamo \up.
+	}
+	In the nonrelativistic limit,
+	\eq{
+		\ubpp \gamo \up \approx 2 m \xipd \xi
+		= 2 m \delssp
+	}
+	since $\xispd \xis = \delssp$, where $s$ and $s'$ are the initial and final spin states~\cite[pp.~121, 125]{Peskin}.  The matrix element can thus be written as
+	\eq{
+		\cM = -\frac{2 i e^2 m Z}{(\vp' - \vp)^2} \delssp.
+	}
+	Feeding this into Eq.~\refeq{dsigOmg},
+	\eq{
+		\dv{\sig}{\Omg} = \frac{1}{16 \pi^2} \abs{ -\frac{2 i e^2 m Z}{(p' - p)^2} \delssp }^2
+		= \frac{e^4 m^2 Z^2}{4 \pi^2 (\vp' - \vp)^4}
+		= \frac{4 \alp^2 m^2 Z^2}{(\vp' - \vp)^4},
+	}
+	where we require that $s = s'$, so $\delssp = 1$, and we have used $\alp = e^2 / 4\pi$~\cite[p.~126]{Peskin}.  Let $\tht$ be the angle between $\vp$ and $\vp'$.  Note that
+	\eq{
+		(\vp' - \vp)^2 = {\vp'}^2 - 2 \vp' \cdot \vp + \vp^2
+		= {\vp'}^2 - 2 \abs{\vp'} \abs{\vp} \cos\tht + \vp^2.
+	}
+	Since the momenta are very small compared to the energy in the nonrelativistic limit, $\vp \approx \vp'$.  Also in this limit, $p = m v$.  This gives us
+	\eq{
+		\dv{\sig}{\Omg} = \frac{4 \alp^2 m^2 Z^2}{[ 2 (\vp^2 - \vp^2 \cos\tht) ]^2}
+		= \frac{\alp^2 m^2 Z^2}{\vp^4 (1 - \cos\tht)^2}
+		= \frac{\alp^2 m^2 Z^2}{4 \vp^4 \sin[4](\tht / 2)}
+		= \frac{\alp^2 m^2 Z^2}{4 m^4 v^4 \sin[4](\tht / 2)}
+		= \ans{ \frac{\alp^2 Z^2}{4 m^2 v^4 \sin[4](\tht / 2)} }
+	}
+	as desired. \qed
+}
