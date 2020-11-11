@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{361}
+\homeworknum{4}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+\state{LCR circuit}{
+	An electrical circuit consists of an inductance $L$, resistance $R$ and capacitance $C$ in series, driven by a voltage source $\Vt = \Vo \cos(\omg t)$.  Show that the charge $\Qt$ on the capacitor satisfies the equation
+	\eq{
+		L \qdd + r \qd + \frac{q}{C} = \Vt,
+	}
+	and use it to define the complex susceptibility from
+	\eq{
+		\qomg = \chiomg \Vomg.
+	}
+	Show that the forced solution of this equation is
+	\eq{
+		\qt = \frac{\Vo \cos(\omg t - \phi)}{\sqrt{ (-\omg^2 L + 1 / C)^2 + (\omg R)^2 }},
+	}
+	where
+	\eq{
+		\tan(\phi) = \frac{\omg R}{\omg^2 L - 1 / C}.
+	}
+	Show that the mean rate of power dissipation is
+	\eq{
+		W = \frac{1}{2} \frac{ \omg \Vo^2 \sin(\phi)}{\sqrt{ (-\omg^2 L + 1 / C)^2 + (\omg R)^2 }}.
+	}
+	Sketch the real and imaginary parts of $\chi$ as a function of frequency, for the cases $Q \ll 1$, $Q \approx 1$, and $Q \gg 1$, where $Q = \sqrt{L / C} / R$ is the ``quality factor.''
+	
+	Where are the poles of $\chi$ in the complex $\omg$ plane?
+}
+
+
+
+
+
+
+\state{Landau theory of phase transitions}{
+	A ferroelectric crystal is one that supports a macroscopic polarization $P$, which usually arises because the underlying crystal structure does not have inversion symmetry.  However, as temperature or pressure is changed, the crystal may recover the inversion symmetry.  This can be modeled by Landau's theory of second order phase transitions, where we postulate a form for the free energy density (per unit volume)
+	\eqn{given2}{
+		\cF = \frac{1}{2} a P^2 + \frac{1}{4} b P^4 + \frac{1}{6} c P^6 + \cdots,
+	}
+	where the coefficient $a = \ao (T - \Tc)$ is temperature dependent and all the other coefficients are constant.  Although the polarization $P$ is of course a vector, we assume that it can point only in a symmetry direction of the crystal, and so it is replaced by a scalar.
+}
+
+\prob{
+	Assume that $b > 0$ and $c = 0$.  Use Eq.~\refeq{given2} to determine the form for the equilibrium $\PT$.
+}
+
+
+
+\prob{ \label{2c}
+	Including in $\cF$ the energy of the polarization coupled to an external electric field $E$, determine the dielectric susceptibility $\chi = \dv*{P}{E}$ both above and below the critical temperature.
+}
+
+
+
+\prob{
+	Sketch curves for $\PT$, $\chiinvT$, and $\chiT$.
+}
+
+
+
+\prob{
+	In a different material, the free energy is described by a similar form to Eq.~\refeq{given2}, but with $b < 0$ and $c > 0$.  By sketching $\cF$ at different temperatures, discuss the behavior of the equilibrium polarization and the linear susceptibility, contrasting the results with those found in \ref{2c}.
+}
+
+
+
+
+
+
+\state{Reflectivity of metals}{
+	The phase velocity of light in a conducting medium is the speed of light divided by the complex dielectric constant $\Nomg = \sqrt{\epsomg}$ where we may use for $\eps$ the Drude result
+	\eq{
+		\epsomg = 1 - \frac{\omgp^2}{\omg^2 + i \omg / \tau}.
+	}
+	In a good Drude metal, we have $1 / \tau \ll \omgp$.
+}
+
+\prob{
+	Sketch curves of
+	\begin{enumerate}
+		\item $\Re[\sigomg]$,
+		\item $\Re[\epsomg]$,
+		\item $\Im[1 / \epsomg]$.
+	\end{enumerate}
+}
+
+
+
+\prob{
+	Consider a light wave with the electric field polarized in the $x$ direction at normal incidence from the vacuum on a good Drude metal occupying the region $z > 0$.  In the vacuum ($z < 0$), the incident $\Eq$ and reflected $\Ew$ waves give rise to a field
+	\eq{
+		\Ex = \Eq e^{i \omg (z / c - t)} + \Ew e^{-i \omg (z / c + t)},
+	}
+	whereas in the medium, the electric field is
+	\eq{
+		\Ex = \Eo e^{i \omg [ \Nomg z / c - t ]}.
+	}
+	Matching the electric and magnetic fields on the boundary, show that
+	\al{
+		\Eo &= \Eq + \Ew, &
+		N \Eo &= \Eq - \Ew,
+	}
+	and hence show that the reflection coefficient satisfies
+	\eq{
+		R = \abs{\frac{\Ew}{\Eq}}^2
+		= \abs{\frac{1 - N}{1 + N}}^2.
+	}
+}
+
+
+
+\prob{
+	Using the Drude formula above, show that
+	\eq{
+		R \approx \begin{cases}
+			1 - 2 \sqrt{\dfrac{\omg}{2\pi \sigo}} & \omg \ll 1 / \tau, \\[3ex]
+			1 - \dfrac{2}{\omgp \tau} & 1 / \tau \ll \omg \ll \omgp, \\[3ex]
+			0 & \omgp \ll \omg,
+		\end{cases}
+	}
+	and sketch the reflectivity $\Romg$.
+}
+
+
+
+
+
+\state{Phonons}{
+	From Eq.~(5.8) construct $\Im[\chi]$ in the limit that $\gam \to 0$.  Use the Kramers--{\Kronig} relation to then reconstruct $\Re[\chi]$ from $\Im[\chi]$ in the same limit.
+}
+
+
+
+
+
+
+\state{Screened Coulomb interaction}{
+	Consider a nucleus of charge $Z$ producing a potential
+	\eq{
+		\Vextvq = -\frac{4\pi Z e^2}{q^2}.
+	}
+	Using the long-wavelength limit of the dielectric function, show that the screened potential satisfies
+	\eq{
+		\Vscrvqo = -\frac{2}{3} \Omg \EF,
+	}
+	where $\Omg$ is the volume of the unit cell and $\EF$ is the Fermi energy for $Z$ free electrons per unit cell.
+}
+
+
+
+
+
+
+\state{Peierls transition}{
+	By rewriting the term containing $\nkpq$ (replace $\vk + \vq \to -\vk'$ and then relabel $\vk'$ as $\vk$), show that the static density response function can be written
+	\eq{
+		\chiovqo = 2 \sumklkF \frac{1}{\epskpq - \epsk}.
+	}
+	In one dimension, make a linear approximation to the electronic dispersion near $\kF$, i.e.~$\epsk = \vF \abs{k}$, and consider the response for $q = 2 \kF + p$, where $p \ll 2 \kF$.  By considering terms in the sum over $k$ near $k \approx -\kF$, show that
+	\eq{
+		\chio(2 \kF + p) \approx \frac{1}{2\pi \vF} \ln\abs{ \frac{\kF}{p} }.
+	}
+	Explain why this result suggests that a one-dimensional metal will be unstable to a lattice distortion with wavevector $2 \kF$.
+}
+
+
+
+
+
+
+\state{Optical properties}{
+	Discuss why, at optical frequencies, glass is transparent and silver is shiny, while graphite appears black and powdered sugar is white.
+}
+
+
+
+
+
+\state{Metals and insulators}{
+	Explain the differences between a metal and an insulator.  Your discussion should include reference to single particle properties, screening of the Coulomb interaction, optical properties, and electrical and thermal properties.
+}
+
+
+\makebib
+
+\end{document}
