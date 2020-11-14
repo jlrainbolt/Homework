@@ -1,0 +1,53 @@
+\state{Screened Coulomb interaction}{
+	Consider a nucleus of charge $Z$ producing a potential
+	\eq{
+		\Vextvq = -\frac{4\pi Z e^2}{q^2}.
+	}
+	Using the long-wavelength limit of the dielectric function, show that the screened potential satisfies
+	\eq{
+		\Vscrvqo = -\frac{2}{3} \Omg \EF,
+	}
+	where $\Omg$ is the volume of the unit cell and $\EF$ is the Fermi energy for $Z$ free electrons per unit cell.
+}
+
+\sol{
+	From (5.90) in the lecture notes,
+	\eq{
+		\frac{\Vscr}{\Vext} = \frac{1}{\epsvqomg}.
+	}
+	In the long-wavelength limit, the dielectric constant is given by (5.98),
+	\eq{
+		\eps(\vq \to 0, \omg) = 1 + \frac{\qTF^2}{q^2},
+	}
+	where $\qTF$ is the Thomas-Fermi wavevector, given by (4.134):
+	\eq{
+		\qTF^2 = \frac{4}{\pi} \frac{m e^2}{\hbar^2} \kF.
+	}
+	Thus
+	\eq{
+		\Vscr = \frac{\Vext}{\epsvqomg}
+		= -\frac{4\pi Z e^2}{q^2} \frac{1}{1 + \qTF^2 / q^2}
+		= -\frac{4\pi Z e^2}{q^2 + \qTF^2}.
+	}
+	When $\vq = 0$,
+	\eq{
+		\Vscrvqo = -\frac{4\pi Z e^2}{\qTF^2}
+		= -4\pi Z e^2 \frac{\pi \hbar^2}{4 m e^2 \kF}
+		= -\frac{\pi^2 \hbar^2 Z}{m \kF}.
+	}
+	We note that $Z$ represents the number of electrons per nucleus, so $Z = n \omg$ with $n$ given by (2.9),
+	\eq{
+		n = \frac{\kF^3}{3 \pi^2}.
+	}
+	We note also that the Fermi energy is given by (2.3),
+	\eq{
+		\EF = \frac{\hbar^2 \kF^2}{2m}.
+	}
+	With these substitutions, we obtain
+	\eq{
+		\Vscrvqo = -\frac{\pi^2 \hbar^2 \kF^3 \Omg}{3 \pi^2 m \kF}
+		= -\frac{\hbar^2 \kF^2 \Omg}{3 m}
+		= \ans{ -\frac{2}{3} \Omg \EF, }
+	}
+	as we sought to prove. \qed
+}

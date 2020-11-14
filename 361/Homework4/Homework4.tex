@@ -26,26 +26,50 @@
 	\eq{
 		\chivqomg = \frac{1}{-\rho \omg^2 + i \gam \omg + K q^2}.
 	}
-	Then
-	\al{
-		\Re[\chi] &= \frac{K q^2 - \rho \omg^2}{(K q^2 - \rho \omg)^2 + \gam^2 \omg^2}, &
-		\Im[\chi] &= -\frac{\gam \omg}{(K q^2 - \rho \omg)^2 + \gam^2 \omg^2}.
-	}
-	In the limit $\gam \to 0$,
-	\al{
-		\Re[\chi] &= \frac{K q^2 - \rho \omg^2}{(K q^2 - \rho \omg)^2}, &
-		\Im[\chi] &= -\frac{\gam \omg}{(K q^2 - \rho \omg^2)^2}.
-	}
-	The relevant Kramers--{\Kronig} relation is given by (5.39),
+	Define $\chi' = -\rho \chi$.  Then
 	\eq{
-		\Re[\kapomg] = \PrV \int \ddomgpf \frac{\Im[\kapomgp]}{\omg' - \omg}.
+		\chi' = \frac{1}{\omg^2 - i \gam \omg / \rho - K q^2 / \rho}
+		\equiv \frac{1}{\omg^2 - \omgo^2 - i b \omg}
 	}
-	Then
+	where we have defined $\omgo^2 = K q^2 / \rho$ and $b = \gam / \rho$.  Then $\chi'$ has poles at
 	\eq{
-		\Re[\kapomg] = -\PrV \int \ddomgpf \frac{1}{\omg' - \omg} \frac{\gam \omg'}{(K q^2 - \rho {\omg'}^2)^2}
-		= 
+		\omg = \frac{i b \pm \sqrt{4 \omgo^2 - b^2}}{2}
+		\equiv i \alp \pm \bet,
 	}
-	\hl{partial fraction decomposition???}
+	where we have defined $\alp = b / 2$ and $\bet = \sqrt{4 \omgo^2 - b^2} / 2$.  We note that $\bet$ is real since $b \propto \gam \to 0$.  Then
+	\eq{
+		\chi' = \frac{1}{(\omg - \bet - i\alp) (\omg + \bet - i \alp)}.
+	}
+	Note that as $\gam \to 0$, $\alp \to 0$ and $\bet \to 0$.  Equation (5.85) in the lecture notes is
+	\eq{
+		\lim_{\eta \to 0^+} \frac{1}{x + i \eta} = \PrV \frac{1}{x} - i \pi \del(x).
+	}
+	Applying this,
+	\eq{
+		\chi' = \paren{ \PrV \frac{1}{\omg - \bet} - i \pi \del(\omg - \bet) } \paren{ \PrV \frac{1}{\omg + \bet} - i \pi \del(\omg + \bet) }
+	}
+	
+	
+%	Then
+%	\al{
+%		\Re[\chi] &= \frac{K q^2 - \rho \omg^2}{(K q^2 - \rho \omg)^2 + \gam^2 \omg^2}, &
+%		\Im[\chi] &= -\frac{\gam \omg}{(K q^2 - \rho \omg)^2 + \gam^2 \omg^2}.
+%	}
+%	In the limit $\gam \to 0$,
+%	\al{
+%		\Re[\chi] &= \frac{K q^2 - \rho \omg^2}{(K q^2 - \rho \omg)^2}, &
+%		\Im[\chi] &= -\frac{\gam \omg}{(K q^2 - \rho \omg^2)^2}.
+%	}
+%	The relevant Kramers--{\Kronig} relation is given by (5.39),
+%	\eq{
+%		\Re[\kapomg] = \PrV \int \ddomgpf \frac{\Im[\kapomgp]}{\omg' - \omg}.
+%	}
+%	Then
+%	\eq{
+%		\Re[\kapomg] = -\PrV \int \ddomgpf \frac{1}{\omg' - \omg} \frac{\gam \omg'}{(K q^2 - \rho {\omg'}^2)^2}
+%		= 
+%	}
+%	\hl{partial fraction decomposition???}
 }
 
 
@@ -53,73 +77,19 @@
 
 
 \clearpage
-\state{Screened Coulomb interaction}{
-	Consider a nucleus of charge $Z$ producing a potential
-	\eq{
-		\Vextvq = -\frac{4\pi Z e^2}{q^2}.
-	}
-	Using the long-wavelength limit of the dielectric function, show that the screened potential satisfies
-	\eq{
-		\Vscrvqo = -\frac{2}{3} \Omg \EF,
-	}
-	where $\Omg$ is the volume of the unit cell and $\EF$ is the Fermi energy for $Z$ free electrons per unit cell.
+\input{Problem5}
+
+\input{Problem6}
+
+\input{Problem7}
+
+
+
+
+
+\state{Metals and insulators}{
+	Explain the differences between a metal and an insulator.  Your discussion should include reference to single particle properties, screening of the Coulomb interaction, optical properties, and electrical and thermal properties.
 }
-
-\sol{
-	From (5.90) in the lecture notes,
-	\eq{
-		\frac{\Vscr}{\Vext} = \frac{1}{\epsvqomg}.
-	}
-	In the long-wavelength limit, the dielectric constant is given by (5.94),
-	\eq{
-		\eps(0, \omg) = 1 - \frac{\omgp^2}{\omg^2}.
-	}
-	Then
-	\eq{
-		\Vscr = -\frac{4\pi Z e^2}{q^2} \frac{1}{1 - \omgp^2 / \omg^2}
-	}
-}
-
-
-
-
-
-\clearpage
-\state{Peierls transition}{
-	By rewriting the term containing $\nkpq$ (replace $\vk + \vq \to -\vk'$ and then relabel $\vk'$ as $\vk$), show that the static density response function can be written
-	\eq{
-		\chiovqo = 2 \sumklkF \frac{1}{\epskpq - \epsk}.
-	}
-	In one dimension, make a linear approximation to the electronic dispersion near $\kF$, i.e.~$\epsk = \vF \abs{k}$, and consider the response for $q = 2 \kF + p$, where $p \ll 2 \kF$.  By considering terms in the sum over $k$ near $k \approx -\kF$, show that
-	\eq{
-		\chio(2 \kF + p) \approx \frac{1}{2\pi \vF} \ln\abs{ \frac{\kF}{p} }.
-	}
-	Explain why this result suggests that a one-dimensional metal will be unstable to a lattice distortion with wavevector $2 \kF$.
-}
-
-\sol{
-	From (5.95) in the lecture notes,
-	\eq{
-		\chiovq = 2 \sumvk \frac{\nvk - \nkpq}{\epskpq - \epsk}
-	}
-}
-
-
-
-
-
-
-%\state{Optical properties}{
-%	Discuss why, at optical frequencies, glass is transparent and silver is shiny, while graphite appears black and powdered sugar is white.
-%}
-
-
-
-
-
-%\state{Metals and insulators}{
-%	Explain the differences between a metal and an insulator.  Your discussion should include reference to single particle properties, screening of the Coulomb interaction, optical properties, and electrical and thermal properties.
-%}
 
 
 \makebib

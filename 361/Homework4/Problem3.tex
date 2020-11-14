@@ -133,7 +133,7 @@
 
 \prob{
 	Using the Drude formula above, show that
-	\eq{
+	\eqn{Rapprox}{
 		R \approx \begin{cases}
 			1 - 2 \sqrt{\dfrac{\omg}{2\pi \sigo}} & \omg \ll 1 / \tau, \\[3ex]
 			1 - \dfrac{2}{\omgp \tau} & 1 / \tau \ll \omg \ll \omgp, \\[3ex]
@@ -158,7 +158,7 @@
 		\Im[\epsomg] &= \frac{\omgp^2}{\tau \omg} \frac{\tau^2}{1 + \omg^2 \tau^2}
 		\approx \frac{\omgp^2 \tau}{\omg}.
 	}
-	Then (using Mathematica)
+	Then Eq.~\refeq{R} becomes (using Mathematica)
 	\eq{
 		\Im[N] = \sqrt{\frac{\Im[\eps]}{2}}
 		\approx \sqrt{\frac{\omgp^2 \tau}{2 \omg}} = \Re[N],
@@ -191,38 +191,43 @@
 		\Im[\epsomg] &= \frac{\omgp^2}{\tau \omg} \frac{\tau^2}{1 + \omg^2 \tau^2}
 		\approx \frac{\omgp^2}{\tau \omg^3}.
 	}
-	We can write $\eps = r e^{i \tht}$, where
-	\al{
-		r &= \sqrt{ \frac{\omgp^4}{\omg^4} + \frac{\omgp^4}{\tau^2 \omg^6} }, &
-		\tht &= \tan[-1]( -\frac{\omgp^2}{\tau \omg^3} \frac{\omg^2}{\omgp^2} )
-		= \tan[-1](-\frac{1}{\tau \omg})
-		\approx 0.
-	}
-	Then
-	\al{
-		\Re[N] &= \sqrt{r} \cos(\frac{\tht}{2}) \approx \sqrt{r}, &
-		\Im[N] &= \sqrt{r} \sin(\frac{\tht}{2}) \approx 0,
-	}
-	so
+	Note that $\Re[N] \ll q$.  Then we can Taylor expand Eq.~\refeq{R}:
 	\eq{
-		R = \frac{(1 - \sqrt{r})^2}{(1 + \sqrt{r})^2}
-		= \frac{1 - 2 \sqrt{r} + r}{1 + 2 \sqrt{r} + r}
-		= \frac{1 + 2 \sqrt{r} + r - 4 \sqrt{r}}{1 + 2 \sqrt{r} + r}
-		= 1 - \frac{4 \sqrt{r}}{1 + 2 \sqrt{r} + r}
-		\approx 1 - \frac{4}{\sqrt{r}}.
+		R \approx 1 - \frac{4 \Re[N]}{1 + \Im[N]^2}
 	}
-	Note that
-	\eq{
-		\sqrt{r} = \paren{ \frac{\omgp^4}{\omg^4} + \frac{\omgp^4}{\tau^2 \omg^6}  }^{1/4}
-		= \frac{\omgp}{\omg} \sqrt{1 + \frac{1}{\tau^2 \omg^2} }
-		\approx \frac{\omgp}{\omg} \paren{ 1 + \frac{1}{4 \tau^2 \omg^2} }
-		\approx 2 \omgp \tau,
-	}
-	so
-	\eq{
-		\ans{ R \approx 1 - \frac{2}{\omgp \tau} }
-	}
-	as we wanted to show. \qed
+	\hl{What did he do??}
+%	We can write $\eps = r e^{i \tht}$, where
+%	\al{
+%		r &= \sqrt{ \frac{\omgp^4}{\omg^4} + \frac{\omgp^4}{\tau^2 \omg^6} }, &
+%		\tht &= \tan[-1]( -\frac{\omgp^2}{\tau \omg^3} \frac{\omg^2}{\omgp^2} )
+%		= \tan[-1](-\frac{1}{\tau \omg})
+%		\approx 0.
+%	}
+%	Then
+%	\al{
+%		\Re[N] &= \sqrt{r} \cos(\frac{\tht}{2}) \approx \sqrt{r}, &
+%		\Im[N] &= \sqrt{r} \sin(\frac{\tht}{2}) \approx 0,
+%	}
+%	so
+%	\eq{
+%		R = \frac{(1 - \sqrt{r})^2}{(1 + \sqrt{r})^2}
+%		= \frac{1 - 2 \sqrt{r} + r}{1 + 2 \sqrt{r} + r}
+%		= \frac{1 + 2 \sqrt{r} + r - 4 \sqrt{r}}{1 + 2 \sqrt{r} + r}
+%		= 1 - \frac{4 \sqrt{r}}{1 + 2 \sqrt{r} + r}
+%		\approx 1 - \frac{4}{\sqrt{r}}.
+%	}
+%	Note that
+%	\eq{
+%		\sqrt{r} = \paren{ \frac{\omgp^4}{\omg^4} + \frac{\omgp^4}{\tau^2 \omg^6}  }^{1/4}
+%		= \frac{\omgp}{\omg} \sqrt{1 + \frac{1}{\tau^2 \omg^2} }
+%		\approx \frac{\omgp}{\omg} \paren{ 1 + \frac{1}{4 \tau^2 \omg^2} }
+%		\approx 2 \omgp \tau,
+%	}
+%	so
+%	\eq{
+%		\ans{ R \approx 1 - \frac{2}{\omgp \tau} }
+%	}
+%	as we wanted to show. \qed
 	
 	When $\omgp \ll \omg$, Eq.~\refeq{eps} becomes $\epsomg \approx 1$, which implies $N = 1$, so $\Re[N] = 1$ and $\Im[N] = 0$.  Then by Eq.~\refeq{R},
 	\eq{
@@ -232,4 +237,12 @@
 	}
 	as desired. \qed
 
+	Figure~\ref{f3c}~(left) shows the exact expression for $R$ for four different values of $\tau / \omgp$: 0.1~(blue), 1~(gold), 10~(green), and 100~(red).  Figure~\ref{f3c}~(right) compares the exact expression for $\omg \ll 1 / \tau$~(blue) and for $\omg \gg 1 / \tau$~(gold) and to the approximations for $\omg \ll 1 / \tau$~(green), $1 / \tau \ll \omg \ll \omgp$~(red), and $\omgp \ll \omg$~(violet).
+
+	\begin{figure}[t]
+		\includegraphics[width=0.49\textwidth,trim=1.5cm 0 0 0,clip]{3c} \hfill
+		\includegraphics[width=0.49\textwidth,trim=1.5cm 0 0 0,clip]{3c2}
+		\caption{Left: exact expression for $R$ in Eq.~\refeq{R} for $\tau / \omgp = 0.1$~(blue), $\tau / \omgp = 1$~(gold), $\tau / \omgp = 10$~(green), and $\tau / \omgp = 100$~(red).  Right: exact $R$ for $\omg \ll 1 / \tau$~(blue) and for $\omg \gg 1 / \tau$~(gold) and Eq.~\refeq{Rapprox} approximation for $\omg \ll 1 / \tau$~(green), $1 / \tau \ll \omg \ll \omgp$~(red), and $\omgp \ll \omg$~(violet).}
+		\label{f3c}
+	\end{figure}
 }

@@ -1,0 +1,55 @@
+\state{Peierls transition}{
+	By rewriting the term containing $\nkpq$ (replace $\vk + \vq \to -\vk'$ and then relabel $\vk'$ as $\vk$), show that the static density response function can be written
+	\eq{
+		\chiovqo = 2 \sumklkF \frac{1}{\epskpq - \epsk}.
+	}
+	In one dimension, make a linear approximation to the electronic dispersion near $\kF$, i.e.~$\epsk = \vF \abs{k}$, and consider the response for $q = 2 \kF + p$, where $p \ll 2 \kF$.  By considering terms in the sum over $k$ near $k \approx -\kF$, show that
+	\eq{
+		\chio(2 \kF + p) \approx \frac{1}{2\pi \vF} \ln\abs{ \frac{2 \kF}{p} }.
+	}
+	Explain why this result suggests that a one-dimensional metal will be unstable to a lattice distortion with wavevector $2 \kF$.
+}
+
+\sol{
+	From (5.95) in the lecture notes,
+	\eq{
+		\chiovq = 2 \sumvk \frac{\nvk - \nkpq}{\epskpq - \epsk}.
+	}
+	Following steps to get to (5.102),
+	\eq{
+		\chiovq = 2 \sumvk \paren{ \frac{\nvk}{\epskpq - \epsk} - \frac{\nkpq}{\epskpq - \epsk} }
+		= 2 \sumvk \paren{ \frac{\nvk}{\epskpq - \epsk} - \frac{\nmk}{\epsmk - \epsmkmq} },
+	}
+	where we have made the suggested substitution.  We know from p.~91 of the lecture notes that
+	\eq{
+		n(k) = \begin{cases}
+			1 & \abs{k} < \kF, \\
+			0 & \text{otherwise}.
+		\end{cases}
+	}
+	We note also that $\epsk = \epsmk$.  Then
+	\eq{
+		\chiovq = 2 \sumklkF \paren{ \frac{1}{\epskpq - \epsk} - \frac{1}{\epsk - \epskpq} }
+		= 2 \sumklkF \paren{ \frac{1}{\epskpq - \epsk} + \frac{1}{\epskpq - \epsk} }
+		= \ans{ 4 \sumklkF \frac{1}{\epskpq - \epsk} }
+	}
+	as desired~(up to a factor of 2, which I think is incorrect in the problem statement). \qed
+	
+	We approximate the sum as an integral and substitute $\epsk = \vF \abs{k}$.  When $k \approx -\kF$, we need only consider $k < 0$:
+	\al{
+		\chiovq &= \frac{4}{2\pi} \intokF \frac{\ddk}{\epskpq - \epsk} \\
+		&= \frac{2}{\pi \vF} \intokF \frac{\ddk}{\abs{k + 2 \kF + p} - \abs{k}} \\
+		&= \frac{2}{\pi \vF} \intmkFo \frac{\ddk}{\abs{k + 2 \kF + p} - \abs{k}} \\
+		&= -\frac{2}{\pi \vF} \intkFo \frac{\ddk}{-k + 2 \kF + p - k} \\
+		&= \frac{2}{\pi \vF} \intokF \frac{\ddk}{2 \kF + p - 2k} \\
+		&= \frac{2}{\pi \vF} \frac{1}{2} \ln(\frac{2 \kF + p}{2}) \\
+		&\approx \ans{ \frac{1}{\pi \vF} \ln\abs{\frac{\kF}{p}}, }
+	}
+	since $p \ll \kF$.  This is the desired result up to the same factor of 2 as before. \qed
+	
+	This result suggests that the response function of a one-dimensional metal has a singularity at $q = 2 \kF$.  The charge density response function is given by (5.53) in the lecture notes,
+	\eq{
+		\del\rho(\vq, \omg) = \chi(\vq, \omg) V(\vq, \omg).
+	}
+	This shows that a singularity in $\chi$ creates an infinite derivative of the charge density $\rho$ at that value of $\vq$.  Therefore, a one-dimensional metal will have a divergent change in charge density when subject to a lattice distortion with wavevector $2\kF$, indicating an instability.
+}
