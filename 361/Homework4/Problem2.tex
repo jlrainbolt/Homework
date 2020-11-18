@@ -24,15 +24,18 @@
 		P &= 0, &
 		P &= \pm \sqrt{-\frac{a}{b}}.
 	}
-	Note, however, that $P = 0$ is a local maximum of $\cF$:
+	Note, however, that $P = 0$ is a local maximum of $\cF$ if $T < \Tc$:
 	\eq{
 		\left. \dv[2]{\cF}{P} \right|_{P = 0} = \brac{ a + 2 b P^2 }_{P = 0}
 		= \ao (T - \Tc)
-		< 0 \quad \text{when } T < \Tc,
+		< 0 \quad \text{when } T < \Tc.
 	}
-	which is the regime we are interested in for a ferroelectric~\cite[p.~556]{Ashcroft}\cite{Ferroelectricity}.  Thus the equilibrium $\PT$ is given by
+	However, the nonzero solution is imaginary for $T > \Tc$.  Thus the equilibrium $\PT$ is given by
 	\eqn{PT}{
-		\ans{ \PT = \pm \sqrt{\frac{\ao}{b} (\Tc - T)}. }
+		\ans{ \PT = \begin{cases}
+			\pm \sqrt{\dfrac{\ao}{b} (\Tc - T)} & T < \Tc, \\[2.5ex]
+			0, \pm \sqrt{\dfrac{\ao}{b} (\Tc - T)} & T > \Tc.
+		\end{cases} }
 	}
 	\vfix
 }
@@ -62,11 +65,15 @@
 	}
 	which implies
 	\eqn{chiT}{
-		\chiT = \frac{1}{a + 3 b P^2}
-		= \frac{1}{\ao (T - \Tc) + 3 \ao (\Tc - T)}
-		= \ans{ \frac{1}{2 \ao (\Tc - T)}, }
+		\chiT = \begin{cases}
+			\dfrac{1}{a + 3 b P^2}
+			= \dfrac{1}{\ao (T - \Tc) + 3 \ao (\Tc - T)}
+			= \ans{ \dfrac{1}{2 \ao (\Tc - T)}, } & \ans{ T < \Tc, } \\[2.5ex]
+			\dfrac{1}{a}
+			= \ans{ \dfrac{1}{\ao (T - \Tc)}, } & \ans{ T > \Tc, }
+		\end{cases}
 	}
-	where we have used $\PT$ as defined in Eq.~\refeq{PT}.  Although this $\PT$ is evaluated at $E = 0$, we assume the difference is negligible from $\PT$ evaluated at small $E$, as mentioned on p.~79 of the lecture notes.  This expression is valid above and below the critical temperature.
+	where we have used $\PT$ as defined in Eq.~\refeq{PT} and ignored the imaginary $\PT$.  Although this $\PT$ is evaluated at $E = 0$, we assume the difference is negligible from $\PT$ evaluated at small $E$, as mentioned on p.~79 of the lecture notes.
 }
 
 
@@ -82,7 +89,7 @@
 		\includegraphics[width=0.49\textwidth,trim=1.5cm 0 0 0,clip]{2ci} \\[0.5cm]
 		\includegraphics[width=0.43\textwidth,trim=1.5cm 0 0 0,clip]{2cii} \hspace{1cm}
 		\includegraphics[width=0.43\textwidth,trim=1.5cm 0 0 0,clip]{2ciii}
-		\caption{Plots of $\PT$~(top), $\chiinvT$~(bottom left), and $\chiT$~(bottom right), where $\PT$ is given by Eq.~\refeq{PT} and $\chiT$ is given by Eq.~\refeq{chiT}.  In the top figure, the blue~(gold) line corresponds to the upper~(lower) sign.}
+		\caption{Plots of $\PT$~(top), $\chiinvT$~(bottom left), and $\chiT$~(bottom right), where $\PT$ is given by Eq.~\refeq{PT} and $\chiT$ is given by Eq.~\refeq{chiT}.  In the top figure, the blue~(gold) line corresponds to the upper~(lower) sign, and the green line to 0.}
 		\label{f2c}
 	\end{figure}
 }

@@ -1,0 +1,59 @@
+\state{Phonons}{
+	From Eq.~(5.8) construct $\Im[\chi]$ in the limit that $\gam \to 0$.  Use the Kramers--{\Kronig} relation to then reconstruct $\Re[\chi]$ from $\Im[\chi]$ in the same limit.
+}
+
+\sol{
+	Equation~(5.8) in the lecture notes is
+	\eq{
+		\chivqomg = \frac{1}{-\rho \omg^2 + i \gam \omg + K q^2}.
+	}
+	Define $\chi' = -\rho \chi$.  Then
+	\eq{
+		\chi' = \frac{1}{\omg^2 - i \gam \omg / \rho - K q^2 / \rho}
+		\equiv \frac{1}{\omg^2 - \omgo^2 - i b \omg}
+	}
+	where we have defined $\omgo^2 = K q^2 / \rho$ and $b = \gam / \rho$.  Then $\chi'$ has poles at
+	\eq{
+		\omg = \frac{i b \pm \sqrt{4 \omgo^2 - b^2}}{2}
+		\equiv i \alp \pm \bet,
+	}
+	where we have defined $\alp = b / 2$ and $\bet = \sqrt{4 \omgo^2 - b^2} / 2$.  We note that $\bet$ is real since $b \propto \gam \to 0$.  Then
+	\eq{
+		\chi' = \frac{1}{(\omg - \bet - i\alp) (\omg + \bet - i \alp)}.
+	}
+	Note that as $\gam \to 0$, $\alp \to 0$ and $\bet \to 0$.  Equation (5.85) in the lecture notes is
+	\eq{
+		\lim_{\eta \to 0^+} \frac{1}{x + i \eta} = \PrV \frac{1}{x} - i \pi \del(x).
+	}
+	Applying this,
+	\al{
+		\chi' &= \paren{ \PrV \frac{1}{\omg - \bet} - i \pi \del(\omg - \bet) } \paren{ \PrV \frac{1}{\omg + \bet} - i \pi \del(\omg + \bet) } \\
+		&= \PrV \frac{1}{\omg - \bet} \PrV \frac{1}{\omg + \bet} - i \pi \del(\omg + \bet) \PrV \frac{1}{\omg - \bet} - i \pi \del(\omg - \bet) \PrV \frac{1}{\omg + \bet} - \pi^2 \del(\omg + \bet) \del(\omg - \bet) \\
+		&= \PrV \frac{1}{\omg - \bet} \PrV \frac{1}{\omg + \bet} - i \pi \paren{ \del(\omg + \bet) \PrV \frac{1}{\omg - \bet} + \del(\omg - \bet) \PrV \frac{1}{\omg + \bet} }.
+	}
+	Thus
+	\aln{ \label{parts}
+		\Re[\chi] &= -\frac{1}{\rho (\omg - \bet) (\omg + \bet)}, &
+		\Im[\chi] &= \frac{\pi}{\rho} \paren{ \frac{\del(\omg + \bet)}{\omg - \bet} + \frac{\del(\omg - \bet)}{\omg + \bet} }
+	}
+	where
+	\eqn{beta}{
+		\beta = \frac{1}{2} \sqrt{\frac{4 K q^2}{\rho} - \frac{\gam^2}{\rho^2}}.
+	}
+	
+	The relevant Kramers--{\Kronig} relation is given by (5.39),
+	\eq{
+		\Re[\kapomg] = \PrV \int \ddomgpf \frac{\Im[\kapomgp]}{\omg' - \omg}.
+	}
+	Then
+	\al{
+		\Re[\chi] &= \frac{\pi}{\rho} \PrV \int \ddomgpf \frac{1}{\omg' - \omg} \paren{ \frac{\del(\omg' + \bet)}{\omg' - \bet} + \frac{\del(\omg' - \bet)}{\omg' + \bet} } \\
+		&= \frac{\pi}{\rho} \PrV \int \ddomgpf \paren{ \frac{\del(\omg' + \bet)}{(\omg' - \omg) (\omg' - \bet)} + \frac{\del(\omg' - \bet)}{(\omg' - \omg) (\omg' + \bet)} } \\
+		&= \frac{1}{\rho} \paren{ \frac{1}{(-\bet - \omg) (-\bet - \bet)} + \frac{1}{(\bet - \omg) (\bet + \bet)} } \\
+		&= \frac{1}{2 \bet \rho} \paren{ \frac{\bet - \omg}{(\bet - \omg) (\bet + \omg)} + \frac{\bet + \omg}{(\bet - \omg) (\bet + \omg)} } \\
+		&= \frac{1}{2 \bet \rho} \paren{ \frac{\bet - \omg + \bet + \omg}{(\bet - \omg) (\bet + \omg)} } \\
+		&= \frac{1}{2 \bet \rho} \paren{ \frac{2 \bet}{(\bet - \omg) (\bet + \omg)} } \\
+		&= \ans{ -\frac{1}{\rho (\omg - \bet) (\omg + \bet)}, }
+	}
+	with $\beta$ given by Eq.~\refeq{beta}.  This is the same as Eq.~\refeq{parts}. \qed
+}

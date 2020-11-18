@@ -14,83 +14,11 @@
 \input{Problem1}
 \input{Problem2}
 \input{Problem3}
-
-
-
-\state{Phonons}{
-	From Eq.~(5.8) construct $\Im[\chi]$ in the limit that $\gam \to 0$.  Use the Kramers--{\Kronig} relation to then reconstruct $\Re[\chi]$ from $\Im[\chi]$ in the same limit.
-}
-
-\sol{
-	Equation~(5.8) in the lecture notes is
-	\eq{
-		\chivqomg = \frac{1}{-\rho \omg^2 + i \gam \omg + K q^2}.
-	}
-	Define $\chi' = -\rho \chi$.  Then
-	\eq{
-		\chi' = \frac{1}{\omg^2 - i \gam \omg / \rho - K q^2 / \rho}
-		\equiv \frac{1}{\omg^2 - \omgo^2 - i b \omg}
-	}
-	where we have defined $\omgo^2 = K q^2 / \rho$ and $b = \gam / \rho$.  Then $\chi'$ has poles at
-	\eq{
-		\omg = \frac{i b \pm \sqrt{4 \omgo^2 - b^2}}{2}
-		\equiv i \alp \pm \bet,
-	}
-	where we have defined $\alp = b / 2$ and $\bet = \sqrt{4 \omgo^2 - b^2} / 2$.  We note that $\bet$ is real since $b \propto \gam \to 0$.  Then
-	\eq{
-		\chi' = \frac{1}{(\omg - \bet - i\alp) (\omg + \bet - i \alp)}.
-	}
-	Note that as $\gam \to 0$, $\alp \to 0$ and $\bet \to 0$.  Equation (5.85) in the lecture notes is
-	\eq{
-		\lim_{\eta \to 0^+} \frac{1}{x + i \eta} = \PrV \frac{1}{x} - i \pi \del(x).
-	}
-	Applying this,
-	\eq{
-		\chi' = \paren{ \PrV \frac{1}{\omg - \bet} - i \pi \del(\omg - \bet) } \paren{ \PrV \frac{1}{\omg + \bet} - i \pi \del(\omg + \bet) }
-	}
-	
-	
-%	Then
-%	\al{
-%		\Re[\chi] &= \frac{K q^2 - \rho \omg^2}{(K q^2 - \rho \omg)^2 + \gam^2 \omg^2}, &
-%		\Im[\chi] &= -\frac{\gam \omg}{(K q^2 - \rho \omg)^2 + \gam^2 \omg^2}.
-%	}
-%	In the limit $\gam \to 0$,
-%	\al{
-%		\Re[\chi] &= \frac{K q^2 - \rho \omg^2}{(K q^2 - \rho \omg)^2}, &
-%		\Im[\chi] &= -\frac{\gam \omg}{(K q^2 - \rho \omg^2)^2}.
-%	}
-%	The relevant Kramers--{\Kronig} relation is given by (5.39),
-%	\eq{
-%		\Re[\kapomg] = \PrV \int \ddomgpf \frac{\Im[\kapomgp]}{\omg' - \omg}.
-%	}
-%	Then
-%	\eq{
-%		\Re[\kapomg] = -\PrV \int \ddomgpf \frac{1}{\omg' - \omg} \frac{\gam \omg'}{(K q^2 - \rho {\omg'}^2)^2}
-%		= 
-%	}
-%	\hl{partial fraction decomposition???}
-}
-
-
-
-
-
-\clearpage
+\input{Problem4}
 \input{Problem5}
-
 \input{Problem6}
-
 \input{Problem7}
-
-
-
-
-
-\state{Metals and insulators}{
-	Explain the differences between a metal and an insulator.  Your discussion should include reference to single particle properties, screening of the Coulomb interaction, optical properties, and electrical and thermal properties.
-}
-
+\input{Problem8}
 
 \makebib
 

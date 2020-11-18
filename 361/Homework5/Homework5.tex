@@ -1,0 +1,110 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{361}
+\homeworknum{5}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+
+\state{Exchange}{
+	Consider single-particle wavefunctions on two neighboring identical atoms $\psiA, \psiB$, which may be assumed real.  These are to be used as the basis for a two-electron state.  Show that the charge density in a singlet (triplet) state made out of the two orbitals is given by
+	\eq{
+		\rhor = \abs{\psiAr}^2 + \abs{\psiBr}^2 \pm 2 \bkpsiAB \psiAr \psiBr.
+	}
+	Explain why the singlet state will usually be lower in energy.
+}
+
+
+
+
+
+
+\state{One-dimensional spin waves}{
+	Assume a one-dimensional chain of spins, precessing according to Eq.~(6.30).  By considering two neighbors of the $n$th spin, as in Fig.~6.8, each at relative angles $\tht$, show that the rate of precession according to Eq.~(6.30) is
+	\eq{
+		\omg = \frac{4 J S}{\hbar} [ 1 - \cos(\tht) ].
+	}
+	Hence show that for a spin wave of wavevector $q$, the dispersion is
+	\eq{
+		\hbar \omg = 4 J S [ 1 - \cos(q a) ].
+	}
+	\vfix
+}
+
+
+
+
+
+
+\state{Colossal magnetoresistance}{
+	In a material like that shown in Fig.~6.10 the magnetism arises from a mechanism called double exchange, which is a version of itinerant exchange but involving two types of d-bands.  The prototype compound is $\LaSrMnO$, where the valence of La is $3+$ and Sr is $2+$.  This is a cubic (perovskite) crystal structure where the $\Mn$ ions are nominally equidistant from six oxygen neighbors in three Cartesian directions.
+}
+
+\prob{
+	Explain why the valence of $\Mn$ in the compound $\LaSrMnO$ is expected to be between $3+$ and $4+$ and that the occupancy of the d-levels is expected to be $4 - x$ electrons per $\Mn$ ion.
+}
+
+
+
+\prob{
+	The degeneracy of the 5 d-levels in the free ion is split by the cubic environment into a low energy three-fold degenerate subset (whose notation is $t_{2g}$) and a higher energy doubly degenerate orbital set ($\eg$).  Explain why the spin configurations of these levels for the $\Mn^{3+}$ and $\Mn^{4+}$ ions are expected to be as shown in Fig.~6.12.
+}
+
+
+
+\prob{
+	The lowest three electron states can be regarded as forming a classical spin $S = 3/2$ which has negligible hopping from site to site, whereas the highest state is potentially itinerant.  Now consider two neighboring sites $i,j$ in the solid, each having the same ``core'' spin $S$, and sharing a single itinerant $\eg$ electron, that has a tight-binding matrix element
+	\eq{
+		t = \mel*{\phiegrRi}{H}{\phiegrRj}
+	}
+	for hopping from site to site.
+	
+	Explain the origin of the terms
+	\eq{
+		\Hint = J \sumi \shi \vdot \vSi + \Jx \sumij \vSi \vdot \vSj
+	}
+	in the total Hamiltonian ($\shi$ is the spin of the $\eg$ electron) and suggest relative magnitudes of $U$, $J$, and $\Jx$.
+}
+
+
+\prob{
+	Consider two neighboring core spins $\vSi, \vSj$ that are at a relative angle $\thtij$.  By considering that the spin wavefunction of the itinerant electron must, for $J \gg t$, be always aligned with the local core spin $\vS$, explain why the {\Schrodinger} equation for the itinerant electron can be simplified to one in which the tight-binding hopping matrix element from site $i$ to site $j$ is replaced by
+	\eq{
+		\teff = r \cos(\frac{\thtij}{2}).
+	}
+	To do this, you may wish to note that under a rotation by an angle $\tht$, the spin wavefunction transforms as
+	\eq{
+		\mqty( \kupp \\ \kdnp ) = \mqty( \cos(\tht / 2) & \sin(\tht / 2) \\ -\sin(\tht / 2) & \cos(\tht / 2) ) \mqty( \kup \\ \kdn ).
+	}
+	\vfix
+}
+
+
+
+\prob{
+	Sketch the density of states of the itinerant electrons for different alignments of the core spins $\vS$:
+	\begin{enumerate}
+		\item \emph{ferro}magnetic~(all core spins aligned),
+		\item \emph{antiferro}magnetic~(all neighboring core spins anti-aligned),
+		\item \emph{para}magnetic~(core spins randomly aligned).
+	\end{enumerate}
+	Discuss how the total free energies of these states differ, and suggest what is the magnetic ground state when $x = 0$, and when $t x > \Jx$; give rough estimates of the transition temperatures of the ordered magnetic states toward high temperature paramagnetism.
+}
+
+
+
+\prob{
+	Figure~6.13 shows the resistivity as a function of temperature of several samples of $\LaSrMnO$ with different concentrations $x$, as well as the magnetic field dependence of the resistivity (which gives rise to the label ``colossal'' magnetoresistance).  Discuss this data in light of the results above.
+}
+
+
+%\makebib
+
+\end{document}

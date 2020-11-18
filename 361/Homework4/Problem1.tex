@@ -39,13 +39,13 @@
 	We Fourier transform both sides of Eq.~\refeq{ODE}:
 	\eq{
 		\Vomg = L (i \omg)^2 \qomg + R (i \omg) \qomg + \frac{\qomg}{C}
-		= \paren{ i \omg R - \omg^2 L^2 + \frac{1}{C} } \qomg
+		= \paren{ i \omg R - \omg^2 L + \frac{1}{C} } \qomg
 		\qimplies
-		\qomg = \frac{\Vomg}{i \omg R - \omg^2 L^2 + 1 / C}.
+		\qomg = \frac{\Vomg}{i \omg R - \omg^2 L + 1 / C}.
 	}
 	Applying Eq.~\refeq{susceptibility}, we find
 	\eqn{chians}{
-		\ans{ \chiomg = \frac{1}{i \omg R - \omg^2 L^2 + 1 / C}. }
+		\ans{ \chiomg = \frac{1}{i \omg R - \omg^2 L + 1 / C}. }
 	}
 	\vfix
 }
@@ -118,7 +118,7 @@
 	}
 	Additionally, from $\tan(\phi) = \As / \Ac$,
 	\eq{
-		\tan(\phi) = \frac{2 p \omg}{\omg^2 - \omg0^2}
+		\tan(\phi) = \frac{2 p \omg}{\omg^2 - \omgo^2}
 		= \frac{R \omg / L}{\omg^2 - 1 / L C}
 		= \ans{ \frac{\omg R}{\omg^2 L - 1 / C}. }
 	}
@@ -169,46 +169,43 @@
 }
 
 \sol{
-	From Eq.~\refeq{chians}, we can write $\chiomg$ in terms of $Q$ as
-	\eq{
-		\chiomg = \frac{1}{i \omg Q \sqrt{C / L} + Q^2 / R^2 L - \omg^2 Q^4 C^2 / R^4}.
+	In the case $Q \ll 1$, $\sqrt{L / C} \gg R$.  For small $R$, Eq.~\refeq{chians} becomes
+	\eqn{1di}{
+		\chiomg \approx \frac{1}{-\omg^2 L + 1 / C},
 	}
-	In the case $Q \ll 1$, the Taylor series expansion to $\order{Q}$ is
-	\eq{
-		\chiomg \approx \frac{L^2}{C R^2 \omg^2} + i \paren{ \frac{Q L^3}{\omg^3 R^4 C \sqrt{C / L}} - \frac{1}{\omg Q \sqrt{C / L}} }
-		= \frac{L^2}{\omg^2 C R^2} + i \paren{ \frac{L^4}{\omg^3 R^5 C^2} - \frac{L R}{\omg C} },
-	}
-	which we have evaluated using Mathematica.  In the case $Q \approx 1$,
-	\eq{
-		\chiomg \sim \frac{1}{i \omg R - \omg^2 L^2 + 1 / C}
-	}
-	so
-	\al{
-		\Re[ \chiomg ] &= \frac{1 / C - \omg^2 L^2}{(1 / C - \omg^2 L^2)^2 + \omg^2 R^2}, &
-		\Im[ \chiomg ] &= -\frac{\omg R}{(1 / C - \omg^2 L^2)^2 + \omg^2 R^2}.
-	}
-	In the case $Q \gg 1$, the Taylor series expansion to $\order{Q^4}$ is
-	\eq{
-		\chiomg \approx -\frac{R^4}{\omg^2 Q^2 C^2}
-		= -\frac{R^2}{\omg^2 L C},
-	}
-	which is real.
+	which is purely real and diverges at $\pm 1 / \sqrt{L C}$.
 	
-	Figure~\ref{1d} shows plots of the real~(blue line) and imaginary~(gold line) parts of $\chiomg$ in the cases $Q \ll 1$~(top left), $Q \approx 1$~(top right), and $Q \gg 1$~(bottom).
+	In the case $Q \approx 1$, $\sqrt{L / C} \approx R$. Then
+	\eqn{1dii}{
+		\chiomg \approx \frac{1}{i \omg - \omg^2 + 1}.
+	}
+	
+	In the case $Q \gg 1$, $\sqrt{L} \ll R \sqrt{C}$ or $1 / \sqrt{C} \ll R / \sqrt{L}$.  For small $L$,
+	\eqn{1diii}{
+		\chiomg = \frac{1}{i \omg R + 1 / C}.
+	}
+	For small $1 / C$,
+	\eqn{1diii2}{
+		\chiomg = \frac{1}{i \omg R - \omg^2 L},
+	}
+	whose imaginary part diverges at 0.
+	
+	Figure~\ref{1d} shows plots of the real~(blue line) and imaginary~(gold line) parts of $\chiomg$ in the cases $Q \ll 1$~(top left), $Q \approx 1$~(top right), $Q \gg 1$ with $L$ small~(bottom left), and $Q \gg 1$ with $1 / C$ small~(bottom right).
 	
 	\begin{figure}[t] \centering
 		\includegraphics[width=0.49\textwidth,trim=1.5cm 0 0 0,clip]{1di} \hfill
 		\includegraphics[width=0.49\textwidth,trim=1.5cm 0 0 0,clip]{1dii} \\[0.5cm]
-		\includegraphics[width=0.49\textwidth,trim=1.5cm 0 0 0,clip]{1diii}
-		\caption{Real~(blue line) and imaginary~(gold line) parts of $\chiomg$ in the cases $Q \ll 1$~(top left), $Q \approx 1$~(top right), and $Q \gg 1$~(bottom).  These cases are given by Eqs.~\refeq{chi1}, \refeq{chi2}, and \refeq{chi3}, respectively.}
+		\includegraphics[width=0.49\textwidth,trim=1.5cm 0 0 0,clip]{1diii} \hfill
+		\includegraphics[width=0.49\textwidth,trim=1.5cm 0 0 0,clip]{1diii2}
+		\caption{Real~(blue line) and imaginary~(gold line) parts of $\chiomg$ in the cases $Q \ll 1$~(top left), $Q \approx 1$~(top right), $Q \gg 1$ with $L$ small~(bottom left), and $Q \gg 1$ with $1 / C$ small~(bottom right).  These cases are given by Eqs.~\refeq{1di}, \refeq{1dii}, \refeq{1diii}, and \refeq{1diii2}, respectively.}
 		\label{1d}
 	\end{figure}
 	
 	The function has poles at $\omgb$ such that $1 / \chiomgb = 0$~\cite{Poles}:
 	\eq{
-		0 = i \omgb R - \omgb^2 L^2 + \frac{1}{C}
+		0 = i \omgb R - \omgb^2 L + \frac{1}{C}
 		\qimplies
-		\ans{ \omgb = \frac{i R \pm \sqrt{4 L^2 / C - R^2}}{2 L^2}. }
+		\ans{ \omgb = \frac{i R \pm \sqrt{4 L / C - R^2}}{2 L}. }
 	}
-	\vfix
+	These poles are shown in Fig.~\ref{1d} for the three $Q$ regimes.
 }
