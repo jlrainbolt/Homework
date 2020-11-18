@@ -1,0 +1,60 @@
+\state{One-dimensional spin waves}{
+	Assume a one-dimensional chain of spins, precessing according to Eq.~(6.30).  By considering two neighbors of the $n$th spin, as in Fig.~6.8, each at relative angles $\tht$, show that the rate of precession according to Eq.~(6.30) is
+	\eq{
+		\omg = \frac{4 J S}{\hbar} [ 1 - \cos(\tht) ].
+	}
+	Hence show that for a spin wave of wavevector $q$, the dispersion is
+	\eq{
+		\hbar \omg = 4 J S [ 1 - \cos(q a) ].
+	}
+	\vfix
+}
+
+\sol{
+	Equation~(6.30) in the lecture notes is
+	\eq{
+		\del\dvSn = \frac{2 J S}{\hbar} \sumjnn (\del\vSn - \del\vSj) \cross \zh,
+	}
+	where $\Shn$ is a vector in the $xy$ plane and $\Shn = S \zh + \del\vSn$ by~(6.29).  For a one-dimensional chain, the only nearest neighbors are $j \in \{ n - 1, n + 1 \}$.  Thus
+	\eq{
+		\del\dvSn = \frac{2 J S}{\hbar} (2 \del\vSn - \del\vSnmq - \del\vSnpq) \cross \zh.
+	}
+	Splitting into one equation for each component, we have
+	\aln{ \label{syst}
+		\del\dSxn &= -\frac{2 J S}{\hbar} (2 \del\Syn - \del\Synmq - \del\Synpq), &
+		\del\dSyn &= \frac{2 J S}{\hbar} (2 \del\Sxn - \del\Sxnmq - \del\Sxnpq), &
+		\del\dSzn &= 0,
+	}
+	since $\xh \cross \zh = -\yh$ and $\yh \cross \zh = \xh$.  By analogy with phonon waves, we make the ansatz that the solutions have the form
+	\aln{ \label{ansatz}
+		\del\Sxn &= u e^{i (j \tht - \omg t)}, &
+		\del\Syn &= v e^{i (j \tht - \omg t)}, &
+		\del\Szn &= 0,
+	}
+	where $u$ and $v$ are constants and $j$ is an integer.  Making this substitution, Eq.~\refeq{syst} becomes
+	\al{
+		-i \omg u e^{i (n \tht - \omg t)} &= -\frac{2 J S}{\hbar} \paren{ 2 e^{i (n \tht - \omg t)} - e^{i [ (n - 1) \tht - \omg t ]} - e^{i [ (n + 1) \tht - \omg t ]} } v, \\
+		-i \omg v e^{i (n \tht - \omg t)} &= \frac{2 J S}{\hbar} \paren{ 2 e^{i (n \tht - \omg t)} - e^{i [ (n - 1) \tht - \omg t ]} - e^{i [ (n + 1) \tht - \omg t ]} } u,
+	}
+	or
+	\al{
+		-i \omg u &= -\frac{2 J S}{\hbar} \brac{ 2 - \paren{ e^{-i \tht} - e^{i \tht} } } v = -\frac{4 J S}{\hbar} [ 1 - \cos(\tht) ] v, \\
+		-i \omg v &= \frac{2 J S}{\hbar} \brac{ 2 - \paren{ e^{-i \tht} - e^{i \tht} } } u = \frac{4 J S}{\hbar} [ 1 - \cos(\tht) ] u.
+	}
+	This system can be solved using the matrix equation
+	\eq{
+		0 = \mqty| -i \omg & 4 J S [ 1 - \cos(\tht) ] / \hbar \\ -4 J S [ 1 - \cos(\tht) ] / \hbar & -i \omg |
+		= -\omg^2 + \frac{16 J^2 S^2}{\hbar^2} [ 1 - \cos(\tht) ]^2,
+	}
+	which has the solutions
+	\eq{
+		\ans{ \omg = \frac{4 J S}{\hbar} [ 1 - \cos(\tht) ] }
+	}
+	as we wanted to show~\cite[p.~332]{Kittel}. \qed
+	
+	For a spin wave of wavevector $q$, the phonon waves have the form $e^{i \vq \vdot \vr} e^{i \omg t}$ by (5.5) of the lecture notes.  Assuming the distance between adjacent spins is $a$, then $\vq \vdot \vr \to q a$ in one dimension and $\tht = q a$ by inspection of Eq.~\refeq{ansatz}.  So the dispersion is
+	\eq{
+		\ans{ \hbar \omg = 4 J S [ 1 - \cos(q a) ] }
+	}
+	as desired.
+}
