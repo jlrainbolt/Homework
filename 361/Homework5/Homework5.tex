@@ -16,40 +16,64 @@
 
 
 
-
-
-\clearpage
 \state{Colossal magnetoresistance}{
-	In a material like that shown in Fig.~6.10 the magnetism arises from a mechanism called double exchange, which is a version of itinerant exchange but involving two types of d-bands.  The prototype compound is $\LaSrMnO$, where the valence of La is $3+$ and Sr is $2+$.  This is a cubic (perovskite) crystal structure where the $\Mn$ ions are nominally equidistant from six oxygen neighbors in three Cartesian directions.
+	In a material like that shown in Fig.~6.10 the magnetism arises from a mechanism called double exchange, which is a version of itinerant exchange but involving two types of $d$ bands.  The prototype compound is $\LaSrMnO$, where the valence of La is $3+$ and Sr is $2+$.  This is a cubic (perovskite) crystal structure where the $\Mn$ ions are nominally equidistant from six oxygen neighbors in three Cartesian directions.
 }
 
 \prob{
-	Explain why the valence of $\Mn$ in the compound $\LaSrMnO$ is expected to be between $3+$ and $4+$ and that the occupancy of the d-levels is expected to be $4 - x$ electrons per $\Mn$ ion.
+	Explain why the valence of $\Mn$ in the compound $\LaSrMnO$ is expected to be between $3+$ and $4+$ and that the occupancy of the $d$ levels is expected to be $4 - x$ electrons per $\Mn$ ion.
 }
 
 \sol{
-	\hl{write later}
+	The relevant electron configurations are~\cite{La, Sr, Mn, O}
+	\al{
+		\La &: 5 d^1 \ 6 s^2, &
+		\Sr &: 5 s^2, &
+		\Ox &: 2 s^2 \ 2 p^4, &
+		\Mn &: 3 d^5 \ 4 s^2.
+	}
+	The atoms (excluding $\Mn$) have valence
+	\al{
+		\La &: {3+}, &
+		\Sr &: {2+}, &
+		\Ox &: {2-}.
+	}
+	This is because $\La$ and $\Sr$ have few valence electrons and will tend to donate them, while $\Ox$ will fill its $2p$ shell upon receiving two more electrons.
+	
+	The two extremes are $\LaMnO$~($x = 0$) and $\SrMnO$~($x = 1$).  For $\LaMnO$, $\Oe$ has valence $6-$ and $\La$ $3+$, so $\Mn$ must have valence $3+$ to form a neutral compound.  For $\LaMnO$, $\Oe$ again has valence $6-$ but $\Sr$ has valence $2+$, so in this case $\Mn$ must have valence $4+$.  Thus for any $x \in [0, 1]$, the valence of $\Mn$ must be between $3+$ and $4+$.  The expected valence is $(3 + x)+$.
+	
+	When $\Mn$ ionizes, it loses its two $4s$ electrons first~\cite{LibreTexts}.  For $\LaMnO$~($x = 0$), it also loses one $3d$ electron, leaving it with $3d^4$, or $4 = 4 - x$ electrons in the $d$ levels.  For $\SrMnO$~($x = 1$), $\Mn$ loses two $3d$ electrons, leaving it with $3d^3$, or $3 = 4 - x$ electrons in the $d$ levels.  Therefore $\Mn$ loses an expected $1 + x$ electrons from its $3d$ levels, leaving it with $5 - (1 + x) = 4 - x$ remaining.
 }
 
 
 
 \prob{
-	The degeneracy of the 5 d-levels in the free ion is split by the cubic environment into a low energy three-fold degenerate subset (whose notation is $t_{2g}$) and a higher energy doubly degenerate orbital set ($\eg$).  Explain why the spin configurations of these levels for the $\Mn^{3+}$ and $\Mn^{4+}$ ions are expected to be as shown in Fig.~6.12.
+	The degeneracy of the 5 $d$ levels in the free ion is split by the cubic environment into a low energy threefold degenerate subset (whose notation is $\ttg$) and a higher energy doubly degenerate orbital set ($\eg$).  Explain why the spin configurations of these levels for the $\Mnep$ and $\Mnrp$ ions are expected to be as shown in Fig.~6.12.
 }
 
 \sol{
-	\hl{write later}
+	\begin{figure}[t] \centering
+		\includegraphics[width=0.4\textwidth,trim=7cm 22.25cm 8.5cm 4.25cm,clip]{6-12}
+		\caption{[Figure~6.1 of the lecture notes]}
+		\label{f3b}
+	\end{figure}
+	
+	Figure~6.12 in the lecture notes is reproduced in Fig.~\ref{f3b}.  The lower-energy $\ttg$ levels will be filled first according to the aufbau principle.  By Hund's rule as mentioned on p.~107, all 5 $d$ levels will receive a single electron before any $d$ level receives a second electron.  This allows all of the electrons to have the same spin, which maximizes the total spin of the system.  Since this is a symmetric spin state, the electrons stay further apart due to Coulomb repulsion and therefore have lower energy than they would if they were not all aligned~\cite[pp.~307--308]{Kittel}.  This explains why $\Mnep$ has one electron in each of the three $\ttg$ levels, all with the same spin, and why the fourth electron of $\Mnrp$ is added to the $\eg$ level, again with all electrons having the same spin.
 }
 
 
 
 \prob{
-	The lowest three electron states can be regarded as forming a classical spin $S = 3/2$ which has negligible hopping from site to site, whereas the highest state is potentially itinerant.  Now consider two neighboring sites $i,j$ in the solid, each having the same ``core'' spin $S$, and sharing a single itinerant $\eg$ electron, that has a tight-binding matrix element
+	The lowest three electron states can be regarded as forming a classical spin $S = 3/2$ which has negligible hopping from site to site, whereas the highest state is potentially itinerant.  Now consider two neighboring sites $i, j$ in the solid, each having the same ``core'' spin $S$, and sharing a single itinerant $\eg$ electron, that has a tight-binding matrix element
 	\eq{
 		t = \mel*{\phiegrRi}{H}{\phiegrRj}
 	}
 	for hopping from site to site.
 	
+	In second-quantized notation, the full Hamiltonian can be written as
+	\eq{
+		H = t \sumijnn \sumsig \chdag_{i, \sig} \ch_{j, \sig} + U \sumi \nh_{i, \sig} \nh_{i, -\sig} - J \sumi \shi \vdot \vSi + \Jx \sumij \vSi \vdot \vSj.
+	}
 	Explain the origin of the terms
 	\eq{
 		\Hint = J \sumi \shi \vdot \vSi + \Jx \sumij \vSi \vdot \vSj
@@ -58,7 +82,9 @@
 }
 
 \sol{
-	\hl{write later}
+	The term with coefficient $J$ represents the alignment of the itinerant electron's spin with the core's spin at the same site.  That is, the larger $J$ is, the more compelled the itinerant electron is to align its spin with the core.  The term with coefficient $\Jx$ represents the alignment of the spins of the cores of neighboring $\Mn$ sites.  The itinerant electrons are more likely to hop between two $\Mn$ (from $\Mnrp$ to $\Mnep$) sites if their cores have the same spin direction~\cite{Double}.
+	
+	Similarly, $U$ is the ``coupling'' for antialignment of electrons within one $d$ level.  This is strongly disfavored by Hund's rule.  Further, it is more important for the itinerant electron to align its spin with its core than for adjacent $\Mn$ ions to have the same spin (the facilitation of hopping by the latter is more of an added bonus that reduces the system's kinetic, rather than potential, energy)~\cite{Double}.  Thus the relative magnitudes are $J \gg \Jx \gg U$.
 }
 
 
