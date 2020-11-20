@@ -5,42 +5,42 @@ The style file: lucas_unsrt.bst
 Database file #1: references.bib
 You've used 9 entries,
             2558 wiz_defined-function locations,
-            661 strings with 5649 characters,
-and the built_in function-call counts, 1586 in all, are:
-= -- 132
+            665 strings with 5622 characters,
+and the built_in function-call counts, 1610 in all, are:
+= -- 137
 > -- 45
-< -- 0
+< -- 1
 + -- 18
 - -- 9
 * -- 93
-:= -- 182
+:= -- 187
 add.period$ -- 18
 call.type$ -- 9
-change.case$ -- 1
+change.case$ -- 3
 chr.to.int$ -- 0
 cite$ -- 9
-duplicate$ -- 96
+duplicate$ -- 99
 empty$ -- 235
 format.name$ -- 9
-if$ -- 406
+if$ -- 413
 int.to.chr$ -- 0
 int.to.str$ -- 9
-missing$ -- 4
+missing$ -- 6
 newline$ -- 43
 num.names$ -- 8
 pop$ -- 78
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 55
+skip$ -- 52
 stack$ -- 0
 substring$ -- 0
-swap$ -- 14
-text.length$ -- 0
+swap$ -- 13
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
 while$ -- 8
 width$ -- 10
-write$ -- 94
+write$ -- 96

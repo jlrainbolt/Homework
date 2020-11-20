@@ -17,7 +17,7 @@
 
 
 \state{Colossal magnetoresistance}{
-	In a material like that shown in Fig.~6.10 the magnetism arises from a mechanism called double exchange, which is a version of itinerant exchange but involving two types of $d$ bands.  The prototype compound is $\LaSrMnO$, where the valence of La is $3+$ and Sr is $2+$.  This is a cubic (perovskite) crystal structure where the $\Mn$ ions are nominally equidistant from six oxygen neighbors in three Cartesian directions.
+	In a crystal like that shown in Fig.~6.10 the magnetism arises from a mechanism called double exchange, which is a version of itinerant exchange but involving two types of $d$ bands.  The prototype compound is $\LaSrMnO$, where the valence of La is $3+$ and Sr is $2+$.  This is a cubic (perovskite) crystal structure where the $\Mn$ ions are nominally equidistant from six oxygen neighbors in three Cartesian directions.
 }
 
 \prob{
@@ -54,11 +54,11 @@
 \sol{
 	\begin{figure}[t] \centering
 		\includegraphics[width=0.4\textwidth,trim=7cm 22.25cm 8.5cm 4.25cm,clip]{6-12}
-		\caption{[Figure~6.1 of the lecture notes]}
+		\caption{[Figure~6.12 of the lecture notes]}
 		\label{f3b}
 	\end{figure}
 	
-	Figure~6.12 in the lecture notes is reproduced in Fig.~\ref{f3b}.  The lower-energy $\ttg$ levels will be filled first according to the aufbau principle.  By Hund's rule as mentioned on p.~107, all 5 $d$ levels will receive a single electron before any $d$ level receives a second electron.  This allows all of the electrons to have the same spin, which maximizes the total spin of the system.  Since this is a symmetric spin state, the electrons stay further apart due to Coulomb repulsion and therefore have lower energy than they would if they were not all aligned~\cite[pp.~307--308]{Kittel}.  This explains why $\Mnep$ has one electron in each of the three $\ttg$ levels, all with the same spin, and why the fourth electron of $\Mnrp$ is added to the $\eg$ level, again with all electrons having the same spin.
+	Figure~6.12 in the lecture notes is reproduced in Fig.~\ref{f3b}.  The lower-energy $\ttg$ levels will be filled first according to the aufbau principle.  By Hund's rule as mentioned on p.~107, all 5 $d$ levels will receive a single electron before any $d$ level receives a second electron.  This allows all of the electrons to have the same spin, which maximizes the total spin of the system.  Since this is a symmetric spin state, the electrons stay further apart due to Coulomb repulsion and therefore have lower energy than they would if they were not all aligned~\cite[pp.~307--308]{Kittel}.  This explains why $\Mnrp$ has one electron in each of the three $\ttg$ levels, all with the same spin, and why the fourth electron of $\Mnep$ is added to the $\eg$ level, again with all electrons having the same spin.
 }
 
 
@@ -82,10 +82,15 @@
 }
 
 \sol{
-	The term with coefficient $J$ represents the alignment of the itinerant electron's spin with the core's spin at the same site.  That is, the larger $J$ is, the more compelled the itinerant electron is to align its spin with the core.  The term with coefficient $\Jx$ represents the alignment of the spins of the cores of neighboring $\Mn$ sites.  The itinerant electrons are more likely to hop between two $\Mn$ (from $\Mnrp$ to $\Mnep$) sites if their cores have the same spin direction~\cite{Double}.
+	The term with coefficient $J$ represents the alignment of the itinerant electron's spin with the core's spin at the same site.  That is, the larger $J$ is, the more compelled the itinerant electron is to align its spin with the core.  The term with coefficient $\Jx$ represents the alignment of the spins of the cores of neighboring $\Mn$ sites.
 	
-	Similarly, $U$ is the ``coupling'' for antialignment of electrons within one $d$ level.  This is strongly disfavored by Hund's rule.  Further, it is more important for the itinerant electron to align its spin with its core than for adjacent $\Mn$ ions to have the same spin (the facilitation of hopping by the latter is more of an added bonus that reduces the system's kinetic, rather than potential, energy)~\cite{Double}.  Thus the relative magnitudes are $J \gg \Jx \gg U$.
+	Similarly, $U$ is the ``coupling'' for antialignment of electrons within one $d$ level.  This is strongly disfavored by Hund's rule.  Further, it is more favorable for the itinerant electron to align its spin with its core than for adjacent $\Mn$ ions to have the same spin, since the cores are much further apart from one another than the $\eg$ electron is to the core of its site.  Thus the relative magnitudes are
+	\eq{
+		\ans{ J > \Jx > U. }
+	}
+	\vfix
 }
+
 
 
 \prob{
@@ -100,6 +105,55 @@
 	\vfix
 }
 
+\sol{
+	Intuitively, the expression for $\teff$ makes sense: $\teff = t$ when $\thtij$ and the core spins are aligned; this makes hopping possible even when $J \gg t$.  When $\thtij = \pi$, the core spins are completely antiparallel, and $\teff = 0$, rendering hopping impossible as we would expect.
+	
+	This term may come about by explicitly including the spin part of the wave function in the matrix element.  That is, we would have something like
+	\eq{
+		\teff = \mel*{\phiegrRi, \chii}{H}{\phiegrRj, \chij},
+	}
+	where $\kchii$ is the spin of the $i$th site.  The possibilities are
+	\eq{
+		\kchii = \begin{cases}
+			\kupi, \\[2ex]
+			\dfrac{\kupi + \kdni}{\sqrt{2}}, \\[2ex]
+			\dfrac{\kupi - \kdni}{\sqrt{2}}, \\[2ex]
+			\kdni.
+		\end{cases}
+	}
+	Any $\chij$ may be rotated through an angle $\thtij$ by
+	\eq{
+		\mqty( \kupj \\ \kdnj ) = \mqty( \cos(\thtij / 2) & \sin(\thtij / 2) \\ -\sin(\thtij / 2) & \cos(\thtij / 2) ) \mqty( \kupi \\ \kdni )
+		= \mqty( \cos(\thtij / 2) \kupi + \sin(\thtij / 2) \kdni \\ -\sin(\thtij / 2) \kupi + \cos(\thtij / 2) \kdni ).
+	}
+	Noting that
+	\al{
+		\braket{\upi}{\upj} &= \bupi \brac{ \cos(\frac{\thtij}{2}) \kupi + \sin(\frac{\thtij}{2}) \kdni }
+		= \cos(\frac{\thtij}{2}), \\
+		\braket{\upi}{\dnj} &= \bupi \brac{ -\sin(\frac{\thtij}{2}) \kupi + \cos(\frac{\thtij}{2}) \kdni }
+		= -\sin(\frac{\thtij}{2}) \kupi, \\
+		\braket{\dni}{\dnj} &= \bdni \brac{ -\sin(\frac{\thtij}{2}) \kupi + \cos(\frac{\thtij}{2}) \kdni }
+		= \cos(\frac{\thtij}{2}), \\
+		\braket{\dni}{\upj} &= \bdni \brac{ \cos(\frac{\thtij}{2}) \kupi + \sin(\frac{\thtij}{2}) \kdni }
+		= \sin(\frac{\thtij}{2}) \kupi,
+	}
+	we also have
+	\al{
+		\dfrac{\bupi + \bdni}{\sqrt{2}} \dfrac{\kupj + \kdnj}{\sqrt{2}} &= \frac{\braket{\upi}{\upj} + \braket{\upi}{\dnj} + \braket{\dni}{\upj} + \braket{\dni}{\dnj}}{2}
+%		= \frac{\cos(\thtij / 2) - \sin(\thtij / 2) + \sin(\thtij / 2) + \cos(\thtij / 2)}{2}
+		= \cos(\frac{\thtij}{2}), \\
+		\dfrac{\bdni + \bupi}{\sqrt{2}} \dfrac{\kdnj + \kupj}{\sqrt{2}} &= \frac{\braket{\dni}{\dnj} + \braket{\dni}{\upj} + \braket{\upi}{\dnj} + \braket{\upi}{\upj}}{2}
+%		= \frac{\cos(\thtij / 2) + \sin(\thtij / 2) - \sin(\thtij / 2) + \cos(\thtij / 2)}{2}
+		= \cos(\frac{\thtij}{2}).
+	}
+	So all of the pairs where $\kchii$ and $\kchij$ have the same form give us
+	\eq{
+		\teff = \mel*{\phiegrRi, \chii}{H}{\phiegrRj, \chij} \cos(\frac{\thtij}{2})
+		= t \cos(\frac{\thtij}{2})
+	}
+	as desired.
+}
+
 
 
 \prob{
@@ -112,10 +166,52 @@
 	Discuss how the total free energies of these states differ, and suggest what is the magnetic ground state when $x = 0$, and when $t x > \Jx$; give rough estimates of the transition temperatures of the ordered magnetic states toward high temperature paramagnetism.
 }
 
+\sol{
+	\begin{figure}[b] \centering
+		\includegraphics[width=0.3\textwidth]{3e} \hfill
+		\includegraphics[width=0.3\textwidth]{3e} \hfill
+		\includegraphics[width=0.3\textwidth]{3e} \hfill
+		\caption{Density of states $\gE$ for the ferromagnetic case~(left), antiferromagnetic case~(middle), and paramagnetic case~(right).}
+		\label{f3e}
+	\end{figure}
+	
+	The density of states $\gE$ for each case is shown in Fig.~\ref{f3e}.  These illustrations are based on Fig.~4.2 in the lecture notes.  For the ferromagnetic case in Fig.~\ref{f3e}~(left), the core spins are all aligned which facilitates hopping.  This makes the same number of states available for a relatively wide range of energies, since hopping does not change the number of available states but does allow for the electrons to decrease their kinetic energy.  For the antiferromagnetic case in Fig.~\ref{f3e}~(middle), hopping is disallowed, which means the electrons must remain localized in the same number of available states.  They cannot change their energy by hopping, so these states are only available at one value of the energy.  The paramagnetic case  in Fig.~\ref{f3e}~(right) lies somewhere in between these two extremes.
+	
+	The free energy $F = U - T S$, where $U$ is internal energy, $T$ is temperature, and $S$ is entropy~\cite[p.~48]{Landau}.  Assuming the second term does not differ between the three states, we need only concern ourselves with $U$.  From (2.14) of the lecture notes,
+	\eq{
+		U = \int \dd{E} E \gE f(E).
+	}
+	Since the largest area under the $\gE$ curve is largest in the ferromagnetic case, smallest in the antiferromagnetic case, and somewhere in between in the paramagnetic case, so too is $U$.  Thus,
+	\eq{
+		\ans{ F_\text{ferro} > F_\text{para} > F_\text{antiferro}. }
+	}
+	
+	When $x = 0$, we have $\LaMnO$ which contains only $\Mnep$.  In this case the magnetic ground state is \ans{ferromagnetic}.  The ferromagnetic configuration facilitates hopping of the itinerant electrons, and this hopping decreases the system's kinetic energy.  When all of the $\Mn$ atoms have an itinerant electron, these electrons will be perpetually hopping between ions (and being replaced by an itinerant electron from another ion), and the total energy of the system will be as small as possible.
+	
+	When $t x > \Jx$, hopping will occur regardless of whether neighboring core spins are aligned.  $\Jx$ being small means that there is no incentive   Thus the ground state is \ans{antiferromagnetic} in this case.
+	
+	The transition temperatures are in the \ans{few hundred Kelvin} range.  The transition temperature increases with $x$ because the frequency of hopping decreases as $x$ increases.
+}
 
 
 \prob{
 	Figure~6.13 shows the resistivity as a function of temperature of several samples of $\LaSrMnO$ with different concentrations $x$, as well as the magnetic field dependence of the resistivity (which gives rise to the label ``colossal'' magnetoresistance).  Discuss this data in light of the results above.
+}
+
+\sol{
+	\begin{figure}[b] \centering
+		\includegraphics[width=0.6\textwidth,trim=5.5cm 19.5cm 4.5cm 5cm,clip]{6-13}
+		\caption{[Figure~6.13 of the lecture notes]  Resistivity as a function of temperature and magnetic field for a series of samples of doped manganese oxides with different compositions.  The ferromagnetic transition temperatures $\Tc$ are marked by the arrows.}
+		\label{f3f}
+	\end{figure}
+
+	Figure~6.13 in the lecture notes is reproduced here as Fig.~\ref{f3f}.  Resistivity is inversely proportional to conductivity~\cite[p.~296]{Griffiths}.  The more freely the itinerant electrons can travel, the more conductive and the less resistive the crystal will be.
+	
+	When $x \leq 0.15$, the ground state is ferromagnetic.  Increasing the temperature gives the itinerant electrons more kinetic energy and allows them to hop more freely among the $\Mn$ ions, thereby decreasing the resistivity.  When a ferromagnetic transition occurs such as for $x = 0.15$ in Fig.~\ref{f3f}~(left), the spin antialignment of some neighboring cores in the paramagnetic phase hinders hopping, increasing resistivity.  But when the temperature is sufficiently increased past this point, resistivity decreases once more.
+	
+	When $x > 0.15$ in Fig.~\ref{f3f}~(left), the ground state is antiferromagnetic.  Resistivity increases with temperature until $\Tc$, after which resistivity decreases slowly or plateaus.  This is because the paramagnetic phase allows the itinerant electrons to travel more freely than the antiferromagnetic phase.
+	
+	The resistivity decreases with increasing magnetic field intensity as shown in in Fig.~\ref{f3f}~(right).  This is because the application of a magnetic field to $\LaSrMnO$ tends to align the electron spins (both the itinerant electrons and the cores), which eases hopping of the itinerant electrons and increases conductivity.  The stronger the magnetic field, the better the alignment among the spins, and the more conductive the crystal becomes.
 }
 
 
