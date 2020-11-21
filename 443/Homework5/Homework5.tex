@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{443}
+\homeworknum{5}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+\state{Coulomb scattering (Peskin \& Schroeder 5.1)}{
+	Repeat the computation of Problem 4.4, part~(c), this time using the full relativistic expression for the matrix element.  You should find, for the spin-averaged cross section,
+	\eq{
+		\dv{\sig}{\Omg} = \frac{\alp^2}{4 \abs{\vp}^2 \bet^2 \sin[4](\tht / 2)} \brac{ 1 - \bet^2 \sin[2](\frac{\tht}{2}) },
+	}
+	where $\vp$ is the electron's 3-momentum and $\bet$ its velocity.  This is the \emph{Mott formula} for Coulomb scattering of relativistic electrons.  Now derive it in a second way, by working out the cross section for electron-muon scattering, in the muon rest frame, retaining the electron mass but sending $\mmu \to \infty$.
+}
+
+
+
+
+
+
+\state{Bhabha scattering (Peskin \& Schroeder 5.2)}{
+	Compute the differential cross section $\dv*{\sig}{(\cos\tht)}$ for Bhabha scattering, $\elp \elm \to \elp \elm$.  You may work in the limit $\Ecm \gg \me$, in which it is permissible to ignore the electron mass.  There are two Feynman diagrams; these must be added in the invariant matrix element before squaring.  Be sure that you have the correct relative sign between these diagrams.  The intermediate steps are complicated, but the final result is quite simple.  In particular, you may find it useful to introduce the Mandelstam variables $s$, $t$, and $u$.  Note that, if we ignore the electron mass, $s + t + u = 0$.  You should be able to cast the differential cross section into the form
+	\eq{
+		\dv{\sig}{(\cos\tht)} = \frac{\pi \alp^2}{s} \brac{ u^2 \paren{ \frac{1}{s} + \frac{1}{t} }^2 + \paren{ \frac{t}{s} }^2 + \paren{ \frac{s}{t} }^2 }.
+	}
+	Rewrite this formula in terms of $\cos\tht$ and graph it.  What feature of the diagrams causes the differential cross section to diverge as $\tht \to 0$?
+}
+
+
+
+
+
+
+\state{Positronium lifetimes (Peskin \& Schroeder 5.4)}{\hfix}
+
+\prob{
+	Compute the amplitude $\cM$ for $\elp \elm$ annihilation into 2 photons in the extreme nonrelativistic limit (i.e., keep only the term proportional to zero powers of the electron and positron 3-momentum).  Use this result, together with our formalism for fermion-antifermion bound states, to compute the rate of annihilation of the $1S$ states of positronium into 2 photons.  You should find that the spin-1 states of positronium do not annihilate into 2 photons, confirming the symmetry argument of Problem~3.8.  For the spin-0 state of positronium, you should find a result proportional to the square of the $1S$ wavefunction at the origin.  Inserting the value of this wavefunction from nonrelativistic quantum mechanics, you should find
+	\eq{
+		\frac{1}{\tau} = \Gam
+		= \frac{\alp^5 \me}{2}
+		\approx \SI{8.03e9}{\per\second}.
+	}
+	A recent measurement gives $\Gam = 7.994 \pm \SI{0.011}{\per\nano\second}$; the 0.5\% discrepancy is accounted for by radiative corrections.
+}
+
+
+\makebib
+
+\end{document}
