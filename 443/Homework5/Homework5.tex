@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{homework}
 \usepackage{slashed}
+\usepackage{simpler-wick}
 
 \classname{443}
 \homeworknum{5}
@@ -12,159 +13,9 @@
 \input{definitions}
 \input{probdefs}
 
-
-\state{Coulomb scattering (Peskin \& Schroeder 5.1)}{
-	Repeat the computation of Problem 4.4, part~(c), this time using the full relativistic expression for the matrix element.  You should find, for the spin-averaged cross section,
-	\eq{
-		\dv{\sig}{\Omg} = \frac{\alp^2}{4 \abs{\vp}^2 \bet^2 \sin[4](\tht / 2)} \brac{ 1 - \bet^2 \sin[2](\frac{\tht}{2}) },
-	}
-	where $\vp$ is the electron's 3-momentum and $\bet$ its velocity.  This is the \emph{Mott formula} for Coulomb scattering of relativistic electrons.  Now derive it in a second way, by working out the cross section for electron-muon scattering, in the muon rest frame, retaining the electron mass but sending $\mmu \to \infty$.
-}
-
-\sol{
-	From the solution to 2(b) of Homework~4, we know that
-	\eqn{xsec1}{
-		\dv{\sig}{\Omg} = \frac{\abs{\cM}^2}{16 \pi^2}.
-	}
-	We also know from 2(a) that
-	\eq{
-		i \cM = -i e \ubpp \gamm \up \cdot \tAsm(\vp' - \vp),
-	}
-	where the argument of $\tA$ includes only the spatial components of $p$ and $p'$ because $\Asm(x)$ is time independent~\cite[p.~129]{Peskin}.  Then
-	\eq{
-		-i \cMs = i e \ubp \gamm \upp \cdot \tAsm(\vp' - \vp),
-	}
-	so
-	\eq{
-		\abs{\cM}^2 = e^2 \ubpp \gamm \up \ubp \gamn \upp \tAsm(\vp' - \vp) \tAsn(\vp' - \vp).
-	}
-	Averaging over the spins, we want to compute~\cite[p.~132]{Peskin}
-	\eq{
-		\frac{1}{2} \sumssp \abs{\cM(s, s')}^2.
-	}
-	By (5.3) of Peskin \& Schroeder,
-	\eq{
-		\sums \usp \ubsp = \psl + m.
-	}
-	Then, writing in the spinor indices as in the equation above (5.4),
-	\al{
-		\frac{1}{2} \sumssp \abs{\cM}^2 &= \frac{e^2}{2} \sumssp \ubsasppp \gammsab \usbsp \ubscsp \gamnscd \usdsppp \tAsm(p' - p) \tAsn(p' - p) \\
-		&= \frac{e^2}{2} \sumssp \usdsppp \ubsasppp \gammsab \usbsp \ubscsp \gamnscd \tAsm(p' - p) \tAsn(p' - p) \\
-		&=\frac{e^2}{2} (\psl' + m)_{d a} \gammsab (\psl + m)_{b c} \gamnscd \tAsm(\vp' - p) \tAsn(\vp' - \vp) \\
-		&= \frac{e^2}{2} \Tr[ (\psl' + m) \gamm (\psl + m) \gamn ] \tAsm(\vp' - \vp) \tAsn(\vp' - \vp).
-	}
-	Note that
-	\aln{
-		\Tr[ (\psl' + m) \gamm (\psl + m) \gamn ] &= \Tr(\psl' \gamm \psl \gamn) + \Tr(\psl' \gamm m \gamn) + \Tr(m \gamm \psl \gamn) + \Tr(m \gamm m \gamn) \notag \\
-		&= \Tr(\psl' \gamm \psl \gamn) + \Tr(m \gamm m \gamn), \label{beg}
-	}
-	since the other two terms have an odd number of $\gam$s~\cite[p.~133]{Peskin}.  Then by Peskin \& Schroeder~(5.5),
-	\eqn{}{
-		\Tr(m \gamm m \gamn) = m^2 \Tr(\gamm \gamn) = 4 m^2 \gmn.
-	}
-	Applying $\psl = \gamm \psm$~\cite[p.~49]{Peskin},
-	\eqn{end}{
-		\Tr(\psl' \gamm \psl \gamn) = \psr' \pss \Tr(\gamr \gamm \gams \gamn)
-		= 4 \psr' \pss (\grm \gsn - \grs \gmn + \grn \gms).
-	}
-	Then
-	\al{
-		\frac{1}{2} \sumssp \abs{\cM}^2 &= 2 e^2 \brac{ \psr' \pss (\grm \gsn - \grs \gmn + \grn \gms) + m^2 \gmn } \tAsm(\vp' - \vp) \tAsn(\vp' - \vp) \\
-		&= 2 e^2 \brac{ \psr' \tAr \pss \tAs - \psr' \pr \tAsm \tAn + \psr' \tAn \pss \tAm + m^2 \tAsm \tAn } \\
-		&= 2 e^2 \curly{ 2 (p' \cdot \tA) (p \cdot \tA) + [m^2 - (p' \cdot p)] (\tA \cdot \tA) },
-	}
-	where we  have omitted the arguments of $\tA$ for notational simplicity.  We know that for Coulomb scattering $\Asm$ has only a zeroth component, $\Ao  = Z e / 4\pi r$~\cite[p.~130]{Peskin}.  From the solution to 2(c) of Homework~4, we also know that $\tAso(\vq) = Z e / \abs{\vq}^2$.  Then
-	\al{
-		\frac{1}{2} \sumssp \abs{\cM}^2 &= 2 e^2 \brac{ 2 E E' \tAso^2 + (m^2 - E E' + \vp \cdot \vp') \tAso^2 } \\
-		&= 2 e^2 \tAso^2 (2 E E' + m^2 - E' E + \vp \cdot \vp') \\
-		&= 2 \frac{Z^2 e^4}{\abs{\vp' - \vp}^4} (E E' + m^2 + \vp \cdot \vp').
-	}
-	From 2(c) of Homework~4, we know
-	\eq{
-		\abs{\vp' - \vp}^2 = {\vp'}^2 - 2 \abs{\vp'} \abs{\vp} \cos\tht + \vp^2,
-	}
-	where $\tht$ is the angle between $\vp$ and $\vp'$.  Using this and taking the limit that $p = p'$,
-	\eq{
-		\frac{1}{2} \sumssp \abs{\cM}^2 = 2 Z^2 e^4 \frac{E E' + m^2 + \abs{\vp} \abs{\vp'} \cos\tht}{({\vp'}^2 - 2 \abs{\vp'} \abs{\vp} \cos\tht + \vp^2)^2}
-		= 2 Z^2 e^4 \frac{E^2 + m^2 + \vp^2 \cos\tht}{4 \vp^4 (1 - \cos\tht)^2}
-		= \frac{Z^2 e^4}{8} \frac{E^2 + m^2 + \vp^2 \cos\tht}{\vp^4 \sin[4](\tht / 2)}.
-	}
-	Noting that $E^2 = m^2 + p^2$,
-	\eq{
-		\frac{1}{2} \sumssp \abs{\cM}^2 = \frac{Z^2 e^4}{8} \frac{E^2 + E^2 - \vp^2 + \vp^2 \cos\tht}{\vp^4 \sin[4](\tht / 2)}
-		= \frac{Z^2 e^4}{8} \frac{2 E^2 - \vp^2 (1 - \cos\tht)}{\vp^4 \sin[4](\tht / 2)}
-		= \frac{Z^2 e^4}{4} \frac{E^2 - \vp^2 \sin[2](\tht / 2)}{\vp^4 \sin[4](\tht / 2)}.
-	}
-	Now using $\vp^2 = m^2 \bet^2$, $\bet = \abs{\vp} / E$, $E / m = 1$, and $\alp = e^2 / 4\pi$~\cite[p.~xxi]{Peskin},
-	\eq{
-		\frac{1}{2} \sumssp \abs{\cM}^2 = \frac{Z^2 e^4 E^2}{4} \frac{1 - \bet^2 \sin[2](\tht / 2)}{m^2 \bet^2 \vp^2 \sin[4](\tht / 2)}
-		= \frac{Z^2 e^4 E^2}{4} \frac{1 - \bet^2 \sin[2](\tht / 2)}{m^2 \bet^2 \vp^2 \sin[4](\tht / 2)}
-		= \frac{4 \pi^2 \alp^2 Z^2}{\bet^2 \vp^2 \sin[4](\tht / 2)} \brac{ 1 - \bet^2 \sin[2](\frac{\tht}{2}) }
-	}
-	Feeding this into Eq.~\refeq{xsec1} and setting $Z = 1$, we find
-	\eq{
-		\dv{\sig}{\Omg} = \frac{1}{16 \pi^2} \frac{1}{2} \sumssp \abs{\cM}^2
-		= \ans{ \frac{\alp^2}{4 \bet^2 \vp^2 \sin[4](\tht / 2)} \brac{ 1 - \bet^2 \sin[2](\frac{\tht}{2}) } }
-	}
-	as we wanted to show. \qed
-	
-	The lowest-order Feynman diagram for electron-muon scattering is~\cite[p.~153]{Peskin} \hl{DRAW}
-	\eq{
-		= \frac{i e^2}{q^2} \ubpp \gamm \up \ubkp \gamsm \ubk.
-	}
-	The corresponding squared amplitude is given the equation above Peskin \& Schroeder (5.60):
-	\eq{
-		\frac{1}{4} \sumspins \abs{\cM}^2 = \frac{e^4}{4 q^4} \Tr[ (\psl' + \me) \gamm (\psl + \me) \gamn ] \Tr[ (\ksl' + \mmu) \gamsm (\ksl + \mmu) \gamsn ].
-%		&= \frac{8 e^4}{q^4} \brac{ (p \cdot k') (p' \cdot k) + (p \cdot k) (p' \cdot k') - \mmu^2 (p \cdot p') }
-	}
-	Referring to Eqs.~\refeq{beg}--\refeq{end},
-	\al{
-		\frac{1}{4} \sumspins \abs{\cM}^2 &= 4 \frac{e^4}{q^4} \brac{ \psr' \pss (\grm \gsn - \grs \gmn + \grn \gms) + \me^2 \gmn } \brac{ \kpa \kb (\gsam \gsbn - \gsab \gsmn + \gsan \gsmb) + \mmu^2 \gsmn } \\
-		&\approx 4 \frac{e^4}{q^4} \brac{ \psr' \pss (\grm \gsn - \grs \gmn + \grn \gms) + \me^2 \gmn } \mmu^2 \gsmn \\
-		&= 4 \frac{e^4}{q^4} \paren{ \ppm \pn - \pps \pss \gmn + \ppn \pmm + \me^2 \gmn } \mmu^2 \gsmn \\
-		&= 4 \frac{e^4 \mmu^2}{q^4} \paren{ p' \cdot p - p' \cdot p + p' \cdot p + \me^2 } \\
-		&= 4 \frac{e^4 \mmu^2}{q^4} \paren{ p' \cdot p + \me^2 },
-	}
-	where we have only retained terms of $\order{\mmu^2}$.  From Peskin \& Schroeder~(5.69) and (5.72),
-	\eq{
-		q = t^2 = -2 \abs{\vp}^2 (1 - \cos\tht).
-	}
-	Then, again taking $p' = p$,
-	\al{
-		\frac{1}{4} \sumspins \abs{\cM}^2 &= 4 \frac{e^4 \mmu^2}{[ -2 \abs{\vp}^2 (1 - \cos\tht) ]^2} \paren{ E' E - \vp' \vdot \vp + \me^2 } \\
-		&= e^2 \mmu^2 \frac{E^2 - \abs{\vp}^2 \cos\tht + \me^2}{\abs{\vp}^4 (1 - \cos\tht)^2} \\
-		&= e^2 \mmu^2 \frac{2 E^2 - p^2 - 2 \abs{\vp}^2 \sin[2](\tht / 2)}{\abs{\vp}^4 (1 - \cos\tht)^2}
-	}
-	
-	
-	% We choose a reference frame such that
-%	\al{
-%		p &= (p, p \zh), &
-%		p' &= (p, \vp), &
-%		k &= (E, -p \zh), &
-%		k' &= (E, -p \zh),
-%	}
-%	which implies~\cite[p.~154]{Peskin}
-%	\al{
-%		p' \cdot p &= p^2 (1 - \cos\tht), &
-%		q^2 &= -2 p' \cdot p
-%		= -2 p^2 (1 - \cos\tht).
-%	}
-%	Then, again using $E^2 = \me^2 + p^2$,
-%	\al{
-%		\frac{1}{4} \sumspins \abs{\cM}^2 &= 4 \frac{e^4 \mmu^2}{[ -2 p^2 (1 - \cos\tht) ]^2} \paren{ p^2 (1 - \cos\tht) + \me^2 } \\
-%%		&= e^4 \mmu^2 \frac{2 p^2 \sin[2](\tht / 2) + E^2 - 2 p^2 + p^2}{p^4 (1 - \cos\tht)^2} \\
-%%		&= e^4 \mmu^2 \frac{E^2 + p^2 - 2 p^2 [1 - \sin[2](\tht / 2) ]}{p^4 (1 - \cos\tht)^2}
-%	}
-%	
-	\hl{help}	
-}
+\input{Problem1}
 
 
-
-
-
-\clearpage
 \state{Bhabha scattering (Peskin \& Schroeder 5.2)}{
 	Compute the differential cross section $\dv*{\sig}{(\cos\tht)}$ for Bhabha scattering, $\elp \elm \to \elp \elm$.  You may work in the limit $\Ecm \gg \me$, in which it is permissible to ignore the electron mass.  There are two Feynman diagrams; these must be added in the invariant matrix element before squaring.  Be sure that you have the correct relative sign between these diagrams.  The intermediate steps are complicated, but the final result is quite simple.  In particular, you may find it useful to introduce the Mandelstam variables $s$, $t$, and $u$.  Note that, if we ignore the electron mass, $s + t + u = 0$.  You should be able to cast the differential cross section into the form
 	\eq{
@@ -174,9 +25,33 @@
 }
 
 \sol{
-	The two Feynman diagrams are the $s$- and $t$-channel diagrams~\cite[p.~157]{Peskin}.  \hl{Draw them.}  The contractions for the $s$-channel diagram are
+	The two Feynman diagrams are the $s$- and $t$-channel diagrams~\cite[p.~157]{Peskin}.  \hl{Draw them.}  
 	
-	For the $t$ channel we need to swap field order 3 times which gives an overall sign difference~\cite[p.~118]{Peskin}.  \hl{SHOW THIS SHIT}
+	The interaction Hamiltonian for QED is Peskin \& Schroeder~(4.129),
+	\eq{
+		\Hint = \int \ddcx e \psib \gamm \psi \Asm,
+	}
+	so the interaction is $\psib \Asm \gamm \psi$~\cite[p.~226]{Schwartz}.  Now we can write the matrix element for the interaction:
+	\eq{
+		\mel*{\vp, \vkk}{(\psib \Asm \gamm \psi)_x (\psib \Asm \gamm \psi)_y}{\vp', \vkk'}.
+	}
+	By Peskin \& Schroeder~(4.118),
+	\al{
+		\ket*{\vp, \vkk} &\sim \apdag \akdag \ket{0}, &
+		\bra*{\vp', \vkk'} &\sim \bra{0} \akp \app.
+	}
+	Then the contractions for the $s$-channel diagram are
+	\eq{
+		\ev*{\wick{\c2{\akp} \c1{\app} (\c1{\psib} \Asm \gamm \c2{\psi})_x} \wick{(\c2{\psib} \Asm \gamm \c1{\psi})_y \c1{\apdag} \c2{\akdag}}}{0}.
+	}
+	For the $t$ channel,
+	\al{
+		\ev*{\wick{\c2{\akp} \c1{\app} (\c4{\psib} \Asm \gamm \c2{\psi})_x (\c1{\psib} \Asm \gamm \c3{\psi})_y \c3{\apdag} \c4{\akdag}}}{0}
+		&= -\ev*{\wick{\c2{\akp} \c1{\app} (\Asm \gamm \c2{\psi} \c4{\psib})_x (\c1{\psib} \Asm \gamm \c3{\psi})_y \c3{\apdag} \c4{\akdag}}}{0} \\
+		&= \ev*{\wick{\c2{\akp} \c1{\app} (\Asm \gamm \c2{\psi})_x \c1{\psib}_y} \wick{\c2{\psib}_x (\Asm \gamm \c1{\psi})_y \c1{\apdag} \c2{\akdag}}}{0} \\
+		&= - \ev*{\wick{\c2{\akp} \c1{\app} \c1{\psib}_y (\Asm \gamm \c2{\psi}} \wick{\c2{\psib})_x (\Asm \gamm \c1{\psi})_y \c1{\apdag} \c2{\akdag}}}{0}.
+	}
+	We needed to swap the order of adjacent fields three times, which gives an overall minus sign~\cite[p.~118]{Peskin}.  This means we subtract the $t$ channel diagram: \hl{subtract them}
 	
 	The matrix element for the $s$ channel is the same as Peskin \& Schroeder~(5.1),
 	\eq{
@@ -244,11 +119,11 @@
 	}
 	Note that
 	\al{
-		\Tr( \ksl \gamm \psl \gamn \psl' \gamsm \ksl' \gamsn ) &= \ksa \psb \pspr \ksps \Tr( \gama \gamm \gamb \gamn \gamr \gamsm \gams \gamsn ) \\
-		&= -2 \ksa \psb \pspr \ksps \Tr( \gama \gamr \gamn \gamb \gams \gamsn ) \\
-		&= -8 \ksa \psb \pspr \ksps \Tr( \gama \gamr \gbs ) \\
-		&= -8 \ksa \psb \pspr \kpb \Tr( \gama \gamr ) \\
-		&= -32 \ksa \psb \pspr \kpb \gar \\
+		\Tr( \ksl \gamm \psl \gamn \psl' \gamsm \ksl' \gamsn ) &= \ksa \psb \psr' \kss' \Tr( \gama \gamm \gamb \gamn \gamr \gamsm \gams \gamsn ) \\
+		&= -2 \ksa \psb \psr' \kss' \Tr( \gama \gamr \gamn \gamb \gams \gamsn ) \\
+		&= -8 \ksa \psb \psr' \kss' \Tr( \gama \gamr \gbs ) \\
+		&= -8 \ksa \psb \psr' \kpb \Tr( \gama \gamr ) \\
+		&= -32 \ksa \psb \psr' \kpb \gar \\
 		&= -32 \ksa \ppa \psb \kpb \\
 		&= -32 (k \cdot p') (p \cdot k') \\
 		&= -8 u^2,
@@ -275,12 +150,29 @@
 		= \frac{\alp^2}{2 s} \brac{ u^2 \paren{ \frac{1}{s} + \frac{1}{t} }^2 + \paren{ \frac{t}{s} }^2 + \paren{ \frac{s}{t} }^2 }.
 	}
 	Noting that $\ddOmg = \ddcost \ddphi$ and $\int \ddphi = 2\pi$, we integrate over $\phi$ to find
-	\eq{
+	\eqn{ans2b}{
 		\ans{ \dv{\sig}{(\cos\tht)} = \frac{\pi \alp^2}{s} \brac{ u^2 \paren{ \frac{1}{s} + \frac{1}{t} }^2 + \paren{ \frac{t}{s} }^2 + \paren{ \frac{s}{t} }^2 } }
 	}
 	as desired. \qed
 	
-	\hl{UGH THE REST}
+	From Peskin \& Schroeder~(5.72),
+	\al{
+		s &= \Ecm^2, &
+		t &= -2 \abs{\vp}^2 (1 - \cos\tht), &
+		u &= -2 \abs{\vp}^2 (1 + \cos\tht).
+	}
+	Feeding these into Eq.~\refeq{ans2b},
+	\aln{
+		\dv{\sig}{(\cos\tht)} &= \frac{\pi \alp^2}{\Ecm^2} \brac{ 4 \abs{\vp}^4 (1 + \cos\tht)^2 \paren{ \frac{1}{\Ecm^2} - \frac{1}{2 \abs{\vp}^2 (1 - \cos\tht)} }^2 + \paren{ -\frac{2 \abs{\vp}^2 (1 - \cos\tht)}{\Ecm^2} }^2 + \paren{ -\frac{\Ecm^2}{2 \abs{\vp}^2 (1 - \cos\tht)} }^2 } \notag \\
+		&= \ans{ \frac{4 \pi \alp^2 \abs{\vp}^4}{\Ecm^2} \brac{ \paren{ \frac{(1 + \cos\tht)^4}{\Ecm^2} - \frac{(1 + \cos\tht)^4}{2 \abs{\vp}^2 (1 - \cos\tht)} }^2 + \paren{ \frac{1 - \cos\tht}{\Ecm^2} }^2 + \paren{ \frac{\Ecm^2}{1 - \cos\tht} }^2 }. } \label{ans2}
+	}
+	A graph is shown in Fig.~\ref{f2}.  The differential cross section diverges as $\tht \to 0$ since the photon in the diagrams is nearly on shell; that is, $q^2 \to 0$~\cite[p.~155]{Peskin}.  When the mediating photon is massless~(on shell), electrons that are separated by an infinite distance can still scatter off each other.  Since they are so far apart, however, the angle of scattering approaches 0.  Since any electron anywhere in the universe may be scattering off another given electron with $\tht \approx 0$, the scattering cross section must blow up there.
+	
+	\begin{figure} \centering
+		\includegraphics[width=0.4\textwidth]{2}
+		\caption{Graph of Eq.~\refeq{ans2} showing divergence as $\tht \to 0$.}
+		\label{f2}
+	\end{figure}
 }
 
 
@@ -299,6 +191,10 @@
 		\approx \SI{8.03e9}{\per\second}.
 	}
 	A recent measurement gives $\Gam = 7.994 \pm \SI{0.011}{\per\nano\second}$; the 0.5\% discrepancy is accounted for by radiative corrections.
+}
+
+\sol{
+	The amplitude for $\elp\elm$ annihilation into two photons can be obtained from the Compton amplitude by the substitutions
 }
 
 
