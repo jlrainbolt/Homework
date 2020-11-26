@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{diag6}
+	\fmfframe(4,5)(4,5){
+		\begin{fmfgraph*}(40, 30)
+			\fmfstraight
+			\fmfleftn{i}{2}
+			\fmfrightn{o}{2}
+			\fmflabel{$e^-$}{i[1]}
+			\fmflabel{$e^+$}{o[1]}
+			\fmflabel{$\gamma$}{i[2]}
+			\fmflabel{$\gamma$}{o[2]}
+			\fmf{fermion,label=$p_1$,label.side=right}{i[1],c}
+			\fmf{fermion}{c,d}
+			\fmf{fermion,label=$p_2$,label.side=right}{d,o[1]}
+			\fmf{phantom}{i[2],c}
+			\fmf{phantom}{o[2],d}
+			\fmffreeze
+			\fmf{photon}{d,e,f,i[2]}
+%			\fmflabel{$k_1$}{f}
+			\fmfv{l=$k_1$,l.a=-150}{f}
+			\fmf{photon}{o[2],g,h,c}
+			\fmfv{l=$k_2$,l.a=-30}{g}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

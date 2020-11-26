@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{diag5}
+	\fmfframe(4,5)(4,5){
+		\begin{fmfgraph*}(40, 30)
+			\fmfstraight
+			\fmfleftn{i}{2}
+			\fmfrightn{o}{2}
+			\fmflabel{$e^-$}{i[1]}
+			\fmflabel{$e^+$}{o[1]}
+			\fmflabel{$\gamma$}{i[2]}
+			\fmflabel{$\gamma$}{o[2]}
+			\fmf{fermion,label=$p_1$,label.side=right}{i[1],c}
+			\fmf{photon,label=$k_1$,label.side=right}{c,i[2]}
+			\fmf{fermion}{c,d}
+			\fmf{fermion,label=$p_2$,label.side=right}{d,o[1]}
+			\fmf{photon,label=$k_2$,label.side=right}{o[2],d}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}
