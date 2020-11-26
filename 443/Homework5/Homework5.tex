@@ -42,7 +42,7 @@
 	where we have also referred to the expressions for Compton scattering, as well as the fermion and photon Feynman rules~\cite[pp.~118, 123, 158--159]{Peskin}.  
 	
 	In the extreme nonrelativistic limit and in the center-of-mass frame, let
-	\al{
+	\aln{ \label{vecs}
 		\pq &= (m, \vo), &
 		\pw &= (m, \vo), &
 		\kq &= (m, m \zh), &
@@ -89,35 +89,42 @@
 		&= \ans{ i e^2 \epssmskw \epssnskq \xipdag (\sign \sige \sigm - \sigm \sige \sign) \xi, }
 	}
 	since $\sigbi = -\sigi$.
-	
-%	Adapting Peskin \& Schroeder~(5.44),
-%	\eq{
-%		\cM(1S \to \gam \gam) = \sqrt{2 M} \int \ddkf \psik \frac{1}{\sqrt{2m}} \frac{1}{\sqrt{2m}} \cM(\elp \elm \to \gam \gam)
-%		= \sqrt{ \frac{2}{m} } \int \ddkf \psik \cM(\elp \elm \to \gam \gam)
-%	}
-%	since $M \approx 2m$~\cite[p.~149]{Peskin}.  Here $\cM(\elp \elm \to \gam \gam)$ depends on the spin states and polarizations.  
-	
+
 	From Peskin \& Schroeder~(5.46),
-	\eq{
+	\eqn{thingyyy}{
 		i \cM = \xidag \Gamk \xi'
 		\qimplies
 		\Gamk = i e^2 \epssmskw \epssnskq (\sign \sige \sigm - \sigm \sige \sign).
 	}
 	Adapting their (5.50),
-	\eq{
-		i \cM(1S \to \gam \gam) = \sqrt{ \frac{2}{m} } \int \ddkf \psik \Tr( \frac{\nhs \vdot \vsig}{\sqrt{2}} \Gamk )
+	\eqn{M}{
+		i \cM(1S \to \gam \gam) = \sqrt{ \frac{2}{M} } \int \ddkf \psik \Tr( \frac{\nhs \vdot \vsig}{\sqrt{2}} \Gamk )
 	}
 	which implies
 	\eq{
-		-i \cM^*(1S \to \gam \gam) = \sqrt{ \frac{2}{m} } \int \ddkf \psik \Tr( \frac{\nhs \vdot \vsig}{\sqrt{2}} \Gamk )
+		-i \cM^*(1S \to \gam \gam) = \sqrt{ \frac{2}{M} } \int \ddkf \psisk \Tr( \frac{\nhs \vdot \vsig}{\sqrt{2}} \Gamk )^*,
 	}
-	\hl{wavefunction comes from ground state hydrogen}
-
+	and so
+	\eqn{thing3}{
+		\abs{ \cM(1S \to \gam \gam) }^2 = \frac{1}{m} \int \ddkf \abs{\psik}^2 \abs{ \Tr( \frac{\nhs \vdot \vsig}{\sqrt{2}} \Gamk ) }^2,
+	}
+	since $M \approx 2m$~\cite[p.~149]{Peskin}.  Here $\psi$ is the wavefunction of ground state positronium, which is similar to the wavefunction of ground state hydrogen.  For positronium, $Z \to m / 2$~(the reduced mass) and $\ao \to 1 / \alp$, where $\alp$ is the fine-structure constant~\cite[p.~xxi]{Peskin}.  Thus~\cite[pp.~201, 454--455]{Sakurai}
+	\eqn{wf}{
+		\psi(r, \tht, \phi) = \frac{1}{\sqrt{\pi}} \paren{ \frac{\alp m}{2} }^{3/2} e^{-\alp m r / 2}.
+	}
+	Now we can write an expression for the decay rate using Peskin \& Schroeder~(5.55) and (4.83):
+	\eqn{Gamma}{
+		\Gam = \frac{1}{2M} \int \dd{\Pi_2} \abs{\cM}^2
+		= \int \ddcost \frac{1}{16 \pi} \frac{2 \abs{\vpq}}{\Ecm} \abs{\cM}^2
+		= \int \ddcost \frac{\abs{\cM}^2}{16 \pi},
+	}
+	where we have used $\abs{\vpq} = m$ and $\Ecm = 2m$ from Eq.~\refeq{vecs}.
+	
 	A spin-0 state can be obtained by Peskin \& Schroeder~(5.49),
 	\eq{
 		\xi' \xidag \to \frac{\vqq}{\sqrt{2}}.
 	}
-	In the case $\epskq = (0, 1, i, 0) / \sqrt{2}$, $\epskw = (0, -1, i, 0) / \sqrt{2}$, $\epssmskq \sigm = (\sigq - i \sigw) / \sqrt{2}$ and $\epssmskw \sigm = -(\sigq + i \sigw) / \sqrt{2}$.  Then
+	In the case $\epskq = (0, 1, i, 0) / \sqrt{2}$, $\epskw = (0, -1, i, 0) / \sqrt{2}$, $\epssmskq \sigm = (\sigq - i \sigw) / \sqrt{2}$ and $\epssmskw \sigm = -(\sigq + i \sigw) / \sqrt{2}$.  Then, by Eq.~\refeq{thingyyy},
 	\al{
 		\Tr( \frac{\vqq}{\sqrt{2}} \Gamk ) &= \Tr( -\frac{\vqq}{2 \sqrt{2}} i e^2 [ (\sigq - i \sigw) \sige (\sigq + i \sigw) - (\sigq + i \sigw) \sige (\sigq - i \sigw) ] ) \\
 		&= \Tr( -\frac{\vqq}{2 \sqrt{2}} i e^2 [ \sigq \sige \sigq + i \sigq \sige \sigw - i \sigw \sige \sigq + \sigw \sige \sigw - \sigq \sige \sigq + i \sigq \sige \sigw - i \sigw \sige \sigq - \sigw \sige \sigw ] ) \\
@@ -129,7 +136,7 @@
 	}
 	where we have used $\Tr(\sigi \sigj \sigk) = 2i \epsijk$~\cite{Pauli}.
 	
-	In the case $\epskq = (0, 1, -i, 0)$, $\epskw = (0, -1, -i, 0)$, $\epssmskq \sigm = (\sigq + i \sigw) / \sqrt{2}$ and $\epssmskw \sigm = -(\sigq - i \sigw) / \sqrt{2}$.  Then
+	In the case $\epskq = (0, 1, -i, 0)$, $\epskw = (0, -1, -i, 0)$, $\epssmskq \sigm = (\sigq + i \sigw) / \sqrt{2}$ and $\epssmskw \sigm = -(\sigq - i \sigw) / \sqrt{2}$.  Then, once again by Eq.~\refeq{thingyyy},
 	\al{
 		\Tr( \frac{\vqq}{\sqrt{2}} \Gamk ) &= \Tr( -\frac{\vqq}{2 \sqrt{2}} i e^2 [ (\sigq + i \sigw) \sige (\sigq - i \sigw) - (\sigq - i \sigw) \sige (\sigq + i \sigw) ] ) \\
 		&= \Tr( -\frac{\vqq}{2 \sqrt{2}} i e^2 [ \sigq \sige \sigq - i \sigq \sige \sigw + i \sigw \sige \sigq + \sigw \sige \sigw - \sigq \sige \sigq -i \sigq \sige \sigw + i \sigw \sige \sigq - \sigw \sige \sigw ] ) \\
@@ -146,11 +153,11 @@
 		\Tr( \frac{\vqq}{\sqrt{2}} \Gamk ) = \Tr( -\frac{\vqq}{2 \sqrt{2}} i e^2 [ (\sigq + i \sigw) \sige (\sigq + i \sigw) - (\sigq + i \sigw) \sige (\sigq + i \sigw) ] ) 
 		= 0.
 	}
-	To summarize, in the singlet case we have
-	\eq{
+	To summarize, in the spin-0 case we have
+	\eqn{singlet}{
 		\Tr( \frac{\vqq}{\sqrt{2}} \Gamk ) = \begin{cases}
-			-i 2 \sqrt{2} e^2 &\text{if } \epskq = \dfrac{(0, 1, i, 0)}{\sqrt{2}}, \epskw = \dfrac{(0, -1, i, 0)}{\sqrt{2}}; \\[2ex]
-			i 2 \sqrt{2} e^2 &\text{if } \epskq = \dfrac{(0, 1, -i, 0)}{\sqrt{2}}, \epskw = \dfrac{(0, -1, -i, 0)}{\sqrt{2}}; \\[2ex]
+			-i 2 \sqrt{2} e^2 &\text{if}\ \epskq = \dfrac{(0, 1, i, 0)}{\sqrt{2}},\ \epskw = \dfrac{(0, -1, i, 0)}{\sqrt{2}}; \\[2ex]
+			i 2 \sqrt{2} e^2 &\text{if}\ \epskq = \dfrac{(0, 1, -i, 0)}{\sqrt{2}},\ \epskw = \dfrac{(0, -1, -i, 0)}{\sqrt{2}}; \\[2ex]
 			0 & \text{otherwise}.
 		\end{cases}
 	}
@@ -171,17 +178,37 @@
 	}
 	where we have used $\Tr(\sigi \sigj \sigk \sigl) = 2 (\del^{i j} \del^{k l} - \del^{i k} \del^{k l} + \del^{i l} \del^{j k})$~\cite{Pauli}.  The $\epskq = (0, 1, -i, 0) / \sqrt{2}$, $\epskw = (0, -1, -i, 0) / \sqrt{2}$ case is the same with an overall minus sign.  For the other two cases, the argument of the trace is identically zero.
 	
-	For $\nh = (\xh + i \yh) / \sqrt{2}$ and $\nh = (\xh - i \yh) / \sqrt{2}$, the argument is identical.  We get two trace terms, each being either identically zero or taking the form $\Tr(\sigi \sigj \sigk \sigl) = 2 (\del^{i j} \del^{k l} - \del^{i k} \del^{k l} + \del^{i l} \del^{j k})$ with all of the Kronecker deltas being zero.  Thus we have
+	For $\nh = (\xh + i \yh) / \sqrt{2}$ and $\nh = (\xh - i \yh) / \sqrt{2}$, the argument is identical.  We get two trace terms, each being either identically zero or taking the form $\Tr(\sigi \sigj \sigk \sigl) = 2 (\del^{i j} \del^{k l} - \del^{i k} \del^{k l} + \del^{i l} \del^{j k})$ with each term vanishing.  Thus we have
 	\eq{
 		\Tr( \frac{\nhs \vdot \vsig}{\sqrt{2}} \Gamk ) = 0
 	}
-	for the spin-1 states.  This means, in the spin-1 case,
+	for the spin-1 states.  This means, in the spin-1 case, Eq.~\refeq{M} is $i \cM(1S \to \gam \gam) = 0$ trivially.  Feeding this into Eq.~\refeq{Gamma} yields
 	\eq{
-		\ans{ i \cM(1S \to \gam \gam) = \sqrt{ \frac{2}{m} } \int \ddkf \psik \Tr( \frac{\nhs \vdot \vsig}{\sqrt{2}} \Gamk ) = 0 }
+		\Gam = \int \ddcost \frac{\abs{0}^2}{16 \pi}
+		= \ans{ 0, }
 	}
-	trivially.  Thus, the spin-1 positronium states do not annihilate into two photons, as we wanted to show. \qed
+	meaning that the spin-1 positronium states do not annihilate into two photons, as we wanted to show. \qed
 	
-	Returning to the spin-0 states, 
+	Returning to the spin-0 states, we average over the polarization states.  Note from Eqs.~\refeq{thing3} and \refeq{singlet} that
+	\al{
+		\frac{1}{2} \sumspins \abs{ \cM(1S \to \gam \gam) }^2 &= \frac{1}{2 m} \int \ddkf \abs{\psik}^2 \sumspins \abs{ \Tr( \frac{\nhs \vdot \vsig}{\sqrt{2}} \Gamk ) }^2 \\
+		&= \frac{1}{2 m} \int \ddkf \abs{\psik}^2 \paren{ \abs{-i 2 \sqrt{2} e^2}^2 + \abs{i 2 \sqrt{2} e^2}^2 } \\
+		&= \frac{2}{2 m} \int \ddkf \abs{\psik}^2 (2 \sqrt{2} e^2)^2 \\
+		&= \frac{8 e^4}{m} \abs{\psio}^2,
+	}
+	where the integral gives $\psio$ since the amplitude is independent of the momenta~\cite[p.~149]{Peskin}.  Then
+	\eq{
+		\sumspins \abs{ \cM(1S \to \gam \gam) }^2 = 8 \frac{16 \pi^2 \alp^2}{m} \brac{ \frac{1}{\sqrt{\pi}} \paren{ \frac{\alp m}{2} }^{3/2} }^2
+		= \frac{16^2 \pi^2 \alp^2}{m} \frac{1}{\pi} \frac{\alp^3 m^3}{8}
+		= 16 \pi \alp^5 m^2,
+	}
+	where we have used Eq.~\refeq{wf}.  Then, feeding this into Eq.~\refeq{Gamma} and inserting a factor of $1/2$ to account for the two identical photons,
+	\al{
+		\Gam &= \frac{1}{2} \int \ddcost \frac{\sumspins \abs{\cM(1S \to \gam \gam)}^2 / 2}{16 \pi}
+		= \frac{1}{2} \int \ddcost \frac{16 \pi \alp^5 m^2}{16 \pi}
+		= \ans{ \frac{\alp^5 m^2}{2} }
+	}
+	as we wanted to show. \qed
 }
 
 
