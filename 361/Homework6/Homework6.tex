@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{361}
+\homeworknum{6}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+\state{Electron-phonon interaction}{
+	Write short notes explaining the physical effects that may be produced by the electron-phonon interaction in metals.
+}
+
+
+
+
+
+
+\state{Electronic mass enhancement}{
+	The integral in Eq.~(7.10) can be approximated by neglecting the momentum dependence of the coupling constant $g$, and replacing the phonon frequency by the characteristic scale $\omgD$.  Show that in this case the integral becomes
+	\eq{
+		g^2 \intnimu \ddepsp \frac{\Nepsp}{(\eps' - \epsk)^2 - \omgD^2}
+	}
+	where $\Neps$ is the density of states in energy.  Since the dominant part of the integral comes from energies near the Fermi energy, we can usually replace $\Neps$ by $\Nmu$.
+}
+
+\prob{
+	Making this approximation, show that for energies $\abs{\epsk - \mu} \ll \omgD$
+	\eq{
+		\epsk - \mu = \frac{\epsko - \mu}{1 + \lam}
+	}
+	where
+	\eq{
+		\lam = \frac{g^2 \Nmu}{\omgD^2}.
+	}
+}
+
+
+
+\prob{
+	Show that for energies $\abs{\epsk - \mu}$ several times $\omgD$ the correction to $\epsk$ is of order
+	\eq{
+		\lam \frac{\omgD^2}{(\epsk - \mu)^2} (\epsk - \mu).
+	}
+}
+
+
+
+
+
+
+\state{Cooper's problem}{
+	The wavefunction of a Cooper pair of electrons added to the Fermi sea is
+	\eq{
+		\kpsiC = \sumkkF \gvk \ckupd \cmkdnd
+	}
+	where only terms in the sum for $k > \kF$ are allowed.  We can now test out the pair wavefunction with the Hamiltonian
+	\eqn{given3}{
+		H = \sump \epsp \cpd \cpo + \frac{1}{2} \sumpppq \Vq \cpd \cppd \cppmq \cppq
+	}
+	applied to the two electrons in question, but leaving the fermi sea inert.  $\Vq$ is here taken to be an \emph{attractive} interaction.
+}
+
+\prob{
+	Show that the first term in Eq.~\refeq{given3} operating on $\kpsiC$ is
+	\eq{
+		\Ho \kpsiC = \sumpksig \epsp \gk \cpsd \cps \ckupd \cmkdnd \kFS
+		= \sumk 2 \epsk \gk \ckupd \cmkdnd \kFS.
+	}
+	(Hint: the trick in all of these operator manipulations is to move the annihilation operator to the RHS, so that it can destroy the vacuum state.  Along the way, it has to anticommute with the creation operators initially on its right and these anticommutators always generate an extra delta function.  The two terms in the last equation come because we must have either $p = k$, $\sig = {\up}$, or $p = -k$, $\sig = {\dn-}$ and $-p = p$.  Remember that for this toy problem alone, we don't apply the Hamiltonian to the Fermi sea.)
+}
+
+
+
+\prob{
+	Similarly, show that the operation of the second term in Eq.~\refeq{given3} gives
+	\eq{
+		\Hint = \sumkpppqsigsigp \Vq \gk \cpsd \cppspd \delppqk \delsup \delppmqk \delspdn \kFS
+		= \sumkkpkF \Vkmkp \gkp \ckupd \cmkdnd \kFS.
+	}
+	Getting to the final equation involves a little crafty relabeling of the momenta in the sum.  This gets us to the two-particle {\Schrodinger} equation Eq.~(7.19).
+}
+
+
+%\makebib
+
+\end{document}
