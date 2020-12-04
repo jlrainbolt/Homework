@@ -17,9 +17,11 @@
 		\approx g^2 \int \frac{\ddkp}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD (\vk - \vk')^2}.
 	}
 	Since the mass enhancement only exists for states whose energies are the same within $\hbar \omgD$~(lecture notes p.~132), $(\vk - \vk')^2 \approx \omgD$.  Thus
-	\eqn{thing2a}{
+	\aln{
 		g^2 \int \frac{\ddkp}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD (\vk - \vk')^2}
-		\approx g^2 \int \frac{\ddkp}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD^2}.
+		&\approx g^2 \int \frac{\ddkp}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD^2} \notag \\
+		&= g^2 \iiint \frac{{k'}^2 \ddkkp \ddcost \ddphi}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD^2} \notag \\
+		&= 4\pi g^2 \int \frac{{k'}^2 \ddkkp}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD^2} \label{thing2a}
 	}
 	The definition of $\nk$ is given on p.~91 of the lecture notes:
 	\eq{
@@ -28,18 +30,20 @@
 			0 & \text{otherwise}.
 		\end{cases}
 	}
-	Feeding this into Eq.~\refeq{thing2a}, we can change the limits of integration to $(-\kF, \kF)$:
+	Feeding this into Eq.~\refeq{thing2a}, we can change the limits of integration to $(0, \kF)$:
 	\eqn{thing2a2}{
-		g^2 \int \frac{\ddkp}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD^2} = g^2 \intnpkF \frac{\ddkp}{(2\pi)^3} \frac{1}{(\epsk - \epskp)^2 - \omgD^2}.
+		4\pi g^2 \int \frac{{k'}^2 \ddkkp}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD^2} = 4\pi g^2 \intokF \frac{{k'}^2 \ddkkp}{(2\pi)^3} \frac{1}{(\epsk - \epskp)^2 - \omgD^2}.
 	}
-	We can transform variables by
+	We can transform variables by (2.11) in the lecture notes, which gives the density of states for an electron gas.  Assuming this is an appropriate model for our metal, and that $\Neps$ represents the density of states per unit volume, we use
 	\eq{
-		\Neps \ddeps = \frac{\ddk}{(2\pi)^2}
+		\ddkk = \frac{1}{2} \frac{(2\pi)^3}{4\pi k^2} \Neps \ddeps.
 	}
-	from (2.10) in the lecture notes.  Then Eq.~\refeq{thing2a2} becomes
+	Then Eq.~\refeq{thing2a2} becomes
 	\eq{
-		g^2 \intnpkF \frac{\ddkp}{(2\pi)^3} \frac{1}{(\epsk - \epskp)^2 - \omgD^2} = g^2 \intnpepsF \ddepsp \frac{\Nepsp}{(\epsk - \epskp)^2 - \omgD^2}.
+		4\pi g^2 \intokF \frac{{k'}^2 \ddkkp}{(2\pi)^3} \frac{1}{(\epsk - \epskp)^2 - \omgD^2} = g^2 \intnpepsF \ddepsp \frac{\Nepsp}{(\eps' - \epskp)^2 - \omgD^2}.
 	}
+	(The factors of 2 and the bounds of integration do not seem to match up here...)
+	
 	In the approximation $\epsF \approx \mu$, we can replace the limits of integration by $(-\mu, \mu)$.  For the lower bound, we assume that large negative do not contribute much: that is, $-\mu \to -\infty$.  Then
 	\eqn{ans2a}{
 		\ans{ \int \frac{\ddkp}{(2\pi)^3} \frac{\abs{\gkmkp}^2 \nkp}{(\epsk - \epskp)^2 - \omg (\vk - \vk')^2} \approx g^2 \intnimu \ddepsp \frac{\Nepsp}{(\eps' - \epsk)^2 - \omgD^2} }

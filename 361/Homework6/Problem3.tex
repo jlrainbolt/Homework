@@ -12,20 +12,94 @@
 
 \prob{
 	Show that the first term in Eq.~\refeq{given3} operating on $\kpsiC$ is
-	\eq{
+	\eqn{show3a}{
 		\Ho \kpsiC = \sumpksig \epsp \gk \cpsd \cps \ckupd \cmkdnd \kFS
 		= \sumk 2 \epsk \gk \ckupd \cmkdnd \kFS.
 	}
-	(Hint: the trick in all of these operator manipulations is to move the annihilation operator to the RHS, so that it can destroy the vacuum state.  Along the way, it has to anticommute with the creation operators initially on its right and these anticommutators always generate an extra delta function.  The two terms in the last equation come because we must have either $p = k$, $\sig = {\up}$, or $p = -k$, $\sig = \dn$ and $\epsmp = \epsp$.  Remember that for this toy problem alone, we don't apply the Hamiltonian to the Fermi sea.)
+	The two terms in the last equation come because we must have either $p = k$, $\sig = {\up}$, or $p = -k$, $\sig = {\dn}$ and $\epsmp = \epsp$.
+}
+
+\sol{
+	For fermions, the anticommutators of the creation and annihilation operators are~\cite{CA}
+	\al{
+		\{ \ci, \cjd \} &= \ci \cjd + \cjd \ci = \delij, &
+		\{ \ci, \cj \} &= \{ \cid, \cjd \} = 0.
+	}
+	\clearpage
+	Using these relations, note that
+	\al{
+		\cpsd \cps \ckupd \cmkdnd &= \cpsd (\delpk \delsup - \ckupd \cps) \cmkdnd \\
+		&= \delpk \delsup \cpsd \cmkdnd - \cpsd \ckupd (\delpmk \delsdn - \cmkdnd \cps) \\
+		&= \delpk \delsup \cpsd \cmkdnd - \delpmk \delsdn \cpsd \ckupd + \cpsd \ckupd \cmkdnd \cps.
+	}
+	Feeding this into Eq.~\refeq{show3a},
+	\al{
+		\Ho \kpsiC &= \sumpksig \epsp \gk \cpsd \cps \ckupd \cmkdnd \kFS \\
+		&= \sumpksig \epsp \gk (\delpk \delsup \cpsd \cmkdnd - \delpmk \delsdn \cpsd \ckupd + \cpsd \ckupd \cmkdnd \cps) \kFS \\
+		&= \sumpksig (\epsp \gk \delpk \delsup \cpsd \cmkdnd - \epsmp \gk \delpmk \delsdn \cpsd \ckupd) \kFS \\
+		&= \sumk (\epsk \gk \ckupd \cmkdnd - \epsk \gnk \cmkdnd \ckupd) \kFS \\
+		&= \sumk \epsk \gk (\ckupd \cmkdnd - \delkmk \delupdn + \ckupd \cmkdnd) \kFS \\
+		&= \ans{ 2 \sumk \epsk \gk \ckupd \cmkdnd \kFS, }
+	}
+	where in the second term we have used $\epsp = \epsmp$. \qed
 }
 
 
 
 \prob{
 	Similarly, show that the operation of the second term in Eq.~\refeq{given3} gives
-	\eq{
-		\Hint = \sumkpppqsigsigp \Vq \gk \cpsd \cppspd \delppqk \delsup \delppmqk \delspdn \kFS
+	\eqn{show3b}{
+		\Hint = \sumkpppqsigsigp \Vq \gk \cpsd \cppspd \delppqk \delsup \delppmqmk \delspdn \kFS
 		= \sumkkpkF \Vkmkp \gkp \ckupd \cmkdnd \kFS.
 	}
 	Getting to the final equation involves a little crafty relabeling of the momenta in the sum.  This gets us to the two-particle {\Schrodinger} equation Eq.~(7.19).
+}
+
+\sol{
+	Note that
+	\aln{
+		\cpsd \cppspd \cppmqsp \cppqs \ckupd \cmkdnd &= \cpsd \cppspd \cppmqsp (\delppqk \delsup - \ckupd \cppqs) \cmkdnd \notag \\
+		&= \delppqk \delsup \cpsd \cppspd \cppmqsp \cmkdnd - \cpsd \cppspd \cppmqsp \ckupd \cppqs \cmkdnd. \label{thing3b}
+	}
+	For the first term of Eq.~\refeq{thing3b},
+	\eq{
+		\cpsd \cppspd \cppmqsp \cmkdnd = \cpsd \cppspd (\delppmqmk \delspdn - \cmkdnd \cppmqsp)
+		= \delppmqmk \delspdn \cpsd \cppspd - \cpsd \cppspd \cmkdnd \cppmqsp.
+	}
+	For the second term of Eq.~\refeq{thing3b},
+	\al{
+		\cpsd \cppspd \cppmqsp \ckupd \cppqs \cmkdnd &= \cpsd \cppspd (\delppmqk \delspup - \ckupd \cppmqsp) (\delppqmk \delsdn - \cmkdnd \cppqs) \\[1ex]
+		&= \cpsd \cppspd (\delppmqk \delspup \delppqmk \delsdn - \delppmqk \delspup \cmkdnd \cppqs \\
+		&\hspace{5em} \phantom{=\ } - \delppqmk \delsdn \ckupd \cppmqsp + \ckupd \cppmqsp \cmkdnd \cppqs).
+	}
+	For the last term here,
+	\eq{
+		\ckupd \cppmqsp \cmkdnd \cppqs = \ckupd (\delppmqmk \delspdn - \cmkdnd \cppmqsp) \cppqs
+		= \delppmqmk \delspdn \ckupd \cppqs - \ckupd \cmkdnd \cppmqsp \cppqs.
+	}
+	We neglect the terms that end in an annihilation operator, since they will disappear when they act on $\kFS$.  So Eq.~\refeq{thing3b} becomes (loosely speaking)
+	\al{
+		\cpsd \cppspd \cppmqsp \cppqs \ckupd \cmkdnd &= \delppqk \delsup \delppmqmk \delspdn \cpsd \cppspd - \delppmqk \delspup \delppqmk \delsdn \cpsd \cppspd \\
+		&= \delppqk \delsup \delppmqmk \delspdn \cpsd \cppspd - \delppmqk \delspup \delppqmk \delsdn (\delppp \delssp - \cppspd \cpsd) \\
+		&= 2 \delppqk \delsup \delppmqmk \delspdn \cpsd \cppspd.
+	}
+	Thus the operation of the second term in Eq.~\refeq{given3} is
+	\eq{
+		\Hint = \frac{1}{2} \sumkpppqsigsigp \Vq \gk \cpsd \cppspd \cppmqsp \cppqs \ckupd \cmkdnd \kFS
+		= \sumkpppqsigsigp \Vq \gk \cpsd \cppspd \delppqk \delsup \delppmqmk \delspdn \kFS
+	}
+	as in Eq.~\refeq{show3b}.  Rewriting the Kronecker deltas, we have
+	\eq{
+		\Hint = \sumkpppqsigsigp \Vq \gk \cpsd \cppspd \delpkmq \delsup \delppcqmk \delspdn \kFS
+		= \sumkq \Vq \gk \ckmqupd \cqmkdnd \kFS.
+	}
+	Let $q = k - k'$.  Then
+	\eq{
+		\Hint = \sumkkpkF \Vkmkp \gk \ckpupd \cmkpdnd \kFS.
+	}
+	Swapping the labels $k$ and $k'$, and assuming $\Vkmkp = V_{k' - k}$, we have
+	\eq{
+		\ans{ \Hint = \sumkkpkF \Vkmkp \gkp \ckupd \cmkdnd \kFS }
+	}
+	as we wanted to show. \qed
 }
