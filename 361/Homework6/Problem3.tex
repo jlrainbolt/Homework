@@ -1,0 +1,31 @@
+\state{Cooper's problem}{
+	The wavefunction of a Cooper pair of electrons added to the Fermi sea is
+	\eq{
+		\kpsiC = \sumkkF \gvk \ckupd \cmkdnd \kFS,
+	}
+	where only terms in the sum for $k > \kF$ are allowed.  We can now test out the pair wavefunction with the Hamiltonian
+	\eqn{given3}{
+		H = \sump \epsp \cpd \cpo + \frac{1}{2} \sumpppq \Vq \cpd \cppd \cppmq \cppq
+	}
+	applied to the two electrons in question, but leaving the fermi sea inert.  $\Vq$ is here taken to be an \emph{attractive} interaction.
+}
+
+\prob{
+	Show that the first term in Eq.~\refeq{given3} operating on $\kpsiC$ is
+	\eq{
+		\Ho \kpsiC = \sumpksig \epsp \gk \cpsd \cps \ckupd \cmkdnd \kFS
+		= \sumk 2 \epsk \gk \ckupd \cmkdnd \kFS.
+	}
+	(Hint: the trick in all of these operator manipulations is to move the annihilation operator to the RHS, so that it can destroy the vacuum state.  Along the way, it has to anticommute with the creation operators initially on its right and these anticommutators always generate an extra delta function.  The two terms in the last equation come because we must have either $p = k$, $\sig = {\up}$, or $p = -k$, $\sig = \dn$ and $\epsmp = \epsp$.  Remember that for this toy problem alone, we don't apply the Hamiltonian to the Fermi sea.)
+}
+
+
+
+\prob{
+	Similarly, show that the operation of the second term in Eq.~\refeq{given3} gives
+	\eq{
+		\Hint = \sumkpppqsigsigp \Vq \gk \cpsd \cppspd \delppqk \delsup \delppmqk \delspdn \kFS
+		= \sumkkpkF \Vkmkp \gkp \ckupd \cmkdnd \kFS.
+	}
+	Getting to the final equation involves a little crafty relabeling of the momenta in the sum.  This gets us to the two-particle {\Schrodinger} equation Eq.~(7.19).
+}
