@@ -1,6 +1,5 @@
-\state{Electronic mass enhancement}{\hfix}
-
-\prob{The integral in Eq.~(7.10) can be approximated by neglecting the momentum dependence of the coupling constant $g$, and replacing the phonon frequency by the characteristic scale $\omgD$.  Show that in this case the integral becomes
+\state{Electronic mass enhancement}{
+	The integral in Eq.~(7.10) can be approximated by neglecting the momentum dependence of the coupling constant $g$, and replacing the phonon frequency by the characteristic scale $\omgD$.  Show that in this case the integral becomes
 	\eq{
 		g^2 \intnimu \ddepsp \frac{\Nepsp}{(\eps' - \epsk)^2 - \omgD^2}
 	}
@@ -29,9 +28,9 @@
 			0 & \text{otherwise}.
 		\end{cases}
 	}
-	Feeding this into Eq.~\refeq{thing2a}, we can change the limits of integration to $(-\infty, \kF)$:
+	Feeding this into Eq.~\refeq{thing2a}, we can change the limits of integration to $(-\kF, \kF)$:
 	\eqn{thing2a2}{
-		g^2 \int \frac{\ddkp}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD^2} = g^2 \intnikF \frac{\ddkp}{(2\pi)^3} \frac{1}{(\epsk - \epskp)^2 - \omgD^2}.
+		g^2 \int \frac{\ddkp}{(2\pi)^3} \frac{\nkp}{(\epsk - \epskp)^2 - \omgD^2} = g^2 \intnpkF \frac{\ddkp}{(2\pi)^3} \frac{1}{(\epsk - \epskp)^2 - \omgD^2}.
 	}
 	We can transform variables by
 	\eq{
@@ -39,11 +38,11 @@
 	}
 	from (2.10) in the lecture notes.  Then Eq.~\refeq{thing2a2} becomes
 	\eq{
-		g^2 \intnikF \frac{\ddkp}{(2\pi)^3} \frac{1}{(\epsk - \epskp)^2 - \omgD^2} = g^2 \intniepsF \ddepsp \frac{\Nepsp}{(\epsk - \epskp)^2 - \omgD^2}.
+		g^2 \intnpkF \frac{\ddkp}{(2\pi)^3} \frac{1}{(\epsk - \epskp)^2 - \omgD^2} = g^2 \intnpepsF \ddepsp \frac{\Nepsp}{(\epsk - \epskp)^2 - \omgD^2}.
 	}
-	In the approximation $\epsF \approx \mu$, we finally have
-	\eq{
-		\ans{ \int \frac{\ddkp}{(2\pi)^3} \frac{\abs{\gkmkp}^2 \nkp}{(\epsk - \epskp)^2 - \omg (\vk - \vk')^2} }
+	In the approximation $\epsF \approx \mu$, we can replace the limits of integration by $(-\mu, \mu)$.  For the lower bound, we assume that large negative do not contribute much: that is, $-\mu \to -\infty$.  Then
+	\eqn{ans2a}{
+		\ans{ \int \frac{\ddkp}{(2\pi)^3} \frac{\abs{\gkmkp}^2 \nkp}{(\epsk - \epskp)^2 - \omg (\vk - \vk')^2} \approx g^2 \intnimu \ddepsp \frac{\Nepsp}{(\eps' - \epsk)^2 - \omgD^2} }
 	}
 	as desired. \qed
 }

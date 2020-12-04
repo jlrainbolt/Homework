@@ -4,8 +4,8 @@
 \newcommand{\epsF}{\eps_F}
 
 \newcommand{\intnimu}{\int_{-\infty}^\mu}
-\newcommand{\intnikF}{\int_{-\infty}^{\kF}}
-\newcommand{\intniepsF}{\int_{-\infty}^{\epsF}}
+\newcommand{\intnpkF}{\int_{-\kF}^{\kF}}
+\newcommand{\intnpepsF}{\int_{-\epsF}^{\epsF}}
 
 \newcommand{\ddeps}{\dd{\eps}}
 \newcommand{\ddepsp}{\dd{\eps'}}
@@ -17,6 +17,7 @@
 
 \newcommand{\vk}{\vb{k}}
 \newcommand{\epsk}{\eps_{\vk}}
+\newcommand{\epsnk}{\eps_{-\vk}}
 \newcommand{\epsko}{\epsk^0}
 \newcommand{\epskp}{\eps_{\vk'}}
 
@@ -42,6 +43,7 @@
 
 \newcommand{\gvk}{g_{\vk}}
 \newcommand{\gk}{g_k}
+\newcommand{\gnk}{g_{-k}}
 \newcommand{\gkp}{g_{k'}}
 
 \newcommand{\up}{\uparrow}
@@ -59,6 +61,7 @@
 \newcommand{\sumpksig}{\sum_{p, k, \sig}}
 \newcommand{\sumkpppqsigsigp}{\sum_{k, p, p', q, \sig, \sig'}}
 \newcommand{\sumkkpkF}{\sum_{k, k' < \kF}}
+\newcommand{\sumkq}{\sum_{k, q}}
 
 \newcommand{\epsp}{\eps_p}
 \newcommand{\epsmp}{\eps_{-p}}
@@ -85,8 +88,36 @@
 \newcommand{\kFS}{\ket{\text{FS}}}
 
 \newcommand{\delppqk}{\del_{p + q, k}}
-\newcommand{\delppmqk}{\del_{p' - q, -k}}
+\newcommand{\delppqmk}{\del_{p + q, -k}}
+\newcommand{\delppmqmk}{\del_{p' - q, -k}}
+\newcommand{\delppmqk}{\del_{p' - q, k}}
 \newcommand{\delsup}{\del_{\sig \up}}
 \newcommand{\delspdn}{\del_{\sig' \dn}}
 
 \newcommand{\Schrodinger}{Schr\"{o}dinger}
+
+\newcommand{\ci}{c_i}
+\newcommand{\cj}{c_j}
+\newcommand{\cid}{\ci^\dag}
+\newcommand{\cjd}{\cj^\dag}
+\newcommand{\delij}{\del_{i j}}
+
+\newcommand{\delpk}{\del_{p k}}
+\newcommand{\delpmk}{\del_{p, -k}}
+\newcommand{\delkmk}{\del_{k, -k}}
+\newcommand{\delsdn}{\del_{\sig \dn}}
+\newcommand{\delupdn}{\del_{\up \dn}}
+
+\newcommand{\cppmqsp}{c_{p' - q, \sig'}}
+\newcommand{\cppqs}{c_{p + q, \sig}}
+\newcommand{\delspup}{\del_{\sig' \up}}
+
+\newcommand{\delppp}{\del_{p p'}}
+\newcommand{\delssp}{\del_{\sig \sig'}}
+\newcommand{\delpkmq}{\del_{p, k - q}}
+\newcommand{\delppcqmk}{\del_{p', q - k}}
+
+\newcommand{\ckmqupd}{c_{k - q, \up}^\dag}
+\newcommand{\cqmkdnd}{c_{q - k, \dn}^\dag}
+\newcommand{\ckpupd}{c_{\vk' \up}^\dag}
+\newcommand{\cmkpdnd}{c_{-\vk' \dn}^\dag}
