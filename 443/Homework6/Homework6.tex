@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{443}
+\homeworknum{6}
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+\state{Exotic contributions to $\mathbf{g - 2}$~(Peskin \& Schroeder~6.3)}{
+	Any particles that couples to the electron can produce a correction to the electron-photon form factors and, in particular, a correction to $g - 2$.  Because the electron $g - 2$ agrees with QED to high accuracy, these corrections allow us to constrain the properties of hypothetical new particles.
+}
+
+\prob{
+	The unifies theory of weak and electromagnetic interactions contains a scalar particle $h$ called the \emph{Higgs boson}, which couples to the electron according to
+	\eq{
+		\Hint = \int \ddcx \frac{\lam}{\sqrt{2}} h \psib \psi.
+	}
+	Compute the contribution of a virtual Higgs boson to the electron $(g - 2)$, in terms of $\lam$ and the mass $\mh$ of the Higgs boson.
+}
+
+
+
+\prob{
+	QED accounts extremely well for the electron's anomalous magnetic moment.  If $a = (g - 2) / 2$,
+	\eq{
+		\abs{\aexpt - \aQED} < \num{1e-10}.
+	}
+	What limits does this place on $\lam$ and $\mh$?  In the simplest version of the electroweak theory, $\lam = \num{3e-6}$ and $\mh > \SI{60}{\GeV}$.  Show that these values are not excluded.  The coupling of the Higgs boson to the muon is larger by a factor $(\mmu / \me)$: $\lam = 6e-4$.  Thus, although our experimental knowledge of the muon anomalous magnetic moment is not as precise,
+	\eq{
+		\abs{\aexpt - \aQED} < \num{3e-8},
+	}
+	one can still obtain a stronger limit on $\mh$.  Is it strong enough?
+}
+
+
+
+\prob{
+	Some more complex versions of this theory contain a pseudoscalar particle called the \emph{axion}, which couples to the electron according to
+	\eq{
+		\Hint = \int \ddcx \frac{i \lam}{\sqrt{2}} a \psib \gamt \psi.
+	}
+	The axion may be as light as the electron, or lighter, and may couple more strongly than the Higgs boson.  Compute the contribution of a virtual axion to the $g - 2$ of the electron, and work out the excluded values of $\lam$ and $\ma$.
+}
+
+
+%\makebib
+
+\end{document}
