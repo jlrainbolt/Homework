@@ -3,44 +3,48 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Homework6.aux
 The style file: lucas_unsrt.bst
 Database file #1: references.bib
-You've used 2 entries,
+Warning--I'm ignoring PDG's extra "url" field
+--line 41 of file references.bib
+Warning--I didn't find a database entry for "Pseudoscalar"
+You've used 5 entries,
             2558 wiz_defined-function locations,
-            631 strings with 5170 characters,
-and the built_in function-call counts, 397 in all, are:
-= -- 32
-> -- 14
+            655 strings with 5691 characters,
+and the built_in function-call counts, 976 in all, are:
+= -- 84
+> -- 29
 < -- 0
-+ -- 5
-- -- 3
-* -- 22
-:= -- 54
-add.period$ -- 4
-call.type$ -- 2
-change.case$ -- 0
++ -- 11
+- -- 6
+* -- 76
+:= -- 126
+add.period$ -- 10
+call.type$ -- 5
+change.case$ -- 2
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 23
-empty$ -- 53
-format.name$ -- 3
-if$ -- 97
+cite$ -- 5
+duplicate$ -- 58
+empty$ -- 131
+format.name$ -- 6
+if$ -- 241
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 15
-num.names$ -- 2
-pop$ -- 19
+int.to.str$ -- 5
+missing$ -- 5
+newline$ -- 26
+num.names$ -- 5
+pop$ -- 41
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 10
+skip$ -- 24
 stack$ -- 0
 substring$ -- 0
-swap$ -- 2
+swap$ -- 10
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 2
-width$ -- 3
-write$ -- 25
+while$ -- 5
+width$ -- 6
+write$ -- 58
+(There were 2 warnings)

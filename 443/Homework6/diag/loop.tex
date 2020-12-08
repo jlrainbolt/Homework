@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{loop1}
+	\fmfframe(16,1)(-1,1){
+		\begin{fmfgraph*}(30, 35)
+			\fmfstraight
+			\fmfleftn{i}{2}
+			\fmfright{o}
+			\fmf{plain}{i[1],c,i[2]}
+			\fmf{wiggly}{c,o}
+			\fmffreeze
+			\fmf{fermion,label=$p$}{i[1],m1}
+			\fmf{fermion,label=$k$}{m1,c}
+			\fmf{fermion,label=$k' = k + q$,label.side=right}{c,m2}
+			\fmf{fermion}{m2,i[2]}
+			\fmfv{l=$p'$,l.a=-105,l.d=0.1w}{i[2]}
+			\fmffreeze
+			\fmf{dashes,left,tension=0,label=$p - k \ \uparrow \!$}{m1,m2}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

@@ -17,7 +17,7 @@
 	Any particles that couples to the electron can produce a correction to the electron-photon form factors and, in particular, a correction to $g - 2$.  Because the electron $g - 2$ agrees with QED to high accuracy, these corrections allow us to constrain the properties of hypothetical new particles.
 }
 
-\prob{
+\prob{ \label{1a}
 	The unified theory of weak and electromagnetic interactions contains a scalar particle $h$ called the \emph{Higgs boson}, which couples to the electron according to
 	\eq{
 		\Hint = \int \ddcx \frac{\lam}{\sqrt{2}} h \psib \psi.
@@ -26,14 +26,16 @@
 }
 
 \sol{
+	We are interested in the diagram
+	\eqn{diag}{
+		\centergraphics{diag/loop}
+	}
 	The Higgs field is a scalar Yukawa field, so we can use the form of the Yukawa interaction Hamiltonian of Peskin \& Schroeder~(4.112) and the appropriate Feynman rules to write~\cite[p.~118]{Peskin}
 	\al{
-		\text{(vertex)} &= -i \frac{\lam}{\sqrt{2}}, &
-		\text{(propagator)} &= \frac{i}{q^2 - \mh^2 + i \eps}.
+		\centergraphics{diag/vertex} &= -i \frac{\lam}{\sqrt{2}}, &
+		\centergraphics{diag/propagator} &= \frac{i}{q^2 - \mh^2 + i \eps}.
 	}
-	We are interested in the diagram (\hl{draw it})
-	
-	This is similar to the one on p.~189 in Peskin \& Schroeder.  We can then adapt (6.38) to write
+	Our diagram is similar to the one on p.~189 in Peskin \& Schroeder.  We can then adapt (6.38) to write
 	\aln{
 		\ubpp \del\Gammppp \up &= \int \ddqkf \frac{i}{(k - p)^2 - \mh^2 + i \eps} \ubpp \paren{ -i \frac{\lam}{\sqrt{2}} } \frac{i (\ksl' + \me)}{{k'}^2 - \me^2 + i \eps} \gamm \frac{i (\ksl + \me)}{k^2 - \me^2 + i \eps} \paren{ -i \frac{\lam}{\sqrt{2}} } \up \notag \\
 		&= i \frac{\lam^2}{2} \int \ddqkf \ubpp \frac{(\ksl' + \me) \gamm (\ksl + \me)}{[ (k - p)^2 - \mh^2 + i \eps ] ({k'}^2 - \me^2 + i \eps) (k^2 - \me^2 + i \eps)} \up. \label{thing1a}
@@ -62,7 +64,8 @@
 	
 	For the numerator of Eq.~\refeq{thing1a}, let $N \equiv \ubpp (\ksl' + \me) \gamm (\ksl + \me) \up$.  Then using $k' = k + q$ and $\ell \equiv k + y q - z p$~\cite[p.~191]{Peskin},
 	\eqn{N1}{
-		N = \ubpp (\ksl + \qsl + \me) \gamm (\ksl + \me) \up = \ubpp [ \lsl + (1 - y) \qsl + z \psl + \me ] \gamm (\lsl - y \qsl + z \psl + \me) \up.
+		N = \ubpp (\ksl + \qsl + \me) \gamm (\ksl + \me) \up
+		= \ubpp [ \lsl + (1 - y) \qsl + z \psl + \me ] \gamm (\lsl - y \qsl + z \psl + \me) \up.
 	}
 	We should be able to write this as an expression of the form given in (6.31) of Peskin \& Schroeder~\cite[p.~191]{Peskin},
 	\eqn{ABC}{
@@ -179,50 +182,143 @@
 	}
 	Feeding Eqs.~\refeq{denom}, \refeq{D}, and \refeq{N4} into Eq.~\refeq{thing1a}, we have (ignoring the $\order{\gamm}$ term)
 	\eq{
-		\ubpp \del\Gammppp \up \to i \frac{\lam^2}{2} \int \ddqlf \intoq \ddx \ddy \ddz \del(x + y + z - 1) \ubpp \frac{i \me (1 - z^2) \sigmn \gmn}{(\ell^2 - \Del + i \eps)^3} \up.
+		\ubpp \del\Gammppp \up \to i \frac{\lam^2}{2} \int \ddqlf \intoq \ddx \ddy \ddz \del(x + y + z - 1) \ubpp \frac{2 i \me (1 - z^2) \sigmn \gmn}{(\ell^2 - \Del + i \eps)^3} \up.
 	}
 	From Eq.~\refeq{Gam}, we can write
 	\eq{
 		\del\Fwqs = i \frac{\lam^2}{2} \int \ddqlf \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{2 \me^2 (1 - z^2)}{(\ell^2 - \Del + i \eps)^3}.
 	}
 	Computing the integral using Peskin \& Schroeder~(6.49),
-	\eq{
+	\eqn{6.49}{
 		\int \ddqlf \frac{1}{(\ell^2 - \Del)^m} = \frac{i (-1)^m}{(4\pi)^2} \frac{1}{(m - 1) (m - 2)} \frac{1}{\Del^{m - 2}},
 	}
 	we find
 	\eq{
-		\del\Fwqs = \frac{\lam^2}{2 (4\pi)^2} \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{\me^2 (1 - z^2)}{\Del}
+		\del\Fwqs = \frac{\lam^2}{(4\pi)^2} \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{\me^2 (1 - z^2)}{\Del}.
 	}
-	so, using Eq.~\refeq{D},
+	So, using Eq.~\refeq{D},
+	\al{
+		\del\Fwqso &= \frac{\lam^2}{(4\pi)^2} \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{\me^2 (1 - z^2)}{(1 - z)^2 \me^2 + z \mh^2} \\
+		&= \frac{\lam^2}{(4\pi)^2} \intoq \ddz \int_0^{1 - z} \ddy \frac{\me^2 (1 - z^2)}{(1 - z)^2 \me^2 + z \mh^2} \\
+		&= \frac{\lam^2}{(4\pi)^2} \intoq \ddz \frac{\me^2 (1 - z^2) (1 - z)}{(1 - z)^2 \me^2 + z \mh^2} \\
+		&= \frac{\lam^2 \me^2}{(4\pi)^2} \intoq \ddz \frac{1 - z - z^2 + z^3}{(1 - z)^2 \me^2 + z \mh^2} \\
+		&= \frac{\lam^2 \me^2}{(4\pi)^2} \paren{ \intoq \ddz \frac{1}{(1 - z)^2 \me^2 + z \mh^2} - \intoq \ddz \frac{z (1 + z - z^2)}{(1 - z)^2 \me^2 + z \mh^2} } \\
+		&\approx \frac{\lam^2}{(4\pi)^2} \frac{\me^2}{\mh^2} \paren{ \int_{\me^2}^{\mh^2} \frac{\ddu}{u} - \intoq \ddz (1 + z - z^2) } \\
+		&= \frac{\lam^2}{(4\pi)^2} \frac{\me^2}{\mh^2} \paren{ \bigg[ \ln u \bigg]_{\me^2}^{\mh^2} - \brac{ z + \frac{z^2}{2} - \frac{z^3}{3} }_0^1 },
+	}
+	where we have used the substitution $u = (1 - z)^2 \me^2 + z \mh^2$, and
 	\eq{
-		\del\Fwqso = \frac{\lam^2}{2 (4\pi)^2} \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{\me^2 (1 - z^2)}{(1 - z)^2 \me^2 + z \mh^2}
+		\ddu = 2 (z - 1) \me^2 + \mh^2
+		\approx \mh^2
 	}
-	
+	in the limit $\me \ll \mh$.  Referring to Peskin \& Schroeder~(6.58) and (6.59), we have
+	\eqn{a}{
+		\ans{ \Fwqso = \frac{\lam^2}{(4\pi)^2} \frac{\me^2}{\mh^2} \brac{ \ln(\frac{\mh^2}{\me^2}) - \frac{7}{6} } }
+	}
+	as the correction to the electron $g$ factor from a virtual Higgs boson.
 }
 
 
 
-%\prob{
-%	QED accounts extremely well for the electron's anomalous magnetic moment.  If $a = (g - 2) / 2$,
-%	\eq{
-%		\abs{\aexpt - \aQED} < \num{1e-10}.
-%	}
-%	What limits does this place on $\lam$ and $\mh$?  In the simplest version of the electroweak theory, $\lam = \num{3e-6}$ and $\mh > \SI{60}{\GeV}$.  Show that these values are not excluded.  The coupling of the Higgs boson to the muon is larger by a factor $(\mmu / \me)$: $\lam = 6e-4$.  Thus, although our experimental knowledge of the muon anomalous magnetic moment is not as precise,
-%	\eq{
-%		\abs{\aexpt - \aQED} < \num{3e-8},
-%	}
-%	one can still obtain a stronger limit on $\mh$.  Is it strong enough?
-%}
-%
-%
-%
-%\prob{
-%	Some more complex versions of this theory contain a pseudoscalar particle called the \emph{axion}, which couples to the electron according to
-%	\eq{
-%		\Hint = \int \ddcx \frac{i \lam}{\sqrt{2}} a \psib \gamt \psi.
-%	}
-%	The axion may be as light as the electron, or lighter, and may couple more strongly than the Higgs boson.  Compute the contribution of a virtual axion to the $g - 2$ of the electron, and work out the excluded values of $\lam$ and $\ma$.
-%}
+\prob{
+	QED accounts extremely well for the electron's anomalous magnetic moment.  If $a = (g - 2) / 2$,
+	\eq{
+		\abs{\aexpt - \aQED} < \num{1e-10}.
+	}
+	What limits does this place on $\lam$ and $\mh$?  In the simplest version of the electroweak theory, $\lam = \num{3e-6}$ and $\mh > \SI{60}{\GeV}$.  Show that these values are not excluded.  The coupling of the Higgs boson to the muon is larger by a factor $(\mmu / \me)$: $\lam = \num{6e-4}$.  Thus, although our experimental knowledge of the muon anomalous magnetic moment is not as precise,
+	\eq{
+		\abs{\aexpt - \aQED} < \num{3e-8},
+	}
+	one can still obtain a stronger limit on $\mh$.  Is it strong enough?
+}
+
+\sol{
+	Feeding $\me = \meSI$ into Eq.~\refeq{a}, the limit becomes
+	\eq{
+		\frac{\lam^2}{\mh^2} \brac{ \ln(\frac{\mh^2}{\meSIs}) - \frac{7}{6} } < \SI{6.05e-8}{\per\square\MeV}.
+	}
+	For $\lam = \num{3e-6}$ and $\mh > \SI{60}{\GeV}$,
+	\eq{
+		\abs{\aexpt - \aQED} < \frac{(\num{3e-6})^2}{(4\pi)^2} \frac{(\meSI)^2}{(\mhSI)^2} \brac{ \ln(\frac{(\mhSI)^2}{(\meSI)^2}) - \frac{7}{6} }
+		\approx \ans{ \num{9e-23} < \num{1e-10}, }
+	}
+	so these values are not excluded. \qed
+	
+	Now using $\lam = \num{6e-4}$ and $\mmu = \mmuSI$~\cite{PDG},
+	\eq{
+		\abs{\aexpt - \aQED} < \frac{(\num{6e-4})^2}{(4\pi)^2} \frac{(\mmuSI)^2}{(\mhSI)^2} \brac{ \ln(\frac{(\mhSI)^2}{(\mmuSI)^2}) - \frac{7}{6} }
+		\approx \ans{ \num{8e-14} < \num{1e-10}, }
+	}
+	so these values are not excluded either, although they come closer to the upper limit.
+}
+
+
+
+\prob{
+	Some more complex versions of this theory contain a pseudoscalar particle called the \emph{axion}, which couples to the electron according to
+	\eq{
+		\Hint = \int \ddcx \frac{i \lam}{\sqrt{2}} a \psib \gamt \psi.
+	}
+	The axion may be as light as the electron, or lighter, and may couple more strongly than the Higgs boson.  Compute the contribution of a virtual axion to the $g - 2$ of the electron, and work out the excluded values of $\lam$ and $\ma$.
+}
+
+\sol{
+	The diagram we are interested in is the same as Eq.~\refeq{diag}, but now the dashed line represents the pseudoscalar axion rather than the scalar Higgs boson.  The Feynman rules are now~\cite[pp.~24--25]{Axion}
+	\al{
+		\centergraphics{diag/vertex} &= \frac{\lam}{\sqrt{2}} \gamt, &
+		\centergraphics{diag/propagator} &= \frac{i}{q^2 - \mh^2 + i \eps}.
+	}
+	Again, we adapt Peskin \& Schroeder~(6.38) to write
+	\aln{
+		\ubpp \del\Gammppp \up &= \int \ddqkf \frac{i}{(k - p)^2 - \mh^2 + i \eps} \ubpp \paren{ \frac{\lam}{\sqrt{2}} \gamt } \frac{i (\ksl' + \me)}{{k'}^2 - \me^2 + i \eps} \gamm \frac{i (\ksl + \me)}{k^2 - \me^2 + i \eps} \paren{ \frac{\lam}{\sqrt{2}} \gamt } \up \notag \\
+		&= i \frac{\lam^2}{2} \int \ddqkf \ubpp \frac{\gamt (\ksl' + \me) \gamm (\ksl + \me) \gamt}{[ (k - p)^2 - \mh^2 + i \eps ] ({k'}^2 - \me^2 + i \eps) (k^2 - \me^2 + i \eps)} \up. \label{thing1c}
+	}
+	The denominator is the same as in \ref{1a}.  For the numerator, 
+	\al{
+		N &= \ubpp \gamt (\ksl' + \me) \gamm (\ksl + \me) \gamt \up \\
+		&= \ubpp (-\ksl' + \me) \gamm (-\ksl + \me) \up \\
+		&= -\ubpp (\ksl' - \me) \gamm (\ksl - \me) \up
+	}
+	since $\{ \gamt, \gamm \} = 0$ and $(\gamt)^2 = 1$ by Peskin \& Schroeder~(3.70) and (3.71).  Feeding in $k' = k + q$ and $\ell \equiv k + y q - z p$, and using the calculations from \ref{1a},
+	\al{
+		N &= -\ubpp [ \lsl + (1 - y) \qsl + z \psl - \me ] \gamm (\lsl - y \qsl + z \psl - \me) \up \\[1ex]
+		&= -\ubpp [ \lsl \gamm \lsl - y (1 - y) \qsl \gamm \qsl + z (1 - y) \qsl \gamm \psl - \me (1 - y) \qsl \gamm - y z \psl \gamm \qsl \\
+		&\hspace{20em} \phantom{=\ } + z^2 \psl \gamm \psl - \me z \psl \gamm + \me y \gamm \qsl - \me z \gamm \psl ] \up \\[1ex]
+		&\to -\ubpp [ -2 \me z (1 - y) \pmm + 2 \me (1 - y) \pmm - 2 \me y z {\pmm}' + 2 \me z^2 \pmm - 2 \me z \pmm + 2 \me y {\pmm}' ] \up \\[1ex]
+		&= -2 \me \ubpp \{ [ (1 - z)^2 - y (1 - z) ] \pmm + y (1 - z) {\pmm}' \} \up \\[1ex]
+		&= -2 \me \ubpp [ (1 - z)^2 \pmm + y (1 - z) ({\pmm} - \pmm) ] \up \\[1ex]
+		&= -\me \ubpp [ (1 - z)^2 \pmm + (1 - z)^2 \pmm + (1 - z)^2 {\pmm}' - (1 - z)^2 {\pmm}' + 2 y (1 - z) ({\pmm}' - \pmm) ] \up \\[1ex]
+		&= -\me \ubpp [ (1 - z)^2 (\pmm + {\pmm}') - (1 - z)^2 ({\pmm}' - \pmm) + 2 y (1 - z) ({\pmm}' - \pmm) ] \up \\[1ex]
+		&= \me \ubpp [ (z - 1) (2 y + z - 1) ({\pmm}' - \pmm) - (1 - z)^2 (\pmm + {\pmm}') ] \up.
+	}
+	Feeding this as well as Eqs.~\refeq{denom} and \refeq{D} into Eq.~\refeq{thing1a}, we have (again ignoring the $\order{\gamm}$ term)
+	\eq{
+		\ubpp \del\Gammppp \up \to i \frac{\lam^2}{2} \int \ddqlf \intoq \ddx \ddy \ddz \del(x + y + z - 1) \ubpp \frac{2 i \me (1 - z)^2 \sigmn \gmn}{(\ell^2 - \Del + i \eps)^3} \up.
+	}
+	Once again using Eq.~\refeq{6.49}, we find
+	\eq{
+		\del\Fwqs = \frac{\lam^2}{(4\pi)^2} \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{\me^2 (1 - z)^2}{\Del},
+	}
+	which implies
+	\al{
+		\del\Fwqso &= \frac{\lam^2}{(4\pi)^2} \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{\me^2 (1 - z)^2}{(1 - z)^2 \me^2 + z \ma^2} \\
+		&= \frac{\lam^2}{(4\pi)^2} \intoq \ddz \int_0^{1 - z} \ddy \frac{\me^2 (1 - z)^2}{(1 - z)^2 \me^2 + z \ma^2} \\
+		&= \frac{\lam^2 \me^2}{(4\pi)^2} \intoq \ddz \frac{(1 - z)^3}{(1 - z)^2 \me^2 + z \ma^2}.
+	}
+	In the limit $\ma \ll \me$, which is consistent with current limits on axion masses~\cite{PDG}
+	\eq{
+		\del\Fwqso \approx \frac{\lam^2 \me^2}{(4\pi)^2} \intoq \ddz \frac{(1 - z)^3}{(1 - z)^2 \me^2}
+		= \frac{\lam^2}{(4\pi)^2} \intoq \ddz (1 - z)
+		= \frac{\lam^2}{(4\pi)^2} \bigg[ 1 - \frac{z^2}{2} \bigg]
+		= \ans{ \frac{\lam^2}{32 \pi^2} }
+	}
+	is the contribution of a virtual axion to the electron $g - 2$.  For the excluded values of $\lam$, then,
+	\eq{
+		\frac{\lam^2}{32 \pi^2} < \num{1e-10}
+		\qimplies \lam < \num{1.78e-4}.
+	}
+	This means \ans{$\lam > \num{1.78e-4}$} is excluded for $\ma \ll \me$.
+}
 
 
 \makebib
