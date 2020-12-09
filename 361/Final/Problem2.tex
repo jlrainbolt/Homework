@@ -1,0 +1,84 @@
+\state{}{ \hfix 
+%(Mathematical results may be stated without proof, and marks will be given for demonstrating a rounded understanding of the topic, for appropriate use of examples, and for good use of figures.  One or two pages of text is expected, in bullet rather than essay form, for each part.)
+}
+
+\prob{
+	Write short notes on the properties of a Fermi liquid.
+}
+
+\sol{
+	\begin{itemize}
+		\item A Fermi liquid is similar to a Fermi gas, except a Fermi liquid accounts for electron-electron interactions
+		\item The electron-electron interactions cause the electron ``gas'' to distort around any given electron near the Fermi surface, and the electron together with this screening by the gas is a quasiparticle: a single-particle excitation of the system of interacting electrons
+		\item The electron carries this electron gas distortion with it as it moves, which enhances~(renormalizes) the mass and magnetic moment of the quasiparticle compared to the electron
+		\item The Fermi liquid may be thought of as a system of non-interacting quasiparticles, analogous to how the Fermi gas is a system of non-interacting electrons; in fact, there is a one-to-one correspondence between the quasiparticle states of the Fermi liquid and the fermion states in the Fermi gas
+		\item The dispersion relation $\epsvk$ of the Fermi liquid differs from that of the Fermi gas due to the effects of electron-electron interactions; this is the most significant effect of the electron-electron interactions
+		\item Quasiparticles deacy since they are excitations, but the closer a quasiparticle is to the Fermi surface, the longer its lifetime, and the more its behavior resembles that of an actual particle
+		\item The Fermi liquid must have a stable ground state, so it cannot exist if the electron gas system undergoes a phase transition as electron-electron interactions are adiabatically turned on
+		\item The Fermi liquid is a good model for typical metals at low temperature, as well as more exotic systems such as liquid ${}^3\text{He}$ and neutron star cores
+	\end{itemize}
+	[lecture notes, pp.~84--87] \cite[p.~417]{Kittel} \cite[p.~127--131]{Coleman} \cite[pp.345--351]{Ashcroft}
+}
+
+
+
+\prob{
+	Write short notes on effects due to the electron-phonon interaction in metals.
+}
+
+\sol{
+	\begin{itemize}
+		\item Phonons cause local distortions of the crystal lattice, which move the ions from their equilibrium positions, thereby creating an electric potential that is screened by nearby conduction electrons
+		\item The potential scatters electrons from state $\vk$ to state $\vk'$, which alters the density distribution of the electron gas
+		\item The disturbance in the electron density may in turn create a new phonon or lattice distortion, and the degree of distortion is determined by the phonon susceptibility of the crystal
+		\item The lattice distortion created by an electron density fluctuation lasts longer than the fluctuation itself, and creates more local electron density fluctuations over its lifetime
+		\item This retarded interaction creates an effective ``attraction'' between conduction electrons in the metal, which can lead to superconductivity and the creation of Cooper pairs
+		\item In addition, the interaction between phonons and electrons causes electrons to effectively carry polarized lattice distortions with them as they move, which decreases their effective velocity and increases their effective mass
+	\end{itemize}
+	[lecture notes, pp.~129--134] \cite[pp.~671--672]{Kittel} \cite[p.~512]{Ashcroft}
+}
+
+
+
+\prob{
+	Write short notes on the use of density functional theory to perform practical calculations of ground state properties of solids.
+}
+
+\sol{
+	\begin{itemize}
+		\item The key idea of density functional theory is that the total ground state energy of an interacting electron system, with electron-ion interactions, can be represented as a functional of the number density of electrons, $\nvr$
+		\item Finding the minimum of the functional with respect to $\nvr$ can tell us the number density function of the ground state, as well as its energy
+		\item In general the analytic functional is not known, but we can make very good approximations
+		\item The first Hohenberg-Kohn theorem states that there is a one-to-one correspondence between the ground-state density of an $N$-electron system and the external potential $\vext$ acting on it; this means we do not need to know the wavefunction of the ground state (which is untenable for a large system) in order to determine its properties, since we can use $\nvr$ instead
+		\item The reason for this is that the ground-state wavefunction is a functional of $\vext$, which in turn is a functional of $\nvr$; thus, the ground-state wavefunction is a functional of $\nvr$
+		\item Likewise, the total energy, kinetic energy, and interaction energy are also functionals of $\nvr$' furthermore, they are the same funcitonals for any system of $N$ electrons (that is, independent of $\vext$)
+		\item The method of Lagrange multipliers can be used to obtain the Kohn-Sham equations (4.133),
+		\eq{
+			\paren{ -\frac{\hbar^2 \laplacian}{2 m} + \Uionr + \Ucoulr + \Uxcr } + \phiir = \epsi \phiir
+		}
+		which are similar in form to {\Schrodinger} equations, and the Lagrange multipliers $\epsi$ resemble one-particle energies
+		\item The Lagrange multipliers may approximate single-particle energies when the exchange-correlation energy is small, as is the case in in many metals and semiconductors
+		\item The exchange-correlaration potential $\Uxcr$ may be closely approximated by that of a uniform electron gas in the local density approximation
+		\item The Thomas-Fermi approximation is also a simple approximation of $\Uxcr$, and so is a density functional theory
+	\end{itemize}
+	[lecture notes, pp.~59--66] \cite{DFT}
+}
+
+
+
+\prob{
+	Write short notes on photoemission spectroscopy.
+}
+
+\sol{
+	\begin{itemize}
+		\item Photoemission spectroscopy is used to directly measure the electron spectral function~(the probability of finding an electronic state with a given energy and momentum) and the electronic density of states
+		\item This method uses the photoelectric effect: a beam of photons is incident on the surface of a solid, which are absorbed by electrons in the crystal, exciting them and causing them to leave the crystal
+		\item In angle-resolved photoemission spectroscopy~(ARPES), both the energy and momenta of the emitted electrons are measured in a detector
+		\item Since the incident photons are perpendicular to the surface of the crystal, the momentum of an electron parallel to the surface, $\ppar$, is conserved and can scanned directly by rotating the detector (assuming the crystal surface is very smooth)
+		\item Since only $\ppar$ (as opposed to $\pperp$) can be probed, the cleanest measurements come from materials whose band structure has little dispersion in the direction perpendicular to the surface
+		\item By integrating over all angles, the electronic density of states as a function of energy can be measured
+		\item ARPES can also be used to map the Fermi surface of a crystals
+	\end{itemize}
+	[lecture notes, pp.~84, 87--89] \cite{PES} \cite{ARPES}
+}
