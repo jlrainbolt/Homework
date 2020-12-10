@@ -12,9 +12,9 @@
 \input{probdefs}
 
 \state{}{
-	The material $\LaSrCuO$ has a layered crystal structure that consists of two-dimensional square lattices of $\CuO$ planes (shown in Fig.~\ref{f1}) separated by layers of $\LaSrO$.  You may assume that $\La$ has valence $3+$, $\Sr$ valence $2+$, and $\Ox$ valence $2-$; the electrons from these cations are donated uniformly to the widely separated $\CuO$ layers, which thus have a two-dimensional electronic structure.  Neutral atomic $\Cu$ has the configuration $[\Ar] 4s^2 3d^9$.  In this compound, four of the $\Cu$ $d$ levels are completely filled, and there is a partially filled band formed from $d_{x^2 - y^2}$ orbitals.  You may assume the $\Cu$ $4s$ levels are unoccupied, and the $\Ox$ $2p$ levels are fully occupied.  Electronic dispersion perpendicular to the planes may be neglected.
+	The material $\LaSrCuO$ has a layered crystal structure that consists of two-dimensional square lattices of $\CuO$ planes (shown in Fig.~\ref{f1}) separated by layers of $\LaSrO$.  You may assume that $\La$ has valence $3+$, $\Sr$ valence $2+$, and $\Ox$ valence $2-$; the electrons from these cations are donated uniformly to the widely separated $\CuO$ layers, which thus have a two-dimensional electronic structure.  Neutral atomic $\Cu$ has the configuration $[\Ar] 4s^2 3d^9$.  In this compound, four of the $\Cu$ $d$ levels are completely filled, and there is a partially filled band formed from $\dxy$ orbitals.  You may assume the $\Cu$ $4s$ levels are unoccupied, and the $\Ox$ $2p$ levels are fully occupied.  Electronic dispersion perpendicular to the planes may be neglected.
 	
-	The band structure in the independent particle approximation is well described by a tight-binding model incorporating a single orbital (per unit cell) of $d_{x^2 - y^2}$ symmetry centered on the $\Cu$ atom, with nonzero Hamiltonian matrix elements $t$ between nearest neighbor orbitals in the $x$ and $y$ directions, and matrix elements $t'$ between second neighbors across the diagonals.
+	The band structure in the independent particle approximation is well described by a tight-binding model incorporating a single orbital (per unit cell) of $\dxy$ symmetry centered on the $\Cu$ atom, with nonzero Hamiltonian matrix elements $t$ between nearest neighbor orbitals in the $x$ and $y$ directions, and matrix elements $t'$ between second neighbors across the diagonals.
 	
 	\begin{figure}[b!] \centering
 		\includegraphics[width=0.5\textwidth,trim=5cm 9.5cm 7cm 10cm,clip]{fig1}
@@ -77,7 +77,7 @@
 }
 
 \sol{
-	As $x$ increases, the partially-filled band of $\Cu$ becomes more empty.  When $x = 0$, the band is mostly full.  When $x = 0.5$, it is half full.  Fig.~\ref{f1cd}~(left) shows the Fermi surface in the reduced zone scheme for $x = 0$~(blue line), $x \approx 0.2$~(gold line), and $x \approx 0.5$~(green line) when $t' = 0$~\cite[p.~231]{Kittel}.  The figures were created in Mathematica by plotting Eq.~\refeq{ans1a} and choosing appropriate contours.
+	As $x$ increases, the partially-filled band of $\Cu$ becomes more empty.  When $x = 0$, $\Cu$ has valence $2+$ and donates its two $4s$ electrons.  This means its $\dxy$ band is half full.  For $x = 0.2$, $\Cu$ has expected valence $2.2+$ and so its $\dxy$ band is expected to be 40\% full.  For $x = 0.5$, $\Cu$ has expected valence $2.5+$ and so its $\dxy$ band is expected to be 25\% full.  Fig.~\ref{f1cd}~(left) shows the Fermi surface in the reduced zone scheme for $x = 0$~(blue line), $x \approx 0.2$~(gold line), and $x \approx 0.5$~(green line) when $t' = 0$~\cite[p.~231]{Kittel}.  The figures were created in Mathematica by plotting Eq.~\refeq{ans1a} and choosing appropriate contours.
 }
 
 
@@ -94,11 +94,11 @@
 }
 
 \sol{
-	For $t$ and $t'$ both negative, the contributions from $t'$ will distort the contours by pulling their ends toward the corners of the frame.  This happens because, in general, the Fermi surface is stretched toward the positions of the nearest neighbors (for $t < 0$) given by Eq.~\refeq{nn}.  There is a nearest neighbor at the center of each edge of the frame.  When we also consider $t' < 0$ contributions from the next-nearest neighbors, which are located in the corners of the frame by Eq.~\refeq{nnn}, the Fermi surface is pulled toward those ions as well.  The effect is not too large since $\abs{t'}$ is small compared to $\abs{t}$.  Fig.~\ref{f1cd}~(right) shows the Fermi surface in the reduced zone scheme for $x = 0$~(blue line), $x \approx 0.2$~(gold line), and $x \approx 0.5$~(green line) when $t' = 0.1 t$.
+	For $t$ and $t'$ both negative, the contributions from $t'$ will distort the contours by pulling the areas near the ``corners'' of the Fermi surface~(that is, the areas closest to the $\kx$ and $\ky$ axes) toward the corners of the frame.  This happens because, when we consider only $t$ contributions, the Fermi surface is stretched toward the positions of the nearest neighbors (for $t < 0$) given by Eq.~\refeq{nn}.  There is a nearest neighbor at the center of each edge of the frame ($\ki = \pm a$, $\kj = 0$ for $i \neq j$).  When we also consider $t' < 0$ contributions from the next-nearest neighbors, which are located in the corners of the frame by Eq.~\refeq{nnn}, the Fermi surface is pulled toward those ions as well.  The effect is not too large since $\abs{t'}$ is small compared to $\abs{t}$.  Fig.~\ref{f1cd}~(right) shows the Fermi surface in the reduced zone scheme for $x = 0$~(blue line), $x \approx 0.2$~(gold line), and $x \approx 0.5$~(green line) when $t' = 0.1 t$.
 }
 
 
-\vspace{2in}
+
 \prob{
 	Assuming the dispersion of \ref{1d}, sketch the electronic density of states in energy, paying particular attention to the behavior near the edges of the band and at a saddle point in the middle of the band.
 }
@@ -125,6 +125,8 @@
 		\cv = \int \ddE E \gE \dv{\fE}{T},
 	}
 	where $\fE$ is the Fermi distribution.  At low temperature, the chemical potential is approximately equal to the specific heat.  The saddle points are located at the positions of the nearest neighbors, given by Eq.~\refeq{nn}.  Since the lattice is periodic, we can choose $\vrho = (a, 0, 0)$ without loss of generality.
+	
+	\hl{i cry}
 }
 
 
@@ -133,13 +135,19 @@
 	$\LaCuO$ is an antiferromagnetic insulator.  Suggest, and discuss, reason(s) why the ground state differs from that predicted by the band structure in the independent particle approximation.  Your answer should include a qualitative explanation of both the magnetic and the insulating behavior.
 }
 
+\sol{
+	In the independent particle approximation, we expect $\LaCuO$ to be a metal because it has a Fermi surface~[lecture notes, p.~39].  
+	
+	
+}
+
 
 
 
 
 \clearpage
-\input{Problem1}
 \input{Problem2}
+\input{Problem3}
 
 \makebib
 
