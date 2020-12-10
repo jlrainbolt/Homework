@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    546955,       9493]
-NotebookOptionsPosition[    545535,       9460]
-NotebookOutlinePosition[    545936,       9476]
-CellTagsIndexPosition[    545893,       9473]
+NotebookDataLength[    548433,       9537]
+NotebookOptionsPosition[    547014,       9504]
+NotebookOutlinePosition[    547415,       9520]
+CellTagsIndexPosition[    547372,       9517]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -8061,29 +8061,34 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{".5", ",", "0"}], "}"}], ",", 
         RowBox[{"{", 
-         RowBox[{"1", ",", "a"}], "}"}], ",", 
+         RowBox[{"1", ",", 
+          RowBox[{"Pi", "/", "a"}]}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"0", ",", 
-          RowBox[{"-", "a"}]}], "}"}]}], "}"}], ",", 
+          RowBox[{
+           RowBox[{"-", "Pi"}], "/", "a"}]}], "}"}]}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"{", 
          RowBox[{".5", ",", "0"}], "}"}], ",", 
         RowBox[{"{", 
-         RowBox[{"1", ",", "a"}], "}"}], ",", 
+         RowBox[{"1", ",", 
+          RowBox[{"Pi", "/", "a"}]}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"0", ",", 
-          RowBox[{"-", "a"}]}], "}"}]}], "}"}]}], "}"}]}]}], "]"}]], "Input",
+          RowBox[{
+           RowBox[{"-", "Pi"}], "/", "a"}]}], "}"}]}], "}"}]}], "}"}]}]}], 
+  "]"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGCQAGIQfaZv1pnI/DeO56TFz4Lo6szE9yC6ycLkE4jOU5nx
+1:eJxTTMoPSmViYGCQBGIQfaZv1pnI/DeO56TFz4Lo6szE9yC6ycLkE4jOU5nx
 A0QzlT8E0/1HuJiigPQViWQw/VaWRQREOybpgOmOVc3SIFotdTKYrjph3gui
 39iW9oNoneSSyBggfS3OLBpEv5t0NA1E59XpzwbROZOsV4Dov4o+YHrvbO+1
 INpof/VmEL3E1JonFkgvi+0C0xyvNkuDaMfGT2C67do8DRBdVNOqA6Jr9ny3
 BdFB57ntQPSaZSbxIPr7BPFUEO2XtbQJbF7DvGYQnfRl2gwQfWLWmTkgWuzi
 1jMgWuig5VkQ/ShU+kYCkHZmXPMYRJcFmb0G0VXd9t9ANIOWwPUOIL2nfCWY
-nsh74DGI5jt3HUzbSWS+ANFFhhVgGgBsyb4X
+nsh74DGI5jt3HUzbSWS+ANFFhhVg2njmlshZQDou9V0UiAYAlV7GaA==
   "],
- CellLabel->"In[4]:=",ExpressionUUID->"c9859711-a3df-465d-9e04-be2903117739"],
+ CellLabel->"In[1]:=",ExpressionUUID->"c9859711-a3df-465d-9e04-be2903117739"],
 
 Cell[BoxData[
  TemplateBox[{
@@ -8343,21 +8348,29 @@ iOZ/C2aHlg==
      Ticks -> {Automatic, Automatic}, AxesOrigin -> {0., 0.}, 
      FrameTicks -> {{{{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}, {{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}, {{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}}, {{{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}}, {{{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}, {{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}, {{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}}}, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}}}, 
      GridLines -> {None, None}, AxesLabel -> {None, None}, FrameLabel -> {{
         FormBox[
          SubscriptBox["k", 
@@ -8377,22 +8390,30 @@ iOZ/C2aHlg==
           TagBox["x", HoldForm]], TraditionalForm], None}}, 
      FrameTicks -> {{{{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}, {{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}, {{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}}, {{{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}}, {{{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}, {{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}, {{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}}}, GridLinesStyle -> 
-     Directive[
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}}}, 
+     GridLinesStyle -> Directive[
        GrayLevel[0.5, 0.4]], 
      Method -> {
       "DefaultBoundaryStyle" -> Automatic, 
@@ -8677,8 +8698,9 @@ iOZ/C2aHlg==
      RowBox[{#, ",", 
        RowBox[{"Placed", "[", 
          RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]], "Output",
- CellChangeTimes->{3.816490930503786*^9, 3.816572746000935*^9},
- CellLabel->"Out[4]=",ExpressionUUID->"07769d84-0b06-47e5-a5d3-4c7db08cfc64"]
+ CellChangeTimes->{3.816490930503786*^9, 3.816572746000935*^9, 
+  3.816608483493642*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"28566fda-79c7-4285-b88d-fc9430840e8f"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -8758,19 +8780,24 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{".5", ",", "0"}], "}"}], ",", 
         RowBox[{"{", 
-         RowBox[{"1", ",", "a"}], "}"}], ",", 
+         RowBox[{"1", ",", 
+          RowBox[{"Pi", "/", "a"}]}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"0", ",", 
-          RowBox[{"-", "a"}]}], "}"}]}], "}"}], ",", 
+          RowBox[{
+           RowBox[{"-", "Pi"}], "/", "a"}]}], "}"}]}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"{", 
          RowBox[{".5", ",", "0"}], "}"}], ",", 
         RowBox[{"{", 
-         RowBox[{"1", ",", "a"}], "}"}], ",", 
+         RowBox[{"1", ",", 
+          RowBox[{"Pi", "/", "a"}]}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"0", ",", 
-          RowBox[{"-", "a"}]}], "}"}]}], "}"}]}], "}"}]}]}], "]"}]], "Input",
+          RowBox[{
+           RowBox[{"-", "Pi"}], "/", "a"}]}], "}"}]}], "}"}]}], "}"}]}]}], 
+  "]"}]], "Input",
  CellChangeTimes->{{3.8164765860891933`*^9, 3.816476631112268*^9}, {
    3.816476672626193*^9, 3.816476674851954*^9}, {3.816476797892866*^9, 
    3.816476801302245*^9}, {3.8164768405448427`*^9, 3.816476887611251*^9}, {
@@ -8782,8 +8809,8 @@ Cell[BoxData[
    3.8164833175228977`*^9, 3.816483330166589*^9}, 3.816484154842959*^9, {
    3.8164843724614687`*^9, 3.816484377323649*^9}, {3.816484460259302*^9, 
    3.816484462418277*^9}, 3.8164909501309443`*^9, {3.8165727641703033`*^9, 
-   3.816572771976717*^9}},
- CellLabel->"In[5]:=",ExpressionUUID->"a23099b8-5fbc-4593-9021-a824e8dcc219"],
+   3.816572771976717*^9}, 3.816608481374517*^9},
+ CellLabel->"In[2]:=",ExpressionUUID->"a23099b8-5fbc-4593-9021-a824e8dcc219"],
 
 Cell[BoxData[
  TemplateBox[{
@@ -9113,21 +9140,29 @@ uF4=
      Ticks -> {Automatic, Automatic}, AxesOrigin -> {0., 0.}, 
      FrameTicks -> {{{{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}, {{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}, {{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}}, {{{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}}, {{{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}, {{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}, {{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}}}, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}}}, 
      GridLines -> {None, None}, AxesLabel -> {None, None}, FrameLabel -> {{
         FormBox[
          SubscriptBox["k", 
@@ -9147,22 +9182,30 @@ uF4=
           TagBox["x", HoldForm]], TraditionalForm], None}}, 
      FrameTicks -> {{{{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}, {{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}, {{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}}, {{{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}}, {{{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}, {{0.5, 
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}, {{0.5, 
           FormBox["0", TraditionalForm]}, {1, 
-          FormBox["a", TraditionalForm]}, {0, 
           FormBox[
-           RowBox[{"-", "a"}], TraditionalForm]}}}}, GridLinesStyle -> 
-     Directive[
+           FractionBox["\[Pi]", "a"], TraditionalForm]}, {0, 
+          FormBox[
+           RowBox[{"-", 
+             FractionBox["\[Pi]", "a"]}], TraditionalForm]}}}}, 
+     GridLinesStyle -> Directive[
        GrayLevel[0.5, 0.4]], 
      Method -> {
       "DefaultBoundaryStyle" -> Automatic, 
@@ -9454,12 +9497,13 @@ uF4=
    3.8164822176592503`*^9, 3.816482776094294*^9, {3.8164828810236692`*^9, 
    3.816482907826962*^9}, {3.816482960346979*^9, 3.8164830225127373`*^9}, {
    3.816483319645845*^9, 3.8164833398154078`*^9}, 3.816484378365404*^9, 
-   3.81648446642025*^9, 3.81649095109592*^9, 3.816572772591941*^9},
- CellLabel->"Out[5]=",ExpressionUUID->"471f9dfd-34da-4112-a3cf-998b8a551852"]
+   3.81648446642025*^9, 3.81649095109592*^9, 3.816572772591941*^9, 
+   3.816608485468566*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"f6f75db3-4176-4ae1-8228-083267dc57d7"]
 }, Open  ]]
 },
-WindowSize->{718.5, 780.},
-WindowMargins->{{Automatic, -2160}, {Automatic, -1411.5}},
+WindowSize->{1440., 781.5},
+WindowMargins->{{2880, Automatic}, {Automatic, -1411.5}},
 FrontEndVersion->"12.1 for Linux x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"74ad37a7-58ea-4fb3-a3e0-d2703918e325"
@@ -9488,12 +9532,12 @@ Cell[279745, 4726, 888, 25, 29, "Input",ExpressionUUID->"d606332a-63a5-40bd-a2ff
 Cell[280636, 4753, 194201, 3247, 373, "Output",ExpressionUUID->"a29c0985-9dcd-4d20-9450-e98996a43116"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[474874, 8005, 2694, 80, 92, "Input",ExpressionUUID->"c9859711-a3df-465d-9e04-be2903117739"],
-Cell[477571, 8087, 29905, 593, 379, "Output",ExpressionUUID->"07769d84-0b06-47e5-a5d3-4c7db08cfc64"]
+Cell[474874, 8005, 2847, 85, 54, "Input",ExpressionUUID->"c9859711-a3df-465d-9e04-be2903117739"],
+Cell[477724, 8092, 30490, 610, 389, "Output",ExpressionUUID->"28566fda-79c7-4285-b88d-fc9430840e8f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[507513, 8685, 3729, 100, 113, "Input",ExpressionUUID->"a23099b8-5fbc-4593-9021-a824e8dcc219"],
-Cell[511245, 8787, 34274, 670, 379, "Output",ExpressionUUID->"471f9dfd-34da-4112-a3cf-998b8a551852"]
+Cell[508251, 8707, 3884, 105, 75, "Input",ExpressionUUID->"a23099b8-5fbc-4593-9021-a824e8dcc219"],
+Cell[512138, 8814, 34860, 687, 389, "Output",ExpressionUUID->"f6f75db3-4176-4ae1-8228-083267dc57d7"]
 }, Open  ]]
 }
 ]
