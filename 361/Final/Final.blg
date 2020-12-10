@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Final.aux
 The style file: lucas_unsrt.bst
 Database file #1: references.bib
-You've used 6 entries,
+You've used 10 entries,
             2558 wiz_defined-function locations,
-            652 strings with 5535 characters,
-and the built_in function-call counts, 1093 in all, are:
-= -- 93
-> -- 34
+            672 strings with 5904 characters,
+and the built_in function-call counts, 1790 in all, are:
+= -- 152
+> -- 54
 < -- 0
-+ -- 13
-- -- 7
-* -- 54
-:= -- 135
-add.period$ -- 12
-call.type$ -- 6
-change.case$ -- 1
++ -- 21
+- -- 11
+* -- 93
+:= -- 216
+add.period$ -- 20
+call.type$ -- 10
+change.case$ -- 2
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 69
-empty$ -- 157
-format.name$ -- 7
-if$ -- 280
+cite$ -- 10
+duplicate$ -- 112
+empty$ -- 261
+format.name$ -- 11
+if$ -- 460
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 6
-newline$ -- 31
-num.names$ -- 6
-pop$ -- 56
+int.to.str$ -- 10
+missing$ -- 8
+newline$ -- 47
+num.names$ -- 10
+pop$ -- 90
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 30
+skip$ -- 53
 stack$ -- 0
 substring$ -- 0
-swap$ -- 6
+swap$ -- 12
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 6
-width$ -- 7
-write$ -- 64
+while$ -- 10
+width$ -- 12
+write$ -- 104
