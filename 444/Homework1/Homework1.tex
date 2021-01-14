@@ -21,37 +21,82 @@
 	Recompute $\del\Zq$ and $\del\Zw$, defining the integrals~(6.49) and (6.50) by simply placing an upper limit $\Lam$ on the integration over $\ellE$.  Show that, with this definition, $\del\Zq \neq \del\Zw$.
 }
 
+\sol{
+	\hl{write the game plan here}
 
-
-\prob{
-	Recompute $\del\Zq$ and $\del\Zw$, defining the integrals~(6.49) and (6.50) by dimensional regularization.  You may take the Dirac matrices to be $4 \times 4$ as usual, but note that, in $d$ dimensions,
-	\eq{
-		\gsmn \gamm \gamn = d.
+	In order to find $\del\Gamm$ we use Peskin \& Schroeder~(6.47):
+	\aln{
+		\ubpp \del\Gammppp \up &= 2 i e^2 \int \ddqlf \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{2}{D^3} \notag \\
+		&\hspace{5em} \phantom{=\ } \times \ubpp \left\{ \gamm \brac{ -\frac{\ell^2}{2} + (1 - x) (1 - y) q^2 + (1 - 4z + z^2) m^2 } \right. \label{thing1} \\
+		&\hspace{15em} \phantom{=\ } \left. + \frac{i \sigmn \qsn}{2 m} [ 2 m^2 z (1 - z) ] \right\} \up, \notag
 	}
-	Show that, with this definition, $\del\Zq = \del\Zw$.
-}
+	where $\Del \equiv -x y q^2 + (1 - z)^2 m^2$ by (6.44), $\ell \equiv k + y q - z p$, and $D = \ell^2 - \Del + i \eps$~\cite[p.~191]{Peskin}.  The momenta $k$ and $p$ are assigned in the Feynman diagram on p.~189 of Peskin \& Schroeder, and $x, y, z$ are Feynman parameters~\cite[p.~190]{Peskin}.
 
-
-
-
-
-
-\state{(Peskin \& Schroeder 7.3)}{
-	Consider a theory of elementary fermions that couple both to QED and to a Yukawa field $\phi$:
+	The forms of the two integrals we need to compute are given by Peskin \& Schroeder~(6.49) and (6.50).  Equation~(6.49) is
 	\eq{
-		\Hint = \int \ddcx \frac{\lam}{\sqrt{2}} \phi \psib \psi + \int \ddcx e \Asm \psib \gamm \psi.
+		\int \ddqlf \frac{1}{(\ell^2 - \Delta)^m} = \frac{i (-1)^m}{(4\pi)^2} \frac{1}{(m - 1) (m - 2)} \frac{1}{\Delta^{m - 2}}.
 	}
+	Here $m = 3$ because we have $D^{-3}$ in Eq.~\refeq{thing1}.  We can evaluate the left-hand side using the Euclidian 4-momentum defined in (6.48),
+	\al{
+		\ello &\equiv \ellEo, &
+		\vell &= \vellE.
+	}
+	Following the steps on p.~193, we have
+	\eq{
+		\int \ddqlf \frac{1}{(\ell^2 - \Delta)^3} = \frac{i}{(-1)^3} \frac{1}{(2\pi)^4} \int \frac{\ddqlE}{(\ellE^2 + \Del)^3}
+		= \frac{i (-1)^3}{(2\pi)^4} \int \ddOmgq \intoLam \ddlE \frac{\ellE^3}{(\ellE^2 + \Delta)^3},
+	}
+	where we have replaced the upper (infinite) bound of integration by a finite number $\Lam$.  Evaluating this integral using Mathematica and using $\int \ddOmgq = 2 \pi^2$~\cite[p.~193]{Peskin}, we find
+	\eqn{ans1}{
+		\int \ddqlf \frac{1}{(\ell^2 - \Delta)^3} = \frac{i (-1)^3}{(2\pi)^4} (2 \pi^2) \frac{\Lam^4}{4 \Delta (\Delta + \Lam^2)^2}
+		= -\frac{i}{8 \pi^2} \frac{\Lam^4}{4 \Delta (\Delta + \Lam^2)^2}.
+	}
+	Equation~(6.50) in Peskin \& Schroeder is
+	\eq{
+		\int \ddqlf \frac{\ell^2}{(\ell^2 - \Delta)^m} = \frac{i (-1)^{m - 1}}{(4\pi)^2} \frac{2}{(m - 1) (m - 2) (m - 3)} \frac{1}{\Delta^{m - 3}}.
+	}
+	Following similar steps as for Eq.~\refeq{thing1}, the left-hand side is
+	\aln{
+		\int \ddqlf \frac{\ell^2}{(\ell^2 - \Delta)^3} &= -\frac{i}{(-1)^3} \frac{1}{(2\pi)^4} \int \ddqlE \frac{\ellE^2}{(\ellE^2 + \Del)^3} \notag \\
+		&= \frac{i (-1)^3}{(2\pi)^4} \int \ddOmgq \intoLam \ddlE \frac{\ellE^5}{(\ellE^2 + \Delta)^3} \notag \\
+		&= -\frac{i (-1)^3}{(2\pi)^4} (2 \pi^2) \frac{1}{4} \brac{ \frac{\Del (3 \Del + 4 \Lam^2)}{(\Del +\Lam^2)^2} + 2 \ln(\frac{\Del +\Lam^2}{\Del}) - 3 } \notag \\
+		&= \frac{i}{32 \pi^2} \brac{ \frac{\Del (3 \Del + 4 \Lam^2)}{(\Del +\Lam^2)^2} + 2 \ln(\frac{\Del +\Lam^2}{\Del}) - 3 } \notag \\
+		&\approx \frac{i}{32 \pi^2} \ln(\Lam). \label{ans2}
+	}
+	Feeding Eqs.~\refeq{ans1} and \refeq{ans2} into Eq.~\refeq{thing1},
 }
 
-\prob{
-	Verify that the contribution to $\Zq$ from the vertex diagram with a virtual $\phi$ equals the contribution to $\Zq$ from the diagram with a virtual $\phi$.  Use dimensional regularization.  Is the Ward identity generally true in this theory?
-}
 
 
-
-\prob{
-	Now consider the renormalization of the $\phi \psib \psi$ vertex.  Show that the rescaling of this vertex at $q^2 = 0$ is \emph{not} canceled by the correction to $\Zw$.  (It suffices to compute the ultraviolet-divergent parts of the diagrams.)  In this theory, the vertex and field-strength rescaling give additional shifts of the observable coupling constant relative to its bare value.
-}
+%\prob{
+%	Recompute $\del\Zq$ and $\del\Zw$, defining the integrals~(6.49) and (6.50) by dimensional regularization.  You may take the Dirac matrices to be $4 \times 4$ as usual, but note that, in $d$ dimensions,
+%	\eq{
+%		\gsmn \gamm \gamn = d.
+%	}
+%	Show that, with this definition, $\del\Zq = \del\Zw$.
+%}
+%
+%
+%
+%
+%
+%
+%\state{(Peskin \& Schroeder 7.3)}{
+%	Consider a theory of elementary fermions that couple both to QED and to a Yukawa field $\phi$:
+%	\eq{
+%		\Hint = \int \ddcx \frac{\lam}{\sqrt{2}} \phi \psib \psi + \int \ddcx e \Asm \psib \gamm \psi.
+%	}
+%}
+%
+%\prob{
+%	Verify that the contribution to $\Zq$ from the vertex diagram with a virtual $\phi$ equals the contribution to $\Zq$ from the diagram with a virtual $\phi$.  Use dimensional regularization.  Is the Ward identity generally true in this theory?
+%}
+%
+%
+%
+%\prob{
+%	Now consider the renormalization of the $\phi \psib \psi$ vertex.  Show that the rescaling of this vertex at $q^2 = 0$ is \emph{not} canceled by the correction to $\Zw$.  (It suffices to compute the ultraviolet-divergent parts of the diagrams.)  In this theory, the vertex and field-strength rescaling give additional shifts of the observable coupling constant relative to its bare value.
+%}
 
 
 %\makebib
