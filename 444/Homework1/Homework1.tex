@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{444}
+\homeworknum{1}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+
+\state{Alternative regulators in QED (Peskin \& Schroeder 7.2)}{
+	In Section.~7.5, we saw that the Ward identity can be violated by an improperly chosen regulator.  Let us check the validity of the identity $\Zq = \Zw$, to order $\alp$, for several choices of the regulator.  We have already verified that the relation holds for Paul-Villars regularization.
+}
+
+\prob{
+	Recompute $\del\Zq$ and $\del\Zw$, defining the integrals~(6.49) and (6.50) by simply placing an upper limit $\Lam$ on the integration over $\ellE$.  Show that, with this definition, $\del\Zq \neq \del\Zw$.
+}
+
+
+
+\prob{
+	Recompute $\del\Zq$ and $\del\Zw$, defining the integrals~(6.49) and (6.50) by dimensional regularization.  You may take the Dirac matrices to be $4 \times 4$ as usual, but note that, in $d$ dimensions,
+	\eq{
+		\gsmn \gamm \gamn = d.
+	}
+	Show that, with this definition, $\del\Zq = \del\Zw$.
+}
+
+
+
+
+
+
+\state{(Peskin \& Schroeder 7.3)}{
+	Consider a theory of elementary fermions that couple both to QED and to a Yukawa field $\phi$:
+	\eq{
+		\Hint = \int \ddcx \frac{\lam}{\sqrt{2}} \phi \psib \psi + \int \ddcx e \Asm \psib \gamm \psi.
+	}
+}
+
+\prob{
+	Verify that the contribution to $\Zq$ from the vertex diagram with a virtual $\phi$ equals the contribution to $\Zq$ from the diagram with a virtual $\phi$.  Use dimensional regularization.  Is the Ward identity generally true in this theory?
+}
+
+
+
+\prob{
+	Now consider the renormalization of the $\phi \psib \psi$ vertex.  Show that the rescaling of this vertex at $q^2 = 0$ is \emph{not} canceled by the correction to $\Zw$.  (It suffices to compute the ultraviolet-divergent parts of the diagrams.)  In this theory, the vertex and field-strength rescaling give additional shifts of the observable coupling constant relative to its bare value.
+}
+
+
+%\makebib
+
+\end{document}
