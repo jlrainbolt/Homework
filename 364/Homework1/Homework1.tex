@@ -48,9 +48,10 @@
 
 \begin{figure}[p] \centering
 	\begin{tabular}{c c}
-		\includegraphics[trim=1.5cm 0 0 0,clip]{4a}
-		\\
+		\includegraphics[trim=1.5cm 0 0 0,clip]{4a} &
+		\includegraphics[trim=1.5cm 0 0 0,clip]{4b} \\
 		(a) & (b) \\[2ex]
+		\includegraphics[trim=1.5cm 0 0 0,clip]{4c} &
 		\\
 		(c) & (d) \\[2ex]
 		\\
@@ -65,7 +66,7 @@
 }
 
 \sol{
-	Figure~\ref{4}~(a) shows a spacetime diagram for frames $\cF$ and $\cFb$.  Two events, $A$ and $B$, are located on the $\xb$ axis.  In $\cFb$, they occur simultaneously at $\tb = 0$.  The dotted lines extending from the events to the $t$ axis show when the events occur in $\cF$.  Event $A$ is farther back and occurs earlier in $\cF$ than event $B$.  Thus two events that are simultaneous in $\cFb$ are not simultaneous in $\cF$. \qed
+	Figure~\ref{4}~(a) shows a spacetime diagram for frames $\cF$ and $\cFb$.  Two events, $\cPq$ and $\cPw$, are located on the $\xb$ axis.  In $\cFb$, they occur simultaneously at $\tb = 0$.  The dotted lines extending from the events to the $t$ axis show when the events occur in $\cF$.  Event $\cPq$ is farther back and occurs earlier in $\cF$ than event $\cPw$.  Thus two events that are simultaneous in $\cFb$ are not simultaneous in $\cF$. \qed
 }
 
 
@@ -74,10 +75,34 @@
 	Two events that occur at the same spatial location in one inertial frame do not necessarily occur at the same spatial location in another.
 }
 
+\sol{
+	Figure~\ref{4}~(b) shows a spacetime diagram in which events $\cPq$ and $\cPw$ both occur at position $\xb = 0$ in $\cFb$.  The dotted lines extending from the events to the $x$ axis show that, in $\cF$, event $\cPq$ occurs at $x < 0$ and event $\cPw$ at $x > 0$.  Hence, the events do not occur at the same position in $\cF$. \qed
+}
+
 
 
 \prob{
 	If $\cPq$ and $\cPw$ are two events with a timelike separation, then there exists an inertial reference frame in which they occur at the same spatial location, and in that frame the time lapse between them is equal to the square root of the negative of their invariant interval, $\Del t = \Del \tau \equiv \sqrt{-(\Del s)^2}$.
+}
+
+\sol{
+	Figure~\ref{4}~(c) shows a spacetime diagram in which the $t$ and $x$ axes are given arbitrary units.  Events $\cPq$ and $\cPw$ occur at the same location in $\cF$, $x = 2$.  The dotted lines in Fig.~\ref{4}~(c) show the $(\tb, \xb)$ coordinates of $\cPq$ and $\cPw$.  Their $\Del \tb$ is greater than their $\Del \xb$, so their separation is clearly timelike in $\cFb$ as well.
+	
+	The interval, which is invariant of reference frame, can be calculated in one spatial and one temporal dimension by adapting (2.2a) in MCP:
+	\eqn{interval}{
+		(\Del s)^2 = -(\Del t)^2 + (\Del x)^2.
+	}
+	In $\cF$, $\Del x = 0$ and $\Del t = 2$.  Then
+	\eq{
+		(\Del s)^2 = -2^2 + 0^2
+		= -4
+		< 0,
+	}
+	so the interval is indeed timelike~\cite[p.~45]{MCP}.  Since the events are at the same spatial location in $\cF$, we calculate the time lapse between them in $\cF$ as
+	\eq{
+		\sqrt{-(\Del s)^2} = \sqrt{4} = 2,
+	}
+	which is exactly as shown in the figure. \qed
 }
 
 
@@ -122,6 +147,6 @@
 }
 
 
-%\makebib
+\makebib
 
 \end{document}
