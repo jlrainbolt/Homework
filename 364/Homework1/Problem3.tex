@@ -1,0 +1,63 @@
+\state{Index gymnastics (MCP 2.8)}{\hfix}
+
+\prob{
+	Simplify the following expression so the metric does not appear in it:
+	\eq{
+		\Aabg \gsbr \Ssgl \grd \glsa.
+	}
+}
+
+\sol{
+	Equation~(2.23d) in MCP states that
+	\al{
+		\Asa &= \gsab \Ab, &
+		\Aa &= \gab \Asb, &
+		\Tasmn &\equiv \gsmb \gsng \Tabg, &
+		\Tabg &\equiv \gbm \ggn \Tasmn.
+	}
+	We are free to reorder the factors in the expression.  We find
+	\eq{
+		\Aabg \gsbr \Ssgl \grd \glsa = \Aasrsg \grd \Ssgl \glsa
+		= \ans{ \Aadg \Ssga. }
+	}
+}
+
+
+
+\prob{
+	The quantity $\gsab \gab$ is a scalar since it has no free indices.  What is its numerical value?
+}
+
+\sol{
+	From (2.23c) in MCP, $\gsab = \gab = \etasab$.  Further, (2.22) states that
+	\al{
+		\eta_{00} &\equiv -1, &
+		\eta_{11} &\equiv \eta_{22} \equiv \eta_{33} \equiv 1, &
+		\etasab &\equiv 0 \text{ if } \alp \neq \bet.
+	}
+	Thus
+	\al{
+		\gsab \gab &= \etasab \etaab \\
+		&= \eta_{\alp 0} \eta^{\alp 0} + \eta_{\alp 1} \eta^{\alp 1} + \eta_{\alp 2} \eta^{\alp 2} + \eta_{\alp 3} \eta^{\alp 3} \\
+		&= \eta_{00} \eta^{00} + \eta_{11} \eta^{11} + \eta_{22} \eta^{22} + \eta_{33} \eta^{33} \\
+		&= 1 + 1 + 1 + 1 \\
+		&= \ans{ 4. }
+	}
+	\vfix
+}
+
+
+
+\prob{
+	What is wrong with the following expression and equation?
+	\al{
+		\Asasbg &\Ssag; &
+		\Asasbg \Ssb \Tsg &= \Rsabg \Sb.
+	}
+}
+
+\sol{
+	The expression $\Asasbg \Ssag$ is nonsensical because it contains two like indices that are not contracted.  If the $\alp$ indices are intended to be summed, one must be an upper index and the other a lower index.
+	
+	The equation $\Asasbg \Ssb \Tsg = \Rsabg \Sb$ is invalid because there is a free $\gamma$ index on the right-hand side, but not on the left-hand side.  When contracted, the left-hand side will have only a lower $\alp$ index remaining.  However, the right-hand side has a free lower $\alp$ index and a free lower $\gam$ index.  It is impossible for the two to be equivalent.
+}
