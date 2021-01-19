@@ -41,7 +41,7 @@
 	\eqn{Gam}{
 		\del\Gammqo = \gamm \del\Fqo + \frac{i \sigmn \qsn}{2 m} \del\Fwo.
 	}
-	Using this equation and the identity $\gamm \gamsm = 4$~\hl{[cite]}, Eq.~\refeq{thingy} can be written
+	Using this equation and the identity $\gamm \gamsm = 4$~\cite{Gamma}, Eq.~\refeq{thingy} can be written
 	\eqn{Z1}{
 		\del \Zq = -\frac{1}{4} \gamsm \del\Gammqo
 		= -\del\Fqo - \gamsm \frac{i \sigmn \qsn}{8 m} \del\Fwo.
@@ -70,27 +70,28 @@
 		= \frac{i (-1)^3}{(2\pi)^4} \int \ddOmgq \intoLam \ddlE \frac{\ellE^3}{(\ellE^2 + \Delta)^3},
 	}
 	where we have replaced the upper (infinite) bound of integration by a finite number $\Lam$.  Evaluating this integral using Mathematica and using $\int \ddOmgq = 2 \pi^2$~\cite[p.~193]{Peskin}, we find
-	\eqn{ans1}{
-		\int \ddqlf \frac{1}{(\ell^2 - \Del)^3} = \frac{i (-1)^3}{(2\pi)^4} (2 \pi^2) \frac{\Lam^4}{4 \Del (\Del + \Lam^2)^2}
-		= -\frac{i}{32 \pi^2} \frac{\Lam^4}{\Del (\Del + \Lam^2)^2}
-		\equiv \alp,
+	\aln{
+		\int \ddqlf \frac{1}{(\ell^2 - \Del)^3} &= \frac{i (-1)^3}{(2\pi)^4} (2 \pi^2) \frac{\Lam^4}{4 \Del (\Del + \Lam^2)^2} \notag \\
+		&= -\frac{i}{32 \pi^2} \frac{\Lam^4}{\Del (\Del + \Lam^2)^2} \notag \\
+		&\approx -\frac{i}{32 \pi^2} \frac{1}{\Del}
+		\equiv \alp, \label{ans1}
 	}
-	where we have defined $\alp$.  Equation~(6.50) in Peskin \& Schroeder is
+	where we have taken the limit $\Lam \gg \Del$~\cite[p.~218]{Peskin} and defined $\alp$.  Equation~(6.50) in Peskin \& Schroeder is
 	\eq{
 		\int \ddqlf \frac{\ell^2}{(\ell^2 - \Del)^m} = \frac{i (-1)^{m - 1}}{(4\pi)^2} \frac{2}{(m - 1) (m - 2) (m - 3)} \frac{1}{\Del^{m - 3}}.
 	}
 	Following similar steps as for Eq.~\refeq{thing1}, the left-hand side is
 	\aln{
-		\int \ddqlf \frac{\ell^2}{(\ell^2 - \Del)^3} &= -\frac{i}{(-1)^3} \frac{1}{(2\pi)^4} \int \ddqlE \frac{\ellE^2}{(\ellE^2 + \Del)^3} \notag \\
+		\int \ddqlf \frac{\ell^2}{(\ell^2 - \Del)^3} &= \frac{i}{(-1)^3} \frac{1}{(2\pi)^4} \int \ddqlE \frac{\ellE^2}{(\ellE^2 + \Del)^3} \notag \\
 		&= \frac{i (-1)^3}{(2\pi)^4} \int \ddOmgq \intoLam \ddlE \frac{\ellE^5}{(\ellE^2 + \Del)^3} \notag \\
-		&= -\frac{i (-1)^3}{(2\pi)^4} (2 \pi^2) \frac{1}{4} \brac{ \frac{\Del (3 \Del + 4 \Lam^2)}{(\Del +\Lam^2)^2} + 2 \ln(\frac{\Del +\Lam^2}{\Del}) - 3 } \notag \\
-		&= \frac{i}{32 \pi^2} \brac{ \frac{\Del (3 \Del + 4 \Lam^2)}{(\Del +\Lam^2)^2} + 2 \ln(\frac{\Del +\Lam^2}{\Del}) - 3 } \notag \\
-		&\approx \frac{i}{32 \pi^2} \brac{ 2 \ln(\frac{\Del +\Lam^2}{\Del}) - 3 }
+		&= \frac{i (-1)^3}{(2\pi)^4} (2 \pi^2) \frac{1}{4} \brac{ \frac{\Del (3 \Del + 4 \Lam^2)}{(\Del + \Lam^2)^2} + 2 \ln(\frac{\Del + \Lam^2}{\Del}) - 3 } \notag \\
+		&= -\frac{i}{32 \pi^2} \brac{ \frac{\Del (3 \Del + 4 \Lam^2)}{(\Del + \Lam^2)^2} + 2 \ln(\frac{\Del +\Lam^2}{\Del}) - 3 } \notag \\
+		&\approx -\frac{i}{16 \pi^2} \ln(\frac{\Lam^2}{\Del})
 		\equiv \bet, \label{ans2}
 	}
-	where we have defined $\bet$ and ignored terms of $\order{\Lam^2}$.
+	where we have defined $\bet$ and ignored terms of $\order{\Lam^{-2}}$~\cite[p.~218]{Peskin}.  We also ignore constant terms since they do not diverge~\cite[p.~196]{Peskin}.
 	
-	Setting $q^2 = 0$ (so $\Del \to \Delo = (1 - z)^2 m^2$, and $\alp \to \alpo, \bet \to \beto$ which are functions of $\Delo$) and feeding in Eqs.~\refeq{ans1} and \refeq{ans2}, Eq.~\refeq{thing1} can be written
+	We now set $q^2 = 0$, and define $\Delo = (1 - z)^2 m^2$.  Then $\Del \to \Delo$ in our expression and $\alp \to \alpo, \bet \to \beto$ (which are functions of $\Delo$).  Feeding in Eqs.~\refeq{ans1} and \refeq{ans2}, Eq.~\refeq{thing1} can be written
 	\eq{
 		\ubpp \del\Gammqo \up = 2 i e^2 \intoq \ddx \ddy \ddz \del(x + y + z - 1) \ubpp \int \curly{ \gamm \brac{ -\beto + 2 (1 - 4z + z^2) m^2 \alpo } } \up.
 	}
@@ -102,16 +103,16 @@
 		\del\Fwo &= 8 i e^2 \intoq \ddx \ddy \ddz \del(x + y + z - 1) m^2 z (1 - z) \alpo \\
 		&= 8 i e^2 \intoq \ddz m^2 z (1 - z)^2 \alpo.
 	}
-	Feeding these results into Eq.~\refeq{Z1}, we obtain
-	\eq{
-		\ans{ \del\Zq = -2 i e^2 \intoq \ddz (1 - z) \brac{ -\beto + 2 (1 - 4z + z^2) m^2 \alpo } + \gamsm \frac{e^2 \sigmn \qsn}{m} \intoq \ddz m^2 z (1 - z)^2 \alpo, }
+	We ignore $\del\Fwo$ since it is not affected by the divergence~\cite[p.~196]{Peskin}.  In order to avoid issues coming from the divergence in $\del\Fqo$, we add a $z \mu^2$ term to $\Delo$~\cite[p.~195]{Peskin}.  So, feeding these results into Eq.~\refeq{Z1}, we obtain
+	\eqn{Z1ans}{
+		\del\Zq = -2 i e^2 \intoq \ddz (1 - z) \brac{ -\beto + 2 (1 - 4z + z^2) m^2 \alpo },
 	}
 	where 
-	\al{
-		\alpo &= -\frac{i}{32 \pi^2} \frac{\Lam^4}{\Delo (\Delo + \Lam^2)^2}, &
-		\beto &= \frac{i}{32 \pi^2} \brac{ 2 \ln(\frac{\Delo +\Lam^2}{\Delo}) - 3 },
+	\aln{ \label{Z1stuff}
+		\alpo &= -\frac{i}{32 \pi^2} \frac{1}{\Delo}, &
+		\beto &=  -\frac{i}{16 \pi^2} \ln(\frac{\Lam^2}{\Delo}), &
+		\Delo &= (1 - z)^2 m^2 + z \mu^2.
 	}
-	and $\Delo = (1 - z)^2 m^2$.
 	
 	For $\del\Zw$, we can use the first part of Peskin \& Schroeder (7.31),
 	\eqn{Z2}{
@@ -127,17 +128,17 @@
 		&= \frac{i (-1)^2}{(2\pi)^4} \int \ddOmgq \intoLam \ddlE \frac{\ellE^3}{(\ellE^2 + \Del)^2} \\
 		&= \frac{i}{(2\pi)^4} (2 \pi^2) \frac{1}{2} \brac{ \frac{\Del}{\Del + \Lam^2} + \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } \\
 		&= \frac{i}{16 \pi^2} \brac{ \frac{\Del}{\Del + \Lam^2} + \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } \\
-		&\approx \frac{i}{16 \pi^2} \brac{ \ln(\frac{\Del + \Lam^2}{\Del}) - 1 },
+		&\approx \frac{i}{16 \pi^2} \ln(\frac{\Lam^2}{\Del}),
 	}
-	where we have evaluated the integral using Mathematica and ignored terms of $\order{\Lam^2}$.  Substituting back into Eq.~\refeq{Sigw}, we find
+	where we have evaluated the integral using Mathematica, taken the large $\Lam$ limit, and dropped the irrelevant constant.  Substituting back into Eq.~\refeq{Sigw}, we find
 	\eq{
-		\Sigwp = -i e^2 \intoq \ddx (-2 x \psl + 4 \mo) \frac{i}{16 \pi^2} \brac{ \ln(\frac{\Del + \Lam^2}{\Del}) - 1 }.
+		\Sigwp = -i e^2 \intoq \ddx (-2 x \psl + 4 \mo) \frac{i}{16 \pi^2} \ln(\frac{\Lam^2}{\Del}).
 	}
-	Now
+	Note that
 	\aln{
-		\dv{\Sigw}{\psl} &= \frac{e^2}{16 \pi^2} \dv{\psl}\curly{ \intoq \ddx (-2 x \psl + 4 \mo) \brac{ \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } } \notag \\
-		&= \frac{e^2}{16 \pi^2} \intoq \ddx \curly{ \brac{ \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } \dv{\psl}(-2 x \psl + 4 \mo) + (-2 x \psl + 4 \mo) \dv{\psl}\brac{ \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } } \notag \\
-		&= \frac{e^2}{16 \pi^2} \intoq \ddx \curly{ \brac{ \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } \dv{\psl}(-2 x \psl + 4 \mo) + (-2 x \psl + 4 \mo) \dv{\Del}\brac{ \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } \dv{\Del}{\psl} }. \label{der}
+		\dv{\Sigw}{\psl} &= \frac{e^2}{16 \pi^2} \dv{\psl} \brac{ \intoq \ddx (-2 x \psl + 4 \mo) \ln(\frac{\Lam^2}{\Del}) } \notag \\
+		&= \frac{e^2}{16 \pi^2} \intoq \ddx \brac{ \ln(\frac{\Lam^2}{\Del}) \dv{\psl}(-2 x \psl + 4 \mo) + (-2 x \psl + 4 \mo) \dv{\psl} \ln(\frac{\Lam^2}{\Del}) } \notag \\
+		&= \frac{e^2}{16 \pi^2} \intoq \ddx \brac{ \ln(\frac{\Lam^2}{\Del}) \dv{\psl}(-2 x \psl + 4 \mo) + (-2 x \psl + 4 \mo) \dv{\Del} \ln(\frac{\Lam^2}{\Del}) \dv{\Del}{\psl} }. \label{der}
 	}
 	Using $p^2 = \psl^2$~\cite[p.~220]{Peskin}, note that
 	\eq{
@@ -147,25 +148,31 @@
 	Also,
 	\al{
 		\dv{\psl}(-2 x \psl + 4 \mo) &= -2x, &
-		\dv{\Del}\brac{ \ln(\frac{\Del + \Lam^2}{\Del}) } &= \dv{\Del}\brac{ \ln(\Del + \Lam^2) - \ln(\Del) }
-		= \frac{1}{\Del + \Lam^2} - \frac{1}{\Del}.
+		\dv{\Del}\brac{ \ln(\frac{\Lam^2}{\Del}) } &= \dv{\Del}\brac{ \ln(\Lam^2) - \ln(\Del) }
+		= -\frac{1}{\Del}.
 	}
-	Making these substitutions into Eq.~\refeq{der}
-	\al{
-		\dv{\Sigw}{\psl} &= \frac{e^2}{16 \pi^2} \intoq \ddx \curly{ -2 x \brac{ \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } + (-2 x \psl + 4 \mo) [ -2x (1 - x) \psl ] \paren{ \frac{1}{\Del + \Lam^2} - \frac{1}{\Del} } - 1 } \\
-		&= \frac{e^2}{16 \pi^2} \intoq \ddx \curly{ -2x  \brac{ \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } + \frac{(2 x \psl + 4 \mo) [ 2x (1 - x) \psl ]}{\Del} - 1 },
-	}
-	again omitting terms of $\order{\Lam^2}$.  Then Eq.~\refeq{Z2} becomes, defining $\Delm \equiv -x (1 - x) m^2 + x \mu^2 + (1 - x) \mo^2$,
+	Making these substitutions in Eq.~\refeq{der},
 	\eq{
-		\del\Zw = \frac{e^2}{16 \pi^2} \intoq \ddx \curly{ -2x  \brac{ \ln(\frac{\Delm + \Lam^2}{\Delm}) - 1 } + \frac{(2 x m + 4 \mo) [ 2x (1 - x) m ]}{\Delm} - 1 }.
+		\dv{\Sigw}{\psl} = \frac{e^2}{16 \pi^2} \intoq \ddx \brac{ -2x \ln(\frac{\Lam^2}{\Del}) - \frac{(2 x \psl - 4 \mo) [ 2x (1 - x) \psl ]}{\Del} }.
+	}
+	We now define
+	\eqn{Z2stuff}{
+		\Delm \equiv -x (1 - x) m^2 + x \mu^2 + (1 - x) \mo^2
+		\approx (1 - x)^2 m^2 + x \mu^2,
+	}
+	since $m \approx \mo$.  Then Eq.~\refeq{Z2} becomes
+	\eqn{Z2ans}{
+		\del\Zw = \frac{e^2}{16 \pi^2} \intoq \ddx \brac{ -2x \ln(\frac{\Lam^2}{\Del}) - \frac{(2 x m + 4 \mo) [ 2x (1 - x) m ]}{\Delm} }.
 	}
 	
+	Now we write out $\del\Zq$ and $\del\Zw$ fully, feeding Eqs.~\refeq{Z1stuff} and \refeq{Z2stuff} into Eqs.~\refeq{Z1ans} and \refeq{Z2ans}, respectively.  We also rename $x \to z$ in $\del\Zw$:
 	\al{
-		\del\Zq &= -2 i e^2 \intoq \ddz (1 - z) \curly{ -\frac{i}{32 \pi^2} \brac{ 2 \ln(\frac{\Delo +\Lam^2}{\Delo}) - 3 } + 2 (1 - 4z + z^2) m^2 \paren{ -\frac{i}{32 \pi^2} \frac{\Lam^4}{\Delo (\Delo + \Lam^2)^2} } } \\
-		& \hspace{5em} \phantom{=\ } + \gamsm \frac{e^2 \sigmn \qsn}{m} \intoq \ddz m^2 z (1 - z)^2 \paren{ -\frac{i}{32 \pi^2} \frac{\Lam^4}{\Delo (\Delo + \Lam^2)^2} },
+		\del\Zq &= -2 i e^2 \intoq \ddz (1 - z) \brac{ -\frac{i}{16 \pi^2} \ln(\frac{\Lam^2}{\Del}) + 2 (1 - 4z + z^2) m^2 \paren{ -\frac{i}{32 \pi^2} \frac{1}{\Delo} } } \\
+		&= \frac{e^2}{8 \pi^2} \intoq \ddz (1 - z) \brac{ \ln(\frac{\Lam^2}{(1 - z)^2 m^2 + z \mu^2}) - \frac{m^2 (1 - 4z + z^2)}{(1 - z)^2 m^2 + z \mu^2} }, \\[2ex]
+		%
+		\del\Zw &= -\frac{e^2}{8 \pi^2} \intoq \ddz \brac{ z \ln(\frac{\Lam^2}{(1 - z)^2 m^2 + z \mu^2}) + \frac{2 z m^2 (1 - z) (2 + z)}{(1 - z)^2 m^2 + z \mu^2} }.
 	}
-	
-	\hl{need to add mu to other Delta?  And can we just use the first term like they seem to on p. 222?}
+	Clearly $\del\Zq \neq \del\Zw$, as we wanted to show. \qed
 }
 
 
