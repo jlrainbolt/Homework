@@ -1,0 +1,24 @@
+\state{Relativistic gravitational force law (MCP 2.4)}{
+	In Newtonian theory, the gravitational potential $\Phi$ exerts a force $\bF = \dv*{\bp}{t} = -m \grad \Phi$ on a particle with mass $m$ and momentum $\bp$.  Before Einstein formulated general relativity, some physicists constructed relativistic theories of gravity in which a Newtonian-like scalar gravitational field $\Phi$ exerted a 4-force $\vF = \dv*{\vp}{\tau}$ on any particle with rest mass $m$, 4-velocity $\vuu$, and 4-momentum $\vp = m \vuu$.  What must that force law have been for it to (i) obey the Principle of Relativity, (ii) reduce to Newton's law in the nonrelativistic limit, and (iii) preserve the particle's rest mass as time passes?
+}
+
+\sol{
+	We follow a process similar to that in Sec.~2.4.2 of MCP~\cite[pp.~52--53]{MCP}.  In order to satisfy condition~(i), we need to be able to write the law in geometric, frame-independent object~\cite[p.~46]{MCP}.  To satisfy~(ii), we need the 4-force $\vF = \dv*{\vp}{\tau}$ to be proportional to $m$ and linear in $\grad\Phi$, as in Newton's law in the nonrelativistic limit.  A tensor is a linear function of $n$ vectors~\cite[p.~11]{MCP}, so we need to include a second-rank tensor that takes $\grad\Phi$ in one of its slots.  We will call it the gravitational field tensor, $F$.  It is related to $\vF$ via
+	\eq{
+		\vF = m F(\ulq, \grad\Phi).
+	}
+	For condition~(iii), we can apply MCP~(2.17), which states that the 4-force must be orthogonal to the 4-momentum for the rest mass to be preserved as time passes:
+	\eq{
+		0 = \dv{m^2}{\tau}
+		= -\dv{\vp^2}{\tau}
+		= -2 \vp \cdot \dv{\vp}{\tau}
+		= -2 \vp \cdot \vF.
+	}
+	In terms of our problem, we need $\vF \cdot \vuu = \vF(\vuu) = 0$ where $\vuu$ is a timelike unit-length vector.  That is, we require $F(\vuu, \grad\Phi) = 0$.  So our force law is
+	\eq{
+		\ans{ \dv{\vp}{\tau} = m F(\ulq, \grad\Phi),
+		\qwhere
+		F(\vuu, \grad\Phi) = 0 }
+	}
+	for any timelike unit-length vector $\vuu$.
+}

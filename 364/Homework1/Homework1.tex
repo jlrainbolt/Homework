@@ -14,114 +14,11 @@
 
 
 
-\state{}{
-	Let $T$ be a rank one tensor which takes as argument vectors in a finite-dimensional vector space equipped with an inner product (either Euclidean with all spacelike directions or Lorenztian with one timelike direction).  Prove that there exists a vector $V$ such that for all vectors W,
-	\eq{
-		\TW = V \cdot W.
-	}
-}
-
-
-
-
-
-\state{Relativistic gravitational force law (MCP 2.4)}{
-	In Newtonian theory, the gravitational potential $\Phi$ exerts a force $\bF = \dv*{\bp}{t} = -m \grad \Phi$ on a particle with mass $m$ and momentum $\bp$.  Before Einstein formulated general relativity, some physicists constructed relativistic theories of gravity in which a Newtonian-like scalar gravitational field $\Phi$ exerted a 4-force $\vF = \dv*{\vp}{\tau}$ on any particle with rest mass $m$, 4-velocity $\vuu$, and 4-momentum $\vp = m \vuu$.  What must that force law have been for it to (i) obey the Principle of Relativity, (ii) reduce to Newton's law in the nonrelativistic limit, and (iii) preserve the particle's rest mass as time passes?
-}
-
-
-
-
-
-\clearpage
+\input{Problem1}
+\input{Problem2}
 \input{Problem3}
-
-
-
-
-
-
 \clearpage
-\state{Spacetime diagrams (MCP 2.14)}{ \label{4}
-	Use spacetime diagrams to prove the following.
-}
-
-\begin{figure}[p] \centering
-	\begin{tabular}{c c}
-		\includegraphics[trim=1.5cm 0 0 0,clip]{4a} &
-		\includegraphics[trim=1.5cm 0 0 0,clip]{4b} \\
-		(a) & (b) \\[2ex]
-		\includegraphics[trim=1.5cm 0 0 0,clip]{4c} &
-		\\
-		(c) & (d) \\[2ex]
-		\\
-		(e) & (f) \\
-	\end{tabular}
-	\caption{Spacetime diagrams for problem~\ref{4}.}
-	\label{f4}
-\end{figure}
-
-\prob{
-	Two events that are simultaneous in one inertial frame are not necessarily simultaneous in another.  More specifically, if frame $\cFb$ moves with velocity $\vv = \bet \vex$ as seen in frame $\cF$, where $\bet > 0$, then of two events that are simultaneous in $\cFb$ the one farther ``back'' (with the more negative value of $\xb$) will occur in $\cF$ before the one farther ``forward.''
-}
-
-\sol{
-	Figure~\ref{4}~(a) shows a spacetime diagram for frames $\cF$ and $\cFb$.  Two events, $\cPq$ and $\cPw$, are located on the $\xb$ axis.  In $\cFb$, they occur simultaneously at $\tb = 0$.  The dotted lines extending from the events to the $t$ axis show when the events occur in $\cF$.  Event $\cPq$ is farther back and occurs earlier in $\cF$ than event $\cPw$.  Thus two events that are simultaneous in $\cFb$ are not simultaneous in $\cF$. \qed
-}
-
-
-
-\prob{
-	Two events that occur at the same spatial location in one inertial frame do not necessarily occur at the same spatial location in another.
-}
-
-\sol{
-	Figure~\ref{4}~(b) shows a spacetime diagram in which events $\cPq$ and $\cPw$ both occur at position $\xb = 0$ in $\cFb$.  The dotted lines extending from the events to the $x$ axis show that, in $\cF$, event $\cPq$ occurs at $x < 0$ and event $\cPw$ at $x > 0$.  Hence, the events do not occur at the same position in $\cF$. \qed
-}
-
-
-
-\prob{
-	If $\cPq$ and $\cPw$ are two events with a timelike separation, then there exists an inertial reference frame in which they occur at the same spatial location, and in that frame the time lapse between them is equal to the square root of the negative of their invariant interval, $\Del t = \Del \tau \equiv \sqrt{-(\Del s)^2}$.
-}
-
-\sol{
-	Figure~\ref{4}~(c) shows a spacetime diagram in which the $t$ and $x$ axes are given arbitrary units.  Events $\cPq$ and $\cPw$ occur at the same location in $\cF$, $x = 2$.  The dotted lines in Fig.~\ref{4}~(c) show the $(\tb, \xb)$ coordinates of $\cPq$ and $\cPw$.  Their $\Del \tb$ is greater than their $\Del \xb$, so their separation is clearly timelike in $\cFb$ as well.
-	
-	The interval, which is invariant of reference frame, can be calculated in one spatial and one temporal dimension by adapting (2.2a) in MCP:
-	\eqn{interval}{
-		(\Del s)^2 = -(\Del t)^2 + (\Del x)^2.
-	}
-	In $\cF$, $\Del x = 0$ and $\Del t = 2$.  Then
-	\eq{
-		(\Del s)^2 = -2^2 + 0^2
-		= -4
-		< 0,
-	}
-	so the interval is indeed timelike~\cite[p.~45]{MCP}.  Since the events are at the same spatial location in $\cF$, we calculate the time lapse between them in $\cF$ as
-	\eq{
-		\sqrt{-(\Del s)^2} = \sqrt{4} = 2,
-	}
-	which is exactly as shown in the figure. \qed
-}
-
-
-
-\prob{
-	If $\cPq$ and $\cPw$ are two events with a spacelike separation, then there exists an inertial reference frame in which they are simultaneous, and in that frame the spatial distance between them is equal to the square root of their invariant interval, $\sqrt{\gij \Del \xii \Del \xj} = \Del s \equiv \sqrt{(\Del s)^2}$.
-}
-
-
-
-\prob{
-	If the inertial frame $\cFb$ moves with speed $\bet$ relative to the frame $\cF$, then a clock at rest in $\cFb$ ticks more slowly as viewed from $\cF$ than as viewed from $\cFb$---more slowly by a factor $\gam^{-1} = \sqrt{1 - \bet^2}$.  This is called \emph{relativistic time dilation}.  As one consequence, the lifetimes of unstable particles moving with a speed $\bet$ are increased by the Lorentz factor $\gam$.
-}
-
-
-\prob{
-	If the inertial frame $\cFb$ moves with velocity $\vv = \bet \vex$ relative to the frame $\cF$, then an object at rest in $\cFb$ as studied in $\cF$ appears shortened by a factor $\gam^{-1} = \sqrt{1 - \bet^2}$ along the $x$ direction, but its length along the $y$ and $z$ directions is unchanged.  This is called \emph{Lorentz contraction}.  As one consequence, heavy ions moving at high speeds in a particle accelerator appear to act like pancakes, squashed along their directions of motion.
-}
-
+\input{Problem4}
 
 
 
@@ -133,17 +30,103 @@
 	The 4-acceleration of a particle or other object is defined by $\vaa \equiv \dv*{\vuu}{\tau}$, where $\vuu$ is its 4-velocity and $\tau$ is proper time along its world line.  Show that, if an observer carries an accelerometer, the magnitude $\abs{\ba}$ of the 3-dimensional acceleration $\ba$ measured by the accelerometer will always be equal to the magnitude of the observer's 4-acceleration, $\abs{\ba} = \abs{\vaa} \equiv \sqrt{\vaa \cdot \vaa}$.
 }
 
+\sol{
+	The velocity and acceleration of the observer and of the accelerometer are the same.  From MCP~(2.25c), their 4-velocity can be written
+	\eq{
+		\vuu = (\gam, \gam \bv)
+		= \gam (1, \bv),
+	}
+	where $\bv = \dv*{\xbb}{t}$ and $\xbb$ is the position in 3-space.  Then the acceleration is
+	\eq{
+		\vaa = \dv{\vuu}{\tau}
+		= \gam \dv{\vuu}{t}
+		= \gam \paren{ \dv{\gam}{t}, \bv \dv{\gam}{t} + \gam \dv{\bv}{t} },
+	}
+	since $\ddtau = \ddt / \gam$~\cite[p.~201]{Resnick}.  But in the rest frame of the accelerometer and observer, $\gam = 1$ and $\dv*{\gam}{t} = 0$.  So
+	\eq{
+		\vaa = \paren{ 0, \dv{\bv}{t} }
+		= (0, \ba).
+	}
+	Then
+	\eq{
+		\ans{ \abs{\vaa} = \sqrt{ \vaa \cdot \vaa }
+		= \sqrt{ \ba \vdot \ba }
+		= \abs{\ba}, }
+	}
+	as we wanted to show. \qed
+}
+
 
 \prob{
 	In the twins paradox of Fig.~2.8a, suppose that Florence begins at rest beside Methuselah, then accelerates in Methuselah's $x$-direction with an acceleration $a$ equal to one Earth gravity, $g$, for a time $\TFlo / 4$ as measured by her, then accelerates in the $-x$-direction at $g$ for a time $\TFlo / 2$, thereby reversing her motion; then she accelerates in the $+x$-direction at $g$ for a time $\TFlo / 4$, thereby returning to rest beside Methuselah.  (This is the type of motion shown in the figure.)  Show that the total time lapse as measured by Methuselah is
-	\eq{
+	\eqn{show5b}{
 		\TMet = \frac{4}{g} \sinh(\frac{g \TFlo}{4}).
 	}
+}
+
+\sol{
+	Let $a$ be Florence's acceleration as measured in Methuselah's rest frame $\cF$.  For the first leg of her journey, Florence's proper acceleration is $\ab = g$.  The expression for the Lorentz transformation relating the proper acceleration is~\cite{Acceleration}
+	\eq{
+		\ab = \frac{a}{(1 - \bet^2)^{3/2}}.
+	}
+	Rearranging and substituting yields (for $c = 1$)
+	\eq{
+		a = g (1 - \bet^2)^{3/2}
+		= g (1 - v^2)^{3/2},
+	}
+	where $v$ is Florence's velocity as observed by Methuselah.  Substituting $a = \dv*{v}{t}$ gives us a differential equation for $v$:
+	\eq{
+		\dv{v}{t} = g (1 - v)^{3/2}
+		\qimplies
+		\intov \frac{\ddvp}{(1 - {v'}^2)^{3/2}} = g \intot \ddtp
+		\qimplies
+		\frac{v}{\sqrt{1 - v^2}} = g t,
+	}
+	where we start counting at $t = 0$ for Methuselah, and Florence's initial velocity is 0.  (This integral and all following computations in this problem are performed using Mathematica.)  Solving for $v$ yields
+	\eq{
+		v = \frac{g t}{\sqrt{1 + (g t)^2}}.
+	}
+	Let $x$ be Florence's position as measured by Methuselah.  It may be found by substituting $v = \dv*{x}{t}$ and solving the resulting differential equation:
+	\eq{
+		\dv{x}{t} = \frac{g t}{\sqrt{1 + (g t)^2}}
+		\qimplies
+		\intox \ddxp = \intot \ddtp \frac{g t'}{\sqrt{1 + (g t')^2}}
+		\qimplies x = \frac{\sqrt{(g t)^2 + 1} - 1}{g},
+	}
+	where we have placed Florence's initial position at $x = 0$.
+	
+	\hl{Then somehow we use} $\ddtau = \ddt / \gam$?
 }
 
 
 \prob{
 	Show that in the geometrized units used here, Florence's acceleration (equal to acceleration of gravity at the surface of Earth) is $g = \SI{1.033}{\per\year}$.  Plot $\TMet$ as a function of $\TFlo$, and from your plot estimate $\TFlo$ if $\TMet$ is the age of the Universe, 14 billion years.
+}
+
+\sol{
+	Note that
+	\eq{
+		c = 1
+		\qimplies
+		\SI{1}{\meter} \approx \frac{1}{\num{2.998e8}} \, \si{\second}
+		\approx \SI{3.336e-9}{\second},
+	}
+	Using this relation to convert $g$ from SI units, as well as the fact that $\SI{1}{\year} \approx \SI{3.154e7}{\second}$,
+	\eq{
+		g = \SI{9.807}{\meter\per\square\second}
+		= (\SI{9.807}{\per\square\second}) (\SI{3.336e-9}{\second})
+		= (\SI{3.271e-8}{\per\second}) (\SI{3.154e7}{\second\per\year})
+		\approx \ans{ \SI{1.033}{\per\year}, }
+	}
+	as we wanted to show. \qed
+	
+	Figure~\ref{f5} shows a plot of Eq.~\refeq{show5b}.  When $\TMet \approx \SI{14e9}{\year}$, $\TFlo \approx \SI{88}{\year}$.
+	
+	\begin{figure}[t] \centering
+		\includegraphics[width=0.5\textwidth]{5c}
+		\caption{Plot of Eq.~\refeq{show5b} indicating $\TFlo$ when $\TMet \approx \SI{14e9}{\year}$.}
+		\label{f5}
+	\end{figure}
 }
 
 

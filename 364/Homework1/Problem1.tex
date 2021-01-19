@@ -1,0 +1,33 @@
+\state{}{
+	Let $T$ be a rank one tensor which takes as argument vectors in a finite-dimensional vector space equipped with an inner product (either Euclidean with all spacelike directions or Lorenztian with one timelike direction).  Prove that there exists a vector $V$ such that for all vectors $W$,
+	\eqn{show1}{
+		\TW = V \cdot W.
+	}
+}
+
+\sol{
+	We can expand $W$ in terms of the basis vectors $\esi$:
+	\eq{
+		W = \Wi \esi.
+	}
+	By the linearity of tensors~\cite[p.~11]{MCP},
+	\eq{
+		T(\Wi \esi) = \Wi T(\esi).
+	}
+	We can also write the inner product in index notation:
+	\eq{
+		V \cdot W = \Vsi \Wi.
+	}
+	Then Eq.~\refeq{show1} holds so long as
+	\eqn{V}{
+		\ans{ \Vsi = T(\esi). }
+	}
+	This definition gives us
+	\eq{
+		\TW = T(\Wi \esi)
+		= \Wi T(\esi)
+		= \Wi \Vsi
+		= V \cdot W,
+	}
+	for all $W$.  Thus we have proven that such a $V$ exists and has the form of Eq.~\refeq{V}. \qed
+}
