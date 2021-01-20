@@ -3,7 +3,7 @@
 }
 
 \sol{
-	We follow a process similar to that in Sec.~2.4.2 of MCP~\cite[pp.~52--53]{MCP}.  In order to satisfy condition~(i), we need to be able to write the law in geometric, frame-independent object~\cite[p.~46]{MCP}.  To satisfy~(ii), we need the 4-force $\vF = \dv*{\vp}{\tau}$ to be proportional to $m$ and linear in $\grad\Phi$, as in Newton's law in the nonrelativistic limit.  A tensor is a linear function of $n$ vectors~\cite[p.~11]{MCP}, so we need to include a second-rank tensor that takes $\grad\Phi$ in one of its slots.  We will call it the gravitational field tensor, $F$.  It is related to $\vF$ via
+	We follow a process similar to that in Sec.~2.4.2 of MCP~\cite[pp.~52--53]{MCP}.  In order to satisfy condition~(i), we need to be able to write the law in terms of geometric, frame-independent objects~\cite[p.~46]{MCP}.  To satisfy~(ii), we need the 4-force $\vF = \dv*{\vp}{\tau}$ to be proportional to $m$ and linear in $\grad\Phi$, as in Newton's law in the nonrelativistic limit.  A tensor is a linear function of $n$ vectors~\cite[p.~11]{MCP}, so we need to include a second-rank tensor that takes $\grad\Phi$ in one of its slots.  We will call it the gravitational field tensor, $F$.  It is related to $\vF$ via
 	\eq{
 		\vF = m F(\ulq, \grad\Phi).
 	}
@@ -14,7 +14,7 @@
 		= -2 \vp \cdot \dv{\vp}{\tau}
 		= -2 \vp \cdot \vF.
 	}
-	In terms of our problem, we need $\vF \cdot \vuu = \vF(\vuu) = 0$ where $\vuu$ is a timelike unit-length vector.  That is, we require $F(\vuu, \grad\Phi) = 0$.  So our force law is
+	This also means $\vF$ must be orthogonal to the particle's 4-velocity $\vvv$, since $\vp = m \vvv$ by MCP~(2.10).  In terms of our problem, we need $\vF \cdot \vuu = \vF(\vuu) = 0$ where $\vuu$ is any timelike unit-length vector.  That is, we require $F(\vuu, \grad\Phi) = 0$.  So our force law is
 	\eq{
 		\ans{ \dv{\vp}{\tau} = m F(\ulq, \grad\Phi),
 		\qwhere
