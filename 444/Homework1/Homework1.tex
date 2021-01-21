@@ -60,8 +60,8 @@
 		\int \ddqlf \frac{1}{(\ell^2 - \Delta)^m} = \frac{i (-1)^m}{(4\pi)^2} \frac{1}{(m - 1) (m - 2)} \frac{1}{\Delta^{m - 2}}.
 	}
 	Here $m = 3$ because we have $D^{-3}$ in Eq.~\refeq{thing1}.  We can evaluate the left-hand side using the Euclidian 4-momentum defined in (6.48),
-	\al{
-		\ello &\equiv \ellEo, &
+	\aln{ \label{ellE}
+		\ello &\equiv i \ellEo, &
 		\vell &= \vellE.
 	}
 	Following the steps on p.~193, we have
@@ -124,7 +124,7 @@
 	}
 	where $\Del = -x (1 - x) p^2 + x \mu^2 + (1 - x) \mo^2$.  We may once again follow the steps on p.~193 to evaluate the integral, now with $m = 2$.  Changing the upper bound of integration to $\Lam$ once more, we have
 	\al{
-		\int \ddqlf \frac{1}{(\ell^2 - \Delta)^2} &= \frac{i}{(-1)^2} \frac{1}{(2\pi)^4} \int \ddqlE \frac{1}{(\ellE^2 + \Del)^2}\\
+		\int \ddqlf \frac{1}{(\ell^2 - \Delta)^2} &= \frac{i}{(-1)^2} \frac{1}{(2\pi)^4} \int \ddqlE \frac{1}{(\ellE^2 + \Del)^2} \\
 		&= \frac{i (-1)^2}{(2\pi)^4} \int \ddOmgq \intoLam \ddlE \frac{\ellE^3}{(\ellE^2 + \Del)^2} \\
 		&= \frac{i}{(2\pi)^4} (2 \pi^2) \frac{1}{2} \brac{ \frac{\Del}{\Del + \Lam^2} + \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } \\
 		&= \frac{i}{16 \pi^2} \brac{ \frac{\Del}{\Del + \Lam^2} + \ln(\frac{\Del + \Lam^2}{\Del}) - 1 } \\
@@ -141,12 +141,12 @@
 		&= \frac{e^2}{16 \pi^2} \intoq \ddx \brac{ \ln(\frac{\Lam^2}{\Del}) \dv{\psl}(-2 x \psl + 4 \mo) + (-2 x \psl + 4 \mo) \dv{\Del} \ln(\frac{\Lam^2}{\Del}) \dv{\Del}{\psl} }. \label{der}
 	}
 	Using $p^2 = \psl^2$~\cite[p.~220]{Peskin}, note that
-	\eq{
+	\eqn{dDeldp}{
 		\dv{\Del}{\psl} = \dv{\psl}[ -x (1 - x) \psl^2 + x \mu^2 + (1 - x) \mo^2 ]
 		= -2x (1 - x) \psl.
 	}
 	Also,
-	\al{
+	\aln{ \label{others}
 		\dv{\psl}(-2 x \psl + 4 \mo) &= -2x, &
 		\dv{\Del}\brac{ \ln(\frac{\Lam^2}{\Del}) } &= \dv{\Del}\brac{ \ln(\Lam^2) - \ln(\Del) }
 		= -\frac{1}{\Del}.
@@ -177,19 +177,90 @@
 
 
 
-%\prob{
-%	Recompute $\del\Zq$ and $\del\Zw$, defining the integrals~(6.49) and (6.50) by dimensional regularization.  You may take the Dirac matrices to be $4 \times 4$ as usual, but note that, in $d$ dimensions,
-%	\eq{
-%		\gsmn \gamm \gamn = d.
-%	}
-%	Show that, with this definition, $\del\Zq = \del\Zw$.
-%}
-%
-%
-%
-%
-%
-%
+\prob{
+	Recompute $\del\Zq$ and $\del\Zw$, defining the integrals~(6.49) and (6.50) by dimensional regularization.  You may take the Dirac matrices to be $4 \times 4$ as usual, but note that, in $d$ dimensions,
+	\eqn{gamd}{
+		\gsmn \gamm \gamn = d.
+	}
+	Show that, with this definition, $\del\Zq = \del\Zw$.
+}
+
+\sol{
+	To find $\del\Zq$, we need to start at Peskin \& Schroeder~(6.38) for arbitrary dimension:
+	\al{
+		\ubpp \del\Gamm(p', p) \up &= \int\dddkf \frac{-i \gsnr}{(k - p)^2 + i \eps} \ubpp (-i e \gamn) \frac{i (\ksl' + m)}{{k'}^2 - m^2 + i \eps} \gamm \frac{i (\ksl + m)}{k^2 - m^2 + i \eps} (-i e \gamr) \up \\
+		&= -i e^2 \int\dddkf \ubpp \frac{\gamn (\ksl' + m) \gamm (\ksl + m) \gamsn}{[ (k - p)^2 + i \eps ] ({k'}^2 - m^2 + i \eps) (k^2 - m^2 + i \eps)} \up.
+%		&= -i e^2 \int\dddkf \ubpp \frac{\gamn (\ksl' + m) \gamm (\ksl + m) \gamsn}{[ (k - p)^2 + i \eps ] ({k'}^2 - m^2 + i \eps) (k^2 - m^2 + i \eps)} \up \\
+%		&= -i e^2 \int\dddkf \ubpp \frac{\gamn (2 \kpm - \gamm \ksl' + m \gamm) (2 \ksn - \gamsn \ksl + m \gamsn)}{[ (k - p)^2 + i \eps ] ({k'}^2 - m^2 + i \eps) (k^2 - m^2 + i \eps)} \up \\
+%		&= -i e^2 \int\dddkf \ubpp \gamn \frac{4 \kpm \ksn + 2 \kpm \gamsn \ksl + 2 m \kpm \gamsn - 2 \gamm \ksl' \ksn + \gamm \ksl' \gamsn \ksl - m \gamm \ksl' \gamsn + 2m \gamm \ksn - m \gamm \gamsn \ksl + m^2 \gamm \gamsn}{[ (k - p)^2 + i \eps ] ({k'}^2 - m^2 + i \eps) (k^2 - m^2 + i \eps)} \up \\
+	}
+	Let $N$ be the numerator of the integrand.  Then
+	\eq{
+		N = \ubpp \gamn (\ksl' + m) \gamm (\ksl + m) \gamsn \up
+		= \ubpp \gamn (\ksl' \gamm \ksl + \ksl' \gamm m + m \gamm \ksl + m^2 \gamm) \gamsn \up.
+	}
+	\hl{using the p identity thing,}
+	Note that
+	\al{
+		\gamn \ksl' \gamm \ksl \gamsn &= \gamn (2 \kpm - \gamm \ksl') (2 \ksn - \gamsn \ksl)
+		= 4 \gamn \kpm \ksn - 2 \gamn \kpm \gamsn \ksl - 2 \gamn \gamm \ksl' \ksn + \gamn \gamm \gamsn \ksl' \ksl
+	}
+
+
+
+\clearpage
+	We need to fix Peskin \& Schroeder~(7.17) so it has arbitrary $d$ instead of $d = 4$.  We begin from (7.16), changing $4 \to d$:
+	\eq{
+		-i \Sigwp = (-ie)^2 \int \dddkf \gamm \frac{i (\ksl + \mo)}{k^2 + \mo^2 + i \eps} \gamsm \frac{i}{(p - k)^2 - \mu^2 + i \eps}.
+	}
+	Following the procedure on pp.~217--218, we introduce the Feynman parameter $x$= to combine the denominators:
+	\eq{
+		\frac{1}{k^2 - \mo^2 + i \eps} \frac{1}{(p - k)^2 - \mu^2 + i \eps} = \intoq \ddx \frac{1}{[ k^2 - 2 x k \cdot p + x p^2 - x \mu^2 - (1 - x) \mo^2 + i \eps ]^2}.
+	}
+	Let $\ell = k - x p$ and $\Del = -x(1 - x) p^2 + x \mu^2 + (1 - x) \mo^2$.  Then
+	\aln{
+		-i \Sigwp &= (-ie)^2 \intoq \ddx \int \dddlf \gamm \frac{i^2 (\ksl + \mo)}{[ \ell^2 - \Del + i \eps ]^2} \gamsm \notag \\
+		&= -(-ie)^2 \intoq \ddx  \int \dddlf \gamm \frac{\lsl + x \psl + \mo}{[ \ell^2 - \Del + i \eps ]^2} \gamsm \notag \\
+		&= -e^2 \intoq \ddx \int \dddlf \gamm \frac{2 \ellm - \gamsm \lsl + x (2 \psm - \gamsm \psl) + \mo \gamsm}{[ \ell^2 - \Del + i \eps ]^2} \notag \\
+		&= -e^2 \intoq \ddx \int \dddlf \frac{(2 - d) x \psl + d \mo}{[ \ell^2 - \Del + i \eps ]^2}, \label{Sigw2}
+	}
+	where we have applied Eq.~\refeq{gamd} and $\psl \gamm = 2 \pmu - \gamm \psl$~\cite[p.~191]{Peskin}, and we have dropped terms linear in $\ell$~\hl{[cite]}.
+	
+	To evaluate the integral, we can write it in terms of the Euclidean 4-momentum defined in Eq.~\refeq{ellE}, as on p.~193 in Peskin \& Schroeder:
+	\eq{
+		\int \dddlf \frac{1}{(\ell^2 - \Del)^2} = \frac{i}{(-1)^2} \frac{1}{(2\pi)^d} \int \dddlE \frac{1}{(\ellE^2 + \Del)^2}
+		= i \int \dddlEf \frac{1}{(\ellE^2 + \Del)^2}.
+	}
+	Then we can apply (7.84), which takes the limit as $d \to 4$:
+	\eq{
+		\int \dddlEf \frac{1}{(\ellE^2 + \Del)^2} \to \frac{1}{(4\pi)^2} \paren{ \frac{2}{\eps} - \ln(\Del) - \gam  + \ln(4\pi) },
+	}
+	where $\eps = 4 - d$~\cite[p.~250]{Peskin}.  Making these substitutions into Eq.~\refeq{Sigw2}, we find
+	\eq{
+		\Sigwp = \frac{e^2}{16 \pi^2} \intoq \ddx [ (2 - d) x \psl + d \mo ] \paren{ \frac{2}{\eps} - \ln(\Del) - \gam  + \ln(4\pi) }.
+	}
+	Then
+	\al{
+		\dv{\Sigw}{\psl} &= \frac{e^2}{16 \pi^2} \intoq \ddx \paren{ \frac{2}{\eps} - \ln(\Del) - \gam  + \ln(4\pi) } \dv{\psl}[ (2 - d) x \psl + d \mo ] \\
+		&\hspace{20em} \phantom{=\ } + [ (2 - d) x \psl + d \mo ] \dv{\psl}( \frac{2}{\eps} - \ln(\Del) - \gam  + \ln(4\pi) ) \\[2ex]
+		&= \frac{e^2}{16 \pi^2} \intoq \ddx \brac{ \paren{ \frac{2}{\eps} - \ln(\Del) - \gam  + \ln(4\pi) } (2 - d) x + [ (2 - d) x \psl + d \mo ] \frac{2x (1 - x) \psl}{\Del} }
+	}
+	where
+	\eq{
+		\dv{\psl}( \ln\Del ) = \dv{\Del}{\psl} \dv{\Del}( \ln\Del )
+		= -\frac{2x (1 - x) \psl}{\Del}
+	}
+	from Eqs.~\refeq{dDeldp} and \refeq{others}.  Then applying $m \approx \mo$,
+	\eq{
+		\del\Zw = \frac{e^2}{16 \pi^2} \intoq \ddx \brac{ (2 - d) x \paren{ \frac{2}{\eps} - \ln(\Del) - \gam  + \ln(4\pi) } + \frac{2x (1 - x) [ (2 - d) x + d ] m^2}{\Delm} }.
+	}
+}
+
+
+
+
+
+
 %\state{(Peskin \& Schroeder 7.3)}{
 %	Consider a theory of elementary fermions that couple both to QED and to a Yukawa field $\phi$:
 %	\eq{
