@@ -299,9 +299,98 @@
 	}
 	For the numerator of Eq.~\refeq{thing1a}, we used $k' = k + q$ and $\ell \equiv k + y q - z p$~\cite[p.~191]{Peskin}, and defined
 	\eqn{N1}{
-		N \equiv \ubpp [ \lsl + (1 - y) \qsl + z \psl + \me ] \gamm (\lsl - y \qsl + z \psl + \me) \up.
+		N \equiv \ubpp [ \lsl + (1 - y) \qsl + z \psl + \me ] \gamm (\lsl - y \qsl + z \psl + \me) \up
 	}
-	We know from Eqs.~\refeq{Gam} and \refeq{Z1} that we only care about terms in Eq.~\refeq{thing1a} that are linear in $\gamm$.  So Eq.~\refeq{N1}
+	To simplify $N$, we can discard terms that are linear in $\ell$ by~(6.45),
+	\eq{
+		\int \dddlf \frac{\ellm}{D^3} = 0.
+	}
+	Then Eq.~\refeq{N1} simplifies to
+	\aln{
+%		N &= \ubpp [ \lsl \gamm \lsl - \lsl \gamm y \qsl + \lsl \gamm z \psl + \lsl \gamm \me + (1 - y) \qsl \gamm \lsl - (1 - y) \qsl \gamm y \qsl + (1 - y) \qsl \gamm z \psl + (1 - y) \qsl \gamm \me \notag \\
+%		&\hspace{5em} \phantom{=\ } + z \psl \gamm \lsl - z \psl \gamm y \qsl + z^2 \psl \gamm \psl + z \psl \gamm \me + \me \gamm \lsl - \me \gamm y \qsl + \me \gamm z \psl + \me^2 \gamm ] \up
+		N &= \ubpp [ \lsl \gamm \lsl - y (1 - y) \qsl \gamm \qsl + z (1 - y) \qsl \gamm \psl + \me (1 - y) \qsl \gamm - y z \psl \gamm \qsl + z^2 \psl \gamm \psl + \me z \psl \gamm - \me y \gamm \qsl \notag \\
+		&\hspace{5em} \phantom{=\ } + \me z \gamm \psl + \me^2 \gamm ] \up \label{N2}
+	}
+	To simplify each of these terms we apply~(7.87),
+	\eq{
+		\int \dddlf \frac{\ellm \elln}{D^3} = \int \dddlf \frac{\gmn \ell^2}{g D^3},
+	}
+	as well as~\cite[pp.~191--192]{Peskin}
+	\al{
+		\psl \gamm &= 2 \pmu - \gamm \psl, &
+		\psl \up &= \me \up, &
+		\ubpp \psl' &= \ubpp \me.
+	}
+%	and~\cite{Gamma, Feynman}
+%	\al{
+%		\asl \bsl &= a \cdot b, &
+%		\asl \bsl + \bsl \asl = 2 a \cdot b.
+%	}
+	We know from Eqs.~\refeq{Gam} and \refeq{Z1} that we only care about terms in Eq.~\refeq{thing1a} that are linear in $\gamm$.  So the terms in Eq.~\refeq{N2} reduce to
+	\al{
+		\lsl \gamm \lsl &= (2 \ellm - \gamm \lsl) \lsl
+		= 2 \ellm \elln \gamsn - \gamm \lsl \lsl
+		\to \frac{2}{d} \ell^2 \gmn \gamsn - \gamm \ell^2
+		= \frac{2 - d}{d} \ell^2 \gamm,
+		\\[1ex]
+		\qsl \gamm \qsl &= (2 \qm - \gamm \qsl) \qsl
+		\to - \gamm \qsl \qsl
+		= -q^2 \gamm,
+		\\[1ex]
+		\qsl \gamm \psl &\to \qsl \gamm \me
+		= (\psl' - \psl) \gamm \me
+		\to (\me - \psl) \gamm \me
+		= \me^2 \gamm - 2 \me \pmu + \me \gamm \psl
+		\to 2 \me^2 \gamm,
+		\\[1ex]
+		\qsl \gamm &= (\psl' - \psl) \gamm
+		\to \me \gamm - \psl \gamm
+		\to -2 \pmu + \gamm \psl
+		\to -2 \pmu + \gamm \me
+		\to \gamm \me,
+		\\[1ex]
+		\psl \gamm \qsl &= (2 \pmu - \gamm \psl) \qsl
+		\to -\gamm \psl \qsl
+		= -2 \gamm p \cdot q + \gamm \qsl \psl
+		\to -2 \gamm p \cdot q + \gamm (\psl' - \psl) \me
+		\to \gamm q^2 + \me \gamm \psl' - \me^2 \gamm \\
+		&= \gamm q^2 + \me (2 {\pmu}' - \psl' \gamm) - \me^2 \gamm
+		\to \gamm q^2 + 2 \me {\pmu}' - 2 \me^2 \gamm
+		\to \gamm q^2 - 2 \me^2 \gamm,
+	}
+	where we have used
+	\eq{
+		2 p \cdot q = p \cdot q + q \cdot p
+		= p \cdot q + p' \cdot q - q^2
+		= {p'}^2 + p' \cdot p - p' \cdot p - p^2 - q^2
+		\to \me^2 - \me^2 - q^2
+		= -q^2,
+	}
+	and
+	\al{
+		\psl \gamm \psl &\to \me \psl \gamm
+		= \me (2 \pmu - \gamm \psl)
+		\to 2 \me \pmu - \me^2 \gamm
+		\to -\me^2 \gamm,
+		\\[1ex]
+		\psl \gamm &= 2 \pmu - \gamm \psl
+		= 2 \pmu - \gamm \me
+		\to -\gamm \me,
+		\\[1ex]
+		\gamm \qsl &= \gamm (\psl' - \psl)
+		\to \gamm \psl' - \gamm \me
+		\to 2 {\pmu}' - \psl' \gamm
+		\to 2 {\pmu}' - \me \gamm
+		\to -\me \gamm,
+		\\[1ex]
+		\gamm \psl &\to \me \gamm.
+	}
+	Feeding these into Eq.~\refeq{N2}, we obtain
+	\eq{
+		N = 
+	}
+	where we have set $q^2 = 0$ as per Eq.~\refeq{Gam}.
 }
 
 
