@@ -23,7 +23,7 @@
 
 \sol{
 	From (7.47) in Peskin \& Schroeder,
-	\eq{
+	\eqn{7.47}{
 		\Gammqo = \frac{1}{\Zq} \gamm,
 	}
 	we can find an expression for $\del\Zq$, similar to how (7.31) is obtained from (7.26).  Roughly,
@@ -172,6 +172,8 @@
 		\del\Zw &= -\frac{e^2}{8 \pi^2} \intoq \ddx \brac{ x \ln(\frac{\Del + \Lam^2}{\Del}) - x - \frac{2x m^2 (2 - x) (1 - x)}{\Del} },
 	}}%
 	where $\Del = (1 - z)^2 m^2 + z \mu^2$.  We see that \ans{$\del\Zq \neq \del\Zw$}, as we wanted to show. \qed
+	
+	\hl{fix log arguments and integrate}
 }
 
 
@@ -253,6 +255,7 @@
 	\eq{
 		\del\Zw = \frac{e^2}{16 \pi^2} \intoq \ddx \brac{ (2 - d) x \paren{ \frac{2}{\eps} - \ln(\Del) - \gam  + \ln(4\pi) } + \frac{2x (1 - x) [ (2 - d) x + d ] m^2}{\Delm} }.
 	}
+	\hl{write in terms of epsilon and integrate}
 }
 
 
@@ -262,42 +265,39 @@
 \clearpage
 \state{(Peskin \& Schroeder 7.3)}{
 	Consider a theory of elementary fermions that couple both to QED and to a Yukawa field $\phi$:
-	\eq{
+	\eqn{diag}{
 		\Hint = \int \ddcx \frac{\lam}{\sqrt{2}} \phi \psib \psi + \int \ddcx e \Asm \psib \gamm \psi.
 	}
 }
 
-\prob{
+\prob{ \label{2a}
 	Verify that the contribution to $\Zq$ from the vertex diagram with a virtual $\phi$ equals the contribution to $\Zw$ from the diagram with a virtual $\phi$.  Use dimensional regularization.  Is the Ward identity generally true in this theory?
 }
 
 \sol{
-	We are interested in the diagram
-	\eq{
+	We begin by finding $\del\Zq$.  We are interested in the diagram 
+	\eqn{diag}{
 		\centergraphics{diag/loop}
 	}
-	We also considered this diagram in Homework~6, with the Yukawa field identified as a Higgs field.  There, we adapted Peskin \& Schroeder (6.38) to write
+	We considered a similar diagram in Homework~6 of Physics~443, and we build on that work here.  We adapted Peskin \& Schroeder (6.38) using the scalar field Feynman rules to write~\cite[p.~123]{Peskin}
 	\aln{
 		\ubpp \del\Gamm(p, p') \up &= \int \dddkf \frac{i}{(k - p)^2 - \mphi^2 + i \eps} \ubpp \paren{ -i \frac{\lam}{\sqrt{2}} } \frac{i (\ksl' + \me)}{{k'}^2 - \me^2 + i \eps} \gamm \frac{i (\ksl + \me)}{k^2 - \me^2 + i \eps} \paren{ -i \frac{\lam}{\sqrt{2}} } \up \notag \\
 		&= i \frac{\lam^2}{2} \int \dddkf \ubpp \frac{(\ksl' + \me) \gamm (\ksl + \me)}{[ (k - p)^2 - \mphi^2 + i \eps ] ({k'}^2 - \me^2 + i \eps) (k^2 - \me^2 + i \eps)} \up. \label{thing1a}
 	}
-	We used Peskin \& Schroeder~(6.41) to write 
+	We use Peskin \& Schroeder~(6.41) to write 
 	\eqn{denom}{
 		\frac{1}{[ (k - p)^2 - \mphi^2 + i \eps ] ({k'}^2 - \me^2 + i \eps) (k^2 - \me^2 + i \eps)} = \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{2}{D^3},
 	}
 	where~\cite[pp.~190--191]{Peskin}
-	\eq{
+	\eqn{D}{
 		D = k^2 + 2 k (q y - p z) + z (p^2 - \mphi^2) - (1 - z) \me^2 + i \eps
 		\equiv \ell^2 - \Del + i \eps,
 	}
-	where we used $x + y + z = 1$ and $k' = k + q$, and defined $\ell \equiv k + y q - z p$~\cite[p.~191]{Peskin}, and
+	where we use $x + y + z = 1$ and $k' = k + q$, and we have defined $\ell \equiv k + y q - z p$~\cite[p.~191]{Peskin}, and
 	\eq{
 		\Del \equiv -x y q^2 + (1 - z)^2 \me^2 + z \mphi^2.
 	}
-	\eqn{D}{
-		D = \ell^2 + x y q^2 - (1 - z)^2 \me^2 - \mphi^2 z + i \eps.
-	}
-	For the numerator of Eq.~\refeq{thing1a}, we used $k' = k + q$ and $\ell \equiv k + y q - z p$~\cite[p.~191]{Peskin}, and defined
+	For the numerator of Eq.~\refeq{thing1a}, we use $k' = k + q$ and $\ell \equiv k + y q - z p$~\cite[p.~191]{Peskin}, and define
 	\eqn{N1}{
 		N \equiv \ubpp [ \lsl + (1 - y) \qsl + z \psl + \me ] \gamm (\lsl - y \qsl + z \psl + \me) \up
 	}
@@ -307,8 +307,6 @@
 	}
 	Then Eq.~\refeq{N1} simplifies to
 	\aln{
-%		N &= \ubpp [ \lsl \gamm \lsl - \lsl \gamm y \qsl + \lsl \gamm z \psl + \lsl \gamm \me + (1 - y) \qsl \gamm \lsl - (1 - y) \qsl \gamm y \qsl + (1 - y) \qsl \gamm z \psl + (1 - y) \qsl \gamm \me \notag \\
-%		&\hspace{5em} \phantom{=\ } + z \psl \gamm \lsl - z \psl \gamm y \qsl + z^2 \psl \gamm \psl + z \psl \gamm \me + \me \gamm \lsl - \me \gamm y \qsl + \me \gamm z \psl + \me^2 \gamm ] \up
 		N &= \ubpp [ \lsl \gamm \lsl - y (1 - y) \qsl \gamm \qsl + z (1 - y) \qsl \gamm \psl + \me (1 - y) \qsl \gamm - y z \psl \gamm \qsl + z^2 \psl \gamm \psl + \me z \psl \gamm - \me y \gamm \qsl \notag \\
 		&\hspace{5em} \phantom{=\ } + \me z \gamm \psl + \me^2 \gamm ] \up \label{N2}
 	}
@@ -320,83 +318,192 @@
 	\al{
 		\psl \gamm &= 2 \pmu - \gamm \psl, &
 		\psl \up &= \me \up, &
-		\ubpp \psl' &= \ubpp \me.
+		\ubpp \psl' &= \ubpp \me,
 	}
-%	and~\cite{Gamma, Feynman}
-%	\al{
-%		\asl \bsl &= a \cdot b, &
-%		\asl \bsl + \bsl \asl = 2 a \cdot b.
-%	}
-	We know from Eqs.~\refeq{Gam} and \refeq{Z1} that we only care about terms in Eq.~\refeq{thing1a} that are linear in $\gamm$.  So the terms in Eq.~\refeq{N2} reduce to
+	and the Gordon identity
+	\eq{
+		\ubpp \gamm \up = \ubpp \brac{ \frac{{\pmu}' + \pmu}{2 m} + \frac{i \sigmn \qsn}{2m} } \up.
+	}
+	From Eq.~\refeq{7.47}, we can set $q = 0$.  Since $q = p' - p$, this means $p' = p$, and the Gordon identity becomes
+	\eq{
+		\ubpp \gamm \up = \ubpp \frac{\pmu}{m} \up
+		\qimplies \pmu \to \me \gamm.
+	}
+	So the terms in Eq.~\refeq{N2} reduce to
 	\al{
 		\lsl \gamm \lsl &= (2 \ellm - \gamm \lsl) \lsl
 		= 2 \ellm \elln \gamsn - \gamm \lsl \lsl
 		\to \frac{2}{d} \ell^2 \gmn \gamsn - \gamm \ell^2
-		= \frac{2 - d}{d} \ell^2 \gamm,
-		\\[1ex]
-		\qsl \gamm \qsl &= (2 \qm - \gamm \qsl) \qsl
-		\to - \gamm \qsl \qsl
-		= -q^2 \gamm,
-		\\[1ex]
-		\qsl \gamm \psl &\to \qsl \gamm \me
-		= (\psl' - \psl) \gamm \me
-		\to (\me - \psl) \gamm \me
-		= \me^2 \gamm - 2 \me \pmu + \me \gamm \psl
-		\to 2 \me^2 \gamm,
-		\\[1ex]
-		\qsl \gamm &= (\psl' - \psl) \gamm
-		\to \me \gamm - \psl \gamm
-		\to -2 \pmu + \gamm \psl
-		\to -2 \pmu + \gamm \me
-		\to \gamm \me,
-		\\[1ex]
-		\psl \gamm \qsl &= (2 \pmu - \gamm \psl) \qsl
-		\to -\gamm \psl \qsl
-		= -2 \gamm p \cdot q + \gamm \qsl \psl
-		\to -2 \gamm p \cdot q + \gamm (\psl' - \psl) \me
-		\to \gamm q^2 + \me \gamm \psl' - \me^2 \gamm \\
-		&= \gamm q^2 + \me (2 {\pmu}' - \psl' \gamm) - \me^2 \gamm
-		\to \gamm q^2 + 2 \me {\pmu}' - 2 \me^2 \gamm
-		\to \gamm q^2 - 2 \me^2 \gamm,
-	}
-	where we have used
-	\eq{
-		2 p \cdot q = p \cdot q + q \cdot p
-		= p \cdot q + p' \cdot q - q^2
-		= {p'}^2 + p' \cdot p - p' \cdot p - p^2 - q^2
-		\to \me^2 - \me^2 - q^2
-		= -q^2,
-	}
-	and
-	\al{
+		\to \frac{2 - d}{d} \ell^2 \gamm - 2 \me^2 \gamm
+		= 0,
+		\\
+		\qsl \gamm \qsl &\to  0,
+		\\
+		\qsl &\to 0,
+		\\
+		\qsl \gamm &\to 0,
+		\\
+		\psl \gamm \qsl &\to 0, \\
 		\psl \gamm \psl &\to \me \psl \gamm
 		= \me (2 \pmu - \gamm \psl)
 		\to 2 \me \pmu - \me^2 \gamm
-		\to -\me^2 \gamm,
-		\\[1ex]
+		\to 2 \me^2 \gamm - \me^2 \gamm
+		= \me^2 \gamm,
+		\\
 		\psl \gamm &= 2 \pmu - \gamm \psl
 		= 2 \pmu - \gamm \me
-		\to -\gamm \me,
-		\\[1ex]
-		\gamm \qsl &= \gamm (\psl' - \psl)
-		\to \gamm \psl' - \gamm \me
-		\to 2 {\pmu}' - \psl' \gamm
-		\to 2 {\pmu}' - \me \gamm
-		\to -\me \gamm,
-		\\[1ex]
+		\to 2 \me \gamm - \gamm \me
+		= \me \gamm,
+		\\
+		\gamm \qsl &\to 0,
+		\\
 		\gamm \psl &\to \me \gamm.
 	}
 	Feeding these into Eq.~\refeq{N2}, we obtain
-	\eq{
-		N = 
+	\al{
+		N \to \ubpp \brac{ \frac{2 - d}{d} \ell^2 + z^2 \me^2 + \me^2 z + \me^2 z + \me^2 } \gamm \up
+		= \ubpp \brac{ \frac{2 - d}{d} \ell^2 + (1 + z)^2 \me^2 } \gamm \up.
 	}
-	where we have set $q^2 = 0$ as per Eq.~\refeq{Gam}.
+	Then, letting $\Delo = (1 - z)^2 \me^2 + z \mphi^2$,
+	\aln{
+		\del\Zq &= -\del\Fq \notag \\
+		&= -i \lam^2 \int \dddlf \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{(2 - d) \ell^2 / d + (1 + z)^2 \me^2}{(\ell^2 - \Delo)^3}  \notag \\
+		&= -i \lam^2 \int \dddlf \intoq \ddz (1 - z) \frac{(2 - d) \ell^2 / d + (1 + z)^2 \me^2}{(\ell^2 - \Delo)^3}.  \label{thing3a}
+	}
+	Using (7.85) and (7.86) and substituting $\eps = 4 - d$, we can write
+	\aln{
+		\int \dddlf \frac{1}{(\ell^2 - \Del)^3} &= \frac{i}{(-1)^3} \frac{1}{(2\pi)^d} \int \frac{\dddlE}{(\ellE^2 + \Del)^3} \notag \\
+		&= -i \int \dddlEf \frac{1}{(\ellE^2 + \Del)^3} \notag \\
+		&= -\frac{i}{(4\pi)^{d / 2}} \frac{\Gam(3 - d/2)}{\Gam(3)} \paren{ \frac{1}{\Del} }^{3 - d/2} \notag \\
+		&= -\frac{i}{(4\pi)^{2 - \eps / 2}} \frac{\Gam(1 + \eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Del} }^{1 + \eps / 2} \label{int1}
+		\\[2ex]
+		\int \dddlf \frac{\ell^2}{(\ell^2 - \Del)^3} &= -\frac{i}{(-1)^3} \frac{1}{(2\pi)^d} \int \dddlE \frac{\ellE^2}{(\ellE^2 + \Del)^3} \notag \\
+		&= i \int \dddlEf \frac{1}{(\ellE^2 + \Del)^3} \notag \\
+		&= \frac{i}{(4\pi)^{d / 2}} \frac{d}{2} \frac{\Gam(2 - d/2)}{\Gam(3)} \paren{ \frac{1}{\Del} }^{2 - d/2} \notag \\
+		&= \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{4 - \eps}{2} \frac{\Gam(\eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Del} }^{\eps / 2}. \label{int2}
+	}
+	Then Eq.~\refeq{thing3a} becomes
+	\aln{
+		\del\Zq &= -i \lam^2 \intoq \ddz (1 - z) \brac{ \frac{2 - d}{d} \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{d}{2} \frac{\Gam(\eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Delo} }^{\eps / 2} - (1 + z)^2 \me^2 \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{\Gam(1 + \eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Delo} }^{1 + \eps / 2} } \notag \\
+		&= \frac{1}{\Gam(3)} \frac{\lam^2}{(4\pi)^{2 - \eps / 2}} \intoq \ddz (1 - z) \brac{ \frac{\eps - 2}{2} \Gam(\eps / 2) \paren{ \frac{1}{\Delo} }^{\eps / 2} - (1 + z)^2 \me^2 \Gam(1 + \eps / 2) \paren{ \frac{1}{\Delo} }^{1 + \eps / 2} } \notag \\
+		&= \frac{1}{\Gam(3)} \frac{\lam^2}{(4\pi)^2} \intoq \ddz (1 - z) \brac{ \frac{\eps - 2}{2} \Gam(\eps / 2) \paren{ \frac{4\pi}{\Delo} }^{\eps / 2} - \frac{(1 + z)^2 \me^2}{\Del} \Gam(1 + \eps / 2) \paren{ \frac{4\pi}{\Delo} }^{\eps / 2} } \notag \\
+		&\approx -\frac{\lam^2}{32 \pi^2} \intoq \ddz (1 - z) \brac{ \frac{2}{\eps} - \gam + \ln(\frac{4\pi}{\Del}) + \frac{(1 + z)^2 \me^2}{\Del} }, \label{Z1a}
+	}
+	where we have performed the Taylor series expansion about $\eps = 0$ using Mathematica, keeping terms larger than $\order{\eps}$.
+	
+	Now we must find $\del\Zw$.  We begin with a diagram that looks like that in (7.15) of Peskin \& Schroeder, but with a $\phi$ instead of a photon.  We need to adapt their (7.16) for a scalar field.  Using the Feynman rules for a scalar field~\cite[p.~118]{Peskin}, we write
+	\eq{
+		-i \Sigwp = \paren{ -\frac{i \lam}{\sqrt{2}} }^2 \int \dddkf \frac{i (\ksl + \me)}{k^2 - \me^2 + i \eps} \frac{i}{(p - k)^2 - \mphi^2 + i \eps}.
+	}
+	Let $\ell = k - x p$ and $\Del = -x (1 - x) p^2 + x \mphi^2 + (1 - x) \me^2$.  Then from Eq.~\refeq{Sigw2},
+	\eqn{Siqwa.1}{
+		\Sigwp = \frac{i \lam^2}{2} \intoq \ddx \int \dddlf \frac{\lsl + x \psl + \me}{(\ell^2 - \Del + i \eps)^2}
+		\to \frac{i \lam^2}{2} \intoq \ddx \int \dddlf \frac{x \psl + \me}{(\ell^2 - \Del + i \eps)^2},
+	}
+	where we have again dropped terms linear in $\ell$.  Then from (7.85),
+	\al{
+		\int \dddlf \frac{1}{(\ell^2 - \Del)^2} &= \frac{i}{(-1)^2} \frac{1}{(2\pi)^d} \int \frac{\dddlE}{(\ellE^2 + \Del)^2} \\
+		&= i \int \dddlEf \frac{1}{(\ellE^2 + \Del)^2} \\
+		&= \frac{i}{(4\pi)^{d / 2}} \frac{\Gam(2 - d/2)}{\Gam(2)} \paren{ \frac{1}{\Del} }^{2 - d/2} \\
+		&= \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{\Gam(\eps / 2)}{\Gam(2)} \paren{ \frac{1}{\Del} }^{\eps / 2}.
+	}
+	Feeding this into Eq.~\refeq{Sigwa1} and Taylor expanding as before,
+	\al{
+		\Sigwp &= \frac{i \lam^2}{2} \intoq \ddx (x \psl + \me) \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{\Gam(\eps / 2)}{\Gam(2)} \paren{ \frac{1}{\Del} }^{\eps / 2} \\
+		&= -\frac{\lam^2}{32 \pi^2} \intoq \ddx (x \psl + \me) \Gam(\eps / 2) \paren{ \frac{4\pi}{\Del} }^{\eps / 2} \\
+		&\approx -\frac{\lam^2}{32 \pi^2} \intoq \ddx (x \psl + \me) \brac{ \frac{2}{\eps} - \gam + \ln(\frac{4\pi}{\Del}) }.
+	}
+	Note that
+	\eq{
+		\dv{\Sigwp}{\psl} = -\frac{\lam^2}{32 \pi^2} \intoq \ddx \curly{ \brac{ \frac{2}{\eps} - \gam + \ln(\frac{4\pi}{\Del}) } \dv{\psl}(x \psl + \me) + (x \psl + \me) \dv{\Del}\brac{ \frac{2}{\eps} - \gam + \ln(\frac{4\pi}{\Del}) } \dv{\Del}{\psl} },
+	}
+	where
+	\al{
+		\dv{\psl}(x \psl + \me) &= x, &
+		\dv{\Del}\brac{ \frac{2}{\eps} - \gam + \ln(\frac{4\pi}{\Del}) } &= -\frac{1}{\Del}, &
+		\dv{\Del}{\psl} &= -2x (1 - x) \psl.
+	}
+	Then
+	\eq{
+		\dv{\Sigwp}{\psl} = -\frac{\lam^2}{32 \pi^2} \intoq \ddx \curly{ x \brac{ \frac{2}{\eps} - \gam + \ln(\frac{4\pi}{\Del}) } + (x \psl + \me) \frac{2x (1 - x) \psl}{\Del} },
+	}
+	so from Eq.~\refeq{Z2},
+	\eq{
+		\del\Zw = -\frac{\lam^2}{32 \pi^2} \intoq \ddx x \brac{ \frac{2}{\eps} - \gam + \ln(\frac{4\pi}{\Delm}) + \frac{2 \me^2 (1 + x) (1 - x)}{\Delm} },
+	}
+	where $\Delm = (1 - x)^2 \me^2 + x \mphi^2$.
+	
+	\hl{DON'T FORGET TO DO THE MATH}
 }
 
 
 
 \prob{
 	Now consider the renormalization of the $\phi \psib \psi$ vertex.  Show that the rescaling of this vertex at $q^2 = 0$ is \emph{not} canceled by the correction to $\Zw$.  (It suffices to compute the ultraviolet-divergent parts of the diagrams.)  In this theory, the vertex and field-strength rescaling give additional shifts of the observable coupling constant relative to its bare value.
+}
+
+\sol{
+	In order to account for both terms of the Hamiltonian, we need to sum the diagrams with scalar propagators and with photon propagators.  Both of the diagrams have scalar external legs.  This means we need to replace Eq.~\refeq{Z1} with a relation that makes sense for a scalar vertex.  We adapt (7.47) as
+	\eqn{Gamscalar}{
+		\Gam(q = 0) = \Zq^{-1}
+		\qimplies
+		\del\Gam(q = 0) = -\del\Zq.
+	}
+	To compute $\del\Zq$, we must sum two vertex diagrams similar to the one on p.~189 of Peskin \& Schroeder.  The first has the external leg replaced with a scalar:
+	\aln{
+		\ubpp \del\Gamq(p, p') \up &= \int \dddkf \frac{-i \gsnr}{(k - p)^2 + i \eps} \ubpp (-i e \gamn) \frac{i (\ksl' + \me)}{{k'}^2 - \me^2 + i \eps} \frac{i (\ksl + \me)}{k^2 - \me^2 + i \eps} (-i e \gamr) \up \notag \\
+		&= -i e^2 \int \dddkf \ubpp \gamn \frac{(\ksl' + \me) (\ksl + \me)}{[ (k - p)^2 + i \eps ] [ {k'}^2 - \me^2 + i \eps ] [ k^2 - \me^2 + i \eps ]} \gamsn \up \label{Gam1}
+	}
+	We can simplify the calculations at this step (contrary to what we did in \ref{2a}) by setting $q = k' - k = 0$ now.  We introduce Feynman parameters analogously to Eq.~\refeq{denom}.  Let $\ell = k - x p$.  We also introduce the photon mass now, and so define $\Delq = (1 - z)^2 m^2 + z \mu^2$ as in Eq.~\refeq{Delo}.  Then the denominator of the integrand is $\Dq = \ell^2 + \Delq + i \eps$, and the numerator is
+	\al{
+		\Nq &= \ubpp \gamn (\ksl + \me) (\ksl + \me) \gamsn \up \\
+		&= \ubpp \gamn (\lsl + z \psl + \me) (\lsl + z \psl + \me) \gamsn \up \\
+		&= \ubpp \gamn (\lsl \lsl + z \lsl \psl + \me \lsl + z^2 \psl \lsl + z \psl \psl + z \me \psl + \me \lsl + z \me \psl + \me^2) \gamsn \up \\
+		&\to \ubpp \gamn (\ell^2 + z^2 \me^2 + 2 z \me \psl + \me^2) \gamsn \up \\
+		&= \ubpp (d \ell^2 + d z^2 \me^2 + 2 z \me \gamn \psl \gamsn + d \me^2) \up \\
+		&= \ubpp [ d \ell^2 + d z^2 \me^2 + 2 z \me \gamn (2 \psn - \gamsn \psl) + d \me^2 ] \up \\
+		&= \ubpp [ d \ell^2 + d z^2 \me^2 + 2 z \me (2 \psl - d \psl) + d \me^2 ] \up \\
+		&= \ubpp [ d \ell^2 + d \me^2 (z^2 + 1) + 2 z \me^2 (2 - d) ] \up,
+	}
+	where we have dropped terms linear in $\ell$.  Then applying Eqs.~\refeq{Gamscalar} and \refeq{Gam1}, we can write an expression for the contribution to $\del\Zq$, which we call $\del\Zqq$.  We also make use of Eqs.~\refeq{int1} and \refeq{int2}.  We find
+	\aln{
+		\del \Zqq &= i e^2\intoq \ddz (1 - z) \int \dddlf \frac{d \ell^2 + d \me^2 (z^2 + 1) + 2 z \me^2 (2 - d)}{(\ell^2 + \Delq + i \eps)^3} \notag \\[2ex]
+		%
+		&= i e^2 \intoq \ddz (1 - z) \left[ \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{(4 - \eps)^2}{2} \frac{\Gam(\eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Delq} }^{\eps / 2} \right. \notag \\
+		&\hspace{10em} \phantom{=\ } \left. + \me^2 [ (4 - \eps) (z^2 + 1) + 2 z (\eps - 2) ] \paren{ -\frac{i}{(4\pi)^{2 - \eps / 2}} \frac{\Gam(1 + \eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Delq} }^{1 + \eps / 2} } \notag \right] \notag \\[2ex]
+		%
+		&= -\frac{e^2}{32 \pi^2} \intoq \ddz (1 - z) \left[ \frac{(4 - \eps)^2}{2} \Gam(\eps / 2) \paren{ \frac{4\pi}{\Delq} }^{\eps / 2} - \frac{\me^2 (z^2 + 1)}{\Delq} (4 - \eps) \Gam(1 + \eps / 2) \paren{ \frac{4\pi}{\Delq} }^{\eps / 2} \right. \notag \\
+		&\hspace{25em} \phantom{=\ } \left. - \frac{2 \me^2 z}{\Delq} (\eps - 2) \Gam(1 + \eps / 2) \paren{ \frac{4\pi}{\Delq} }^{\eps / 2} \right] \notag \\[2ex]
+		%
+		&\approx -\frac{e^2}{32 \pi^2} \intoq \ddz (1 - z) \brac{ \frac{16}{\eps} - 8 - 8 \gam + 8 \ln(\frac{4\pi}{\Delq}) - 4 \frac{\me^2 (z^2 + 1)}{\Delq} + 4 \frac{\me^2 z}{\Delq} } \notag \\[2ex]
+		%
+		&= -\frac{e^2}{8 \pi^2} \intoq \ddz (1 - z) \brac{ \frac{4}{\eps} - 2 - 2 \gam + 2 \ln(\frac{4\pi}{\Delq}) - \frac{\me^2 (z^2 - z + 1)}{\Delq} }. \label{delZqq}
+	}
+	
+	The second Feynman diagram looks like Eq.~\refeq{diag}, but with a scalar loop instead of a photon loop:
+	\aln{
+		\ubpp \del\Gamw(p, p') \up &= \int \dddkf \frac{i}{(k - p)^2 - \mphi^2 + i \eps} \ubpp \paren{ -\frac{i \lam}{\sqrt{2}} } \frac{i (\ksl' + \me)}{{k'}^2 - \me^2 + i \eps} \frac{i (\ksl + \me)}{k^2 - \me^2 + i \eps} \paren{ -\frac{i \lam}{\sqrt{2}} } \up \notag \\
+		&= \frac{i \lam^2}{2} \int \dddkf \ubpp \frac{(\ksl' + \me) (\ksl + \me)}{[ (k - p)^2 - \mphi^2 + i \eps ] [ {k'}^2 - \me^2 + i \eps ] [ k^2 - \me^2 + i \eps ]} \up \label{Gam2}
+	}
+	Again setting $q = 0$, we again apply the appropriate analogue to Eq.~\refeq{denom} and let $\Delw = (1 - z)^2 \me^2 + z \mphi^2$.  Then the denominator of the integrand is $\Dw = \ell^2 - \Delw + i \eps$, and the numerator is (again dropping terms linear in $\ell$)
+	\al{
+		\Nw &= \ubpp (\ksl + \me) (\ksl + \me) \ub \\
+		&= \ubpp (\lsl \lsl + x \lsl \psl + \me \lsl + x \psl \lsl + x \psl \psl + x \me \psl + \me \lsl + x \me \psl + \me^2) \ub \\
+		&= \ubpp (\ell^2 + 2 x \lsl \me + 2 \me \lsl + x^2 \me^2 + 2 x \me^2 + \me^2) \ub \\
+		&\to \ubpp [ \ell^2 + \me^2 (1 + x)^2 ] \ub.
+	}
+	We call the contribution to $\del\Zq$ from this diagram $\del\Zqw$.  Again using Eqs.~\refeq{int1} and \refeq{int2} yields
+	\al{
+		\del\Zqw &= -\frac{i \lam^2}{2} \intoq \ddz (1 - z) \int \dddkf \frac{\ell^2 + \me^2 (1 + x)^2}{(\ell^2 - \Delw + i \eps)^3} \\
+		&= -\frac{i \lam^2}{2} \intoq \ddz (1 - z) \brac{ \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{4 - \eps}{2} \frac{\Gam(\eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Delw} }^{\eps / 2} - \me^2 (1 + x)^2 \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{\Gam(1 + \eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Delw} }^{1 + \eps / 2} } \\
+		&= \frac{\lam^2}{64 \pi^2} \intoq \ddz (1 - z) \brac{ \frac{4 - \eps}{2} \Gam(\eps / 2) \paren{ \frac{4\pi}{\Delw} }^{\eps / 2} - \frac{\me^2 (1 + x)^2}{\Delw} \Gam(1 + \eps / 2) \paren{ \frac{4\pi}{\Delw} }^{1 + \eps / 2} } \\
+		&\approx \frac{\lam^2}{64 \pi^2} \intoq \ddz (1 - z) \brac{ \frac{4}{\eps} - 1 - 2 \gam + 2 \ln(\frac{4 \pi}{\Delw}) - \frac{\me^2 (1 + x)^2}{\Delw} }.
+	}
+	With Eq.~\refeq{delZqq}, we find
+	\al{
+		\del\Zq &= \intoq \ddz (1 - z) \left\{ \frac{\lam^2}{64 \pi^2} \brac{ \frac{4}{\eps} - 1 - 2 \gam + 2 \ln(\frac{4 \pi}{\Delw}) - \frac{\me^2 (1 + x)^2}{\Delw} } \right. \\
+		&\hspace{15em} \phantom{=\ } \left. - \frac{e^2}{8 \pi^2} \brac{ \frac{4}{\eps} - 2 - 2 \gam + 2 \ln(\frac{4\pi}{\Delq}) - \frac{\me^2 (z^2 - z + 1)}{\Delq} } \right\}.
+	}
 }
 
 
