@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{364}
+\homeworknum{2}
+
+
+\DeclareMathAlphabet{\mathsfit}{T1}{\sfdefault}{\mddefault}{\sldefault}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+\state{Stress-energy tensor and energy-momentum conservation for a perfect fluid (MCP 2.26)}{\hfix}
+
+\prob{
+	Derive the frame-independent expression~(2.74b) for the perfect fluid stress-energy tensor from its rest-frame components~(2.74a).
+}
+
+
+
+\prob{
+	Explain why the projection of $\vgrad \cdot \sT = 0$ along the fluid 4-velocity, $\uv \cdot (\vgrad \cdot \sT) = 0$, should represent energy conservation as viewed by the fluid itself.  Show that this equation reduces to
+	\eq{
+		\dv{\rho}{\tau} = -(\rho + P) \vgrad \cdot \uv.
+	}
+	With the aid of Eq.~(2.65), bring this into the form
+	\eq{
+		\dv{(\rho V)}{\tau} = -P \dv{V}{\tau},
+	}
+	where $V$ is the 3-volume of some small fluid element as measured in the fluid's local rest frame.  What are the physical interpretations of the left- and right-hand sides of this equation, and how is it related to the first law of thermodynamics?
+}
+
+
+
+\prob{
+	Read the discussion in Ex.~2.10 about the tensor $\sP = \sg + \uv \otimes \uv$ that projects into the 3-space of the fluid's rest frame.  Explain why $\Psab \Tabsb = 0$ should represent the law of force balance (momentum conservation) as seen by the fluid.  Show that this equation reduces to
+	\eq{
+		(\rho + P) \av = -\sP \cdot \grad P,
+	}
+	where $\av = \dv*{\uv}{\tau}$ is the fluid's 4-acceleration.  This equation is a relativistic version of Newton's $\Fb = m \ab$.    Explain the physical meanings of the left- and right-hand sides.  Infer that $\rho + P$ must be the fluid's inertial mass per unit volume.  It is also the enthalpy per unit volume, including the contribution of rest mass; see Ex.~5.5 and Box~13.2.
+}
+
+
+
+
+
+
+\state{Inertial mass per unit volume (MCP 2.27)}{
+	Suppose that some medium has a rest frame (unprimed frame) in which its energy flux and momentum density vanish, $\Toj = \Tjo = 0$.  Suppose that the medium moves in the $x$ direction with speed very small compared to light, $v \ll 1$, as seen in a (primed) laboratory frame, and ignore factors of order $v^2$.  The ratio of the medium's momentum density $\Gjp = \Tjpop$ (as measured in the laboratory frame) to its velocity $\vsi = \delsix$ is called its total \emph{inertial mass per unit volume} and is denoted $\rhosjiinert$:
+	\eq{
+		\Tjpop = \rhosjiinert \vsi.
+	}
+	In other words, $\rhosjiinert$ is the 3-dimensional tensor that gives the momentum density $\Gjp$ when the medium's small velocity is put into its second slot.
+}
+
+\prob{
+	Using a Lorentz transformation from the medium's (unprimed) rest frame to the (primed) laboratory frame, show that
+	\eq{
+		\rhosjiinert = \Too \delsji + \Tsji.
+	}
+}
+
+
+
+\prob{
+	Give a physical explanation of the contribution $\Tsji$ to the momentum density.
+}
+
+
+
+\prob{
+	Show that for a perfect fluid [Eq.~(2.74b)] the inertial mass per unit volume is isotropic and has magnitude $\rho + P$, where $\rho$ is the mass-energy density, and $P$ is the pressure measured in the fluid's rest frame:
+	\eq{
+		\rhosjiinert = (\rho + P) \delsji.
+	}
+	See Ex.~2.26 for this inertial-mass role of $\rho + P$ in the law of force balance.
+}
+
+
+
+
+
+
+\state{Index-manipulation rules from duality (MCP 24.4)}{
+	For an arbitrary basis $\{ \vesa \}$ and its dual basis $\{ \vem \}$, use (i)~the duality relation~(24.8), (ii)~the definition~(24.9) of components of a tensor, and (iii)~the relation $\vA \cdot \vB = \sg(\vA, \vB)$ between the metric and the inner product to deduce the following results.
+}
+
+\prob{
+	The relations
+	\al{
+		\vem &= \sgma \vesa, &
+		\vesa &= \sgsam \vem.
+	}
+	\vfix
+}
+
+
+
+\prob{
+	The fact that indices on the components of tensors can be raised and lowered using the components of the metric:
+	\al{
+		\Fmn &= \sgma \Fsasn, &
+		\psa &= \sgsab \pbet.
+	}
+	\vfix
+}
+
+
+
+\prob{
+	The fact that a tensor can be reconstructed from its components in the manner of Eq.~(24.11).
+}
+
+
+
+
+
+
+
+\state{Transformation matrices for circular polar bases (MCP 24.5)}{
+	Consider the circular polar coordinate system $\{ \vpi, \phi \}$ and its coordinate bases and orthonormal bases as shown in Fig.~24.3 and discussed in the associated text.  These coordinates are related to Cartesian coordinates $\{ x, y \}$ by the usual relations: $x = \vpi \cos\phi$, $y = \vpi \sin\phi$.
+}
+
+\prob{
+	Evaluate the components ($\Lxsvpi$, etc.) of the transformation matrix that links the two coordinate bases $\{ \vex, \vey \}$.  Also evaluate the components ($\Lvpisx$, etc.) of the inverse transformation matrix. 
+}
+
+
+
+\prob{
+	Similarly, evaluate the components of the transformation matrix and its inverse linking the bases $\{ \vex, \vey \}$ and $\{ \vevpih, \vephih \}$.
+}
+
+
+
+\prob{
+	Consider the vector $\vA = \vex + 2 \vey$.  What are its components in the other two bases?
+}
+
+
+
+
+
+
+\state{Gauss's theorem (MCP 24.11)}{
+	In 3-dimensional Euclidean space Maxwell's equation $\grad \vdot \bE = \rhoe / \epso$ can be combined with Gauss's theorem to show that the electric flux through the surface $\pt\cV$ of a sphere is equal to the charge in the sphere's interior $\cV$ divided by $\epso$:
+	\eq{
+		\intdV \bE \vdot d\bSig = \intV \frac{\rhoe}{\epso} \ddV.
+	}
+	Introduce spherical polar coordinates so the sphere's surface is at some radius $r = R$.  Consider a surface element on the sphere's surface with vectorial legs $\ddphi \pdv*{\phi}$ and $\ddtht \pdv*{\tht}$.  Evaluate the components $\ddSigj$ of the surface integration element $\ddbSig = \beps(\ldots, \ddtht \pdv*{\tht}, \ddphi \pdv*{\phi})$.  (Here $\beps$ is the Levi-Civita tensor.)  Similarly, evaluate $\ddV$ in terms of vectorial legs in the sphere's interior.  Then use these results for $\ddSigj$ and $\ddV$ to convert Eq.~(24.47) into an explicit form in terms of integrals over $r$, $\tht$, and $\phi$.  The final answer should be obvious, but the above steps in deriving it are informative.
+}
+
+
+\makebib
+
+\end{document}
