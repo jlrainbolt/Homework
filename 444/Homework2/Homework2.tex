@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{000}
+\homeworknum{0}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+
+\state{}{
+	Consider the path integral for a single point particle, with the action
+	\eq{
+		S = \intoq \ddt \brac{ \psmt \xdmt + \frac{\Nt}{2} [ \pst - m^2 - i \eps ] }.
+	}
+	This represents the quantization of the coordinates and momenta of the particle, subject to the mass shell constraint $p^2 = m^2$ (together with the $i \eps$ prescription) imposed by the Lagrange multiplier $N$.  This action admits the reparametrization symmetry $\del x = \alp p$, $\del p = 0$, $\del N = -\ptst \alp$ where $\alpt$ is any function.  This symmetry allows us to fix the gauge condition $\Nt = T$; the constant $T$ must still be integrated over, however.
+}
+
+\prob{
+	Path integrate over $\xt$, subject to the boundary conditions $\xm(0) = \xm$, $\xm(1) = \ym$, yielding a delta function $\delpd$ along the path.  Solve this constraint (find the set of functions that solve it) and path integrate over those $\ptt$ to find the quantum mechanical propagation amplitude
+	\eq{
+		\bkyx = \DF(x - y)
+		= \intoi \ddT (2 \pi i T)^{d / 2} \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ],
+	}
+	where $d$ is the number of spacetime dimensions.
+}
+
+
+
+\prob{
+	Use this integral representation to show that $\DF$ satisfies
+	\eq{
+		(\del^2 + m^2) \DF = i \deld(x - y).
+	}
+}
+
+
+
+\prob{
+	Evaluate the $T$ integral in terms of Bessel functions.
+}
+
+
+
+
+
+
+
+\state{Quantum statistical mechanics (Peskin \& Schroeder 9.2)}{\hfix}
+
+\prob{
+	Evaluate the quantum statistical partition function
+	\eq{
+		Z = \Tr(e^{-\bet H})
+	}
+	(where $\bet = 1 / k T$) using the strategy of Section~9.1 for evaluating the matrix elements of $e^{-i H t}$ in terms of functional integrals.  Show that one again finds a functional integral, over functions defined on a domain that is of length $\bet$ and periodically connected in the time direction.  Note that the Euclidean form of the Lagrangian appears in the weight.
+}
+
+
+
+\prob{
+	Evaluate this integral for a simple harmonic oscillator,
+	\eq{
+		\LE = \frac{1}{2} \xd^2 + \frac{1}{2} \omg^2 x^2,
+	}
+	by introducing a Fourier decomposition of $\xt$:
+	\eq{
+		\xt = \sumn \xn \frac{1}{\sqrt{\bet}} e^{2 \pi i n t / \bet}.
+	}
+	The dependence of the result on $\bet$ is a bit subtle to obtain explicitly, since the measure for the integral over $\xt$ depends on $\bet$ in any discretization.  However, the dependence on $\omg$ should be unambiguous.  Show that, up to a (possibly divergent and $\bet$-dependent) constant, the integral reproduces exactly the familiar expression for the quantum partition function of an oscillator.  [You may find the identity
+	\eq{
+		\sinh z = z \prodnqi \paren{ 1 + \frac{z^2}{(n \pi)^2} }
+	}
+	useful.]
+}
+
+
+
+\prob{
+	Generalize this construction to field theory.  Show that the quantum statistical partition function for a free scalar field can be written in terms of a functional integral.  The value of this integral is given formally by
+	\eq{
+		[ \det(-\pt^2 + m^2) ]^{-1 / 2},
+	}
+	where the operator acts on functions on Euclidean space that are periodic in the time direction with periodicity $\bet$.  As before, the $\bet$ dependence of this expression is difficult to compute directly.  However, the dependence on $m^2$ is unambiguous.  Show that the determinant indeed reproduces the partition function for relativistic scalar particles.
+}
+
+%\makebib
+
+\end{document}
