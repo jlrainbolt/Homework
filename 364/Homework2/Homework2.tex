@@ -21,6 +21,23 @@
 	Derive the frame-independent expression~(2.74b) for the perfect fluid stress-energy tensor from its rest-frame components~(2.74a).
 }
 
+\sol{
+	From MCP~(2.74a), the nonzero rest-frame components of the tensor are
+	\al{
+		\Too &= \rho, &
+		\Tjk &= P \deljk.
+	}
+	We know from MCP~(2.23c) that $\gab = \etaab$, and from (2.22) that $\eta_{00} = -1$, $\eta_{11} = \eta_{22} = \eta_{33} = 1$.  Then, using the form $\sT \equiv \Tab \vea \otimes \veb$ of (2.23a), we can write
+	\al{
+		\sT = (\rho + P) \veo \otimes \veo + P \sg.
+	}
+	Note that in the local rest frame, the fluid is stationary so its 4-velocity is $(1, 0, 0, 0)$.  That is, $\uv \otimes \uv$ simplifies to $\veo \otimes \veo$ in the local rest frame.  So the frame-independent expression is
+	\eq{
+		\ans{ \sT = (\rho + P) \uv \otimes \uv + P \sg, }
+	}
+	which is identical to (2.74b). \qed
+}
+
 
 
 \prob{
@@ -35,8 +52,66 @@
 	where $V$ is the 3-volume of some small fluid element as measured in the fluid's local rest frame.  What are the physical interpretations of the left- and right-hand sides of this equation, and how is it related to the first law of thermodynamics?
 }
 
+\sol{
+	We know from MCP~(2.73a) that $\vgrad \cdot \sT = 0$ represents local 4-momentum conservation.  In the rest frame of the fluid, this looks simply like a continuity relating energy density $\rho$ and pressure $P$, which can be thought of as ``energy flux'':
+	\eq{
+		0 = \vgrad \cdot \sT
+		= \dv{\rho}{t} - \grad \vdot \bP,
+	}
+	where $\bP = (P, P, P)$.  In this case, $\uv \cdot \vgrad \cdot \sT = 0$ implies
+	\eq{
+		\dv{\rho}{t} = 0,
+	}
+	meaning that energy density is constant, so energy must be conserved.  \hl{The same laws of physics must also apply in all other inertial frames.}  %Now consider a in which the fluid is moving in the $x$ direction.  Then we have
+%	\eq{
+%		0 = \uv \cdot (\vgrad \cdot \sT) = 0
+%	}
+	Applying (2.74b) and the product rule, note that
+	\al{
+		\vgrad \cdot \sT &= \ptsa \Tab \\
+		&= \ptsa [ (\rho + P) \ua \ub + P \gab ] \\
+		&= \ua \ub \ptsa(\rho + P) + (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \gab \ptsa P \\
+		&= \ua \ub \ptsa(\rho + P) + (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \ptb P.
+	}
+	Then
+	\aln{
+		\uv \cdot (\vgrad \cdot \sT) &= \usb \ptsa \Tab \notag \\
+		&= \usb \ua \ub \ptsa(\rho + P) + \usb (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \usb \ptb P \notag \\
+		&= -\ua \ptsa(\rho + P) + (\rho + P) (-\ptsa \ua + \usb \ua \ptsa \ub) + \usb \ptb P \notag \\
+		&= -\ua \ptsa(\rho + P) - (\rho + P) \ptsa \ua + \usb \ptb P, \label{thing1b}
+	}
+	where we have used MCP~(2.9), $\uv^2 = -1$, and that as a consequence,
+	\eq{
+		0 = \ptsa(\usb \ub) = \ub \ptsa \usb + \usb \ptsa \ub
+		\qimplies
+		\ub \ptsa \usb = -\usb \ptsa \ub
+		\qimplies
+		\ub \ptsa \usb = \usb \ptsa \ub = 0.
+	}
+	Picking back up at Eq.~\refeq{thing1b},
+	\eq{
+		\uv \cdot (\vgrad \cdot \sT) = -\ua \ptsa \rho - \ua \ptsa P - (\rho + P) \ptsa \ua + \usb \ptb P
+		= -\ua \ptsa \rho - (\rho + P) \ptsa \ua.
+	}
+%		&= -\ptsa (\rho \ua) - P \ptsa \ua \label{thing2b2}
+%	}
+%	where we have used the product rule:
+%	\eq{
+%		\ptsa (\rho \ua) = \ua \ptsa \rho + \rho \ptsa \ua.
+%	}
+	Applying $\uv \cdot (\vgrad \cdot \sT) = 0$ and assuming $\rho$ is \hl{divergenceless}, this becomes
+	\eq{
+		\ua \ptsa \rho = -(\rho + P) \ptsa \ua
+		\qimplies
+		\dv{\rho}{t} + \ui \dv{\rho}{\xii} = -(\rho + P) \vgrad \cdot \uv
+		\qimplies
+		\ans{ \dv{\rho}{t} = -(\rho + P) \vgrad \cdot \uv, }
+	}
+	as we wanted to show. \qed
+}
 
 
+\clearpage
 \prob{
 	Read the discussion in Ex.~2.10 about the tensor $\sP = \sg + \uv \otimes \uv$ that projects into the 3-space of the fluid's rest frame.  Explain why $\Psab \Tabsb = 0$ should represent the law of force balance (momentum conservation) as seen by the fluid.  Show that this equation reduces to
 	\eq{
