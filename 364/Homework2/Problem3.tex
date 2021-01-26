@@ -1,0 +1,106 @@
+\state{Index-manipulation rules from duality (MCP 24.4)}{
+	For an arbitrary basis $\{ \vesa \}$ and its dual basis $\{ \vem \}$, use (i)~the duality relation~(24.8), (ii)~the definition~(24.9) of components of a tensor, and (iii)~the relation $\vA \cdot \vB = \sg(\vA, \vB)$ between the metric and the inner product to deduce the following results.
+}
+
+\prob{ \label{3a}
+	The relations
+	\al{
+		\vem &= \sgma \vesa, &
+		\vesa &= \sgsam \vem.
+	}
+	\vfix
+}
+
+\sol{
+	MCP~(24.8) is
+	\eqn{24.8}{
+		\vem \cdot \vesb = \sg(\vem, \vesb)
+		= \delmsb,
+	}
+	and MCP~(24.9) is
+	\aln{ \label{24.9}
+		\Fmn &= \sF(\vem, \ven), &
+		\Fsab &= \sF(\vesa, \vesb), &
+		\Fmsb &= \sF(\vem, \vesb).
+	}
+	For the first relation, we take the dot product of both sides with $\veb$.  Beginning with the right-hand side,
+	\eq{
+		(\sgma \vesa) \cdot \veb = \sgma (\veb \cdot \vesa)
+		= \sgma \sg(\veb, \vesa)
+		= \sgma \delbsa
+		= \sgmb
+		= \sg(\vem, \vesb)
+		= \vem \cdot \veb
+	}
+	which proves that \ans{$\vem = \sgma \vesa$.} \qed
+	
+	For the second relation, the proof follows the same path:
+	\eq{
+		(\sgsam \vem) \cdot \vesb = \sgsam (\vesb \cdot \vem)
+		= \sgsam \sg(\vesb, \vem)
+		= \sgsam \delsbsm
+		= \sgsab
+		= \sg(\vesa, \vesb)
+		= \vesa \cdot \vesb,
+	}
+	which proves that \ans{$\vesa = \sgsam \vem$.} \qed
+}
+
+
+
+\prob{
+	The fact that indices on the components of tensors can be raised and lowered using the components of the metric:
+	\al{
+		\Fmn &= \sgma \Fsasn, &
+		\psa &= \sgsab \pbet.
+	}
+	\vfix
+}
+
+\sol{
+	We once again apply Eqs.~\refeq{24.8} and \refeq{24.9}.  For the first relation, we also use the linearity of tensors~\cite[p.~11]{MCP} and the result of \ref{3a}.  Beginning with the right-hand side,
+	\eq{
+		\ans{ \sgma \Fsasn =\ } \sgma \sF(\vesa, \ven)
+		= \sF(\sgma \vesa, \ven)
+		= \sF(\vem, \ven)
+		\ans{\ = \Fmn }
+	}
+	as we wanted to show. \qed
+	
+	For the second relation, the proof is similar:
+	\eq{
+		\ans{ \sgsab \pbet =\ } \sgsab p(\veb)
+		= p(\sgsab \veb)
+		= p(\vesa)
+		\ans{\ = \psa, }
+	}
+	as we wanted to show. \qed
+}
+
+
+
+\prob{
+	The fact that a tensor can be reconstructed from its components in the manner of Eq.~(24.11).
+}
+
+\sol{
+	MCP~(24.11) is
+	\eq{
+		\sF = \Fmn \vesm \otimes \vesn
+		= \Fsab \vea \otimes \veb
+		= \Fmsb \vesm \otimes \veb.
+	}
+	In addition to Eqs.~\refeq{24.8} and \refeq{24.9}, we invoke the definition of the tensor product given by MCP~(1.5a):
+	\eq{
+		\bA \otimes \bB \otimes \bC(\bE, \bF, \bG) = \bA(\bE) \bB(\bF) \bC(\bG)
+		= (\bA \cdot \bE) (\bB \cdot \bF) (\bC \cdot \bG).
+	}
+	Then~\cite[p.~55]{MCP}
+	\eq{
+		\sF(\vem, \ven) = \Fmn
+		= \sgma \sgnb \Fsab
+		= \Fsab (\vea \cdot \vem) (\veb \cdot \ven)
+		= \Fsab \vea \otimes \veb(\vem, \ven).
+	}
+	Comparing the first and last expressions, we have shown that \ans{ $\sF = \Fsab \vea \otimes \veb$ } as desired.  The proofs for the other two expressions are equivalent. \qed
+}
