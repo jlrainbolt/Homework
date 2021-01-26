@@ -27,7 +27,7 @@
 		\Too &= \rho, &
 		\Tjk &= P \deljk.
 	}
-	We know from MCP~(2.23c) that $\gab = \etaab$, and from (2.22) that $\eta_{00} = -1$, $\eta_{11} = \eta_{22} = \eta_{33} = 1$.  Then, using the form $\sT \equiv \Tab \vea \otimes \veb$ of (2.23a), we can write
+	We know from MCP~(2.23c) that $\gab = \etaab$, and from (2.22) that $\eta_{00} = -1$, $\eta_{11} = \eta_{22} = \eta_{33} = 1$.  Then, using the form $\sT \equiv \Tab \vesa \otimes \vesb$ of (2.23a), we can write
 	\al{
 		\sT = (\rho + P) \veo \otimes \veo + P \sg.
 	}
@@ -53,25 +53,28 @@
 }
 
 \sol{
-	We know from MCP~(2.73a) that $\vgrad \cdot \sT = 0$ represents local 4-momentum conservation.  In the rest frame of the fluid, this looks simply like a continuity relating energy density $\rho$ and pressure $P$, which can be thought of as ``energy flux'':
+	We know from MCP~(2.73a) that $\vgrad \cdot \sT = 0$ represents local 4-momentum conservation.  In the local rest frame of the fluid, this gives us conditions on energy density $\rho$ and on pressure $P$:
 	\eq{
-		0 = \vgrad \cdot \sT
-		= \dv{\rho}{t} - \grad \vdot \bP,
+		\vgrad \cdot \sT = 0
+		\qimplies
+		\dv{\rho}{t} = 0, \qquad
+		\grad P = 0.
 	}
-	where $\bP = (P, P, P)$.  In this case, $\uv \cdot \vgrad \cdot \sT = 0$ implies
+	Then (still in the fluid's local rest frame)
 	\eq{
-		\dv{\rho}{t} = 0,
+		\uv \cdot (\vgrad \cdot \sT) = 0
+		\qimplies
+		\dv{\rho}{t} = 0, \qquad
+		\bu \vdot \grad P = 0.
 	}
-	meaning that energy density is constant, so energy must be conserved.  \hl{The same laws of physics must also apply in all other inertial frames.}  %Now consider a in which the fluid is moving in the $x$ direction.  Then we have
-%	\eq{
-%		0 = \uv \cdot (\vgrad \cdot \sT) = 0
-%	}
+	The first equation tells us that energy density is constant as viewed by the fluid, so energy must be conserved.  \hl{or do the continuity equation thing from p.~36 of Carroll}
+
 	Applying (2.74b) and the product rule, note that
-	\al{
-		\vgrad \cdot \sT &= \ptsa \Tab \\
-		&= \ptsa [ (\rho + P) \ua \ub + P \gab ] \\
-		&= \ua \ub \ptsa(\rho + P) + (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \gab \ptsa P \\
-		&= \ua \ub \ptsa(\rho + P) + (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \ptb P.
+	\aln{
+		\vgrad \cdot \sT &= \ptsa \Tab \notag \\
+		&= \ptsa [ (\rho + P) \ua \ub + P \gab ] \notag \\
+		&= \ua \ub \ptsa(\rho + P) + (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \gab \ptsa P \notag \\
+		&= \ua \ub \ptsa(\rho + P) + (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \ptb P. \label{tabthing}
 	}
 	Then
 	\aln{
@@ -80,13 +83,10 @@
 		&= -\ua \ptsa(\rho + P) + (\rho + P) (-\ptsa \ua + \usb \ua \ptsa \ub) + \usb \ptb P \notag \\
 		&= -\ua \ptsa(\rho + P) - (\rho + P) \ptsa \ua + \usb \ptb P, \label{thing1b}
 	}
-	where we have used MCP~(2.9), $\uv^2 = -1$, and that as a consequence,
-	\eq{
-		0 = \ptsa(\usb \ub) = \ub \ptsa \usb + \usb \ptsa \ub
-		\qimplies
-		\ub \ptsa \usb = -\usb \ptsa \ub
-		\qimplies
-		\ub \ptsa \usb = \usb \ptsa \ub = 0.
+	where we have used MCP~(2.9), $\uv^2 = -1$, and that as a consequence~\cite[p.~36]{Carroll},
+	\eqn{vthing}{
+		\usb \ptsa \ub = \frac{1}{2} \ptsa(\usb \ub)
+		= 0.
 	}
 	Picking back up at Eq.~\refeq{thing1b},
 	\eq{
@@ -99,32 +99,79 @@
 %	\eq{
 %		\ptsa (\rho \ua) = \ua \ptsa \rho + \rho \ptsa \ua.
 %	}
-	Applying $\uv \cdot (\vgrad \cdot \sT) = 0$ and assuming $\rho$ is \hl{divergenceless}, this becomes
-	\eq{
+	Applying $\uv \cdot (\vgrad \cdot \sT) = 0$ and specifying the fluid's rest frame in which $\uv = (1, 0, 0, 0)$,
+	\eqn{ans1b}{
 		\ua \ptsa \rho = -(\rho + P) \ptsa \ua
 		\qimplies
-		\dv{\rho}{t} + \ui \dv{\rho}{\xii} = -(\rho + P) \vgrad \cdot \uv
+		\dv{\rho}{\tau} + \ui \dv{\rho}{\xii} = -(\rho + P) \vgrad \cdot \uv
 		\qimplies
-		\ans{ \dv{\rho}{t} = -(\rho + P) \vgrad \cdot \uv, }
+		\ans{ \dv{\rho}{\tau} = -(\rho + P) \vgrad \cdot \uv, }
 	}
 	as we wanted to show. \qed
+	
+	MCP~(2.65) states
+	\eq{
+		\vgrad \cdot \uv = \frac{1}{V} \dv{V}{\tau}.
+	}
+	Feeding this into Eq.~\refeq{ans1b} and applying the product rule yields
+	\eqn{ans1b2}{
+		\dv{\rho}{\tau} = -(\rho + P) \frac{1}{V} \dv{V}{\tau}
+		\qimplies
+		V \dv{\rho}{\tau} = -(\rho + P) \dv{V}{\tau}
+		\qimplies
+		V \dv{\rho}{\tau} + \rho \dv{V}{\tau} = \ans{ \dv{(\rho V)}{\tau} = -P \dv{V}{\tau}, }
+	}
+	as we wanted to show. \qed
+	
+	The left-hand side of Eq.~\refeq{ans1b2} represents the rate of change of energy ($ =\rho V$).  The right-hand side represents the product of pressure and the rate of change of volume.  Essentially, the equation is relating the change in energy of the fluid to the change in its volume under constant pressure.  The first law of thermodynamics is given by MCP~(5.7):
+	\eq{
+		\dd{\cE} = T \dd{S} + \tmu \dd{N} - P \dd{V},
+	}
+	where $\cE$ is energy, $T$ is temperature, $S$ is entropy, $\tmu$ is chemical potential, and $N$ is number of particles.  Eq.~\refeq{ans1b2} is the first law of thermodynamics for a perfect fluid in the case of constant entropy and constant number of particles.
 }
 
 
-\clearpage
+
 \prob{
 	Read the discussion in Ex.~2.10 about the tensor $\sP = \sg + \uv \otimes \uv$ that projects into the 3-space of the fluid's rest frame.  Explain why $\Psab \Tabsb = 0$ should represent the law of force balance (momentum conservation) as seen by the fluid.  Show that this equation reduces to
 	\eq{
 		(\rho + P) \av = -\sP \cdot \grad P,
 	}
-	where $\av = \dv*{\uv}{\tau}$ is the fluid's 4-acceleration.  This equation is a relativistic version of Newton's $\Fb = m \ab$.    Explain the physical meanings of the left- and right-hand sides.  Infer that $\rho + P$ must be the fluid's inertial mass per unit volume.  It is also the enthalpy per unit volume, including the contribution of rest mass; see Ex.~5.5 and Box~13.2.
+	where $\av = \dv*{\uv}{\tau}$ is the fluid's 4-acceleration.  This equation is a relativistic version of Newton's $\Fb = m \ab$.    Explain the physical meanings of the left- and right-hand sides.  Infer that $\rho + P$ must be the fluid's inertial mass per unit volume. % It is also the enthalpy per unit volume, including the contribution of rest mass; see Ex.~5.5 and Box~13.2.
+}
+
+\sol{
+	\hl{explain why}
+	
+	We write
+	\eq{
+		\Psab \Tabsb = \Psab \ptsg \Tag
+	}
+	and apply Eq.~\refeq{tabthing} to $\ptsg \Tag$.  Now we invoke MCP~(2.31a), which we can write as $\Psab = \gsab + \usa \usb$:
+	\al{
+		\Psab \Tabsb &= (\gsab + \usa \usb) [ \ugam \ub \ptsg(\rho + P) + (\rho + P) (\ua \ptsg \ugam + \ugam \ptsg \ua) + \pta P ] \\
+		&= \ugam \usa \ptsg(\rho + P) - \usa \ugam \ptsg(\rho + P) + (\gsab + \usa \usb) [ (\rho + P) (\ua \ptsg \ugam + \ugam \ptsg \ua) + \pta P ] \\
+		&= (\rho + P) (\usb \ptsg \ugam + \ugam \ptsg \usb - \usb \ptsg \ugam + \usb \ugam \usa \ptsg \ua) + (\gsab + \usa \usb) \pta P \\
+		&= (\rho + P) \ugam \ptsg \usb + \Psab \pta P,
+	}
+	where we have again used $\uv^2 = -1$ and Eq.~\refeq{vthing}.  Applying $\Psab \Tabsb = 0$ and specifying the fluid's rest frame in which $\uv = (1, 0, 0, 0)$, we have
+	\eqn{ans1c}{
+		-\Psab \pta P = (\rho + P) \ptst \usb = (\rho + P) \asb
+		\qimplies
+		\ans{ (\rho + P) \av = -\sP \cdot \grad P, }
+	}
+	as we wanted to show. \qed
+	
+	The left-hand side of Eq.~\refeq{ans1c} represents the fluid's inertial force per unit volume, since $\rho + P$ is its inertial mass per unit volume.  The right-hand side is \hl{the projection of the divergence of the pressure in the fluid's rest frame?}
+	
+	\hl{infer?}
 }
 
 
 
 
 
-
+\clearpage
 \state{Inertial mass per unit volume (MCP 2.27)}{
 	Suppose that some medium has a rest frame (unprimed frame) in which its energy flux and momentum density vanish, $\Toj = \Tjo = 0$.  Suppose that the medium moves in the $x$ direction with speed very small compared to light, $v \ll 1$, as seen in a (primed) laboratory frame, and ignore factors of order $v^2$.  The ratio of the medium's momentum density $\Gjp = \Tjpop$ (as measured in the laboratory frame) to its velocity $\vsi = \delsix$ is called its total \emph{inertial mass per unit volume} and is denoted $\rhosjiinert$:
 	\eq{
@@ -153,25 +200,60 @@
 	\eq{
 		\rhosjiinert = (\rho + P) \delsji.
 	}
-	See Ex.~2.26 for this inertial-mass role of $\rho + P$ in the law of force balance.
+%	See Ex.~2.26 for this inertial-mass role of $\rho + P$ in the law of force balance.
 }
 
 
 
 
 
-
+\clearpage
 \state{Index-manipulation rules from duality (MCP 24.4)}{
 	For an arbitrary basis $\{ \vesa \}$ and its dual basis $\{ \vem \}$, use (i)~the duality relation~(24.8), (ii)~the definition~(24.9) of components of a tensor, and (iii)~the relation $\vA \cdot \vB = \sg(\vA, \vB)$ between the metric and the inner product to deduce the following results.
 }
 
-\prob{
+\prob{ \label{3a}
 	The relations
 	\al{
 		\vem &= \sgma \vesa, &
 		\vesa &= \sgsam \vem.
 	}
 	\vfix
+}
+
+\sol{
+	MCP~(24.8) is
+	\eqn{24.8}{
+		\vem \cdot \vesb = \sg(\vem, \vesb)
+		= \delmsb,
+	}
+	and MCP~(24.9) is
+	\aln{ \label{24.9}
+		\Fmn &= \sF(\vem, \ven), &
+		\Fsab &= \sF(\vesa, \vesb), &
+		\Fmsb &= \sF(\vem, \vesb).
+	}
+	For the first relation, we take the dot product of both sides with $\veb$.  Beginning with the right-hand side,
+	\eq{
+		(\sgma \vesa) \cdot \veb = \sgma (\veb \cdot \vesa)
+		= \sgma \sg(\veb, \vesa)
+		= \sgma \delbsa
+		= \sgmb
+		= \sg(\vem, \vesb)
+		= \vem \cdot \veb
+	}
+	which proves that \ans{$\vem = \sgma \vesa$.} \qed
+	
+	For the second relation, the proof follows the same path:
+	\eq{
+		(\sgsam \vem) \cdot \vesb = \sgsam (\vesb \cdot \vem)
+		= \sgsam \sg(\vesb, \vem)
+		= \sgsam \delsbsm
+		= \sgsab
+		= \sg(\vesa, \vesb)
+		= \vesa \cdot \vesb,
+	}
+	which proves that \ans{$\vesa = \sgsam \vem$.} \qed
 }
 
 
@@ -185,36 +267,244 @@
 	\vfix
 }
 
+\sol{
+	We once again apply Eqs.~\refeq{24.8} and \refeq{24.9}.  For the first relation, we also use the linearity of tensors~\cite[p.~11]{MCP} and the result of \ref{3a}.  Beginning with the right-hand side,
+	\eq{
+		\ans{ \sgma \Fsasn =\ } \sgma \sF(\vesa, \ven)
+		= \sF(\sgma \vesa, \ven)
+		= \sF(\vem, \ven)
+		\ans{\ = \Fmn }
+	}
+	as we wanted to show. \qed
+	
+	For the second relation, the proof is similar:
+	\eq{
+		\ans{ \sgsab \pbet =\ } \sgsab p(\veb)
+		= p(\sgsab \veb)
+		= p(\vesa)
+		\ans{\ = \psa, }
+	}
+	as we wanted to show. \qed
+	
+	\hl{is this even legal?}
+}
+
 
 
 \prob{
 	The fact that a tensor can be reconstructed from its components in the manner of Eq.~(24.11).
 }
 
+\sol{
+	MCP~(24.11) is
+	\eq{
+		\sF = \Fmn \vesm \otimes \vesn
+		= \Fsab \vea \otimes \veb
+		= \Fmsb \vesm \otimes \veb.
+	}
+	\hl{What are we even supposed to prove here?}
+}
 
 
 
 
-
-
+\clearpage
 \state{Transformation matrices for circular polar bases (MCP 24.5)}{
 	Consider the circular polar coordinate system $\{ \vpi, \phi \}$ and its coordinate bases and orthonormal bases as shown in Fig.~24.3 and discussed in the associated text.  These coordinates are related to Cartesian coordinates $\{ x, y \}$ by the usual relations: $x = \vpi \cos\phi$, $y = \vpi \sin\phi$.
 }
 
 \prob{
-	Evaluate the components ($\Lxsvpi$, etc.) of the transformation matrix that links the two coordinate bases $\{ \vex, \vey \}$.  Also evaluate the components ($\Lvpisx$, etc.) of the inverse transformation matrix. 
+	Evaluate the components ($\Lxsvpi$, etc.) of the transformation matrix that links the two coordinate bases $\{ \vesx, \vesy \}$ and $\{ \vesvpi, \vesphi \}$.  Also evaluate the components ($\Lvpisx$, etc.) of the inverse transformation matrix. 
+}
+
+\sol{
+	MCP~(24.17) states that
+	\al{
+		\vesa &= \vesmb \Lmbsa, &
+		\vesmb &= \vesa \Lasmb,
+	}
+	and	
+	MCP~(24.20) states that
+	\al{
+		\Lmbsa &= \pdv{\xmb}{\xa}, &
+		\Lasmb &= \pdv{\xa}{\xmb}.
+	}
+	Then
+	\ans{\al{
+		\Lxsvpi &= \pdv{x}{\vpi}
+		= \cos\phi, &
+		\Lysvpi &= \pdv{y}{\vpi}
+		= \sin\phi, &
+		\Lxsphi &= \pdv{x}{\phi}
+		= -\vpi \sin\phi, &
+		\Lysphi &= \pdv{y}{\phi}
+		= \vpi \cos\phi.
+	}}%
+	We know the inverse transformation matrix must be the inverse of the matrix we just found~\cite[p.~1164]{MCP}.  We can write
+	\eqn{mateq}{
+		\mqty[
+			\vesvpi \\ \vesphi
+		] = \mqty[
+			\cos\phi & -\vpi \sin\phi \\
+			\sin\phi & \vpi \cos\phi
+		] \mqty[
+			\vesx \\ \vesy
+		] = \mqty[
+			\Lxsvpi & \Lxsphi \\
+			\Lysvpi & \Lysphi
+		] \mqty[
+			\vesx \\ \vesy
+		] \equiv \sL \mqty[
+			\vesx \\ \vesy
+		],
+	}
+	where we have defined the matrix $\sL$.  The inverse of $2 \times 2$ matrix can be found using the general expression~\cite{Inverse}
+	\eqn{inv}{
+		\sA^{-1} = \frac{1}{\abs{\sA}} \mqty[
+			A_{22} & -A_{12} \\
+			-A_{21} & A_{11}
+		].
+	}
+	Our determinant is
+	\eq{
+		\abs{\sL} = \Lxsvpi \Lysphi - \Lxsphi \Lysvpi
+		= \vpi \cos^2\phi + \vpi \sin^2 \psi
+		= \vpi,
+	}
+	so
+	\eq{
+		\sL^{-1} = \frac{1}{\vpi} \mqty[
+			\Lysphi & -\Lxsphi \\
+			-\Lysvpi & \Lxsvpi
+		] = \frac{1}{\vpi} \mqty[
+			\vpi \cos\phi & \vpi \sin\phi \\
+			-\sin\phi & \cos\phi
+		] = \mqty[
+			\cos\phi & \sin\phi \\
+			-\sin(\phi) / \vpi & \cos(\phi) / \vpi
+		].
+	}
+	In other words,
+	\ans{\al{
+		\Lvpisx &= \cos\phi, &
+		\Lvpisy &= \sin\phi, &
+		\Lphisx &= -\frac{\sin\phi}{\vpi}, &
+		\Lphisy &= \frac{\cos\phi}{\vpi}.
+	}}%
+	\vfix
 }
 
 
 
 \prob{
-	Similarly, evaluate the components of the transformation matrix and its inverse linking the bases $\{ \vex, \vey \}$ and $\{ \vevpih, \vephih \}$.
+	Similarly, evaluate the components of the transformation matrix and its inverse linking the bases $\{ \vesx, \vesy \}$ and $\{ \vesvpih, \vesphih \}$.
+}
+
+\sol{
+	We know that $\vesphih = (1 / \vpi) \vesphi$ and $\vesvpih = \vesvpih$~\cite[p.~1163]{MCP}.  Then we can find the new transformation matrix by multiplying both sides of Eq.~\refeq{mateq} with the proper transformation matrix:
+	\eq{
+		\mqty[
+			1 / \vpi & 0 \\
+			0 & 1
+		] \mqty[
+			\vpi \vesvpih \\ \vesphih
+		] = \mqty[
+			1 / \vpi & 0 \\
+			0 & 1
+		] \mqty[
+			\cos\phi & -\vpi \sin\phi \\
+			\sin\phi & \vpi \cos\phi
+		] \mqty[
+			\vesx \\ \vesy
+		]
+		\qimplies
+		\mqty[
+			\vesvpih \\ \vesphih
+		] = \mqty[
+			\cos(\phi) / \vpi & -\sin\phi \\
+			\sin\phi & \vpi \cos\phi
+		] \mqty[
+			\vesx \\ \vesy
+		] \equiv \sLh \mqty[
+			\vesx \\ \vesy
+		].
+	}
+	That is,
+	\ans{\al{
+		\Lxsvpih &= \frac{\cos\phi}{\vpi}, &
+		\Lysvpih &= \sin\phi, &
+		\Lxsphih &= -\sin\phi, &
+		\Lysphih &= \vpi \cos\phi.
+	}}%
+	For the inverse, we may apply Eq.~\refeq{inv} once more.  Our determinant is
+	\eq{
+		\abs*{\sLh} = \Lxsvpih \Lysphih - \Lxsphih \Lysvpih
+		= \cos^2\phi + \sin^2\phi
+		= 1,
+	}
+	so
+	\eq{
+		\sLh^{-1} = \mqty[
+			\Lysphih & -\Lxsphih \\
+			-\Lysvpih & \Lxsvpih
+		] = \mqty[
+			\vpi \cos\phi & \sin\phi \\
+			-\sin\phi & \cos(\phi) / \vpi
+		].
+	}
+	In other words,
+	\ans{\al{
+		\Lvpihsx &= \vpi \cos\phi, &
+		\Lvpihsy &= \sin\phi, &
+		\Lphihsx &= -\sin\phi, &
+		\Lphihsy &= \frac{\cos\phi}{\vpi}.
+	}}%
+	\vfix
 }
 
 
 
 \prob{
-	Consider the vector $\vA = \vex + 2 \vey$.  What are its components in the other two bases?
+	Consider the vector $\vA = \vesx + 2 \vesy$.  What are its components in the other two bases?
+}
+
+\sol{
+	We may simply represent $\vA$ in the $\{ \vesx, \vesy \}$ basis and multiply by the appropriate transformation matrices.  For the $\{ \vesvpi, \vesphi \}$ basis,
+	\eq{
+		\sL \mqty[
+			1 \\ 2
+		] = \mqty[
+			\cos\phi & -\vpi \sin\phi \\
+			\sin\phi & \vpi \cos\phi
+		] \mqty[
+			1 \\ 2
+		] = \mqty [
+			\cos\phi - 2 \vpi \sin\phi \\
+			\sin\phi + 2 \vpi \cos\phi
+		],
+	}
+	so
+	\eq{
+		\ans{ \vA = (\cos\phi - 2 \vpi \sin\phi) \vesvpi + (\sin\phi + 2 \vpi \cos\phi) \vesphi. }
+	}
+	For the $\{ \vesvpih, \vesphih \}$ basis,
+	\eq{
+		\sLh \mqty[
+			1 \\ 2
+		] = \mqty[
+			\cos(\phi) / \vpi & -\sin\phi \\
+			\sin\phi & \vpi \cos\phi
+		] \mqty[
+			1 \\ 2
+		] = \mqty [
+			\cos(\phi) / \vpi - 2 \sin\phi \\
+			\sin\phi + 2 \vpi \cos\phi
+		],
+	}
+	so
+	\eq{
+		\ans{ \vA = \paren{ \frac{\cos\phi}{\vpi} - 2 \sin\phi } \vesvpih + (\sin\phi + 2 \vpi \cos\phi) \vesphih. }
+	}
 }
 
 
