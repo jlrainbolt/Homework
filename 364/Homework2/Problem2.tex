@@ -1,0 +1,128 @@
+\state{Inertial mass per unit volume (MCP 2.27)}{
+	Suppose that some medium has a rest frame (unprimed frame) in which its energy flux and momentum density vanish, $\Toj = \Tjo = 0$.  Suppose that the medium moves in the $x$ direction with speed very small compared to light, $v \ll 1$, as seen in a (primed) laboratory frame, and ignore factors of order $v^2$.  The ratio of the medium's momentum density $\Gjp = \Tjpop$ (as measured in the laboratory frame) to its velocity $\vsi = \delsix$ is called its total \emph{inertial mass per unit volume} and is denoted $\rhosjiinert$:
+	\eqn{given2}{
+		\Tjpop = \rhosjiinert \vsi.
+	}
+	In other words, $\rhosjiinert$ is the 3-dimensional tensor that gives the momentum density $\Gjp$ when the medium's small velocity is put into its second slot.
+}
+
+\prob{
+	Using a Lorentz transformation from the medium's (unprimed) rest frame to the (primed) laboratory frame, show that
+	\eqn{show2b}{
+		\rhosjiinert = \Too \delsji + \Tsji.
+	}
+}
+
+\sol{
+	In the rest frame of the medium,
+	\eq{
+		\mqty[ \Tmn ] = \mqty[
+			\Too & 0 & 0 & 0 \\
+			0 & \Tqq & \Tqw & \Tqe \\
+			0 & \Tqw & \Tww & \Twe \\
+			0 & \Tqe & \Twe & \Tee
+		].
+	}
+	In the limit $v \ll 1$, $\gam = 1 / \sqrt{1 - v^2} \approx 1$.  Since we are boosting in the $x$ direction, the Lorentz transformation matrix we need is given by MCP~(2.37a):
+	\eq{
+		\mqty[ \Lasmb ] = \mqty[
+			\gam & \bet \gam & 0 & 0 \\
+			\bet \gam & \gam & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1
+		] \approx \mqty[
+			1 & v & 0 & 0 \\
+			v & 1 & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1 \\
+		].
+	}
+	To perform a boost on a tensor like $\Tmn$, we invoke MCP~(2.36a):
+	\eq{
+		\Tmbnbrb = \Lmbsa \Lnbsb \Lrbsg \Tabg.
+	}
+	We need to perform the operation
+	\eq{
+		\Tmpnp = \Lmpsm \Lnpsn \Tmn.
+	}
+	We can write this as a matrix equation, and solve it using Mathematica:
+	\eq{
+		\mqty[ \Tmpnp ] = \mqty[
+			1 & v & 0 & 0 \\
+			v & 1 & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1 \\
+		] \mqty[
+			\Too & 0 & 0 & 0 \\
+			0 & \Tqq & \Tqw & \Tqe \\
+			0 & \Tqw & \Tww & \Twe \\
+			0 & \Tqe & \Twe & \Tee
+		] \mqty[1 & v & 0 & 0 \\
+			v & 1 & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1 \\
+		] \approx \mqty[
+			\Too & v (\Too + \Tqq) & v \Tqw & v \Tqe \\
+			v (\Too + \Tqq) & \Tqq & \Tqw & \Tqe \\
+			v \Tqw & \Tqw & \Tww & \Twe \\
+			v \Tqe & \Tqe & \Twe & \Tee
+		],
+	}
+	where we have neglected terms of $\order{v^2}$.  Then we have
+	\eqn{Tjo}{
+		\mqty[ \Tjpop ] = v \mqty[ \Too + \Tqq \\ \Tqw \\ \Tqe ].
+	}
+	
+	Now we feed Eq.~\refeq{show2b} into Eq.~\refeq{given2}, and find
+	\eq{
+		\Tjpop = (\Too \delsji + \Tsji) \vsi
+		= v (\Too \delsji + \Tsji) \delsiq
+		= v (\Too \delsjq + \Tsjq),
+	}
+	or
+	\eq{
+		\mqty[ \Tjpop ] = v \mqty[ \Too + \Tqq \\ \Tqw \\ \Tqe ].
+	}
+	This is identical to Eq.~\refeq{Tjo}, the result we found from boosting $\Tmn$ from the rest frame to the lab frame.  So we have found that \ans{$\rhosjiinert = \Too \delsji + \Tsji$,} as we wanted to show. \qed
+}
+
+
+
+\prob{
+	Give a physical explanation of the contribution $\Tsji$ to the momentum density.
+}
+
+\sol{
+	The momentum flux~(stress) that we observe in the medium rest frame contributes to the momentum density in the lab frame.  We can think of the momentum flux as seen from the rest frame as moving at velocity $v$ with the fluid in the lab frame.  Therefore it contributes to the momentum density of the medium.
+}
+
+
+
+\prob{
+	Show that for a perfect fluid [Eq.~(2.74b)] the inertial mass per unit volume is isotropic and has magnitude $\rho + P$, where $\rho$ is the mass-energy density, and $P$ is the pressure measured in the fluid's rest frame:
+	\eq{
+		\rhosjiinert = (\rho + P) \delsji.
+	}
+%	See Ex.~2.26 for this inertial-mass role of $\rho + P$ in the law of force balance.
+}
+
+\sol{
+	MCP~(2.74b) states that, for a perfect fluid,
+	\eq{
+		\Tab = (\rho + P) \ua \ub + P \gab.
+	}
+	Feeding this into Eq.~\refeq{show2b}, we find
+	\eqn{thing2c}{
+		\rhosjiinert = [ (\rho + P) \uo \uo + P \goo ] \delsji + (\rho + P) \usj \usi + P \gsji.
+	}
+	Note that $\uo = \gam \approx 1$, and also that $\goo = \eta^{0 0} = -1$ and $\gsji = \delsji$.  So Eq.~\refeq{thing2c} becomes
+	\eq{
+		\rhosjiinert = \rho \delsji + (\rho + P) \usj \usi + P \delsji
+		= (\rho + P) (\delsji + \usj \usi).
+	}
+	Since velocity $v$ is very small, $\usj \usi \approx v^2 \approx 0$.  This gives us
+	\eq{
+		\ans{ \rhosjiinert =(\rho + P) \delsji, }
+	}
+	as we wanted to show. \qed
+}

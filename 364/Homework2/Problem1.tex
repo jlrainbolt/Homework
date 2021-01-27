@@ -1,0 +1,137 @@
+\state{Stress-energy tensor and energy-momentum conservation for a perfect fluid (MCP 2.26)}{\hfix}
+
+\prob{
+	Derive the frame-independent expression~(2.74b) for the perfect fluid stress-energy tensor from its rest-frame components~(2.74a).
+}
+
+\sol{
+	From MCP~(2.74a), the nonzero rest-frame components of the tensor are
+	\al{
+		\Too &= \rho, &
+		\Tjk &= P \deljk.
+	}
+	We know from MCP~(2.23c) that $\gab = \etaab$, and from (2.22) that $\eta_{00} = -1$, $\eta_{11} = \eta_{22} = \eta_{33} = 1$.  Then, using the form $\sT \equiv \Tab \vesa \otimes \vesb$ of (2.23a), we can write
+	\al{
+		\sT = (\rho + P) \veo \otimes \veo + P \sg.
+	}
+	Note that in the local rest frame, the fluid is stationary so its 4-velocity is $(1, 0, 0, 0)$.  That is, $\uv \otimes \uv$ simplifies to $\veo \otimes \veo$ in the local rest frame.  So the frame-independent expression is
+	\eq{
+		\ans{ \sT = (\rho + P) \uv \otimes \uv + P \sg, }
+	}
+	which is identical to (2.74b). \qed
+}
+
+
+
+\prob{ \label{1b}
+	Explain why the projection of $\vgrad \cdot \sT = 0$ along the fluid 4-velocity, $\uv \cdot (\vgrad \cdot \sT) = 0$, should represent energy conservation as viewed by the fluid itself.  Show that this equation reduces to
+	\eq{
+		\dv{\rho}{\tau} = -(\rho + P) \vgrad \cdot \uv.
+	}
+	With the aid of Eq.~(2.65), bring this into the form
+	\eq{
+		\dv{(\rho V)}{\tau} = -P \dv{V}{\tau},
+	}
+	where $V$ is the 3-volume of some small fluid element as measured in the fluid's local rest frame.  What are the physical interpretations of the left- and right-hand sides of this equation, and how is it related to the first law of thermodynamics?
+}
+
+\sol{
+	We know that $\vgrad \cdot \sT$ represents the energy-momentum~(i.e., 4-momentum) flow of the system, and that $\vgrad \cdot \sT = 0$ tells us 4-momentum is conserved~\cite[pp.~83--85]{MCP}.  So $\uv \cdot (\vgrad \cdot \sT)$ tells us how the energy-momentum flow looks in the local rest frame of the fluid, and $\uv \cdot (\vgrad \cdot \sT) = 0$ thus indicates that energy  is conserved in that frame.
+	
+	Applying (2.74b) and the product rule, note that
+	\aln{
+		\vgrad \cdot \sT &= \ptsa \Tab \notag \\
+		&= \ptsa [ (\rho + P) \ua \ub + P \gab ] \notag \\
+		&= \ua \ub \ptsa(\rho + P) + (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \gab \ptsa P \notag \\
+		&= \ua \ub \ptsa(\rho + P) + (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \ptb P. \label{tabthing}
+	}
+	Then
+	\aln{
+		\uv \cdot (\vgrad \cdot \sT) &= \usb \ptsa \Tab \notag \\
+		&= \usb \ua \ub \ptsa(\rho + P) + \usb (\rho + P) (\ub \ptsa \ua + \ua \ptsa \ub) + \usb \ptb P \notag \\
+		&= -\ua \ptsa(\rho + P) + (\rho + P) (-\ptsa \ua + \usb \ua \ptsa \ub) + \usb \ptb P \notag \\
+		&= -\ua \ptsa(\rho + P) - (\rho + P) \ptsa \ua + \usb \ptb P, \label{thing1b}
+	}
+	where we have used MCP~(2.9), $\uv^2 = -1$, and that as a consequence~\cite[p.~36]{Carroll},
+	\eqn{vthing}{
+		0 = \ptsa(\usb \ub) = \usb \ptsa \ub + \ub \ptsa \usb = 2 \usb \ptsa \ub.
+	}
+	Picking back up at Eq.~\refeq{thing1b},
+	\eqn{thing1b2}{
+		\uv \cdot (\vgrad \cdot \sT) = -\ua \ptsa \rho - \ua \ptsa P - (\rho + P) \ptsa \ua + \usb \ptb P
+		= -\ua \ptsa \rho - (\rho + P) \ptsa \ua.
+	}
+	We can evaluate $\ua \ptsa \rho$ in the fluid's local rest frame where $\uv = (1, 0, 0, 0)$.  Its value will be the same in every rest frame because the inner product is Lorentz invariant~\cite[p.~541]{Jackson}.  Thus
+	\eq{
+		\ua \ptsa \rho = \dv{\rho}{\tau} + \ui \dv{\rho}{\xii}
+		= \dv{\rho}{\tau}.
+	}
+	Applying this and $\uv \cdot (\vgrad \cdot \sT) = 0$ to Eq.~\refeq{thing1b2}, we find
+	\eqn{ans1b}{
+		\dv{\rho}{\tau} = -(\rho + P) \ptsa \ua
+		\qimplies
+		\dv{\rho}{\tau} = -(\rho + P) \vgrad \cdot \uv
+		\qimplies
+		\ans{ \dv{\rho}{\tau} = -(\rho + P) \vgrad \cdot \uv, }
+	}
+	as we wanted to show. \qed
+	
+	MCP~(2.65) states
+	\eq{
+		\vgrad \cdot \uv = \frac{1}{V} \dv{V}{\tau}.
+	}
+	Feeding this into Eq.~\refeq{ans1b} and applying the product rule yields
+	\eqn{ans1b2}{
+		\dv{\rho}{\tau} = -(\rho + P) \frac{1}{V} \dv{V}{\tau}
+		\qimplies
+		V \dv{\rho}{\tau} = -(\rho + P) \dv{V}{\tau}
+		\qimplies
+		V \dv{\rho}{\tau} + \rho \dv{V}{\tau} = \ans{ \dv{(\rho V)}{\tau} = -P \dv{V}{\tau}, }
+	}
+	as we wanted to show. \qed
+	
+	The left-hand side of Eq.~\refeq{ans1b2} represents the rate of change of energy ($ =\rho V$).  The right-hand side represents the product of pressure and the rate of change of volume.  Essentially, the equation is relating the change in energy of the fluid to the change in its volume under constant pressure.  The first law of thermodynamics is given by MCP~(5.7):
+	\eq{
+		\dd{\cE} = T \dd{S} + \tmu \dd{N} - P \dd{V},
+	}
+	where $\cE$ is energy, $T$ is temperature, $S$ is entropy, $\tmu$ is chemical potential, and $N$ is number of particles.  Eq.~\refeq{ans1b2} is the first law of thermodynamics for a perfect fluid in the case of constant entropy and constant number of particles.
+}
+
+
+
+\prob{
+	Read the discussion in Ex.~2.10 about the tensor $\sP = \sg + \uv \otimes \uv$ that projects into the 3-space of the fluid's rest frame.  Explain why $\Psab \Tabsb = 0$ should represent the law of force balance (momentum conservation) as seen by the fluid.  Show that this equation reduces to
+	\eq{
+		(\rho + P) \av = -\sP \cdot \grad P,
+	}
+	where $\av = \dv*{\uv}{\tau}$ is the fluid's 4-acceleration.  This equation is a relativistic version of Newton's $\Fb = m \ab$.    Explain the physical meanings of the left- and right-hand sides.  Infer that $\rho + P$ must be the fluid's inertial mass per unit volume. % It is also the enthalpy per unit volume, including the contribution of rest mass; see Ex.~5.5 and Box~13.2.
+}
+
+\sol{
+	Projecting $\vgrad \cdot \sT$ into the 3-space of the fluid's rest frame leaves us with only the flow of 3-momentum (as opposed to 4-momentum, as we saw in \ref{1b}).  So $\Psab \Tabsb = 0$ means that 3-momentum must be conserved in the fluid's rest frame, which is equivalent to force balance.
+	
+	We write
+	\eq{
+		\Psab \Tabsb = \Psab \ptsg \Tag
+	}
+	and apply Eq.~\refeq{tabthing} to $\ptsg \Tag$.  Now we invoke MCP~(2.31a), which we can write as $\Psab = \gsab + \usa \usb$:
+	\aln{
+		\Psab \Tabsb &= (\gsab + \usa \usb) [ \ugam \ub \ptsg(\rho + P) + (\rho + P) (\ua \ptsg \ugam + \ugam \ptsg \ua) + \pta P ] \notag \\
+		&= \ugam \usa \ptsg(\rho + P) - \usa \ugam \ptsg(\rho + P) + (\gsab + \usa \usb) [ (\rho + P) (\ua \ptsg \ugam + \ugam \ptsg \ua) + \pta P ] \notag \\
+		&= (\rho + P) (\usb \ptsg \ugam + \ugam \ptsg \usb - \usb \ptsg \ugam + \usb \ugam \usa \ptsg \ua) + (\gsab + \usa \usb) \pta P \notag \\
+		&= (\rho + P) \ugam \ptsg \usb + \Psab \pta P, \label{thing1c}
+	}
+	where we have again used $\uv^2 = -1$ and Eq.~\refeq{vthing}.  As in \ref{1b}, we take advantage of the Lorentz invariance of the dot product to evaluate $\ugam \ptsg \usb$ in the fluid's local rest frame:
+	\eq{
+		\ugam \ptsg \usb = \ptst.
+	}
+	Applying this result and $\Psab \Tabsb = 0$ to Eq.~\refeq{thing1c}, we have
+	\eqn{ans1c}{
+		-\Psab \pta P = (\rho + P) \ptst \usb = (\rho + P) \asb
+		\qimplies
+		\ans{ (\rho + P) \av = -\sP \cdot \grad P, }
+	}
+	as we wanted to show. \qed
+	
+	The left-hand side of Eq.~\refeq{ans1c} represents the fluid's inertial force per unit volume, since $\rho + P$ is its inertial mass per unit volume.  The right-hand side is the 3-space projection of the pressure gradient, so it represents the spatial distribution of the pressure that the fluid sees.
+}

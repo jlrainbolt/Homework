@@ -1,0 +1,66 @@
+\state{Gauss's theorem (MCP 24.11)}{
+	In 3-dimensional Euclidean space Maxwell's equation $\grad \vdot \bE = \rhoe / \epso$ can be combined with Gauss's theorem to show that the electric flux through the surface $\pt\cV$ of a sphere is equal to the charge in the sphere's interior $\cV$ divided by $\epso$:
+	\eqn{24.47}{
+		\intdV \bE \vdot d\bSig = \intV \frac{\rhoe}{\epso} \ddV.
+	}
+	Introduce spherical polar coordinates so the sphere's surface is at some radius $r = R$.  Consider a surface element on the sphere's surface with vectorial legs $\ddphi \pdv*{\phi}$ and $\ddtht \pdv*{\tht}$.  Evaluate the components $\ddSigj$ of the surface integration element $\ddbSig = \beps(\ldots, \ddtht \pdv*{\tht}, \ddphi \pdv*{\phi})$.  (Here $\beps$ is the Levi-Civita tensor.)  Similarly, evaluate $\ddV$ in terms of vectorial legs in the sphere's interior.  Then use these results for $\ddSigj$ and $\ddV$ to convert Eq.~\refeq{24.47} into an explicit form in terms of integrals over $r$, $\tht$, and $\phi$.  The final answer should be obvious, but the above steps in deriving it are informative.
+}
+
+\sol{
+	We begin by evaluating $\ddV$.  From MCP~(1.20), a parallelepiped whose edges are the $n$ vectors $\bA, \bB, \ldots, \bF$ has volume given by
+	\eq{
+		\text{volume} = \beps(\bA, \bB, \ldots, \bF).
+	}
+	Then~\cite[p.~1175]{MCP}
+	\eqn{thing5a}{
+		\ddV = \beps\paren{ \ddr \pdv{r}, \ddtht \pdv{\tht}, \ddphi \pdv{\phi} }
+		= \beps(\vesr, \vestht, \vesphi) \ddr \ddtht \ddphi
+		= \epsrtp \ddr \ddtht \ddphi,
+	}
+	where we have used MCP~(1.9g), $\sT(\bA, \bB, \bC) = T_{i j k} A_i B_j C_k$.  Now we apply MCP~(24.44),
+	\eq{
+		\eps_{\alp \bet \ldots \nu} = \sqrt{\abs{\sg}} [ \alp \bet \ldots \nu ],
+	}
+	where $\abs{\sg}$ is the determinant of the metric tensor.  In spherical coordinates $\sg$ is diagonal, and~\cite[p.~1175]{MCP}
+	\al{
+		\sg_{r r} &= 1, &
+		\sg_{\tht \tht} &= r^2, &
+		\sg_{\phi \phi} &= r^2 \sin^2\tht,
+	}
+	so
+	\eq{
+		\sqrt{\abs{\sg}} = \sqrt{r^4 \sin^2\tht} = r^2 \sin\tht.
+	}
+	Then Eq.~\refeq{thing5a} becomes
+	\eqn{ans5a}{
+		\ddV = r^2 \sin\tht \ddr \ddtht \ddphi.
+	}
+	
+	For $\ddSigj$,
+	\eq{
+		\ddbSig = \beps\paren{ \ulq, \ddtht \pdv{\tht}, \ddphi \pdv{\phi} }
+		= \beps(\ulq, \vestht, \vesphi) \ddtht \ddphi
+	}
+	so
+	\eqn{thing5b}{
+		\ddSigj = \epsjtp \ddtht \ddphi
+		= \sqrt{\abs{g}} [ j \tht \phi ] \ddtht \ddphi
+		= R^2 \sin^2\tht [ j \tht \phi ] \ddtht \ddphi.
+	}
+	Here we are on the surface of the sphere, where $r = R$ and so
+	\al{
+		\sg_{r r} &= 1, &
+		\sg_{\tht \tht} &= R^2, &
+		\sg_{\phi \phi} &= R^2 \sin^2\tht.
+	}
+	By the definition of the Levi-Civita tensor, the only nonzero $\ddSigj$ in Eq.~\refeq{thing5b} is $\ddSigr$.  Thus
+	\eq{
+		\ddbSig = \ddSigr \brh
+		= R^2 \sin^2\tht \ddtht \ddphi \brh,
+	}
+	where $\brh$ is the unit vector in the $r$ direction.  Feeding this result and Eq.~\refeq{ans5a} into Eq.~\refeq{24.47} yields
+	\eq{
+		\ans{ \intotp \intopi (\bE \vdot \brh) R^2 \sin^2\tht \ddtht \ddphi = \intotp \intopi \intoR \frac{\rhoe}{\epso} r^2 \sin\tht \ddr \ddtht \ddphi, }
+	}
+	as we expect. \qed
+}
