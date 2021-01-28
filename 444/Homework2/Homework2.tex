@@ -1,8 +1,8 @@
 \documentclass[11pt]{article}
 \usepackage{homework}
 
-\classname{000}
-\homeworknum{0}
+\classname{444}
+\homeworknum{2}
 
 
 
@@ -15,7 +15,7 @@
 
 \state{}{
 	Consider the path integral for a single point particle, with the action
-	\eq{
+	\eqn{given1}{
 		S = \intoq \ddt \brac{ \psmt \xdmt + \frac{\Nt}{2} [ \pst - m^2 - i \eps ] }.
 	}
 	This represents the quantization of the coordinates and momenta of the particle, subject to the mass shell constraint $p^2 = m^2$ (together with the $i \eps$ prescription) imposed by the Lagrange multiplier $N$.  This action admits the reparametrization symmetry $\del x = \alp p$, $\del p = 0$, $\del N = -\ptst \alp$ where $\alpt$ is any function.  This symmetry allows us to fix the gauge condition $\Nt = T$; the constant $T$ must still be integrated over, however.
@@ -23,34 +23,143 @@
 
 \prob{
 	Path integrate over $\xt$, subject to the boundary conditions $\xm(0) = \xm$, $\xm(1) = \ym$, yielding a delta function $\delpd$ along the path.  Solve this constraint (find the set of functions that solve it) and path integrate over those $\ptt$ to find the quantum mechanical propagation amplitude
-	\eq{
+	\eqn{show1a}{
 		\bkyx = \DF(x - y)
-		= \intoi \ddT (2 \pi i T)^{d / 2} \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ],
+		= \intoi \ddT (2 \pi i T)^{-d / 2} \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ],
 	}
 	where $d$ is the number of spacetime dimensions.
 }
 
+\sol{
 
 
+%	The amplitude for a particle to propagate from $\xa$ to $\xb$ in time $T$ may be found by P\&S~(9.3),
+%	\eq{
+%		\mel*{\xb}{e^{-i H T / \hbar}}{\xa} = U(\xa, \xb; T)
+%		= \int \cD \xt e^{i S[\xt] / \hbar},
+%	}
+%	where the path integral is defined by (9.4),
+%	\eq{
+%		\int \cD \xt \equiv \frac{1}{\Ceps} \prodk \intnii \ddxkf,
+%	}
+%	with $\Ceps$ a constant.  The sum runs over $N$ time slices of duration $\eps = T / N$, and the act of dividing the path up into these pieces is called discretization.  The action for the discretized path is~\cite[p.~277]{Peskin}
+%	\eq{
+%		S = \intoT \ddt \paren{ \frac{m}{2} \xd^2 - V(x) } \to \sumk \brac{ \frac{m}{2} \frac{(\xkq - \xk)^2}{\eps} - \eps V\paren{ \frac{\xkq + \xk}{2} } }.
+%	}
+%	
+%	In order to perform a path integral over $\xt$, we write Eq.~\refeq{given1} as
+%	\eq{
+%		S = \intoq \ddt \brac{ \psmt \xdmt + \frac{\Nt}{2} [ \pst - m^2 - i \eps ] }
+%	}
+%	
+%	We discretize the action in Eq.~\refeq{given1} as
+%	\eq{
+%		S = \sumk \Sk
+%	}
+	
+	
+	
+	
+%	sub $T$ for $\Nt$
+%	
+%	First we need to discretize the action~\cite[p.~277]{Peskin}
+%	\eq{
+%		S = \sumk \Sk
+%		= \sumk \intoq \ddt \brac{ \psmt \frac{\xmkq - \xmk}{\eps} + \eps \frac{\Tk}{2} [ \pk^2(t) - m^2 - i \eps ] }.
+%	}
+%	
+%	\hl{(9.4)}
+%	\eq{
+%		\cP \equiv \frac{1}{\Ceps \Deps \Feps} \prodk \int \ddTkf \int \dddpktf \int \dddxktf e^{i \Sk / \hbar}
+%	}
+%	
+%	
+%	or p.~278
+%	
+%	\eq{
+%		U(\xq, \xN; 1) = \intnii \dddxptf \exp[ \frac{i}{\hbar} \paren{ {\psm}_{N-1} (\xN^\mu - {x'}^\mu + \eps \frac{T_{N-1}}{2} [ p_{N-1}^2 - m^2 - i \eps ] } ] U(\xq, x'; 1 - \eps)
+%	}
+}
+
+
+\clearpage
 \prob{
 	Use this integral representation to show that $\DF$ satisfies
-	\eq{
-		(\del^2 + m^2) \DF = i \deld(x - y).
+	\eqn{show1b}{
+		(\pt^2 + m^2) \DF = i \deld(x - y).
 	}
+}
+
+\sol{
+	Feeding Eq.~\refeq{show1a} into the left-hand side of Eq.~\refeq{show1b}, we have
+	\eq{
+		(\pt^2 + m^2) \DF = m^2 \DF + \intoi \ddT (2 \pi i T)^{-d / 2} \pt^2 \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ],
+	}
+	where
+	\al{
+		\pt^2 &\exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] = \pt\curly{ -\frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \\[2ex]
+		&= -\frac{i}{2} \pt^2\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
+		&\hspace{10em} \phantom{=\ } - \frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \pt\curly{ \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \\[2ex]
+		&= -\frac{i}{2} \pt^2\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
+		&\hspace{10em} \phantom{=\ } - \frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \curly{ -\frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \\[2ex]
+		&= -\frac{i}{2} \pt^2\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
+		&\hspace{10em} \phantom{=\ } - \frac{1}{4} \brac{ \pt\paren{ \frac{(x - y)^2}{T} } }^2 \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\[2ex]
+		&= -\brac{ \frac{i}{2 T} \pt^2(x - y)^2 + \frac{1}{4 T^2} \brac{ \pt(x - y)^2 }^2 } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ].
+	}
+	
+	Note that
+	\eq{
+		\pt(x - y)^2 %= \ptsn (\xm - \ym)^2
+		= \ptsn (\xsm \xm - 2 \xsm \ym + \ysm \ym),
+	}
+	so
+	\eq{
+		\brac{ \pt(x - y)^2 }^2 = \ptsn (\xsm \xm - 2 \xsm \ym + \ysm \ym) \ptn (\xsm \xm - 2 \xsm \ym + \ysm \ym).
+	}
+	Note also that
+	\eq{
+		\pt^2(x - y)^2 = \ptsn \ptn (\xsm \xm - 2 \xsm \ym + \ysm \ym)
+	}
+%	and that
+%	\al{
+%		 \pdv[2]{t}(x^2 - 2 x y + y^2) = \pdv[2]{t} \dv{x}{t} \dv{x^2}{x} - 2 x \pdv[2]{y}{t} - 2 y \pdv[2]{x}{t} 
+%	}
 }
 
 
 
+\clearpage
 \prob{
 	Evaluate the $T$ integral in terms of Bessel functions.
 }
 
+\sol{
+	The integral in Eq.~\refeq{show1a} has the form~\cite[p.~368]{}
+	\eq{
+		\intoi x^{\nu - 1} e^{-\bet / x - \gam x} \dd{x} = 2 \paren{ \frac{\bet}{\gam} }^{\nu / 2} K_\nu(2 \sqrt{\bet \gam}),
+	}
+	where $K_\nu$ is the modified Bessel function of the second kind.  To evaluate Eq.~\refeq{show1a}m we note that
+	\al{
+		x &\to T, &
+		\nu &\to 1 - \frac{d}{2}, &
+		\bet &\to \frac{i}{2} (x - y)^2, &
+		\gam &\to \frac{i}{2} (m^2 - i \eps).
+	}
+	So we have
+	\al{
+		\bkyx &= (2 \pi i)^{-d / 2} \intoi \ddT T^{d / 2} \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
+		&= 2 (2 \pi i)^{-d / 2} \paren{ \frac{(x - y)^2}{m^2 - i \eps} }^{1 / 2 - d / 4} K_{1 - d / 2}\paren{ 2 \sqrt{-\frac{(x - y)^2 (m^2 - i \eps)}{4} } } \\
+		&= \ans{ 2^{1 - d / 2} (\pi i)^{-d / 2} \paren{ \frac{(x - y)^2}{m^2 - i \eps} }^{1 / 2 - d / 4} K_{1 - d / 2}\paren{ i \sqrt{(x - y)^2 (m^2 - i \eps)} }. }
+	}
+	\vfix
+}
 
 
 
 
 
 
+\clearpage
 \state{Quantum statistical mechanics (Peskin \& Schroeder 9.2)}{\hfix}
 
 \prob{
