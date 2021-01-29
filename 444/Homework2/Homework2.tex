@@ -67,11 +67,11 @@
 	}
 	Since $p$ is constant along the path, we do not need to discretize the integral over $p$.  We expect that the factors of $(2\pi)^{d / 2}$ coming from that discretized integral would cancel out those from the delta function integral, so we remove them now.  We also note that our integral over $\Nt$ can be written as a one-dimensional integral over the constant $T$.  Thus
 	\aln{
-		\bkyx &= \int \ddT \intnii \dddp e^{-i p (x - y)} \exp( i \frac{T}{2} (p^2 - m^2 + i \eps) ) \notag \\
-		&= \int \ddT \intnii \dddp \exp[ i \paren{ \frac{T}{2} p^2 - (x - y) p - \frac{T}{2} m^2 + \frac{i T}{2} \eps } ] \notag \\
-		&= \int \ddT \intnii \dddp \exp\curly{ i \brac{ \frac{T}{2} \paren{ p - \frac{x - y}{T} }^2 + \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} } } \notag \\
-		&= \int \ddT \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ) \intnii \dddp \exp[ \frac{i T}{2} \paren{ p - \frac{x - y}{T} }^2 ] \notag \\
-		&= \int \ddT \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ) \intnii \dddu \exp( \frac{i T}{2} u^2 ) \label{thing1a3}
+		\bkyx &= \intoi \ddT \intnii \dddp e^{-i p (x - y)} \exp( i \frac{T}{2} (p^2 - m^2 + i \eps) ) \notag \\
+		&= \intoi \ddT \intnii \dddp \exp[ i \paren{ \frac{T}{2} p^2 - (x - y) p - \frac{T}{2} m^2 + \frac{i T}{2} \eps } ] \notag \\
+		&= \intoi \ddT \intnii \dddp \exp\curly{ i \brac{ \frac{T}{2} \paren{ p - \frac{x - y}{T} }^2 + \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} } } \notag \\
+		&= \intoi \ddT \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ) \intnii \dddp \exp[ \frac{i T}{2} \paren{ p - \frac{x - y}{T} }^2 ] \notag \\
+		&= \intoi \ddT \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ) \intnii \dddu \exp( \frac{i T}{2} u^2 ) \label{thing1a3}
 	}
 	where we have completed the square~\cite[p.~282]{Peskin} and changed our variable of integration to $u = p - (x - y) / T$.  We now have an integral of the form~\cite{QFT}
 	\eq{
@@ -95,46 +95,58 @@
 
 \sol{
 	Feeding Eq.~\refeq{show1a} into the left-hand side of Eq.~\refeq{show1b}, we have
-	\eq{
-		(\pt^2 + m^2) \DF = m^2 \DF + \intoi \ddT (2 \pi i T)^{-d / 2} \pt^2 \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ],
+	\aln{
+		(\pt^2 + m^2) \DF &= m^2 \DF + \intoi \ddT (2 \pi i T)^{-d / 2} \pt^2 \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \notag \\
+		&= m^2 \DF + \intoi \ddT (2 \pi i T)^{-d / 2} \exp( -\frac{i}{2} (m^2 - i \eps) T ) \pt^2\brac{ \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) }, \label{thing1b}
 	}
 	where
 	\al{
-		\pt^2 &\exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] = \pt\curly{ -\frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \\[2ex]
-		&= -\frac{i}{2} \pt^2\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
-		&\hspace{10em} \phantom{=\ } - \frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \pt\curly{ \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \\[2ex]
-		&= -\frac{i}{2} \pt^2\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
-		&\hspace{10em} \phantom{=\ } - \frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \curly{ -\frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \\[2ex]
-		&= -\frac{i}{2} \pt^2\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
-		&\hspace{10em} \phantom{=\ } - \frac{1}{4} \brac{ \pt\paren{ \frac{(x - y)^2}{T} } }^2 \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\[2ex]
-		&= -\paren{ \frac{i}{2 T} \pt^2(x - y)^2 + \frac{1}{4 T^2} \brac{ \pt(x - y)^2 }^2 } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ].
+		\pt^2\brac{ \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) } &= \pt\curly{ \pt\brac{ \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) } } \\
+		&= \pt \brac{ -\frac{i}{T} (x - y) \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) } \\
+		&= -\frac{i}{T} \pt(x - y) \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) - \frac{i}{T} (x - y) \pt\brac{ \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) } \\
+		&= -\frac{i}{T} \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) - \frac{(x - y)^2}{T^2} \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ),
 	}
+	since $\pt x = 1$ and $\pt y = 0$.  Then Eq.~\refeq{thing1b} becomes
+	\aln{
+		(\pt^2 + m^2) \DF &= m^2 \DF - \intoi \ddT (2 \pi i T)^{-d / 2} \exp( -\frac{i}{2} (m^2 - i \eps) T ) \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) \paren{ \frac{i}{T} + \frac{(x - y)^2}{T^2} } \notag \\
+		&= m^2 \DF - \intoi \ddT (2 \pi i T)^{-d / 2} \paren{ \frac{i}{T} + \frac{(x - y)^2}{T^2} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \notag \\
+		&\to -\intoi \ddT (2 \pi i T)^{-d / 2} \paren{ \frac{(x - y)^2}{T^2} + \frac{i}{T} - m^2 } \exp[ -\frac{i}{2} \paren{ m^2 T + \frac{(x - y)^2}{T} } ], \label{important} %\\
+%		&= m^2 \DF - (2 \pi i)^{-d / 2} \intoi \ddT \paren{ \frac{i}{T^{d/2 + 1}} + \frac{(x - y)^2}{T^{d/2 + 2}} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ].
+	}
+	where we have taken the limit as $\eps \to 0$.
 	
+	\hl{looks sort of like a total derivative, so take derivative of integrand, which we call I}
+	\aln{
+		\dv{I}{T} &= \dv{T}\curly{ (2 \pi i T)^{-d / 2} \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \notag \\[2ex]
+		&= \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \dv{T}( (2 \pi i T)^{-d / 2} ) \notag \\
+		&\hspace{5em} \phantom{=\ } + (2 \pi i T)^{-d / 2} \dv{T}\curly{ \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \label{thing1b2}
+	}
 	Note that
 	\al{
-		\pt^2(x - y)^2 &= \ptsn \ptn (\xsm \xm - 2 \xsm \ym + \ysm \ym) \\
-		&= \xm \ptsn \ptn(\xsm) + \xsm \ptsn \ptn(\xm) - 2 \ym \ptsn \ptn(\xsm) \\
-		&= 2 \xm \ptsn \ptn(\xsm) - 2 \ym \ptsn \ptn(\xsm) \\
-		&= 2 (\xm - \ym) \ptsn \ptn(\xsm),
+		\dv{T}( (2 \pi i T)^{-d / 2} ) &= -\frac{d}{2 T} (2 \pi i T)^{-d / 2}, \\
+		\dv{T}\curly{ \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } &= -\frac{i}{2} \paren{ m^2 - i \eps - \frac{(x - y)^2}{T^2} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ].
 	}
-	and that
+	So Eq.~\refeq{thing1b2} becomes
 	\al{
-		\pt(x - y)^2 &= \ptsn (\xsm \xm - 2 \xsm \ym + \ysm \ym) \\
-		&= \ptsn(\xsm \xm) - 2 \ym \ptsn \xsm \\
-		&= \xm \ptsn \xsm + \xsm \ptsn \xm - 2 \ym \ptsn \xsm \\
-		&= 2 \xm \ptsn \xsm - 2 \ym \ptsn \xsm \\
-		&= 2 (\xm - \ym) \ptsn \xsm,
+		\dv{I}{T} &= -\frac{i}{2} (2 \pi i T)^{-d / 2} \paren{ -\frac{(x - y)^2}{T^2} - \frac{id}{T} + m^2 - i \eps } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
+		&\to \frac{i}{2} (2 \pi i T)^{-d / 2} \paren{ \frac{(x - y)^2}{T^2} + \frac{id}{T} - m^2 } \exp[ -\frac{i}{2} \paren{ m^2 T + \frac{(x - y)^2}{T} } ]
 	}
-	so
+	where we have taken the limit as $\eps \to 0$.  Compare this to Eq.~\refeq{important}.  Let
 	\eq{
-		\brac{ \pt(x - y)^2 }^2 = 4 (\xm - \ym) \ptsn(\xsm) (\xsr - \ysr) \ptn(\xr)
-		= 4 (\xm - \ym) (\xr - \yr) \ptsn(\xsm) \ptn(\xsr).
+		\FT \equiv \frac{2}{i} (2 \pi i T)^{-d / 2} \exp[ -\frac{i}{2} \paren{ m^2 T + \frac{(x - y)^2}{T} } ]
 	}
-
-	\hl{then the terrible thing looks like}
+	Then we can write Eq.~\refeq{thing1b} as
 	\eq{
-		-(\xm - \ym) \paren{ \frac{i}{T} \ptsn \ptn(\xsm) + \frac{1}{T^2} (\xr - \yr) \ptsn(\xsm) \ptn(\xsr) } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ]
+		(\pt^2 + m^2) \DF = \intoi \ddT \dv{\FT}{T}
+		= \FT \bigg|_0^\infty
+		= \frac{2}{i} (2 \pi i T)^{-d / 2} \exp[ -\frac{i}{2} \paren{ m^2 T + \frac{(x - y)^2}{T} } ] \bigg|_0^\infty.
 	}
+	Note that
+	\al{
+		F(\infty) &\to 0, &
+		F(0) &\to (2 \pi i T)^{-d / 2} \exp[ -\frac{i (x - y)^2}{2 T} ]
+	}
+	\hl{this looks like a delta funciton}
 }
 
 
