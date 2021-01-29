@@ -31,54 +31,57 @@
 }
 
 \sol{
-
-
-%	The amplitude for a particle to propagate from $\xa$ to $\xb$ in time $T$ may be found by P\&S~(9.3),
-%	\eq{
-%		\mel*{\xb}{e^{-i H T / \hbar}}{\xa} = U(\xa, \xb; T)
-%		= \int \cD \xt e^{i S[\xt] / \hbar},
-%	}
-%	where the path integral is defined by (9.4),
-%	\eq{
-%		\int \cD \xt \equiv \frac{1}{\Ceps} \prodk \intnii \ddxkf,
-%	}
-%	with $\Ceps$ a constant.  The sum runs over $N$ time slices of duration $\eps = T / N$, and the act of dividing the path up into these pieces is called discretization.  The action for the discretized path is~\cite[p.~277]{Peskin}
-%	\eq{
-%		S = \intoT \ddt \paren{ \frac{m}{2} \xd^2 - V(x) } \to \sumk \brac{ \frac{m}{2} \frac{(\xkq - \xk)^2}{\eps} - \eps V\paren{ \frac{\xkq + \xk}{2} } }.
-%	}
-%	
-%	In order to perform a path integral over $\xt$, we write Eq.~\refeq{given1} as
-%	\eq{
-%		S = \intoq \ddt \brac{ \psmt \xdmt + \frac{\Nt}{2} [ \pst - m^2 - i \eps ] }
-%	}
-%	
-%	We discretize the action in Eq.~\refeq{given1} as
-%	\eq{
-%		S = \sumk \Sk
-%	}
+	Our action contains both position and momentum, so we can evaluate the propagation amplitude using P\&S~(9.12):
+	\eq{
+		U(\qa, \qb; T) = \paren{ \prodi \int \cD \qt \cD \ptt } \exp[ i \intoT \ddt \paren{ \sumi \pii \qdi - H(\qi, \pii) } ]
+	}
+	where the integration measure is~\cite[p.~281]{Peskin}
+	\eq{
+		\prodiNq \int \frac{\ddqi \ddpii}{2\pi}.
+	}
+	When evaluating the path integral, we must take into account that, in general, both position and momentum will vary over the path.  We can get around this by dividing the path up into very small pieces, and approximating the position and momentum as constant during each small piece.  The act of dividing the path up into these pieces is called discretization.  The process of discretizing the position looks something like~\cite[p.~277]{Peskin}
+	\eq{
+		S = \intoT \ddt \paren{ \frac{m}{2} \xd^2 - V(x) } \to \sumk \brac{ \frac{m}{2} \frac{(\xskq - \xsk)^2}{\eps} - \eps V\paren{ \frac{\xskq + \xsk}{2} } }.
+	}
 	
-	
-	
-	
-%	sub $T$ for $\Nt$
-%	
-%	First we need to discretize the action~\cite[p.~277]{Peskin}
-%	\eq{
-%		S = \sumk \Sk
-%		= \sumk \intoq \ddt \brac{ \psmt \frac{\xmkq - \xmk}{\eps} + \eps \frac{\Tk}{2} [ \pk^2(t) - m^2 - i \eps ] }.
-%	}
-%	
-%	\hl{(9.4)}
-%	\eq{
-%		\cP \equiv \frac{1}{\Ceps \Deps \Feps} \prodk \int \ddTkf \int \dddpktf \int \dddxktf e^{i \Sk / \hbar}
-%	}
-%	
-%	
-%	or p.~278
-%	
-%	\eq{
-%		U(\xq, \xN; 1) = \intnii \dddxptf \exp[ \frac{i}{\hbar} \paren{ {\psm}_{N-1} (\xN^\mu - {x'}^\mu + \eps \frac{T_{N-1}}{2} [ p_{N-1}^2 - m^2 - i \eps ] } ] U(\xq, x'; 1 - \eps)
-%	}
+	For our problem, we need to integrate over $d$ dimensions instead of one.  Eventually, we will also need to integrate over $\Nt$.  We first concern ourselves with only the position integral, and discretize into $M$ time segments of duration $\Del = 1 / M$:
+	\eqn{thing1a}{
+		\bkyx = \int \cD \Nt \int \cD \ptt \prodiMq \intnii \dddxskf \exp[ i \sumiMq \paren{ \psii (\xsiq - \xsi) + \frac{\Del}{2} \Nsi (\psii^2 - m^2 + i \eps) } ]
+	}
+	We now look at one of the integrals over some $\xsj$, ignoring factors that are not relevant to the integral.  For some $j$ such that $1 < k < M - 1$, we have
+	\al{
+		\intnii \dddxsjf \exp[ i \psj (\xsjq - \xsj) ] \exp[ i \psjmq (\xsj - \xsjmq) ] &= \intnii \dddxsjf \exp[ i \xsj (\psjmq - \psj) ] \\
+		&= (2\pi)^{d / 2} \deld(\psjmq - \psj),
+	}
+	where we have used~\cite{Delta}
+	\eq{
+		\del(x - \alp) = \frac{1}{2\pi} \intnii e^{i p (x - \alp)} \ddp.
+	}
+	We note that the $k = 1$ and $k = M - 1$ integrals, respectively, leave an $x_0 = x$ and an $x_M = y$ that are not ``matched'' with an adjacent integral.  So Eq.~\refeq{thing1a} becomes
+	\eqn{thing1a2}{
+		\bkyx = \int \cD \Nt \int \cD \ptt \paren{ \prodkMq (2\pi)^{d / 2} \deld(\pskmq - \psk) } e^{i (\psMq y - \pso x)} \exp( i \sumiMq \frac{\Del}{2} \Nsi (\psii^2 - m^2 + i \eps) )
+	}
+	The product of delta functions tells us that $p$ does not change from one short time interval to the next.  Since this is true for the entire path, we conclude that $p$ is constant; hence, $\pd = 0$.  (This is consistent with the Lagrangian in Eq.~\refeq{given1} having no external potential, meaning momentum is conserved.)  So we can write Eq.~\refeq{thing1a2} with $\del(\pd)$ as we wanted:
+	\al{
+		\ans{ \bkyx = \paren{ \prodkMq (2\pi)^{d / 2} } \int \cD \Nt \int \cD \ptt \deld(\pd) e^{-i p (x - y)} \exp( i \sumiMq \frac{\Del}{2} \Nsi (\psii^2 - m^2 + i \eps) ). }
+	}
+	Since $p$ is constant along the path, we do not need to discretize the integral over $p$.  We expect that the factors of $(2\pi)^{d / 2}$ coming from that discretized integral would cancel out those from the delta function integral, so we remove them now.  We also note that our integral over $\Nt$ can be written as a one-dimensional integral over the constant $T$.  Thus
+	\aln{
+		\bkyx &= \int \ddT \intnii \dddp e^{-i p (x - y)} \exp( i \frac{T}{2} (p^2 - m^2 + i \eps) ) \notag \\
+		&= \int \ddT \intnii \dddp \exp[ i \paren{ \frac{T}{2} p^2 - (x - y) p - \frac{T}{2} m^2 + \frac{i T}{2} \eps } ] \notag \\
+		&= \int \ddT \intnii \dddp \exp\curly{ i \brac{ \frac{T}{2} \paren{ p - \frac{x - y}{T} }^2 + \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} } } \notag \\
+		&= \int \ddT \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ) \intnii \dddp \exp[ \frac{i T}{2} \paren{ p - \frac{x - y}{T} }^2 ] \notag \\
+		&= \int \ddT \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ) \intnii \dddu \exp( \frac{i T}{2} u^2 ) \label{thing1a3}
+	}
+	where we have completed the square~\cite[p.~282]{Peskin} and changed our variable of integration to $u = p - (x - y) / T$.  We now have an integral of the form~\cite{QFT}
+	\eq{
+		\int \exp( -\frac{1}{2} x \cdot A \cdot x ) \dd[n]{x} = \sqrt{\frac{(2\pi)^n}{\det A}}.
+	}
+	In our integral, $A$ is a diagonal matrix with determinant $-i T$.  So Eq.~\refeq{thing1a3} becomes
+	\eq{
+		\ans{ \bkyx = \int \ddT \paren{ \frac{2\pi}{i T} }^{d / 2} \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ), }
+	}
+	which matches Eq.~\refeq{show1a} up to a factor of $(2\pi)^{-d}$.  \hl{does this come from the intergral over T somehow?}
 }
 
 
@@ -104,26 +107,34 @@
 		&\hspace{10em} \phantom{=\ } - \frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \curly{ -\frac{i}{2} \pt\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \\[2ex]
 		&= -\frac{i}{2} \pt^2\paren{ \frac{(x - y)^2}{T} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
 		&\hspace{10em} \phantom{=\ } - \frac{1}{4} \brac{ \pt\paren{ \frac{(x - y)^2}{T} } }^2 \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\[2ex]
-		&= -\brac{ \frac{i}{2 T} \pt^2(x - y)^2 + \frac{1}{4 T^2} \brac{ \pt(x - y)^2 }^2 } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ].
+		&= -\paren{ \frac{i}{2 T} \pt^2(x - y)^2 + \frac{1}{4 T^2} \brac{ \pt(x - y)^2 }^2 } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ].
 	}
 	
 	Note that
-	\eq{
-		\pt(x - y)^2 %= \ptsn (\xm - \ym)^2
-		= \ptsn (\xsm \xm - 2 \xsm \ym + \ysm \ym),
+	\al{
+		\pt^2(x - y)^2 &= \ptsn \ptn (\xsm \xm - 2 \xsm \ym + \ysm \ym) \\
+		&= \xm \ptsn \ptn(\xsm) + \xsm \ptsn \ptn(\xm) - 2 \ym \ptsn \ptn(\xsm) \\
+		&= 2 \xm \ptsn \ptn(\xsm) - 2 \ym \ptsn \ptn(\xsm) \\
+		&= 2 (\xm - \ym) \ptsn \ptn(\xsm),
+	}
+	and that
+	\al{
+		\pt(x - y)^2 &= \ptsn (\xsm \xm - 2 \xsm \ym + \ysm \ym) \\
+		&= \ptsn(\xsm \xm) - 2 \ym \ptsn \xsm \\
+		&= \xm \ptsn \xsm + \xsm \ptsn \xm - 2 \ym \ptsn \xsm \\
+		&= 2 \xm \ptsn \xsm - 2 \ym \ptsn \xsm \\
+		&= 2 (\xm - \ym) \ptsn \xsm,
 	}
 	so
 	\eq{
-		\brac{ \pt(x - y)^2 }^2 = \ptsn (\xsm \xm - 2 \xsm \ym + \ysm \ym) \ptn (\xsm \xm - 2 \xsm \ym + \ysm \ym).
+		\brac{ \pt(x - y)^2 }^2 = 4 (\xm - \ym) \ptsn(\xsm) (\xsr - \ysr) \ptn(\xr)
+		= 4 (\xm - \ym) (\xr - \yr) \ptsn(\xsm) \ptn(\xsr).
 	}
-	Note also that
+
+	\hl{then the terrible thing looks like}
 	\eq{
-		\pt^2(x - y)^2 = \ptsn \ptn (\xsm \xm - 2 \xsm \ym + \ysm \ym)
+		-(\xm - \ym) \paren{ \frac{i}{T} \ptsn \ptn(\xsm) + \frac{1}{T^2} (\xr - \yr) \ptsn(\xsm) \ptn(\xsr) } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ]
 	}
-%	and that
-%	\al{
-%		 \pdv[2]{t}(x^2 - 2 x y + y^2) = \pdv[2]{t} \dv{x}{t} \dv{x^2}{x} - 2 x \pdv[2]{y}{t} - 2 y \pdv[2]{x}{t} 
-%	}
 }
 
 
@@ -134,11 +145,11 @@
 }
 
 \sol{
-	The integral in Eq.~\refeq{show1a} has the form~\cite[p.~368]{}
+	The integral in Eq.~\refeq{show1a} has the form~\cite[p.~368]{Integrals}
 	\eq{
 		\intoi x^{\nu - 1} e^{-\bet / x - \gam x} \dd{x} = 2 \paren{ \frac{\bet}{\gam} }^{\nu / 2} K_\nu(2 \sqrt{\bet \gam}),
 	}
-	where $K_\nu$ is the modified Bessel function of the second kind.  To evaluate Eq.~\refeq{show1a}m we note that
+	where $K_\nu$ is the modified Bessel function of the second kind.  To evaluate Eq.~\refeq{show1a} we note that
 	\al{
 		x &\to T, &
 		\nu &\to 1 - \frac{d}{2}, &
@@ -198,6 +209,6 @@
 	where the operator acts on functions on Euclidean space that are periodic in the time direction with periodicity $\bet$.  As before, the $\bet$ dependence of this expression is difficult to compute directly.  However, the dependence on $m^2$ is unambiguous.  Show that the determinant indeed reproduces the partition function for relativistic scalar particles.
 }
 
-%\makebib
+\makebib
 
 \end{document}
