@@ -11,186 +11,83 @@
 \input{definitions}
 \input{probdefs}
 
-
-
-\state{}{
-	Consider the path integral for a single point particle, with the action
-	\eqn{given1}{
-		S = \intoq \ddt \brac{ \psmt \xdmt + \frac{\Nt}{2} [ \pst - m^2 - i \eps ] }.
-	}
-	This represents the quantization of the coordinates and momenta of the particle, subject to the mass shell constraint $p^2 = m^2$ (together with the $i \eps$ prescription) imposed by the Lagrange multiplier $N$.  This action admits the reparametrization symmetry $\del x = \alp p$, $\del p = 0$, $\del N = -\ptst \alp$ where $\alpt$ is any function.  This symmetry allows us to fix the gauge condition $\Nt = T$; the constant $T$ must still be integrated over, however.
-}
-
-\prob{
-	Path integrate over $\xt$, subject to the boundary conditions $\xm(0) = \xm$, $\xm(1) = \ym$, yielding a delta function $\delpd$ along the path.  Solve this constraint (find the set of functions that solve it) and path integrate over those $\ptt$ to find the quantum mechanical propagation amplitude
-	\eqn{show1a}{
-		\bkyx = \DF(x - y)
-		= \intoi \ddT (2 \pi i T)^{-d / 2} \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ],
-	}
-	where $d$ is the number of spacetime dimensions.
-}
-
-\sol{
-	Our action contains both position and momentum, so we can evaluate the propagation amplitude using P\&S~(9.12):
-	\eq{
-		U(\qa, \qb; T) = \paren{ \prodi \int \cD \qt \cD \ptt } \exp[ i \intoT \ddt \paren{ \sumi \pii \qdi - H(\qi, \pii) } ]
-	}
-	where the integration measure is~\cite[p.~281]{Peskin}
-	\eq{
-		\prodiNq \int \frac{\ddqi \ddpii}{2\pi}.
-	}
-	When evaluating the path integral, we must take into account that, in general, both position and momentum will vary over the path.  We can get around this by dividing the path up into very small pieces, and approximating the position and momentum as constant during each small piece.  The act of dividing the path up into these pieces is called discretization.  The process of discretizing the position looks something like~\cite[p.~277]{Peskin}
-	\eq{
-		S = \intoT \ddt \paren{ \frac{m}{2} \xd^2 - V(x) } \to \sumk \brac{ \frac{m}{2} \frac{(\xskq - \xsk)^2}{\eps} - \eps V\paren{ \frac{\xskq + \xsk}{2} } }.
-	}
-	
-	For our problem, we need to integrate over $d$ dimensions instead of one.  Eventually, we will also need to integrate over $\Nt$.  We first concern ourselves with only the position integral, and discretize into $M$ time segments of duration $\Del = 1 / M$:
-	\eqn{thing1a}{
-		\bkyx = \int \cD \Nt \int \cD \ptt \prodiMq \intnii \dddxskf \exp[ i \sumiMq \paren{ \psii (\xsiq - \xsi) + \frac{\Del}{2} \Nsi (\psii^2 - m^2 + i \eps) } ]
-	}
-	We now look at one of the integrals over some $\xsj$, ignoring factors that are not relevant to the integral.  For some $j$ such that $1 < k < M - 1$, we have
-	\al{
-		\intnii \dddxsjf \exp[ i \psj (\xsjq - \xsj) ] \exp[ i \psjmq (\xsj - \xsjmq) ] &= \intnii \dddxsjf \exp[ i \xsj (\psjmq - \psj) ] \\
-		&= (2\pi)^{d / 2} \deld(\psjmq - \psj),
-	}
-	where we have used~\cite{Delta}
-	\eq{
-		\del(x - \alp) = \frac{1}{2\pi} \intnii e^{i p (x - \alp)} \ddp.
-	}
-	We note that the $k = 1$ and $k = M - 1$ integrals, respectively, leave an $x_0 = x$ and an $x_M = y$ that are not ``matched'' with an adjacent integral.  So Eq.~\refeq{thing1a} becomes
-	\eqn{thing1a2}{
-		\bkyx = \int \cD \Nt \int \cD \ptt \paren{ \prodkMq (2\pi)^{d / 2} \deld(\pskmq - \psk) } e^{i (\psMq y - \pso x)} \exp( i \sumiMq \frac{\Del}{2} \Nsi (\psii^2 - m^2 + i \eps) )
-	}
-	The product of delta functions tells us that $p$ does not change from one short time interval to the next.  Since this is true for the entire path, we conclude that $p$ is constant; hence, $\pd = 0$.  (This is consistent with the Lagrangian in Eq.~\refeq{given1} having no external potential, meaning momentum is conserved.)  So we can write Eq.~\refeq{thing1a2} with $\del(\pd)$ as we wanted:
-	\al{
-		\ans{ \bkyx = \paren{ \prodkMq (2\pi)^{d / 2} } \int \cD \Nt \int \cD \ptt \deld(\pd) e^{-i p (x - y)} \exp( i \sumiMq \frac{\Del}{2} \Nsi (\psii^2 - m^2 + i \eps) ). }
-	}
-	Since $p$ is constant along the path, we do not need to discretize the integral over $p$.  We expect that the factors of $(2\pi)^{d / 2}$ coming from that discretized integral would cancel out those from the delta function integral, so we remove them now.  We also note that our integral over $\Nt$ can be written as a one-dimensional integral over the constant $T$.  Thus
-	\aln{
-		\bkyx &= \intoi \ddT \intnii \dddp e^{-i p (x - y)} \exp( i \frac{T}{2} (p^2 - m^2 + i \eps) ) \notag \\
-		&= \intoi \ddT \intnii \dddp \exp[ i \paren{ \frac{T}{2} p^2 - (x - y) p - \frac{T}{2} m^2 + \frac{i T}{2} \eps } ] \notag \\
-		&= \intoi \ddT \intnii \dddp \exp\curly{ i \brac{ \frac{T}{2} \paren{ p - \frac{x - y}{T} }^2 + \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} } } \notag \\
-		&= \intoi \ddT \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ) \intnii \dddp \exp[ \frac{i T}{2} \paren{ p - \frac{x - y}{T} }^2 ] \notag \\
-		&= \intoi \ddT \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ) \intnii \dddu \exp( \frac{i T}{2} u^2 ) \label{thing1a3}
-	}
-	where we have completed the square~\cite[p.~282]{Peskin} and changed our variable of integration to $u = p - (x - y) / T$.  We now have an integral of the form~\cite{QFT}
-	\eq{
-		\int \exp( -\frac{1}{2} x \cdot A \cdot x ) \dd[n]{x} = \sqrt{\frac{(2\pi)^n}{\det A}}.
-	}
-	In our integral, $A$ is a diagonal matrix with determinant $-i T$.  So Eq.~\refeq{thing1a3} becomes
-	\eq{
-		\ans{ \bkyx = \int \ddT \paren{ \frac{2\pi}{i T} }^{d / 2} \exp( \frac{T}{2} (-m^2 + i \eps) - \frac{(x - y)^2}{2 T} ), }
-	}
-	which matches Eq.~\refeq{show1a} up to a factor of $(2\pi)^{-d}$.  \hl{does this come from the intergral over T somehow?}
-}
-
-
-\clearpage
-\prob{
-	Use this integral representation to show that $\DF$ satisfies
-	\eqn{show1b}{
-		(\pt^2 + m^2) \DF = i \deld(x - y).
-	}
-}
-
-\sol{
-	Feeding Eq.~\refeq{show1a} into the left-hand side of Eq.~\refeq{show1b}, we have
-	\aln{
-		(\pt^2 + m^2) \DF &= m^2 \DF + \intoi \ddT (2 \pi i T)^{-d / 2} \pt^2 \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \notag \\
-		&= m^2 \DF + \intoi \ddT (2 \pi i T)^{-d / 2} \exp( -\frac{i}{2} (m^2 - i \eps) T ) \pt^2\brac{ \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) }, \label{thing1b}
-	}
-	where
-	\al{
-		\pt^2\brac{ \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) } &= \pt\curly{ \pt\brac{ \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) } } \\
-		&= \pt \brac{ -\frac{i}{T} (x - y) \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) } \\
-		&= -\frac{i}{T} \pt(x - y) \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) - \frac{i}{T} (x - y) \pt\brac{ \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) } \\
-		&= -\frac{i}{T} \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) - \frac{(x - y)^2}{T^2} \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ),
-	}
-	since $\pt x = 1$ and $\pt y = 0$.  Then Eq.~\refeq{thing1b} becomes
-	\aln{
-		(\pt^2 + m^2) \DF &= m^2 \DF - \intoi \ddT (2 \pi i T)^{-d / 2} \exp( -\frac{i}{2} (m^2 - i \eps) T ) \exp( -\frac{i}{2} \frac{(x - y)^2}{T} ) \paren{ \frac{i}{T} + \frac{(x - y)^2}{T^2} } \notag \\
-		&= m^2 \DF - \intoi \ddT (2 \pi i T)^{-d / 2} \paren{ \frac{i}{T} + \frac{(x - y)^2}{T^2} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \notag \\
-		&\to -\intoi \ddT (2 \pi i T)^{-d / 2} \paren{ \frac{(x - y)^2}{T^2} + \frac{i}{T} - m^2 } \exp[ -\frac{i}{2} \paren{ m^2 T + \frac{(x - y)^2}{T} } ], \label{important} %\\
-%		&= m^2 \DF - (2 \pi i)^{-d / 2} \intoi \ddT \paren{ \frac{i}{T^{d/2 + 1}} + \frac{(x - y)^2}{T^{d/2 + 2}} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ].
-	}
-	where we have taken the limit as $\eps \to 0$.
-	
-	\hl{looks sort of like a total derivative, so take derivative of integrand, which we call I}
-	\aln{
-		\dv{I}{T} &= \dv{T}\curly{ (2 \pi i T)^{-d / 2} \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \notag \\[2ex]
-		&= \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \dv{T}( (2 \pi i T)^{-d / 2} ) \notag \\
-		&\hspace{5em} \phantom{=\ } + (2 \pi i T)^{-d / 2} \dv{T}\curly{ \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } \label{thing1b2}
-	}
-	Note that
-	\al{
-		\dv{T}( (2 \pi i T)^{-d / 2} ) &= -\frac{d}{2 T} (2 \pi i T)^{-d / 2}, \\
-		\dv{T}\curly{ \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] } &= -\frac{i}{2} \paren{ m^2 - i \eps - \frac{(x - y)^2}{T^2} } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ].
-	}
-	So Eq.~\refeq{thing1b2} becomes
-	\al{
-		\dv{I}{T} &= -\frac{i}{2} (2 \pi i T)^{-d / 2} \paren{ -\frac{(x - y)^2}{T^2} - \frac{id}{T} + m^2 - i \eps } \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
-		&\to \frac{i}{2} (2 \pi i T)^{-d / 2} \paren{ \frac{(x - y)^2}{T^2} + \frac{id}{T} - m^2 } \exp[ -\frac{i}{2} \paren{ m^2 T + \frac{(x - y)^2}{T} } ]
-	}
-	where we have taken the limit as $\eps \to 0$.  Compare this to Eq.~\refeq{important}.  Let
-	\eq{
-		\FT \equiv \frac{2}{i} (2 \pi i T)^{-d / 2} \exp[ -\frac{i}{2} \paren{ m^2 T + \frac{(x - y)^2}{T} } ]
-	}
-	Then we can write Eq.~\refeq{thing1b} as
-	\eq{
-		(\pt^2 + m^2) \DF = \intoi \ddT \dv{\FT}{T}
-		= \FT \bigg|_0^\infty
-		= \frac{2}{i} (2 \pi i T)^{-d / 2} \exp[ -\frac{i}{2} \paren{ m^2 T + \frac{(x - y)^2}{T} } ] \bigg|_0^\infty.
-	}
-	Note that
-	\al{
-		F(\infty) &\to 0, &
-		F(0) &\to (2 \pi i T)^{-d / 2} \exp[ -\frac{i (x - y)^2}{2 T} ]
-	}
-	\hl{this looks like a delta funciton}
-}
-
-
-
-\clearpage
-\prob{
-	Evaluate the $T$ integral in terms of Bessel functions.
-}
-
-\sol{
-	The integral in Eq.~\refeq{show1a} has the form~\cite[p.~368]{Integrals}
-	\eq{
-		\intoi x^{\nu - 1} e^{-\bet / x - \gam x} \dd{x} = 2 \paren{ \frac{\bet}{\gam} }^{\nu / 2} K_\nu(2 \sqrt{\bet \gam}),
-	}
-	where $K_\nu$ is the modified Bessel function of the second kind.  To evaluate Eq.~\refeq{show1a} we note that
-	\al{
-		x &\to T, &
-		\nu &\to 1 - \frac{d}{2}, &
-		\bet &\to \frac{i}{2} (x - y)^2, &
-		\gam &\to \frac{i}{2} (m^2 - i \eps).
-	}
-	So we have
-	\al{
-		\bkyx &= (2 \pi i)^{-d / 2} \intoi \ddT T^{d / 2} \exp[ -\frac{i}{2} \paren{ (m^2 - i \eps) T + \frac{(x - y)^2}{T} } ] \\
-		&= 2 (2 \pi i)^{-d / 2} \paren{ \frac{(x - y)^2}{m^2 - i \eps} }^{1 / 2 - d / 4} K_{1 - d / 2}\paren{ 2 \sqrt{-\frac{(x - y)^2 (m^2 - i \eps)}{4} } } \\
-		&= \ans{ 2^{1 - d / 2} (\pi i)^{-d / 2} \paren{ \frac{(x - y)^2}{m^2 - i \eps} }^{1 / 2 - d / 4} K_{1 - d / 2}\paren{ i \sqrt{(x - y)^2 (m^2 - i \eps)} }. }
-	}
-	\vfix
-}
+\input{Problem1}
 
 
 
 
 
 
-\clearpage
 \state{Quantum statistical mechanics (Peskin \& Schroeder 9.2)}{\hfix}
 
 \prob{
 	Evaluate the quantum statistical partition function
-	\eq{
+	\eqn{given2a}{
 		Z = \Tr(e^{-\bet H})
 	}
 	(where $\bet = 1 / k T$) using the strategy of Section~9.1 for evaluating the matrix elements of $e^{-i H t}$ in terms of functional integrals.  Show that one again finds a functional integral, over functions defined on a domain that is of length $\bet$ and periodically connected in the time direction.  Note that the Euclidean form of the Lagrangian appears in the weight.
+}
+
+\sol{
+	The trace is independent of representation~\cite[pp.~38--39]{Sakurai}, so we may write it in the position basis, denoted by $q$.  In this basis, Eq.~\refeq{given2a} becomes
+	\eqn{thing2a}{
+		Z = \int \dddq \ev{e^{-\bet H}}{q}.
+	}
+	Following the steps of p.~280 of P\&S, we discretize the temperature interval into $N$ slices of width $\eps = \bet / N$.  Then we can write
+	\eq{
+		e^{-\bet H} = \prodkN e^{-\eps H}.
+	}
+	We insert a complete set of states between each of the factors of $e^{-\eps H}$, in the form
+	\eq{
+		1 = \int \dddqsk \ketbra{\qsk}.
+	}
+	So Eq.~\refeq{thing2a} can be written as
+	\eq{
+		Z = \int \dddq \bra{q} \paren{ \prodkNq \int \dddqsk e^{-\eps H} \ketbra{\qsk} } e^{-\eps H} \ket{q}
+	}
+	Taking the limit $\eps \to 0$ as in P\&S~(9.9), this becomes
+	\aln{
+		Z &= \int \dddq \bra{q} \paren{ \prodkNq \int \dddqsk (1 - \eps H) \ketbra{\qsk} } (1 - \eps H) \ket{q} \notag \\
+		&= \int \dddq \paren{ \prodkqNq \int \dddqsk } \mel*{q}{(1 - \eps H)}{\qsNq} \cdots \mel*{\qsw}{(1 - \eps H)}{\qsq} \mel*{\qsq}{(1 - \eps H)}{q} \label{thing2a2}
+	}
+	Assuming $H$ can be written as $H(q, p) = f(q) + g(p)$, its matrix element can be written using P\&S~(9.10):
+	\eq{
+		\mel*{\qskq}{H(q, p)}{\qsk} = \int \dddpskf H(\qsk, \psk) \exp[ i \psk \cdot (\qskq - \qsk) ].
+	}
+	We can again use the $\eps \to 0$ limit to write $1 - \eps H$ and $e^{-\eps H}$~\cite[p.~281]{Peskin}.  Then our matrix elements in Eq.~\refeq{thing2a2} can be written as
+	\eq{
+		\mel*{\qskq}{e^{-\eps H}}{\qsk} = \int \dddpskf \exp[ i \psk \cdot (\qskq - \qsk) - \eps H(\qsk, \psk) ].
+	}
+	Now Eq.~\refeq{thing2a2} can be written in a form similar to P\&S~(9.11),
+	\al{
+		Z &= \int \dddq \paren{ \prodkqNq \int \dddqsk } \paren{ \prodkN \int \dddpskf } \exp[ i \psNq \cdot (q - \qsNq) - \eps H(\qsNq, \psNq) ] \\[-1ex]
+		&\hspace{20em} \phantom{=\ } \times \exp\curly{ \sumkqNw \Big[ i \psk \cdot (\qskq - \qsk) - \eps H(\qsk, \psk) \Big] } \\[1ex]
+		&\hspace{25em} \phantom{=\ } \times \exp[ i \psN \cdot (\qsq - q) - \eps H(q, \psN) ].
+	}
+	Let $q = \qsq = \qsNpq$ and $\eps' = i \eps$.  Then we can write $Z$ in a form even more similar to (9.11),
+	\eqn{thing2a3}{
+		Z = \paren{ \prodkN \int \dddqsk \int \dddpskf } \exp\curly{ i \sumkN \Big[ \psk \cdot (\qskq - \qsk) + \eps' H(\qsk, \psk) \Big] }.
+	}
+	Assuming the Hamiltonian takes the form
+	\eq{
+		H = \frac{p^2}{2m} + V(q),
+	}
+	we can integrate over the momenta by completing the square as on p.~282 of P\&S.  Adapting their expression, we find
+	\eq{
+		\int \dddpskf \exp[ i \paren{ \psk \cdot (\qskq - \qsk) + \eps' \frac{\psk^2}{2 m} } ] = \paren{ \frac{i m}{2 \pi \eps'} }^{d / 2} \exp[ -\frac{i m}{2 \eps'} (\qskq - \qsk)^2 ].
+	}
+	Feeding this into Eq.~\refeq{thing2a3} yields
+	\eq{
+		Z  = \paren{ \frac{i m}{2 \pi \eps'} }^{N d / 2} \paren{ \prodkN \int \dddqsk \int \dddpskf } \exp\curly{ -i \sumkN \brac{ \frac{m}{2 \eps'} (\qskq - \qsk)^2 - \eps' H(\qsk, \psk) } },
+	}
+	which resembles (9.13).  Since (9.13) is the discretized form of (9.3), we adapt (9.3) and Eq.~\refeq{disc} as we take $\eps' \to 0$ to write
+	\eq{
+		\ans{ Z = \int \cD \qT e^{-\SE[\qT]},
+		\qwhere
+		\SE = \intobet \ddT \paren{ \frac{m}{2} \qd^2 + V(q) }
+		\equiv \intobet \ddT \LE. }
+	}
+	Here we have defined $\LE$, the Euclidean form of the Lagrangian. \qed
 }
 
 
@@ -209,6 +106,10 @@
 		\sinh z = z \prodnqi \paren{ 1 + \frac{z^2}{(n \pi)^2} }
 	}
 	useful.]
+}
+
+\sol{
+	
 }
 
 
