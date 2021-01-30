@@ -18,7 +18,7 @@
 \sol{
 	Our action contains both position and momentum, so we can evaluate the propagation amplitude using P\&S~(9.12):
 	\eq{
-		U(\qa, \qb; T) = \paren{ \prodi \int \cD \qt \cD \ptt } \exp[ i \intoT \ddt \paren{ \sumi \pii \qdi - H(\qi, \pii) } ]
+		U(\qa, \qb; T) = \paren{ \prodi \int \cD \qt \, \cD \ptt } \exp[ i \intoT \ddt \paren{ \sumi \pii \qdi - H(\qi, \pii) } ]
 	}
 	where the integration measure is~\cite[p.~281]{Peskin}
 	\eq{
@@ -40,7 +40,9 @@
 	}
 	where we have used~\cite{Delta}
 	\eq{
-		\del(x - \alp) = \frac{1}{2\pi} \intnii e^{i p (x - \alp)} \ddp.
+		\del(x - \alp) = \frac{1}{2\pi} \intnii e^{i p (x - \alp)} \ddp
+		\qimplies
+		\deld(x - \alp) = \frac{1}{(2\pi)^d} \intnii e^{i p (x - \alp)} \dddp.
 	}
 	We note that the $k = 1$ and $k = M - 1$ integrals, respectively, leave an $x_0 = x$ and an $x_M = y$ that are not ``matched'' with an adjacent integral.  So Eq.~\refeq{thing1a} becomes
 	\eqn{thing1a2}{
@@ -48,7 +50,7 @@
 	}
 	The product of delta functions tells us that $p$ does not change from one short time interval to the next.  Since this is true for the entire path, we conclude that $p$ is constant; hence, $\pd = 0$.  (This is consistent with the Lagrangian in Eq.~\refeq{given1} having no external potential, meaning momentum is conserved.)  So we can write Eq.~\refeq{thing1a2} with $\del(\pd)$ as we wanted:
 	\al{
-		\ans{ \bkyx = \paren{ \prodkMq (2\pi)^{d / 2} } \int \cD \Nt \int \cD \ptt \deld(\pd) e^{-i p (x - y)} \exp( i \sumiMq \frac{\Del}{2} \Nsi (\psii^2 - m^2 + i \eps) ). }
+		\ans{ \bkyx = \paren{ \prodkMq (2\pi)^{d / 2} } \int \cD \Nt \int \cD \ptt \, \deld(\pd) e^{-i p (x - y)} \exp( i \sumiMq \frac{\Del}{2} \Nsi (\psii^2 - m^2 + i \eps) ). }
 	}
 	Since $p$ is constant along the path, we do not need to discretize the integral over $p$.  We expect that the factors of $(2\pi)^{d / 2}$ coming from that discretized integral would cancel out those from the delta function integral, so we remove them now.  We also note that our integral over $\Nt$ can be written as a one-dimensional integral over the constant $T$.  Thus
 	\aln{

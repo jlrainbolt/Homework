@@ -81,24 +81,24 @@
 		Z  = \paren{ \frac{i m}{2 \pi \eps'} }^{N d / 2} \paren{ \prodkN \int \dddqsk \int \dddpskf } \exp\curly{ -i \sumkN \brac{ \frac{m}{2 \eps'} (\qskq - \qsk)^2 - \eps' H(\qsk, \psk) } },
 	}
 	which resembles (9.13).  Since (9.13) is the discretized form of (9.3), we adapt (9.3) and Eq.~\refeq{disc} as we take $\eps' \to 0$ to write
-	\eq{
-		\ans{ Z = \int \cD \qT e^{-\SE[\qT]},
+	\eqn{ans2a}{
+		\ans{ Z = \int \cD \qT \, s e^{-\SE[\qT]},
 		\qwhere
 		\SE = \intobet \ddT \paren{ \frac{m}{2} \qd^2 + V(q) }
 		\equiv \intobet \ddT \LE. }
 	}
-	Here we have defined $\LE$, the Euclidean form of the Lagrangian. \qed
+	Here we have defined $\LE$, the Euclidean form of the Lagrangian.  Thus we have shown that $Z$ is a functional integral over functions, with $p$ and $q$ defined on an interval of length $\bet$ that is periodically connected; that is, $q(0) = q(\bet)$ and $p(0) = p(\bet)$.  The periodicity was imposed when we set $\qsq = \qsNpq$. \qed
 }
 
 
 
 \prob{
 	Evaluate this integral for a simple harmonic oscillator,
-	\eq{
+	\eqn{lagr}{
 		\LE = \frac{1}{2} \xd^2 + \frac{1}{2} \omg^2 x^2,
 	}
 	by introducing a Fourier decomposition of $\xt$:
-	\eq{
+	\eqn{fourier}{
 		\xt = \sumn \xn \frac{1}{\sqrt{\bet}} e^{2 \pi i n t / \bet}.
 	}
 	The dependence of the result on $\bet$ is a bit subtle to obtain explicitly, since the measure for the integral over $\xt$ depends on $\bet$ in any discretization.  However, the dependence on $\omg$ should be unambiguous.  Show that, up to a (possibly divergent and $\bet$-dependent) constant, the integral reproduces exactly the familiar expression for the quantum partition function of an oscillator.  [You may find the identity
@@ -109,7 +109,62 @@
 }
 
 \sol{
-	
+	From Eq.~\refeq{fourier}, note that
+	\eq{
+		\xd = \dv{t}( \sumn \xn \frac{1}{\sqrt{\bet}} e^{2 \pi i n t / \bet} )
+		= \sumn \xn \frac{2 \pi i n}{\bet^{3 / 2}} e^{2 \pi i n t / \bet}.
+	}
+	Feeding this result into Eq.~\refeq{lagr} yields
+	\al{
+		\LE& = \frac{1}{2} \paren{ \sumn \xn \frac{2 \pi i n}{\bet^{3 / 2}} e^{2 \pi i n t / \bet} } \paren{ \summ \xmm \frac{2 \pi i m}{\bet^{3 / 2}} e^{2 \pi i m t / \bet} } + \frac{\omg^2}{2} \paren{ \sumn \xn \frac{1}{\sqrt{\bet}} e^{2 \pi i n t / \bet} } \paren{ \summ \xmm \frac{1}{\sqrt{\bet}} e^{2 \pi i m t / \bet} } \\
+		&= \frac{1}{2} \sumn \summ \paren{ -\frac{(2 \pi)^2}{\bet^3} n m \xn \xmm e^{2 \pi i (n + m) t / \bet} + \frac{\omg^2}{\bet} e^{2 \pi i (n + m) t / \bet} } \\
+		&= \frac{1}{2 \bet} \sumn \summ \xn \xmm e^{2 \pi i (n + m) t / \bet} \paren{ -\frac{(2 \pi)^2}{\bet^2} n m + \omg^2 }.
+	}
+	Now from Eq.~\refeq{ans2a}, we have
+	\aln{
+		\SE &= \frac{1}{2 \bet} \intobet \ddt \sumn \summ \xn \xmm e^{2 \pi i (n + m) t / \bet} \paren{ -\frac{(2 \pi)^2}{\bet^2} n m + \omg^2 } \notag \\
+		&= \frac{1}{2} \frac{1}{2 \pi} \intotp \ddphi \sumn \summ \xn \xmm e^{i (n + m) \phi} \paren{ -\frac{(2 \pi)^2}{\bet^2} n m + \omg^2 } \notag \\
+		&= \frac{1}{2} \sumn \summ \xn \xmm \delnmm \paren{ -\frac{(2 \pi)^2}{\bet^2} n m + \omg^2 } \label{thing2b}
+	}
+	where we have defined $\phi = 2 \pi t / \bet$ and applied~\cite{Kronecker}
+	\eq{
+		\delxn = \frac{1}{2 \pi} \intotp e^{i (x - n) \phi} \ddphi.
+	}
+	Picking up from Eq.~\refeq{thing2b},
+	\eq{
+		\SE = \frac{1}{2} \sumnii \xn \xmn \paren{ \frac{(2 \pi)^2}{\bet^2} n^2 + \omg^2 }
+		= \sumnoi \abs{\xn}^2 \brac{ \paren{ \frac{2 n \pi}{\bet} }^2 + \omg^2 }
+		= \xo^2 \omg^2 + \sumnqi \abs{\xn}^2 \brac{ \paren{ \frac{2 n \pi}{\bet} }^2 + \omg^2 },
+	}
+	where we have used the fact that since $x$ is real, Eq.~\refeq{fourier} implies $\xmn = \xn^*$~\cite[p.~285]{Peskin}.  This also means $\xo$ is real.  Referring once more to Eq.~\refeq{ans2a}, we have the integral
+	\eq{
+		Z = \int \cD \xt \exp\curly{ -\abs{\xo}^2 \omg^2 - \sumnqi \abs{\xn}^2 \brac{ \paren{ \frac{2 n \pi}{\bet} }^2 + \omg^2 } }.
+	}
+	We can rewrite the integral as~\cite[p.~285]{Peskin}
+	\eq{
+		\cD \xt = \prodno \ddRexn \ddImxn.
+	}
+	This yields
+	\aln{
+		Z &= \int \ddxo e^{-\omg^2 \xo^2} \paren{ \prodno \int \ddRexn \int \ddImxn } \exp\curly{ -\sumnqi \brac{ (\Rexn)^2 + (\Imxn)^2 } \brac{ \paren{ \frac{2 n \pi}{\bet} }^2 + \omg^2 } } \notag \\[2ex]
+		%
+		&= \int \ddxo e^{-\omg^2 \xo^2} \paren{ \prodno \int \ddRexn \exp\curly{ -\sumnqi (\Rexn)^2 \brac{ \paren{ \frac{2 n \pi}{\bet} }^2 + \omg^2 } }  } \notag \\
+		&\hspace{10em} \phantom{=\ } \times \paren{ \prodno \int \ddImxn \exp\curly{ -\sumnqi (\Imxn)^2 \brac{ \paren{ \frac{2 n \pi}{\bet} }^2 + \omg^2 } } } \notag \\[2ex]
+		%
+		&= \frac{\sqrt{2 \pi}}{\omg} \paren{ \prodno \sqrt{ \frac{\pi}{(2 n \pi / \bet)^2 + \omg^2}} } \paren{ \prodno \sqrt{ \frac{\pi}{(2 n \pi / \bet)^2 + \omg^2}} }. \label{thing2b2}
+	}
+	where we have used~\cite{QFT}
+	\eq{
+		\intnii e^{-a x^2 / 2} = \sqrt{ \frac{2 \pi}{a} }.
+	}
+	Picking up from Eq.~\refeq{thing2b2}, we have
+	\al{
+		Z &= \frac{\sqrt{2 \pi}}{\omg} \prodno \frac{\pi}{(2 n \pi / \bet)^2 + \omg^2} \\
+		&= \frac{\sqrt{2 \pi}}{\omg} \prodno \paren{ \frac{\bet}{2 n \pi} }^2 \frac{\pi}{1 + (\omg \bet / 2 n \pi)^2} \\
+		&= \frac{\bet \sqrt{2 \pi}}{2} \paren{ \prodno \frac{\bet^2}{4 \pi n^2} } \frac{1}{\omg \bet / 2} \paren{ \prodno \frac{1}{1 + (\omg \bet / 2)^2 / (n \pi)^2} } \\
+		&= \ans{ \frac{\bet \sqrt{2 \pi}}{2} \paren{ \prodno \frac{\bet^2}{4 \pi n^2} } \frac{1}{\sinh(\omg \bet / 2)}. }
+	}
+	We note that $\prodno \bet^2 / 4 \pi n^2$ is a divergent, beta-dependent constant.  Otherwise, this is what we would expect for the quantum partition function of a harmonic oscillator. \qed
 }
 
 
