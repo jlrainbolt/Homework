@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{444}
+\homeworknum{3}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+\state{Renormalization of Yukawa theory (P\&S 10.2)}{
+	Consider the pseudoscalar Yukawa Lagrangian,
+	\eqn{given1}{
+		\cL = \frac{1}{2} (\ptsm \phi)^2 - \frac{1}{2} m^2 \phi^2 + \psib (i \ptsl - M) \psi - i g \psib \gamt \psi \phi,
+	}
+	where $\phi$ is a real scalar field and $\psi$ is a Dirac fermion.  Notice that this Lagrangian is invariant under the parity transformation $\psi(t, \vx) \to \gamo \psi(zt, -\vx)$, $\phi(t, \vx) \to -\phi(t, -\vx)$, in which the field $\phi$ carries odd parity.
+}
+
+\prob{
+	Determine the superficially divergent amplitudes and work out the Feynman rules for renormalized perturbation theory for this Lagrangian.  Include all necessary counterterm vertices.  Show that the theory contains a superficially divergent $4 \phi$ amplitude.  This means that the theory cannot be renormalized unless one includes a scalar self-interaction,
+	\eq{
+		\del\cL = \frac{\lam}{4!} \phi^4,
+	}
+	and a counterterm of the same form.  It is of course possible to set the renormalized value of this coupling to zero, but that is not a natural choice, since the counterterm will still be nonzero.  Are any further interactions required?
+}
+
+\sol{
+	The Feynman rules for a pseudoscalar Yukawa theory are~\cite[pp.~24--25]{FR}
+	\hl{copy over the diagrams}
+	
+%	\al{
+%		\centergraphics{diag/vertex} &= -g \gamt, &
+%		\centergraphics{diag/propagator} &= \frac{i}{q^2 - m^2 + i \eps}, &
+%		add the fermion one.
+%	}
+	These Feynman rules are similar enough to those for QED; that is, the powers of $k$ are the same, each propagator has a momentum integral, each vertex has a delta function, and each vertex involves one $\phi$ line and two fermion lines~\cite[p.~316]{Peskin}.  So we can adapt P\&S~(10.4) for the superficial degree of divergence:
+	\eq{
+		D = 4 - \Nphi - \frac{3}{2} \Nf,
+	}
+	where $\Nphi$ is the number of external $\phi$ lines and $\Nf$ is the number of external fermion lines.
+	
+	This means the superficially divergent amplitudes are a subset of those appearing in Fig.~10.2 of P\&S, with the photon lines replaced by pseudoscalar lines:
+	
+	\hl{draw the diagrams from p.~318}
+	
+	We ignore (a) since it is irrelevant to scattering processes~\cite[pp.~317--318]{Peskin}.  Amplitudes~(b) and (d) vanish because the theory is invariant under the parity transformation, which means all amplitudes with zero fermion legs and an odd number of external $\phi$ legs vanish~\cite[pp.~318, 323--324]{Peskin}.  So the superficially divergent amplitudes are
+	
+	\hl{draw the remaining ones but in blue}
+	
+	To work out the renormalized theory, we rescale the field as in P\&S~(10.15):
+	\eq{
+		\phi = \Zq^{1/2} \phir.
+	}
+	The rescaling for the fermion is~\cite[p.~330]{Peskin}
+	\eq{
+		\psi = \Zw^{1/2} \psir.
+	}
+	Feeding these into Eq.~\refeq{given1}, we obtain the renormalized Lagrangian~\cite[p.~324]{Peskin}
+	\eq{
+		\cL = \frac{1}{2} \Zq (\ptsm \phi)^2 - \frac{1}{2} \Zq m^2 \phi^2 + \Zw \psib (i \ptsl - M) \psi - i \Zq^{1/2} \Zw \go \psib \gamt \psi \phi,
+	}
+	where $\mo$ and $\Mo$ are the bare masses, and $\go$ is the bare coupling constant.  Define~\cite[pp.~324, 331]{Peskin}
+	\al{
+		\delZq &= \Zq - 1, &
+		\delZw &= \Zw - 1, &
+		\delm &= \mo^2 \Zq - m^2, &
+		\delM &= \Mo \Zw - M, &
+		\delg &= (\go / g) \Zq^{1/2} \Zw - 1.
+	}
+}
+
+
+
+\prob{
+	Compute the divergent part (the pole as $d \to 4$) of each counterterm, to the one-loop order of perturbation theory, implementing a sufficient set of renormalization conditions.  You need not worry about finite parts of the counterterms.  Since the divergent parts must have a fixed dependence on the external momenta, you can simplify this calculation by choosing the momenta in the simplest possible form.
+}
+
+
+\makebib
+
+\end{document}
