@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+\usepackage{xcolor}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{blue_fermion_prop_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(30, 20)
+			\fmfstraight
+			\fmfleft{i}
+			\fmfright{o}
+			\fmf{fermion,label={\color{blue}$p$},fore=blue}{i,o}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

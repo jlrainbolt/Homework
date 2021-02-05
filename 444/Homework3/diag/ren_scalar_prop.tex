@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{ren_scalar_prop_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(30, 20)
+			\fmfstraight
+			\fmfleft{i}
+			\fmfright{o}
+			\fmf{phantom}{i,c,o}
+			\fmfv{decor.shape=circle,decor.size=0.15w,decor.filled=empty,fore=blue}{c}
+			\fmffreeze
+            		\fmfleft{i2}
+			\fmfright{o2}
+            		\fmf{dashes,fore=blue}{c2,i2}
+            		\fmf{dashes,fore=blue}{c2,o2}
+			\fmfv{decor.shape=cross,decor.size=0.15w,fore=blue}{c2}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

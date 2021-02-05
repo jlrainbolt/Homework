@@ -22,36 +22,59 @@
 
 \prob{
 	Determine the superficially divergent amplitudes and work out the Feynman rules for renormalized perturbation theory for this Lagrangian.  Include all necessary counterterm vertices.  Show that the theory contains a superficially divergent $4 \phi$ amplitude.  This means that the theory cannot be renormalized unless one includes a scalar self-interaction,
-	\eq{
+	\eqn{given1a}{
 		\del\cL = \frac{\lam}{4!} \phi^4,
 	}
 	and a counterterm of the same form.  It is of course possible to set the renormalized value of this coupling to zero, but that is not a natural choice, since the counterterm will still be nonzero.  Are any further interactions required?
 }
 
 \sol{
-	The Feynman rules for a pseudoscalar Yukawa theory are~\cite[pp.~24--25]{FR}
-	\hl{copy over the diagrams}
-	
-%	\al{
-%		\centergraphics{diag/vertex} &= -g \gamt, &
-%		\centergraphics{diag/propagator} &= \frac{i}{q^2 - m^2 + i \eps}, &
-%		add the fermion one.
-%	}
+	We write Eq.~\refeq{given1} explicitly in terms of the bare masses $\mo, \Mo$ and the bare coupling constant $\go$:
+	\eqn{newlagr}{
+		\cL = \frac{1}{2} (\ptsm \phi)^2 - \frac{1}{2} \mo^2 \phi^2 + \psib (i \ptsl - \Mo) \psi - i \go \psib \gamt \psi \phi,
+	}
+	The Feynman rules for a pseudoscalar Yukawa theory are~\cite[pp.~24--25]{FR} \\[-5ex]
+	\al{
+		\centergraphics{diag/scalar_prop} &= \frac{i}{q^2 - \mo^2 + i \eps} &
+		\centergraphics{diag/fermion_prop} &= \frac{i (\psl + \Mo)}{p^2 - \Mo^2 + i \eps} \\[-7ex]
+	}
+	\eq{
+		\centergraphics{diag/scalar_fermion_vertex} = -\go \gamt
+	}
 	These Feynman rules are similar enough to those for QED; that is, the powers of $k$ are the same, each propagator has a momentum integral, each vertex has a delta function, and each vertex involves one $\phi$ line and two fermion lines~\cite[p.~316]{Peskin}.  So we can adapt P\&S~(10.4) for the superficial degree of divergence:
 	\eq{
 		D = 4 - \Nphi - \frac{3}{2} \Nf,
 	}
 	where $\Nphi$ is the number of external $\phi$ lines and $\Nf$ is the number of external fermion lines.
 	
-	This means the superficially divergent amplitudes are a subset of those appearing in Fig.~10.2 of P\&S, with the photon lines replaced by pseudoscalar lines:
-	
-	\hl{draw the diagrams from p.~318}
-	
-	We ignore (a) since it is irrelevant to scattering processes~\cite[pp.~317--318]{Peskin}.  Amplitudes~(b) and (d) vanish because the theory is invariant under the parity transformation, which means all amplitudes with zero fermion legs and an odd number of external $\phi$ legs vanish~\cite[pp.~318, 323--324]{Peskin}.  So the superficially divergent amplitudes are
-	
-	\hl{draw the remaining ones but in blue}
-	
-	To work out the renormalized theory, we rescale the field as in P\&S~(10.15):
+	This means the superficially divergent amplitudes are a subset of those appearing in Fig.~10.2 of P\&S, with the photon lines replaced by pseudoscalar lines: \\[-4ex]
+	\al{
+		\text{(a)} &\: \centergraphics{diag/amp_a} \quad D = 4 &
+		\text{(b)} &\: \centergraphics{diag/amp_b} \quad D = 3 &
+		\text{(c)} &\: \centergraphics{diag/amp_c} \quad D = 2 \\
+		\text{(d)} &\: \centergraphics{diag/amp_d} \quad D = 1 &
+		\text{(e)} &\: \centergraphics{diag/amp_e} \quad D = 0 &
+		\text{(f)} &\: \centergraphics{diag/amp_f} \quad D = 1 \\
+		& &
+		\text{(g)} &\: \centergraphics{diag/amp_g} \quad D = 0 &
+	}
+	We ignore (a) since it is irrelevant to scattering processes~\cite[pp.~317--318]{Peskin}.  Amplitudes~(b) and (d) vanish because the theory is invariant under the parity transformation, which means all amplitudes with zero external fermion legs and an odd number of external $\phi$ legs vanish~\cite[pp.~318, 323--324]{Peskin}.  So the superficially divergent amplitudes are \\[-3ex]
+	\ans{\al{
+		\text{(c)} &\: \centergraphics{diag/blue_amp_c} \quad D = 2 &
+		\text{(e)} &\: \centergraphics{diag/blue_amp_e} \quad D = 0 &
+		\text{(f)} &\: \centergraphics{diag/blue_amp_f} \quad D = 1 \\
+		& &
+		\text{(g)} &\: \centergraphics{diag/blue_amp_g} \quad D = 0 &
+	}}%
+	\ans{Note that amplitude~(e) is a $4\phi$ amplitude.}  Since it is superficially divergent, according to the problem statement  we must introduce the scalar self-interaction given by Eq.~\refeq{given1a}.  The Feynman rule for this vertex is~\cite[p.~325]{Peskin}
+	\eq{
+		\centergraphics{diag/scalar_vertex} = -i \lamo.
+	}
+	With the addition of this new term, our Lagrangian in Eq.~\refeq{newlagr} becomes
+	\eqn{newlagr2}{
+		\cL = \frac{1}{2} (\ptsm \phi)^2 - \frac{1}{2} \mo^2 \phi^2 + \psib (i \ptsl - \Mo) \psi - i \go \psib \gamt \psi \phi + \frac{\lamo}{4!} \phi^4,
+	}
+	where $\lamo$ is the bare coupling constant for the scalar self-interaction.  To work out the renormalized theory, we rescale the field as in P\&S~(10.15):
 	\eq{
 		\phi = \Zq^{1/2} \phir.
 	}
@@ -59,22 +82,43 @@
 	\eq{
 		\psi = \Zw^{1/2} \psir.
 	}
-	Feeding these into Eq.~\refeq{given1}, we obtain the renormalized Lagrangian~\cite[p.~324]{Peskin}
-	\eq{
-		\cL = \frac{1}{2} \Zq (\ptsm \phi)^2 - \frac{1}{2} \Zq m^2 \phi^2 + \Zw \psib (i \ptsl - M) \psi - i \Zq^{1/2} \Zw \go \psib \gamt \psi \phi,
+	Feeding these into Eq.~\refeq{newlagr2}, we obtain the renormalized Lagrangian~\cite[p.~324]{Peskin}
+	\eqn{lagr2}{
+		\cL = \frac{1}{2} \Zq (\ptsm \phi)^2 - \frac{1}{2} \Zq \mo^2 \phi^2 + \Zw \psib (i \ptsl - \Mo) \psi - i \Zq^{1/2} \Zw \go \psib \gamt \psi \phi + \frac{\lamo}{4!} \Zq^2 \phi^4.
 	}
-	where $\mo$ and $\Mo$ are the bare masses, and $\go$ is the bare coupling constant.  Define~\cite[pp.~324, 331]{Peskin}
+	Define~\cite[pp.~324, 331]{Peskin}
 	\al{
 		\delZq &= \Zq - 1, &
 		\delZw &= \Zw - 1, &
-		\delm &= \mo^2 \Zq - m^2, &
+		\delm &= \mo^2 \Zq - m^2, \\
 		\delM &= \Mo \Zw - M, &
-		\delg &= (\go / g) \Zq^{1/2} \Zw - 1.
+		\delg &= (\go / g) \Zq^{1/2} \Zw - 1, &
+		\dellam &= \lamo \Zq^2 - \lam
 	}
+	Then Eq.~\refeq{lagr2} becomes
+	\al{
+		\cL &= \frac{1}{2} (1 + \delZq) (\ptsm \phi)^2 - \frac{1}{2} (m^2 + \delm) \phi^2 + \psib [ i (\delZw + 1) \ptsl - (M + \delM) ] \psi - i g (1 + \delg) \psib \gamt \psi \phi + \frac{\lam + \dellam}{4!} \phi^4 \\[2ex]
+		&= \frac{1}{2} (\ptsm \phi)^2 - \frac{1}{2} m^2 \phi^2 + \psib (i \ptsl - M) \psi - i g \psib \gamt \psi \phi + \frac{\lam}{4!} \phi^4 \\
+		&\hspace{5em} \phantom{=\ } + \frac{1}{2} \delZq (\ptsm \phi)^2 - \frac{1}{2} \delm \phi^2 + \psib (i \delZw \ptsl - \delM) \psi - i g \delg \psib \gamt \psi \phi + \frac{\dellam}{4!} \phi^4.
+	}
+	Here the first first five terms look like Eq.~\refeq{newlagr2}, but written in terms of the physical masses and couplings.  The last five terms are the counterterms~\cite[p.~325]{Peskin}.
+	
+	The Feynman rules for the renormalized theory are \\[-5ex]
+	\ans{\al{
+		\centergraphics{diag/blue_scalar_prop} &= \frac{i}{q^2 - m^2 + i \eps} &
+		\centergraphics{diag/ren_scalar_prop} &= i (p^2 \delZq - \delm) \\
+		\centergraphics{diag/blue_fermion_prop} &= \frac{i (\psl + M)}{p^2 - M^2 + i \eps} &
+		\centergraphics{diag/ren_fermion_prop} &= i (\psl \delZw - \delM) \\
+		\centergraphics{diag/blue_scalar_fermion_vertex} &= -g \gamt &
+		\centergraphics{diag/ren_scalar_fermion_vertex} &= -g \delg \gamt \\
+		\centergraphics{diag/blue_scalar_vertex} &= -i \lam &
+		\centergraphics{diag/ren_scalar_vertex} &= -i \dellam
+	}}%
+	\hl{why we don't need any more interactions}
 }
 
 
-
+\clearpage
 \prob{
 	Compute the divergent part (the pole as $d \to 4$) of each counterterm, to the one-loop order of perturbation theory, implementing a sufficient set of renormalization conditions.  You need not worry about finite parts of the counterterms.  Since the divergent parts must have a fixed dependence on the external momenta, you can simplify this calculation by choosing the momenta in the simplest possible form.
 }

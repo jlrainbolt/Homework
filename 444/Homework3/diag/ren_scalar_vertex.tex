@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{ren_scalar_vertex_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(20, 20)
+			\fmfstraight
+			\fmfleftn{i}{2}
+			\fmfrightn{o}{2}
+			\fmf{phantom}{i[1],c,o[2]}
+			\fmf{phantom}{i[2],c,o[1]}
+			\fmfv{decor.shape=circle,decor.size=0.225w,decor.filled=empty,fore=blue}{c}
+			\fmffreeze
+			\fmfleftn{i2}{2}
+			\fmfrightn{o2}{2}
+			\fmf{dashes,fore=blue}{i2[1],c2}
+			\fmf{dashes,fore=blue}{i2[2],c2}
+			\fmf{dashes,fore=blue}{o2[1],c2}
+			\fmf{dashes,fore=blue}{o2[2],c2}
+			\fmfv{decor.shape=cross,decor.size=0.225w,fore=blue}{c2}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

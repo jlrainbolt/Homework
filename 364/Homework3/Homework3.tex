@@ -1,0 +1,242 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{364}
+\homeworknum{3}
+
+\DeclareMathAlphabet{\mathsfit}{T1}{\sfdefault}{\mddefault}{\sldefault}
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+
+\state{Connection coefficients for spherical polar coordinates~(MCP 24.9)}{\hfix}
+
+\prob{ \label{1a}
+	Consider spherical polar coordinates in 3-dimensional space, and verify that the nonzero connection coefficients, assuming an orthonormal basis, are given by Eq.~(11.71).
+}
+
+\sol{
+	We follow the procedure on pp.~1171--1172 of MCP for computing the connection coefficients.  We first evaluate the commutation coefficients $\csabsr$ using MCP~(24.38a),
+	\eqn{commcoeff}{
+		\csabsr = \ver \cdot [ \vesa, \vesb ],
+	}
+	We lower the last index using (24.38b),
+	\eq{
+		\csabg = \csabsr \sgsrg.
+	}
+	Then we use (24.38c) to compute
+	\eqn{Gamthing}{
+		\Gamsabg = \frac{1}{2} (\sgsabdg + \sgsagdb - \sgsbgda + \csabg + \csagb - \csbga),
+	}
+	and raise the first index using (24.38d),
+	\eq{
+		\Gammsbg = \sgma \Gamsabg.
+	}
+	From the lecture, the commutator is given by
+	\eqn{comm}{
+		[ \vA, \vB ] = \nabsvA \vB - \nabsvB \vA.
+	}
+	We also note that $\sgsab = \vesa \cdot \vesb$~\cite[p.~1161]{MCP}.
+	
+	For an orthonormal basis $\{ \rh, \thh, \phh \}$, $\sg$ is the identity matrix~\cite[p.~614]{MCP}.  In spherical coordinates, the gradient is
+	\eq{
+		\grad = \rh \pdv{r} + \frac{1}{r} \thh \pdv{\tht} + \frac{1}{r \sin\tht} \phh \pdv{\phi},
+	}
+	and its components are~\cite{Spherical} \hl{(better double check)}
+	\al{
+		\nabsr \rh &= \bo, &
+		\nabst \rh &= \frac{1}{r} \thh, &
+		\nabsp \rh &= \frac{1}{r} \phh, \\
+		\nabsr \thh &= \bo, &
+		\nabst \thh &= -\frac{1}{r} \rh, &
+		\nabsp \thh &= \frac{1}{r \sin \tht} \phh, \\
+		\nabsr \phh &= \bo, &
+		\nabst \phh &= \bo, &
+		\nabsp \phh &= -\frac{1}{r \sin\tht} \thh - \frac{1}{r} \rh.
+	}
+	Applying Eq.~\refeq{comm} and the above, we find
+	\al{
+		[ \rh, \rh ] &= \nabsr \rh - \nabsr \rh = \bo, &
+		[ \rh, \thh ] &= \nabsr \thh - \nabst \rh = -\frac{1}{r} \thh, &
+		[ \rh, \phh ] &= \nabsr \phh - \nabsp \rh = -\frac{1}{r} \phh, \\
+		%
+		[ \thh, \rh ] &= -[ \rh, \thh] = \frac{1}{r} \thh, &
+		[ \thh, \thh ] &= \nabst \thh - \nabst \thh = \bo, &
+		[ \thh, \phh ] &= \nabst \phh - \nabsp \thh = -\frac{1}{r \sin \tht} \phh, \\
+		%
+		[ \phh, \rh ] &= -[ \rh, \phh ] = \frac{1}{r} \phh, &
+		[ \phh, \thh ] &= -[ \thh, \phh ] = \frac{1}{r \sin \tht} \phh, &
+		[ \phh, \phh ] &= \nabsp \phh - \nabsp \phh = \bo.
+	}
+	Since $\sg$ is the identity, we can immediately write from Eq.~\refeq{commcoeff}
+	\al{
+		c_{r r r} &= [ \rh, \rh ] \vdot \rh = 0, &
+		c_{r \tht r} &= [ \rh, \thh ] \vdot \rh = 0, &
+		c_{r \phi r} &= [ \rh, \phh ] \vdot \rh = 0, \\
+		%
+		c_{\tht r r} &= -c_{r \tht r} = 0, &
+		c_{\tht \tht r} &= [ \thh, \thh ] \vdot \rh = 0, &
+		c_{\tht \phi r} &= [ \thh, \phh ] \vdot \rh = 0, \\
+		%
+		c_{\phi r r} &= -c_{r \phi r} = 0, &
+		c_{\phi \tht r} &= -c_{ \tht \phi r} = 0, &
+		c_{\phi \phi r} &= [ \phh, \phh ] \vdot \rh = 0,
+	}
+	\al{
+		c_{r r \tht} &= [ \rh, \rh ] \vdot \thh = 0, &
+		c_{r \tht \tht} &= [ \rh, \thh ] \vdot \thh = -\frac{1}{r}, &
+		c_{r \phi \tht} &= [ \rh, \phh ] \vdot \thh = 0, \\
+		%
+		c_{\tht r \tht} &= -c_{r \tht \tht} = \frac{1}{r}, &
+		c_{\tht \tht \tht} &= [ \thh, \thh ] \vdot \thh = 0, &
+		c_{\tht \phi \tht} &= [ \thh, \phh ] \vdot \thh = 0, \\
+		%
+		c_{\phi r \tht} &= -c_{r \phi \phi} = \frac{1}{r}, &
+		c_{\phi \tht \tht} &= -c_{\tht \phi \tht} = 0, &
+		c_{\phi \phi \tht} &= [ \phh, \phh ] \vdot \thh = 0, \\[2ex]
+		%
+		%
+		c_{r r \phi} &= [ \rh, \rh ] \vdot \phh = 0, &
+		c_{r \tht \phi} &= [ \rh, \thh ] \vdot \phh = 0, &
+		c_{r \phi \phi} &= [ \rh, \phh ] \vdot \phh = -\frac{1}{r}, \\
+		%
+		c_{\tht r \phi} &= -c_{r \tht \phi} = 0, &
+		c_{\tht \tht \phi} &= [ \thh, \thh ] \vdot \phh = 0, &
+		c_{\tht \phi \phi} &= [ \thh, \phh ] \vdot \phh = -\frac{1}{r \sin \tht}, \\
+		%
+		c_{\phi r \phi} &= -c_{r \phi \phi} = \frac{1}{r}, &
+		c_{\phi \tht \phi} &= -c_{\tht \phi \tht} = \frac{1}{r \sin \tht}, &
+		c_{\phi \phi \phi} &= [ \phh, \phh ] \vdot \phh = 0.
+	}
+	From Eq.~\refeq{Gamthing} we again use the fact that $\sg$ is the identity to write
+	\al{
+		\Gam_{r r r} &= \frac{c_{r r r} + c_{r r r} - c_{r r r}}{2} = 0, &
+		\Gam_{r r \tht} &= \frac{c_{r r \tht} + c_{r \tht r} - c_{r \tht r}}{2} = 0, &
+		\Gam_{r r \phi} &= \frac{c_{r r \phi} + c_{r \phi r} - c_{r \phi r}}{2} = 0, \\
+		%
+		\Gam_{r \tht r} &= \frac{c_{r \tht r} + c_{r r \tht} - c_{\tht r r}}{2} = 0, &
+		\Gam_{r \tht \tht} &= \frac{c_{r \tht \tht} + c_{r \tht \tht} - c_{\tht \tht r}}{2} = -\frac{1}{r}, &
+		\Gam_{r \tht \phi} &= \frac{c_{r \tht \phi} + c_{r \phi \tht} - c_{\tht \phi r}}{2} = 0, \\
+		%
+		\Gam_{r \phi r} &= \frac{c_{r \phi r} + c_{r r \phi} - c_{\phi r r}}{2} = 0, &
+		\Gam_{r \phi \tht} &= \frac{c_{r \phi \tht} + c_{r \tht \phi} - c_{\phi \tht r}}{2} = 0, &
+		\Gam_{r \phi \phi} &= \frac{c_{r \phi \phi} + c_{r \phi \phi} - c_{\phi \phi r}}{2} = -\frac{1}{r}, \\
+	}
+}
+
+
+\clearpage
+\prob{ \label{1b}
+	Repeat the exercise in \ref{1a} assuming a coordinate basis with
+	\al{
+		\besr &\equiv \pdv{r}, &
+		\bestht &\equiv \pdv{\tht}, &
+		\besphi &\equiv \pdv{\phi}.
+	}
+	\vfix
+}
+
+
+
+\prob{
+	Repeat both computations in \ref{1a} and \ref{1b} using symbolic manipulation software on a computer.
+}
+
+
+
+
+
+\clearpage
+\state{}{
+	 Let $V$ be a vector field.  Prove the covariant divergence formula valid in a coordinate basis
+	 \eq{
+	 	\nablasa \Va = \frac{1}{\sqabsg} \ptsa (\sqabsg \Va),
+	 }
+	 where $g$ is the determinant of the metric.
+}
+
+
+
+
+
+\clearpage
+\state{}{
+	 In this problem you will explore the geometry of a sphere $S^2$ of radius $R$.
+}
+
+\prob{
+	A vector $\vV = \Vtht \vestht + \Vphi \vesphi$ is defined at a point $(\tht, \phi)$ on the sphere.  It is then parallel transported around the circle of constant $\tht$ with $\phi \to \phi + 2\pi$.  What are its resulting components?  What is its length?
+}
+
+
+
+\prob{
+	Write the geodesic equation in $(\tht, \phi)$ angular coordinates.  Show that the solutions are \emph{great circles}, i.e.~circles on the sphere of largest diameter.
+}
+
+
+
+\prob{
+	Consider a disk of radius $\eps$ on the sphere.  Working in the limit of small $\eps$, compute the area of the disk to order $\eps^4$.  Compare your results to $\bbR^2$ with the flat metric.
+}
+
+
+
+\prob{
+	A spherical triangle is made from three points on the sphere pairwise connected by geodesics.  Let the angles on the triangle be $\alp$, $\bet$, and $\gam$.  By drawing pictures, show that $\alp + \bet + \gam$ can be larger than $\pi$.
+}
+
+
+
+\prob{
+	Define the excess angle $E$ of a spherical triangle by $E = \alp + \bet + \gam - \pi$.  Prove that the area of the triangle is $R^2 E$.
+}
+
+
+
+
+
+
+\clearpage
+\state{}{
+	In this problem you will explore the geometry on the space of possible inertial velocities.
+}
+
+\prob{ \label{4a}
+	Suppose two inertial frames move with 3-velocities $\vvq$ and $\vvw$ relative to a fixed inertial frame.  Show that their relative velocity $\vv$ has magnitude $v$ given by
+	\eq{
+		v^2 = \frac{(\vvq - \vvw)^2 - (\vvq \times \vvw)^2}{(1 - \vvq \cdot \vvw)^2}.
+	}
+}
+
+
+
+\prob{
+	We define a metric on the space of all possible 3-velocities by defining the distance between two nearby velocities to be their relative velocity.  Using the result from \ref{4a}, show that this metric is
+	\eq{
+		\dds^2 = \ddchi^2 + \sinh[2](\chi) (\ddtht^2 + \sin[2](\tht) \ddphi^2),
+	}
+	where $\chi$ is the rapidity $v = \tanh(\chi)$, and $\tht, \phi$ are polar and azimuthal angles defined relative to $\vv$.
+}
+
+
+
+\prob{
+	Show that the geodesics of this metric are paths of minimum fuel use for a rocket ship changing its velocity.
+}
+
+
+
+\prob{
+	A rocket ship in interstellar travel with velocity $\vvq$ relative to earth changes to a new velocity $\vvw$ in a manner that uses the least amount of fuel.  What is the ship’s smallest velocity relative to earth during the change?
+}
+
+
+\makebib
+
+\end{document}

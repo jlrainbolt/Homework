@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{scalar_vertex_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(20, 20)
+			\fmfstraight
+			\fmfleftn{i}{2}
+			\fmfrightn{o}{2}
+			\fmf{phantom}{i[1],c,o[2]}
+			\fmf{phantom}{i[2],c,o[1]}
+			\fmffreeze
+			\fmf{dashes}{i[1],c}
+			\fmf{dashes}{i[2],c}
+			\fmf{dashes}{o[1],c}
+			\fmf{dashes}{o[2],c}
+			\fmfdot{c}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

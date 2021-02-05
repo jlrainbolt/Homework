@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{ren_scalar_fermion_vertex_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(30, 20)
+			\fmfstraight
+			\fmfleftn{i}{2}
+			\fmfright{o}
+			\fmf{fermion,fore=blue}{i[1],c,i[2]}
+			\fmf{dashes,fore=blue}{c,o}
+			\fmfdot{c}
+			\fmfv{decor.shape=circle,decor.size=0.15w,decor.filled=empty,fore=blue}{c}
+			\fmffreeze
+			\fmfleftn{i2}{2}
+			\fmfright{o2}
+			\fmf{phantom}{i2[1],c2,i2[2]}
+			\fmf{phantom}{c2,o2}
+			\fmfv{decor.shape=cross,decor.size=0.15w,fore=blue}{c2}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

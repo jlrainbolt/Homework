@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{blue_amp_g_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(20, 15)
+			\fmfstraight
+			\fmfbottomn{i}{3}
+			\fmftop{o}
+			\fmf{plain,fore=blue}{i[1],c,i[3]}
+			\fmf{dashes,fore=blue}{c,o}
+			\fmfv{decor.shape=circle,decor.size=0.5h,decor.filled=30,fore=blue}{c}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

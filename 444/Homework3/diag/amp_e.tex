@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{amp_e_}
+	\fmfframe(1.5,1)(1.5,1){
+		\begin{fmfgraph*}(15, 15)
+			\fmfstraight
+			\fmfleftn{i}{3}
+			\fmfrightn{o}{3}
+			\fmf{phantom}{i[2],c,o[2]}
+			\fmffreeze
+			\fmf{dashes}{c,i[1]}
+			\fmf{dashes}{c,i[3]}
+			\fmf{dashes}{c,o[1]}
+			\fmf{dashes}{c,o[3]}
+			\fmfv{decor.shape=circle,decor.size=0.5h,decor.filled=30}{c}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}
