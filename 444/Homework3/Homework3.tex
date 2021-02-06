@@ -20,7 +20,7 @@
 	where $\phi$ is a real scalar field and $\psi$ is a Dirac fermion.  Notice that this Lagrangian is invariant under the parity transformation $\psi(t, \vx) \to \gamo \psi(zt, -\vx)$, $\phi(t, \vx) \to -\phi(t, -\vx)$, in which the field $\phi$ carries odd parity.
 }
 
-\prob{
+\prob{ \label{1a}
 	Determine the superficially divergent amplitudes and work out the Feynman rules for renormalized perturbation theory for this Lagrangian.  Include all necessary counterterm vertices.  Show that the theory contains a superficially divergent $4 \phi$ amplitude.  This means that the theory cannot be renormalized unless one includes a scalar self-interaction,
 	\eqn{given1a}{
 		\del\cL = \frac{\lam}{4!} \phi^4,
@@ -39,7 +39,7 @@
 		\centergraphics{diag/fermion_prop} &= \frac{i (\psl + \Mo)}{p^2 - \Mo^2 + i \eps} \\[-7ex]
 	}
 	\eq{
-		\centergraphics{diag/scalar_fermion_vertex} = -\go \gamt
+		\centergraphics{diag/scalar_fermion_vertex} = \go \gamt
 	}
 	These Feynman rules are similar enough to those for QED; that is, the powers of $k$ are the same, each propagator has a momentum integral, each vertex has a delta function, and each vertex involves one $\phi$ line and two fermion lines~\cite[p.~316]{Peskin}.  So we can adapt P\&S~(10.4) for the superficial degree of divergence:
 	\eq{
@@ -66,13 +66,13 @@
 		& &
 		\text{(g)} &\: \centergraphics{diag/blue_amp_g} \quad D = 0 &
 	}}%
-	\ans{Note that amplitude~(e) is a $4\phi$ amplitude.}  Since it is superficially divergent, according to the problem statement  we must introduce the scalar self-interaction given by Eq.~\refeq{given1a}.  The Feynman rule for this vertex is~\cite[p.~325]{Peskin}
+	\ans{Note that amplitude~(e) is a $4\phi$ amplitude.}  Since it is superficially divergent, according to the problem statement  we must introduce the scalar self-interaction given by Eq.~\refeq{given1a}.  We subtract this term as in the $\phi^4$ theory~\cite[p.~324]{Peskin}.  The Feynman rule for this vertex is~\cite[p.~325]{Peskin}
 	\eq{
 		\centergraphics{diag/scalar_vertex} = -i \lamo.
 	}
 	With the addition of this new term, our Lagrangian in Eq.~\refeq{newlagr} becomes
 	\eqn{newlagr2}{
-		\cL = \frac{1}{2} (\ptsm \phi)^2 - \frac{1}{2} \mo^2 \phi^2 + \psib (i \ptsl - \Mo) \psi - i \go \psib \gamt \psi \phi + \frac{\lamo}{4!} \phi^4,
+		\cL = \frac{1}{2} (\ptsm \phi)^2 - \frac{1}{2} \mo^2 \phi^2 + \psib (i \ptsl - \Mo) \psi - i \go \psib \gamt \psi \phi - \frac{\lamo}{4!} \phi^4,
 	}
 	where $\lamo$ is the bare coupling constant for the scalar self-interaction.  To work out the renormalized theory, we rescale the field as in P\&S~(10.15):
 	\eq{
@@ -84,7 +84,7 @@
 	}
 	Feeding these into Eq.~\refeq{newlagr2}, we obtain the renormalized Lagrangian~\cite[p.~324]{Peskin}
 	\eqn{lagr2}{
-		\cL = \frac{1}{2} \Zq (\ptsm \phi)^2 - \frac{1}{2} \Zq \mo^2 \phi^2 + \Zw \psib (i \ptsl - \Mo) \psi - i \Zq^{1/2} \Zw \go \psib \gamt \psi \phi + \frac{\lamo}{4!} \Zq^2 \phi^4.
+		\cL = \frac{1}{2} \Zq (\ptsm \phi)^2 - \frac{1}{2} \Zq \mo^2 \phi^2 + \Zw \psib (i \ptsl - \Mo) \psi - i \Zq^{1/2} \Zw \go \psib \gamt \psi \phi - \frac{\lamo}{4!} \Zq^2 \phi^4.
 	}
 	Define~\cite[pp.~324, 331]{Peskin}
 	\al{
@@ -98,8 +98,8 @@
 	Then Eq.~\refeq{lagr2} becomes
 	\al{
 		\cL &= \frac{1}{2} (1 + \delZq) (\ptsm \phi)^2 - \frac{1}{2} (m^2 + \delm) \phi^2 + \psib [ i (\delZw + 1) \ptsl - (M + \delM) ] \psi - i g (1 + \delg) \psib \gamt \psi \phi + \frac{\lam + \dellam}{4!} \phi^4 \\[2ex]
-		&= \frac{1}{2} (\ptsm \phi)^2 - \frac{1}{2} m^2 \phi^2 + \psib (i \ptsl - M) \psi - i g \psib \gamt \psi \phi + \frac{\lam}{4!} \phi^4 \\
-		&\hspace{5em} \phantom{=\ } + \frac{1}{2} \delZq (\ptsm \phi)^2 - \frac{1}{2} \delm \phi^2 + \psib (i \delZw \ptsl - \delM) \psi - i g \delg \psib \gamt \psi \phi + \frac{\dellam}{4!} \phi^4.
+		&= \frac{1}{2} (\ptsm \phi)^2 - \frac{1}{2} m^2 \phi^2 + \psib (i \ptsl - M) \psi - i g \psib \gamt \psi \phi - \frac{\lam}{4!} \phi^4 \\
+		&\hspace{5em} \phantom{=\ } + \frac{1}{2} \delZq (\ptsm \phi)^2 - \frac{1}{2} \delm \phi^2 + \psib (i \delZw \ptsl - \delM) \psi - i g \delg \psib \gamt \psi \phi - \frac{\dellam}{4!} \phi^4.
 	}
 	Here the first first five terms look like Eq.~\refeq{newlagr2}, but written in terms of the physical masses and couplings.  The last five terms are the counterterms~\cite[p.~325]{Peskin}.
 	
@@ -109,18 +109,67 @@
 		\centergraphics{diag/ren_scalar_prop} &= i (p^2 \delZq - \delm) \\
 		\centergraphics{diag/blue_fermion_prop} &= \frac{i (\psl + M)}{p^2 - M^2 + i \eps} &
 		\centergraphics{diag/ren_fermion_prop} &= i (\psl \delZw - \delM) \\
-		\centergraphics{diag/blue_scalar_fermion_vertex} &= -g \gamt &
-		\centergraphics{diag/ren_scalar_fermion_vertex} &= -g \delg \gamt \\
+		\centergraphics{diag/blue_scalar_fermion_vertex} &= g \gamt &
+		\centergraphics{diag/ren_scalar_fermion_vertex} &= g \delg \gamt \\
 		\centergraphics{diag/blue_scalar_vertex} &= -i \lam &
 		\centergraphics{diag/ren_scalar_vertex} &= -i \dellam
 	}}%
+	
 	\hl{why we don't need any more interactions}
 }
 
 
-\clearpage
+
 \prob{
 	Compute the divergent part (the pole as $d \to 4$) of each counterterm, to the one-loop order of perturbation theory, implementing a sufficient set of renormalization conditions.  You need not worry about finite parts of the counterterms.  Since the divergent parts must have a fixed dependence on the external momenta, you can simplify this calculation by choosing the momenta in the simplest possible form.
+}
+
+\sol{
+	\hl{do the first one?}
+	
+	To compute the divergent part of the fermion propagator counterterm to one-loop order, we include the fermion self-energy: \hl{(draw the diagram)}
+	
+	The fermion-self energy here looks similar to that in QED, so we may adapt P\&S~(7.16) for that term.  Using our Feynman rules from \ref{1a}, we have
+	\aln{
+		-i \Sigwp &= i (\psl \delZw - \delM) + g^2 \int \dddkf \gamt \frac{i (\ksl + M)}{p^2 - M^2 + i \eps} \gamt \frac{i}{(p - k)^2 - m^2 + i \eps} \notag \\
+		&= i (\psl \delZw - \delM) + g^2 \int \dddkf \frac{\ksl - M}{(p^2 - M^2 + i \eps) [ (p - k)^2 - m^2 + i \eps ]} \label{thing1b2},
+	}
+	where we have used P\&S~(3.70), $(\gamt)^2 = 1$, and (3.71), $\{ \gamt, \gamm \} = 0$, which implies $\gamt \gamm \gamt = -\gamm$.  Following the procedure on pp.~217--218, we introduce the Feynman parameter $x$ to combine the denominators:
+	\eqn{FP}{
+		\frac{1}{k^2 - \mo^2 + i \eps} \frac{1}{(p - k)^2 - \mu^2 + i \eps} = \intoq \ddx \frac{1}{[ k^2 - 2 x k \cdot p + x p^2 - x \mu^2 - (1 - x) \mo^2 + i \eps ]^2}.
+	}
+	Let $\ell = k - x p$ and $\Del = -x(1 - x) p^2 + x m^2 + (1 - x) M^2$.  Then Eq.~\refeq{thing1b2} can be written
+	\eqn{thing1b2b}{
+		-i \Sigwp = i (\psl \delZw - \delM) + g^2 \intoq \ddx \int \dddlf \frac{(x \psl - M)}{[ \ell^2 - \Del + i \eps ]^2}.
+	}
+	To evaluate the integral, we can write it in terms of the Euclidean 4-momentum defined by~\cite[p.~193]{Peskin}
+	\aln{ \label{ellE}
+		\ello &\equiv i \ellEo, &
+		\vell &= \vellE.
+	}
+	Then we can write
+	\eq{
+		\int \dddlf \frac{1}{(\ell^2 - \Del)^2} = \frac{i}{(-1)^2} \frac{1}{(2\pi)^d} \int \dddlE \frac{1}{(\ellE^2 + \Del)^2}
+		= i \int \dddlEf \frac{1}{(\ellE^2 + \Del)^2}.
+	}
+	Then we can apply (7.84), which takes the limit as $d \to 4$:
+	\eq{
+		\int \dddlEf \frac{1}{(\ellE^2 + \Del)^2} \to \frac{1}{(4\pi)^2} \paren{ \frac{2}{\eps} - \gam + \ln(\frac{4\pi}{\Del}) }
+		\approx \frac{1}{8 \pi^2 \eps},
+	}
+	where $\eps = 4 - d$~\cite[p.~250]{Peskin}, and we have omitted the finite parts.  Making these substitutions into Eq.~\refeq{Sigw2}, we find
+	\al{
+		-i \Sigwp &= i (\psl \delZw - \delM) + \frac{i g^2}{8 \pi^2 \eps} \intoq \ddx (x \psl - M) \\
+		&= i (\psl \delZw - \delM) + \frac{i g^2}{8 \pi^2 \eps} \brac{ \frac{x^2}{2} \psl - M x }_0^1 \\
+		&= i (\psl \delZw - \delM) + \frac{i g^2}{8 \pi^2 \eps} \paren{ \frac{\psl}{2} - M } \\
+		&= i \psl \paren{ \delZw + \frac{g^2}{16 \pi^2 \eps} } - i \paren{ \delM + \frac{g^2}{8 \pi^2 \eps} M }.
+	}
+	This implies
+	\ans{\al{
+		\delZq &= -\frac{g^2}{16 \pi^2 \eps}, &
+		\delM &= -\frac{g^2}{8 \pi^2 \eps} M
+	}}%
+	are the conditions to eliminate the divergence.
 }
 
 
