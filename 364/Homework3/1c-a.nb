@@ -1,624 +1,270 @@
-(***********************************************************************
+(* Content-type: application/vnd.wolfram.mathematica *)
 
-                    Mathematica-Compatible Notebook
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
 
-This notebook can be used on any computer system with Mathematica 4.0,
-MathReader 4.0, or any compatible application. The data for the notebook 
-starts with the line containing stars above.
+(* CreatedBy='Mathematica 12.2' *)
 
-To get the notebook into a Mathematica-compatible application, do one of 
-the following:
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9438,        262]
+NotebookOptionsPosition[      8387,        239]
+NotebookOutlinePosition[      8791,        255]
+CellTagsIndexPosition[      8748,        252]
+WindowFrame->Normal*)
 
-* Save the data starting with the line of stars above into a file
-  with a name ending in .nb, then open the file inside the application;
-
-* Copy the data starting with the line of stars above to the
-  clipboard, then use the Paste menu command inside the application.
-
-Data for notebooks contains only printable 7-bit ASCII and can be
-sent directly in email or through ftp in text mode.  Newlines can be
-CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
-
-NOTE: If you modify the data for this notebook not in a Mathematica-
-compatible application, you must delete the line below containing the 
-word CacheID, otherwise Mathematica-compatible applications may try to 
-use invalid cache data.
-
-For more information on notebooks and Mathematica-compatible 
-applications, contact Wolfram Research:
-  web: http://www.wolfram.com
-  email: info@wolfram.com
-  phone: +1-217-398-0700 (U.S.)
-
-Notebook reader applications are available free of charge from 
-Wolfram Research.
-***********************************************************************)
-
-(*CacheID: 232*)
-
-
-(*NotebookFileLineBreakTest
-NotebookFileLineBreakTest*)
-(*NotebookOptionsPosition[     13811,        472]*)
-(*NotebookOutlinePosition[     14792,        503]*)
-(*  CellTagsIndexPosition[     14748,        499]*)
-(*WindowFrame->Normal*)
-
-
-
+(* Beginning of Notebook Content *)
 Notebook[{
-
-Cell[CellGroupData[{
-Cell["Christoffel Symbols and Geodesic  Equation", "Subtitle"],
-
-Cell[TextData[{
-  "This is a ",
-  StyleBox["Mathematica",
-    FontSlant->"Italic"],
-  " program to compute the Christoffel  and the geodesic equations, starting \
-from a given metric  ",
-  Cell[BoxData[
-      FormBox[
-        SubscriptBox[
-          StyleBox["g",
-            FontSlant->"Italic"], "\[Alpha]\[Beta]"], TraditionalForm]]],
-  ". The Christoffel symbols are calculated from the formula"
-}], "Text"],
-
-Cell[TextData[{
-  Cell[BoxData[
-      \(TraditionalForm\`\(\[CapitalGamma]\^\[Lambda]\)\_\[Mu]\[Nu] = \
-\(1\/2\) \(\(g\^\[Lambda]\[Sigma]\)(\[PartialD]\_\[Mu]\ 
-                g\_\[Sigma]\[Nu] + \[PartialD]\_\[Nu]\ 
-                g\_\[Sigma]\[Mu] - \[PartialD]\_\[Sigma]\ 
-                g\_\[Mu]\[Nu])\)\)]],
-  "\n\nwhere ",
-  Cell[BoxData[
-      \(TraditionalForm\`g\^\[Lambda]\[Sigma]\)]],
-  " is the matrix inverse of ",
-  Cell[BoxData[
-      \(TraditionalForm\`g\_\(\(\[Lambda]\[Sigma]\)\(\ \)\)\)]],
-  "called the inverse metric. This is the  solution of the relation (8.19) \
-and the notation for the inverse metric is standard [cf (20.17)]. The \
-components of the geodesic equation are \n\n",
-  StyleBox["d",
-    FontSlant->"Italic"],
-  Cell[BoxData[
-      \(TraditionalForm\`u\^\[Alpha]\)]],
-  "/",
-  StyleBox["d\[Tau]",
-    FontSlant->"Italic"],
-  " = - ",
-  Cell[BoxData[
-      \(TraditionalForm\`\(\[CapitalGamma]\^\[Alpha]\)\_\[Beta]\[Gamma]\)]],
-  " ",
-  Cell[BoxData[
-      \(TraditionalForm\`u\^\[Beta]\)]],
-  Cell[BoxData[
-      \(TraditionalForm\`u\^\[Gamma]\)]],
-  " ."
-}], "Text"],
-
-Cell[TextData[{
-  "You must input the covariant components of the metric tensor ",
-  Cell[BoxData[
-      \(TraditionalForm\`g\_\[Mu]\[Nu]\)]],
-  " by editing the relevant input line in this ",
-  StyleBox["Mathematica",
-    FontSlant->"Italic"],
-  " notebook. You may also wish to change the names of the coordinates. The \
-nonzero components of the above quantities are displayed as the output. "
-}], "Text"],
-
-Cell[CellGroupData[{
-
-Cell["Clearing the values of symbols:", "Subsubsection"],
-
-Cell["\<\
-First clear any values that may already have been assigned to the \
-names of the various objects to be calculated. The names of the coordinates \
-that you will use are also cleared.\
-\>", "Text"],
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vr", "=", 
+   RowBox[{"(", GridBox[{
+      {
+       RowBox[{
+        RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+        RowBox[{"Cos", "[", "\[Phi]", "]"}]}]},
+      {
+       RowBox[{
+        RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+        RowBox[{"Sin", "[", "\[Phi]", "]"}]}]},
+      {
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}
+     }], ")"}]}], ";", 
+  RowBox[{"v\[Theta]", "=", 
+   RowBox[{"(", GridBox[{
+      {
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Theta]", "]"}], 
+        RowBox[{"Cos", "[", "\[Phi]", "]"}]}]},
+      {
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Theta]", "]"}], 
+        RowBox[{"Sin", "[", "\[Phi]", "]"}]}]},
+      {
+       RowBox[{"-", 
+        RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}
+     }], ")"}]}], ";", 
+  RowBox[{"v\[Phi]", "=", 
+   RowBox[{"(", GridBox[{
+      {
+       RowBox[{"-", 
+        RowBox[{"Sin", "[", "\[Phi]", "]"}]}]},
+      {
+       RowBox[{"Cos", "[", "\[Phi]", "]"}]},
+      {"0"}
+     }], ")"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8216625943539886`*^9, 3.82166279511835*^9}, {
+   3.821665776745329*^9, 3.8216657788335857`*^9}, 3.821667567625709*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"3e01ac6b-210f-40ee-967f-2bd81841068b"],
 
 Cell[BoxData[
-    \(Clear[coord, \ metric, inversemetric, \ 
-      affine, \ \ r, \ \[Theta], \ \[Phi], \ t]\)], "Input"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Setting The Dimension ", "Subsubsection"],
-
-Cell[TextData[{
-  "The dimension ",
-  StyleBox["n",
-    FontWeight->"Bold"],
-  " of the spacetime (or space) must be set:"
-}], "Text"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(n = 4\)], "Input"],
-
-Cell[BoxData[
-    \(4\)], "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Defining a list of coordinates:", "Subsubsection"],
-
-Cell[TextData[{
-  "The example given here is the wormhole metric (7.40). Note that for \
-convenience ",
-  StyleBox["t ",
-    FontSlant->"Italic"],
-  StyleBox["is denoted by ",
-    FontVariations->{"CompatibilityType"->0}],
-  Cell[BoxData[
-      FormBox[
-        StyleBox[\(x\^4\),
-          FontVariations->{"CompatibilityType"->0}], TraditionalForm]]],
-  " rather than ",
-  Cell[BoxData[
-      \(TraditionalForm\`x\^0\)]],
-  " and summations run from 1 to 4 rather than 0 to 3. "
-}], "Text"],
-
-Cell[CellGroupData[{
+ RowBox[{
+  RowBox[{"coords", "=", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}], ";", 
+  RowBox[{"vecs", "=", 
+   RowBox[{"{", 
+    RowBox[{"vr", ",", "v\[Theta]", ",", "v\[Phi]"}], "}"}]}], ";", 
+  RowBox[{"grad", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     FractionBox["1", "r"], ",", 
+     FractionBox["1", 
+      RowBox[{"r", " ", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}]]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.821662886672695*^9, 3.821662892430441*^9}, {
+   3.82166293423524*^9, 3.8216629511803513`*^9}, {3.821662984077351*^9, 
+   3.82166301595577*^9}, 3.821666749265119*^9, 3.821667008593405*^9},
+ CellLabel->"In[2]:=",ExpressionUUID->"e8a40d4c-b50b-4e85-b2f8-1a9be5b2cd81"],
 
 Cell[BoxData[
-    StyleBox[\(coord\  = \ {r, \[Theta], \[Phi], t}\),
-      FontWeight->"Bold"]], "Input"],
+ RowBox[{
+  RowBox[{"comm", "[", 
+   RowBox[{"i_", ",", "j_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"grad", "[", 
+     RowBox[{"[", "i", "]"}], "]"}], "*", 
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"vecs", "[", 
+       RowBox[{"[", "j", "]"}], "]"}], ",", 
+      RowBox[{"coords", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], "-", 
+   RowBox[{
+    RowBox[{"grad", "[", 
+     RowBox[{"[", "j", "]"}], "]"}], "*", 
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"vecs", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], ",", 
+      RowBox[{"coords", "[", 
+       RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.821663020300317*^9, 3.8216630985985603`*^9}, {
+  3.8216633230372667`*^9, 3.821663330010293*^9}, {3.821663482202847*^9, 
+  3.821663509447995*^9}, {3.8216635549920063`*^9, 3.821663593200123*^9}, {
+  3.821666043279552*^9, 3.821666081592766*^9}, {3.821666780688941*^9, 
+  3.821666781520788*^9}, {3.821667004608512*^9, 3.821667016309988*^9}, {
+  3.821667197052785*^9, 3.821667206319746*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"d8ba8eee-e45a-4ba5-a39e-ffcb289dd126"],
 
 Cell[BoxData[
-    \({r, \[Theta], \[Phi], t}\)], "Output"]
-}, Open  ]],
-
-Cell[TextData[{
-  "You can change the names of the coordinates by simply editing the \
-definition of ",
-  StyleBox["coord",
-    FontWeight->"Bold"],
-  ", for example, to ",
-  StyleBox["coord = {x, y, z, t}",
-    FontWeight->"Bold"],
-  ", when another set of coordinate names is more appropriate",
-  "."
-}], "Text"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Defining the metric:", "Subsubsection"],
-
-Cell["\<\
-Input the metric as a list of lists, i.e., as a matrix. You can \
-input the components of any metric here, but you must specify them as \
-explicit functions of the coordinates.\
-\>", "Text"],
-
-Cell[CellGroupData[{
+ RowBox[{
+  RowBox[{"commcoeff", "[", 
+   RowBox[{"i_", ",", "j_", ",", "k_"}], "]"}], ":=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"Transpose", "[", 
+     RowBox[{"comm", "[", 
+      RowBox[{"i", ",", "j"}], "]"}], "]"}], ".", 
+    RowBox[{"vecs", "[", 
+     RowBox[{"[", "k", "]"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.821665766080431*^9, 3.821665828288081*^9}, {
+   3.8216659213517838`*^9, 3.821665924295164*^9}, {3.8216659965693207`*^9, 
+   3.821666016432809*^9}, 3.821666978238823*^9, 3.821667021372877*^9, {
+   3.821667214691485*^9, 3.8216672154092493`*^9}, {3.821667563956572*^9, 
+   3.82166756512569*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"d3738e83-0a96-40d7-b6d5-3e5aa75189c6"],
 
 Cell[BoxData[
-    \(metric = {{1, 0, 0, 0}, {0, r^2 + b^2, 0, 0}, {0, 
-          0, \((r^2 + b^2)\) Sin[\[Theta]]^2, 0}, {0, 0, 
-          0, \(-1\)}}\)], "Input"],
+ RowBox[{
+  RowBox[{"conncoeff", "[", 
+   RowBox[{"i_", ",", "j_", ",", "k_"}], "]"}], ":=", 
+  RowBox[{"First", "[", 
+   RowBox[{"First", "[", 
+    RowBox[{"Simplify", "[", 
+     RowBox[{
+      FractionBox["1", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"commcoeff", "[", 
+         RowBox[{"i", ",", "j", ",", "k"}], "]"}], "+", 
+        RowBox[{"commcoeff", "[", 
+         RowBox[{"i", ",", "k", ",", "j"}], "]"}], "-", 
+        RowBox[{"commcoeff", "[", 
+         RowBox[{"j", ",", "k", ",", "i"}], "]"}]}], ")"}]}], "]"}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.8216658406228437`*^9, 3.821665887688081*^9}, {
+  3.8216660983593082`*^9, 3.821666101414813*^9}, {3.821666482477496*^9, 
+  3.82166648645588*^9}, {3.821666951981599*^9, 3.821666987643468*^9}, {
+  3.8216672188327503`*^9, 3.8216672255349693`*^9}, {3.8216675188675127`*^9, 
+  3.821667525976609*^9}, {3.821667581439739*^9, 3.821667591653832*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"5cedec92-568c-46ca-b686-a28533d0d2c9"],
 
 Cell[BoxData[
-    \({{1, 0, 0, 0}, {0, b\^2 + r\^2, 0, 0}, {0, 
-        0, \((b\^2 + r\^2)\)\ Sin[\[Theta]]\^2, 0}, {0, 0, 
-        0, \(-1\)}}\)], "Output"]
-}, Open  ]],
-
-Cell["You can also display this in matrix form:", "Text"],
+ RowBox[{"table", ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"UnsameQ", "[", 
+       RowBox[{
+        RowBox[{"conncoeff", "[", 
+         RowBox[{"i", ",", "j", ",", "k"}], "]"}], ",", "0"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"ToString", "[", 
+         RowBox[{"\[CapitalGamma]", "[", 
+          RowBox[{"i", ",", "j", ",", "k"}], "]"}], "]"}], ",", 
+        RowBox[{"conncoeff", "[", 
+         RowBox[{"i", ",", "j", ",", "k"}], "]"}]}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", "3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "1", ",", "3"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.821667386299961*^9, 3.821667427786373*^9}, {
+  3.821667474480023*^9, 3.821667503116521*^9}, {3.821667558895212*^9, 
+  3.821667559742807*^9}, {3.821667595253997*^9, 3.8216675966264277`*^9}, {
+  3.821667656546732*^9, 3.8216677204437237`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"bb448c3e-11d7-488e-b6e7-c1d448af6e0f"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(metric // MatrixForm\)], "Input"],
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"DeleteCases", "[", 
+      RowBox[{
+       RowBox[{"Flatten", "[", "table", "]"}], ",", "Null"}], "]"}], ",", 
+     "2"}], "]"}], ",", 
+   RowBox[{"TableSpacing", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "2"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8216674392390213`*^9, 3.821667439777904*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"701af361-3b12-4d3d-9bee-2e57c2909747"],
 
 Cell[BoxData[
-    TagBox[
-      RowBox[{"(", "\[NoBreak]", GridBox[{
-            {"1", "0", "0", "0"},
-            {"0", \(b\^2 + r\^2\), "0", "0"},
-            {"0", "0", \(\((b\^2 + r\^2)\)\ Sin[\[Theta]]\^2\), "0"},
-            {"0", "0", "0", \(-1\)}
-            }], "\[NoBreak]", ")"}],
-      (MatrixForm[ #]&)]], "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Note:", "Subsubsection"],
-
-Cell[TextData[{
-  "It is important not to use the symbols, ",
-  StyleBox["i",
-    FontWeight->"Bold"],
-  ", ",
-  StyleBox["j",
-    FontWeight->"Bold"],
-  ", ",
-  StyleBox["k",
-    FontWeight->"Bold"],
-  ", ",
-  StyleBox["l",
-    FontWeight->"Bold"],
-  ", ",
-  StyleBox["n,",
-    FontWeight->"Bold",
-    FontVariations->{"CompatibilityType"->0}],
-  " or ",
-  StyleBox["s  ",
-    FontWeight->"Bold"],
-  "as constants or coordinates in the metric that you specify above. The \
-reason is that  the first four of those symbols are used as summation or \
-table indices in the calculations done below. The last is the dimension of \
-the space. "
-}], "Text"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Calculating the inverse metric:", "Subsubsection"],
-
-Cell["The inverse metric is obtained through matrix inversion.", "Text"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(inversemetric = Simplify[Inverse[metric]]\)], "Input"],
-
-Cell[BoxData[
-    \({{1, 0, 0, 0}, {0, 1\/\(b\^2 + r\^2\), 0, 0}, {0, 0, 
-        Csc[\[Theta]]\^2\/\(b\^2 + r\^2\), 0}, {0, 0, 0, \(-1\)}}\)], "Output"]
-}, Open  ]],
-
-Cell["The inverse metric can also be displayed in matrix form:", "Text"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(inversemetric // MatrixForm\)], "Input"],
-
-Cell[BoxData[
-    TagBox[
-      RowBox[{"(", "\[NoBreak]", GridBox[{
-            {"1", "0", "0", "0"},
-            {"0", \(1\/\(b\^2 + r\^2\)\), "0", "0"},
-            {"0", "0", \(Csc[\[Theta]]\^2\/\(b\^2 + r\^2\)\), "0"},
-            {"0", "0", "0", \(-1\)}
-            }], "\[NoBreak]", ")"}],
-      (MatrixForm[ #]&)]], "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Calculating the affine connection:", "Subsubsection"],
-
-Cell[TextData[{
-  "The calculation of the components of the affine connection is done by \
-transcribing the definition given earlier into the notation of ",
-  StyleBox["Mathematica",
-    FontSlant->"Italic"],
-  " and using the ",
-  StyleBox["Mathematica",
-    FontSlant->"Italic"],
-  " functions ",
-  StyleBox["D",
-    FontWeight->"Bold"],
-  " for taking partial derivatives, ",
-  StyleBox["Sum",
-    FontWeight->"Bold"],
-  " for summing over repeated indices, ",
-  StyleBox["Table",
-    FontWeight->"Bold"],
-  " for forming a list of components, and ",
-  StyleBox["Simplify",
-    FontWeight->"Bold"],
-  " for simplifying the result."
-}], "Text"],
-
-Cell[BoxData[
-    \(affine := \(affine = 
-        Simplify[
-          Table[\((1/2)\)*
-              Sum[\((inversemetric[\([i, s]\)])\)*\[IndentingNewLine]\((D[
-                        metric[\([s, j]\)], 
-                        coord[\([k]\)]\ ] + \[IndentingNewLine]D[
-                        metric[\([s, k]\)], coord[\([j]\)]\ ] - 
-                      D[metric[\([j, k]\)], coord[\([s]\)]\ ])\), {s, 1, 
-                  n}], \[IndentingNewLine]{i, 1, n}, {j, 1, n}, {k, 1, 
-              n}]\ ]\)\)], "Input"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Displaying the affine connection:", "Subsubsection"],
-
-Cell["\<\
-The nonzero components of the affine connections are displayed \
-below. You need not follow the details of constructing the functions that we \
-use for that purpose. Because the affine connection is symmetric under \
-interchange of the last two indices, only the independent components are \
-displayed.\
-\>", "Text"],
-
-Cell[BoxData[
-    \(listaffine := 
-      Table[If[UnsameQ[affine[\([i, j, k]\)], 
-            0], {ToString[\[CapitalGamma][i, j, k]], 
-            affine[\([i, j, k]\)]}]\ , {i, 1, n}, {j, 1, n}, {k, 1, 
-          j}]\)], "Input"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(TableForm[Partition[DeleteCases[Flatten[listaffine], Null], 2], 
-      TableSpacing \[Rule] {2, 2}]\)], "Input"],
-
-Cell[BoxData[
-    TagBox[GridBox[{
-          {"\<\"\[CapitalGamma][1, 2, 2]\"\>", \(-r\)},
-          {"\<\"\[CapitalGamma][1, 3, 3]\"\>", \(\(-r\)\ Sin[\[Theta]]\^2\)},
-          {"\<\"\[CapitalGamma][2, 2, 1]\"\>", \(r\/\(b\^2 + r\^2\)\)},
-          {"\<\"\[CapitalGamma][2, 3, 3]\"\>", \(\(-Cos[\[Theta]]\)\ Sin[\
-\[Theta]]\)},
-          {"\<\"\[CapitalGamma][3, 3, 1]\"\>", \(r\/\(b\^2 + r\^2\)\)},
-          {"\<\"\[CapitalGamma][3, 3, 2]\"\>", \(Cot[\[Theta]]\)}
-          },
-        RowSpacings->2,
-        ColumnSpacings->2,
-        RowAlignments->Baseline,
-        ColumnAlignments->{Left}],
-      (TableForm[ #, TableSpacing -> {2, 2}]&)]], "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Calculating the geodesic equations:", "Subsubsection"],
-
-Cell[TextData[{
-  "The geodesic equations are calculated by asking  ",
-  StyleBox["Mathematica ",
-    FontSlant->"Italic"],
-  StyleBox["to carry out the sum -",
-    FontVariations->{"CompatibilityType"->0}],
-  Cell[BoxData[
-      \(TraditionalForm\`\(\[CapitalGamma]\^\[Alpha]\)\_\[Beta]\[Gamma]\)]],
-  Cell[BoxData[
-      \(TraditionalForm\`u\^\[Beta]\)]],
-  Cell[BoxData[
-      \(TraditionalForm\`u\^\[Gamma]\)]],
-  ",  where ",
-  Cell[BoxData[
-      \(TraditionalForm\`u\^\[Alpha]\)]],
-  " are the components of the four-velocity.  (This gives the derivitive of \
-",
-  Cell[BoxData[
-      \(TraditionalForm\`u\^\[Alpha]\)]],
-  " with respect to proper time  \[Tau].  (This is replaced by  ",
-  StyleBox["s",
-    FontSlant->"Italic"],
-  "  if the geodesics are spacelike.)"
-}], "Text"],
-
-Cell[BoxData[
-    \(geodesic := \(geodesic = 
-        Simplify[
-          Table[\(-Sum[
-                affine[\([i, j, k]\)] u[j] u[k], {j, 1, 
-                  n}, \[IndentingNewLine]{k, 1, n}]\), {i, 1, 
-              n}]]\)\)], "Input"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Displaying the geodesic equations:", "Subsubsection"],
-
-Cell[BoxData[
-    \(listgeodesic := 
-      Table[{"\<d/d\[Tau]\>" ToString[u[i]], "\<=\>", geodesic[\([i]\)]}, {i, 
-          1, n}]\)], "Input"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(TableForm[listgeodesic, TableSpacing \[Rule] {2}]\)], "Input"],
-
-Cell[BoxData[
-    TagBox[GridBox[{
-          {\("d/d\[Tau]"\ "u[1]"\), "\<\"=\"\>", \(r\ \((u[2]\^2 + 
-                  Sin[\[Theta]]\^2\ u[3]\^2)\)\)},
-          {\("d/d\[Tau]"\ "u[2]"\), "\<\"=\"\>", \(\(-\(\(2\ r\ u[1]\ u[
-                        2]\)\/\(b\^2 + r\^2\)\)\) + 
-              Cos[\[Theta]]\ Sin[\[Theta]]\ u[3]\^2\)},
-          {\("d/d\[Tau]"\ "u[3]"\), "\<\"=\"\>", \(\(-\(\(2\ r\ u[1]\ u[
-                        3]\)\/\(b\^2 + r\^2\)\)\) - 
-              2\ Cot[\[Theta]]\ u[2]\ u[3]\)},
-          {\("d/d\[Tau]"\ "u[4]"\), "\<\"=\"\>", "0"}
-          },
-        RowSpacings->2,
-        ColumnSpacings->1,
-        RowAlignments->Baseline,
-        ColumnAlignments->{Left}],
-      (TableForm[ #, TableSpacing -> {2}]&)]], "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[" Acknowledgment", "Subsubsection"],
-
-Cell[TextData[{
-  "This program was adapted from the notebook ",
-  StyleBox["Curvature and the Einstein ",
-    FontSlant->"Italic"],
-  "equation kindly written by ",
-  StyleBox["Leonard Parker ",
-    FontSlant->"Italic"],
-  StyleBox[" especially for this text. ",
-    FontVariations->{"CompatibilityType"->0}]
-}], "Text"]
-}, Open  ]]
+ TagBox[GridBox[{
+    {"\<\"\[CapitalGamma][1, 2, 2]\"\>", 
+     RowBox[{"-", 
+      FractionBox["1", "r"]}]},
+    {"\<\"\[CapitalGamma][1, 3, 3]\"\>", 
+     RowBox[{"-", 
+      FractionBox["1", "r"]}]},
+    {"\<\"\[CapitalGamma][2, 1, 2]\"\>", 
+     FractionBox["1", "r"]},
+    {"\<\"\[CapitalGamma][2, 3, 3]\"\>", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"Cot", "[", "\[Theta]", "]"}], "r"]}]},
+    {"\<\"\[CapitalGamma][3, 1, 3]\"\>", 
+     FractionBox["1", "r"]},
+    {"\<\"\[CapitalGamma][3, 2, 3]\"\>", 
+     FractionBox[
+      RowBox[{"Cot", "[", "\[Theta]", "]"}], "r"]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[1.4]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.8]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$, TableSpacing -> {2, 2}]]]], "Output",
+ CellChangeTimes->{
+  3.821667440229476*^9, 3.821667602606144*^9, 3.8216676600881033`*^9, {
+   3.821667695925972*^9, 3.821667722291635*^9}, 3.821667775496294*^9},
+ CellLabel->
+  "Out[7]//TableForm=",ExpressionUUID->"4436b221-8595-49de-9af8-c33217592c30"]
 }, Open  ]]
 },
-FrontEndVersion->"4.0 for X",
-ScreenRectangle->{{0, 1280}, {0, 1024}},
-WindowToolbars->"EditBar",
-WindowSize->{759, 626},
-WindowMargins->{{251, Automatic}, {Automatic, 107}},
-PrintingPageRange->{Automatic, Automatic},
-PrintingOptions->{"PaperSize"->{612, 792},
-"PaperOrientation"->"Portrait",
-"PostScriptOutputFile":>FrontEnd`FileName[{$RootDirectory, "home", "cosmic", \
-"hartle", "131book", "math"}, "wh.ps", CharacterEncoding -> "ISO8859-1"],
-"Magnification"->1},
-Magnification->1.5
+WindowSize->{717, 780},
+WindowMargins->{{Automatic, -2878.5}, {Automatic, -1411.5}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"420ef26e-b7e6-4712-88e9-94ad6eecdf7a"
 ]
+(* End of Notebook Content *)
 
-
-(***********************************************************************
-Cached data follows.  If you edit this Notebook file directly, not using
-Mathematica, you must remove the line containing CacheID at the top of 
-the file.  The cache data will then be recreated when you save this file 
-from within Mathematica.
-***********************************************************************)
-
+(* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{}
 *)
-
 (*CellTagsIndex
 CellTagsIndex->{}
 *)
-
 (*NotebookFileOutline
 Notebook[{
-
+Cell[558, 20, 1235, 40, 63, "Input",ExpressionUUID->"3e01ac6b-210f-40ee-967f-2bd81841068b"],
+Cell[1796, 62, 753, 18, 46, "Input",ExpressionUUID->"e8a40d4c-b50b-4e85-b2f8-1a9be5b2cd81"],
+Cell[2552, 82, 1151, 29, 51, "Input",ExpressionUUID->"d8ba8eee-e45a-4ba5-a39e-ffcb289dd126"],
+Cell[3706, 113, 733, 16, 29, "Input",ExpressionUUID->"d3738e83-0a96-40d7-b6d5-3e5aa75189c6"],
+Cell[4442, 131, 1027, 23, 92, "Input",ExpressionUUID->"5cedec92-568c-46ca-b686-a28533d0d2c9"],
+Cell[5472, 156, 1127, 27, 71, "Input",ExpressionUUID->"bb448c3e-11d7-488e-b6e7-c1d448af6e0f"],
 Cell[CellGroupData[{
-Cell[1739, 51, 62, 0, 144, "Subtitle"],
-Cell[1804, 53, 411, 12, 73, "Text"],
-Cell[2218, 67, 1105, 32, 201, "Text"],
-Cell[3326, 101, 408, 9, 96, "Text"],
-
-Cell[CellGroupData[{
-Cell[3759, 114, 56, 0, 60, "Subsubsection"],
-Cell[3818, 116, 205, 4, 71, "Text"],
-Cell[4026, 122, 121, 2, 62, "Input"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[4184, 129, 47, 0, 60, "Subsubsection"],
-Cell[4234, 131, 134, 5, 46, "Text"],
-
-Cell[CellGroupData[{
-Cell[4393, 140, 38, 1, 39, "Input"],
-Cell[4434, 143, 35, 1, 39, "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[4518, 150, 56, 0, 60, "Subsubsection"],
-Cell[4577, 152, 492, 15, 71, "Text"],
-
-Cell[CellGroupData[{
-Cell[5094, 171, 105, 2, 39, "Input"],
-Cell[5202, 175, 58, 1, 39, "Output"]
-}, Open  ]],
-Cell[5275, 179, 314, 10, 71, "Text"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[5626, 194, 45, 0, 60, "Subsubsection"],
-Cell[5674, 196, 200, 4, 71, "Text"],
-
-Cell[CellGroupData[{
-Cell[5899, 204, 163, 3, 62, "Input"],
-Cell[6065, 209, 157, 3, 76, "Output"]
-}, Open  ]],
-Cell[6237, 215, 57, 0, 46, "Text"],
-
-Cell[CellGroupData[{
-Cell[6319, 219, 53, 1, 39, "Input"],
-Cell[6375, 222, 328, 8, 141, "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[6752, 236, 30, 0, 60, "Subsubsection"],
-Cell[6785, 238, 650, 24, 121, "Text"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[7472, 267, 56, 0, 60, "Subsubsection"],
-Cell[7531, 269, 72, 0, 46, "Text"],
-
-Cell[CellGroupData[{
-Cell[7628, 273, 74, 1, 39, "Input"],
-Cell[7705, 276, 153, 2, 113, "Output"]
-}, Open  ]],
-Cell[7873, 281, 72, 0, 46, "Text"],
-
-Cell[CellGroupData[{
-Cell[7970, 285, 60, 1, 39, "Input"],
-Cell[8033, 288, 333, 8, 163, "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[8415, 302, 59, 0, 60, "Subsubsection"],
-Cell[8477, 304, 646, 21, 121, "Text"],
-Cell[9126, 327, 519, 10, 223, "Input"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[9682, 342, 58, 0, 60, "Subsubsection"],
-Cell[9743, 344, 326, 6, 121, "Text"],
-Cell[10072, 352, 231, 5, 108, "Input"],
-
-Cell[CellGroupData[{
-Cell[10328, 361, 132, 2, 85, "Input"],
-Cell[10463, 365, 659, 14, 243, "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[11171, 385, 60, 0, 60, "Subsubsection"],
-Cell[11234, 387, 787, 23, 96, "Text"],
-Cell[12024, 412, 241, 6, 131, "Input"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[12302, 423, 59, 0, 60, "Subsubsection"],
-Cell[12364, 425, 145, 3, 85, "Input"],
-
-Cell[CellGroupData[{
-Cell[12534, 432, 82, 1, 39, "Input"],
-Cell[12619, 435, 751, 16, 193, "Output"]
-}, Open  ]]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[13419, 457, 40, 0, 60, "Subsubsection"],
-Cell[13462, 459, 321, 9, 71, "Text"]
-}, Open  ]]
+Cell[6624, 187, 505, 13, 51, "Input",ExpressionUUID->"701af361-3b12-4d3d-9bee-2e57c2909747"],
+Cell[7132, 202, 1239, 34, 253, "Output",ExpressionUUID->"4436b221-8595-49de-9af8-c33217592c30"]
 }, Open  ]]
 }
 ]
 *)
-
-
-
-
-(***********************************************************************
-End of Mathematica Notebook file.
-***********************************************************************)
 
