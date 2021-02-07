@@ -1,0 +1,53 @@
+\state{}{
+	 Let $V$ be a vector field.  Prove the covariant divergence formula valid in a coordinate basis
+	 \eq{
+	 	\nabsa \Va = \frac{1}{\sqabsg} \ptsa (\sqabsg \Va),
+	 }
+	 where $g$ is the determinant of the metric.
+}
+
+\sol{
+	From Lecture~7, the covariant derivative can be written
+	\eqn{thing2}{
+		\nabsb \Vb = \ptsb \Vb + \Gamgsbg \Vb.
+	}
+	Applying Eqs.~\refeq{Gamraise} and \refeq{Gamthing},
+	\eq{
+		\Gamgsbg = \sgga \Gamsabg
+		= \frac{1}{2} \sgga (\sgsabdg + \sgsagdb - \sgsbgda + \csabg + \csagb - \csbga)
+		= \frac{1}{2} \sgga (\sgsabdg + \sgsagdb - \sgsbgda),
+	}
+	where we have used the fact that $[ \vesa, \vesb ] = 0$ in a coordinate basis~\cite[p.~1168]{MCP}, rendering all of the commutation coefficients zero.  Then
+	\aln{
+		\Gamgsbg &= \frac{1}{2} \sgga (\ptsg \sgsab + \ptsb \sgsag - \ptsa \sgsbg) \notag \\
+		&= \frac{1}{2} (\sgga \ptsg \sgsab + \sgga \ptsb \sgsag - \sgag \ptsa \sgsgb) \notag \\
+		&= \frac{1}{2} (\sgga \ptsg \sgsab + \sgga \ptsb \sgsag - \sgga \ptsg \sgsab) \notag \\
+		&= \frac{1}{2} \sgga \ptsb \sgsag, \label{thing2b}
+	}
+	where we have used the symmetry of the metric.  Using also the fact that~\cite{Trace}
+	\eq{
+		\tr(A B) = A_{i j} B_{j i},
+	}
+	we can write Eq.~\refeq{thing2b} as
+	\eqn{thing2c}{
+		\Gamgsbg = \frac{1}{2} \tr(\sg \ptsb \sg).
+	}
+	We now apply the identity~\cite[p.~106]{Weinberg}
+	\eq{
+		\tr[ \Minvx \ptsl \Mx ] = \ptsl[ \ln \det \Mx ].
+	}
+	Using also the fact that $\sgmb \sgsbn = \delmsn$ by MCP~(24.10), Eq.~\refeq{thing2c} becomes~\cite[p.~107]{Weinberg}
+	\eq{
+		\Gamgsbg = \frac{1}{2} \tr( \sgga \ptsb \sgsag )
+		= \frac{1}{2} \ptsb( \ln \det \sgsag )
+		= \frac{1}{2} \ptsb( \ln g )
+		= \ptsb( \ln \sqabsg )
+		= \frac{1}{\sqabsg} \ptsb(\sqabsg).
+	}
+	Feeding this into Eq.~\refeq{thing2} and integrating by parts, we have
+	\eq{
+		\ans{ \nabsb \Vb =\ } \ptsb \Vb + \Vb \frac{1}{\sqabsg} \ptsb(\sqabsg)
+		\ans{\ = \frac{1}{\sqabsg} \ptsb (\sqabsg \Vb) }
+	}
+	as we wanted to show. \qed
+}
