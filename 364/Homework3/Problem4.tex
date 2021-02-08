@@ -1,0 +1,119 @@
+\state{}{
+	In this problem you will explore the geometry on the space of possible inertial velocities.
+}
+
+\prob{ \label{4a}
+	Suppose two inertial frames move with 3-velocities $\bvq$ and $\bvw$ relative to a fixed inertial frame.  Show that their relative velocity $\bv$ has magnitude $v$ given by
+	\eqn{ans4a}{
+		v^2 = \frac{(\bvq - \bvw)^2 - (\bvq \times \bvw)^2}{(1 - \bvq \vdot \bvw)^2}.
+	}
+}
+
+\sol{
+	We can associate each 3-velocity with the 4-momentum of some particle:
+	\al{
+		\vpq &= \mq \gamq (1, \bvq), &
+		\vpw &= \mw \gamw (1, \bvw),
+	}
+	where $\mq, \mw$ are the masses of the two particles and $\gamq, \gamw$ are their Lorentz factors.  Here we have consulted MCP~(2.25c), (2.25d), (2.26a), and (2.26d) to write $\vp = m \gam (1, \bv)$.  Let $\gam = 1 / \sqrt{1 - v^2}$ be the relative Lorentz factor between them.  In the rest frame of particle 2, then, we can write~\cite[p.~35]{Lorentz}
+	\eq{
+		\vpq \cdot \vpw = \mq \gam (1, \bvq') \cdot \mw (1, \bo)
+		= \gam \mq \mw
+		= \frac{\mq \mw}{\sqrt{1 - v^2}}.
+	}
+	This implies
+	\eqn{v2}{
+		v = \sqrt{1 - \frac{(\mq \mw)^2}{(\vpq \cdot \vpw)^2}}
+		\qimplies
+		v^2 = 1 - \frac{(\mq \mw)^2}{(\vpq \cdot \vpw)^2}.
+	}
+	We can make use of the Lorentz-invariant dot product $\vpq \cdot \vpw = \bpq \vdot \bpw - \cEq \cEw$.  By (2.26a), $\cE = \gam m$.  So we have
+	\eq{
+		\vpq \cdot \vpw = (\mq \gamq \bvq) \vdot (\mw \gamw \bvw) - \gamq \mq \gamw \mw
+		= \mq \mw \frac{\bvq \vdot \bvw - 1}{\sqrt{(1 - \vq^2) (1 - \vw^2)}},
+	}
+	which implies
+	\eq{
+		(\vpq \cdot \vpw)^2 = (\mq \mw)^2 \frac{(1 - \bvq \vdot \bvw)^2}{(1 - \vq^2) (1 - \vw^2)}
+	}
+	Feeding this into Eq.~\refeq{v2}, we find~\cite[p.~35]{Landau}
+	\al{
+		v^2 &= 1 - \frac{(1 - \vq^2) (1 - \vw^2)}{(1 - \bvq \vdot \bvw)^2} \\
+		&= \frac{(1 - \bvq \vdot \bvw)^2 - (1 - \vq^2) (1 - \vw^2)}{(1 - \bvq \vdot \bvw)^2} \\
+		&= \frac{(1 - \bvq \vdot \bvw)^2 - (\vq^2 - 1) (\vw^2 - 1)}{(1 - \bvq \vdot \bvw)^2} \\
+		&= \frac{1 - 2(\bvq \vdot \bvw) + (\bvq \vdot \bvw)^2 - \vq^2 \vw^2 + \vq^2 + \vw^2 - 1}{(1 - \bvq \vdot \bvw)^2} \\
+		&= \frac{-2(\bvq \vdot \bvw) + (\bvq \vdot \bvw)^2 - (\bvq \vdot \bvq) (\bvw \vdot \bvw) + \bvq \vdot \bvq + \bvw \vdot \bvw}{(1 - \bvq \vdot \bvw)^2} \\
+		&= \frac{\bvq \vdot \bvq - 2(\bvq \vdot \bvw) + \bvw \vdot \bvw - (\bvq \vdot \bvq) (\bvw \vdot \bvw) + (\bvq \vdot \bvw)^2}{(1 - \bvq \vdot \bvw)^2} \\
+		&= \ans{ \frac{(\bvq - \bvw)^2 - (\bvq \cross \bvw)^2}{(1 - \bvq \vdot \bvw)^2}, }
+	}
+	as we wanted to show.  In performing the last step we have used the vector quadruple product~\cite{Quadruple},
+	\eq{
+		(\bA \cross \bB) \vdot (\bC \cross \bD) = (\bA \vdot \bC) (\bB \vdot \bD) - (\bA \vdot \bD) (\bB \vdot \bC),
+	}
+	to write $(\bvq \cross \bvw)^2 = (\bvq \vdot \bvq) (\bvw \vdot \bvw) - (\bvq \vdot \bvw)^2.$ \qed
+}
+
+
+
+\prob{
+	We define a metric on the space of all possible 3-velocities by defining the distance between two nearby velocities to be their relative velocity.  Using the result from \ref{4a}, show that this metric is
+	\eq{
+		\dds^2 = \ddchi^2 + \sinh[2](\chi) [ \ddtht^2 + \sin[2](\tht) \ddphi^2 ],
+	}
+	where $\chi$ is the rapidity $v = \tanh(\chi)$, and $\tht, \phi$ are polar and azimuthal angles defined relative to $\bv$.
+}
+
+\sol{
+	Let $\ddbv \equiv \bvw - \bvq$.  The line element $\dds$ is the relative velocity between $\bv$ and $\bv + \ddbv$~\cite[p.~35]{Landau}.  Feeding this into Eq.~\refeq{ans4a}, we can write
+	\eqn{thing4b}{
+		\dds^2 = \frac{(\ddbv)^2 - (\bv \cross \ddbv)^2}{(1 - v^2)^2}
+		= \frac{\ddbv^2 - \bv^2 \ddbv^2 + (\bv \vdot \ddbv)^2}{(1 - v^2)^2}
+		= \frac{\ddbv^2 (1 - v^2) + (\bv \vdot \ddbv)^2}{(1 - v^2)^2},
+	}
+	where he have again used the vector quadruple product.  Using the line element in spherical coordinates~\cite{Spherical}, we can express $\ddbv$ in terms of unit vectors.  We have
+	\al{
+		\ddbv &= \ddv \vh + v \ddtht \thh + v \sin\tht \phh, &
+		\bv &= v \vh,
+	}
+	which implies
+	\al{
+		\ddbv^2 &= \ddv^2 + v^2 \ddtht^2 + v^2 \sin^2\tht \ddphi^2, &
+		(\bv \vdot \ddbv)^2 &= v^2 \ddv^2.
+	}
+	So Eq.~\refeq{thing4b} becomes~\cite[p.~35]{Landau}
+	\al{
+		\dds^2 &= \frac{(1 - v^2) (\ddv^2 + v^2 \ddtht^2 + v^2 \sin^2\tht \ddphi^2) + v^2 \ddv^2}{(1 - v^2)^2} \\
+		&= \frac{\ddv^2 + v^2 \ddtht^2 + v^2 \sin^2\tht - v^4 \ddtht^2 - v^4 \sin^2\tht \ddphi^2}{(1 - v^2)^2} \\
+		&= \frac{\ddv^2 + v^2 (1 - v^2) (\ddtht^2 + \sin^2\tht \ddphi^2)}{(1 - v^2)^2} \\
+		&= \frac{\ddv^2}{(1 - v^2)^2} + \frac{v^2 (\ddtht^2 + \sin^2\tht \ddphi^2)}{1 - v^2}.
+	}
+	Since $v = \tanh\chi$, $\ddv = \sech^2\chi \ddchi = \dd\chi / \cosh^2\chi$.  Using also $\tanh x = \sinh x / \cosh x$ and $\cosh^2\chi - \sinh^2x = 1$~\cite{ Hyperbolic}, we have
+	\al{
+		\dds^2 &= \frac{\sech^2\chi \ddchi^2}{(1 - \tanh^2\chi)^2} + \frac{\tanh^2\chi (\ddtht^2 + \sin^2\tht \ddphi^2)}{1 - \tanh^2\chi} \\
+		&= \frac{\ddchi^2}{\cosh^4\chi (1 - \tanh^2\chi)^2} + \frac{\sinh^2\chi (\ddtht^2 + \sin^2\tht \ddphi^2)}{\cosh^2 (1 - \tanh^2\chi)} \\
+		&= \frac{\ddchi^2}{(\cosh^2\chi - \sinh^2\chi)^2} + \frac{\sinh^2\chi (\ddtht^2 + \sin^2\tht \ddphi^2)}{\cosh^2\chi - \sinh^2\chi} \\
+		&= \ans{ \ddchi^2 + \sinh^2\chi (\ddtht^2 + \sin^2\tht \ddphi^2), }
+	}
+	as we wanted to show. \qed
+}
+
+
+
+\clearpage
+\prob{
+	Show that the geodesics of this metric are paths of minimum fuel use for a rocket ship changing its velocity.
+}
+
+\sol{
+	A geodesic is the shortest possible path between two points in a manifold~\cite[p.~77]{Weinberg}.  This means that a geodesic of the metric in our inertial velocity space is the shortest way to change from one velocity to another.  Taking the shortest route uses as little fuel as possible, so we can conclude that the geodesics of this metric are paths of minimum fuel use. \qed
+}
+
+
+
+\prob{
+	A rocket ship in interstellar travel with velocity $\bvq$ relative to earth changes to a new velocity $\bvw$ in a manner that uses the least amount of fuel.  What is the ship’s smallest velocity relative to earth during the change?
+}
+
+\sol{
+	I could not figure out how to solve this one.  I think we want to find some kind of minimum along the geodesic between $\bvq$ and $\bvw$, but I am not sure how to do this.
+}

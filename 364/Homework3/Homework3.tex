@@ -14,86 +14,9 @@
 
 \input{Problem1}
 \input{Problem2}
-
-
-
-
-
-
-\state{}{
-	 In this problem you will explore the geometry of a sphere $S^2$ of radius $R$.
-}
-
-\prob{
-	A vector $\vV = \Vtht \vestht + \Vphi \vesphi$ is defined at a point $(\tht, \phi)$ on the sphere.  It is then parallel transported around the circle of constant $\tht$ with $\phi \to \phi + 2\pi$.  What are its resulting components?  What is its length?
-}
-
-\sol{
-	
-}
-
-
-
-\prob{
-	Write the geodesic equation in $(\tht, \phi)$ angular coordinates.  Show that the solutions are \emph{great circles}, i.e.~circles on the sphere of largest diameter.
-}
-
-
-
-\prob{
-	Consider a disk of radius $\eps$ on the sphere.  Working in the limit of small $\eps$, compute the area of the disk to order $\eps^4$.  Compare your results to $\bbR^2$ with the flat metric.
-}
-
-
-
-\prob{
-	A spherical triangle is made from three points on the sphere pairwise connected by geodesics.  Let the angles on the triangle be $\alp$, $\bet$, and $\gam$.  By drawing pictures, show that $\alp + \bet + \gam$ can be larger than $\pi$.
-}
-
-
-
-\prob{
-	Define the excess angle $E$ of a spherical triangle by $E = \alp + \bet + \gam - \pi$.  Prove that the area of the triangle is $R^2 E$.
-}
-
-
-
-
-
-
+\input{Problem3}
 \clearpage
-\state{}{
-	In this problem you will explore the geometry on the space of possible inertial velocities.
-}
-
-\prob{ \label{4a}
-	Suppose two inertial frames move with 3-velocities $\vvq$ and $\vvw$ relative to a fixed inertial frame.  Show that their relative velocity $\vv$ has magnitude $v$ given by
-	\eq{
-		v^2 = \frac{(\vvq - \vvw)^2 - (\vvq \times \vvw)^2}{(1 - \vvq \cdot \vvw)^2}.
-	}
-}
-
-
-
-\prob{
-	We define a metric on the space of all possible 3-velocities by defining the distance between two nearby velocities to be their relative velocity.  Using the result from \ref{4a}, show that this metric is
-	\eq{
-		\dds^2 = \ddchi^2 + \sinh[2](\chi) (\ddtht^2 + \sin[2](\tht) \ddphi^2),
-	}
-	where $\chi$ is the rapidity $v = \tanh(\chi)$, and $\tht, \phi$ are polar and azimuthal angles defined relative to $\vv$.
-}
-
-
-
-\prob{
-	Show that the geodesics of this metric are paths of minimum fuel use for a rocket ship changing its velocity.
-}
-
-
-
-\prob{
-	A rocket ship in interstellar travel with velocity $\vvq$ relative to earth changes to a new velocity $\vvw$ in a manner that uses the least amount of fuel.  What is the ship’s smallest velocity relative to earth during the change?
-}
+\input{Problem4}
 
 
 \makebib

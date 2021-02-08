@@ -125,8 +125,6 @@
 }
 
 \sol{
-	\hl{do the first one?}
-	
 	To compute the divergent part of the fermion propagator counterterm to one-loop order, we include the fermion self-energy: \hl{(draw the diagram)}
 	
 	The fermion-self energy here looks similar to that in QED, so we may adapt P\&S~(7.16) for that term.  Using our Feynman rules from \ref{1a}, we have
@@ -170,6 +168,32 @@
 		\delM &= -\frac{g^2}{8 \pi^2 \eps} M
 	}}%
 	are the conditions to eliminate the divergence.
+	
+	For the scalar-fermion vertex, we can adapt some of our work from problem~2 of Homework~1.  We adapt Peskin \& Schroeder (6.38) using the pseudoscalar field Feynman rules to write~\cite[p.~123]{Peskin}
+	\aln{
+		\ubpp \del\Gamm(p, p') \up &= \ubpp g \delg \gamt \up + g^3 \int \dddkf \ubpp \frac{\gamt (\ksl' + M) \gamt (\ksl + M) \gamt}{[ (k - p)^2 - m^2 + i \eps ] ({k'}^2 - M^2 + i \eps) (k^2 - M^2 + i \eps)} \up \notag \\
+		&= \ubpp g \delg \gamt \up + g^3 \gamt \int \dddkf \ubpp \frac{(\ksl' + M) (\ksl - M)}{[ (k - p)^2 - m^2 + i \eps ] ({k'}^2 - M^2 + i \eps) (k^2 - M^2 + i \eps)} \up, \label{thing1bc}
+	}
+	where we have once more used $(\gamt)^2 = 1$.  We use Peskin \& Schroeder~(6.41) to write 
+	\eqn{denom}{
+		\frac{1}{[ (k - p)^2 - m^2 + i \eps ] ({k'}^2 - M^2 + i \eps) (k^2 - M^2 + i \eps)} = \intoq \ddx \ddy \ddz \del(x + y + z - 1) \frac{2}{D^3},
+	}
+	where~\cite[pp.~190--191]{Peskin}
+	\eq{
+		D = k^2 + 2 k (q y - p z) + z (p^2 - m^2) - (1 - z) M^2 + i \eps
+		= k^2 - 2 k p z + z (p^2 - m^2) - (1 - z) M^2 + i \eps
+		\equiv \ell^2 - \Del + i \eps.
+	}
+	Here we have used $x + y + z = 1$ and set $q = 0$ (so $k' = k$) as in problem~2 of Homework~1.  We have defined $\ell \equiv k - z p$~\cite[p.~191]{Peskin}, and
+	\eq{
+		\Del \equiv (1 - z)^2 M^2 + z m^2.
+	}
+	For the numerator of Eq.~\refeq{thing1bc}, we use $\ell \equiv k - z p$~\cite[p.~191]{Peskin}, and define
+	\eqn{N1}{
+		N \equiv \ubpp \gamt (\ell + z p + M) (\ell + z p - M) \up
+	}
+	
+	\hl{finish later}
 }
 
 
