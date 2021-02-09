@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{self_energy_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(40, 30)
+			\fmfstraight
+			\fmfleft{i}
+			\fmfright{o}
+			\fmf{plain}{i,c1,c2,o}
+			\fmffreeze
+			\fmf{fermion,label=$p$,label.side=left}{o,c2}
+			\fmf{fermion,label=$k$,label.side=left}{c2,c1}
+			\fmf{fermion,label=$p$,label.side=left}{c1,i}
+			\fmffreeze
+			\fmf{dashes,left,tension=0,label=$\quad\qquad \leftarrow \ p - k$}{c1,c2}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

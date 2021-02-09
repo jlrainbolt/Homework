@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{ren_fermion_prop_labels_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(40, 30)
+			\fmfstraight
+			\fmfleft{i}
+			\fmfright{o}
+			\fmf{plain}{i,c,o}
+			\fmfv{decor.shape=circle,decor.size=0.1w,decor.filled=empty,}{c}
+			\fmffreeze
+            		\fmfleft{i2}
+			\fmfright{o2}
+            		\fmf{fermion,label=$p$,label.side=left}{o,c2}
+            		\fmf{fermion,label=$p$,label.side=left}{c2,i}
+			\fmfv{decor.shape=cross,decor.size=0.1w}{c2}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}
