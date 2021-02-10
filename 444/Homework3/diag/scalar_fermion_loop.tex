@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{scalar_fermion_loop_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(40,30)
+			\fmfstraight
+			\fmfleft{i}
+			\fmfright{o}
+			\fmf{phantom}{i,m1,l1,l2,m2,o}
+			\fmf{dashes}{o,l2}
+			\fmf{fermion,right,tension=0,label=$k$}{l1,l2}
+			\fmf{fermion,left,tension=0,label=$k + p$}{l1,l2}
+			\fmf{scalar,label=$p$,label.side=left}{l1,i}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

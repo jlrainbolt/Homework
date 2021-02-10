@@ -127,7 +127,7 @@
 	To compute the divergent part of the fermion propagator counterterm to one-loop order, we include the fermion self-energy similar to P\&S~(7.15):
 	\vspace{-.5cm}
 	\eq{
-		\centergraphics{diag/ren_fermion_prop_labels}
+		\centergraphics{diag/ren_fermion_prop_black}
 		\quad + \quad
 		\centergraphics{diag/self_energy}
 	}
@@ -159,7 +159,7 @@
 	Then we can apply (7.84), which takes the limit as $d \to 4$:
 	\eqn{int2}{
 		\int \dddlEf \frac{1}{(\ellE^2 + \Del)^2} \to \frac{1}{(4\pi)^2} \paren{ \frac{2}{\eps} - \gam + \ln(\frac{4\pi}{\Del}) }
-		\approx \frac{1}{8 \pi^2 \eps},
+		\to \frac{1}{8 \pi^2 \eps},
 	}
 	where $\eps = 4 - d$~\cite[p.~250]{Peskin}, and we have omitted the finite parts.  Making these substitutions into Eq.~\refeq{Sigw2}, we find
 	\al{
@@ -168,12 +168,14 @@
 		&= i (\psl \delZw - \delM) + \frac{i g^2}{8 \pi^2 \eps} \paren{ \frac{\psl}{2} - M } \\
 		&= i \psl \paren{ \delZw + \frac{g^2}{16 \pi^2 \eps} } - i \paren{ \delM + \frac{g^2}{8 \pi^2 \eps} M }.
 	}
-	This implies
-	\ans{\al{
+	This implies that
+	\aln{ \label{rules1}
 		\delZq &= -\frac{g^2}{16 \pi^2 \eps}, &
 		\delM &= -\frac{g^2}{8 \pi^2 \eps} M
-	}}%
+	}
 	are the conditions to eliminate the divergence.
+	
+	
 	
 	For the scalar-fermion vertex, we can adapt some of our work from Prob.~2(a) of Homework~1.  With the one-loop diagram similar to the one on p.~189 of P\&S, we have
 	\eq{
@@ -181,8 +183,6 @@
 		\quad + \quad
 		\centergraphics{diag/ren_scalar_fermion_loop}
 	}
-	\hl{change the one diagram to remove the ps}
-	
 	We adapt Peskin \& Schroeder (6.38) using the pseudoscalar field Feynman rules to write~\cite[p.~123]{Peskin}
 	\aln{
 		\ubpp \del\Gamm(p, p') \up &= \ubpp g \delg \gamt \up + i g^3 \int \dddkf \ubpp \frac{\gamt (\ksl' + M) \gamt (\ksl + M) \gamt}{[ (k - p)^2 - m^2 + i \eps ] ({k'}^2 - M^2 + i \eps) (k^2 - M^2 + i \eps)} \up \notag \\
@@ -234,31 +234,37 @@
 	\al{
 		\del\Gamm(p, p') &= g \delg \gamt - \frac{2}{(4\pi)^{2 - \eps / 2}} g^3 \gamt \intoq \ddz (1 - z) \brac{ \frac{4 - \eps}{2} \frac{\Gam(\eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Del} }^{\eps / 2} - (z^2 - 1) M^2 \frac{\Gam(1 + \eps / 2)}{\Gam(3)} \paren{ \frac{1}{\Del} }^{1 + \eps / 2} } \\
 		&= g \delg \gamt - \frac{g^3}{(4\pi)^2} \gamt \intoq \ddz (1 - z) \paren{ \frac{4\pi}{\Del} }^{\eps / 2} \brac{ \frac{4 - \eps}{2} \Gam(\eps / 2) + \frac{(1 - z^2) M^2}{\Del} \Gam(1 + \eps / 2) } \\
-		&\approx g \delg \gamt - \frac{g^3}{(4\pi)^2} \frac{4}{\eps} \gamt \intoq \ddz (1 - z) \\
+		&\to g \delg \gamt - \frac{g^3}{(4\pi)^2} \frac{4}{\eps} \gamt \intoq \ddz (1 - z) \\
 %		&= g \delg \gamt + \frac{i g^3}{8 \pi^2} \frac{1}{\eps} \gamt, \\
 		&= g \gamt \paren{ \delg - \frac{g^2}{8 \pi^2} \frac{1}{\eps} } \gamt,
 	}
 	where we have taken the $\eps \to 0$ limit using Mathematica and retained only divergent terms.   Then in order to eliminate the divergence, we need
-	\eq{
-		\ans{ \delg = \frac{g^2}{8 \pi^2} \frac{1}{\eps}. }
+	\eqn{rules2}{
+		\delg = \frac{g^2}{8 \pi^2} \frac{1}{\eps}.
 	}
+	
+	
 	
 	For the divergent part of the pseudoscalar propagator, we must include the pseudoscalar self-energy.  Since our Feynman rules include two different vertices involving the pseudoscalar, we can draw two different self-energy diagrams:
-	
-	\hl{draw diagrams}
-	
-	Adapting P\&S~(10.32) for the second diagram and (10.29) for the third, we have
-	\aln{
-		-i M^2(p^2) &= i (p^2 \delZw - \delm) - g^2 \int \dddkf \tr[ \frac{i \gamt (\ksl + \psl + M)}{(k + p)^2 - M^2 + i \eps} \frac{i \gamt (\ksl + M)}{k^2 - M^2 + i \eps} ] - i \frac{\lam}{2} \int \dddkf \frac{i}{k^2 - m^2 + i \eps} \notag \\
-		&= i (p^2 \delZw - \delm) - g^2 \int \dddkf \tr[ -\frac{(\ksl + \psl - M) (\ksl + M)}{[ (k + p)^2 - M^2 + i \eps ] [ k^2 - M^2 + i \eps ]} ] + \frac{\lam}{2} \int \dddkf \frac{1}{k^2 - m^2 + i \eps}. \label{thing1bd}
+	\vspace{-.25cm}
+	\eqn{diag2}{
+		\centergraphics{diag/ren_scalar_prop_black}
+		\quad + \quad
+		\centergraphics{diag/scalar_fermion_loop}
+		\quad + \quad
+		\centergraphics{diag/scalar_loop}
 	}
-	
-	For the second term, we introduce the Feynman parameter $x$~\cite[pp.~217, 327]{Peskin}:
+	Adapting P\&S~(10.32) for the second diagram, we have
+	\eq{
+		-g^2 \int \dddkf \tr[ \frac{i \gamt (\ksl + \psl + M)}{(k + p)^2 - M^2 + i \eps} \frac{i \gamt (\ksl + M)}{k^2 - M^2 + i \eps} ]
+		= -g^2 \int \dddkf \tr[ -\frac{(\ksl + \psl - M) (\ksl + M)}{[ (k + p)^2 - M^2 + i \eps ] [ k^2 - M^2 + i \eps ]} ].
+	}
+	We introduce the Feynman parameter $x$~\cite[pp.~217, 327]{Peskin}:
 	\eqn{FP}{
 		\frac{1}{(k + p)^2 - M^2 + i \eps} \frac{1}{k^2 - M^2 + i \eps} = \intoq \ddx \frac{1}{[ k^2 + 2 x k \cdot p + x p^2 - M^2 + i \eps ]^2}
-		\equiv \frac{1}{D^2}.
+		\equiv \intoq \ddx \frac{1}{D^2}.
 	}
-	Let $\ell = k + x p$ and $\Del = M^2 - x (1 - x) p^2$~\cite[pp.~327, 329]{Peskin}.  Then $D = \ell^2 - \Del + i \eps$.  For the numerator in Eq.~\refeq{thing1bd}, note that
+	Let $\ell = k + x p$ and $\Del = M^2 - x (1 - x) p^2$~\cite[pp.~327, 329]{Peskin}.  Then $D = \ell^2 - \Del + i \eps$.  For the numerator, note that
 	\eq{
 		(\ksl + \psl - M) (\ksl + M) = \ksl \ksl + M \ksl + \psl \ksl + M \psl - M \ksl - M^2,
 	}
@@ -266,11 +272,11 @@
 	\aln{
 		N &\equiv \tr[ -(\ksl + \psl - M) (\ksl + M) ] = 4 [ k \cdot (p + k) - M^2 ] \notag \\
 		&= 4 [ (\ell - x p) \cdot (p + \ell - x p) - M^2 ] \notag \\
-		&= 4 [ \ell^2 + (1 - x) \ell \cdot p - x p \cdot \ell - x (1 - x) p^2 - M^2 ] \notag \\
-		&= 4 [ \ell^2 - x (1 - x) p^2 - M^2 ] \label{N2}
+		&= 4 [ \ell^2 + (1 - x) \ell \cdot p - x p \cdot \ell + x (1 - x) p^2 - M^2 ] \notag \\
+		&= 4 [ \ell^2 + x (1 - x) p^2 - M^2 ] \label{N2}
 	}
 	since
-	\al{
+	\aln{ \label{traces}
 		\tr(\vq) &= 0, &
 		\tr(\text{any odd number of $\gam$'s}) &= 0, &
 		\tr(\gamm \gamn) &= 4 \gmn
@@ -278,39 +284,147 @@
 	by (A.27).  This is similar to the expression obtained in P\&S~(10.32).  Now we can evaluate the integral using (A.45) with $n = 2$,
 	\eq{
 		\int \dddlf \frac{\ell^2}{(\ell^2 - \Del)^2} = \frac{(-1) i}{(4\pi)^{d / 2}} \frac{d}{2} \frac{\Gam(1 - d / 2)}{\Gam(2)} \paren{ \frac{1}{\Del} }^{1 - d / 2}
-		= -\frac{i}{(4\pi)^{2 - \eps / 2}} \frac{4 - \eps}{2} \Gam(\eps / 2 - 1) \paren{ \frac{1}{\Del} }^{\eps / 2 - 1},
+		= -\frac{i}{(4\pi)^{2 - \eps / 2}} \frac{4 - \eps}{2} \Gam(\eps / 2 - 1) \paren{ \frac{1}{\Del} }^{\eps / 2 - 1}
+		\to -\frac{\Del}{4 \pi^2 \eps},
 	}
 	as well as Eqs.~\refeq{int1} and \refeq{int2}.  Utilizing our work in Eqs.~\refeq{FP} and \refeq{N2}, then, yields
 	\aln{
 		-g^2 \int \dddkf \tr[ -\frac{(\ksl + \psl - M) (\ksl + M)}{[ (k + p)^2 - M^2 + i \eps ] [ k^2 - M^2 + i \eps ]} ]
 		&= -4 g^2 \intoq \ddx \int \dddlf \frac{\ell^2 - x (1 - x) p^2 - M^2}{(\ell^2 - \Del)^2} \notag \\
-		&\approx -4 i g^2 \intoq \ddx \brac{ \frac{\Del}{4 \pi^2 \eps} - \frac{x (1 - x) p^2 + M^2}{8 \pi^2 \eps} } \notag \\
+		&\to -4 i g^2 \intoq \ddx \brac{ \frac{\Del}{4 \pi^2 \eps} - \frac{x (1 - x) p^2 + M^2}{8 \pi^2 \eps} } \notag \\
 		&= -\frac{i g^2}{\pi^2 \eps} \intoq \ddx \brac{ M^2 - x (1 - x) p^2 - \frac{1}{2} x (1 - x) p^2 - \frac{M^2}{2} } \notag \\
 		&= -\frac{i g^2}{2 \pi^2 \eps} \intoq \ddx \brac{ M^2 - 3 x (1 - x) p^2 } \notag \\
 		&= \frac{i g^2}{2 \pi^2 \eps} \paren{ \frac{p^2}{2} - M^2 } \label{term2}
 	}
-	for the second term in Eq.~\refeq{thing1bd}.
+	for the second diagram.
 
-	For the third term in Eq.~\refeq{thing1bd}, let $\ell = k$ and $\Del = m^2$.  Then we can use P\&S~(A.44) with $n = 1$ and substitute $\eps = 4 - d$:
+	For the third diagram in Eq.~\refeq{diag2}, we may adapt (10.29):
+	\eq{
+		-i \frac{\lam}{2} \int \dddkf \frac{i}{k^2 - m^2 + i \eps} = \frac{\lam}{2} \int \dddkf \frac{1}{k^2 - m^2 + i \eps}.
+	}
+	Let $\ell = k$ and $\Del = m^2$.  Then we can use P\&S~(A.44) with $n = 1$ and substitute $\eps = 4 - d$:
 	\eq{
 		\int \dddlf \frac{1}{\ell^2 - \Del} = -\frac{i}{(4\pi)^{d / 2}} \frac{\Gam(1 - d / 2)}{\Gam(1)} \paren{ \frac{1}{\Del} }^{1 - d / 2}
 		= -\frac{i}{(4\pi)^{2 - \eps / 2}} \Gam(\eps / 2 - 1) \paren{ \frac{1}{\Del} }^{\eps / 2 - 1}.
 	}
 	This gives us
 	\eqn{term3}{
-		\frac{\lam}{2} \int \dddlf \frac{1}{\ell^2 - \Del} \approx \frac{i \lam}{16 \pi^2 \eps} m^2
+		\frac{\lam}{2} \int \dddlf \frac{1}{\ell^2 - \Del} \to \frac{i \lam}{16 \pi^2 \eps} m^2
 	}
-	for the third term in Eq.~\refeq{thing1bd}.
+	for the third diagram.
 	
-	Feeding Eqs.~\refeq{term2} and \refeq{term3} into Eq.~\refeq{thing1bd}, we have
-	\eq{
-		-i M^2(p^2) = i (p^2 \delZw - \delm) + \frac{i g^2}{2 \pi^2 \eps} \paren{ \frac{p^2}{2} - M^2 } + \frac{i \lam}{16 \pi^2 \eps} m^2
-		= i \curly{ p^2 \brac{ \delZw + \frac{g^2}{4 \pi^2 \eps} } - \brac{ \delm + \paren{ \frac{g^2 M^2}{2 \pi^2 \eps} - \frac{\lam m^2}{16 \pi^2 \eps} } } },
+	Feeding Eqs.~\refeq{term2} and \refeq{term3} into the sum of all three diagrams in Eq.~\refeq{diag2}, we have
+	\al{
+		-i M^2(p^2) &= i (p^2 \delZw - \delm) - g^2 \int \dddkf \tr[ -\frac{(\ksl + \psl - M) (\ksl + M)}{[ (k + p)^2 - M^2 + i \eps ] [ k^2 - M^2 + i \eps ]} ] + \frac{\lam}{2} \int \dddkf \frac{1}{k^2 - m^2 + i \eps} \\
+		&= i (p^2 \delZw - \delm) + \frac{i g^2}{2 \pi^2 \eps} \paren{ \frac{p^2}{2} - M^2 } + \frac{i \lam}{16 \pi^2 \eps} m^2 \\
+		&= i \curly{ p^2 \brac{ \delZw + \frac{g^2}{4 \pi^2 \eps} } - \brac{ \delm + \paren{ \frac{g^2 M^2}{2 \pi^2 \eps} - \frac{\lam m^2}{16 \pi^2 \eps} } } },
 	}
 	which implies
-	\ans{\al{
+	\aln{ \label{rules3}
 		\delZw &= -\frac{g^2}{4 \pi^2 \eps}, &
-		\delm &= \frac{\lam m^2}{16 \pi^2 \eps} - \frac{g^2 M^2}{2 \pi^2 \eps}.
+		\delm &= \frac{\lam m^2}{16 \pi^2 \eps} - \frac{g^2 M^2}{2 \pi^2 \eps}
+	}
+	is needed.
+	
+	
+	
+	For the $4\phi$ vertex, we need to consider all of the one-loop diagrams of $\phi^4$ theory~\cite[p.~326]{Peskin}, as well as a diagram with a fermion loop~\cite[p.~121]{Peskin}:
+	\eqn{diag3}{
+		\centergraphics{diag/ren_scalar_vertex_black}
+		\quad + \quad
+		\centergraphics{diag/scalar_s_loop}
+		\quad + \quad
+		\centergraphics{diag/scalar_t_loop}
+		\quad + \quad
+		\centergraphics{diag/scalar_u_loop}
+		\quad + \quad
+		\centergraphics{diag/scalars_fermion_loop}
+	}
+	The second diagram can be computed in an identical manner to the corresponding scalar diagram in P\&S~(10.20) and (10.23):
+	\eqn{diaggg}{
+		\frac{(-i \lam)^2}{2} \int \dddkf \frac{i}{k^2 - m^2 + i \eps} \frac{i}{(k + p)^2 - m^2 + i \eps}
+		= \frac{\lam^2}{2} \int \dddkf \frac{1}{(k^2 - m^2 + i \eps) [ (k + p)^2 - m^2 + i \eps ]}.
+	}
+	We introduce the Feynman parameter $x$ as in (10.23):
+	\eq{
+		\frac{1}{k^2 - m^2 + i \eps} \frac{1}{(k + p)^2 - m^2 + i \eps} = \intoq \ddx \frac{1}{[ k^2 + 2 x k \cdot p + x p^2 - m^2 ]^2}
+		\equiv \intoq \frac{1}{D^2}.
+	}
+	We note that this $D$ is identical to the one in Eq.~\refeq{FP} with $M \to m$, so we may reuse our work from that calculation.  Let $\Del = m^2 - x (1 - x) p^2$, so $D = \ell^2 - \Del + i \eps$.  Once more applying Eqs.~\refeq{int1} and \refeq{int2}, we have
+	\eqn{thing4}{
+		\frac{\lam^2}{2} \int \dddkf \frac{1}{(k^2 - m^2 + i \eps) [ (k + p)^2 - m^2 + i \eps ]} \to \frac{\lam^2}{2} \frac{i}{8 \pi^2 \eps}
+		= \frac{i \lam^2}{16 \pi^2 \eps}
+	}
+	as $\eps \to 0$.
+	
+	We note that the third and fourth diagrams in Eq.~\refeq{diag3} also take the form of Eq.~\refeq{diaggg} since $p^2 = s$, where $s$ is a Mandelstam variable.  We can evaluate the third and fourth diagrams by replacing $p^2 = s$ by $t$ and by $u$, respectively~\cite[pp.~156, 326]{Peskin}.  However, we see in Eq.~\refeq{thing4} that the divergent term does not depend on the Mandelstam variable, so we conclude that the sum of these three diagrams is
+	\eqn{3diags}{
+		\frac{3 i \lam^2 m^2}{16 \pi^2 \eps}.
+	}
+	
+	For the final (fermion loop) diagram, we need to evaluate the trace of the four vertices~\cite[p.~120]{Peskin}.  We label the momenta as on p.~326 of P\&S:
+	\eq{
+		\centergraphics{diag/scalars_fermion_loop_labels}
+	}
+	We have
+	{\footnotesize \aln{
+		-g^4 &\int \dddkf \tr\brac{ \frac{\gamt (\ksl + M)}{k^2 - M^2 + i \eps} \frac{\gamt (\ksl + \pw + M)}{(k + \pw)^2 - M^2 + i \eps} \frac{\gamt (\ksl + \pw + \pr + M)}{(k + \pw + \pr)^2 - M^2 + i \eps} \frac{\gamt (\ksl + \pslw + \psle + \pslr + M)}{(k + \pw + \pe + \pslr)^2 - M^2 + i \eps} } \notag \\
+		&= -g^4 ]int \dddkf \tr\brac{ \frac{(\ksl - M) (\ksl + \pslw + M) (\ksl + \pslw + \pslr - M) (\ksl + \pslw + \psle + \pslr + M)}{(k^2 - M^2 + i \eps) [ (k + \pw)^2 - M^2 + i \eps ] [ (k + \pslw + \pslr)^2 - M^2 + i \eps ] [ (k + \pslw + \psle + \pslr)^2 - M^2 + i \eps ]} }. \label{ugh}
+	}}%
+	Now we introduce the Feynman parameters, using Peskin \& Schroeder~(6.41) with $n = 4$:
+	{\footnotesize \al{
+		&\frac{1}{(k^2 - M^2 + i \eps) [ (k + \pw)^2 - M^2 + i \eps ] [ (k + \pslw + \pslr)^2 - M^2 + i \eps ] [ (k + \pslw + \psle + \pslr)^2 - M^2 + i \eps ]} \\
+		&\hspace{1em} = \intoq \ddw \ddx \ddy \ddz \frac{3! \, \del(1 - w - x - y - z)}{\{ w (k^2 - M^2 + i \eps) + x [ (k + \pw)^2 - M^2 + i \eps ] + y [ (k + \pslw + \pslr)^2 - M^2 + i \eps ] + z [ (k + \pslw + \psle + \pslr)^2 - M^2 + i \eps ] \}^4 } \\
+		&\hspace{1em} \equiv 3!\intoq \ddw \ddx \ddy \ddz \frac{\del(1 - w - x - y - z)}{(\ell^2 - \Del + i \eps)^4},
+	}}%
+	where we have defined $\ell$ and $\Del$, although not explicitly, in hopes that the divergent terms are independent of $\Del$.  We do know that $\ell = k + (\text{other terms})$, so we see that the numerator in Eq.~\refeq{ugh} has terms of $\order{\ell^4}$, $\order{\ell^2}$, and $\order{\ell^0}$.  The terms of odd powers of $\ell$ vanish when we take the trace by (A.27), which tells us that
+	\eqn{traces2}{
+		\tr(\gamm \gamn \gamr \gams) = 4 (\gmn \grs - \gmr \gns + \gms \gnr)
+	}
+	along with the identities in Eq.~\refeq{traces}.  From P\&S~(A.44) and (A.45),
+	\al{
+		\int \dddlf \frac{1}{(\ell^2 - \Del)^4} &= \frac{(-1)^4 i}{(4\pi)^{d / 2}} \frac{\Gam(4 - d / 2)}{\Gam(4)} \paren{ \frac{1}{\Del} }^{4 - d / 2}
+		= \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{\Gam(2 + \eps / 2)}{6} \paren{ \frac{1}{\Del} }^{2 + \eps / 2}
+		\to 0, \\
+		%
+		\int \dddlf \frac{\ell^2}{(\ell^2 - \Del)^4} &= \frac{(-1)^3 i}{(4\pi)^2} \frac{d}{2} \frac{\Gam(4 - d / 2 - 1)}{\Gam(4)} \paren{ \frac{1}{\Del} }^{4 - d / 2 - 1}
+		= -\frac{i}{(4\pi)^{2 - \eps / 2}} \frac{4 - \eps}{2} \frac{\Gam(1 + \eps / 2)}{6} \paren{ \frac{1}{\Del} }^{1 + \eps / 2}
+		\to 0,
+	}
+	where in the final step we have taken the $\eps \to 0$ limit and kept only terms of $\order{\eps^{-1}}$.  So these terms do not contribute to the divergence.  Finally, from (A.47),
+	\al{
+		\int \dddlf \frac{(\ell^2)^2}{(\ell^2 - \Del)^4} &= \frac{(-1)^4 i}{(4\pi)^2} \frac{d (d + 2)}{4} \frac{\Gam(4 - d / 2 - 2)}{\Gam(4)} \paren{ \frac{1}{\Del} }^{4 - d / 2 - 2} \\
+		&= \frac{i}{(4\pi)^{2 - \eps / 2}} \frac{(4 - \eps) (6 - \eps)}{4} \frac{\Gam(\eps / 2)}{6} \paren{ \frac{1}{\Del} }^{\eps / 2} \\
+		&\to \frac{i}{8 \pi^2 \eps}.
+	}
+	We note that the $\ell^4$ term in the numerator of Eq.~\refeq{ugh} picks up a factor of $4$ when we take the trace by Eq.~\refeq{traces2}.  So for the fourth diagram in Eq.~\refeq{diag3}, we have
+	\eqn{blah}{
+		-g^4 \int \dddkf \tr\bigg[ \cdots \bigg] = -(3!) (4) \intoq \ddw \ddx \ddy \ddz \del(1 - w - x - y - z) \frac{i g^4}{8 \pi^2 \eps}
+		= \frac{i g^4}{2 \pi^2 \eps},
+	}
+	where we have used Mathematica to evaluate the integral.
+	
+	Summing Eqs.~\refeq{3diags} and \refeq{blah} with the Feynman rule for the appropriate counterterm, the sum of the diagrams in Eq.~\refeq{diag3} is
+	\eq{
+		-i M^2(p^2) = \frac{3 i \lam^2 m^2}{16 \pi^2 \eps} - \frac{i g^4}{2 \pi^2 \eps} - i \dellam
+		= i \brac{ \paren{ \frac{3 \lam^2 m^2}{16 \pi^2 \eps} - \frac{g^4}{2 \pi^2 \eps} } - \dellam },
+	}
+	which implies that we need
+	\eqn{rules4}{
+		\dellam = \frac{3 \lam^2 m^2}{16 \pi^2 \eps} - \frac{g^4}{2 \pi^2 \eps}
+	}
+	in order to eliminate the divergence.
+	
+	
+	
+	Summing up our results in Eqs.~\refeq{rules1}, \refeq{rules2}, \refeq{rules3}, and \refeq{rules4}, the renormalization conditions are
+	\ans{\al{
+		\delZq &= -\frac{g^2}{16 \pi^2 \eps}, &
+		\delM &= -\frac{g^2}{8 \pi^2 \eps} M, &
+		\delg &= \frac{g^2}{8 \pi^2} \frac{1}{\eps}, \\
+		\delZw &= -\frac{g^2}{4 \pi^2 \eps}, &
+		\delm &= \frac{\lam m^2}{16 \pi^2 \eps} - \frac{g^2 M^2}{2 \pi^2 \eps}, &
+		\dellam &= \frac{3 \lam^2 m^2}{16 \pi^2 \eps} - \frac{g^4}{2 \pi^2 \eps}.
 	}}%
 }
 

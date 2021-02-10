@@ -7,20 +7,19 @@
 
 \unitlength = 1mm
 
-\begin{fmffile}{ren_fermion_prop_labels_}
+\begin{fmffile}{ren_fermion_prop_black_}
 	\fmfframe(-1,1)(-1,1){
-		\begin{fmfgraph*}(40, 30)
+		\begin{fmfgraph*}(40, 20)
 			\fmfstraight
 			\fmfleft{i}
 			\fmfright{o}
 			\fmf{plain}{i,c,o}
-			\fmfv{decor.shape=circle,decor.size=0.1w,decor.filled=empty,}{c}
+			\fmfv{decor.shape=circle,decor.size=0.1125w,decor.filled=empty}{c}
 			\fmffreeze
             		\fmfleft{i2}
 			\fmfright{o2}
-            		\fmf{fermion,label=$p$,label.side=left}{o,c2}
-            		\fmf{fermion,label=$p$,label.side=left}{c2,i}
-			\fmfv{decor.shape=cross,decor.size=0.1w}{c2}
+            		\fmf{phantom}{i2,c2,o2}
+			\fmfv{decor.shape=cross,decor.size=0.1125w}{c2}
 		\end{fmfgraph*}
 	}
 \end{fmffile}

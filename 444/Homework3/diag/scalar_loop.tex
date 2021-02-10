@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{scalar_loop_}
+	\fmfframe(-1,1)(-1,1){
+		\begin{fmfgraph*}(40,30)
+			\fmfstraight
+			\fmfleft{i}
+			\fmfright{o}
+			\fmf{dashes}{i,c,c,o}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

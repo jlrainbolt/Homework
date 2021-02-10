@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{scalars_fermion_loop_labels_}
+	\fmfframe(20,5)(20,5){
+		\begin{fmfgraph*}(30, 30)
+			\fmfstraight
+			\fmfleftn{i}{2}
+			\fmfrightn{o}{2}
+			\fmf{dashes}{i[1],c1}
+			\fmf{dashes}{o[1],c2}
+			\fmf{dashes}{i[2],c4}
+			\fmf{dashes}{o[2],c3}
+			\fmf{phantom}{c1,m,c3}
+			\fmf{phantom}{c2,m,c4}
+			\fmffreeze
+			\fmf{fermion,label=$k$}{c1,c2}
+			\fmf{fermion,label=$k + p_2$}{c2,c3}
+			\fmf{fermion,label=$k + p_2 + p_4$,label.dist=.125w}{c3,c4}
+			\fmf{fermion,label=$k + p_2 + p_2 + p_4$}{c4,c1}
+			\fmflabel{$p_1$}{i[1]}
+			\fmflabel{$p_2$}{o[1]}
+			\fmflabel{$p_3$}{i[2]}
+			\fmflabel{$p_4$}{o[2]}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}
