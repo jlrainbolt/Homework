@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{444}
+\homeworknum{4}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+
+\state{Spin-wave theory~(P\&S 11.1)}{\hfix}
+
+\prob{
+	Prove the following wonderful formula: Let $\phix$ be a free scalar field with propagator $\ev{T \phix \phio} = \Dx$.  Then
+	\eq{
+		\ev{ T e^{i \phix} e^{-i \phio} } = e^{[ \Dx - \Do ]}.
+	}
+	(The  factor $\Do$ gives a formally divergent adjustment of the overall normalization.)
+}
+
+
+
+\prob{
+	We can use this formula in Euclidean field theory to discuss correlation functions in a theory with spontaneously broken symmetry for $T < \TC$.  Let us consider only the simplest case of a broken $\O(2)$ or $U(1)$ symmetry.  We can write the local spin density as a complex variable
+	\eq{
+		\sx = \sqx + i \swx.
+	}
+	The global symmetry is the transformation
+	\eq{
+		\sx \to e^{-i \alp} \sx.
+	}
+	If we assume that the physics freezes the modulus of $\sx$, we can parameterize
+	\eq{
+		\sx = A e^{i \phix}
+	}
+	and write an effective Lagrangian for the field $\phix$.  The symmetry of the theory becomes the translation symmetry
+	\eq{
+		\phix \to \phix - \alp.
+	}
+	Show that (for $d > 0$) the most general renormalizable Lagrangian consistent with this symmetry is the free field theory
+	\eq{
+		\cL = \frac{1}{2} \rho(\vgrad \phi)^2.
+	}
+	In statistical mechanics, the constant $\rho$ is called the \emph{spin wave modulus}.  A reasonable hypothesis for $\rho$ os that it is finite for $T < \TC$ and tends to 0 as $T \to \TC$ from below.
+}
+
+
+
+\prob{
+	Compute the correlation function $\ev{ \sx \sao }$.  Adjust $A$ to give a physically sensible normalization (assuming that the system has a physical cutoff at the scale of one atomic spacing) and display the dependence of this correlation function on $x$ for $d = 1, 2, 3, 4$.  Explain the significance of your results.
+}
+
+
+
+
+
+
+
+\state{The Gross-Neveu model~(P\&S 11.3)}{
+	The Gross-Neveu model is a model in two spacetime dimensions of fermions with a discrete chiral symmetry:
+	\eq{
+		\cL = \psibsi i \ptsl \psisi + \frac{1}{2} g^2 (\psibsi \psisi)^2
+	}
+	with $i = 1, \ldots, N$.  The kinetic term of two-dimensional fermions is built from matrices $\gamm$ that satisfy the two-dimensional Dirac algebra.  These matrices can be $2 \times 2$:
+	\al{
+		\gamo &= \sigw, &
+		\gamq &= i \sigq,
+	}
+	where $\sigi$ are Pauli sigma matrices.  Define
+	\eq{
+		\gamt = \gamo \gamq = \sige;
+	}
+	this matrix anticommutes with the $\gamm$.
+}
+
+\prob{ \label{2a}
+	Show that this theory is invariant with respect to
+	\eq{
+		\psisi \to \gamt \psisi,
+	}
+	and that this symmetry forbids the appearance of a fermion mass.
+}
+
+
+
+\prob{
+	Show that this theory is renormalizable in 2 dimensions (at the level of dimensional analysis).
+}
+
+
+
+\prob{
+	Show that the functional integral for this theory can be represented in the following form:
+	\eq{
+		\int \DDpsi e^{i \int \ddsx \cL} = \int \DDpsi \DDsig \exp[ i \int \ddsx \curly{ \psibsi i \ptsl \psisi - \sig \psibsi \psisi - \frac{1}{2 g^2} \sig^2 } ],
+	}
+	where $\sigx$ (not to be confused with a Pauli matrix) is a new scalar field with no kinetic energy terms.
+}
+
+
+
+\prob{
+	Compute the leading correction to the effective potential for $\sig$ by integrating over the fermion fields $\psisi$.  You will encounter the determinant of a Dirac operator; to evaluate this determinant, diagonalize the operator by first going to Fourier components and then diagonalizing the $2 \times 2$ Pauli matrix associated with each Fourier mode.  (Alternatively, you might just take the determinant of this $2 \times 2$ matrix.)   This 1-loop contribution requires a renormalization proportional to $\sigw$ (that is, a renormalization of $g^2$).  Renormalize by minimal subtraction.
+}
+
+
+
+\prob{ \label{2e}
+	Ignoring two-loop and higher-order contributions, minimize this potential.  Show that the $\sig$ field acquires a vacuum expectation value which breaks the symmetry of \ref{2a}.  Convince yourself that this result does not depend on the particular renormalization condition chosen.
+}
+
+
+
+\prob{
+	Note that the effective potential derived in \ref{2e} depends on $g$ and $N$ according to the form
+	\eq{
+		\Veff(\sigcl) = N \cdot f(g^2 N).
+	}
+	(The overall factor of $N$ is expected in a theory with $N$ fields.)  Construct a few of the higher-order contributions to the effective potential and show that they contain additional factors of $N^{-1}$ which suppress them if we take the limit $N \to \infty$, ($g^2 N$) fixed.  In this limit, the result of \ref{2e} is unambiguous.
+}
+
+
+\makebib
+
+\end{document}
