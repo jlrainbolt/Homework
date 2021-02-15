@@ -15,18 +15,57 @@
 
 \state{Spin-wave theory~(P\&S 11.1)}{\hfix}
 
-\prob{
+\prob{ \label{1a}
 	Prove the following wonderful formula: Let $\phix$ be a free scalar field with propagator $\ev{T \phix \phio} = \Dx$.  Then
-	\eq{
+	\eqn{show1}{
 		\ev{ T e^{i \phix} e^{-i \phio} } = e^{[ \Dx - \Do ]}.
 	}
 	(The  factor $\Do$ gives a formally divergent adjustment of the overall normalization.)
 }
 
+\sol{
+	According to P\&S~(9.18),
+	\eq{
+		\ev*{T \phi(\xq) \phi(\xw)}{\Omg} = \frac{\int \DDphi \phi(\xq) \phi(\xw) \exp[ i \int \ddqx \cL ]}{\int \DDphi \exp[ i \int \ddqx \cL ]}.
+	}
+	We use this expression to write the left-hand side of Eq.~\refeq{show1}:
+	\eqn{thing1}{
+		\ev{ T e^{i \phix} e^{-i \phio} } = \frac{\int \DDphi e^{i \phix} e^{-i \phio} \exp[ i \int \ddqy \cL ]}{\int \DDphi \exp[ i \int \ddqy \cL ]}
+		= \frac{\int \DDphi \exp[i \phix - i \phio + i \int \ddqy \cL ]}{\int \DDphi \exp[ i \int \ddqy \cL ]}.
+	}
+	For a free Klein-Gordon~(i.e., scalar) field, Eq.~(9.39) tells us that the generating functional $\ZJ$ is given by
+	\eq{
+		\ZJ = \Zo \exp[ -\frac{1}{2} \int \ddqx \ddqy \Jx \DF(x - y) \Jy ],
+	}
+	where $\Zo = Z[0]$.  Thus, we want to find some $\Jy$ such that
+	\eqn{thing1b}{
+		\ev{ T e^{i \phix} e^{-i \phio} } = \frac{\ZJ}{\Zo}
+	}
+	where in general
+	\eq{
+		\ZJ = \int \DDphi \exp[ i \int \ddqx [ \cL + \Jx \phi(x) ] ]
+	}
+	by (9.34).  Inspecting Eq.~\refeq{thing1}, we recognize the denominator as $\Zo$ and see that if
+	\eq{
+		\Jy = \delq(y - x) - \delq(y)
+	}
+	we have an expression like Eq.~\refeq{thing1b}.  Collecting these findings, we have
+	\al{
+		\ans{ \ev{ T e^{i \phix} e^{-i \phio} } }&= \frac{\ZJ}{\Zo} \\
+		&= \exp[ -\frac{1}{2} \int \ddqy \ddqz \Jy \DF(y - z) \Jz ] \\
+		&= \exp[ -\frac{1}{2} \int \ddqy \ddqz \Jy \DF(y - z) [ \delq(z - x) - \delq(z) ] ] \\
+		&= \exp[ -\frac{1}{2} \int \ddqy [ \delq(y - x) - \delq(y) ] [ \DF(y - x) - \DF(y) ] ] \\
+		&= \exp[ -\frac{1}{2} [ \DF(0) - \DF(x) - \DF(-x) + \DF(0) ] ] \\
+		&= \exp[ \DF(x) - \DF(0) ] \\
+		&\ans{\; = e^{[ \Dx - \Do ]}, }
+	}
+	as we wanted to show. \qed
+}
+
 
 
 \prob{
-	We can use this formula in Euclidean field theory to discuss correlation functions in a theory with spontaneously broken symmetry for $T < \TC$.  Let us consider only the simplest case of a broken $\O(2)$ or $U(1)$ symmetry.  We can write the local spin density as a complex variable
+	We can use this formula in Euclidean field theory to discuss correlation functions in a theory with spontaneously broken symmetry for $T < \TC$.  Let us consider only the simplest case of a broken $O(2)$ or $U(1)$ symmetry.  We can write the local spin density as a complex variable
 	\eq{
 		\sx = \sqx + i \swx.
 	}
@@ -35,18 +74,35 @@
 		\sx \to e^{-i \alp} \sx.
 	}
 	If we assume that the physics freezes the modulus of $\sx$, we can parameterize
-	\eq{
+	\eqn{sx}{
 		\sx = A e^{i \phix}
 	}
 	and write an effective Lagrangian for the field $\phix$.  The symmetry of the theory becomes the translation symmetry
-	\eq{
+	\eqn{symmetry}{
 		\phix \to \phix - \alp.
 	}
 	Show that (for $d > 0$) the most general renormalizable Lagrangian consistent with this symmetry is the free field theory
-	\eq{
+	\eqn{show1b}{
 		\cL = \frac{1}{2} \rho(\vgrad \phi)^2.
 	}
-	In statistical mechanics, the constant $\rho$ is called the \emph{spin wave modulus}.  A reasonable hypothesis for $\rho$ os that it is finite for $T < \TC$ and tends to 0 as $T \to \TC$ from below.
+	In statistical mechanics, the constant $\rho$ is called the \emph{spin wave modulus}.  A reasonable hypothesis for $\rho$ is that it is finite for $T < \TC$ and tends to 0 as $T \to \TC$ from below.
+}
+
+\sol{
+	In accordance with the Klein-Gordon Lagrangian in P\&S~(2.6), we interpret $(\vgrad \phi)^2$ as $(\pt \phi)^2$.
+	
+	The Lagrangian cannot have terms of $\order{\phi^n}$ for any $n \neq 0$ since $\phi(x)$ is not invariant under Eq.~\refeq{symmetry}.  Any combination of derivatives of $\phi$ is invariant, however, since $\alp$ is a constant and does not contribute to any derivative.  Thus, only terms like $\pt^n \phi^m$ (where $n$ denotes a power of $\pt$) for $n, m > 0$ and $n \geq m$ are consistent with the symmetry of Eq.~\refeq{symmetry}.
+	
+	Now we must determine which of these terms are renormalizable.  We know that the Lagrangian must have dimension $d$, and that $\phi$ has dimension $(d - 2) / 2$~\cite[p.~322]{Peskin}.  Taking a derivative adds a mass dimension.  The dimension of our allowed term is then
+	\eq{
+		[ \pt^n \phi^m ] = n + m \frac{d - 2}{2},
+	}
+	which we require to be equal to $d$.  Thus we seek solutions to the system of equations
+	\al{
+		d &= n + m \frac{d - 2}{2}, &
+		n \geq m.
+	}
+	Solving with Mathematica, we find that this system has only one solution, $n = m = 2$.  This means that the only allowed terms in the Lagrangian are proportional to $\pt^2 \phi^2 = (\pt \phi)^4$, which is consistent with Eq.~\refeq{show1b}. \qed
 }
 
 
@@ -55,12 +111,54 @@
 	Compute the correlation function $\ev{ \sx \sao }$.  Adjust $A$ to give a physically sensible normalization (assuming that the system has a physical cutoff at the scale of one atomic spacing) and display the dependence of this correlation function on $x$ for $d = 1, 2, 3, 4$.  Explain the significance of your results.
 }
 
+\sol{
+	Applying Eq.~\refeq{sx},
+	\eq{
+		\ev{ \sx \sao } = \ev*{ A e^{i \phix} \As e^{-i \phio} }
+		= \ev*{ \abs{A}^2 } \ev*{ e^{i \phix} e^{-i \phio} }.
+	}
+	\clearpage
+	Now we can apply Eq.~\refeq{show1} to find
+	\eqn{thing1c}{
+		\ans{ \ev{ \sx \sao } = \ev*{ \abs{A}^2 } \exp[ D(x) - D(0) ], }
+	}
+	where $D(x - y)$ is a Green's function.  It is similar to the Green's function of the Klein-Gordon operator, which is given by P\&S~(2.56):
+	\eq{
+		(\pt^2 + m^2) D(x - y) = -i \delq(x - y).
+	}
+	The Feynman prescription for this Green's function is given by (2.59),
+	\eqn{DF}{
+		\DF(x - y) = \int \ddqpf \frac{i}{p^2 - m^2 + i \eps} e^{i p \cdot (x - y)}.
+	}
+	For the Lagrangian in Eq.~\refeq{show1b}, we set $m = 0$ and insert a factor of $\rho$:
+	\eq{
+		\rho \pt^2 D(x - y) = -i \deld(x - y),
+	}
+	so adapting Eq.~\refeq{DF} for this situation yields
+	\eq{
+		\DF(x - y) = \frac{1}{\rho} \int \dddpf \frac{i}{p^2 + i \eps} e^{i p \cdot (x - y)}.
+	}
+	We see that $\DF(0)$ \hl{diverges, so we absorb it into} the normalization to make it physically sensible.  Define $A'$ such that
+	\eq{
+		{A'}^2 = \ev*{ \abs{A}^2 } e^{-D(0)}.
+	}
+	Then Eq.~\refeq{thing1c} can be written
+	\eq{
+		\ev{ \sx \sao } = {A'}^2 D(x).
+	}
+	By analogy with P\&S~(9.48), after Wick rotation the Green's function is
+	\eq{
+		\DF(\xE - \yE) = \int \dddkf \frac{e^{i \kE \cdot (\xE - \yE)}}{\kE^2}
+	}
+	\hl{how to evaluate this integral???}
+}
 
 
 
 
 
 
+\clearpage
 \state{The Gross-Neveu model~(P\&S 11.3)}{
 	The Gross-Neveu model is a model in two spacetime dimensions of fermions with a discrete chiral symmetry:
 	\eq{
