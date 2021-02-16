@@ -41,17 +41,18 @@
 	}
 	since $\vU \cdot \vS = 0$ is Lorentz invariant, and the spatial components of the particle's velocity are zero in its rest frame.  Moreover, this means
 	\eq{
-		\nabsU \vS = -\dv{\vS}{\tau},
+		\nabsU \vS = -\dv{\vS}{\tau}
+		= -\gam \dv{\vS}{t},
 	}
 	so Eq.~\refeq{FW} can be written
 	\eq{
-		\dv{\vS}{\tau} = -\vU (\vaa \cdot \vS)
-		= \gam^2 r \omg^2 [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ] \vU.
+		\dv{\vS}{t} = -\frac{1}{\gam} \vU (\vaa \cdot \vS)
+		= \gam r \omg^2 [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ] \vU.
 	}
 	Feeding in the relevant components of Eq.~\refeq{U}, we have the system of coupled differential equations
 	\al{
-		\dv{\Sx}{\tau} &= -\gam^3 r^2 \omg^3 \sin(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ], \\
-		\dv{\Sy}{\tau} &= \gam^3 r^2 \omg^3 \cos(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ].
+		\dv{\Sx}{t} &= -\gam^2 r^2 \omg^3 \sin(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ], \\
+		\dv{\Sy}{t} &= \gam^2 r^2 \omg^3 \cos(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ].
 	}
 	To solve the system, we define the polar components of $\vS$ by
 	\al{
@@ -139,7 +140,14 @@
 }
 
 \sol{
-	\hl{I understand the family's world lines, but wtf is orthogonal?  Is it not just spiraling in the opposite direction?  Why not just use the world line of one observer then??}
+	A spacetime diagram for a family of three observers riding on the edge of the disk is shown in Fig.~\ref{f3a}.  In the figure, the $y$ axis points directly into the page.  The father, whose worldline is drawn in blue, has the initital position $(x, y) = (0, R)$ at $t = 0$.  The mother~(red worldline) begins at $(R, 0)$ and their child~(violet worldline) at $(R / \sqrt{2}, R / \sqrt{2})$.  The gray line is the circular curve orthogonal to their worldlines.  This curve is helical, like the worldlines, but with opposite chirality and a far steeper pitch.  Since it is a helix, it does not close on itself after one complete rotation. \qed
+	
+	\begin{figure} \centering
+		\includegraphics[angle=90,origin=c,trim=1.5cm 0 0 0,clip]{3a}
+		\bigskip
+		\caption{Spacetime diagram for a family of three observers riding on the edge of the disk.  The $y$ axis points directly into the page.  The blue, red, and violet lines are the worldlines of the family members, and the gray line is orthogonal to them.} 
+		\label{f3a}
+	\end{figure}
 }
 
 
