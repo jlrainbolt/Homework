@@ -19,19 +19,19 @@
 \sol{
 	Since the particle is in a circular orbit in the $xy$ plane, we can write its position in the lab frame as
 	\eq{
-		\vx = ( t, r \cos(\omg \tau), r \sin(\omg \tau), 0 ).
+		\vx = ( t, r \cos(\omg t), r \sin(\omg t), 0 ).
 	}
 	Then from MCP~(2.7), its velocity is
 	\eqn{U}{
 		\vU = \dv{\vx}{\tau}
-		= ( \gam, -r \omg \sin(\omg \tau), r \omg \cos(\omg \tau), 0 ),
+		= \gam ( 1, -r \omg \sin(\omg t), r \omg \cos(\omg t), 0 ),
 	}
 	since $\ddtau = \ddt / \gam$~\cite[p.~201]{Resnick}.  The particle's acceleration is
 	\eq{
 		\vaa = \dv{\vU}{\tau}
-		= ( \gam \gamd, -r \omg^2 \cos(\omg \tau), -r \omg^2 \sin(\omg \tau), 0 ),
+		= -r \omg^2 \gam^2 ( 0, \cos(\omg t), \sin(\omg t), 0 ).
 	}
-	where $\gamd = \dv*{\gam}{t}$~\cite{Acceleration}.  However, we do not need to bother computing this component explicitly since the Fermi-Walker transport is, as given by MCP~(24.62),
+	The Fermi-Walker transport is, as given by MCP~(24.62),
 	\eqn{FW}{
 		\nabsU \vS = \vU (\vaa \cdot \vS),
 	}
@@ -46,13 +46,21 @@
 	so Eq.~\refeq{FW} can be written
 	\eq{
 		\dv{\vS}{\tau} = -\vU (\vaa \cdot \vS)
-		= r \omg^2 [ \Sx \cos(\omg \tau) + \Sy \sin(\omg \tau) ] \vU.
+		= \gam^2 r \omg^2 [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ] \vU.
 	}
 	Feeding in the relevant components of Eq.~\refeq{U}, we have the system of coupled differential equations
 	\al{
-		\dv{\Sx}{\tau} &= -r^2 \omg^3 \sin(\omg \tau) [ \Sx \cos(\omg \tau) + \Sy \sin(\omg \tau) ], \\
-		\dv{\Sy}{\tau} &= r^2 \omg^3 \cos(\omg \tau) [ \Sx \cos(\omg \tau) + \Sy \sin(\omg \tau) ].
+		\dv{\Sx}{\tau} &= -\gam^3 r^2 \omg^3 \sin(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ], \\
+		\dv{\Sy}{\tau} &= \gam^3 r^2 \omg^3 \cos(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ].
 	}
+	To solve the system, we define the polar components of $\vS$ by
+	\al{
+		\Sr &= \Sx \cos(\omg t) + \Sy \sin(\omg t), &
+		\Stht &= 
+	}
+	\hl{does this even make sense}
+	
+	
 %	which is equivalent to the matrix equation
 %	\eq{
 %		\dv{\tau} \mqty[ \Sx \\ \Sy ] = r^2 \omg^3 \mqty[
@@ -240,6 +248,6 @@
 }
 
 
-%\makebib
+\makebib
 
 \end{document}
