@@ -64,7 +64,7 @@
 
 
 
-\prob{
+\prob{ \label{1b}
 	We can use this formula in Euclidean field theory to discuss correlation functions in a theory with spontaneously broken symmetry for $T < \TC$.  Let us consider only the simplest case of a broken $O(2)$ or $U(1)$ symmetry.  We can write the local spin density as a complex variable
 	\eq{
 		\sx = \sqx + i \swx.
@@ -91,22 +91,23 @@
 \sol{
 	In accordance with the Klein-Gordon Lagrangian in P\&S~(2.6), we interpret $(\vgrad \phi)^2$ as $(\pt \phi)^2$.
 	
-	The Lagrangian cannot have terms of $\order{\phi^n}$ for any $n \neq 0$ since $\phi(x)$ is not invariant under Eq.~\refeq{symmetry}.  Any combination of derivatives of $\phi$ is invariant, however, since $\alp$ is a constant and does not contribute to any derivative.  Thus, only terms like $\pt^n \phi^m$ (where $n$ denotes a power of $\pt$) for $n, m > 0$ and $n \geq m$ are consistent with the symmetry of Eq.~\refeq{symmetry}.
+	The Lagrangian cannot have terms of $\order{\phi^n}$ for any $n \neq 0$ since $\phi(x)$ is not invariant under Eq.~\refeq{symmetry}.  Any combination of derivatives of $\phi$ is invariant, however, since $\alp$ is a constant and does not contribute to any derivative.  Thus, only terms like $\pt^n \phi^m$ (where $n$ denotes a power of $\pt$) for integers $n, m > 0$ and $n \geq m$ are consistent with the symmetry of Eq.~\refeq{symmetry} for $d$ an integer.
 	
-	Now we must determine which of these terms are renormalizable.  We know that the Lagrangian must have dimension $d$, and that $\phi$ has dimension $(d - 2) / 2$~\cite[p.~322]{Peskin}.  Taking a derivative adds a mass dimension.  The dimension of our allowed term is then
+	Now we must determine which of these terms are renormalizable.  We know that the Lagrangian must have dimension $d$, and that $\phi$ has dimension $(d - 2) / 2$.  Taking a derivative adds a mass dimension.  The theory is renormalizable if the coupling constant $\rho$ has dimension greater than or equal to 0~\cite[p.~322]{Peskin}.  Let $p$ be the dimension of $\rho$, which must be an integer.  The dimension of our allowed term is then
 	\eq{
-		[ \pt^n \phi^m ] = n + m \frac{d - 2}{2},
+		[ \rho \pt^n \phi^m ] = p + n + m \frac{d - 2}{2},
 	}
 	which we require to be equal to $d$.  Thus we seek solutions to the system of equations
 	\al{
-		d &= n + m \frac{d - 2}{2}, &
-		n \geq m.
+		d &= p + n + m \frac{d - 2}{2}, &
+		n &\geq m, &
+		p &\geq 0.
 	}
-	Solving with Mathematica, we find that this system has only one solution, $n = m = 2$.  This means that the only allowed terms in the Lagrangian are proportional to $\pt^2 \phi^2 = (\pt \phi)^4$, which is consistent with Eq.~\refeq{show1b}. \qed
+	Solving with Mathematica, we find that this system has only one solution, $n = m = 2$ and $p = 0$.  This means that $\rho$ must be dimensionless and the only allowed terms in the Lagrangian are proportional to $\pt^2 \phi^2 = (\pt \phi)^4$, which is consistent with Eq.~\refeq{show1b}. \qed
 }
 
 
-
+\clearpage
 \prob{
 	Compute the correlation function $\ev{ \sx \sao }$.  Adjust $A$ to give a physically sensible normalization (assuming that the system has a physical cutoff at the scale of one atomic spacing) and display the dependence of this correlation function on $x$ for $d = 1, 2, 3, 4$.  Explain the significance of your results.
 }
@@ -117,7 +118,6 @@
 		\ev{ \sx \sao } = \ev*{ A e^{i \phix} \As e^{-i \phio} }
 		= \ev*{ \abs{A}^2 } \ev*{ e^{i \phix} e^{-i \phio} }.
 	}
-	\clearpage
 	Now we can apply Eq.~\refeq{show1} to find
 	\eqn{thing1c}{
 		\ans{ \ev{ \sx \sao } = \ev*{ \abs{A}^2 } \exp[ D(x) - D(0) ], }
@@ -161,7 +161,7 @@
 \clearpage
 \state{The Gross-Neveu model~(P\&S 11.3)}{
 	The Gross-Neveu model is a model in two spacetime dimensions of fermions with a discrete chiral symmetry:
-	\eq{
+	\eqn{given2}{
 		\cL = \psibsi i \ptsl \psisi + \frac{1}{2} g^2 (\psibsi \psisi)^2
 	}
 	with $i = 1, \ldots, N$.  The kinetic term of two-dimensional fermions is built from matrices $\gamm$ that satisfy the two-dimensional Dirac algebra.  These matrices can be $2 \times 2$:
@@ -178,10 +178,41 @@
 
 \prob{ \label{2a}
 	Show that this theory is invariant with respect to
-	\eq{
+	\eqn{trans}{
 		\psisi \to \gamt \psisi,
 	}
 	and that this symmetry forbids the appearance of a fermion mass.
+}
+
+\sol{
+	Under this transformation, the Lagrangian Eq.~\refeq{given2} is unchanged:
+	\al{
+		\cL &= i \psidsi \gamo \gamm \ptsm \psisi + \frac{1}{2} g^2 (\psidsi \gamo \psisi)^2 \\
+		&\to i \psidsi \gamt \gamo \gamm \ptsm \gamt \psisi + \frac{1}{2} g^2 (\psidsi \gamt \gamo \gamt \psisi)^2 \\
+		&= -i \psidsi \gamt \gamo \gamt \gamm \ptsm \psisi + \frac{1}{2} g^2 (-\psidsi \gamo \psisi)^2 \\
+		&= i \psidsi \gamo \gamm \ptsm \psisi + \frac{1}{2} g^2 (\psidsi \gamo \psisi)^2 \\
+		&= \psibsi i \ptsl \psisi + \frac{1}{2} g^2 (\psibsi \psisi)^2.
+	}
+	Here we have used $\ptsl = \gamm \ptsm$~\cite[p.~49]{Peskin}, $\psib = \psid \gamo$ by P\&S~(3.32), and (3.69)--(3.71):
+	\al{
+		(\gamt)^\dag &= \gamt, &
+		(\gamt)^2 &= 1, &
+		\{ \gamt, \gamm \} &= 0,
+	}
+	which also hold for the 2-dimensional Dirac algebra.  Thus we have shown that the theory is invariant with respect to the transformation in Eq.~\refeq{trans} because it does not change the Lagrangian. \qed
+	
+	If the theory had a mass, the first term would take the form of the Dirac Lagrangian in (3.34):
+	\eq{
+		\cLDirac = \psibsi (i \ptsl - m) \psisi.
+	}
+	However, this term is not invariant under Eq.~\refeq{trans}:
+	\al{
+		\cLDirac &= i \psidsi \gamo \gamm \ptsm \psisi - m \psidsi \gamo \psisi \\
+		&\to i \psidsi \gamt \gamo \gamm \ptsm \gamt \psisi - m \psidsi \gamt \gamo \gamt \psisi \\
+		&= i \psidsi \gamo \gamm \ptsm \psisi + m \psidsi \gamo \psisi \\
+		&= \psibsi (i \ptsl + m) \psisi.
+	}
+	Since the sign of the mass term changes under the transformation, a nonzero fermion mass $m$ is forbidden. \qed
 }
 
 
@@ -190,14 +221,55 @@
 	Show that this theory is renormalizable in 2 dimensions (at the level of dimensional analysis).
 }
 
+\sol{
+	We need to find the dimension of the coupling constant $g$.  As in \ref{1b}, the Lagrangian must have dimension $d = 2$.  The $\gamm$ are dimensionless, and $\pt$ adds one mass dimension.  We can find the dimension of $\psisi$ by requiring that the dimension of the first term of Eq.~\refeq{given2} is 2.  Let $[ \psisi ] = n$.  Then
+	\eq{
+		2 = [ \psibsi \ptsl \psisi ]
+		= n + 1 + n
+		\qimplies
+		n = \frac{1}{2}.
+	}
+	We may now use this result in the second term to find the dimension of $g$.  Let $[ g ] = m$.  Then
+	\eq{
+		2 = [ g^2 (\psibsi \psisi)^2 ]
+		= 2m + 2 (n + n)
+		= 2 (m + 1)
+		\qimplies
+		m = 0,
+	}
+	meaning $g$ is dimensionless.  Therefore the theory is indeed renormalizable~\cite[p.~322]{Peskin}. \qed
+}
+
 
 
 \prob{
 	Show that the functional integral for this theory can be represented in the following form:
-	\eq{
+	\eqn{show2c}{
 		\int \DDpsi e^{i \int \ddsx \cL} = \int \DDpsi \DDsig \exp[ i \int \ddsx \curly{ \psibsi i \ptsl \psisi - \sig \psibsi \psisi - \frac{1}{2 g^2} \sig^2 } ],
 	}
 	where $\sigx$ (not to be confused with a Pauli matrix) is a new scalar field with no kinetic energy terms.
+}
+
+\sol{
+	Completing the square in the exponent of the right-hand side of Eq.~\refeq{show2c} yields
+	\eq{
+		\int \DDpsi \DDsig \exp[ i \int \ddsx \curly{ -\frac{1}{2 g^2} (\sig + g^2 \psibsi \psisi)^2 + \frac{g^2}{2} (\psibsi \psisi)^2 + \psibsi i \ptsl \psisi } ].
+	}
+	Pulling out the integral over $\sig$, note that
+	\eqn{integral}{
+		\int \DDsig \exp[ -i \int \ddsx \frac{1}{2 g^2} (\sig + g^2 \psibsi \psisi)^2 ] \propto \frac{1}{\sqrt{2 \det(g^2)}} = \const.
+	}
+	This is obtained from P\&S~(9.24),
+	\eq{
+		\paren{ \prodk \int \ddxisk } \exp[ -\xisi \Bsij \xisj ] = \const \times [ \det B ]^{-1/2},
+	}
+	where in Eq.~\refeq{integral} we obtain an expression like this if we transform variables to $u = \sig + g^2 \psibsi \psisi$.  At any rate, the result is that we obtain
+	\al{
+		\int \DDpsi \DDsig \exp[ i \int \ddsx \curly{ \psibsi i \ptsl \psisi - \sig \psibsi \psisi - \frac{1}{2 g^2} \sig^2 } ]
+		&= \const \times \int \DDpsi \exp[ i \int \ddsx \curly{ \frac{g^2}{2} (\psibsi \psisi)^2 + \psibsi i \ptsl \psisi } ] \\
+		&= \const \times \int \DDpsi e^{i \int \ddsx \cL}
+	}
+	where $\cL$ is given by Eq.~\refeq{given2}.  The overall constant factor between the two expressions is not important \hl{for reasons}, so we have proven Eq.~\refeq{show2c}. \qed
 }
 
 
