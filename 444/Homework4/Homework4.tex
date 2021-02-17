@@ -263,18 +263,18 @@
 	\eqn{Gaussian}{
 		\paren{ \prodk \int \ddxisk } \exp[ -\xisi \Bsij \xisj ] = \const \times [ \det B ]^{-1/2},
 	}
-	where in Eq.~\refeq{integral} we obtain an expression like this if we transform variables to $u = \sig + g^2 \psibsi \psisi$.  At any rate, the result is that we obtain
+	where in Eq.~\refeq{integral} we obtain an expression like this if we shift our variable of integration.  We obtain
 	\al{
-		\int \DDpsi \DDsig \exp[ i \int \ddsx \curly{ \psibsi i \ptsl \psisi - \sig \psibsi \psisi - \frac{1}{2 g^2} \sig^2 } ]
+		\ans{ \int \DDpsi \DDsig \exp[ i \int \ddsx \curly{ \psibsi i \ptsl \psisi - \sig \psibsi \psisi - \frac{1}{2 g^2} \sig^2 } ] }
 		&= \const \times \int \DDpsi \exp[ i \int \ddsx \curly{ \frac{g^2}{2} (\psibsi \psisi)^2 + \psibsi i \ptsl \psisi } ] \\
-		&= \const \times \int \DDpsi e^{i \int \ddsx \cL},
+		&\ans{\; = \int \DDpsi e^{i \int \ddsx \cL}, }
 	}
 	where $\cL$ is given by Eq.~\refeq{given2}.  The overall constant can be disregarded, so we have proven Eq.~\refeq{show2c}. \qed
 }
 
 
 
-\prob{
+\prob{ \label{2d}
 	Compute the leading correction to the effective potential for $\sig$ by integrating over the fermion fields $\psisi$.  You will encounter the determinant of a Dirac operator; to evaluate this determinant, diagonalize the operator by first going to Fourier components and then diagonalizing the $2 \times 2$ Pauli matrix associated with each Fourier mode.  (Alternatively, you might just take the determinant of this $2 \times 2$ matrix.)   This 1-loop contribution requires a renormalization proportional to $\sigw$ (that is, a renormalization of $g^2$).  Renormalize by minimal subtraction.
 }
 
@@ -317,12 +317,12 @@
  		\int \ddqkf \ln(-k^2 + m^2) = -i \frac{\Gam(-d / 2)}{(4\pi)^{d / 2}} \frac{1}{(m^2)^{-d / 2}}.
  	}
  	Letting $d = 2 - \eps$ and expanding about $\eps = 0$~(using Mathematica), we find
- 	\eq{
+ 	\eqn{M1}{
  		\int \ddskf \ln(-k^2 + \sig^2) = -i \frac{\Gam(\eps / 2 - 1)}{(4\pi)^{1 - \eps / 2}} \sig^{2 - \eps}
  		\approx \frac{i \sig^2}{4 \pi} \paren{ \frac{2}{\eps} + 1 - \gam + \ln(4\pi) - 2 \ln(\sig) }.
  	}
  	Now we renormalize by minimal subtraction.  Following the examples in (11.77) and (11.78), we make the replacement
- 	\eq{
+ 	\eqn{M2}{
  		\int \ddskf \ln(-k^2 + \sig^2) \to \frac{i \sig^2}{4 \pi} \brac{ 1 - \ln(\frac{\sig^2}{M^2}) },
  	}
  	where $M$ is an arbitrary mass parameter.
@@ -334,7 +334,7 @@
  		&= \int \DDsig \exp[ -i \int \ddsx \sig^2 \curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } } ].
  	}
  	Then the leading correction to the effective potential is
- 	\eq{
+ 	\eqn{Veff}{
  		\ans{ \Veff = \sig^2 \curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } }, }
  	}
  	where we have referred to (11.79).
@@ -344,6 +344,38 @@
 
 \prob{ \label{2e}
 	Ignoring two-loop and higher-order contributions, minimize this potential.  Show that the $\sig$ field acquires a vacuum expectation value which breaks the symmetry of \ref{2a}.  Convince yourself that this result does not depend on the particular renormalization condition chosen.
+}
+
+\sol{
+	We minimize the potential by imposing
+	\eq{
+		\left. \pdv{\phi^a} V \right|_{\phi^a(x) = \phiso^a} = 0,
+	}
+	where $\phi^a_0$ is a constant field that minimizes $V$~\cite[p.~351]{Peskin}.  The minimizing $\phiso$ is called the vacuum expectation value, $v$.
+	
+	For the problem at hand, we want to find $\sig^2$ to minimize the potential Eq.~\refeq{Veff}.  We impose
+	\al{
+		0 &= \pdv{\Veff}{\sig^2} \\
+		&= \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } + \sig^2 \pdv{\sig^2}\curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } } \\
+		&= \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } + \frac{N}{4\pi} \\
+		&= \frac{1}{2 g^2} + \frac{N}{4\pi} \ln(\frac{\sig^2}{M^2}).
+	}
+	Solving for $\sig$, we find the vacuum expectation value:
+	\eq{
+		-\frac{2\pi}{N g^2} = \ln(\frac{\sig^2}{M^2})
+		\qimplies
+		\ans{ \sig = \pm M e^{-\pi / N g^2} = \pm v. }
+	}
+	This vacuum expectation value breaks the symmetry of \ref{2a} because it acts as a nonzero mass for the fields $\psisi$.  As we saw in \ref{2d}, the form of the Lagrangian with $\sig$ looks like the Dirac Lagrangian with mass $\sig = \pm v$, and as we showed in \ref{2a}, the theory is not invariant under Eq.~\refeq{trans} when such a mass is included.  Therefore, this vacuum expectation value breaks the symmetry. \qed
+	
+	This result does not depend on the particular renormalization condition chosen because all we have done is absorb the divergence into some parameter $M$, which parameterizes a sequence of possible renormalization conditions~\cite[p.~377]{Peskin}.  From Eqs.~\refeq{M1} and \refeq{M2},
+	\eq{
+		\frac{2}{\eps} + 1 - \gam + \ln(4\pi) - 2 \ln(\sig) =  1 - \ln(\sig^2) + \ln(M^2)
+%		\qimplies
+%		2 \ln(M) = \frac{2}{\eps} - \gam + \ln(4\pi)
+		\qimplies M = \exp[ \frac{1}{\eps} - \frac{\gam}{2} + \frac{\ln(4\pi)}{2} ].
+	}
+	No matter how we handle the divergent term, it is impossible for $M$ to be zero.  So the symmetry will be broken regardless of which normalization condition we choose.
 }
 
 
