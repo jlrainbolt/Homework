@@ -52,37 +52,190 @@
 	Feeding in the relevant components of Eq.~\refeq{U}, we have the system of coupled differential equations
 	\al{
 		\dv{\Sx}{t} &= -\gam^2 r^2 \omg^3 \sin(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ], \\
-		\dv{\Sy}{t} &= \gam^2 r^2 \omg^3 \cos(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ].
+		\dv{\Sy}{t} &= \gam^2 r^2 \omg^3 \cos(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ],
 	}
-	To solve the system, we define the polar components of $\vS$ by
+	or, in matrix form,
+	\eqn{sysxy}{
+		\dv{t} \mqty[ \Sx \\ \Sy ] = \gam^2 r^2 \omg^3 \mqty[
+				-\cos(\omg t) \sin(\omg t) & -\sin[2](\omg t) \\
+				\cos[2](\omg t) & \cos(\omg t) \sin(\omg t)
+			] \mqty[ \Sx \\ \Sy ].
+	}
+	To solve the system, we define the polar components of $\vS$ by~\cite[inside cover]{Griffiths}
 	\al{
 		\Sr &= \Sx \cos(\omg t) + \Sy \sin(\omg t), &
-		\Stht &= 
+		\Stht &= -\Sx \sin(\omg t) + \Sy \cos(\omg t).
 	}
-	\hl{does this even make sense}
-	
-	
-%	which is equivalent to the matrix equation
-%	\eq{
-%		\dv{\tau} \mqty[ \Sx \\ \Sy ] = r^2 \omg^3 \mqty[
-%			-\sin(\omg \tau) \cos(\omg \tau) & -\sin^2(\omg \tau) \\
-%			\cos^2(\omg \tau) & \sin(\omg \tau) \cos(\omg \tau)
-%			] \mqty[ \Sx \\ \Sy ].
+	Then we can transform into these polar coordinates using the matrix~\cite[inside cover]{Griffiths}
+	\eqn{sub1}{
+		\mqty[ \Sx \\ \Sy ] = \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \mqty[ \Sr \\ \Stht ],
+	}
+	which implies
+	\aln{
+		\dv{t} \mqty[ \Sx \\ \Sy ] &= \dv{t} \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \mqty[ \Sr \\ \Stht ] + \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \dv{t} \mqty[ \Sr \\ \Stht ] \\ \notag
+		&= -\omg \mqty[
+			\sin(\omg t) & \cos(\omg t) \\
+			-\cos(\omg t) & \sin(\omg t)
+		] \mqty[ \Sr \\ \Stht ] + \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \dv{t} \mqty[ \Sr \\ \Stht ]. \label{sub2}
+	}
+	Substituting Eqs.~\refeq{sub1} and \refeq{sub2} into Eq.~\refeq{sysxy} yields
+	\al{
+		-\omg &\mqty[
+				\sin(\omg t) & \cos(\omg t) \\
+				-\cos(\omg t) & \sin(\omg t)
+			] \mqty[ \Sr \\ \Stht ] + \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \dv{t} \mqty[ \Sr \\ \Stht ] \\
+		&\hspace{10em} = \gam^2 r^2 \omg^3 \mqty[
+				-\cos(\omg t) \sin(\omg t) & -\sin[2](\omg t) \\
+				\cos[2](\omg t) & \cos(\omg t) \sin(\omg t)
+			] \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \mqty[ \Sr \\ \Stht ] \\
+		&\hspace{10em} = \gam^2 r^2 \omg^3 \mqty[
+				-\sin(\omg t) & 0 \\
+				\cos(\omg t) & 0
+			] \mqty[ \Sr \\ \Stht ],
+	}
+	where the matrix multiplication has been carried out with Mathematica.  This implies
+	\al{
+		\mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \dv{t} \mqty[ \Sr \\ \Stht ]
+		&= \paren{ \omg \mqty[
+				\sin(\omg t) & \cos(\omg t) \\
+				-\cos(\omg t) & \sin(\omg t)
+			] + \gam^2 r^2 \omg^3 \mqty[
+				-\sin(\omg t) & 0 \\
+				\cos(\omg t) & 0
+			] } \mqty[ \Sr \\ \Stht ] \\
+		&= \omg \mqty[
+				(1 - \gam^2 r^2 \omg^2) \sin(\omg t) & \cos(\omg t) \\
+				-(1 - \gam^2 r^2 \omg^2) \cos(\omg t) & \sin(\omg t)
+			] \mqty[ \Sr \\ \Stht ].
+	}
+	Multiplying both sides by the inverse of the first matrix, we find
+	\eq{
+		\dv{t} \mqty[ \Sr \\ \Stht ] = \omg \mqty[
+				\cos(\omg t) & \sin(\omg t) \\
+				-\sin(\omg t) & \cos(\omg t)
+			] \mqty[
+				(1 - \gam^2 r^2 \omg^2) \sin(\omg t) & \cos(\omg t) \\
+				-(1 - \gam^2 r^2 \omg^2) \cos(\omg t) & \sin(\omg t)
+			] \mqty[ \Sr \\ \Stht ]
+		= \omg \mqty[
+				0 & 1 \\
+				\gam^2 r^2 \omg^2 - 1 & 0
+			] \mqty[ \Sr \\ \Stht ].
+	}
+	In other words, we have a system of coupled first-order ODEs:
+	\aln{ \label{ODEs}
+		\dv{\Sr}{t} &= \omg \Stht, &
+		\dv{\Stht}{t} &= \omg (\gam^2 r^2 \omg^2 - 1) \Sr.
+	}
+%	However, we know that $\Sr(t) = S = \const$, since the magnitude of the spin should not change with time.  Let $\alp \equiv \omg^2 (\gam^2 r^2 \omg^2 - 1)$.  Then, imposing the initial condition $\Stht(0) = 0$,
+%	\al{
+%		\Sr(t) &= S, &
+%		\Stht(t) &= \alp S t.
 %	}
-%	We can solve this using the characteristic equation of the eigenvalue problem.  According to Mathematica, the eigenvalues are $\lamq = \lamw = 0$, and the eigenvectors are $\vq = ( -\tan(\omg \tau), 1)$ and $\vw = (0, 0)$.  This gives us the solutions~\cite[pp.~130--131]{Strogatz}
-%	\eq{
-%		\mqty[ \Sx \\ \Sy ] = r^2 \omg^3 \paren{ \cq e^{\lam1 \tau} \vq + \cw e^{\lam2 \tau} \vw }
-%		= \cq r^2 \omg^3 \mqty[ -\tan(\omg \tau) \\ 1 ],
+%	Now we use Eq.~\refeq{sub1} to transform back to Cartesian components:
+%	\al{
+%		\Sx(t) &= S \cos(\omg t) - \alp S \sin(\omg t) t
 %	}
-%	where $\cq$ is a constant determined by initial conditions.  We can choose $\Sx(0) = 0$ and $\Sy(0) = S$, where $S = |S|$.
 %	
-%	\hl{this is not right}
-%	
-%	Let $\omg' = \omg / \gam$, so
-%	\eq{
-%		\vU(t) = \gam ( 1, -\omg' r \sin(\omg' t), \omg' r \cos(\omg' t), 0 ).
-%	}
+%	\hl{actually this doesn't make sense}
+%
+	Differentiating each equation by $t$ once more and substituting, we get a system of uncoupled second-order ODEs with well-known solutions:
+	\al{
+		\dv[2]{\Sr}{t} &= \omg \dv{\Stht}{t}
+		= \omg^2 (\gam^2 r^2 \omg^2 - 1) \Sr, &
+		%
+		\dv[2]{\Stht}{t} &= \omg (\gam^2 r^2 \omg^2 - 1) \dv{\Sr}{t}
+		= \omg^2 (\gam^2 r^2 \omg^2 - 1) \Stht.
+	}
+	Let $\alp \equiv \omg^2 (\gam^2 r^2 \omg^2 - 1)$.  Then the solutions are~\cite[p.~207]{Swartz}
+	\al{
+		\Sr(t) &= \Cq \cos(-\alp t) + \Cw \sin(-\alp t), &
+		\Stht(t) &= \Dq \cos(-\alp t) + \Dw \sin(-\alp t).
+	}
+	We transform back into Cartesian components via Eq.~\refeq{sub1}:
+	\al{
+		\mqty[ \Sx \\ \Sy ] &= \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \mqty[ 
+				\Cq \cos(-\alp t) + \Cw \sin(-\alp t) \\
+				\Dq \cos(-\alp t) + \Dw \sin(-\alp t)
+			] \\
+		&= \mqty[
+				\cos(\omg t) [ \Cq \cos(-\alp t) + \Cw \sin(-\alp t) ] - \sin(\omg t) [ \Dq \cos(-\alp t) + \Dw \sin(-\alp t) ] \\
+				\sin(\omg t) [ \Cq \cos(-\alp t) + \Cw \sin(-\alp t) ] + \cos(\omg t) [ \Dq \cos(-\alp t) + \Dw \sin(-\alp t) ].
+			]
+	}
+	We choose the initial conditions $\Sx(0) = S$, $\Sy(0) = 0$, which give us
+	\al{
+		\Sx(0) &= S
+		= \Cq, &
+		%
+		\Sy(0) &= 0
+		= \Dq.
+	}
+	Using these results and the initial conditions in Eq.~\refeq{sysxy}, we have
+	\eq{
+		\left. \dv{t} \mqty[ \Sx \\ \Sy ] \right|_{t = 0} = \gam^2 r^2 \omg^3 \mqty[
+				0 & 0 \\
+				1 & 0
+			] \mqty[
+				S \\
+				0
+			]
+		= \gam^2 r^2 \omg^3 \mqty[ 0 \\ S ],
+	}
+	with
+	\eq{
+		\left. \dv{t} \mqty[ \Sx \\ \Sy ] \right|_{t = 0} = 
+	}
+	\hl{but this is getting really gross}
 	
+	\eq{
+		\mqty[ \Sx \\ \Sy ] = \mqty[
+				\cos(\omg t) [ S \cos(-\alp t) + \Cw \sin(-\alp t) ] - \Dw \sin(\omg t) \sin(-\alp t) \\
+				\sin(\omg t) [ S \cos(-\alp t) + \Cw \sin(-\alp t) ] + \Dw \cos(\omg t) \sin(-\alp t)
+			]
+	}
+	\eq{
+		\mqty[ 0 \\ S ](t = -\pi \alp / 2) = \mqty[
+				\Cw \cos(-\pi \omg \alp / 2) - \Dw \sin(-\pi \omg \alp / 2) \\
+				\Cw \sin(-\pi \omg \alp / 2) + \Dw \cos(-\pi \omg \alp / 2)
+			]
+	}
+	
+	
+%	We choose the initial conditions $\Sr(0) = S$ and $\Stht(0) = 0$.  This gives us
+%	\al{
+%		S &= \Sr(0) = \Cq, &
+%		0 &= \Stht(0) = \Dq.
+%	}
+%	Then by Eq.~\refeq{ODEs},
+%	\al{
+%		\omg \Dw \sin(-\alp t) &= \dv{\Sr}{t} = \omg \alp [ S \sin(-\alp t) - \Cw \cos(-\alp t) ], \\
+%		\omg \alp [ S \cos(-\alp t) + \Cw \sin(-\alp t) ] &= \dv{\Stht}{t} = -\alp \Dw \cos(-\alp t)
+%	}
 }
 
 
@@ -116,7 +269,7 @@
 	\eq{
 		\dds^2 = -(1 + 2 g z) (\ddxoh)^2 + \ddx^2 + \ddy^2 + \ddz^2,
 	}
-	\hl{which is not the same as what we want, but I can't figure out what's going on with the minus sign.}
+	which is what we want.  Evidently, there is a typo (missing minus sign) in the problem statement. \qed
 }
 
 
@@ -157,7 +310,7 @@
 }
 
 \sol{
-	\hl{obviously the world lines themselves are going to have a greater slope closer to the edge of the disk.  But what is orthogonal???}
+	\hl{world lines have greater pitch closer to edge of disk}
 }
 
 

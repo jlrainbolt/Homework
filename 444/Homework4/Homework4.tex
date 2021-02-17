@@ -202,7 +202,7 @@
 	which also hold for the 2-dimensional Dirac algebra.  Thus we have shown that the theory is invariant with respect to the transformation in Eq.~\refeq{trans} because it does not change the Lagrangian. \qed
 	
 	If the theory had a mass, the first term would take the form of the Dirac Lagrangian in (3.34):
-	\eq{
+	\eqn{Dirac}{
 		\cLDirac = \psibsi (i \ptsl - m) \psisi.
 	}
 	However, this term is not invariant under Eq.~\refeq{trans}:
@@ -260,22 +260,84 @@
 		\int \DDsig \exp[ -i \int \ddsx \frac{1}{2 g^2} (\sig + g^2 \psibsi \psisi)^2 ] \propto \frac{1}{\sqrt{2 \det(g^2)}} = \const.
 	}
 	This is obtained from P\&S~(9.24),
-	\eq{
+	\eqn{Gaussian}{
 		\paren{ \prodk \int \ddxisk } \exp[ -\xisi \Bsij \xisj ] = \const \times [ \det B ]^{-1/2},
 	}
 	where in Eq.~\refeq{integral} we obtain an expression like this if we transform variables to $u = \sig + g^2 \psibsi \psisi$.  At any rate, the result is that we obtain
 	\al{
 		\int \DDpsi \DDsig \exp[ i \int \ddsx \curly{ \psibsi i \ptsl \psisi - \sig \psibsi \psisi - \frac{1}{2 g^2} \sig^2 } ]
 		&= \const \times \int \DDpsi \exp[ i \int \ddsx \curly{ \frac{g^2}{2} (\psibsi \psisi)^2 + \psibsi i \ptsl \psisi } ] \\
-		&= \const \times \int \DDpsi e^{i \int \ddsx \cL}
+		&= \const \times \int \DDpsi e^{i \int \ddsx \cL},
 	}
-	where $\cL$ is given by Eq.~\refeq{given2}.  The overall constant factor between the two expressions is not important \hl{for some reason}, so we have proven Eq.~\refeq{show2c}. \qed
+	where $\cL$ is given by Eq.~\refeq{given2}.  The overall constant can be disregarded, so we have proven Eq.~\refeq{show2c}. \qed
 }
 
 
 
 \prob{
 	Compute the leading correction to the effective potential for $\sig$ by integrating over the fermion fields $\psisi$.  You will encounter the determinant of a Dirac operator; to evaluate this determinant, diagonalize the operator by first going to Fourier components and then diagonalizing the $2 \times 2$ Pauli matrix associated with each Fourier mode.  (Alternatively, you might just take the determinant of this $2 \times 2$ matrix.)   This 1-loop contribution requires a renormalization proportional to $\sigw$ (that is, a renormalization of $g^2$).  Renormalize by minimal subtraction.
+}
+
+\sol{
+ 	The right-hand side of Eq.~\refeq{show2c} can be written
+ 	\eqn{thing2d}{
+ 		\int \DDsig \exp[ -i \int \ddsx \frac{1}{2 g^2} \sig^2 ] \int \DDpsi \exp[ i \int \ddsx \psibsi (i \ptsl - \sig) \psisi ].
+ 	}
+ 	The integral of the exponential argument is the Dirac Lagrangian Eq.~\refeq{Dirac} with $m \to \sig$.  A similar integral is given by P\&S~(9.76):
+ 	\eq{
+ 		\int \DDpsi \DDpsib \exp[ i \int \ddsx \psib (i \Dsl - m) \psi ] = \det(i \Dsl - m).
+ 	}
+ 	For the integral over $\psi$ in Eq.~\refeq{thing2d}, we have $\Dsl \to \ptsl$.  The result is then
+ 	\eq{
+ 		\int \DDpsi \DDpsib \exp[ i \int \ddsx \psibsi (i \ptsl - \sig) \psisi ] = [ \det(i \ptsl - \sig) ]^N.
+ 	}
+ 	Here we get a power of $N$ because we are integrating over $\psibsi, \psisi$ for $i = 1, \ldots, N$.  Now we apply (9.77),
+ 	\eq{
+ 		\det B = \exp[ \tr(\log B) ].
+ 	}
+ 	Now we follow a similar procedure as in (11.71),
+ 	\eq{
+ 		\tr[ \ln(\pt^2 + m^2) ] = (V T) \int \ddqkf \ln(-k^2 + m^2),
+ 	}
+ 	where $(V T)$ is the four-dimensional volume of the functional integral.  Adapting this for the Dirac operator in two dimensions, we have
+ 	\eq{
+ 		\tr[ \ln(i \ptsl - \sig) ] = (V T) \int \ddskf \ln(-k^2 + \sig^2).
+ 	}
+ 	Here we have used the result
+ 	\al{
+ 		\det(i \gamm \ptsm - \sig) &= \det( i \gamo \ptso + i \gamq \ptsq - \sig ) \\
+ 		&= \det( i \sigw \ptso - \sigq \ptsq - \sig ) \\
+ 		&= \det\paren{ i \mqty[ 0 & -i \\ i & 0 ] \ptso - \mqty[ 0 & 1 \\ 1 & 0 ] \ptsq - \sig } \\
+ 		&= \det \mqty[ -\sig & \ptso - \ptsq \\ -(\ptso + \ptsq) & -\sig ] \\
+ 		&= \sig^2 + \ptso^2 + \ptsq^2 \\
+ 		&= \ptm \ptsm + \sig^2.
+ 	}
+ 	Now we may apply (11.72),
+ 	\eq{
+ 		\int \ddqkf \ln(-k^2 + m^2) = -i \frac{\Gam(-d / 2)}{(4\pi)^{d / 2}} \frac{1}{(m^2)^{-d / 2}}.
+ 	}
+ 	Letting $d = 2 - \eps$ and expanding about $\eps = 0$~(using Mathematica), we find
+ 	\eq{
+ 		\int \ddskf \ln(-k^2 + \sig^2) = -i \frac{\Gam(\eps / 2 - 1)}{(4\pi)^{1 - \eps / 2}} \sig^{2 - \eps}
+ 		\approx \frac{i \sig^2}{4 \pi} \paren{ \frac{2}{\eps} + 1 - \gam + \ln(4\pi) - 2 \ln(\sig) }.
+ 	}
+ 	Now we renormalize by minimal subtraction.  Following the examples in (11.77) and (11.78), we make the replacement
+ 	\eq{
+ 		\int \ddskf \ln(-k^2 + \sig^2) \to \frac{i \sig^2}{4 \pi} \brac{ 1 - \ln(\frac{\sig^2}{M^2}) },
+ 	}
+ 	where $M$ is an arbitrary mass parameter.
+ 	
+ 	Applying our work to Eq.~\refeq{show2c}, we have
+ 	\al{
+ 		\int \DDpsi e^{i \int \ddsx \cL} &= \int \DDsig \exp[ -i \int \ddsx \frac{1}{2 g^2} \sig^2 ] [ \det(i \ptsl - \sig) ]^N \\
+ 		&= \int \DDsig \exp[ \int \ddsx \paren{ \frac{-i}{2 g^2} \sig^2 + N \int \ddskf \ln(-k^2 + \sig^2) } ] \\
+ 		&= \int \DDsig \exp[ -i \int \ddsx \sig^2 \curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } } ].
+ 	}
+ 	Then the leading correction to the effective potential is
+ 	\eq{
+ 		\ans{ \Veff = \sig^2 \curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } }, }
+ 	}
+ 	where we have referred to (11.79).
 }
 
 
