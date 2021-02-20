@@ -3,44 +3,46 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Homework4.aux
 The style file: lucas_unsrt.bst
 Database file #1: references.bib
-You've used 7 entries,
+Warning--I didn't find a database entry for "Maclaurin"
+You've used 8 entries,
             2558 wiz_defined-function locations,
-            659 strings with 5604 characters,
-and the built_in function-call counts, 1267 in all, are:
-= -- 111
-> -- 39
+            665 strings with 5724 characters,
+and the built_in function-call counts, 1439 in all, are:
+= -- 125
+> -- 44
 < -- 0
-+ -- 15
-- -- 8
-* -- 51
-:= -- 158
-add.period$ -- 14
-call.type$ -- 7
++ -- 17
+- -- 9
+* -- 62
+:= -- 177
+add.period$ -- 16
+call.type$ -- 8
 change.case$ -- 1
 chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 85
-empty$ -- 183
-format.name$ -- 8
-if$ -- 330
+cite$ -- 8
+duplicate$ -- 95
+empty$ -- 209
+format.name$ -- 9
+if$ -- 374
 int.to.chr$ -- 0
-int.to.str$ -- 7
+int.to.str$ -- 8
 missing$ -- 10
-newline$ -- 35
-num.names$ -- 7
-pop$ -- 70
+newline$ -- 39
+num.names$ -- 8
+pop$ -- 78
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 29
+skip$ -- 36
 stack$ -- 0
 substring$ -- 0
-swap$ -- 4
+swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 7
-width$ -- 8
-write$ -- 72
+while$ -- 8
+width$ -- 9
+write$ -- 82
+(There was 1 warning)

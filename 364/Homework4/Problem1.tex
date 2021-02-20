@@ -1,0 +1,221 @@
+\state{}{
+	Consider a particle which, as viewed by an observer in an inertial lab, is in a circular orbit in the $(x, y)$ plane with angular velocity $\omg$ and radius $r$.  Suppose that this particle carries a spin angular momentum $\vS$ (treated classically in this problem) which is Fermi-Walker transported.  Compute the time dependence of this angular momentum $\vSt$ where $t$ is the inertial time in the laboratory frame.  Show that in the non-relativistic limit, the complex vector $\Sx + i \Sy$ precesses about the $z$ axis with frequency $\omgT = r^2 \omg^3 / 2$.
+}
+
+\sol{
+	Since the particle is in a circular orbit in the $xy$ plane, we can write its position in the lab frame as
+	\eq{
+		\vx = ( t, r \cos(\omg t), r \sin(\omg t), 0 ).
+	}
+	Then from MCP~(2.7), its velocity is
+	\eqn{U}{
+		\vU = \dv{\vx}{\tau}
+		= \gam ( 1, -r \omg \sin(\omg t), r \omg \cos(\omg t), 0 ),
+	}
+	since $\ddtau = \ddt / \gam$~\cite[p.~201]{Resnick}.  The particle's acceleration is
+	\eq{
+		\vaa = \dv{\vU}{\tau}
+		= -r \omg^2 \gam^2 ( 0, \cos(\omg t), \sin(\omg t), 0 ).
+	}
+	The Fermi-Walker transport is, as given by MCP~(24.62),
+	\eqn{FW}{
+		\nabsU \vS = \vU (\vaa \cdot \vS),
+	}
+	and we know that the spin vector is always orthogonal to the particle's 4-velocity~\cite[p.~1184]{MCP}.  This means that the spin vector can be written
+	\eq{
+		\vS = (0, \bS)
+	}
+	since $\vU \cdot \vS = 0$ is Lorentz invariant, and the spatial components of the particle's velocity are zero in its rest frame.  Moreover, this means
+	\eq{
+		\nabsU \vS = \dv{\vS}{\tau}
+		= \gam \dv{\vS}{t},
+	}
+	so Eq.~\refeq{FW} can be written
+	\eq{
+		\dv{\vS}{t} = \frac{1}{\gam} \vU (\vaa \cdot \vS)
+		= -\gam r \omg^2 [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ] \vU.
+	}
+	Feeding in the relevant components of Eq.~\refeq{U}, we have the system of coupled differential equations
+	\al{
+		\dv{\Sx}{t} &= \gam^2 r^2 \omg^3 \sin(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ], \\
+		\dv{\Sy}{t} &= -\gam^2 r^2 \omg^3 \cos(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ],
+	}
+	or, in matrix form,
+	\eqn{sysxy}{
+		\dv{t} \mqty[ \Sx \\ \Sy ] = \gam^2 r^2 \omg^3 \mqty[
+				\cos(\omg t) \sin(\omg t) & \sin[2](\omg t) \\
+				-\cos[2](\omg t) & -\cos(\omg t) \sin(\omg t)
+			] \mqty[ \Sx \\ \Sy ].
+	}
+	To solve the system, we define the polar components of $\vS$ by~\cite[inside cover]{Griffiths}
+	\al{
+		\Sr &= \Sx \cos(\omg t) + \Sy \sin(\omg t), &
+		\Stht &= -\Sx \sin(\omg t) + \Sy \cos(\omg t).
+	}
+	Then we can transform into these polar coordinates using the matrix~\cite[inside cover]{Griffiths}
+	\eqn{sub1}{
+		\mqty[ \Sx \\ \Sy ] = \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \mqty[ \Sr \\ \Stht ],
+	}
+	which implies
+	\aln{
+		\dv{t} \mqty[ \Sx \\ \Sy ] &= \dv{t} \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \mqty[ \Sr \\ \Stht ] + \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \dv{t} \mqty[ \Sr \\ \Stht ] \notag \\
+		&= -\omg \mqty[
+			\sin(\omg t) & \cos(\omg t) \\
+			-\cos(\omg t) & \sin(\omg t)
+		] \mqty[ \Sr \\ \Stht ] + \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \dv{t} \mqty[ \Sr \\ \Stht ]. \label{sub2}
+	}
+	Substituting Eqs.~\refeq{sub1} and \refeq{sub2} into Eq.~\refeq{sysxy} yields
+	\al{
+		-\omg &\mqty[
+				\sin(\omg t) & \cos(\omg t) \\
+				-\cos(\omg t) & \sin(\omg t)
+			] \mqty[ \Sr \\ \Stht ] + \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \dv{t} \mqty[ \Sr \\ \Stht ] \\
+		&\hspace{10em} = \gam^2 r^2 \omg^3 \mqty[
+				\cos(\omg t) \sin(\omg t) & \sin[2](\omg t) \\
+				-\cos[2](\omg t) & -\cos(\omg t) \sin(\omg t)
+			] \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \mqty[ \Sr \\ \Stht ] \\
+		&\hspace{10em} = \gam^2 r^2 \omg^3 \mqty[
+				\sin(\omg t) & 0 \\
+				-\cos(\omg t) & 0
+			] \mqty[ \Sr \\ \Stht ],
+	}
+	where the matrix multiplication has been carried out with Mathematica.  This implies
+	\al{
+		\mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \dv{t} \mqty[ \Sr \\ \Stht ]
+		&= \paren{ \omg \mqty[
+				\sin(\omg t) & \cos(\omg t) \\
+				-\cos(\omg t) & \sin(\omg t)
+			] + \gam^2 r^2 \omg^3 \mqty[
+				\sin(\omg t) & 0 \\
+				-\cos(\omg t) & 0
+			] } \mqty[ \Sr \\ \Stht ] \\
+		&= \omg \mqty[
+				(1 + \gam^2 r^2 \omg^2) \sin(\omg t) & \cos(\omg t) \\
+				-(1 + \gam^2 r^2 \omg^2) \cos(\omg t) & \sin(\omg t)
+			] \mqty[ \Sr \\ \Stht ].
+	}
+	Note that
+	\eq{
+		\gam^2 = \frac{1}{1 - r^2 \omg^2}
+		\qimplies
+		\gam^2 = \gam^2 r^2 \omg^2 + 1.
+	}
+	Making this substiution and multiplying both sides by the inverse of the first matrix, we find
+	\eq{
+		\dv{t} \mqty[ \Sr \\ \Stht ] = \omg \mqty[
+				\cos(\omg t) & \sin(\omg t) \\
+				-\sin(\omg t) & \cos(\omg t)
+			] \mqty[
+				\gam^2 \sin(\omg t) & \cos(\omg t) \\
+				-\gam^2 \cos(\omg t) & \sin(\omg t)
+			] \mqty[ \Sr \\ \Stht ]
+		= \omg \mqty[
+				0 & 1 \\
+				-\gam^2 & 0
+			] \mqty[ \Sr \\ \Stht ].
+	}
+	In other words, we have a system of coupled first-order ODEs:
+	\aln{ \label{ODEs}
+		\dv{\Sr}{t} &= \omg \Stht, &
+		\dv{\Stht}{t} &= -\omg \gam^2 \Sr.
+	}
+	Differentiating each equation by $t$ once more and substituting, we get a system of uncoupled second-order ODEs with well-known solutions:
+	\al{
+		\dv[2]{\Sr}{t} &= \omg \dv{\Stht}{t}
+		= -\omg^2 \gam^2 \Sr, &
+		%
+		\dv[2]{\Stht}{t} &= -\omg \gam^2 \dv{\Sr}{t}
+		= -\omg^2 \gam^2 \Stht.
+	}
+	The solutions are~\cite[p.~207]{Swartz}
+	\al{
+		\Sr(t) &= \Cq \cos(\omg \gam t) + \Cw \sin(\omg \gam t), &
+		\Stht(t) &= \Dq \cos(\omg \gam t) + \Dw \sin(\omg \gam t).
+	}
+	We choose the initial conditions $\Sr(0) = S$ and $\Stht(0) = 0$.  This gives us
+	\al{
+		S &= \Sr(0) = \Cq, &
+		0 &= \Stht(0) = \Dq.
+	}
+	Then by Eq.~\refeq{ODEs},
+	\al{
+		\omg \Dw \sin(\omg \gam t) &= \dv{\Sr}{t} = \omg \gam [ -S \sin(\omg \gam t) + \Cw \cos(\omg \gam t) ], \\
+		-\omg \gam^2 [ S \cos(\omg \gam t) + \Cw \sin(\omg \gam t) ] &= \dv{\Stht}{t} = \omg \gam \Dw \cos(\omg \gam t).
+	}
+	Solving this system of equations with Mathematica yields $\Cw = 0$ and $\Dw = -\gam S$.  So our equations are
+	\al{
+		\Sr(t) &= S \cos(\omg \gam t), &
+		\Stht(t) &= -\gam S \sin(\omg \gam t).
+	}
+	Transforming back into Cartesian components using Eq.~\refeq{sub1}, we have
+	\eq{
+		\mqty[ \Sx \\ \Sy ] = S \mqty[
+				\cos(\omg t) & -\sin(\omg t) \\
+				\sin(\omg t) & \cos(\omg t)
+			] \mqty[
+				\cos(\omg \gam t) \\
+				-\gam \sin(\omg \gam t)
+			]
+		= S \mqty[
+				\cos(\omg t) \cos(\omg \gam t) + \gam \sin(\omg t) \sin(\omg \gam t) \\
+				\sin(\omg t) \cos(\omg \gam t) - \gam \cos(\omg t) \sin(\omg \gam t)
+			].
+	}
+	We can make these expressions look a little nicer by using the following product-to-sum identities~\cite{Trig}:
+	\al{
+		2 \cos\tht \cos\phi &= \cos(\tht - \phi) + \cos(\tht + \phi), &
+		2 \sin\tht \sin\phi &= \cos(\tht - \phi) - \cos(\tht + \phi), \\
+		2 \sin\tht \cos\phi &= \sin(\tht + \phi) + \sin(\tht - \phi), &
+		2 \cos\tht \sin\phi &= \sin(\tht + \phi) - \sin(\tht - \phi).
+	}
+	Then we have
+	\al{
+		\Sx(t) &\propto \frac{\cos(\omg t - \omg \gam t) + \cos(\omg t + \omg \gam t)}{2} + \gam \frac{\cos(\omg t - \omg \gam t) - \cos(\omg t + \omg \gam t)}{2}, \\
+		\Sy(t) &\propto \frac{\sin(\omg t + \omg \gam t) + \sin(\omg t - \omg \gam t)}{2} - \gam \frac{\sin(\omg t + \omg \gam t) - \sin(\omg t - \omg \gam t)}{2},
+	}
+	and finally
+	\ans{\al{
+		\Sx(t) &= S \frac{(1 + \gam) \cos[(1 - \gam) \omg t] + (1 - \gam) \cos[(1 + \gam) \omg t]}{2}, \\
+		\Sy(t) &= S \frac{(1 + \gam) \sin[(1 - \gam) \omg t] + (1 - \gam) \sin[(1 + \gam) \omg t]}{2}.
+	}}%
+	is the time dependence of $\vS$.
+	
+	Then
+	\aln{
+		\Sx + i \Sy &= S \brac{ (1 + \gam) \frac{\cos[(1 - \gam) \omg t] + i \sin[(1 - \gam) \omg t]}{2} + (1 - \gam) \frac{\cos[(1 + \gam) \omg t] + i \sin[(1 + \gam) \omg t]}{2} } \notag \\
+		&= \frac{S}{2} \brac{ (1 + \gam) e^{i (1 - \gam) \omg t} + (1 - \gam) e^{i (1 - \gam) \omg t} }. \label{thing1z}
+	}
+	In the non-relativistic limit, $r \omg \ll 1$ so
+	\eq{
+		\gam = \frac{1}{\sqrt{1 - r^2 \omg^2}}
+		\approx 1 + \frac{r^2 \omg^2}{2},
+	}
+	where we have evaluated the series expansion with Mathematica.  Using also $\gam \to 1$ in this limit, Eq.~\refeq{thing1z} becomes
+	\eq{
+		\ans{ \Sx + i \Sy }\to S e^{i (1 - \gam) \omg t}
+		\approx S \exp[ i \paren{ 1 - 1 - \frac{r^2 \omg^2}{2} } \omg t ]
+		\ans{\ = S e^{-i r^2 \omg^3 t / 2}. }
+	}
+	So we have shown that $\Sx + i \Sy$ precesses about the $z$ axis with frequency $\omgT = r^2 \omg^3 / 2$. \qed
+}

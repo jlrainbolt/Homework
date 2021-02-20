@@ -1,0 +1,87 @@
+\state{Killing vector field~(MCP 25.5)}{
+	A \emph{Killing vector field} is a coordinate-independent tool for exhibiting symmetries of the metric.  It is any vector field $\vxi$ that satisfies
+	\eqn{show5}{
+		\xisascb + \xisbsca = 0
+	}
+	(i.e., any vector field whose symmetrized gradient vanishes).
+}
+
+\prob{ \label{5a}
+	Let $\vxi$ be a vector field that might or might not be Killing.  Show, by construction, that it is possible to introduce a coordinate system in which $\vxi = \pdv*{\xA}$ for some coordinate $\xA$.
+}
+
+\sol{
+	We know that a single vector can be defined as an arrow residing in the tangent space to some curved manifold at a point we call $\cP$.  We can imagine a projection of $\vxi$ onto the manifold; such a projection is a curve on the manifold.  We may choose the direction of this curve as a coordinate of the manifold and call it $\xA$.  The curve itself we call $\cP(\xA)$.  Then, by construction, $\vxi$ is tangent to $\cP(\xA)$.  This means that $\vxi$ must be the directional derivative along $\cP(\xA)$, which is $\pdv*{\xA}$~\cite[pp.~1166--1167]{MCP}.
+	
+	For a vector field, the situation is slightly more complex.  Any given manifold can be described by a set of curves that are nonintersecting and which fill the manifold completely.  (Imagine a contour plot of some surface with an infinite number of contours; the contours are the curves in question.)  These are called ``integral curves''~\cite[p.~430]{Carroll}.  Any two integral curves that are arbitrarily close to one another run in the same direction.  So we can use this direction to define a coordinate system with the coordinate $\xA$ along the direction of the integral curves.  Any point $\cP$ on the manifold has an integral curve running through it, and we call this curve $\cP(\xA)$.  The vector tangent to the manifold at $\cP$ is $\pdv*{\xA}$~\cite[pp.~1166--1167]{MCP}.  Since this is true at any point $\cP$ on the manifold, the set of vectors tangent to all such integral curves make up a vector field.  Running this logic in reverse, then, it is possible to start with an arbitrary vector field $\vxi$ and construct a coordinate system in which $\vxi = \pdv*{\xA}$~\cite[p.~430]{Carroll}. \qed
+}
+
+
+
+\prob{
+	Show that in the coordinate system of \ref{5a} the symmetrized gradient of $\vxi$ is $\xisascb + \xisbsca = \pdv*{\sgsab}{\xA}$.  From this infer that a vector field $\vxi$ is Killing if and only if there exists a coordinate system in which (i) $\vxi = \pdv*{\xA}$ and (ii) the metric is independent of $\xA$.
+}
+
+\sol{
+	According to MCP~(24.35),
+	\eq{
+		A^\mu{}_{; \bet} = A^\mu{}_{, \bet} + A^\alp \Gam^\mu{}_{\alp \bet}.
+	}
+	Then, multiplying by the metric as in (24.38d),
+	\al{
+		\xisascb &= \sgsam \xi^\mu{}_{; \bet}
+		= \sgsam (\xi^\mu{}_{, \bet} + \xin \Gam^\mu{}_{\nu \bet})
+		= \xi_{\alp, \bet} + \Gam_{\alp \nu \bet} \xin, \\
+		%
+		\xisbsca &= \sgsbm \xi^\mu{}_{; \alp}
+		= \sgsbm (\xi^\mu{}_{, \alp} + \xin \Gam^\mu{}_{\nu \alp})
+		= \xi_{\bet, \alp} + \Gam_{\bet \nu \alp} \xin
+	}
+	Applying Eq.~\refeq{Gam} to the connection coefficients,
+	\al{
+		\Gam_{\alp \nu \bet} &= \frac{1}{2} (\sg_{\alp \nu, \bet} + \sg_{\alp \bet, \nu} - \sg_{\nu \bet, \alp}), &
+		\Gam_{\bet \nu \alp} &= \frac{1}{2} (\sg_{\nu \bet, \alp} + \sg_{\alp \bet, \nu} - \sg_{\alp \nu, \bet})
+		= \frac{1}{2} (\sg_{\nu \bet, \alp} + \sg_{\alp \bet, \nu} - \sg_{\alp \nu, \bet}),
+	}
+	where we have used the symmetry of the metric.  Then
+	\eq{
+		\xisascb + \xisbsca = \xi_{\alp, \bet} + \frac{1}{2} (\sg_{\alp \nu, \bet} + \sg_{\alp \bet, \nu} - \sg_{\nu \bet, \alp}) \xin + \xi_{\bet, \alp} + \frac{1}{2} (\sg_{\nu \bet, \alp} + \sg_{\alp \bet, \nu} - \sg_{\alp \nu, \bet}) \xin
+		= \xi_{\alp, \bet} + \xi_{\bet, \alp} + \sg_{\alp \bet, \nu} \xin.
+	}
+	In the coordinate system of \ref{5a}, $\vxi = \pdv*{\xA}$ so $\xi^A = 1$ and all other $\xi^\gam = 0$.  Thus $\xi_{\alp, \bet} = 0$ for all $\alp, \bet$ and
+	\eqn{thing5b}{
+		\ans{ \xisascb + \xisbsca } = \sg_{\alp \bet, A} \xi^A
+		\ans{\ = \pdv{\sgsab}{\xA} }
+	}
+	as we wanted to show. \qed
+	
+	it is only possible to reach Eq.~\refeq{thing5b} if we have chosen our coordinate system such that $\vxi = \pdv*{\xA}$.  Further, it is only possible for Eq.~\refeq{show5} to hold if $\pdv*{\sgsab}{\xA} = 0$; that is, if the metric is independent of $\xA$.  Thus both conditions are required for $\vxi$ to be a Killing field.
+}
+
+
+
+\prob{
+	Use Killing's equation~\refeq{show5} to show, without introducing a coordinate system, that, if $\vxi$ is a Killing vector field and $\vp$ is the 4-momentum of a freely-falling particle, then $\vxi \cdot \vp$ is conserved along the particle's geodesic world line.  This is the same conservation law as we proved in \ref{4a} using a coordinate-dependent calculation.
+}
+
+\sol{
+	For $\vxi \cdot \vp$ to be conserved along the particle's geodesic world line, we require that $\nabsvp(\xisn \pnu) = 0$.  Dotting both sides by $\vp$, this becomes $\pmu \nabsm(\xisn \pnu) = 0$.  Note that
+	\eq{
+		\pmu \nabsm(\xisn \pnu) = \pmu \pnu \nabsm \xisn + \pmu \xisn \nabsm(\pnu)
+		= \pmu \pnu \xi_{\nu, \mu}
+	}
+	since the geodesic equation~\refeq{geodesic} implies $\pmu \nabsm \pnu = 0$ as in \ref{4a}.  We can relabel indices to write
+	\eq{
+		\pmu \nabsm(\xisn \pnu) = \pmu \pnu \xi_{\nu, \mu}
+		= \pmu \pnu \xi_{\mu, \nu},
+	}
+	but from Eq.~\refeq{show5}, $\xi_{\nu, \mu} = -\xi_{\mu, \nu}$.  So
+	\eq{
+		\pmu \nabsm(\xisn \pnu) = -\pmu \nabsm(\xisn \pnu)
+		\qimplies
+		\pmu \nabsm(\xisn \pnu) = 0
+		\qimplies
+		\ans{ \nabsvp(\xisn \pnu) = 0 }
+	}
+	as we wanted to show~\cite[pp.~135--136]{Carroll}.  Thus, $\vxi \cdot \vp$ is conserved along the particle's geodesic world line. \qed
+}

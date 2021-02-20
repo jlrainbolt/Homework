@@ -1,0 +1,58 @@
+\state{Gravitational redshift~(MCP 24.16)}{
+	Inside a laboratory on Earth's surface the effects of spacetime curvature are so small that current technology cannot measure them.  Therefore, experiments performed in the laboratory can be analyzed using special relativity. %  (This fact is embodied in Einstein's equivalence principle.)
+}
+
+\prob{
+	Explain why the spacetime metric in the proper reference frame of the laboratory's floor has the form
+	\eqn{metric2}{
+		\dds^2 = (1 + 2 g z) (\ddxoh)^2 + \ddx^2 + \ddy^2 + \ddz^2,
+	}
+	plus terms due to the slow rotation of the laboratory walls, which we neglect in this exercise.  Here $g$ is the acceleration of gravity measured on the floor.
+}
+
+\sol{
+	We can transform coordinates from the proper reference frame of the laboratory floor to another inertial frame.  We choose this other frame such that it is only a very small ``distance'' away at $\vx = 0$ in the proper frame.  That is, the frames are identical in the immediate vicinity of event (small $\vx$).  Then the coordinate transformation from the proper reference frame to the other inertial frame is given by MCP~(24.60a),
+	\al{
+		\xii &= \xiih + \frac{1}{2} \aih (\xoh)^2 + \epsisjkh \Omgjh \xkh \xoh, &
+		\xo &= \xoh (1 + \asjh \xjh),
+	}
+	where terms to quadratic order in $\xah$ are included, and $\Omgjh$ is the rotational angular velocity of the laboratory.  Since the metric in the inertial frame is $\dds^2 = -(\ddxo)^2 + \delsij \ddxii \ddxj$~\cite[p.~1183]{MCP}, the metric in the proper reference frame is given by MCP~(24.60b),
+	\eq{
+		\dds^2 = -(1 + 2 \ba \vdot \bx) (\ddxoh)^2 + 2 (\bOmg \cross \bx) \vdot \ddbx \ddxoh + \delsjk \ddxjh \ddxkh,
+	}
+	which is accurate to linear order in $\xah$.  For this problem, we ignore rotations so $\bOmg \to \bo$, eliminating the second term.  Also, $\ba = g \zh$ so $\ba \vdot \bx = -g z$.  Finally, we note that $\xiih \in \{ x, y, z \}$ since these coordinates coincide with the inertial frame~\cite[p.~1186]{MCP}.  Then the spacetime metric is
+	\eq{
+		\dds^2 = -(1 + 2 g z) (\ddxoh)^2 + \ddx^2 + \ddy^2 + \ddz^2,
+	}
+	which is what we want.  Evidently, there is a typo (missing minus sign) in the problem statement. \qed
+}
+
+
+\prob{
+	An electromagnetic wave is emitted from the floor, where it is measured to have wavelength $\lamo$, and is received at the ceiling.  Using the metric of Eq.~\refeq{metric2}, show that, as measured in the proper reference frame of an observer on the ceiling, the received wave has wavelength $\lamr = \lamo (1 + g h)$, where $h$ is the height of the ceiling above the floor (i.e., the light is \emph{gravitationally redshifted} by $\Del\lam / \lamo = g h$).
+%	
+%	Hint: Show that all crests of the wave must travel along world lines that have the same shape, $z = F(\xoh - \xohe)$, where $F$ is some function, and $\xohe$ is the coordinate time at which the crest is emitted from the floor. %  You can compute the shape function $F$ if you wish, but it is not needed to derive the gravitational redshift; only its universality is needed.]
+}
+
+\sol{
+	As measured by an observer on the floor, say that one crest of the wave is emitted at some time $\xoh = t$, and the next crest is emitted at $\xoh = \tw$.  Call these events $\cPq$ and $\cPw$.  Both events occur on the floor at $z = 0$.  The interval between the two events is
+	\eq{
+		(\ddsqw)^2 = -(\tw - \tq)^2
+		\equiv \To^2,
+	}
+	where $\To$ is the period of the wave as measured at the floor.  We know that this interval represents the period because it is a timelike separation~\cite[p.~45]{MCP}.  At some time later $\te$, the first crest hits the ceiling; at $\trr$, the second crest hits the ceiling.  The interval between these two events $\cPe$ and $\cPr$, which both occur at $z = R + h$, is
+	\eq{
+		(\ddser)^2 = -(1 + 2 g h) (\trr - \te)^2
+		\equiv \Trr^2,
+	}
+	where $\Trr$ is the period of the wave as measured at the ceiling.
+	
+	We are concerned with the propagation of an electromagnetic wave, which means each crest travels at the speed of light.  Thus, it must be true that $\tw - \tq = \trr - \te$.  Noting that $\Trr / \To = \lamr / \lamo$, it follows that
+	\eq{
+		\frac{\lamr^2}{\lamo^2} = \frac{(1 + 2 g h) (\trr - \te)^2}{(\tw - \tq)^2}
+		= 1 + 2 g h
+		\qimplies
+		\frac{\lamr}{\lamo} = \sqrt{1 + 2 g h} \approx 1 + g h,
+	}
+	in the limit that $g h \ll 1$ (where $c = 1$).  Thus we have shown that \ans{$\lamr = \lamo (1 + g h)$}. \qed
+}

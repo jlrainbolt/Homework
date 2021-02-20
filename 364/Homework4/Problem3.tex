@@ -1,0 +1,45 @@
+\state{Rigidly rotating disk~(MCP 24.17)}{
+	Consider a thin disk with radius $R$ at $z = 0$ in a Lorentz reference frame.  The disk rotates rigidly with angular velocity $\Omg$.  In the early years of special relativity there was much confusion over the geometry of the disk: In the inertial frame it has physical radius (proper distance from center to edge) $R$ and physical circumference $\sC = 2\pi R$.  But Lorentz contraction dictates that, as measured on the disk, the circumference should be $\sqrt{1 - v^2} \sC$ (with $v = \Omg R$), and the physical radius, $R$, should be unchanged.  This seemed weird.  How could an obviously flat disk in spacetime have a curved, non-Euclidean geometry, with physical circumference divided by physical radius smaller than $2\pi$?  In this exercise you will explore this issue.
+}
+
+\prob{
+	Consider a family of observers who ride on the edge of the disk.  Construct a circular curve, orthogonal to their world lines, that travels around the disk (at $\sqrt{x^2 + y^2} = R$).  This curve can be thought of as lying in a 3-surface of constant time $\xoh$ of the observers' proper reference frames.  Show that it spirals upward in a Lorentz-frame spacetime diagram, so it cannot close on itself after traveling around the disk.  Thus the 3-planes, orthogonal to the observers' world lines at the edge of the disk, cannot mesh globally to form global 3-planes.
+}
+
+\sol{
+	We can write the position of an observer in an inertial reference frame as
+	\eq{
+		\vx = ( t, R \cos(\Omg t), R \sin(\Omg t), 0 ).
+	}
+	Then the velocity of the observer, which is tangent to his/her worldline, is
+	\eq{
+		\vuu = \dv{\vx}{\tau}
+		= \gam ( 1, -R \Omg \sin(\Omg t), R \Omg \cos(\Omg t), 0 ).
+	}
+	By inspection, a vector orthogonal to this velocity is
+	\eq{
+		\vv = \gam ( R^2 \Omg^2, -R \Omg \sin(\Omg t), R \Omg \cos(\Omg t), 0 )
+		= \dv{\vy}{\tau},
+	}
+	where $\vy$ traces out the curve orthogonal to the world line.  It is given by
+	\eq{
+		\vy = ( R^2 \Omg^2 t , R \cos(\Omg t), R \sin(\Omg t), 0 ).
+	}
+	We note that $\vy$ traces out a helix in a Lorentz-frame spacetime diagram.  Thus, it cannot close on itself after traveling around the disk. \qed
+}
+
+
+
+\prob{
+	Next, consider a 2-dimensional family of observers who ride on the surface of the rotating disk.  Show that at each radius $\sqrt{x^2 + y^2} = \const$, the constant-radius curve that is orthogonal to their world lines spirals upward in spacetime with a different slope.  Show that this means that even locally, the 3-planes orthogonal to each of their world lines cannot mesh to form larger 3-planes---thus there does not reside in spacetime any 3-surface orthogonal to these observers' world lines.  There is no 3-surface that has the claimed non-Euclidean geometry.
+}
+
+\sol{
+	For a given radius $r = \sqrt{x^2 + y^2}$, the constant-radius curve that is orthogonal to the worldline is given by
+	\eq{
+		\vy = ( r^2 \Omg^2 t, -r \Omg \sin(\Omg t), r \Omg \cos(\Omg t), 0 ).
+	}
+	The slope at which this curve spirals upward in the spacetime diagram is $r^2 \Omg^2 / r = r \Omg^2$~\cite{Helix}, which has a linear dependence on the radius.  Thus, the slope is different for different radii. \qed
+	
+	Consider the worldline of one observer who is riding at some radius $r$.  A nearby observer at radius $r + \ddr$ has a slightly different worldline, as we just showed.  The slope of her worldline is different by about $r \Omg^2 \ddr$.  Since these worldlines have slightly different slopes, the 3-planes orthogonal to them are not parallel to each other; they are separated by a small angle.  Thus, the planes cannot mesh to form a larger plane. \qed
+}

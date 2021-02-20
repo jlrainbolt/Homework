@@ -1,0 +1,117 @@
+\state{Constant of geodesic motion in a spacetime with symmetry~(MCP 25.4)}{\hfix}
+
+\prob{ \label{4a}
+	Suppose that in some coordinate system the metric coefficients are independent of some specific coordinate $\xA$: $\sgsabA = 0$ (e.g., in spherical polar coordinates $\{ t, r, \tht, \phi \}$ in flat spacetime $\sgsabphi = 0$, so we could set $\xA = \phi$).  Show that
+	\eq{
+		\psA \equiv \vp \cdot \pdv{\xA}
+	}
+	is a constant of the motion for a freely moving particle [$\psp = (\text{conserved $z$~component of angular momentum})$] in the above, spherically symmetric example.]
+	
+	Hint: Show that the geodesic equation can be written in the form
+	\eq{
+		\dv{\psa}{\zet} - \Gamsman \pmu \pnu = 0,
+	}
+	where $\Gamsman$ is the covariant connection of Eqs.~(24.38c), (24.38d) with $\csabg = 0$, because we are using a coordinate basis.
+%	
+%	Note the analogy of the constant of motion $\psA$ with Hamiltonian mechanics; there, if the Hamiltonian is independent of $\xA$, then the generalized momentum $\psA$ is conserved; here, if the metric coefficients are independent of $\xA$, then the covariant component $\psA$ of the momentum is conserved.
+}
+
+\sol{
+	The general form of the geodesic equation is given by MCP~(25.11c),
+	\eqn{geodesic}{
+		\nabsvp \vp = 0.
+	}
+	Dotting both sides by $\vp$ yields
+	\eq{
+		0 = \vp \cdot \nabsvp \vp
+		\qimplies
+		0 = \pmu \nabsm \psa.
+	}
+	The covariant components of the gradient are given by (24.36), $A_{\alp; \bet} = A_{\alp, \bet} - \Gam^\mu{}_{\alp \bet} A_\mu$, where $A_{\alp, \bet} = \ptsb A_\alp$ and $A_{\alp; \bet} = \nabsb A_\alp$.  Applying this, we have
+	\eqn{thing4a}{
+		0 = \pmu (p_{\alp, \mu} - \Gamgsam \psg)
+		= \pmu \ptsm \psa - \Gamgsam \pmu \psg.
+	}
+	Using $\vp / m = \dv*{\vx}{\tau}$ and $\tau = m \zeta$~\cite[p.~1202]{MCP}, we can rewrite the first term of Eq.~\refeq{thing4a}:
+	\eq{
+		\pmu \ptsm \psa = m \dv{\xm}{\tau} \ptsm \psa
+		= m \dv{\psa}{\tau}
+		= \dv{\psa}{\zet}.
+	}
+	For the second term of Eq.~\refeq{thing4a}, we multiply by the metric $\sgsba$ as in (24.38d), $\Gam^\mu{}_{\bet \gam} = \sg^{\mu \alp} \Gam_{\alp \bet \gam}$.  Then we have
+	\eq{
+		\Gamgsam \pmu \psg = \sggn \Gamsnam \pmu \psg
+		= \Gamsnam \pmu \pnu
+		= \Gamsman \pmu \pnu,
+	}
+	where in the final step we have relabeled indices.  Thus we can write Eq.~\refeq{thing4a} as
+	\eqn{thing4a2}{
+		\dv{\psa}{\zet} - \Gamsman \pmu \pnu = 0,
+	}
+	as recommended.
+	
+	Now we apply (24.38c); in a coordinate basis, it reduces to
+	\eqn{Gam}{
+		\Gamsabg = \frac{1}{2} (\sgsabg + \sgsagb - \sgsbga).
+	}
+	Then for the second term of Eq.~\refeq{thing4a2}, we can write
+	\al{
+		\Gamsman \pmu \pnu &= \frac{1}{2} (\sg_{\mu \alp, \nu} + \sg_{\mu \nu, \alp} - \sg_{\alp \nu, \mu} ) \pmu \pnu \\
+		&= \frac{1}{2} (\sg_{\nu \alp, \mu} + \sg_{\nu \mu, \alp} - \sg_{\alp \mu, \nu} ) \pmu \pnu \\
+		&= \frac{1}{2} (\sg_{\alp \nu, \mu} + \sg_{\mu \nu, \alp} - \sg_{\mu \alp, \nu} ) \pmu \pnu \\
+		&= \frac{1}{2} \sgsmna \pmu \pnu,
+	}
+	where we have again relabeled indices, and also used the symmetry of the metric.  Then for Eq.~\refeq{thing4a2}, we have
+	\eq{
+		\dv{\psa}{\zet} = \frac{1}{2} \sgsmna \pmu \pnu.
+	}
+	Therefore when $\alp = A$,
+	\eq{
+		\dv{\psA}{\zet} = \frac{1}{2} \sgsmnA \pmu \pnu = 0
+		\qimplies
+		\dv{\psA}{\tau} = 0
+		\qimplies
+		\psA = \const,
+	}
+	as we wanted to show~\cite[pp.~134--135]{Carroll}. \qed
+}
+
+
+
+\prob{
+	As an example, consider a particle moving freely through a time-independent, Newtonian gravitational field.  In Ex.~25.18, we learn that such a gravitational field can be described in the language of general relativity by the spacetime metric
+	\eqn{given4b}{
+		\dds^2 = -(1 + 2 \Phi) \ddt^2 + (\delsjk + \hsjk) \ddxj \ddxk,
+	}
+	where $\Phi(x, y, z)$ is the time-independent Newtonian potential, and $\hsjk$ are contributions to the metric that are independent of the time coordinate $t$ and have magnitude of order $\abs{\Phi}$.  That the gravitational field is weak means $\abs{\Phi} \ll 1$% (or, in conventional units, $\abs{\Phi / c^2} \ll 1$)
+	.  The coordinates being used are Lorentz, aside from tiny corrections of order $\abs{\Phi}$, and as this exercise and Ex.~25.18 show, they coincide with the coordinates of the Newtonian theory of gravity.  Suppose that the particle has velocity $\vj \equiv \dv*{\xj}{t}$ through this coordinate system that is $\lesssim \abs{\Phi}^{1/2}$ and thus is small compared to the speed of light.  Because the metric is independent of the time coordinate $t$, the component $\pst$ of the particle's 4-momentum must be conserved along its world line.  Since throughout physics, the conserved quantity associated with time-translation invariance is always the energy, we expect that $\pst$, when evaluated accurate to first order in $\abs{\Phi}$, must be equal to the particle's conserved Newtonian energy, $E = m \Phi + m \vj \vk \delsjk / 2$, aside from some multiplicative and additive constants.  Show that this, indeed, is true, and evaluate the constants.
+}
+
+\sol{
+	For a timelike interval, $\dds^2 = -(\ddtau)^2$~\cite[p.~45]{MCP}.  Then we can write Eq.~\refeq{given4b} as
+	\al{
+		-\paren{ \dv{\tau}{t} }^2 &= -(1 + 2 \Phi) \paren{ \dv{t}{t} }^2 + (\delsjk + \hsjk) \dv{\xj}{t} \dv{\xk}{t} \\
+		&= -(1 + 2 \Phi) + (\delsjk + \hsjk) \vj \vk \\
+		&= -1 - 2 \Phi + \delsjk \vj \vk,
+	}
+	which means
+	\eq{
+		\dv{\tau}{t} = \sqrt{ 1 + 2 \Phi - \delsjk \vj \vk }
+		\approx 1 + \Phi - \frac{1}{2} \vj \vk \delsjk.
+	}
+	Since $\ddtau = \ddt / \gam$~\cite[p.~201]{Resnick} and $\gam = u^0 = p^0 / m$, $p^t = m \dv*{t}{\tau}$.  So~\cite{Maclaurin}
+	\eq{
+		p^t = m \frac{1}{1 + \Phi - \vj \vk \delsjk / 2},
+	}
+	and we lower the index by multiplying by the only nonzero metric component.  This is $\sg_{t t}$, which we read off of Eq.~\refeq{given4b}.  Then
+	\eq{
+		\pst = \sg_{t t} p^t
+		= m \frac{1 + 2 \Phi}{1 + \Phi - \vj \vk \delsjk / 2}
+		\approx m \paren{ 1 + \Phi + \frac{1}{2} \vj \vk \delsjk },
+	}
+	where we have performed the Taylor series expansion using Mathematica.  Thus we have
+	\eq{
+		\ans{ E = m + m \Phi + \frac{m}{2} \vj \vk \delsjk, }
+	}
+	which is what we expected up to the additive constant $m$. \qed
+}
