@@ -41,26 +41,27 @@
 	}
 	since $\vU \cdot \vS = 0$ is Lorentz invariant, and the spatial components of the particle's velocity are zero in its rest frame.  Moreover, this means
 	\eq{
-		\nabsU \vS = -\dv{\vS}{\tau}
-		= -\gam \dv{\vS}{t},
+		\nabsU \vS = \dv{\vS}{\tau}
+		= \gam \dv{\vS}{t},
 	}
 	so Eq.~\refeq{FW} can be written
 	\eq{
-		\dv{\vS}{t} = -\frac{1}{\gam} \vU (\vaa \cdot \vS)
-		= \gam r \omg^2 [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ] \vU.
+		\dv{\vS}{t} = \frac{1}{\gam} \vU (\vaa \cdot \vS)
+		= -\gam r \omg^2 [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ] \vU.
 	}
 	Feeding in the relevant components of Eq.~\refeq{U}, we have the system of coupled differential equations
 	\al{
-		\dv{\Sx}{t} &= -\gam^2 r^2 \omg^3 \sin(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ], \\
-		\dv{\Sy}{t} &= \gam^2 r^2 \omg^3 \cos(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ],
+		\dv{\Sx}{t} &= \gam^2 r^2 \omg^3 \sin(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ], \\
+		\dv{\Sy}{t} &= -\gam^2 r^2 \omg^3 \cos(\omg t) [ \Sx \cos(\omg t) + \Sy \sin(\omg t) ],
 	}
 	or, in matrix form,
 	\eqn{sysxy}{
 		\dv{t} \mqty[ \Sx \\ \Sy ] = \gam^2 r^2 \omg^3 \mqty[
-				-\cos(\omg t) \sin(\omg t) & -\sin[2](\omg t) \\
-				\cos[2](\omg t) & \cos(\omg t) \sin(\omg t)
+				\cos(\omg t) \sin(\omg t) & \sin[2](\omg t) \\
+				-\cos[2](\omg t) & -\cos(\omg t) \sin(\omg t)
 			] \mqty[ \Sx \\ \Sy ].
 	}
+	% HL FIX THE MINUS 
 	To solve the system, we define the polar components of $\vS$ by~\cite[inside cover]{Griffiths}
 	\al{
 		\Sr &= \Sx \cos(\omg t) + \Sy \sin(\omg t), &
@@ -243,41 +244,7 @@
 
 
 \clearpage
-\state{Gravitational redshift~(MCP 24.16)}{
-	Inside a laboratory on Earth's surface the effects of spacetime curvature are so small that current technology cannot measure them.  Therefore, experiments performed in the laboratory can be analyzed using special relativity. %  (This fact is embodied in Einstein's equivalence principle.)
-}
-
-\prob{
-	Explain why the spacetime metric in the proper reference frame of the laboratory's floor has the form
-	\eqn{metric2}{
-		\dds^2 = (1 + 2 g z) (\ddxoh)^2 + \ddx^2 + \ddy^2 + \ddz^2,
-	}
-	plus terms due to the slow rotation of the laboratory walls, which we neglect in this exercise.  Here $g$ is the acceleration of gravity measured on the floor.
-}
-
-\sol{
-	We can transform coordinates from the proper reference frame of the laboratory floor to another inertial frame.  We choose this other frame such that it is only a very small ``distance'' away at $\vx = 0$ in the proper frame.  That is, the frames are identical in the immediate vicinity of event (small $\vx$).  Then the coordinate transformation from the proper reference frame to the other inertial frame is given by MCP~(24.60a),
-	\al{
-		\xii &= \xiih + \frac{1}{2} \aih (\xoh)^2 + \epsisjkh \Omgjh \xkh \xoh, &
-		\xo &= \xoh (1 + \asjh \xjh),
-	}
-	where terms to quadratic order in $\xah$ are included, and $\Omgjh$ is the rotational angular velocity of the laboratory.  Since the metric in the inertial frame is $\dds^2 = -(\ddxo)^2 + \delsij \ddxii \ddxj$~\cite[p.~1183]{MCP}, the metric in the proper reference frame is given by MCP~(24.60b),
-	\eq{
-		\dds^2 = -(1 + 2 \ba \vdot \bx) (\ddxoh)^2 + 2 (\bOmg \cross \bx) \vdot \ddbx \ddxoh + \delsjk \ddxjh \ddxkh,
-	}
-	which is accurate to linear order in $\xah$.  For this problem, we ignore rotations so $\bOmg \to \bo$, eliminating the second term.  Also, $\ba = g \zh$ so $\ba \vdot \bx = -g z$.  Finally, we note that $\xiih \in \{ x, y, z \}$ since these coordinates coincide with the inertial frame~\cite[p.~1186]{MCP}.  Then the spacetime metric is
-	\eq{
-		\dds^2 = -(1 + 2 g z) (\ddxoh)^2 + \ddx^2 + \ddy^2 + \ddz^2,
-	}
-	which is what we want.  Evidently, there is a typo (missing minus sign) in the problem statement. \qed
-}
-
-
-\prob{
-	An electromagnetic wave is emitted from the floor, where it is measured to have wavelength $\lamo$, and is received at the ceiling.  Using the metric of Eq.~\refeq{metric2}, show that, as measured in the proper reference frame of an observer on the ceiling, the received wave has wavelength $\lamr = \lamo (1 + g h)$, where $h$ is the height of the ceiling above the floor (i.e., the light is \emph{gravitationally redshifted} by $\Del\lam / \lamo = g h$).
-	
-	Hint: Show that all crests of the wave must travel along world lines that have the same shape, $z = F(\xoh - \xohe)$, where $F$ is some function, and $\xohe$ is the coordinate time at which the crest is emitted from the floor. %  You can compute the shape function $F$ if you wish, but it is not needed to derive the gravitational redshift; only its universality is needed.]
-}
+\input{Problem2}
 
 
 
@@ -323,9 +290,9 @@
 \sol{
 	For a given radius $r = \sqrt{x^2 + y^2}$, the constant-radius curve that is orthogonal to the worldline is given by
 	\eq{
-		\vy = ( r^2 \Omg^2 t, -r \Omg \sin(\Omg t), r \Omg \cos(\Omg t), 0 )
+		\vy = ( r^2 \Omg^2 t, -r \Omg \sin(\Omg t), r \Omg \cos(\Omg t), 0 ).
 	}
-	The slope at which this curve spirals upward in the spacetime diagram is $r^2 \Omg^2 / r = r \Omg^2$, which has a linear dependence on the radius.  Thus, the slope is different for any radius $r$. \qed
+	The slope at which this curve spirals upward in the spacetime diagram is $r^2 \Omg^2 / r = r \Omg^2$~\cite{Helix}, which has a linear dependence on the radius.  Thus, the slope is different for different radii. \qed
 	
 	\hl{what about the meshing?}
 }
@@ -338,7 +305,7 @@
 \clearpage
 \state{Constant of geodesic motion in a spacetime with symmetry~(MCP 25.4)}{\hfix}
 
-\prob{
+\prob{ \label{4a}
 	Suppose that in some coordinate system the metric coefficients are independent of some specific coordinate $\xA$: $\sgsabA = 0$ (e.g., in spherical polar coordinates $\{ t, r, \tht, \phi \}$ in flat spacetime $\sgsabphi = 0$, so we could set $\xA = \phi$).  Show that
 	\eq{
 		\psA \equiv \vp \cdot \pdv{\xA}
@@ -356,7 +323,7 @@
 
 \sol{
 	The general form of the geodesic equation is given by MCP~(25.11c),
-	\eq{
+	\eqn{geodesic}{
 		\nabsvp \vp = 0.
 	}
 	Dotting both sides by $\vp$ yields
@@ -388,7 +355,11 @@
 	}
 	as recommended.
 	
-	Now we apply (24.38c); in a coordinate basis, it reduces to $\Gamsabg = (\sgsabg + \sgsagb - \sgsbga) / 2$.  Then for the second term of Eq.~\refeq{thing4a2}, we can write
+	Now we apply (24.38c); in a coordinate basis, it reduces to
+	\eqn{Gam}{
+		\Gamsabg = \frac{1}{2} (\sgsabg + \sgsagb - \sgsbga).
+	}
+	Then for the second term of Eq.~\refeq{thing4a2}, we can write
 	\al{
 		\Gamsman \pmu \pnu &= \frac{1}{2} (\sg_{\mu \alp, \nu} + \sg_{\mu \nu, \alp} - \sg_{\alp \nu, \mu} ) \pmu \pnu \\
 		&= \frac{1}{2} (\sg_{\nu \alp, \mu} + \sg_{\nu \mu, \alp} - \sg_{\alp \mu, \nu} ) \pmu \pnu \\
@@ -417,7 +388,8 @@
 	\eq{
 		\dds^2 = -(1 + 2 \Phi) \ddt^2 + (\delsjk + \hsjk) \ddxj \ddxk,
 	}
-	where $\Phi(x, y, z)$ is the time-independent Newtonian potential, and $\hsjk$ are contributions to the metric that are independent of the time coordinate $t$ and have magnitude of order $\abs{\Phi}$.  That the gravitational field is weak means $\abs{\Phi} \ll 1$ (or, in conventional units, $\abs{\Phi / c^2} \ll 1$).  The coordinates being used are Lorentz, aside from tiny corrections of order $\abs{\Phi}$, and as this exercise and Ex.~25.18 show, they coincide with the coordinates of the Newtonian theory of gravity.  Suppose that the particle has velocity $\vj \equiv \dd*{\xj}{t}$ through this coordinate system that is $\lesssim \abs{\Phi}^{1/2}$ and thus is small compared to the speed of light.  Because the metric is independent of the time coordinate $t$, the component $\pst$ of the particle's 4-momentum must be conserved along its world line.  Since throughout physics, the conserved quantity associated with time-translation invariance is always the energy, we expect that $\pst$, when evaluated accurate to first order in $\abs{\Phi}$, must be equal to the particle's conserved Newtonian energy, $E = m \Phi + m \vj \vk \delsjk / 2$, aside from some multiplicative and additive constants.  Show that this, indeed, is true, and evaluate the constants.
+	where $\Phi(x, y, z)$ is the time-independent Newtonian potential, and $\hsjk$ are contributions to the metric that are independent of the time coordinate $t$ and have magnitude of order $\abs{\Phi}$.  That the gravitational field is weak means $\abs{\Phi} \ll 1$% (or, in conventional units, $\abs{\Phi / c^2} \ll 1$)
+	.  The coordinates being used are Lorentz, aside from tiny corrections of order $\abs{\Phi}$, and as this exercise and Ex.~25.18 show, they coincide with the coordinates of the Newtonian theory of gravity.  Suppose that the particle has velocity $\vj \equiv \dv*{\xj}{t}$ through this coordinate system that is $\lesssim \abs{\Phi}^{1/2}$ and thus is small compared to the speed of light.  Because the metric is independent of the time coordinate $t$, the component $\pst$ of the particle's 4-momentum must be conserved along its world line.  Since throughout physics, the conserved quantity associated with time-translation invariance is always the energy, we expect that $\pst$, when evaluated accurate to first order in $\abs{\Phi}$, must be equal to the particle's conserved Newtonian energy, $E = m \Phi + m \vj \vk \delsjk / 2$, aside from some multiplicative and additive constants.  Show that this, indeed, is true, and evaluate the constants.
 }
 
 
@@ -427,7 +399,7 @@
 \clearpage
 \state{Killing vector field~(MCP 25.5)}{
 	A \emph{Killing vector field} is a coordinate-independent tool for exhibiting symmetries of the metric.  It is any vector field $\vxi$ that satisfies
-	\eq{
+	\eqn{show5}{
 		\xisascb + \xisbsca = 0
 	}
 	(i.e., any vector field whose symmetrized gradient vanishes).
@@ -438,47 +410,79 @@
 }
 
 \sol{
-	If we treat $\vxi$ as a singular vector, it must exist in a space tangent to some manifold at a point we call $\cP$.  We can imagine a projection of $\vxi$ onto the manifold; such a projection is a curve on the manifold.  We may choose the direction of this curve as a coordinate of the manifold and call it $\xA$.  The curve itself we call $\cP(\xA)$.  Then, by construction, $\vxi$ is tangent to $\cP(\xA)$.  This means that $\vxi$ must be the directional derivative along $\cP(\xA)$, which is $\pdv*{\xA}$.  Thus, $\vxi = \pdv*{\xA}$~\cite[pp.~1166--1167]{MCP}. \qed
+	We know that a single vector can be defined as an arrow residing in the tangent space to some curved manifold at a point we call $\cP$.  We can imagine a projection of $\vxi$ onto the manifold; such a projection is a curve on the manifold.  We may choose the direction of this curve as a coordinate of the manifold and call it $\xA$.  The curve itself we call $\cP(\xA)$.  Then, by construction, $\vxi$ is tangent to $\cP(\xA)$.  This means that $\vxi$ must be the directional derivative along $\cP(\xA)$, which is $\pdv*{\xA}$~\cite[pp.~1166--1167]{MCP}.
+	
+	For a vector field, the situation is slightly more complex.  Any given manifold can be described by a set of curves that are nonintersecting and which fill the manifold completely.  (Imagine a contour plot of some surface with an infinite number of contours; the contours are the curves in question.)  These are called ``integral curves''~\cite[p.~430]{Carroll}.  Any two integral curves that are arbitrarily close to one another run in the same direction.  So we can use this direction to define a coordinate system with the coordinate $\xA$ along the direction of the integral curves.  Any point $\cP$ on the manifold has an integral curve running through it, and we call this curve $\cP(\xA)$.  The vector tangent to the manifold at $\cP$ is $\pdv*{\xA}$~\cite[pp.~1166--1167]{MCP}.  Since this is true at any point $\cP$ on the manifold, the set of vectors tangent to all such integral curves make up a vector field.  Running this logic in reverse, then, it is possible to start with an arbitrary vector field $\vxi$ and construct a coordinate system in which $\vxi = \pdv*{\xA}$~\cite[p.~430]{Carroll}. \qed
 }
 
 
 
 \prob{
-	Show that in the coordinate system of \ref{5a} the symmetrized gradient of $\vxi$ is $\xisascb + \xisbsca = \pdv{\sgsab}{\xA}$.  From this infer that a vector field $\vxi$ is Killing if and only if there exists a coordinate system in which (i) $\vxi = \pdv*{\xA}$ and (ii) the metric is independent of $\xA$.
+	Show that in the coordinate system of \ref{5a} the symmetrized gradient of $\vxi$ is $\xisascb + \xisbsca = \pdv*{\sgsab}{\xA}$.  From this infer that a vector field $\vxi$ is Killing if and only if there exists a coordinate system in which (i) $\vxi = \pdv*{\xA}$ and (ii) the metric is independent of $\xA$.
 }
 
 \sol{
-%	By MCP~(24.36),
-%	\eq{
-%		A_{\alp; \bet} = A_{\alp, \bet} - \Gammsab A_\mu.
-%	}
-%	So
-%	\al{
-%		\xisascb &= \xisacb - \Gammsab \xism
-%		= \xisacb - \pdv{\GamAsab}{\xA}, &
-%		\xisbsca &= \xisbca - \Gamnsba \xisn
-%		= \xisbca - \pdv{\GamAsba}{\xA},
-%	}
-%	since $\vxi$ has a component in only the $\xA$ direction.  The basis of \ref{5a} is a coordinate basis, so the $c$ terms vanish in MCP~(24.38), which becomes
-%	\eq{
-%		\Gamsabg = \frac{1}{2} (\sgsabg + \sgsagb - \sgsbga),
-%	}
-%	and from (24.38d),
-%	\eq{
-%		\Gammsbg = \frac{1}{2} \sgma (\sgsabg + \sgsagb - \sgsbga)
-%	}
+	According to MCP~(24.35),
+	\eq{
+		A^\mu{}_{; \bet} = A^\mu{}_{, \bet} + A^\alp \Gam^\mu{}_{\alp \bet}.
+	}
+	Then, multiplying by the metric as in (24.38d),
+	\al{
+		\xisascb &= \sgsam \xi^\mu{}_{; \bet}
+		= \sgsam (\xi^\mu{}_{, \bet} + \xin \Gam^\mu{}_{\nu \bet})
+		= \xi_{\alp, \bet} + \Gam_{\alp \nu \bet} \xin, \\
+		%
+		\xisbsca &= \sgsbm \xi^\mu{}_{; \alp}
+		= \sgsbm (\xi^\mu{}_{, \alp} + \xin \Gam^\mu{}_{\nu \alp})
+		= \xi_{\bet, \alp} + \Gam_{\bet \nu \alp} \xin
+	}
+	Applying Eq.~\refeq{Gam} to the connection coefficients,
+	\al{
+		\Gam_{\alp \nu \bet} &= \frac{1}{2} (\sg_{\alp \nu, \bet} + \sg_{\alp \bet, \nu} - \sg_{\nu \bet, \alp}), &
+		\Gam_{\bet \nu \alp} &= \frac{1}{2} (\sg_{\nu \bet, \alp} + \sg_{\alp \bet, \nu} - \sg_{\alp \nu, \bet})
+		= \frac{1}{2} (\sg_{\nu \bet, \alp} + \sg_{\alp \bet, \nu} - \sg_{\alp \nu, \bet}),
+	}
+	where we have used the symmetry of the metric.  Then
+	\eq{
+		\xisascb + \xisbsca = \xi_{\alp, \bet} + \frac{1}{2} (\sg_{\alp \nu, \bet} + \sg_{\alp \bet, \nu} - \sg_{\nu \bet, \alp}) \xin + \xi_{\bet, \alp} + \frac{1}{2} (\sg_{\nu \bet, \alp} + \sg_{\alp \bet, \nu} - \sg_{\alp \nu, \bet}) \xin
+		= \xi_{\alp, \bet} + \xi_{\bet, \alp} + \sg_{\alp \bet, \nu} \xin.
+	}
+	In the coordinate system of \ref{5a}, $\vxi = \pdv*{\xA}$ so $\xi^A = 1$ and all other $\xi^\gam = 0$.  Thus $\xi_{\alp, \bet} = 0$ for all $\alp, \bet$ and
+	\eqn{thing5b}{
+		\ans{ \xisascb + \xisbsca } = \sg_{\alp \bet, A} \xi^A
+		\ans{\ = \pdv{\sgsab}{\xA} }
+	}
+	as we wanted to show. \qed
 	
-	
-%	the $\Gammsab$ are symmetric in their last two indices~\cite[p.~1172]{MCP}.  This means
-%	\eq{
-%		\xisascb + \xisbsca = \ptsvesb \xisa + \ptsvesa \xisb - 2 \Gammsab \xism
-%	}
+	it is only possible to reach Eq.~\refeq{thing5b} if we have chosen our coordinate system such that $\vxi = \pdv*{\xA}$.  Further, it is only possible for Eq.~\refeq{show5} to hold if $\pdv*{\sgsab}{\xA} = 0$; that is, if the metric is independent of $\xA$.  Thus both conditions are required for $\vxi$ to be a Killing field.
 }
 
 
 
 \prob{
-	Use Killing's equation~(25.18) to show, without introducing a coordinate system, that, if $\vxi$ is a Killing vector field and $\vp$ is the 4-momentum of a freely-falling particle, then $\vxi \cdot \vp$ is conserved along the particle's geodesic world line.  This is the same conservation law as we proved in Ex.~25.4a using a coordinate-dependent calculation.
+	Use Killing's equation~\refeq{show5} to show, without introducing a coordinate system, that, if $\vxi$ is a Killing vector field and $\vp$ is the 4-momentum of a freely-falling particle, then $\vxi \cdot \vp$ is conserved along the particle's geodesic world line.  This is the same conservation law as we proved in \ref{4a} using a coordinate-dependent calculation.
+}
+
+\sol{
+	For $\vxi \cdot \vp$ to be conserved along the particle's geodesic world line, we require that $\nabsvp(\xisn \pnu) = 0$.  Dotting both sides by $\vp$, this becomes $\pmu \nabsm(\xisn \pnu) = 0$.  Note that
+	\eq{
+		\pmu \nabsm(\xisn \pnu) = \pmu \pnu \nabsm \xisn + \pmu \xisn \nabsm(\pnu)
+		= \pmu \pnu \xi_{\nu, \mu}
+	}
+	since the geodesic equation~\refeq{geodesic} implies $\pmu \nabsm \pnu = 0$ as in \ref{4a}.  We can relabel indices to write
+	\eq{
+		\pmu \nabsm(\xisn \pnu) = \pmu \pnu \xi_{\nu, \mu}
+		= \pmu \pnu \xi_{\mu, \nu},
+	}
+	but from Eq.~\refeq{show5}, $\xi_{\nu, \mu} = -\xi_{\mu, \nu}$.  So
+	\eq{
+		\pmu \nabsm(\xisn \pnu) = -\pmu \nabsm(\xisn \pnu)
+		\qimplies
+		\pmu \nabsm(\xisn \pnu) = 0
+		\qimplies
+		\ans{ \nabsvp(\xisn \pnu) = 0 }
+	}
+	as we wanted to show.  Thus, $\vxi \cdot \vp$ is conserved along the particle's geodesic world line. \qed
 }
 
 
