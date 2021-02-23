@@ -89,11 +89,15 @@
 }
 
 \sol{
-	In accordance with the Klein-Gordon Lagrangian in P\&S~(2.6), we interpret $(\vgrad \phi)^2$ as $(\pt \phi)^2$.
+	In accordance with the Klein-Gordon Lagrangian in P\&S~(2.6),
+	\eqn{KGL}{
+		\cL_\text{K-G} = \frac{1}{2} (\pt \phi)^2 - \frac{1}{2} m^2 \phi^2,
+	}
+	we interpret $(\vgrad \phi)^2$ as $(\pt \phi)^2$.
 	
-	The Lagrangian cannot have terms of $\order{\phi^n}$ for any $n \neq 0$ since $\phi(x)$ is not invariant under Eq.~\refeq{symmetry}.  Any combination of derivatives of $\phi$ is invariant, however, since $\alp$ is a constant and does not contribute to any derivative.  Thus, only terms like $\pt^n \phi^m$ (where $n$ denotes a power of $\pt$) for integers $n, m > 0$ and $n \geq m$ are consistent with the symmetry of Eq.~\refeq{symmetry} for $d$ an integer.
+	The Lagrangian cannot have terms of $\order{\phi^n}$ for any $n \neq 0$ since $\phi(x)$ is not invariant under Eq.~\refeq{symmetry}.  Any combination of derivatives of $\phi$ is invariant, however, since $\alp$ is a constant and does not contribute to any derivative.  Thus, only terms like $\pt^n \phi^m$ (where $n$ denotes a power of $\pt$) for $n, m > 0$ and $n \geq m$ are consistent with the symmetry of Eq.~\refeq{symmetry} for $d$ an integer.
 	
-	Now we must determine which of these terms are renormalizable.  We know that the Lagrangian must have dimension $d$, and that $\phi$ has dimension $(d - 2) / 2$.  Taking a derivative adds a mass dimension.  The theory is renormalizable if the coupling constant $\rho$ has dimension greater than or equal to 0~\cite[p.~322]{Peskin}.  Let $p$ be the dimension of $\rho$, which must be an integer.  The dimension of our allowed term is then
+	Now we must determine which of these terms are renormalizable.  We know that the Lagrangian must have dimension $d$, and that $\phi$ has dimension $(d - 2) / 2$.  Taking a derivative adds a mass dimension.  The theory is renormalizable if the coupling constant $\rho$ has dimension greater than or equal to 0~\cite[p.~322]{Peskin}.  Let $p$ be the dimension of $\rho$.  The dimension of our allowed term is then
 	\eq{
 		[ \rho \pt^n \phi^m ] = p + n + m \frac{d - 2}{2},
 	}
@@ -103,11 +107,23 @@
 		n &\geq m, &
 		p &\geq 0.
 	}
-	Solving with Mathematica, we find that this system has only one solution, $n = m = 2$ and $p = 0$.  This means that $\rho$ must be dimensionless and the only allowed terms in the Lagrangian are proportional to $\pt^2 \phi^2 = (\pt \phi)^4$, which is consistent with Eq.~\refeq{show1b}. \qed
+	Solving with Mathematica, we find that this system has two solutions: $n = m = 2$ and $p = 0$; and $n = m = 1$ and $p = d / 2$.  However, the term $\pt \phi$ for $n = m = 1$ does not contribute to the action because it is a total derivative and does not contribute when the integral over $\cL$ is evaluated:
+	\eq{
+		\int \dd[d]{x} \pt\phi = \phi \bigg|_{-\infty}^\infty
+		= 0.
+	}
+	Thus the only possibility is $n = m = 2$.  Note that
+	\eq{
+		\pt^2 \phi^2 = \pt(\pt \phi^2)
+		= 2 \pt( \phi \pt \phi)
+		= \pt \phi \pt \phi + \phi \pt^2 \phi
+		= (\pt \phi)^2,
+	}
+	since $\phi \pt^2 \phi$ is not invariant under Eq.~\refeq{sx}.  This means that $\rho$ must be dimensionless and that the only allowed terms in the Lagrangian are proportional to $(\pt \phi)^2$, which is consistent with Eq.~\refeq{show1b}. \qed
 }
 
 
-\clearpage
+
 \prob{
 	Compute the correlation function $\ev{ \sx \sao }$.  Adjust $A$ to give a physically sensible normalization (assuming that the system has a physical cutoff at the scale of one atomic spacing) and display the dependence of this correlation function on $x$ for $d = 1, 2, 3, 4$.  Explain the significance of your results.
 }
@@ -120,37 +136,140 @@
 	}
 	Now we can apply Eq.~\refeq{show1} to find
 	\eqn{thing1c}{
-		\ans{ \ev{ \sx \sao } = \ev*{ \abs{A}^2 } \exp[ D(x) - D(0) ], }
+		\ans{ \ev{ \sx \sao } = \abs{A}^2 \exp[ D(x) - D(0) ], }
 	}
-	where $D(x - y)$ is a Green's function.  It is similar to the Green's function of the Klein-Gordon operator, which is given by P\&S~(2.56):
+	where $D(x - y)$ is a Green's function.  Since our Lagrangian is similar to the Klein-Gordon Lagrangian Eq.~\refeq{2.6}, our Green's function is similar to that of the Klein-Gordon operator, which is given by P\&S~(2.56):
 	\eq{
 		(\pt^2 + m^2) D(x - y) = -i \delq(x - y).
 	}
 	The Feynman prescription for this Green's function is given by (2.59),
 	\eqn{DF}{
-		\DF(x - y) = \int \ddqpf \frac{i}{p^2 - m^2 + i \eps} e^{i p \cdot (x - y)}.
+		\DF(x - y) = \int \ddqpf \frac{i}{p^2 - m^2 + i \eps} e^{-i p \cdot (x - y)}.
 	}
 	For the Lagrangian in Eq.~\refeq{show1b}, we set $m = 0$ and insert a factor of $\rho$:
 	\eq{
 		\rho \pt^2 D(x - y) = -i \deld(x - y),
 	}
 	so adapting Eq.~\refeq{DF} for this situation yields
-	\eq{
-		\DF(x - y) = \frac{1}{\rho} \int \dddpf \frac{i}{p^2 + i \eps} e^{i p \cdot (x - y)}.
+	\eqn{DF}{
+		\DF(x - y) = \frac{1}{\rho} \int \dddpf \frac{i}{p^2 + i \eps} e^{-i p \cdot (x - y)}.
 	}
-	We see that $\DF(0)$ \hl{diverges, so we absorb it into} the normalization to make it physically sensible.  Define $A'$ such that
+	We see that $\DF(0)$ diverges, so we absorb it into the constant to make the normalization physically sensible.  We can do this because, as we showed in \ref{1b}, the theory is renormalizable.  Define $A'$ such that
 	\eq{
-		{A'}^2 = \ev*{ \abs{A}^2 } e^{-D(0)}.
+		{A'}^2 = \abs{A}^2 e^{-D(0)}.
 	}
 	Then Eq.~\refeq{thing1c} can be written
 	\eq{
-		\ev{ \sx \sao } = {A'}^2 D(x).
+		\ans{ \ev{ \sx \sao } =  {A'}^2 e^{D(x)}. }
 	}
-	By analogy with P\&S~(9.48), after Wick rotation the Green's function is
+	
+	To evaluate the divergent integral $D(x)$, we look to the Feynman parameter method we have been using to solve divergent integrals.  Apparently, the Schwinger parametrization is useful in deriving the Feynman parametrization, and it is given by~\cite{Feynman}
 	\eq{
-		\DF(\xE - \yE) = \int \dddkf \frac{e^{i \kE \cdot (\xE - \yE)}}{\kE^2}
+		\frac{1}{A} = \intoi \dds e^{-s A}.
 	}
-	\hl{how to evaluate this integral???}
+	Using this equation, we can write Eq.~\refeq{DF} as
+	\eq{
+		\DF(x) = \frac{1}{\rho} \int \dddpf \frac{i}{p^2} e^{-i p \cdot x}
+		= \frac{i}{\rho} \int \dddpf \intoi \dds e^{-s p^2} e^{-i p \cdot x}.
+	}
+	Now we can complete the square in the exponential to get a Gaussian integral:
+	\al{
+		\DF(x) &= \frac{i}{\rho} \int \dddpf \intoi \dds \exp[ -s p^2 - i p \cdot x + \frac{x^2}{4 s} - \frac{x^2}{4 s} ] \\
+		&= \frac{i}{\rho} \int \dddpf \intoi \dds \exp[ -s \paren{ p + \frac{i x}{2 s} }^2 - \frac{x^2}{4 s} ] \\
+		&= \frac{i}{\rho (2 \pi)^d} \intoi \dds e^{-x^2 / 4 s} \int \dd[d]{u} e^{-s u^2} \\
+		&= \frac{i}{\rho (2 \pi)^{d}} \intoi \dds e^{-x^2 / 4 s} \sqrt{ \frac{(2\pi)^d}{(2s)^d} } \\
+		&= \frac{i}{\rho (4 \pi)^{d / 2}} \intoi \dds \frac{e^{-x^2 / 4 s}}{s^{d / 2}}
+	}
+	where we have used~\cite{QFT}
+	\eq{
+		\int \exp( -\frac{1}{2} x \cdot A \cdot x ) \dd[n]{x} = \sqrt{\frac{(2\pi)^n}{\det A}},
+	}
+	with $A$ a $d \times d$ diagonal matrix $2s$.  Using Mathematica to integrate with respect to $s$, we find
+	\eq{
+		\DF(x) = \frac{i}{\rho (4 \pi)^{d / 2}} \frac{2^{d - 2}}{x^{d - 2}} \Gam(d / 2 - 1)
+		= \frac{i}{4 \pi^d \rho} \Gam(d / 2 - 1) x^{2 - d}.
+	}
+	The gamma function diverges as $d \to 2$, so as we have done in previous problems, we expand about $\eps = 2 - d$.  Evaluating the series expansion using Mathematica, we obtain
+	\eq{
+		\DF(x) = \frac{i}{4 \pi^{1 - \eps} \rho} \Gam(\eps / 2) x^\eps
+		\approx \frac{i}{4 \pi \rho} \paren{ \frac{2}{\eps} - \gam + 2 \ln(\pi x) }
+		\sim \frac{i}{2 \pi \rho} \ln(x)
+		= i \ln(\frac{1}{x^{2 \pi \rho}}).
+	}
+	We Wick rotate $x \to i x$.  Then the dependence of the correlation function on $x$ for $d = 1, 2, 3, 4$ is
+	\ans{\al{
+		(d = 1) &\qquad \ev{ \sx \sao } \sim e^{-x}, &
+		(d = 2) &\qquad \ev{ \sx \sao } \sim x^{2 \pi \rho}, \\
+		(d = 3) &\qquad \ev{ \sx \sao } \sim \frac{1}{x}, &
+		(d = 4) &\qquad \ev{ \sx \sao } \sim \frac{1}{x^2}.
+	}}%
+	\hl{how on earth to explain these??}
+%
+%
+%	We begin with the case $d = 1$.  We Wick rotate $p \to i p$, and so we need to evaluate
+%	\eq{
+%		\intnii \ddpf \paren{-i \frac{e^{i p x}}{p^2} \equiv \intnii \ddp \fp },
+%	}
+%	where we have defined $\fp$.  We choose a contour $\sC$ in the positive half of the imaginary plane that encloses $p = 0$.  The residue at the second-order pole $p = 0$ can be evaluated using
+%	\eq{
+%		\Res_{z = c} f(z) = \frac{1}{(n - 1)!} \lim_{z \to c} \dv[n-1]{z}[ (z - c)^n f(z) ],
+%	}
+%	where $f(z)$ is the integrand and $n$ is the order of the pole at $z = c$~\cite{Residue}.  We have
+%	\eq{
+%		\Res_{p = 0} f(p) = \lim_{p \to 0} \dv{p}[ -i p^2 \frac{e^{i p x}}{2 \pi p^2} ]
+%		= -i \lim_{k \to 0} \dv{e^{i p x}}{2 \pi k}
+%		= -i \lim_{k \to 0} i x \frac{e^{i p x}}{2\pi}
+%		= \frac{x}{2\pi}.
+%	}
+%	Then, by the residue theorem~\cite{ResidueTheorem},
+%	\eq{
+%		\intnii \ddpf \fp = 2 \pi i \Res_{k = 0}
+%		= i x.
+%	}
+%	So the correlation function for $d = 1$ is
+%	\eq{
+%		\ans{ \ev{ \sx \sao } =  {A'}^2 e^{-x / \rho}. }
+%	}
+%	
+%	For the case $d = 2$, we have
+%	\eq{
+%		\intnii \ddspf \paren{ -i \frac{e^{i p \cdot x}}{p^2} } \equiv \intnii \ddsp \fp.
+%	}
+%	To rewrite the dot product, we transform to polar coordinates:
+%	\eq{
+%		\intnii \ddsp \fp = -\frac{i}{(2\pi)^2} \intoi \ddp \intotp \ddtht \frac{e^{i p x \cos\tht}}{p}
+%		= \frac{1}{2\pi i} \intoi \ddp \frac{I_0(i p x)}{p}
+%	}
+%	where we have evaluated the integral using Mathematica, and $I_n(x)$ is the modified Bessel function of the first kind.  Now we have a simple pole at $p = 0$, and we can find the residue using~\cite{Residue}
+%	\eq{
+%		\Res_{z = c} f(z) = \lim_{z \to c} (z - c) f(z).
+%	}
+%	For our problem,
+%	\eq{
+%		\Res_{p = 0} = \lim_{p \to 0} \frac{I_0(i p x)}{2\pi i}
+%		= \frac{1}{2 \pi i}
+%	}
+%
+%	 in order to write the dot product as $p x \cos\tht$; however, it does not seem like this will work.  We would need to introduce a factor of $\sin\tht$ in order to integrate with respect to $\tht$, but in two dimensions this factor would not be canceled by the Jacobian as it would be in three dimensions.
+%		
+%	For the case $d = 3$, we have
+%	\eq{
+%		\intnii \ddcpf \paren{ -i \frac{e^{i p \cdot x}}{p^2} } \equiv \intnii \ddsp \fp
+%	}
+%
+%@misc{			Residue,
+%	author		= "{Wikipedia contributors}",
+%	title			= "Residue (complex analysis)",
+%	howpublished= "From Wikipedia, the Free Encyclopedia",
+%	url			= "https://en.wikipedia.org/wiki/Residue_(complex_analysis)"
+%}
+%
+%@misc{			ResidueTheorem,
+%	author		= "{Wikipedia contributors}",
+%	title			= "Residue theorem",
+%	howpublished= "From Wikipedia, the Free Encyclopedia",
+%	url			= "https://en.wikipedia.org/wiki/Residue_theorem"
+%}
 }
 
 
