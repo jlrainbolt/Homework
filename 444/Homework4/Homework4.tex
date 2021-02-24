@@ -198,78 +198,14 @@
 	}
 	We Wick rotate $x \to i x$.  Then the dependence of the correlation function on $x$ for $d = 1, 2, 3, 4$ is
 	\ans{\al{
-		(d = 1) &\qquad \ev{ \sx \sao } \sim e^{-x}, &
+		(d = 1) &\qquad \ev{ \sx \sao } \sim e^{-x / 2 \sqrt{\pi} \rho}, &
 		(d = 2) &\qquad \ev{ \sx \sao } \sim x^{2 \pi \rho}, \\
 		(d = 3) &\qquad \ev{ \sx \sao } \sim \frac{1}{x}, &
 		(d = 4) &\qquad \ev{ \sx \sao } \sim \frac{1}{x^2}.
 	}}%
-	\hl{how on earth to explain these??}
-%
-%
-%	We begin with the case $d = 1$.  We Wick rotate $p \to i p$, and so we need to evaluate
-%	\eq{
-%		\intnii \ddpf \paren{-i \frac{e^{i p x}}{p^2} \equiv \intnii \ddp \fp },
-%	}
-%	where we have defined $\fp$.  We choose a contour $\sC$ in the positive half of the imaginary plane that encloses $p = 0$.  The residue at the second-order pole $p = 0$ can be evaluated using
-%	\eq{
-%		\Res_{z = c} f(z) = \frac{1}{(n - 1)!} \lim_{z \to c} \dv[n-1]{z}[ (z - c)^n f(z) ],
-%	}
-%	where $f(z)$ is the integrand and $n$ is the order of the pole at $z = c$~\cite{Residue}.  We have
-%	\eq{
-%		\Res_{p = 0} f(p) = \lim_{p \to 0} \dv{p}[ -i p^2 \frac{e^{i p x}}{2 \pi p^2} ]
-%		= -i \lim_{k \to 0} \dv{e^{i p x}}{2 \pi k}
-%		= -i \lim_{k \to 0} i x \frac{e^{i p x}}{2\pi}
-%		= \frac{x}{2\pi}.
-%	}
-%	Then, by the residue theorem~\cite{ResidueTheorem},
-%	\eq{
-%		\intnii \ddpf \fp = 2 \pi i \Res_{k = 0}
-%		= i x.
-%	}
-%	So the correlation function for $d = 1$ is
-%	\eq{
-%		\ans{ \ev{ \sx \sao } =  {A'}^2 e^{-x / \rho}. }
-%	}
-%	
-%	For the case $d = 2$, we have
-%	\eq{
-%		\intnii \ddspf \paren{ -i \frac{e^{i p \cdot x}}{p^2} } \equiv \intnii \ddsp \fp.
-%	}
-%	To rewrite the dot product, we transform to polar coordinates:
-%	\eq{
-%		\intnii \ddsp \fp = -\frac{i}{(2\pi)^2} \intoi \ddp \intotp \ddtht \frac{e^{i p x \cos\tht}}{p}
-%		= \frac{1}{2\pi i} \intoi \ddp \frac{I_0(i p x)}{p}
-%	}
-%	where we have evaluated the integral using Mathematica, and $I_n(x)$ is the modified Bessel function of the first kind.  Now we have a simple pole at $p = 0$, and we can find the residue using~\cite{Residue}
-%	\eq{
-%		\Res_{z = c} f(z) = \lim_{z \to c} (z - c) f(z).
-%	}
-%	For our problem,
-%	\eq{
-%		\Res_{p = 0} = \lim_{p \to 0} \frac{I_0(i p x)}{2\pi i}
-%		= \frac{1}{2 \pi i}
-%	}
-%
-%	 in order to write the dot product as $p x \cos\tht$; however, it does not seem like this will work.  We would need to introduce a factor of $\sin\tht$ in order to integrate with respect to $\tht$, but in two dimensions this factor would not be canceled by the Jacobian as it would be in three dimensions.
-%		
-%	For the case $d = 3$, we have
-%	\eq{
-%		\intnii \ddcpf \paren{ -i \frac{e^{i p \cdot x}}{p^2} } \equiv \intnii \ddsp \fp
-%	}
-%
-%@misc{			Residue,
-%	author		= "{Wikipedia contributors}",
-%	title			= "Residue (complex analysis)",
-%	howpublished= "From Wikipedia, the Free Encyclopedia",
-%	url			= "https://en.wikipedia.org/wiki/Residue_(complex_analysis)"
-%}
-%
-%@misc{			ResidueTheorem,
-%	author		= "{Wikipedia contributors}",
-%	title			= "Residue theorem",
-%	howpublished= "From Wikipedia, the Free Encyclopedia",
-%	url			= "https://en.wikipedia.org/wiki/Residue_theorem"
-%}
+	In $d > 2$ and $d = 1$ dimensions, the expectation value of the correlation function tends to 0 at large distances $x$.  For $d > 2$, it drops off more quickly as $d$ increases.  The $d \leq 2$ cases depend on $\rho$, which we assume is positive.  The $d = 1$ case drops off with increasing distance, and more quickly with smaller $\rho$.  For $d = 2$, the expectation value of the correlation function increases with increasing distance, and it blows up more quickly with larger $\rho$.
+	
+	These results are consistent with the Mermin--Wagner theorem, which states that a continuous symmetry cannot be broken in dimensions $d \leq 2$~\cite{CMW}.  That is, in $d \leq 2$ dimensions, a symmetry-breaking field cannot have a nonzero vacuum expectation value~\cite[p.~460]{Peskin}.  This is because each spin has more nearest neighbors in higher dimensions; the spins are inclined to align with their neighbors, thus there is a higher degree of correlation in higher dimensions at the same distance.  In two dimensions, \hl{finish this}
 }
 
 
@@ -415,46 +351,65 @@
  		\det B = \exp[ \tr(\log B) ].
  	}
  	Now we follow a similar procedure as in (11.71),
- 	\eq{
+ 	\eqn{11.71}{
  		\tr[ \ln(\pt^2 + m^2) ] = (V T) \int \ddqkf \ln(-k^2 + m^2),
  	}
- 	where $(V T)$ is the four-dimensional volume of the functional integral.  Adapting this for the Dirac operator in two dimensions, we have
+ 	where $(V T)$ is the four-dimensional volume of the functional integral.  We can find the eigenvalues of the Dirac operator in two dimensions using a Fourier series~\cite[p.~20]{Peskin}:
  	\eq{
- 		\tr[ \ln(i \ptsl - \sig) ] = (V T) \int \ddskf \ln(-k^2 + \sig^2).
+ 		\psi(x, t) = \int \ddcpf e^{i p x} \psi(p, t)
+ 		\qimplies
+ 		\ptsl \psi(x, t) = \int \ddcpf \ptsl e^{i p x} \psi(p, t)
+ 		= \int \ddcpf i \psl e^{i p x} \psi(p, t).
+ 	}
+ 	This means the eigenvalues are $i \psl$.  Adapting Eq.~\refeq{11.71}, then, we have
+ 	\eq{
+ 		\tr[ \ln(i \ptsl - \sig) ] = (V T) \int \ddskf \ln(-\ksl - m)
+ 		= (V T) \int \ddskf \ln(-k^2 + \sig^2).
  	}
  	Here we have used the result
  	\al{
- 		\det(i \gamm \ptsm - \sig) &= \det( i \gamo \ptso + i \gamq \ptsq - \sig ) \\
- 		&= \det( i \sigw \ptso - \sigq \ptsq - \sig ) \\
- 		&= \det\paren{ i \mqty[ 0 & -i \\ i & 0 ] \ptso - \mqty[ 0 & 1 \\ 1 & 0 ] \ptsq - \sig } \\
- 		&= \det \mqty[ -\sig & \ptso - \ptsq \\ -(\ptso + \ptsq) & -\sig ] \\
- 		&= \sig^2 + \ptso^2 + \ptsq^2 \\
- 		&= \ptm \ptsm + \sig^2.
+ 		\det(-\gamm \ksm - \sig) &= \det( -\gamo \kso + \gamq \ksq - \sig ) \\
+ 		&= \det( -\sigw \kso + \sigq \ksq - \sig ) \\
+ 		&= \det\paren{ -\mqty[ 0 & -i \\ i & 0 ] \kso + \mqty[ 0 & 1 \\ 1 & 0 ] \ksq - \sig } \\
+ 		&= \det \mqty[ -\sig & i \kso + \ksq \\ -i \kso + \ksq & -\sig ] \\
+ 		&= \sig^2 - \kso^2 - \ksq^2 \\
+ 		&= \sig^2 - k^2.
  	}
  	Now we may apply (11.72),
  	\eq{
- 		\int \ddqkf \ln(-k^2 + m^2) = -i \frac{\Gam(-d / 2)}{(4\pi)^{d / 2}} \frac{1}{(m^2)^{-d / 2}}.
+ 		\int \dddkf \ln(-k^2 + m^2) = -i \frac{\Gam(-d / 2)}{(4\pi)^{d / 2}} \frac{1}{(m^2)^{-d / 2}}.
  	}
- 	Letting $d = 2 - \eps$ and expanding about $\eps = 0$~(using Mathematica), we find
+ 	Since $\Gam(-1)$ diverges, we must renormalize.  Letting $d = 2 - \eps$ and expanding about $\eps = 0$~(using Mathematica), we find
  	\eqn{M1}{
  		\int \ddskf \ln(-k^2 + \sig^2) = -i \frac{\Gam(\eps / 2 - 1)}{(4\pi)^{1 - \eps / 2}} \sig^{2 - \eps}
  		\approx \frac{i \sig^2}{4 \pi} \paren{ \frac{2}{\eps} + 1 - \gam + \ln(4\pi) - 2 \ln(\sig) }.
  	}
- 	Now we renormalize by minimal subtraction.  Following the examples in (11.77) and (11.78), we make the replacement
+ 	Now we renormalize by minimal subtraction, which involves replacing the $1 / \eps$ poles by some mass parameter $M$ that makes the final equation dimensionally correct~\cite[pp.~376--377]{Peskin}.  This gives us
  	\eqn{M2}{
- 		\int \ddskf \ln(-k^2 + \sig^2) \to \frac{i \sig^2}{4 \pi} \brac{ 1 - \ln(\frac{\sig^2}{M^2}) },
+ 		\int \ddskf \ln(-k^2 + \sig^2) \to \frac{i \sig^2}{4 \pi} \brac{ 1 - \gam + \ln(4\pi) - 2 \ln(\frac{\sig}{M}) }.
  	}
- 	where $M$ is an arbitrary mass parameter.
- 	
- 	Applying our work to Eq.~\refeq{show2c}, we have
+  	Applying our work to Eq.~\refeq{show2c}, we have
  	\al{
  		\int \DDpsi e^{i \int \ddsx \cL} &= \int \DDsig \exp[ -i \int \ddsx \frac{1}{2 g^2} \sig^2 ] [ \det(i \ptsl - \sig) ]^N \\
- 		&= \int \DDsig \exp[ \int \ddsx \paren{ \frac{-i}{2 g^2} \sig^2 + N \int \ddskf \ln(-k^2 + \sig^2) } ] \\
- 		&= \int \DDsig \exp[ -i \int \ddsx \sig^2 \curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } } ].
+ 		&= \int \DDsig \exp[ (VT) \paren{ \frac{-i}{2 g^2} \sig^2 + N \int \ddskf \ln(-k^2 + \sig^2) } ] \\
+ 		&= \int \DDsig \exp[ -i (VT) \sig^2 \curly{ \frac{1}{2 g^2} - \frac{N}{4\pi} \brac{ 1 - \gam + \ln(4\pi) - 2 \ln(\frac{\sig}{M}) } } ].
  	}
- 	Then the leading correction to the effective potential is
+ 	The effective potential is defined in P\&S~(11.50),
+ 	\eq{
+ 		\Gam[\phicl] = -(V T) \Veff(\phi).
+	}
+	Here $\phicl$ is a classical field defined by the vacuum expectation value of a quantum field in the presence of a nonzero source $J(x)$:
+	\eqn{vev}{
+		\phicl(x) = \ev{\phi(x)}{\Omg}_J
+		\equiv v.
+	}
+	$\Gam[\phicl]$ is given by (11.63),
+ 	\eq{
+ 		\Gam[\phicl] = \int \ddqx \cLq[\phicl] + \frac{i}{2} \log \det\paren{ -\fdv[2]{\cLq}{\phi}{\phi} } - i \cdot (\text{connected diagrams}) + \int \ddqx \del\cL[\phicl].
+ 	}
+ 	We need only concern ourselves with the first two terms since the connected diagrams have at least two loops, and the last term contains the counterterms that are used for renormalization~\cite[p.~372]{Peskin}.  So the leading correction to the effective potential is
  	\eqn{Veff}{
- 		\ans{ \Veff = \sig^2 \curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } }, }
+ 		\ans{ \Veff = \sig^2 \curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) + \gam - \ln(4\pi) - 1 } }, }
  	}
  	where we have referred to (11.79).
 }
@@ -466,35 +421,60 @@
 }
 
 \sol{
-	We minimize the potential by imposing
+	We minimize the potential by imposing (11.51),
 	\eq{
-		\left. \pdv{\phi^a} V \right|_{\phi^a(x) = \phiso^a} = 0,
+		\pdv{\phicl} \Veff(\phicl) = 0,
 	}
-	where $\phi^a_0$ is a constant field that minimizes $V$~\cite[p.~351]{Peskin}.  The minimizing $\phiso$ is called the vacuum expectation value, $v$.
+	where minimizing $\phicl$ is the vacuum expectation value, $v$, by Eq.~\refeq{vev}.
 	
-	For the problem at hand, we want to find $\sig^2$ to minimize the potential Eq.~\refeq{Veff}.  We impose
-	\al{
-		0 &= \pdv{\Veff}{\sig^2} \\
-		&= \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } + \sig^2 \pdv{\sig^2}\curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } } \\
-		&= \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } + \frac{N}{4\pi} \\
-		&= \frac{1}{2 g^2} + \frac{N}{4\pi} \ln(\frac{\sig^2}{M^2}).
-	}
-	Solving for $\sig$, we find the vacuum expectation value:
+	For the problem at hand, we want to find $\sig$ to minimize the potential Eq.~\refeq{Veff}.  We impose
 	\eq{
-		-\frac{2\pi}{N g^2} = \ln(\frac{\sig^2}{M^2})
+		0 = \pdv{\Veff}{\sig}
+		= \sig \curly{ \frac{1}{g^2} + \frac{N}{2 \pi} \brac{ \gamma - \ln(4\pi) + \ln(\frac{\sig^2}{M^2}) } },
+	}
+	where we have evaluated the derivative using Mathematica.  Solving for $\sig$, we find the vacuum expectation value:
+	\eqn{thing2e}{
+		\ln(4\pi) - \gam - \frac{2\pi}{N g^2} = \ln(\frac{\sig^2}{M^2})
 		\qimplies
-		\ans{ \sig = \pm M e^{-\pi / N g^2} = \pm v. }
+		\ans{ \sig = \pm 2 \sqrt{\pi} M \exp( -\frac{\gam}{2} - \frac{\pi}{N g^2} ) = \pm v. }
 	}
 	This vacuum expectation value breaks the symmetry of \ref{2a} because it acts as a nonzero mass for the fields $\psisi$.  As we saw in \ref{2d}, the form of the Lagrangian with $\sig$ looks like the Dirac Lagrangian with mass $\sig = \pm v$, and as we showed in \ref{2a}, the theory is not invariant under Eq.~\refeq{trans} when such a mass is included.  Therefore, this vacuum expectation value breaks the symmetry. \qed
 	
-	This result does not depend on the particular renormalization condition chosen because all we have done is absorb the divergence into some parameter $M$, which parameterizes a sequence of possible renormalization conditions~\cite[p.~377]{Peskin}.  From Eqs.~\refeq{M1} and \refeq{M2},
-	\eq{
-		\frac{2}{\eps} + 1 - \gam + \ln(4\pi) - 2 \ln(\sig) =  1 - \ln(\sig^2) + \ln(M^2)
+	This result does not depend on the particular renormalization condition chosen because any condition we choose would give us a nonzero vacuum expectation value, which is all we need for the symmetry to be broken.  Say we had chosen instead the modified minimal subtraction scheme, with Eq.~\refeq{M2} replaced by
+ 	\eqn{M2}{
+ 		\int \ddskf \ln(-k^2 + \sig^2) \to \frac{i \sig^2}{4 \pi} \brac{ 1 - \ln(\frac{\sig^2}{{M'}^2}) },
+ 	}
+ 	where $M'$ replaces the divergence and the terms involving $\gam$ and $\ln(4\pi)$, as in the examples in (11.77) and (11.78).  Then minimizing the potential gives us
+ 	\eq{
+ 		0 = \frac{1}{g^2} + \frac{N}{2\pi} \ln(\frac{\sig^2}{{M'}^2})
+ 		\qimplies
+ 		\sig = \pm M' e^{-\pi / N g^2} = \pm v.
+ 	}
+ 	Comparing this to Eq.~\refeq{thing2e}, all we have done is absorb part of the exponential into $M'$; that is, $M' = 2 \sqrt{\pi} M e^{-\gam / 2}$.  We see that no matter how we handle the divergence, it is impossible for the vacuum expectation value to be zero.  So the symmetry will be broken regardless of which normalization condition we choose.
+	
+%	For the problem at hand, we want to find $\sig^2$ to minimize the potential Eq.~\refeq{Veff}.  We impose
+%	\al{
+%		0 &= \pdv{\Veff}{\sig^2} \\
+%		&= \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } + \sig^2 \pdv{\sig^2}\curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } } \\
+%		&= \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } + \frac{N}{4\pi} \\
+%		&= \frac{1}{2 g^2} + \frac{N}{4\pi} \ln(\frac{\sig^2}{M^2}).
+%	}
+%	Solving for $\sig$, we find the vacuum expectation value:
+%	\eq{
+%		-\frac{2\pi}{N g^2} = \ln(\frac{\sig^2}{M^2})
 %		\qimplies
-%		2 \ln(M) = \frac{2}{\eps} - \gam + \ln(4\pi)
-		\qimplies M = \exp[ \frac{1}{\eps} - \frac{\gam}{2} + \frac{\ln(4\pi)}{2} ].
-	}
-	No matter how we handle the divergent term, it is impossible for $M$ to be zero.  So the symmetry will be broken regardless of which normalization condition we choose.
+%		\ans{ \sig = \pm M e^{-\pi / N g^2} = \pm v. }
+%	}
+%	This vacuum expectation value breaks the symmetry of \ref{2a} because it acts as a nonzero mass for the fields $\psisi$.  As we saw in \ref{2d}, the form of the Lagrangian with $\sig$ looks like the Dirac Lagrangian with mass $\sig = \pm v$, and as we showed in \ref{2a}, the theory is not invariant under Eq.~\refeq{trans} when such a mass is included.  Therefore, this vacuum expectation value breaks the symmetry. \qed
+%	
+%	This result does not depend on the particular renormalization condition chosen because all we have done is absorb the divergence into some parameter $M$, which parameterizes a sequence of possible renormalization conditions~\cite[p.~377]{Peskin}.  From Eqs.~\refeq{M1} and \refeq{M2},
+%	\eq{
+%		\frac{2}{\eps} + 1 - \gam + \ln(4\pi) - 2 \ln(\sig) =  1 - \ln(\sig^2) + \ln(M^2)
+%%		\qimplies
+%%		2 \ln(M) = \frac{2}{\eps} - \gam + \ln(4\pi)
+%		\qimplies M = \exp[ \frac{1}{\eps} - \frac{\gam}{2} + \frac{\ln(4\pi)}{2} ].
+%	}
+%	No matter how we handle the divergent term, it is impossible for $M$ to be zero.  So the symmetry will be broken regardless of which normalization condition we choose.
 }
 
 
