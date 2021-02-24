@@ -1,0 +1,194 @@
+\state{Spin-wave theory~(P\&S 11.1)}{\hfix}
+
+\prob{ \label{1a}
+	Prove the following wonderful formula: Let $\phix$ be a free scalar field with propagator $\ev{T \phix \phio} = \Dx$.  Then
+	\eqn{show1}{
+		\ev{ T e^{i \phix} e^{-i \phio} } = e^{[ \Dx - \Do ]}.
+	}
+	(The  factor $\Do$ gives a formally divergent adjustment of the overall normalization.)
+}
+
+\sol{
+	According to P\&S~(9.18),
+	\eq{
+		\ev*{T \phi(\xq) \phi(\xw)}{\Omg} = \frac{\int \DDphi \phi(\xq) \phi(\xw) \exp[ i \int \ddqx \cL ]}{\int \DDphi \exp[ i \int \ddqx \cL ]}.
+	}
+	We use this expression to write the left-hand side of Eq.~\refeq{show1}:
+	\eqn{thing1}{
+		\ev{ T e^{i \phix} e^{-i \phio} } = \frac{\int \DDphi e^{i \phix} e^{-i \phio} \exp[ i \int \ddqy \cL ]}{\int \DDphi \exp[ i \int \ddqy \cL ]}
+		= \frac{\int \DDphi \exp[i \phix - i \phio + i \int \ddqy \cL ]}{\int \DDphi \exp[ i \int \ddqy \cL ]}.
+	}
+	For a free Klein-Gordon~(i.e., scalar) field, Eq.~(9.39) tells us that the generating functional $\ZJ$ is given by
+	\eq{
+		\ZJ = \Zo \exp[ -\frac{1}{2} \int \ddqx \ddqy \Jx \DF(x - y) \Jy ],
+	}
+	where $\Zo = Z[0]$.  Thus, we want to find some $\Jy$ such that
+	\eqn{thing1b}{
+		\ev{ T e^{i \phix} e^{-i \phio} } = \frac{\ZJ}{\Zo}
+	}
+	where in general
+	\eq{
+		\ZJ = \int \DDphi \exp[ i \int \ddqx [ \cL + \Jx \phi(x) ] ]
+	}
+	by (9.34).  Inspecting Eq.~\refeq{thing1}, we recognize the denominator as $\Zo$ and see that if
+	\eq{
+		\Jy = \delq(y - x) - \delq(y)
+	}
+	we have an expression like Eq.~\refeq{thing1b}.  Collecting these findings, we have
+	\al{
+		\ans{ \ev{ T e^{i \phix} e^{-i \phio} } }&= \frac{\ZJ}{\Zo} \\
+		&= \exp[ -\frac{1}{2} \int \ddqy \ddqz \Jy \DF(y - z) \Jz ] \\
+		&= \exp[ -\frac{1}{2} \int \ddqy \ddqz \Jy \DF(y - z) [ \delq(z - x) - \delq(z) ] ] \\
+		&= \exp[ -\frac{1}{2} \int \ddqy [ \delq(y - x) - \delq(y) ] [ \DF(y - x) - \DF(y) ] ] \\
+		&= \exp[ -\frac{1}{2} [ \DF(0) - \DF(x) - \DF(-x) + \DF(0) ] ] \\
+		&= \exp[ \DF(x) - \DF(0) ] \\
+		&\ans{\; = e^{[ \Dx - \Do ]}, }
+	}
+	as we wanted to show. \qed
+}
+
+
+
+\prob{ \label{1b}
+	We can use this formula in Euclidean field theory to discuss correlation functions in a theory with spontaneously broken symmetry for $T < \TC$.  Let us consider only the simplest case of a broken $O(2)$ or $U(1)$ symmetry.  We can write the local spin density as a complex variable
+	\eq{
+		\sx = \sqx + i \swx.
+	}
+	The global symmetry is the transformation
+	\eq{
+		\sx \to e^{-i \alp} \sx.
+	}
+	If we assume that the physics freezes the modulus of $\sx$, we can parameterize
+	\eqn{sx}{
+		\sx = A e^{i \phix}
+	}
+	and write an effective Lagrangian for the field $\phix$.  The symmetry of the theory becomes the translation symmetry
+	\eqn{symmetry}{
+		\phix \to \phix - \alp.
+	}
+	Show that (for $d > 0$) the most general renormalizable Lagrangian consistent with this symmetry is the free field theory
+	\eqn{show1b}{
+		\cL = \frac{1}{2} \rho(\vgrad \phi)^2.
+	}
+	In statistical mechanics, the constant $\rho$ is called the \emph{spin wave modulus}.  A reasonable hypothesis for $\rho$ is that it is finite for $T < \TC$ and tends to 0 as $T \to \TC$ from below.
+}
+
+\sol{
+	In accordance with the Klein-Gordon Lagrangian in P\&S~(2.6),
+	\eqn{KGL}{
+		\cL_\text{K-G} = \frac{1}{2} (\pt \phi)^2 - \frac{1}{2} m^2 \phi^2,
+	}
+	we interpret $(\vgrad \phi)^2$ as $(\pt \phi)^2$.
+	
+	The Lagrangian cannot have terms of $\order{\phi^n}$ for any $n \neq 0$ since $\phi(x)$ is not invariant under Eq.~\refeq{symmetry}.  Any combination of derivatives of $\phi$ is invariant, however, since $\alp$ is a constant and does not contribute to any derivative.  Thus, only terms like $\pt^n \phi^m$ (where $n$ denotes a power of $\pt$) for $n, m > 0$ and $n \geq m$ are consistent with the symmetry of Eq.~\refeq{symmetry} for $d$ an integer.
+	
+	Now we must determine which of these terms are renormalizable.  We know that the Lagrangian must have dimension $d$, and that $\phi$ has dimension $(d - 2) / 2$.  Taking a derivative adds a mass dimension.  The theory is renormalizable if the coupling constant $\rho$ has dimension greater than or equal to 0~\cite[p.~322]{Peskin}.  Let $p$ be the dimension of $\rho$.  The dimension of our allowed term is then
+	\eq{
+		[ \rho \pt^n \phi^m ] = p + n + m \frac{d - 2}{2},
+	}
+	which we require to be equal to $d$.  Thus we seek solutions to the system of equations
+	\al{
+		d &= p + n + m \frac{d - 2}{2}, &
+		n &\geq m, &
+		p &\geq 0.
+	}
+	Solving with Mathematica, we find that this system has two solutions: $n = m = 2$ and $p = 0$; and $n = m = 1$ and $p = d / 2$.  However, the term $\pt \phi$ for $n = m = 1$ does not contribute to the action because it is a total derivative and does not contribute when the integral over $\cL$ is evaluated:
+	\eq{
+		\int \dd[d]{x} \pt\phi = \phi \bigg|_{-\infty}^\infty
+		= 0.
+	}
+	Thus the only possibility is $n = m = 2$.  Note that
+	\eq{
+		\pt^2 \phi^2 = \pt(\pt \phi^2)
+		= 2 \pt( \phi \pt \phi)
+		= \pt \phi \pt \phi + \phi \pt^2 \phi
+		= (\pt \phi)^2,
+	}
+	since $\phi \pt^2 \phi$ is not invariant under Eq.~\refeq{sx}.  This means that $\rho$ must be dimensionless and that the only allowed terms in the Lagrangian are proportional to $(\pt \phi)^2$, which is consistent with Eq.~\refeq{show1b}. \qed
+}
+
+
+
+\prob{
+	Compute the correlation function $\ev{ \sx \sao }$.  Adjust $A$ to give a physically sensible normalization (assuming that the system has a physical cutoff at the scale of one atomic spacing) and display the dependence of this correlation function on $x$ for $d = 1, 2, 3, 4$.  Explain the significance of your results.
+}
+
+\sol{
+	Applying Eq.~\refeq{sx},
+	\eq{
+		\ev{ \sx \sao } = \ev*{ A e^{i \phix} \As e^{-i \phio} }
+		= \ev*{ \abs{A}^2 } \ev*{ e^{i \phix} e^{-i \phio} }.
+	}
+	Now we can apply Eq.~\refeq{show1} to find
+	\eqn{thing1c}{
+		\ans{ \ev{ \sx \sao } = \abs{A}^2 \exp[ D(x) - D(0) ], }
+	}
+	where $D(x - y)$ is a Green's function.  Since our Lagrangian is similar to the Klein-Gordon Lagrangian Eq.~\refeq{2.6}, our Green's function is similar to that of the Klein-Gordon operator, which is given by P\&S~(2.56):
+	\eq{
+		(\pt^2 + m^2) D(x - y) = -i \delq(x - y).
+	}
+	The Feynman prescription for this Green's function is given by (2.59),
+	\eqn{DF}{
+		\DF(x - y) = \int \ddqpf \frac{i}{p^2 - m^2 + i \eps} e^{-i p \cdot (x - y)}.
+	}
+	For the Lagrangian in Eq.~\refeq{show1b}, we set $m = 0$ and insert a factor of $\rho$:
+	\eq{
+		\rho \pt^2 D(x - y) = -i \deld(x - y),
+	}
+	so adapting Eq.~\refeq{DF} for this situation yields
+	\eqn{DF}{
+		\DF(x - y) = \frac{1}{\rho} \int \dddpf \frac{i}{p^2 + i \eps} e^{-i p \cdot (x - y)}.
+	}
+	We see that $\DF(0)$ diverges, so we absorb it into the constant to make the normalization physically sensible.  We can do this because, as we showed in \ref{1b}, the theory is renormalizable.  Define $A'$ such that
+	\eq{
+		{A'}^2 = \abs{A}^2 e^{-D(0)}.
+	}
+	Then Eq.~\refeq{thing1c} can be written
+	\eq{
+		\ans{ \ev{ \sx \sao } =  {A'}^2 e^{D(x)}. }
+	}
+	
+	To evaluate the divergent integral $D(x)$, we look to the Feynman parameter method we have been using to solve divergent integrals.  Apparently, the Schwinger parametrization is useful in deriving the Feynman parametrization, and it is given by~\cite{Feynman}
+	\eq{
+		\frac{1}{A} = \intoi \dds e^{-s A}.
+	}
+	Using this equation, we can write Eq.~\refeq{DF} as
+	\eq{
+		\DF(x) = \frac{1}{\rho} \int \dddpf \frac{i}{p^2} e^{-i p \cdot x}
+		= \frac{i}{\rho} \int \dddpf \intoi \dds e^{-s p^2} e^{-i p \cdot x}.
+	}
+	Now we can complete the square in the exponential to get a Gaussian integral:
+	\al{
+		\DF(x) &= \frac{i}{\rho} \int \dddpf \intoi \dds \exp[ -s p^2 - i p \cdot x + \frac{x^2}{4 s} - \frac{x^2}{4 s} ] \\
+		&= \frac{i}{\rho} \int \dddpf \intoi \dds \exp[ -s \paren{ p + \frac{i x}{2 s} }^2 - \frac{x^2}{4 s} ] \\
+		&= \frac{i}{\rho (2 \pi)^d} \intoi \dds e^{-x^2 / 4 s} \int \dd[d]{u} e^{-s u^2} \\
+		&= \frac{i}{\rho (2 \pi)^{d}} \intoi \dds e^{-x^2 / 4 s} \sqrt{ \frac{(2\pi)^d}{(2s)^d} } \\
+		&= \frac{i}{\rho (4 \pi)^{d / 2}} \intoi \dds \frac{e^{-x^2 / 4 s}}{s^{d / 2}}
+	}
+	where we have used~\cite{QFT}
+	\eq{
+		\int \exp( -\frac{1}{2} x \cdot A \cdot x ) \dd[n]{x} = \sqrt{\frac{(2\pi)^n}{\det A}},
+	}
+	with $A$ a $d \times d$ diagonal matrix $2s$.  Using Mathematica to integrate with respect to $s$, we find
+	\eq{
+		\DF(x) = \frac{i}{\rho (4 \pi)^{d / 2}} \frac{2^{d - 2}}{x^{d - 2}} \Gam(d / 2 - 1)
+		= \frac{i}{4 \pi^d \rho} \Gam(d / 2 - 1) x^{2 - d}.
+	}
+	The gamma function diverges as $d \to 2$, so as we have done in previous problems, we expand about $\eps = 2 - d$.  Evaluating the series expansion using Mathematica, we obtain
+	\eq{
+		\DF(x) = \frac{i}{4 \pi^{1 - \eps} \rho} \Gam(\eps / 2) x^\eps
+		\approx \frac{i}{4 \pi \rho} \paren{ \frac{2}{\eps} - \gam + 2 \ln(\pi x) }
+		\sim \frac{i}{2 \pi \rho} \ln(x)
+		= i \ln(\frac{1}{x^{2 \pi \rho}}).
+	}
+	We Wick rotate $x \to i x$.  Then the dependence of the correlation function on $x$ for $d = 1, 2, 3, 4$ is
+	\ans{\al{
+		(d = 1) &\qquad \ev{ \sx \sao } \sim e^{-x / 2 \sqrt{\pi} \rho}, &
+		(d = 2) &\qquad \ev{ \sx \sao } \sim x^{2 \pi \rho}, \\
+		(d = 3) &\qquad \ev{ \sx \sao } \sim \frac{1}{x}, &
+		(d = 4) &\qquad \ev{ \sx \sao } \sim \frac{1}{x^2}.
+	}}%
+	In $d > 2$ dimensions, the expectation value of the correlation function tends to 0 at large distances $x$.  For $d > 2$, it drops off more quickly as $d$ increases.  The $d \leq 2$ cases depend on $\rho$, which we assume is positive.  The $d = 1$ case drops off with increasing distance, and more quickly with smaller $\rho$.  For $d = 2$, the expectation value of the correlation function increases with increasing distance, and it blows up more quickly with larger $\rho$.
+	
+	These results are consistent with the Mermin--Wagner theorem, which states that a continuous symmetry cannot be broken in $d \leq 2$ dimensions~\cite{CMW}.  That is, in $d \leq 2$ dimensions, a symmetry-breaking field cannot have a nonzero vacuum expectation value~\cite[p.~460]{Peskin}.  A physical explanation is that each spin has more nearest neighbors in higher dimensions.  Since the spins are inclined to align with their neighbors, there is a higher degree of correlation in higher dimensions at the same distance.  In two dimensions, the correlations are weak enough that they are overpowered by the field fluctuations.
+}
