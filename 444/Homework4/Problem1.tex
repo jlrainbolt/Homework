@@ -183,12 +183,10 @@
 	}
 	We Wick rotate $x \to i x$.  Then the dependence of the correlation function on $x$ for $d = 1, 2, 3, 4$ is
 	\ans{\al{
-		(d = 1) &\qquad \ev{ \sx \sao } \sim e^{-x / 2 \sqrt{\pi} \rho}, &
-		(d = 2) &\qquad \ev{ \sx \sao } \sim x^{2 \pi \rho}, \\
-		(d = 3) &\qquad \ev{ \sx \sao } \sim \frac{1}{x}, &
-		(d = 4) &\qquad \ev{ \sx \sao } \sim \frac{1}{x^2}.
+		(d = 1) &\qquad \ev{ \sx \sao } \sim \exp(-\frac{x}{2 \sqrt{\pi} \rho}), &
+		(d = 2) &\qquad \ev{ \sx \sao } \sim \frac{1}{x^{2 \pi \rho}} , \\
+		(d = 3) &\qquad \ev{ \sx \sao } \sim \exp(\frac{1}{4 \pi^{5/2} \rho x}), &
+		(d = 4) &\qquad \ev{ \sx \sao } \sim \exp(\frac{1}{2 \pi^4 \rho x^2}).
 	}}%
-	In $d > 2$ dimensions, the expectation value of the correlation function tends to 0 at large distances $x$.  For $d > 2$, it drops off more quickly as $d$ increases.  The $d \leq 2$ cases depend on $\rho$, which we assume is positive.  The $d = 1$ case drops off with increasing distance, and more quickly with smaller $\rho$.  For $d = 2$, the expectation value of the correlation function increases with increasing distance, and it blows up more quickly with larger $\rho$.
-	
-	These results are consistent with the Mermin--Wagner theorem, which states that a continuous symmetry cannot be broken in $d \leq 2$ dimensions~\cite{CMW}.  That is, in $d \leq 2$ dimensions, a symmetry-breaking field cannot have a nonzero vacuum expectation value~\cite[p.~460]{Peskin}.  A physical explanation is that each spin has more nearest neighbors in higher dimensions.  Since the spins are inclined to align with their neighbors, there is a higher degree of correlation in higher dimensions at the same distance.  In two dimensions, the correlations are weak enough that they are overpowered by the field fluctuations.
+	We assume $\rho$ is positive.  In $d > 2$ dimensions, the expectation value of the correlation function tends a nonzero value as $x \to \infty$.  For $d \leq 2$, the expectation value approaches $0$ as $x \to \infty$.  This means that there is a nonzero vacuum expectation value only in $d > 2$ dimensions.  These results are consistent with the Mermin--Wagner theorem, which states that a continuous symmetry cannot be broken in $d \leq 2$ dimensions~\cite{CMW}.  That is, in $d \leq 2$ dimensions, a symmetry-breaking field cannot have a nonzero vacuum expectation value~\cite[p.~460]{Peskin}, which is indeed what we see here.  A physical explanation is that each spin has more nearest neighbors in higher dimensions.  Since the spins are inclined to align with their neighbors, in higher dimensions there is a larger energy cost associated with a field fluctuation.  In two dimensions, fluctuations are energetically inexpensive and since they increase the entropy of the system, they are able to overpower the correlations~\cite{CMW}.
 }
