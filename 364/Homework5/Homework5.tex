@@ -52,7 +52,7 @@
 
 
 
-
+\clearpage
 \state{Components of the Riemann tensor in an arbitrary basis~(MCP 25.11)}{
 	By evaluating expressions~(25.30) in an arbitrary basis (which might not even be a coordinate basis), derive Eq.~(25.50) for the components of the Riemann tensor.  In your derivation keep in mind that commas denote partial derivations \emph{only} in a coordinate basis; in an arbitrary basis they denote the result of letting a basis vector act as a differential operator.
 }
@@ -62,7 +62,7 @@
 
 
 
-
+\clearpage
 \state{Weyl curvature tensor~(MCP 25.12)}{
 	Show that the Weyl curvature tensor~(25.48) has vanishing contraction on all its slots and has the same symmetries as Riemann: Eqs.~(25.45).  From these properties, show that Weyl has just 10 independent components.  Write the Riemann tensor in terms of the Weyl tensor, the Ricci tensor, and the scalar curvature.
 }
@@ -72,7 +72,7 @@
 
 
 
-
+\clearpage
 \state{Curvature of the surface of a sphere~(MCP 25.13)}{
 	On the surface of a sphere, such as Earth, introduce spherical polar coordinates in which the metric, written as a line element, takes the form
 	\eq{
@@ -130,7 +130,7 @@
 
 
 
-
+\clearpage
 \state{Geodesic deviation on a sphere~(MCP 25.14)}{
 	Consider two neighboring geodesics (great circles) on a sphere of radius $a$, one the equator and the other a geodesic slightly displaced from the equator (by $\Del\tht = b$) and parallel to it at $\phi = 0$.  Let $\vxi$ be the separation vector betwen the two geodesics, and note that at $\phi = 0$, $\vxi = b \pdv*{\tht}$.  Let $l$ be proper distance along the equatorial geodesic, so $\dv*{l} = \vuu$ is its tangent vector.
 }
@@ -165,14 +165,31 @@
 
 
 
-
+\clearpage
 \state{Curvature-coupling torque~(MCP 25.16)}{\hfix}
 
 \prob{
-	In the Newtonian theory of gravity, consider an axisymmetric, spinning body (e.g., EArth) with spin angular momentum $\Sj$ an dtimei-independent mass distribution $\rho(\bx)$, interacting with an externally produced tidal gravitational field $\cEsjk$ (e.g., that of the Sun and th Moon).  Show that the torque around the body's center of mass, exerted by the tidal field, and the resulting evolution of the body's spin are
-	\eq{
-		\dv{\Ssi}{t} = -\epssijk \cIsjl \cEskl
+	In the Newtonian theory of gravity, consider an axisymmetric, spinning body (e.g., Earth) with spin angular momentum $\Sj$ an dtimei-independent mass distribution $\rho(\bx)$, interacting with an externally produced tidal gravitational field $\cEsjk$ (e.g., that of the Sun and the Moon).  Show that the torque around the body's center of mass, exerted by the tidal field, and the resulting evolution of the body's spin are
+	\eqn{show6a}{
+		\dv{\Ssi}{t} = -\epssijk \cIsjl \cEskl.
 	}
+	Here
+	\eq{
+		\cIskl = \int \rho \paren{ \xsk \xsl - \frac{1}{3} r^2 \delskl } \ddV
+	}
+	is the body's mass quadrupole moment, with $r = \sqrt{\delsij \xsi \xsj}$ the distance from the center of mass.
+}
+
+
+
+\prob{
+	For the centrifugally flattened Earth interacting with the tidal fields of the Moon and the Sun, estimate in order of magnitude the spin-precession period produced by this torque.  [The observed precession period is 26,000 years.]
+}
+
+
+
+\prob{
+	Show that when rewritten in the language of general relativity, and in frame-independent, geometric language, Eq.~\refeq{show6a} takes the form (25.59) discussed in the text.  As part of showing this, explain the meaning of $\cIsbm$ in that equation.
 }
 
 %\makebib
