@@ -57,6 +57,61 @@
 	By evaluating expressions~(25.30) in an arbitrary basis (which might not even be a coordinate basis), derive Eq.~(25.50) for the components of the Riemann tensor.  In your derivation keep in mind that commas denote partial derivations \emph{only} in a coordinate basis; in an arbitrary basis they denote the result of letting a basis vector act as a differential operator.
 }
 
+\sol{
+	MCP~(25.30) is
+	\eqn{given2}{
+		\fv{p}{\alp}{; \gam \del} - \fv{p}{\alp}{; \del \gam} = -\fv{R}{\alp}{\bet \gam \del} p^\bet,
+	}
+	where $\vp$ is any vector field.  MCP~(25.50) is
+	\eqn{show2}{
+		\fv{R}{\alp}{\bet \gam \del} = \fv{\Gam}{\alp}{\bet \del, \gam} - \fv{\Gam}{\alp}{\bet \gam, \del} + \fv{\Gam}{\alp}{\mu \gam} \fv{\Gam}{\mu}{\bet \del} - \fv{\Gam}{\alp}{\mu \del} \fv{\Gam}{\mu}{\bet \gam} - \fv{\Gam}{\alp}{\bet \mu} \sfv{c}{\gam \del}{\mu},
+	}
+	where $\Gasbg$ are the connection coefficients in the chosen basis, $\fv{\Gam}{\alp}{\bet \gam, \del}$ is the result of letting the basis vector $\ve_\del$ act as a differential operator on $\Gasbg$, and $\sfv{c}{\gam \del}{\mu}$ are the basis vectors' commutation coefficients.
+	
+	Beginning from Eq.~\refeq{given2},
+	\al{
+		\fv{R}{\alp}{\bet \gam \del} p^\bet &= \fv{p}{\alp}{; \del \gam} - \fv{p}{\alp}{; \gam \del} \\[1ex]
+		&= \nabsg \fv{p}{\alp}{; \del} - \nabsd \fv{p}{\alp}{; \gam} \\[1ex]
+		&= \fv{p}{\alp}{; \del , \gam} + \fv{p}{\nu}{; \del} \fv{\Gam}{\alp}{\nu \gam} - \fv{p}{\alp}{; \gam , \del} - \fv{p}{\mu}{; \gam} \fv{\Gam}{\alp}{\mu \del} \\[1ex]
+		&= (\fv{p}{\alp}{, \del} + p^\sig \fv{\Gam}{\alp}{\sig \del})_{, \gam} + (\fv{p}{\nu}{, \del} + p^\tau \fv{\Gam}{\nu}{\tau \del}) \fv{\Gam}{\alp}{\nu \gam} - (\fv{p}{\alp}{, \gam} + p^\lam \fv{\Gam}{\alp}{\lam \gam})_{, \del} - (\fv{p}{\mu}{, \gam} + p^\rho \fv{\Gam}{\mu}{\rho \gam}) \fv{\Gam}{\alp}{\mu \del} \\[1ex]
+		%
+		&= \fv{p}{\alp}{, \del \gam} + \fv{p}{\sig}{, \gam} \fv{\Gam}{\alp}{\sig \del} + p^\sig \fv{\Gam}{\alp}{\sig \del, \gam} + \fv{p}{\nu}{, \del} \fv{\Gam}{\alp}{\nu \gam} + p^\tau \fv{\Gam}{\nu}{\tau \del} \fv{\Gam}{\alp}{\nu \gam} \\
+		&\hspace{5em} \phantom{=\ } - \fv{p}{\alp}{, \gam \del} - \fv{p}{\lam}{, \del} \fv{\Gam}{\alp}{\lam \gam} - p^\lam \fv{\Gam}{\alp}{\lam \gam, \del} - \fv{p}{\mu}{, \gam} \fv{\Gam}{\alp}{\mu \del} - p^\rho \fv{\Gam}{\mu}{\rho \gam} \fv{\Gam}{\alp}{\mu \del} \\[1ex]
+		%
+		&= p^\sig \fv{\Gam}{\alp}{\sig \del, \gam} + p^\tau \fv{\Gam}{\nu}{\tau \del} \fv{\Gam}{\alp}{\nu \gam} - p^\lam \fv{\Gam}{\alp}{\lam \gam, \del} - p^\rho \fv{\Gam}{\mu}{\rho \gam} \fv{\Gam}{\alp}{\mu \del} \\
+		&= (\fv{\Gam}{\alp}{\bet \del, \gam} - \fv{\Gam}{\alp}{\bet \gam, \del} + \fv{\Gam}{\alp}{\mu \gam} \fv{\Gam}{\mu}{\bet \del} - \fv{\Gam}{\alp}{\mu \del} \fv{\Gam}{\mu}{\bet \gam}) p^\bet
+	}
+	\hl{what happend to the connection coefficients???}
+	
+	where we have applied MCP~(24.35),
+	\eqn{thing2}{
+		\fv{A}{\mu}{; \bet} = \fv{A}{\mu}{, \bet} + A^\alp \fv{\Gam}{\mu}{\alp \bet}.
+	}
+
+%	Beginning from Eq.~\refeq{given2},
+%	\eqn{thing2}{
+%		\fv{R}{\alp}{\bet \gam \del} p^\bet = \fv{p}{\alp}{; \del \gam} - \fv{p}{\alp}{; \gam \del}
+%		= \nabsg \fv{p}{\alp}{; \del} - \nabsd \fv{p}{\alp}{; \gam}
+%		= \fv{p}{\alp}{; \del , \gam} + \fv{p}{\nu}{; \del} \fv{\Gam}{\alp}{\nu \gam} - \fv{p}{\alp}{; \gam , \del} - \fv{p}{\mu}{; \gam} \fv{\Gam}{\alp}{\mu \del},
+%	}
+%	where we have applied MCP~(24.35),
+%	\eqn{thing2}{
+%		\fv{A}{\mu}{; \bet} = \fv{A}{\mu}{, \bet} + A^\alp \fv{\Gam}{\mu}{\alp \bet}.
+%	}
+%	Now using MCP~(24.38c),
+%	\eq{
+%		\Gam_{\alp \bet \gam} = \frac{1}{2} (\sg_{\alp \bet, \gam} + \sg_{\alp \gam, \bet} - \sg_{\bet \gam, \alp} + c_{\alp \bet \gam} + c_{\alp \gam \bet} - c_{\bet \gam \alp})
+%	}
+%	and the fact that $\Gam_{\alp \bet \gam}$ is symmetric in its last two indices in a coordinate basis where the $c$ terms vanish~\cite[p.~1171]{MCP}, we can add to Eq.~\refeq{thing2}
+%	\al{
+%		0 &= \fv{p}{\alp}{; \zet} (\fv{\Gam}{\zet}{\gam \del} - \fv{c}{\zet}{\gam \del} - \fv{c}{\zet}{\del \gam} + c_\del{}^\zet{}_\gam) - \fv{p}{\alp}{; \eta} (\fv{\Gam}{\eta}{\del \gam} - \fv{c}{\eta}{\del \gam} - \fv{c}{\eta}{\gam \del} + c_\gam{}^\eta{}_\del) \\
+%		&= \fv{p}{\alp}{; \zet} \fv{\Gam}{\zet}{\gam \del} - \fv{p}{\alp}{; \eta} \fv{\Gam}{\eta}{\del \gam} + \fv{p}{\alp}{; \xi} (-\fv{c}{\xi}{\gam \del} - \fv{c}{\xi}{\del \gam} + c_\del{}^\xi{}_\gam + \fv{c}{\xi}{\del \gam} + \fv{c}{\xi}{\gam \del} - c_\gam{}^\xi{}_\del) \\
+%		&= \fv{p}{\alp}{; \zet} \fv{\Gam}{\zet}{\gam \del} - \fv{p}{\alp}{; \eta} \fv{\Gam}{\eta}{\del \gam} + \fv{p}{\alp}{; \xi} (c_\del{}^\xi{}_\gam - c_\gam{}^\xi{}_\del)
+%	}
+
+	\cite[p.~122]{Carroll}
+}
+
 
 
 
@@ -67,6 +122,14 @@
 	Show that the Weyl curvature tensor~(25.48) has vanishing contraction on all its slots and has the same symmetries as Riemann: Eqs.~(25.45).  From these properties, show that Weyl has just 10 independent components.  Write the Riemann tensor in terms of the Weyl tensor, the Ricci tensor, and the scalar curvature.
 }
 
+\sol{
+	MCP~(24.28) is
+	\eq{
+		\fv{C}{\mu \nu}{\rho \sig} = \fv{R}{\mu \nu}{\rho \sig} - 2 \fv{\sg}{[ \mu}{[ \rho} \fv{R}{\nu ]}{\sig ]} + \frac{1}{3} \fv{\sg}{[ \mu}{[ \rho} \fv{\sg}{\nu ]}{\sig ]} R,
+	}
+	where the square brackets denote antisymmetrization, $A_{[ \alp \bet ]} = (A_{\alp \bet} - A_{\bet \alp}) / 2$, and $R = \fv{R}{\alp}{\alp}$.
+}
+
 
 
 
@@ -75,19 +138,69 @@
 \clearpage
 \state{Curvature of the surface of a sphere~(MCP 25.13)}{
 	On the surface of a sphere, such as Earth, introduce spherical polar coordinates in which the metric, written as a line element, takes the form
-	\eq{
-		\dds^2 = a^2 (\ddtht^2 + \sin[2]{\tht} \ddphi^2),
+	\eqn{given4}{
+		\dds^2 = a^2 (\ddtht^2 + \sin^2\tht \ddphi^2),
 	}
 	where $a$ is the sphere's radius.
 }
 
-\prob{
+\prob{ \label{4a}
 	Show (first by hand and then by computer) that the connection coefficients for the coordinate basis $\{ \pdv*{\tht}, \pdv*{\phi} \}$ are
-	\al{
+	\aln{ \label{show4a}
 		\Gamtspp &= -\sin\tht \cos\tht, &
 		\Gampstp &= \Gampspt = \cot\tht, &
 		\text{all others vanish}.
 	}
+}
+
+\sol{
+	We follow the procedure on pp.~1171--1172 of MCP for computing the connection coefficients.  We use (24.38c) to compute
+	\eqn{Gamthing}{
+		\Gam_{\alp \bet \gam} = \frac{1}{2} (\sg_{\alp \bet, \gam} + \sg_{\alp \gam, \bet} - \sg_{\bet \gam, \alp} + c_{\alp \bet \gam} + c_{\alp \gam \bet} - c_{\bet \gam \alp}),
+	}
+	where we know the commutation coefficients $c_{\alp \bet \gam}$ vanish in a coordinate basis~\cite[p.~1171]{MCP}.  We raise the first index using (24.38d),
+	\eqn{Gamraise}{
+		\fv{\Gam}{\mu}{\bet \gam} = \sg^{\mu \alp} \Gam_{\alp \bet \gam}.
+	}
+	According to MCP~(24.7), the invariant interval is defined
+	\eq{
+		\dds^2 = \sg_{\alp \bet} \Del x^\alp \Del x^\bet.
+	}
+	This means the metric tensor components can be read off of Eq.~\refeq{given4} as
+	\aln{ \label{met4}
+		\sgstt &= a^2, &
+		\sgspp &= a^2 \sin^2\tht.
+	}
+	The only nonzero derivative is
+	\eq{
+		\sg_{\phi \phi, \tht} = 2 a^2 \sin\tht \cos\tht.
+	}
+	so only connection coefficients with some combination of $\{ \phi, \phi, \tht \}$ can be nonzero.  Applying Eq.~\refeq{Gamthing} to the possible candidates, we find
+	\al{
+		\Gam_{\tht \phi \phi} &= \frac{1}{2} (\sg_{\tht \phi, \phi} + \sg_{\tht \phi, \phi} - \sg_{\phi \phi, \tht}) = -a^2 \sin\tht \cos\tht, \\
+		\Gam_{\phi \tht \phi} &= \frac{1}{2} (\sg_{\phi \tht, \phi} + \sg_{\phi \phi, \tht} - \sg_{\tht \phi, \tht}) = a^2 \sin\tht \cos\tht, \\
+		\Gam_{\phi \phi \tht} &= \frac{1}{2} (\sg_{\phi \phi, \tht} + \sg_{\phi \tht, \phi} - \sg_{\phi \tht, \phi}) = a^2 \sin\tht \cos\tht.
+	}
+	The components of the inverse metric tensor are
+	\al{
+		\sgtt &= \frac{1}{a^2}, &
+		\sgpp &= \frac{1}{a^2 \sin^2\tht}.
+	}
+	Now applying Eq.~\refeq{Gamraise}, we have
+	\ans{\al{
+		\Gamtspp &= \sgtt \Gam_{\tht \phi \phi} = -\sin\tht \cos\tht, &
+		\Gampstp &= \sgpp \Gam_{\phi \tht \phi} = \cot\tht, &
+		\Gampspt &= \sgpp \Gam_{\phi \phi \tht} = \cot\tht.
+	}}%
+	as we wanted to show. \qed
+	
+	By computer, we use a Mathematica notebook adapted from Ref.~\cite{Hartle}:
+	
+	\scalebox{0.625}{
+		\includegraphics{4a}
+	}
+	
+	Here $\tht \to 1$ and $\phi \to 2$.  Taking into account that in a coordinate basis $\Gam_{\alp \bet \gam}$ is symmetric in its last two indices~\cite[p.~1172]{MCP}, these match our result.
 }
 
 
@@ -99,6 +212,22 @@
 	}
 }
 
+\sol{
+	According to MCP~(25.45a),
+	\aln{ \label{symm}
+		R_{\alp \bet \gam \del} &= -R_{\bet \alp \gam \del}, &
+		R_{\alp \bet \gam \del} &= -R_{\alp \bet \del \gam}, &
+		R_{\alp \bet \gam \del} &= +R_{\gam \del \alp \bet}.
+	}
+	Applying these to the six possible permutations of $\{ \tht, \tht, \phi, \phi \}$, we have
+	\ans{\al{
+		R_{\tht \tht \phi \phi} &= -R_{\tht \tht \phi \phi} = 0, &
+		R_{\phi \phi \tht \tht} &= -R_{\phi \phi \tht \tht} = 0, &
+		R_{\tht \phi \phi \tht} &= -R_{\phi \tht \phi \tht} = -R_{\tht \phi \tht \phi} = R_{\phi \tht \tht \phi},
+	}}%
+	as we wanted to show. \qed
+}
+
 
 
 \prob{
@@ -106,6 +235,39 @@
 	\eq{
 		\Rstptp = a^2 \sin^2\tht.
 	}
+}
+
+\sol{
+	From Eq.~\refeq{show2},
+	\eq{
+		\fv{R}{\tht}{\phi \tht \phi} = \fv{\Gam}{\tht}{\phi \phi, \tht} - \fv{\Gam}{\tht}{\phi \tht, \phi} + \fv{\Gam}{\tht}{\mu \tht} \fv{\Gam}{\mu}{\phi \phi} - \fv{\Gam}{\tht}{\mu \phi} \fv{\Gam}{\mu}{\phi \tht} - \fv{\Gam}{\tht}{\phi \mu} \sfv{c}{\tht \phi}{\mu}.
+	}
+	From Eq.~\refeq{show4a},
+	\al{
+		\fv{\Gam}{\tht}{\phi \phi, \tht} &= \sin^2\tht - \cos^2\tht, &
+		\fv{\Gam}{\phi}{\tht \phi, \tht} &= \fv{\Gam}{\phi}{\phi \tht, \tht} = -\csc^2\tht, &
+		\fv{\Gam}{\tht}{\phi \phi, \phi} &= \fv{\Gam}{\phi}{\tht \phi, \phi} = \fv{\Gam}{\phi}{\phi \tht, \phi} = 0.
+	}
+	We also know that all $c_{\alp \bet \gam} = 0$.  Equation~\refeq{thing4c} is then
+	\eq{
+		\fv{R}{\tht}{\phi \tht \phi} = \fv{\Gam}{\tht}{\phi \phi, \tht} - \fv{\Gam}{\tht}{\phi \phi} \fv{\Gam}{\phi}{\phi \tht}
+		= \sin^2\tht - \cos^2\tht - (-\sin\tht \cos\tht) (\cot\tht)
+		= \sin^2\tht.
+	}
+	Lowering the first index using Eq.~\refeq{met4}, we find
+	\eq{
+		\ans{ \Rstptp = \sgstt \fv{R}{\tht}{\phi \tht \phi}
+		= a^2 \sin^2\tht }
+	}
+	as we wanted to show. \qed
+	
+	Continuing the notebook from \ref{4a},
+	
+	\scalebox{0.625}{
+		\includegraphics{4c}
+	}
+	
+	Here the second list of \nolinkurl{R[_, _, _, _]} has the first index lowered.  By Eq.~\refeq{symm}, \nolinkurl{R[1, 2, 2, 1]} is equivalent to $\text{\nolinkurl{R[1, 2, 1, 2]}} \to \Rstptp$, which agrees with our calculation.
 }
 
 
@@ -123,7 +285,7 @@
 		R &= \frac{2}{a^2}, &
 		\Csthphthph &= 0,
 	}
-	respectively.  The first of these implies that the basis is orthonormal; the rest imply that the curvature is independent of location on the sphere, as it should be by spherical symmetry.  
+	respectively.  The first of these implies that the basis is orthonormal; the rest imply that the curvature is independent of location on the sphere, as it should be by spherical symmetry.
 }
 
 
@@ -192,6 +354,6 @@
 	Show that when rewritten in the language of general relativity, and in frame-independent, geometric language, Eq.~\refeq{show6a} takes the form (25.59) discussed in the text.  As part of showing this, explain the meaning of $\cIsbm$ in that equation.
 }
 
-%\makebib
+\makebib
 
 \end{document}
