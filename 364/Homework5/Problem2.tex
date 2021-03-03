@@ -1,0 +1,52 @@
+\state{Components of the Riemann tensor in an arbitrary basis~(MCP 25.11)}{
+	By evaluating expressions~(25.30) in an arbitrary basis (which might not even be a coordinate basis), derive Eq.~(25.50) for the components of the Riemann tensor.  In your derivation keep in mind that commas denote partial derivations \emph{only} in a coordinate basis; in an arbitrary basis they denote the result of letting a basis vector act as a differential operator.
+}
+
+\sol{
+	MCP~(25.30) is
+	\eqn{given2}{
+		\fv{p}{\alp}{; \gam \del} - \fv{p}{\alp}{; \del \gam} = -\fv{R}{\alp}{\bet \gam \del} p^\bet,
+	}
+	where $\vp$ is any vector field.  MCP~(25.50) is
+	\eqn{show2}{
+		\fv{R}{\alp}{\bet \gam \del} = \fv{\Gam}{\alp}{\bet \del, \gam} - \fv{\Gam}{\alp}{\bet \gam, \del} + \fv{\Gam}{\alp}{\mu \gam} \fv{\Gam}{\mu}{\bet \del} - \fv{\Gam}{\alp}{\mu \del} \fv{\Gam}{\mu}{\bet \gam} - \fv{\Gam}{\alp}{\bet \mu} \sfv{c}{\gam \del}{\mu},
+	}
+	where $\Gasbg$ are the connection coefficients in the chosen basis, $\fv{\Gam}{\alp}{\bet \gam, \del}$ is the result of letting the basis vector $\ve_\del$ act as a differential operator on $\Gasbg$, and $\sfv{c}{\gam \del}{\mu}$ are the basis vectors' commutation coefficients.
+	
+	Beginning from Eq.~\refeq{given2}~\cite[p.~122]{Carroll},
+	\aln{
+		\fv{R}{\alp}{\bet \gam \del} p^\bet &= \fv{p}{\alp}{; \del \gam} - \fv{p}{\alp}{; \gam \del} \notag \\
+		&= \nabsg \fv{p}{\alp}{; \del} - \nabsd \fv{p}{\alp}{; \gam} \notag \\
+		&= \fv{p}{\alp}{; \del , \gam} + \fv{p}{\nu}{; \del} \fv{\Gam}{\alp}{\nu \gam} - \fv{p}{\alp}{; \gam , \del} - \fv{p}{\mu}{; \gam} \fv{\Gam}{\alp}{\mu \del} \notag \\
+		&= (\fv{p}{\alp}{, \del} + p^\sig \fv{\Gam}{\alp}{\sig \del})_{, \gam} + (\fv{p}{\nu}{, \del} + p^\tau \fv{\Gam}{\nu}{\tau \del}) \fv{\Gam}{\alp}{\nu \gam} - (\fv{p}{\alp}{, \gam} + p^\lam \fv{\Gam}{\alp}{\lam \gam})_{, \del} - (\fv{p}{\mu}{, \gam} + p^\rho \fv{\Gam}{\mu}{\rho \gam}) \fv{\Gam}{\alp}{\mu \del}, \label{thingy2}
+	}
+	where we have applied MCP~(24.35),
+	\eqn{thing2}{
+		\fv{A}{\mu}{; \bet} = \fv{A}{\mu}{, \bet} + A^\alp \fv{\Gam}{\mu}{\alp \bet}.
+	}
+	Relabeling indices as needed, Eq.~\refeq{thingy2} becomes
+	\aln{
+		\fv{R}{\alp}{\bet \gam \del} p^\bet &= \fv{p}{\alp}{, \del \gam} + \fv{p}{\sig}{, \gam} \fv{\Gam}{\alp}{\sig \del} + p^\sig \fv{\Gam}{\alp}{\sig \del, \gam} + \fv{p}{\nu}{, \del} \fv{\Gam}{\alp}{\nu \gam} + p^\tau \fv{\Gam}{\nu}{\tau \del} \fv{\Gam}{\alp}{\nu \gam} \notag \\
+		&\hspace{5em} \phantom{=\ } - \fv{p}{\alp}{, \gam \del} - \fv{p}{\lam}{, \del} \fv{\Gam}{\alp}{\lam \gam} - p^\lam \fv{\Gam}{\alp}{\lam \gam, \del} - \fv{p}{\mu}{, \gam} \fv{\Gam}{\alp}{\mu \del} - p^\rho \fv{\Gam}{\mu}{\rho \gam} \fv{\Gam}{\alp}{\mu \del} \notag \\[1ex]
+		%
+		&= \fv{p}{\alp}{, \del \gam} + p^\sig \fv{\Gam}{\alp}{\sig \del, \gam} + p^\tau \fv{\Gam}{\nu}{\tau \del} \fv{\Gam}{\alp}{\nu \gam} - \fv{p}{\alp}{, \gam \del} - p^\lam \fv{\Gam}{\alp}{\lam \gam, \del} - p^\rho \fv{\Gam}{\mu}{\rho \gam} \fv{\Gam}{\alp}{\mu \del} \notag \\[1ex]
+		&= (\fv{\Gam}{\alp}{\bet \del, \gam} - \fv{\Gam}{\alp}{\bet \gam, \del} + \fv{\Gam}{\alp}{\mu \gam} \fv{\Gam}{\mu}{\bet \del} - \fv{\Gam}{\alp}{\mu \del} \fv{\Gam}{\mu}{\bet \gam}) p^\bet + \fv{p}{\alp}{, \del \gam} - \fv{p}{\alp}{, \gam \del}. \label{thingy2.2}
+	}
+	Using MCP~(24.38a), $[ \vesa, \vesb ] = \sfv{c}{\alp \bet}{\rho} \vesr$, note that
+	\eq{
+		\fv{p}{\alp}{, \del \gam} - \fv{p}{\alp}{, \gam \del} = (\vesg \vesd - \vesd \vesg) p^\alp
+		 = [ \vesg, \vesd ] p^\alp
+		= \sfv{c}{\gam \del}{\mu} \vesm p^\alp
+		= \sfv{c}{\gam \del}{\mu} \fv{p}{\alp}{, \mu}.
+	}
+	With another application of Eq.~\refeq{thing2}, this becomes
+	\eq{
+		\fv{p}{\alp}{, \del \gam} - \fv{p}{\alp}{, \gam \del} = \sfv{c}{\gam \del}{\mu} (\fv{p}{\alp}{; \mu} - p^\bet \fv{\Gam}{\alp}{\bet \mu})
+		= -\sfv{c}{\gam \del}{\mu} \fv{\Gam}{\alp}{\bet \mu} p^\bet,
+	}
+	where the first term disappears because $\sfv{c}{\gam \del}{\mu}$ is antisymmetric in its first two indices, but $\fv{p}{\alp}{; \mu}$ is a vector.  Making this substitution, Eq.~\refeq{thingy2.2} implies
+	\eq{
+		\ans{ \fv{R}{\alp}{\bet \gam \del} = \fv{\Gam}{\alp}{\bet \del, \gam} - \fv{\Gam}{\alp}{\bet \gam, \del} + \fv{\Gam}{\alp}{\mu \gam} \fv{\Gam}{\mu}{\bet \del} - \fv{\Gam}{\alp}{\mu \del} \fv{\Gam}{\mu}{\bet \gam} - \fv{\Gam}{\alp}{\bet \mu} \sfv{c}{\gam \del}{\mu} }
+	}
+	as we wanted to show. \qed
+}

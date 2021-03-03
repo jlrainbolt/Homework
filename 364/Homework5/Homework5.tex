@@ -53,64 +53,7 @@
 
 
 \clearpage
-\state{Components of the Riemann tensor in an arbitrary basis~(MCP 25.11)}{
-	By evaluating expressions~(25.30) in an arbitrary basis (which might not even be a coordinate basis), derive Eq.~(25.50) for the components of the Riemann tensor.  In your derivation keep in mind that commas denote partial derivations \emph{only} in a coordinate basis; in an arbitrary basis they denote the result of letting a basis vector act as a differential operator.
-}
-
-\sol{
-	MCP~(25.30) is
-	\eqn{given2}{
-		\fv{p}{\alp}{; \gam \del} - \fv{p}{\alp}{; \del \gam} = -\fv{R}{\alp}{\bet \gam \del} p^\bet,
-	}
-	where $\vp$ is any vector field.  MCP~(25.50) is
-	\eqn{show2}{
-		\fv{R}{\alp}{\bet \gam \del} = \fv{\Gam}{\alp}{\bet \del, \gam} - \fv{\Gam}{\alp}{\bet \gam, \del} + \fv{\Gam}{\alp}{\mu \gam} \fv{\Gam}{\mu}{\bet \del} - \fv{\Gam}{\alp}{\mu \del} \fv{\Gam}{\mu}{\bet \gam} - \fv{\Gam}{\alp}{\bet \mu} \sfv{c}{\gam \del}{\mu},
-	}
-	where $\Gasbg$ are the connection coefficients in the chosen basis, $\fv{\Gam}{\alp}{\bet \gam, \del}$ is the result of letting the basis vector $\ve_\del$ act as a differential operator on $\Gasbg$, and $\sfv{c}{\gam \del}{\mu}$ are the basis vectors' commutation coefficients.
-	
-	Beginning from Eq.~\refeq{given2},
-	\al{
-		\fv{R}{\alp}{\bet \gam \del} p^\bet &= \fv{p}{\alp}{; \del \gam} - \fv{p}{\alp}{; \gam \del} \\[1ex]
-		&= \nabsg \fv{p}{\alp}{; \del} - \nabsd \fv{p}{\alp}{; \gam} \\[1ex]
-		&= \fv{p}{\alp}{; \del , \gam} + \fv{p}{\nu}{; \del} \fv{\Gam}{\alp}{\nu \gam} - \fv{p}{\alp}{; \gam , \del} - \fv{p}{\mu}{; \gam} \fv{\Gam}{\alp}{\mu \del} \\[1ex]
-		&= (\fv{p}{\alp}{, \del} + p^\sig \fv{\Gam}{\alp}{\sig \del})_{, \gam} + (\fv{p}{\nu}{, \del} + p^\tau \fv{\Gam}{\nu}{\tau \del}) \fv{\Gam}{\alp}{\nu \gam} - (\fv{p}{\alp}{, \gam} + p^\lam \fv{\Gam}{\alp}{\lam \gam})_{, \del} - (\fv{p}{\mu}{, \gam} + p^\rho \fv{\Gam}{\mu}{\rho \gam}) \fv{\Gam}{\alp}{\mu \del} \\[1ex]
-		%
-		&= \fv{p}{\alp}{, \del \gam} + \fv{p}{\sig}{, \gam} \fv{\Gam}{\alp}{\sig \del} + p^\sig \fv{\Gam}{\alp}{\sig \del, \gam} + \fv{p}{\nu}{, \del} \fv{\Gam}{\alp}{\nu \gam} + p^\tau \fv{\Gam}{\nu}{\tau \del} \fv{\Gam}{\alp}{\nu \gam} \\
-		&\hspace{5em} \phantom{=\ } - \fv{p}{\alp}{, \gam \del} - \fv{p}{\lam}{, \del} \fv{\Gam}{\alp}{\lam \gam} - p^\lam \fv{\Gam}{\alp}{\lam \gam, \del} - \fv{p}{\mu}{, \gam} \fv{\Gam}{\alp}{\mu \del} - p^\rho \fv{\Gam}{\mu}{\rho \gam} \fv{\Gam}{\alp}{\mu \del} \\[1ex]
-		%
-		&= p^\sig \fv{\Gam}{\alp}{\sig \del, \gam} + p^\tau \fv{\Gam}{\nu}{\tau \del} \fv{\Gam}{\alp}{\nu \gam} - p^\lam \fv{\Gam}{\alp}{\lam \gam, \del} - p^\rho \fv{\Gam}{\mu}{\rho \gam} \fv{\Gam}{\alp}{\mu \del} \\
-		&= (\fv{\Gam}{\alp}{\bet \del, \gam} - \fv{\Gam}{\alp}{\bet \gam, \del} + \fv{\Gam}{\alp}{\mu \gam} \fv{\Gam}{\mu}{\bet \del} - \fv{\Gam}{\alp}{\mu \del} \fv{\Gam}{\mu}{\bet \gam}) p^\bet
-	}
-	\hl{what happend to the connection coefficients???}
-	
-	where we have applied MCP~(24.35),
-	\eqn{thing2}{
-		\fv{A}{\mu}{; \bet} = \fv{A}{\mu}{, \bet} + A^\alp \fv{\Gam}{\mu}{\alp \bet}.
-	}
-
-%	Beginning from Eq.~\refeq{given2},
-%	\eqn{thing2}{
-%		\fv{R}{\alp}{\bet \gam \del} p^\bet = \fv{p}{\alp}{; \del \gam} - \fv{p}{\alp}{; \gam \del}
-%		= \nabsg \fv{p}{\alp}{; \del} - \nabsd \fv{p}{\alp}{; \gam}
-%		= \fv{p}{\alp}{; \del , \gam} + \fv{p}{\nu}{; \del} \fv{\Gam}{\alp}{\nu \gam} - \fv{p}{\alp}{; \gam , \del} - \fv{p}{\mu}{; \gam} \fv{\Gam}{\alp}{\mu \del},
-%	}
-%	where we have applied MCP~(24.35),
-%	\eqn{thing2}{
-%		\fv{A}{\mu}{; \bet} = \fv{A}{\mu}{, \bet} + A^\alp \fv{\Gam}{\mu}{\alp \bet}.
-%	}
-%	Now using MCP~(24.38c),
-%	\eq{
-%		\Gam_{\alp \bet \gam} = \frac{1}{2} (\sg_{\alp \bet, \gam} + \sg_{\alp \gam, \bet} - \sg_{\bet \gam, \alp} + c_{\alp \bet \gam} + c_{\alp \gam \bet} - c_{\bet \gam \alp})
-%	}
-%	and the fact that $\Gam_{\alp \bet \gam}$ is symmetric in its last two indices in a coordinate basis where the $c$ terms vanish~\cite[p.~1171]{MCP}, we can add to Eq.~\refeq{thing2}
-%	\al{
-%		0 &= \fv{p}{\alp}{; \zet} (\fv{\Gam}{\zet}{\gam \del} - \fv{c}{\zet}{\gam \del} - \fv{c}{\zet}{\del \gam} + c_\del{}^\zet{}_\gam) - \fv{p}{\alp}{; \eta} (\fv{\Gam}{\eta}{\del \gam} - \fv{c}{\eta}{\del \gam} - \fv{c}{\eta}{\gam \del} + c_\gam{}^\eta{}_\del) \\
-%		&= \fv{p}{\alp}{; \zet} \fv{\Gam}{\zet}{\gam \del} - \fv{p}{\alp}{; \eta} \fv{\Gam}{\eta}{\del \gam} + \fv{p}{\alp}{; \xi} (-\fv{c}{\xi}{\gam \del} - \fv{c}{\xi}{\del \gam} + c_\del{}^\xi{}_\gam + \fv{c}{\xi}{\del \gam} + \fv{c}{\xi}{\gam \del} - c_\gam{}^\xi{}_\del) \\
-%		&= \fv{p}{\alp}{; \zet} \fv{\Gam}{\zet}{\gam \del} - \fv{p}{\alp}{; \eta} \fv{\Gam}{\eta}{\del \gam} + \fv{p}{\alp}{; \xi} (c_\del{}^\xi{}_\gam - c_\gam{}^\xi{}_\del)
-%	}
-
-	\cite[p.~122]{Carroll}
-}
+\input{Problem2}
 
 
 
@@ -123,11 +66,136 @@
 }
 
 \sol{
-	MCP~(24.28) is
-	\eq{
+	MCP~(25.48) is
+	\eqn{weyl}{
 		\fv{C}{\mu \nu}{\rho \sig} = \fv{R}{\mu \nu}{\rho \sig} - 2 \fv{\sg}{[ \mu}{[ \rho} \fv{R}{\nu ]}{\sig ]} + \frac{1}{3} \fv{\sg}{[ \mu}{[ \rho} \fv{\sg}{\nu ]}{\sig ]} R,
 	}
-	where the square brackets denote antisymmetrization, $A_{[ \alp \bet ]} = (A_{\alp \bet} - A_{\bet \alp}) / 2$, and $R = \fv{R}{\alp}{\alp}$.
+	where the square brackets denote antisymmetrization, $A_{[ \alp \bet ]} = (A_{\alp \bet} - A_{\bet \alp}) / 2$, and $R = \fv{R}{\alp}{\alp}$.  Lowering the indices and expanding out the antisymmetrizations gives us
+	\aln{
+		C_{\mu \nu \rho \sig} &= R_{\mu \nu \rho \sig} - \paren{ \sg_{\mu \ [ \rho} R_{\nu \ \sig ]} - \sg_{\nu \ [ \rho} R_{\mu \ \sig ]} } + \frac{1}{6} \paren{ \sg_{\mu \ [ \rho} \sg_{\nu \ \sig ]} - \sg_{\nu \ [ \rho} \sg_{\mu \ \sig ]} } R \notag \\
+		&= R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R. \label{lowC}
+	}
+	
+	We begin by interchanging indices since it makes the other proofs easier.  Interchanging the first two indices,
+	\al{
+		C_{\nu \mu \rho \sig} &= R_{\nu \mu \rho \sig} - \frac{1}{2} \paren{ \sg_{\nu \rho} R_{\mu \sig} - \sg_{\nu \sig} R_{\mu \rho} - \sg_{\mu \rho} R_{\nu \sig} + \sg_{\mu \sig} R_{\nu \rho} } + \frac{1}{12} \paren{ \sg_{\nu \rho} \sg_{\mu \sig} - \sg_{\nu \sig} \sg_{\mu \rho} - \sg_{\mu \rho} \sg_{\nu \sig} + \sg_{\mu \sig} \sg_{\nu \rho} } R \\
+		&= -\brac{ R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R } \\
+		&= - C_{\mu \nu \rho \sig},
+	}
+	where we have used $R_{\alp \bet \gam \del} = -R_{\bet \alp \gam \del}$ from MCP~(25.45a).
+	
+	Interchanging the last two indices,
+	\al{
+		C_{\mu \nu \sig \rho} &= R_{\mu \nu \sig \rho} - \frac{1}{2} \paren{ \sg_{\mu \sig} R_{\nu \rho} - \sg_{\mu \rho} R_{\nu \sig} - \sg_{\nu \sig} R_{\mu \rho} + \sg_{\nu \rho} R_{\mu \sig} } + \frac{1}{12} \paren{ \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\nu \sig} \sg_{\mu \rho} + \sg_{\nu \rho} \sg_{\mu \sig} } R \\
+		&= -\brac{ R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R } \\
+		&= - \fv{C}{\mu \nu}{\rho \sig},
+	}
+	where we have used $R_{\alp \bet \gam \del} = -R_{\alp \bet \del \gam}$ from MCP~(25.45a).
+	
+	Interchanging the first and second pair of indices,
+	\al{
+		C_{\rho \sig \mu \nu} &= R_{\rho \sig \mu \nu} - \frac{1}{2} \paren{ \sg_{\rho \mu} R_{\sig \nu} - \sg_{\rho \nu} R_{\sig \mu} - \sg_{\sig \mu} R_{\rho \nu} + \sg_{\sig \nu} R_{\rho \mu} } + \frac{1}{12} \paren{ \sg_{\rho \mu} \sg_{\sig \nu} - \sg_{\rho \nu} \sg_{\sig \mu} - \sg_{\sig \mu} \sg_{\rho \nu} + \sg_{\sig \nu} \sg_{\rho \mu} } R \\
+		&= R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R \\
+		&= \fv{C}{\mu \nu}{\rho \sig},
+	}
+	where we have used the symmetry of the metric, $\fv{\sg}{\mu}{\nu} = \fv{\sg}{\nu}{\mu}$, and $R_{\alp \bet \gam \del} = +R_{\gam \del \alp \bet}$ from MCP~(25.45a).
+
+	Note also that
+	\al{
+		C_{\mu \rho \sig \nu} &= R_{\mu \rho \sig \nu} - \frac{1}{2} \paren{ \sg_{\mu \sig} R_{\rho \nu} - \sg_{\mu \nu} R_{\rho \sig} - \sg_{\rho \sig} R_{\mu \nu} + \sg_{\rho \nu} R_{\mu \sig} } + \frac{1}{12} \paren{ \sg_{\mu \sig} \sg_{\rho \nu} - \sg_{\mu \nu} \sg_{\rho \sig} - \sg_{\rho \sig} \sg_{\mu \nu} + \sg_{\rho \nu} \sg_{\mu \sig} } R, \\
+		%
+		C_{\mu \sig \nu \rho} &= R_{\mu \sig \nu \rho} - \frac{1}{2} \paren{ \sg_{\mu \nu} R_{\sig \rho} - \sg_{\mu \rho} R_{\sig \nu} - \sg_{\sig \nu} R_{\mu \rho} + \sg_{\sig \rho} R_{\mu \nu} } + \frac{1}{12} \paren{ \sg_{\mu \nu} \sg_{\sig \rho} - \sg_{\mu \rho} \sg_{\sig \nu} - \sg_{\sig \nu} \sg_{\mu \rho} + \sg_{\sig \rho} \sg_{\mu \nu} } R.
+	}
+	Then for the equivalent to MCP~(25.45b),
+	\al{
+		C_{\mu \nu \rho \sig} + C_{\mu \rho \sig \nu} + C_{\mu \sig \nu \rho}
+		&= R_{\mu \nu \rho \sig} + R_{\mu \rho \sig \nu} + R_{\mu \sig \nu \rho} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } \\
+		&\hspace{5em} \phantom{=} - \frac{1}{2} \paren{ \sg_{\mu \sig} R_{\rho \nu} - \sg_{\mu \nu} R_{\rho \sig} - \sg_{\rho \sig} R_{\mu \nu} + \sg_{\rho \nu} R_{\mu \sig} } \\
+		&\hspace{5em} \phantom{=} - \frac{1}{2} \paren{ \sg_{\mu \nu} R_{\sig \rho} - \sg_{\mu \rho} R_{\sig \nu} - \sg_{\sig \nu} R_{\mu \rho} + \sg_{\sig \rho} R_{\mu \nu} } \\
+		&\hspace{5em} \phantom{=} + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R \\
+		&\hspace{5em} \phantom{=} + \frac{1}{12} \paren{ \sg_{\mu \sig} \sg_{\rho \nu} - \sg_{\mu \nu} \sg_{\rho \sig} - \sg_{\rho \sig} \sg_{\mu \nu} + \sg_{\rho \nu} \sg_{\mu \sig} } R \\
+		&\hspace{5em} \phantom{=} + \frac{1}{12} \paren{ \sg_{\mu \nu} \sg_{\sig \rho} - \sg_{\mu \rho} \sg_{\sig \nu} - \sg_{\sig \nu} \sg_{\mu \rho} + \sg_{\sig \rho} \sg_{\mu \nu} } R \\
+		&= 0,
+	}
+	where we have used $R_{\alp \bet \gam \del} + R_{\alp \gam \del \bet} + R_{\alp \del \bet \gam} = 0$ from MCP~(25.45b), and the symmetry of the metric tensor.  Thus we have shown that the Weyl curvature tensor has the same symmetries as Riemann in MCP~(25.45): \vfix
+	\ans{\aln{ \label{Csymm}
+		C_{\nu \mu \rho \sig} &= -C_{\mu \nu \rho \sig}, &
+		C_{\mu \nu \sig \rho} &= -C_{\mu \nu \rho \sig}, &
+		C_{\rho \sig \mu \nu} &= +C_{\mu \nu \rho \sig}, &
+		C_{\mu \nu \rho \sig} + C_{\mu \rho \sig \nu} + C_{\mu \sig \nu \rho} &= 0.
+	}}%
+	Now for the contractions.  Contracting the indices within each pair,
+	\aln{ \label{thingy2}
+		\sg^{\mu \nu} C_{\mu \nu \rho \sig} &= \sfvt{C}{\mu}{\mu}{\rho \sig}
+		= -\sfvt{C}{\mu}{\mu}{\rho \sig}
+		= 0, &
+		%
+		\sg^{\rho \sig} C_{\mu \nu \rho \sig} &= \sfv{C}{\mu \nu \rho}{\rho}
+		= -\sfv{C}{\mu \nu \rho}{\rho}
+		= 0,
+	}
+	where we have used $C_{\nu \mu \rho \sig} = -C_{\mu \nu \rho \sig}$ and our ability to swap covariant and contravariant for summed indices.
+	
+	Contracting the first and third indices,
+	\al{
+		\sg^{\mu \rho} C_{\mu \nu \rho \sig} &= \sg^{\mu \rho} \brac{ R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R } \\
+		&= \sfvt{R}{\mu \nu}{\mu}{\sig} - \frac{1}{2} \paren{ \sfv{\sg}{\mu}{\mu} R_{\nu \sig} - \sg_{\mu \sig} \sfv{R}{\nu}{\mu} - \sfv{\sg}{\nu}{\mu} R_{\mu \sig} + \sg_{\nu \sig} \sfv{R}{\mu}{\mu} } + \frac{1}{12} \paren{ \sfv{\sg}{\mu}{\mu} \sg_{\nu \sig} - \sg_{\mu \sig} \sfv{\sg}{\nu}{\mu} - \sfv{\sg}{\nu}{\mu} \sg_{\mu \sig} + \sg_{\nu \sig} \sfv{\sg}{\mu}{\mu} } R \\
+		&= R_{\nu \sig} - \frac{1}{2} \paren{ 4 R_{\nu \sig} - R_{\nu \sig} - R_{\nu \sig} + \sg_{\nu \sig} R } + \frac{1}{12} \paren{ 4 \sg_{\nu \sig} - \sg_{\nu \sig} - \sg_{\nu \sig} + 4 \sg_{\nu \sig} } R \\
+		&= R_{\nu \sig} - R_{\nu \sig} - \frac{1}{2} \sg_{\nu \sig} R + \frac{1}{2} \sg_{\nu \sig} R \\
+		&= 0,
+	}
+	where we have used MCP~(24.10), $\sg^{\mu \bet} \sg_{\bet \nu} = \fv{\del}{\mu}{\nu}$, to find $\fv{\sg}{\mu}{\mu} = 4$.  Then, using Eq.~\refeq{Csymm}, we have
+	\eq{
+		0 = \sfvt{C}{\mu \nu}{\mu}{\sig}
+		= -\sfv{C}{\mu \nu \sig}{\mu}
+		= -\sfvt{C}{\nu \mu}{\mu}{\sig}
+		= \sfv{C}{\nu \mu \sig}{\mu}.
+	}
+	Rewriting these as contractions, and incorporating our results in Eq.~\refeq{thingy2}, we have shown
+	\eq{
+		\ans{ 0 = \sg^{\mu \nu} C_{\mu \nu \rho \sig}
+		= \sg^{\mu \rho} C_{\mu \nu \rho \sig}
+		= \sg^{\mu \sig} C_{\mu \nu \rho \sig}
+		= \sg^{\nu \rho} C_{\mu \nu \rho \sig}
+		= \sg^{\nu \sig} C_{\mu \nu \rho \sig}
+		= \sg^{\rho \sig} C_{\mu \nu \rho \sig}; }
+	}
+	that is, the Weyl curvature tensor has vanishing contraction on all its slots.
+	
+	To show that Weyl has just 10 independent components, we refer to the discussion at the end of Lecture~11.  If there were no symmetries, in $n = 4$ spacetime dimensions $C_{\alp \bet \gam \del}$ would have $n^4 = 4^4$ independent components.  Each symmetry gives rise to some number of independent components:
+	\al{
+		\alp \lrarrow \bet \antisymmetry &\qimplies \frac{n (n - 1)}{2} = 6 \components, \\
+		\gam \lrarrow \del \antisymmetry &\qimplies \frac{n (n - 1)}{2} = 6 \components, \\
+		\alp \bet \lrarrow \gam \del \symmetry &\qimplies \text{components reduced by } \frac{1}{2}.
+	}
+	Combining the three (anti)symmetries, we have a total of
+	\eq{
+		\paren{ \frac{n (n - 1)}{2} } \paren{ \frac{n (n - 1)}{2} + 1 } \frac{1}{2} = 21 \components.
+	}
+	Now we account for the constraints imposed by $C_{\mu \nu \rho \sig} + C_{\mu \rho \sig \nu} + C_{\mu \sig \nu \rho} = 0$.  This expression is redundant if any of the indices are the same; for example,
+	\eq{
+		C_{\mu \mu \rho \sig} + C_{\mu \rho \sig \mu} + C_{\mu \sig \mu \rho}
+		= 0 + C_{\sig \mu \mu \rho} + C_{\mu \sig \mu \rho}
+		= C_{\sig \mu \mu \rho} - C_{\sig \mu \mu \rho}
+		= 0,
+	}
+	which we already knew from the other symmetries.  Since there are four indices, this requirement gives us
+	\eq{
+		{ n \choose 4 } = 1 \text{ constraint}.
+	}
+	Finally we account for the constraints imposed by the vanishing contractions.  After accounting for the (anti)symmetries, we are left with two unique vanishing contractions, which impose
+	\eq{
+		\frac{n (n + 1)}{2} = 10 \constraints.
+	}
+	\hl{this probably is wrong but eh}
+	
+	Finally, we find the number of independent components by
+	\eq{
+		N_\text{components} - N_\text{constraints} = 21 - (1 + 10) = \ans{ 10 \text{ independent components} }
+	}
+	as we wanted to show. \qed
+	
+	\hl{general form of 25.48?}
 }
 
 
@@ -136,157 +204,7 @@
 
 
 \clearpage
-\state{Curvature of the surface of a sphere~(MCP 25.13)}{
-	On the surface of a sphere, such as Earth, introduce spherical polar coordinates in which the metric, written as a line element, takes the form
-	\eqn{given4}{
-		\dds^2 = a^2 (\ddtht^2 + \sin^2\tht \ddphi^2),
-	}
-	where $a$ is the sphere's radius.
-}
-
-\prob{ \label{4a}
-	Show (first by hand and then by computer) that the connection coefficients for the coordinate basis $\{ \pdv*{\tht}, \pdv*{\phi} \}$ are
-	\aln{ \label{show4a}
-		\Gamtspp &= -\sin\tht \cos\tht, &
-		\Gampstp &= \Gampspt = \cot\tht, &
-		\text{all others vanish}.
-	}
-}
-
-\sol{
-	We follow the procedure on pp.~1171--1172 of MCP for computing the connection coefficients.  We use (24.38c) to compute
-	\eqn{Gamthing}{
-		\Gam_{\alp \bet \gam} = \frac{1}{2} (\sg_{\alp \bet, \gam} + \sg_{\alp \gam, \bet} - \sg_{\bet \gam, \alp} + c_{\alp \bet \gam} + c_{\alp \gam \bet} - c_{\bet \gam \alp}),
-	}
-	where we know the commutation coefficients $c_{\alp \bet \gam}$ vanish in a coordinate basis~\cite[p.~1171]{MCP}.  We raise the first index using (24.38d),
-	\eqn{Gamraise}{
-		\fv{\Gam}{\mu}{\bet \gam} = \sg^{\mu \alp} \Gam_{\alp \bet \gam}.
-	}
-	According to MCP~(24.7), the invariant interval is defined
-	\eq{
-		\dds^2 = \sg_{\alp \bet} \Del x^\alp \Del x^\bet.
-	}
-	This means the metric tensor components can be read off of Eq.~\refeq{given4} as
-	\aln{ \label{met4}
-		\sgstt &= a^2, &
-		\sgspp &= a^2 \sin^2\tht.
-	}
-	The only nonzero derivative is
-	\eq{
-		\sg_{\phi \phi, \tht} = 2 a^2 \sin\tht \cos\tht.
-	}
-	so only connection coefficients with some combination of $\{ \phi, \phi, \tht \}$ can be nonzero.  Applying Eq.~\refeq{Gamthing} to the possible candidates, we find
-	\al{
-		\Gam_{\tht \phi \phi} &= \frac{1}{2} (\sg_{\tht \phi, \phi} + \sg_{\tht \phi, \phi} - \sg_{\phi \phi, \tht}) = -a^2 \sin\tht \cos\tht, \\
-		\Gam_{\phi \tht \phi} &= \frac{1}{2} (\sg_{\phi \tht, \phi} + \sg_{\phi \phi, \tht} - \sg_{\tht \phi, \tht}) = a^2 \sin\tht \cos\tht, \\
-		\Gam_{\phi \phi \tht} &= \frac{1}{2} (\sg_{\phi \phi, \tht} + \sg_{\phi \tht, \phi} - \sg_{\phi \tht, \phi}) = a^2 \sin\tht \cos\tht.
-	}
-	The components of the inverse metric tensor are
-	\al{
-		\sgtt &= \frac{1}{a^2}, &
-		\sgpp &= \frac{1}{a^2 \sin^2\tht}.
-	}
-	Now applying Eq.~\refeq{Gamraise}, we have
-	\ans{\al{
-		\Gamtspp &= \sgtt \Gam_{\tht \phi \phi} = -\sin\tht \cos\tht, &
-		\Gampstp &= \sgpp \Gam_{\phi \tht \phi} = \cot\tht, &
-		\Gampspt &= \sgpp \Gam_{\phi \phi \tht} = \cot\tht.
-	}}%
-	as we wanted to show. \qed
-	
-	By computer, we use a Mathematica notebook adapted from Ref.~\cite{Hartle}:
-	
-	\scalebox{0.625}{
-		\includegraphics{4a}
-	}
-	
-	Here $\tht \to 1$ and $\phi \to 2$.  Taking into account that in a coordinate basis $\Gam_{\alp \bet \gam}$ is symmetric in its last two indices~\cite[p.~1172]{MCP}, these match our result.
-}
-
-
-
-\prob{
-	Show that the symmetries (25.45) of the Riemann tensor guarantee that its only nonzero components in the above coordinate basis are
-	\eq{
-		\Rstptp = \Rsptpt = -\Rstppt = -\Rspttp.
-	}
-}
-
-\sol{
-	According to MCP~(25.45a),
-	\aln{ \label{symm}
-		R_{\alp \bet \gam \del} &= -R_{\bet \alp \gam \del}, &
-		R_{\alp \bet \gam \del} &= -R_{\alp \bet \del \gam}, &
-		R_{\alp \bet \gam \del} &= +R_{\gam \del \alp \bet}.
-	}
-	Applying these to the six possible permutations of $\{ \tht, \tht, \phi, \phi \}$, we have
-	\ans{\al{
-		R_{\tht \tht \phi \phi} &= -R_{\tht \tht \phi \phi} = 0, &
-		R_{\phi \phi \tht \tht} &= -R_{\phi \phi \tht \tht} = 0, &
-		R_{\tht \phi \phi \tht} &= -R_{\phi \tht \phi \tht} = -R_{\tht \phi \tht \phi} = R_{\phi \tht \tht \phi},
-	}}%
-	as we wanted to show. \qed
-}
-
-
-
-\prob{
-	Show, first by hand and then by computer, that
-	\eq{
-		\Rstptp = a^2 \sin^2\tht.
-	}
-}
-
-\sol{
-	From Eq.~\refeq{show2},
-	\eq{
-		\fv{R}{\tht}{\phi \tht \phi} = \fv{\Gam}{\tht}{\phi \phi, \tht} - \fv{\Gam}{\tht}{\phi \tht, \phi} + \fv{\Gam}{\tht}{\mu \tht} \fv{\Gam}{\mu}{\phi \phi} - \fv{\Gam}{\tht}{\mu \phi} \fv{\Gam}{\mu}{\phi \tht} - \fv{\Gam}{\tht}{\phi \mu} \sfv{c}{\tht \phi}{\mu}.
-	}
-	From Eq.~\refeq{show4a},
-	\al{
-		\fv{\Gam}{\tht}{\phi \phi, \tht} &= \sin^2\tht - \cos^2\tht, &
-		\fv{\Gam}{\phi}{\tht \phi, \tht} &= \fv{\Gam}{\phi}{\phi \tht, \tht} = -\csc^2\tht, &
-		\fv{\Gam}{\tht}{\phi \phi, \phi} &= \fv{\Gam}{\phi}{\tht \phi, \phi} = \fv{\Gam}{\phi}{\phi \tht, \phi} = 0.
-	}
-	We also know that all $c_{\alp \bet \gam} = 0$.  Equation~\refeq{thing4c} is then
-	\eq{
-		\fv{R}{\tht}{\phi \tht \phi} = \fv{\Gam}{\tht}{\phi \phi, \tht} - \fv{\Gam}{\tht}{\phi \phi} \fv{\Gam}{\phi}{\phi \tht}
-		= \sin^2\tht - \cos^2\tht - (-\sin\tht \cos\tht) (\cot\tht)
-		= \sin^2\tht.
-	}
-	Lowering the first index using Eq.~\refeq{met4}, we find
-	\eq{
-		\ans{ \Rstptp = \sgstt \fv{R}{\tht}{\phi \tht \phi}
-		= a^2 \sin^2\tht }
-	}
-	as we wanted to show. \qed
-	
-	Continuing the notebook from \ref{4a},
-	
-	\scalebox{0.625}{
-		\includegraphics{4c}
-	}
-	
-	Here the second list of \nolinkurl{R[_, _, _, _]} has the first index lowered.  By Eq.~\refeq{symm}, \nolinkurl{R[1, 2, 2, 1]} is equivalent to $\text{\nolinkurl{R[1, 2, 1, 2]}} \to \Rstptp$, which agrees with our calculation.
-}
-
-
-
-\prob{
-	Show that in the basis
-	\eq{
-		\{ \vesthh, \vesphh \} = \curly{ \frac{1}{a} \pdv{\tht}, \frac{1}{a \sin\tht} \pdv{\phi} },
-	}
-	the components of the metric, the Riemann tensor, the Ricci tensor, the curvature scalar, and the Weyl tensor are
-	\al{
-		\sgsjhkh &= \delsjk, &
-		\Rsthphthph &= \frac{1}{a^2}, &
-		\Rsjhkh &= \frac{1}{a^2} \sgsjhkh, &
-		R &= \frac{2}{a^2}, &
-		\Csthphthph &= 0,
-	}
-	respectively.  The first of these implies that the basis is orthonormal; the rest imply that the curvature is independent of location on the sphere, as it should be by spherical symmetry.
-}
+\input{Problem4}
 
 
 
@@ -301,15 +219,76 @@
 	Show that $l = a \phi$ along the equatorial geodesic.
 }
 
+\sol{
+	We know from Eq.~\refeq{given4} that, on the equator where $\tht = \pi / 2$,
+	\eq{
+		\dds^2 = a^2 \sin[2](\frac{\pi}{2}) \ddphi^2
+		= a^2 \ddphi^2.
+	}
+	Integrating both sides of the equation,
+	\eq{
+		\int_0^l \dds = \int_0^\phi a \ddphi
+		\qimplies
+		\ans{ l = a \phi. }
+	}
+	This is merely the expression for the arc length of a circle of radius $a$ for a segment of angle $\tht$. \qed
+}
+
 
 
 \prob{
 	Show that the equation of geodesic deviation (25.31) reduces to
 	\aln{ \label{show5b}
-		\dv[2]{\xit}{\phi} &= - \xit, &
+		\dv[2]{\xit}{\phi} &= -\xit, &
 		\dv[2]{\xip}{\phi} &= 0.
 	}
 	\vfix
+}
+
+\sol{
+	The equation of geodesic deviation is
+	\eqn{gd}{
+		(\fv{\xi}{\alp}{; \bet} p^\bet)_{; \gam} p^\gam = -\fv{R}{\alp}{\bet \gam \del} p^\bet \xi^\gam p^\del,
+	}
+	where $\vp$ is a 4-momentum tangent problem and is equal to $\vuu$ in this problem.  By definition, $\vuu$ has only a component in the $\phi$ direction, which is equal to 1.  Then Eq.~\refeq{gd} reduces to
+	\eqn{thing5b}{
+		(\fv{\xi}{\alp}{; \phi})_{; \phi} p^\phi = -\fv{R}{\alp}{\phi \gam \phi} \xi^\gam
+		= -\fv{R}{\alp}{\phi \tht \phi} \xit,
+	}
+	since the only nonzero $R_{\alp \bet \gam \del}$ have two $\tht$ and two $\phi$ indices.  Applying Eq.~\refeq{thing2} to the left-hand side of \ref{thing5b},
+	\eqn{lhs5}{
+		(\fv{\xi}{\alp}{; \phi})_{; \phi} = (\fv{\xi}{\alp}{, \phi} + \xi^\mu \fv{\Gam}{\alp}{\mu \phi})_{, \phi} + (\fv{\xi}{\nu}{, \phi} + \xi^\mu \fv{\Gam}{\nu}{\mu \phi}) \fv{\Gam}{\alp}{\nu \phi}.
+	}
+	For $\alp = \tht$,
+	\al{
+		(\fv{\xi}{\tht}{; \phi})_{; \phi} &= (\fv{\xi}{\tht}{, \phi} + \xi^\tht \fv{\Gam}{\tht}{\tht \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi})_{, \phi} + (\fv{\xi}{\tht}{, \phi} + \xi^\tht \fv{\Gam}{\tht}{\tht \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi}) \fv{\Gam}{\tht}{\tht \phi} + (\xi^\phi \fv{\Gam}{\phi}{\tht \phi} + \xi^\phi \fv{\Gam}{\phi}{\phi \phi}) \fv{\Gam}{\tht}{\phi \phi} \\
+		&= (\fv{\xi}{\tht}{, \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi})_{, \phi} + \xi^\phi \fv{\Gam}{\phi}{\tht \phi} \fv{\Gam}{\tht}{\phi \phi} \\
+		&= \paren{ \fv{\xi}{\tht}{, \phi} - \frac{\cot\tht}{a} \xi^\phi }_{, \phi} - \frac{\cot^2\tht}{a^2} \xi^\phi \\
+		&= \frac{1}{a^2} \dv[2]{\xit}{\phi},
+	}
+	where we have used Eq.~\refeq{Gammas} and $\tht = \pi / 2$.  Combining with the right-hand side of Eq.~\refeq{thing5b} then gives us
+	\eq{
+		\frac{1}{a^2} \dv[2]{\xit}{\phi} = -\fv{R}{\tht}{\phi \tht \phi} \xit
+		= -\frac{1}{a^2} \xit
+		\qimplies
+		\ans{ \dv[2]{\xit}{\phi} = -\xit, }
+	}
+	where we have used Eq.~\refeq{show4d}.
+	
+	For $\alp = \phi$, Eq.~\refeq{lhs5} gives us
+	\al{
+		(\fv{\xi}{\phi}{; \phi})_{; \phi} &= (\fv{\xi}{\phi}{, \phi} + \xi^\tht \fv{\Gam}{\phi}{\tht \phi} + \xi^\phi \fv{\Gam}{\phi}{\phi \phi})_{, \phi} + (\fv{\xi}{\tht}{, \phi} + \xi^\tht \fv{\Gam}{\tht}{\tht \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi}) \fv{\Gam}{\phi}{\tht \phi} + (\fv{\xi}{\phi}{, \phi} + \xi^\tht \fv{\Gam}{\phi}{\tht \phi} + \xi^\phi \fv{\Gam}{\phi}{\phi \phi}) \fv{\Gam}{\phi}{\phi \phi} \\
+		&= (\fv{\xi}{\phi}{, \phi} + \xi^\tht \fv{\Gam}{\phi}{\tht \phi})_{, \phi} + (\fv{\xi}{\tht}{, \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi}) \fv{\Gam}{\phi}{\tht \phi} \\
+		&= \paren{ \fv{\xi}{\phi}{, \phi} + \frac{\cot\tht}{r} \xi^\tht }_{, \phi} + \paren{ \fv{\xi}{\tht}{, \phi} - \frac{\cot\tht}{r} \xi^\phi } \frac{\cot\tht}{r} \\
+		&= \frac{1}{a^2} \dv[2]{\xip}{\phi},
+	}
+	and combining with the right-hand side of Eq.~\refeq{thing5b},
+	\eq{
+		\frac{1}{a^2} \dv[2]{\xip}{\phi} = 0
+		\qimplies
+		\ans{ \dv[2]{\xip}{\phi} = 0, }
+	}
+	so we have proven Eq.~\refeq{show5b}. \qed
 }
 
 
@@ -321,6 +300,46 @@
 		\xip &= 0.
 	}
 	Verify, by drawing a picture, that this is precisely what one would expect for the separation vector between two great circles.
+}
+
+\sol{
+	The differential equations have the solutions~\cite[pp.~206--207]{Swartz}
+	\al{
+		\dv[2]{\xit}{\phi} = -\xit
+		&\qimplies
+		\xit(\phi) = A \sin\phi + B \cos\phi, &
+		%
+		\dv[2]{\xip}{\phi} = 0
+		&\qimplies
+		\xip(\phi) = C + D \phi.
+	}
+	For the initial conditions, as stated $\vxi(\phi = 0) = b \vest$, so $\xit(0) = b$ and $\xip(0) = 0$.  This means
+	\al{
+		b &= B, &
+		0 &= C.
+	}
+	It is also clear that
+	\al{
+		\left. \dv{\xit}{\phi} \right|_{\phi = 0} &= \left. \dv{b}{\phi} \right|_{\phi = 0} = 0, &
+		\left. \dv{\xip}{\phi} \right|_{\phi = 0} &= \left. \dv{0}{\phi} \right|_{\phi = 0} = 0,
+	}
+	which gives us
+	\al{
+		0 &= \left. \dv{\xit}{\phi} \right|_{\phi = 0}
+		= \bigg[ A \cos\phi - b \sin\phi \bigg]_{\phi = 0}
+		= A, &
+		0 &= \left. \dv{\xip}{\phi} \right|_{\phi = 0}
+		= \bigg[ D \bigg]_{\phi = 0}
+		= D.
+	}
+	So we have the solutions
+	\ans{\al{
+		\xit &= b \cos\phi, &
+		\xip &= 0
+	}}%
+	as we wanted to show. \qed
+	
+	\hl{how the heck to draw this picture}
 }
 
 
