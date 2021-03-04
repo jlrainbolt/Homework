@@ -56,6 +56,7 @@
 	}}%
 	as we wanted to show. \qed
 	
+	\clearpage
 	By computer, we use a Mathematica notebook adapted from Ref.~\cite{Hartle}:
 	
 	\scalebox{0.625}{
@@ -81,12 +82,17 @@
 		R_{\alp \bet \gam \del} &= -R_{\alp \bet \del \gam}, &
 		R_{\alp \bet \gam \del} &= +R_{\gam \del \alp \bet}.
 	}
-	Applying these to the six possible permutations of $\{ \tht, \tht, \phi, \phi \}$, we have
-	\ans{\al{
+	From the first two equations here, all permutations of four like indices and of three like indices vanish.  That is,
+	\al{
+		R_{\tht \tht \tht \tht} &= - R_{\tht \tht \tht \tht} = 0, &
+		R_{\tht \phi \phi \phi} &= R_{\phi \tht \phi \phi} = R_{\phi \phi \tht \phi} = R_{\phi \phi \phi \tht} = 0,
+	}
+	and likewise for $\tht \lrarrow \phi$.  The remaining possibilities are permutations of $\{ \tht, \tht, \phi, \phi \}$.  Applying Eq.~\refeq{symm}, we have
+	\al{
 		R_{\tht \tht \phi \phi} &= -R_{\tht \tht \phi \phi} = 0, &
 		R_{\phi \phi \tht \tht} &= -R_{\phi \phi \tht \tht} = 0, &
-		R_{\tht \phi \phi \tht} &= -R_{\phi \tht \phi \tht} = -R_{\tht \phi \tht \phi} = R_{\phi \tht \tht \phi},
-	}}%
+		\ans{ R_{\tht \phi \phi \tht}\ }&\ans{ = -R_{\phi \tht \phi \tht} = -R_{\tht \phi \tht \phi} = R_{\phi \tht \tht \phi} \neq 0, }
+	}
 	as we wanted to show. \qed
 }
 
@@ -184,9 +190,6 @@
 	where we have used $\sfv{c}{\thh \phh}{\phh} = -\cot\tht / a$ from Problem~1(a) of Homework~3. \qed
 	
 	It is also useful to note that
-	\al{
-		R_{\alp \bet \gam \del} = \Gam_{\alp \bet \del, \gam} - \Gam_{\alp \bet \gam, \del} + \Gam_{\alp \mu \gam} \fv{\Gam}{\mu}{\bet \del} - \Gam_{\alp \mu \del} \fv{\Gam}{\mu}{\bet \gam} - \Gam_{\alp \bet \mu} \sfv{c}{\gam \del}{\mu},
-	}
 	\al{
 		R_{\thh \thh \thh \thh} &= \Gam_{\thh \thh \thh, \thh} - \Gam_{\thh \thh \thh, \thh} + \Gam_{\thh \mu \thh} \fv{\Gam}{\mu}{\thh \thh} - \Gam_{\thh \mu \thh} \fv{\Gam}{\mu}{\thh \thh} - \Gam_{\thh \thh \mu} \sfv{c}{\thh \thh}{\mu} = 0, \\
 		%

@@ -1,0 +1,127 @@
+\state{Geodesic deviation on a sphere~(MCP 25.14)}{ \label{5}
+	Consider two neighboring geodesics (great circles) on a sphere of radius $a$, one the equator and the other a geodesic slightly displaced from the equator (by $\Del\tht = b$) and parallel to it at $\phi = 0$.  Let $\vxi$ be the separation vector between the two geodesics, and note that at $\phi = 0$, $\vxi = b \pdv*{\tht}$.  Let $l$ be proper distance along the equatorial geodesic, so $\dv*{l} = \vuu$ is its tangent vector.
+}
+
+\prob{
+	Show that $l = a \phi$ along the equatorial geodesic.
+}
+
+\sol{
+	We know from Eq.~\refeq{given4} that, on the equator where $\tht = \pi / 2$,
+	\eq{
+		\dds^2 = a^2 \sin[2](\frac{\pi}{2}) \ddphi^2
+		= a^2 \ddphi^2.
+	}
+	Integrating both sides of the equation,
+	\eq{
+		\int_0^l \dds = \int_0^\phi a \ddphi
+		\qimplies
+		\ans{ l = a \phi. }
+	}
+	This is merely the expression for the arc length of a circle of radius $a$ for a segment of angle $\tht$. \qed
+}
+
+
+\clearpage
+\prob{
+	Show that the equation of geodesic deviation (25.31) reduces to
+	\aln{ \label{show5b}
+		\dv[2]{\xit}{\phi} &= -\xit, &
+		\dv[2]{\xip}{\phi} &= 0.
+	}
+	\vfix
+}
+
+\sol{
+	The equation of geodesic deviation is
+	\eqn{gd}{
+		(\fv{\xi}{\alp}{; \bet} p^\bet)_{; \gam} p^\gam = -\fv{R}{\alp}{\bet \gam \del} p^\bet \xi^\gam p^\del,
+	}
+	where $\vp$ is a 4-momentum tangent problem and is equal to $\vuu$ in this problem.  By definition, $\vuu$ has only a component in the $\phi$ direction, which is equal to 1.  Then Eq.~\refeq{gd} reduces to
+	\eqn{thing5b}{
+		(\fv{\xi}{\alp}{; \phi})_{; \phi} p^\phi = -\fv{R}{\alp}{\phi \gam \phi} \xi^\gam
+		= -\fv{R}{\alp}{\phi \tht \phi} \xit,
+	}
+	since the only nonzero $R_{\alp \bet \gam \del}$ have two $\tht$ and two $\phi$ indices.  Applying Eq.~\refeq{thing2} to the left-hand side of \ref{thing5b},
+	\eqn{lhs5}{
+		(\fv{\xi}{\alp}{; \phi})_{; \phi} = (\fv{\xi}{\alp}{, \phi} + \xi^\mu \fv{\Gam}{\alp}{\mu \phi})_{, \phi} + (\fv{\xi}{\nu}{, \phi} + \xi^\mu \fv{\Gam}{\nu}{\mu \phi}) \fv{\Gam}{\alp}{\nu \phi}.
+	}
+	For $\alp = \tht$,
+	\al{
+		(\fv{\xi}{\tht}{; \phi})_{; \phi} &= (\fv{\xi}{\tht}{, \phi} + \xi^\tht \fv{\Gam}{\tht}{\tht \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi})_{, \phi} + (\fv{\xi}{\tht}{, \phi} + \xi^\tht \fv{\Gam}{\tht}{\tht \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi}) \fv{\Gam}{\tht}{\tht \phi} + (\xi^\phi \fv{\Gam}{\phi}{\tht \phi} + \xi^\phi \fv{\Gam}{\phi}{\phi \phi}) \fv{\Gam}{\tht}{\phi \phi} \\
+		&= (\fv{\xi}{\tht}{, \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi})_{, \phi} + \xi^\phi \fv{\Gam}{\phi}{\tht \phi} \fv{\Gam}{\tht}{\phi \phi} \\
+		&= \paren{ \fv{\xi}{\tht}{, \phi} - \frac{\cot\tht}{a} \xi^\phi }_{, \phi} - \frac{\cot^2\tht}{a^2} \xi^\phi \\
+		&= \frac{1}{a^2} \dv[2]{\xit}{\phi},
+	}
+	where we have used Eq.~\refeq{Gammas} and $\tht = \pi / 2$.  Combining with the right-hand side of Eq.~\refeq{thing5b} then gives us
+	\eq{
+		\frac{1}{a^2} \dv[2]{\xit}{\phi} = -\fv{R}{\tht}{\phi \tht \phi} \xit
+		= -\frac{1}{a^2} \xit
+		\qimplies
+		\ans{ \dv[2]{\xit}{\phi} = -\xit, }
+	}
+	where we have used Eq.~\refeq{show4d}.
+	
+	For $\alp = \phi$, Eq.~\refeq{lhs5} gives us
+	\al{
+		(\fv{\xi}{\phi}{; \phi})_{; \phi} &= (\fv{\xi}{\phi}{, \phi} + \xi^\tht \fv{\Gam}{\phi}{\tht \phi} + \xi^\phi \fv{\Gam}{\phi}{\phi \phi})_{, \phi} + (\fv{\xi}{\tht}{, \phi} + \xi^\tht \fv{\Gam}{\tht}{\tht \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi}) \fv{\Gam}{\phi}{\tht \phi} + (\fv{\xi}{\phi}{, \phi} + \xi^\tht \fv{\Gam}{\phi}{\tht \phi} + \xi^\phi \fv{\Gam}{\phi}{\phi \phi}) \fv{\Gam}{\phi}{\phi \phi} \\
+		&= (\fv{\xi}{\phi}{, \phi} + \xi^\tht \fv{\Gam}{\phi}{\tht \phi})_{, \phi} + (\fv{\xi}{\tht}{, \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi}) \fv{\Gam}{\phi}{\tht \phi} \\
+		&= \paren{ \fv{\xi}{\phi}{, \phi} + \frac{\cot\tht}{r} \xi^\tht }_{, \phi} + \paren{ \fv{\xi}{\tht}{, \phi} - \frac{\cot\tht}{r} \xi^\phi } \frac{\cot\tht}{r} \\
+		&= \frac{1}{a^2} \dv[2]{\xip}{\phi},
+	}
+	and combining with the right-hand side of Eq.~\refeq{thing5b},
+	\eq{
+		\frac{1}{a^2} \dv[2]{\xip}{\phi} = 0
+		\qimplies
+		\ans{ \dv[2]{\xip}{\phi} = 0, }
+	}
+	so we have proven Eq.~\refeq{show5b}. \qed
+}
+
+
+
+\prob{
+	Solve Eq.~\refeq{show5b}, subject to the above initial conditions, to obtain
+	\al{
+		\xit &= b \cos\phi, &
+		\xip &= 0.
+	}
+	Verify, by drawing a picture, that this is precisely what one would expect for the separation vector between two great circles.
+}
+
+\sol{
+	The differential equations have the solutions~\cite[pp.~206--207]{Swartz}
+	\al{
+		\dv[2]{\xit}{\phi} = -\xit
+		&\qimplies
+		\xit(\phi) = A \sin\phi + B \cos\phi, &
+		%
+		\dv[2]{\xip}{\phi} = 0
+		&\qimplies
+		\xip(\phi) = C + D \phi.
+	}
+	For the initial conditions, as stated $\vxi(\phi = 0) = b \vest$, so $\xit(0) = b$ and $\xip(0) = 0$.  This means
+	\al{
+		b &= B, &
+		0 &= C.
+	}
+	It is also clear that the great circles intersect at $\xi = \pm \pi / 2$.  This gives us
+	\al{
+		\xit(\pi / 2) &= A = 0, &
+		\xip(\pi / 2) &= D \frac{\pi}{2} = 0 \qimplies D = 0.
+	}
+	So we have the solutions
+	\ans{\al{
+		\xit &= b \cos\phi, &
+		\xip &= 0
+	}}%
+	as we wanted to show. \qed
+	
+	Figure~\refeq{f5c} shows $\vxi$ at a few points on the sphere, with the coordinates labeled for the given initial conditions.  At any given point $\cP$ on the equator, the closest point on the second great circle will always be directly ``above'' or ``below'' $\cP$.  That is to say, if $\xit$ is nonzero at any $\cP$, $\vxi$ would not be the separation vector between the two geodesics because it would not indicate the shortest distance between them.  The points at which the great circles intersect for the given initial condition make $\xip$ obvious.
+	
+	\begin{figure}[b] \centering
+		\includegraphics[width=0.3\textwidth]{sphere.jpg}
+		\caption{Figure showing $\vxi$ on the sphere of Problem~\ref{5}.}
+		\label{f5c}
+	\end{figure}
+}

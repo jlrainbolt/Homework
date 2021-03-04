@@ -16,331 +16,14 @@
 
 
 
-\state{Ocean tides~(MCP 25.9)}{\hfix}
-
-\prob{
-	Place a local Lorentz frame at the center of Earth, and let $\cEsjk$ be the tidal field there, produced by the Newtonian gravitational fields of the Sun and the Moon.  For simplicity, treat Earth as precisely spherical.  Show that the gravitational acceleration (relative to Earth's center) at some location on or near Earth's surface (radius $r$) is
-	\eq{
-		\gsj = -\frac{G M}{r^2} \nj - \cEjsk r \nk,
-	}
-	where $M$ is Earth's mass, and $\nj$ is a unit vector pointing from Earth's center to the location at which $\gsj$ is evaluated.
-}
-
-
-
-\prob{
-	Show that this gravitational acceleration is minus the gradient of the Newtonian potential
-	\eq{
-		\Phi = -\frac{G M}{r} + \frac{1}{2} \cEsjk r^2 \nj \nk.
-	}
-}
-
-
-
-\prob{
-	Consider regions of Earth's oceans that are far from any coast and have ocean depth large compared to the heights of ocean tides.  If Earth were nonrotating, then explain why the analysis of Sec~13.3 predicts that the ocean surface in these regions would be a surface of constant $\Phi$.  Explain why this remains true to good accuracy also for the rotating Earth.
-}
-
-
-
-\prob{
-	Show that in these ocean regions, the Moon creates high tides pointing toward and away from itself and low tides in the transverse directions on Earth; and similarly for the Sun.  Compute the difference between high and low tides produced by the Moon and by the Sun, and the difference of the total tide when the Moon and the Sun are in approximately the same direction in the sky.  Your answers are reasonably accurate for deep-ocean regions far from any coast, but near a coast, the tides are typically larger and sometimes far larger, and they are shifted in phase relative to the positions of the moon and Sun.  Why?
-}
-
-
-
-
-
-
+\input{Problem1}
 \clearpage
 \input{Problem2}
-
-
-
-
-
-
 \clearpage
-\state{Weyl curvature tensor~(MCP 25.12)}{
-	Show that the Weyl curvature tensor~(25.48) has vanishing contraction on all its slots and has the same symmetries as Riemann: Eqs.~(25.45).  From these properties, show that Weyl has just 10 independent components.  Write the Riemann tensor in terms of the Weyl tensor, the Ricci tensor, and the scalar curvature.
-}
-
-\sol{
-	MCP~(25.48) is
-	\eqn{weyl}{
-		\fv{C}{\mu \nu}{\rho \sig} = \fv{R}{\mu \nu}{\rho \sig} - 2 \fv{\sg}{[ \mu}{[ \rho} \fv{R}{\nu ]}{\sig ]} + \frac{1}{3} \fv{\sg}{[ \mu}{[ \rho} \fv{\sg}{\nu ]}{\sig ]} R,
-	}
-	where the square brackets denote antisymmetrization, $A_{[ \alp \bet ]} = (A_{\alp \bet} - A_{\bet \alp}) / 2$, and $R = \fv{R}{\alp}{\alp}$.  Lowering the indices and expanding out the antisymmetrizations gives us
-	\aln{
-		C_{\mu \nu \rho \sig} &= R_{\mu \nu \rho \sig} - \paren{ \sg_{\mu \ [ \rho} R_{\nu \ \sig ]} - \sg_{\nu \ [ \rho} R_{\mu \ \sig ]} } + \frac{1}{6} \paren{ \sg_{\mu \ [ \rho} \sg_{\nu \ \sig ]} - \sg_{\nu \ [ \rho} \sg_{\mu \ \sig ]} } R \notag \\
-		&= R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R. \label{lowC}
-	}
-	
-	We begin by interchanging indices since it makes the other proofs easier.  Interchanging the first two indices,
-	\al{
-		C_{\nu \mu \rho \sig} &= R_{\nu \mu \rho \sig} - \frac{1}{2} \paren{ \sg_{\nu \rho} R_{\mu \sig} - \sg_{\nu \sig} R_{\mu \rho} - \sg_{\mu \rho} R_{\nu \sig} + \sg_{\mu \sig} R_{\nu \rho} } + \frac{1}{12} \paren{ \sg_{\nu \rho} \sg_{\mu \sig} - \sg_{\nu \sig} \sg_{\mu \rho} - \sg_{\mu \rho} \sg_{\nu \sig} + \sg_{\mu \sig} \sg_{\nu \rho} } R \\
-		&= -\brac{ R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R } \\
-		&= - C_{\mu \nu \rho \sig},
-	}
-	where we have used $R_{\alp \bet \gam \del} = -R_{\bet \alp \gam \del}$ from MCP~(25.45a).
-	
-	Interchanging the last two indices,
-	\al{
-		C_{\mu \nu \sig \rho} &= R_{\mu \nu \sig \rho} - \frac{1}{2} \paren{ \sg_{\mu \sig} R_{\nu \rho} - \sg_{\mu \rho} R_{\nu \sig} - \sg_{\nu \sig} R_{\mu \rho} + \sg_{\nu \rho} R_{\mu \sig} } + \frac{1}{12} \paren{ \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\nu \sig} \sg_{\mu \rho} + \sg_{\nu \rho} \sg_{\mu \sig} } R \\
-		&= -\brac{ R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R } \\
-		&= - \fv{C}{\mu \nu}{\rho \sig},
-	}
-	where we have used $R_{\alp \bet \gam \del} = -R_{\alp \bet \del \gam}$ from MCP~(25.45a).
-	
-	Interchanging the first and second pair of indices,
-	\al{
-		C_{\rho \sig \mu \nu} &= R_{\rho \sig \mu \nu} - \frac{1}{2} \paren{ \sg_{\rho \mu} R_{\sig \nu} - \sg_{\rho \nu} R_{\sig \mu} - \sg_{\sig \mu} R_{\rho \nu} + \sg_{\sig \nu} R_{\rho \mu} } + \frac{1}{12} \paren{ \sg_{\rho \mu} \sg_{\sig \nu} - \sg_{\rho \nu} \sg_{\sig \mu} - \sg_{\sig \mu} \sg_{\rho \nu} + \sg_{\sig \nu} \sg_{\rho \mu} } R \\
-		&= R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R \\
-		&= \fv{C}{\mu \nu}{\rho \sig},
-	}
-	where we have used the symmetry of the metric, $\fv{\sg}{\mu}{\nu} = \fv{\sg}{\nu}{\mu}$, and $R_{\alp \bet \gam \del} = +R_{\gam \del \alp \bet}$ from MCP~(25.45a).
-
-	Note also that
-	\al{
-		C_{\mu \rho \sig \nu} &= R_{\mu \rho \sig \nu} - \frac{1}{2} \paren{ \sg_{\mu \sig} R_{\rho \nu} - \sg_{\mu \nu} R_{\rho \sig} - \sg_{\rho \sig} R_{\mu \nu} + \sg_{\rho \nu} R_{\mu \sig} } + \frac{1}{12} \paren{ \sg_{\mu \sig} \sg_{\rho \nu} - \sg_{\mu \nu} \sg_{\rho \sig} - \sg_{\rho \sig} \sg_{\mu \nu} + \sg_{\rho \nu} \sg_{\mu \sig} } R, \\
-		%
-		C_{\mu \sig \nu \rho} &= R_{\mu \sig \nu \rho} - \frac{1}{2} \paren{ \sg_{\mu \nu} R_{\sig \rho} - \sg_{\mu \rho} R_{\sig \nu} - \sg_{\sig \nu} R_{\mu \rho} + \sg_{\sig \rho} R_{\mu \nu} } + \frac{1}{12} \paren{ \sg_{\mu \nu} \sg_{\sig \rho} - \sg_{\mu \rho} \sg_{\sig \nu} - \sg_{\sig \nu} \sg_{\mu \rho} + \sg_{\sig \rho} \sg_{\mu \nu} } R.
-	}
-	Then for the equivalent to MCP~(25.45b),
-	\al{
-		C_{\mu \nu \rho \sig} + C_{\mu \rho \sig \nu} + C_{\mu \sig \nu \rho}
-		&= R_{\mu \nu \rho \sig} + R_{\mu \rho \sig \nu} + R_{\mu \sig \nu \rho} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } \\
-		&\hspace{5em} \phantom{=} - \frac{1}{2} \paren{ \sg_{\mu \sig} R_{\rho \nu} - \sg_{\mu \nu} R_{\rho \sig} - \sg_{\rho \sig} R_{\mu \nu} + \sg_{\rho \nu} R_{\mu \sig} } \\
-		&\hspace{5em} \phantom{=} - \frac{1}{2} \paren{ \sg_{\mu \nu} R_{\sig \rho} - \sg_{\mu \rho} R_{\sig \nu} - \sg_{\sig \nu} R_{\mu \rho} + \sg_{\sig \rho} R_{\mu \nu} } \\
-		&\hspace{5em} \phantom{=} + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R \\
-		&\hspace{5em} \phantom{=} + \frac{1}{12} \paren{ \sg_{\mu \sig} \sg_{\rho \nu} - \sg_{\mu \nu} \sg_{\rho \sig} - \sg_{\rho \sig} \sg_{\mu \nu} + \sg_{\rho \nu} \sg_{\mu \sig} } R \\
-		&\hspace{5em} \phantom{=} + \frac{1}{12} \paren{ \sg_{\mu \nu} \sg_{\sig \rho} - \sg_{\mu \rho} \sg_{\sig \nu} - \sg_{\sig \nu} \sg_{\mu \rho} + \sg_{\sig \rho} \sg_{\mu \nu} } R \\
-		&= 0,
-	}
-	where we have used $R_{\alp \bet \gam \del} + R_{\alp \gam \del \bet} + R_{\alp \del \bet \gam} = 0$ from MCP~(25.45b), and the symmetry of the metric tensor.  Thus we have shown that the Weyl curvature tensor has the same symmetries as Riemann in MCP~(25.45): \vfix
-	\ans{\aln{ \label{Csymm}
-		C_{\nu \mu \rho \sig} &= -C_{\mu \nu \rho \sig}, &
-		C_{\mu \nu \sig \rho} &= -C_{\mu \nu \rho \sig}, &
-		C_{\rho \sig \mu \nu} &= +C_{\mu \nu \rho \sig}, &
-		C_{\mu \nu \rho \sig} + C_{\mu \rho \sig \nu} + C_{\mu \sig \nu \rho} &= 0.
-	}}%
-	Now for the contractions.  Contracting the indices within each pair,
-	\aln{ \label{thingy2}
-		\sg^{\mu \nu} C_{\mu \nu \rho \sig} &= \sfvt{C}{\mu}{\mu}{\rho \sig}
-		= -\sfvt{C}{\mu}{\mu}{\rho \sig}
-		= 0, &
-		%
-		\sg^{\rho \sig} C_{\mu \nu \rho \sig} &= \sfv{C}{\mu \nu \rho}{\rho}
-		= -\sfv{C}{\mu \nu \rho}{\rho}
-		= 0,
-	}
-	where we have used $C_{\nu \mu \rho \sig} = -C_{\mu \nu \rho \sig}$ and our ability to swap covariant and contravariant for summed indices.
-	
-	Contracting the first and third indices,
-	\al{
-		\sg^{\mu \rho} C_{\mu \nu \rho \sig} &= \sg^{\mu \rho} \brac{ R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R } \\
-		&= \sfvt{R}{\mu \nu}{\mu}{\sig} - \frac{1}{2} \paren{ \sfv{\sg}{\mu}{\mu} R_{\nu \sig} - \sg_{\mu \sig} \sfv{R}{\nu}{\mu} - \sfv{\sg}{\nu}{\mu} R_{\mu \sig} + \sg_{\nu \sig} \sfv{R}{\mu}{\mu} } + \frac{1}{12} \paren{ \sfv{\sg}{\mu}{\mu} \sg_{\nu \sig} - \sg_{\mu \sig} \sfv{\sg}{\nu}{\mu} - \sfv{\sg}{\nu}{\mu} \sg_{\mu \sig} + \sg_{\nu \sig} \sfv{\sg}{\mu}{\mu} } R \\
-		&= R_{\nu \sig} - \frac{1}{2} \paren{ 4 R_{\nu \sig} - R_{\nu \sig} - R_{\nu \sig} + \sg_{\nu \sig} R } + \frac{1}{12} \paren{ 4 \sg_{\nu \sig} - \sg_{\nu \sig} - \sg_{\nu \sig} + 4 \sg_{\nu \sig} } R \\
-		&= R_{\nu \sig} - R_{\nu \sig} - \frac{1}{2} \sg_{\nu \sig} R + \frac{1}{2} \sg_{\nu \sig} R \\
-		&= 0,
-	}
-	where we have used MCP~(24.10), $\sg^{\mu \bet} \sg_{\bet \nu} = \fv{\del}{\mu}{\nu}$, to find $\fv{\sg}{\mu}{\mu} = 4$.  Then, using Eq.~\refeq{Csymm}, we have
-	\eq{
-		0 = \sfvt{C}{\mu \nu}{\mu}{\sig}
-		= -\sfv{C}{\mu \nu \sig}{\mu}
-		= -\sfvt{C}{\nu \mu}{\mu}{\sig}
-		= \sfv{C}{\nu \mu \sig}{\mu}.
-	}
-	Rewriting these as contractions, and incorporating our results in Eq.~\refeq{thingy2}, we have shown
-	\eq{
-		\ans{ 0 = \sg^{\mu \nu} C_{\mu \nu \rho \sig}
-		= \sg^{\mu \rho} C_{\mu \nu \rho \sig}
-		= \sg^{\mu \sig} C_{\mu \nu \rho \sig}
-		= \sg^{\nu \rho} C_{\mu \nu \rho \sig}
-		= \sg^{\nu \sig} C_{\mu \nu \rho \sig}
-		= \sg^{\rho \sig} C_{\mu \nu \rho \sig}; }
-	}
-	that is, the Weyl curvature tensor has vanishing contraction on all its slots.
-	
-	To show that Weyl has just 10 independent components, we refer to the discussion at the end of Lecture~11.  If there were no symmetries, in $n = 4$ spacetime dimensions $C_{\alp \bet \gam \del}$ would have $n^4 = 4^4$ independent components.  Each symmetry gives rise to some number of independent components:
-	\al{
-		\alp \lrarrow \bet \antisymmetry &\qimplies \frac{n (n - 1)}{2} = 6 \components, \\
-		\gam \lrarrow \del \antisymmetry &\qimplies \frac{n (n - 1)}{2} = 6 \components, \\
-		\alp \bet \lrarrow \gam \del \symmetry &\qimplies \text{components reduced by } \frac{1}{2}.
-	}
-	Combining the three (anti)symmetries, we have a total of
-	\eq{
-		\paren{ \frac{n (n - 1)}{2} } \paren{ \frac{n (n - 1)}{2} + 1 } \frac{1}{2} = 21 \components.
-	}
-	Now we account for the constraints imposed by $C_{\mu \nu \rho \sig} + C_{\mu \rho \sig \nu} + C_{\mu \sig \nu \rho} = 0$.  This expression is redundant if any of the indices are the same; for example,
-	\eq{
-		C_{\mu \mu \rho \sig} + C_{\mu \rho \sig \mu} + C_{\mu \sig \mu \rho}
-		= 0 + C_{\sig \mu \mu \rho} + C_{\mu \sig \mu \rho}
-		= C_{\sig \mu \mu \rho} - C_{\sig \mu \mu \rho}
-		= 0,
-	}
-	which we already knew from the other symmetries.  Since there are four indices, this requirement gives us
-	\eq{
-		{ n \choose 4 } = 1 \text{ constraint}.
-	}
-	Finally we account for the constraints imposed by the vanishing contractions.  After accounting for the (anti)symmetries, we are left with two unique vanishing contractions, which impose
-	\eq{
-		\frac{n (n + 1)}{2} = 10 \constraints.
-	}
-	\hl{this probably is wrong but eh}
-	
-	Finally, we find the number of independent components by
-	\eq{
-		N_\text{components} - N_\text{constraints} = 21 - (1 + 10) = \ans{ 10 \text{ independent components} }
-	}
-	as we wanted to show. \qed
-	
-	\hl{general form of 25.48?}
-}
-
-
-
-
-
-
+\input{Problem3}
 \clearpage
 \input{Problem4}
-
-
-
-
-
-\clearpage
-\state{Geodesic deviation on a sphere~(MCP 25.14)}{
-	Consider two neighboring geodesics (great circles) on a sphere of radius $a$, one the equator and the other a geodesic slightly displaced from the equator (by $\Del\tht = b$) and parallel to it at $\phi = 0$.  Let $\vxi$ be the separation vector betwen the two geodesics, and note that at $\phi = 0$, $\vxi = b \pdv*{\tht}$.  Let $l$ be proper distance along the equatorial geodesic, so $\dv*{l} = \vuu$ is its tangent vector.
-}
-
-\prob{
-	Show that $l = a \phi$ along the equatorial geodesic.
-}
-
-\sol{
-	We know from Eq.~\refeq{given4} that, on the equator where $\tht = \pi / 2$,
-	\eq{
-		\dds^2 = a^2 \sin[2](\frac{\pi}{2}) \ddphi^2
-		= a^2 \ddphi^2.
-	}
-	Integrating both sides of the equation,
-	\eq{
-		\int_0^l \dds = \int_0^\phi a \ddphi
-		\qimplies
-		\ans{ l = a \phi. }
-	}
-	This is merely the expression for the arc length of a circle of radius $a$ for a segment of angle $\tht$. \qed
-}
-
-
-
-\prob{
-	Show that the equation of geodesic deviation (25.31) reduces to
-	\aln{ \label{show5b}
-		\dv[2]{\xit}{\phi} &= -\xit, &
-		\dv[2]{\xip}{\phi} &= 0.
-	}
-	\vfix
-}
-
-\sol{
-	The equation of geodesic deviation is
-	\eqn{gd}{
-		(\fv{\xi}{\alp}{; \bet} p^\bet)_{; \gam} p^\gam = -\fv{R}{\alp}{\bet \gam \del} p^\bet \xi^\gam p^\del,
-	}
-	where $\vp$ is a 4-momentum tangent problem and is equal to $\vuu$ in this problem.  By definition, $\vuu$ has only a component in the $\phi$ direction, which is equal to 1.  Then Eq.~\refeq{gd} reduces to
-	\eqn{thing5b}{
-		(\fv{\xi}{\alp}{; \phi})_{; \phi} p^\phi = -\fv{R}{\alp}{\phi \gam \phi} \xi^\gam
-		= -\fv{R}{\alp}{\phi \tht \phi} \xit,
-	}
-	since the only nonzero $R_{\alp \bet \gam \del}$ have two $\tht$ and two $\phi$ indices.  Applying Eq.~\refeq{thing2} to the left-hand side of \ref{thing5b},
-	\eqn{lhs5}{
-		(\fv{\xi}{\alp}{; \phi})_{; \phi} = (\fv{\xi}{\alp}{, \phi} + \xi^\mu \fv{\Gam}{\alp}{\mu \phi})_{, \phi} + (\fv{\xi}{\nu}{, \phi} + \xi^\mu \fv{\Gam}{\nu}{\mu \phi}) \fv{\Gam}{\alp}{\nu \phi}.
-	}
-	For $\alp = \tht$,
-	\al{
-		(\fv{\xi}{\tht}{; \phi})_{; \phi} &= (\fv{\xi}{\tht}{, \phi} + \xi^\tht \fv{\Gam}{\tht}{\tht \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi})_{, \phi} + (\fv{\xi}{\tht}{, \phi} + \xi^\tht \fv{\Gam}{\tht}{\tht \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi}) \fv{\Gam}{\tht}{\tht \phi} + (\xi^\phi \fv{\Gam}{\phi}{\tht \phi} + \xi^\phi \fv{\Gam}{\phi}{\phi \phi}) \fv{\Gam}{\tht}{\phi \phi} \\
-		&= (\fv{\xi}{\tht}{, \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi})_{, \phi} + \xi^\phi \fv{\Gam}{\phi}{\tht \phi} \fv{\Gam}{\tht}{\phi \phi} \\
-		&= \paren{ \fv{\xi}{\tht}{, \phi} - \frac{\cot\tht}{a} \xi^\phi }_{, \phi} - \frac{\cot^2\tht}{a^2} \xi^\phi \\
-		&= \frac{1}{a^2} \dv[2]{\xit}{\phi},
-	}
-	where we have used Eq.~\refeq{Gammas} and $\tht = \pi / 2$.  Combining with the right-hand side of Eq.~\refeq{thing5b} then gives us
-	\eq{
-		\frac{1}{a^2} \dv[2]{\xit}{\phi} = -\fv{R}{\tht}{\phi \tht \phi} \xit
-		= -\frac{1}{a^2} \xit
-		\qimplies
-		\ans{ \dv[2]{\xit}{\phi} = -\xit, }
-	}
-	where we have used Eq.~\refeq{show4d}.
-	
-	For $\alp = \phi$, Eq.~\refeq{lhs5} gives us
-	\al{
-		(\fv{\xi}{\phi}{; \phi})_{; \phi} &= (\fv{\xi}{\phi}{, \phi} + \xi^\tht \fv{\Gam}{\phi}{\tht \phi} + \xi^\phi \fv{\Gam}{\phi}{\phi \phi})_{, \phi} + (\fv{\xi}{\tht}{, \phi} + \xi^\tht \fv{\Gam}{\tht}{\tht \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi}) \fv{\Gam}{\phi}{\tht \phi} + (\fv{\xi}{\phi}{, \phi} + \xi^\tht \fv{\Gam}{\phi}{\tht \phi} + \xi^\phi \fv{\Gam}{\phi}{\phi \phi}) \fv{\Gam}{\phi}{\phi \phi} \\
-		&= (\fv{\xi}{\phi}{, \phi} + \xi^\tht \fv{\Gam}{\phi}{\tht \phi})_{, \phi} + (\fv{\xi}{\tht}{, \phi} + \xi^\phi \fv{\Gam}{\tht}{\phi \phi}) \fv{\Gam}{\phi}{\tht \phi} \\
-		&= \paren{ \fv{\xi}{\phi}{, \phi} + \frac{\cot\tht}{r} \xi^\tht }_{, \phi} + \paren{ \fv{\xi}{\tht}{, \phi} - \frac{\cot\tht}{r} \xi^\phi } \frac{\cot\tht}{r} \\
-		&= \frac{1}{a^2} \dv[2]{\xip}{\phi},
-	}
-	and combining with the right-hand side of Eq.~\refeq{thing5b},
-	\eq{
-		\frac{1}{a^2} \dv[2]{\xip}{\phi} = 0
-		\qimplies
-		\ans{ \dv[2]{\xip}{\phi} = 0, }
-	}
-	so we have proven Eq.~\refeq{show5b}. \qed
-}
-
-
-
-\prob{
-	Solve Eq.~\refeq{show5b}, subject to the above initial conditions, to obtain
-	\al{
-		\xit &= b \cos\phi, &
-		\xip &= 0.
-	}
-	Verify, by drawing a picture, that this is precisely what one would expect for the separation vector between two great circles.
-}
-
-\sol{
-	The differential equations have the solutions~\cite[pp.~206--207]{Swartz}
-	\al{
-		\dv[2]{\xit}{\phi} = -\xit
-		&\qimplies
-		\xit(\phi) = A \sin\phi + B \cos\phi, &
-		%
-		\dv[2]{\xip}{\phi} = 0
-		&\qimplies
-		\xip(\phi) = C + D \phi.
-	}
-	For the initial conditions, as stated $\vxi(\phi = 0) = b \vest$, so $\xit(0) = b$ and $\xip(0) = 0$.  This means
-	\al{
-		b &= B, &
-		0 &= C.
-	}
-	It is also clear that
-	\al{
-		\left. \dv{\xit}{\phi} \right|_{\phi = 0} &= \left. \dv{b}{\phi} \right|_{\phi = 0} = 0, &
-		\left. \dv{\xip}{\phi} \right|_{\phi = 0} &= \left. \dv{0}{\phi} \right|_{\phi = 0} = 0,
-	}
-	which gives us
-	\al{
-		0 &= \left. \dv{\xit}{\phi} \right|_{\phi = 0}
-		= \bigg[ A \cos\phi - b \sin\phi \bigg]_{\phi = 0}
-		= A, &
-		0 &= \left. \dv{\xip}{\phi} \right|_{\phi = 0}
-		= \bigg[ D \bigg]_{\phi = 0}
-		= D.
-	}
-	So we have the solutions
-	\ans{\al{
-		\xit &= b \cos\phi, &
-		\xip &= 0
-	}}%
-	as we wanted to show. \qed
-	
-	\hl{how the heck to draw this picture}
-}
+\input{Problem5}
 
 
 
@@ -350,7 +33,7 @@
 \state{Curvature-coupling torque~(MCP 25.16)}{\hfix}
 
 \prob{
-	In the Newtonian theory of gravity, consider an axisymmetric, spinning body (e.g., Earth) with spin angular momentum $\Sj$ an dtimei-independent mass distribution $\rho(\bx)$, interacting with an externally produced tidal gravitational field $\cEsjk$ (e.g., that of the Sun and the Moon).  Show that the torque around the body's center of mass, exerted by the tidal field, and the resulting evolution of the body's spin are
+	In the Newtonian theory of gravity, consider an axisymmetric, spinning body (e.g., Earth) with spin angular momentum $\Sj$ and time-independent mass distribution $\rho(\bx)$, interacting with an externally produced tidal gravitational field $\cEsjk$ (e.g., that of the Sun and the Moon).  Show that the torque around the body's center of mass, exerted by the tidal field, and the resulting evolution of the body's spin are
 	\eqn{show6a}{
 		\dv{\Ssi}{t} = -\epssijk \cIsjl \cEskl.
 	}
@@ -361,10 +44,56 @@
 	is the body's mass quadrupole moment, with $r = \sqrt{\delsij \xsi \xsj}$ the distance from the center of mass.
 }
 
+\sol{
+	Torque is defined by
+	\eq{
+		\btau = \br \cross \bF
+		\qimplies
+		\tau_i = \eps_{i j k} x_j F_k.
+	}
+	We take $\btau = \dv*{\bS}{t}$ as given.  Then for a mass density~\cite[p.~110]{Muller}, applying Newton's second law yields
+	\eqn{thing6a}{
+		\dv{\Ssi}{t} = \eps_{i j k} \int \rho x_j g_k \ddV,
+	}
+	where the acceleration $\bg$ is due only to the tidal field.  From Eq.~\refeq{show1a}, this gives us
+	\eq{
+		g_k = -\cE_{k l} r n_l
+		= -\cE_{k l} x_l,
+	}
+	where we have used the symmetry of $\bcE$~\cite[p.~1208]{MCP}.  Making this substitution in Eq.~\refeq{thing6a},
+	\eqn{thing6a2}{
+		\dv{\Ssi}{t} = -\eps_{i j k} \cE_{k l} \int \rho x_j x_l \ddV.
+	}
+	The Taylor expansion of an arbitrary function $v(\br - \bR)$ about the origin $\br = \bo$ can be written
+	\eq{
+		r_\alp r_\bet v_{\alp \bet}(\bR) = \frac{1}{3} (3 r_\alp r_\bet - \del_{\alp \bet} r^2) v_{\alp \bet}(\bR),
+	}
+	so long as $v_{\alp \alp}(\bR) = 0$; that is, $v(\bR)$ satisfies the Laplace equation~\cite{Multipole}.  We would need $\eps_{i \alp k} \cE_{k \alp} = 0$, which is true:
+	\al{
+		\eps_{i \alp k} \cE_{k \alp} &= \eps_{i 1 2} \cE_{2 1} + \eps_{i 1 3} \cE_{3 1} + \eps_{i 2 1} \cE_{1 2} + \eps_{i 2 3} \cE_{3 2} + \eps_{i 3 1} \cE_{1 3} + \eps_{i 3 2} \cE_{2 3} \\
+		&= \eps_{i 1 2} \cE_{1 2} + \eps_{i 1 3} \cE_{1 3} - \eps_{i 1 2} \cE_{1 2} + \eps_{i 2 3} \cE_{2 3} - \eps_{i 1 3} \cE_{1 3} - \eps_{i 2 3} \cE_{2 3} \\
+		&= 0,
+	}
+	where we have again used the symmetry of $\bcE$.  Now we can write Eq.~\refeq{thing6a2} as
+	\eq{
+		\ans{ \dv{\Ssi}{t} =\ } {-\eps_{i j k}} \cE_{k l} \int \rho \paren{ x_j x_l - \frac{1}{3} r^2 \del_{j l} } \ddV
+		\ans{\, \equiv -\epssijk \cIsjl \cEskl, }
+	}
+	where we have defined
+	\eq{
+		\ans{ \cIskl \equiv \int \rho \paren{ \xsk \xsl - \frac{1}{3} r^2 \delskl } \ddV, }
+	}
+	which is what we wanted to show. \qed
+}
+
 
 
 \prob{
-	For the centrifugally flattened Earth interacting with the tidal fields of the Moon and the Sun, estimate in order of magnitude the spin-precession period produced by this torque.  [The observed precession period is 26,000 years.]
+	For the centrifugally flattened Earth interacting with the tidal fields of the Moon and the Sun, estimate in order of magnitude the spin-precession period produced by this torque.  (The observed precession period is 26,000 years.)
+}
+
+\sol{
+	I couldn't figure out how to do this one either.
 }
 
 
@@ -372,6 +101,40 @@
 \prob{
 	Show that when rewritten in the language of general relativity, and in frame-independent, geometric language, Eq.~\refeq{show6a} takes the form (25.59) discussed in the text.  As part of showing this, explain the meaning of $\cIsbm$ in that equation.
 }
+
+\sol{
+	MCP~(25.59) is
+	\eq{
+		\fv{S}{\alp}{; \mu} u^\mu = \eps^{\alp \bet \gam \del} \cI_{\bet \mu} \fv{R}{\mu}{\nu \gam \zet} u_\del u^\nu u^\zet.
+	}
+	In the proper rest frame of the Earth, $\vuu = (1, \bo)$.  So the left-hand side of Eq.~\refeq{show6a} is
+	\eqn{lhs6}{
+		\dv{S^i}{t} = \nabla_{\! 0} S^i
+		\to (\nabsm S^i) u^\mu
+		= \fv{S}{i}{; \mu} u^\mu.
+	}
+	By MCP~(25.25), in the local rest frame of two particles with a relative acceleration,
+	\eq{
+		\fv{R}{j}{0 k 0} = \cEsjk,
+	}
+	and by symmetry $\fv{R}{j}{0 k 0} = \fv{R}{k}{0 j 0}$.  Given that $\vuu = (1, \bo)$ in the Earth's proper rest frame, we have
+	\eqn{r6}{
+		\cEsjk = \fv{R}{k}{0 j 0} \to \fv{R}{k}{\nu j \zet} u^\nu u^\zet.
+	}
+	Similarly,
+	\eqn{eps6}{
+		\eps^{i j k} = \eps^{0 i j k}
+		= \eps^{i j k 0}
+		\to \eps^{i j k \del} u_\del.
+	}
+	Feeding Eqs.~\refeq{lhs6}, \refeq{r6}, and \refeq{eps6} into Eq.~\refeq{show6a}, we have
+	\eq{
+		\ans{ \fv{S}{\alp}{; \mu} u^\mu = -\eps^{\alp \bet \gam \del} \cI_{\bet \mu} \fv{R}{\mu}{\nu \gam \zet} u_\del u^\nu u^\zet, }
+	}
+	which is a minus sign away from what we wanted to show.
+}
+
+
 
 \makebib
 

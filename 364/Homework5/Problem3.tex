@@ -1,0 +1,138 @@
+\state{Weyl curvature tensor~(MCP 25.12)}{
+	Show that the Weyl curvature tensor~(25.48) has vanishing contraction on all its slots and has the same symmetries as Riemann: Eqs.~(25.45).  From these properties, show that Weyl has just 10 independent components.  Write the Riemann tensor in terms of the Weyl tensor, the Ricci tensor, and the scalar curvature.
+}
+
+\sol{
+	MCP~(25.48) is
+	\eqn{weyl}{
+		\fv{C}{\mu \nu}{\rho \sig} = \fv{R}{\mu \nu}{\rho \sig} - 2 \fv{\sg}{[ \mu}{[ \rho} \fv{R}{\nu ]}{\sig ]} + \frac{1}{3} \fv{\sg}{[ \mu}{[ \rho} \fv{\sg}{\nu ]}{\sig ]} R,
+	}
+	where the square brackets denote antisymmetrization, $A_{[ \alp \bet ]} = (A_{\alp \bet} - A_{\bet \alp}) / 2$, and $R = \fv{R}{\alp}{\alp}$.  Lowering the indices and expanding out the antisymmetrizations gives us
+	\aln{
+		C_{\mu \nu \rho \sig} &= R_{\mu \nu \rho \sig} - \paren{ \sg_{\mu \ [ \rho} R_{\nu \ \sig ]} - \sg_{\nu \ [ \rho} R_{\mu \ \sig ]} } + \frac{1}{6} \paren{ \sg_{\mu \ [ \rho} \sg_{\nu \ \sig ]} - \sg_{\nu \ [ \rho} \sg_{\mu \ \sig ]} } R \notag \\
+		&= R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R. \label{lowC}
+	}
+	
+	We begin by interchanging indices since it makes the other proofs easier.  Interchanging the first two indices,
+	\al{
+		C_{\nu \mu \rho \sig} &= R_{\nu \mu \rho \sig} - \frac{1}{2} \paren{ \sg_{\nu \rho} R_{\mu \sig} - \sg_{\nu \sig} R_{\mu \rho} - \sg_{\mu \rho} R_{\nu \sig} + \sg_{\mu \sig} R_{\nu \rho} } + \frac{1}{12} \paren{ \sg_{\nu \rho} \sg_{\mu \sig} - \sg_{\nu \sig} \sg_{\mu \rho} - \sg_{\mu \rho} \sg_{\nu \sig} + \sg_{\mu \sig} \sg_{\nu \rho} } R \\
+		&= -\brac{ R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R } \\
+		&= - C_{\mu \nu \rho \sig},
+	}
+	where we have used $R_{\alp \bet \gam \del} = -R_{\bet \alp \gam \del}$ from MCP~(25.45a).
+	
+	Interchanging the last two indices,
+	\al{
+		C_{\mu \nu \sig \rho} &= R_{\mu \nu \sig \rho} - \frac{1}{2} \paren{ \sg_{\mu \sig} R_{\nu \rho} - \sg_{\mu \rho} R_{\nu \sig} - \sg_{\nu \sig} R_{\mu \rho} + \sg_{\nu \rho} R_{\mu \sig} } + \frac{1}{12} \paren{ \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\nu \sig} \sg_{\mu \rho} + \sg_{\nu \rho} \sg_{\mu \sig} } R \\
+		&= -\brac{ R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R } \\
+		&= - \fv{C}{\mu \nu}{\rho \sig},
+	}
+	where we have used $R_{\alp \bet \gam \del} = -R_{\alp \bet \del \gam}$ from MCP~(25.45a).
+	
+	Interchanging the first and second pair of indices,
+	\al{
+		C_{\rho \sig \mu \nu} &= R_{\rho \sig \mu \nu} - \frac{1}{2} \paren{ \sg_{\rho \mu} R_{\sig \nu} - \sg_{\rho \nu} R_{\sig \mu} - \sg_{\sig \mu} R_{\rho \nu} + \sg_{\sig \nu} R_{\rho \mu} } + \frac{1}{12} \paren{ \sg_{\rho \mu} \sg_{\sig \nu} - \sg_{\rho \nu} \sg_{\sig \mu} - \sg_{\sig \mu} \sg_{\rho \nu} + \sg_{\sig \nu} \sg_{\rho \mu} } R \\
+		&= R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R \\
+		&= \fv{C}{\mu \nu}{\rho \sig},
+	}
+	where we have used the symmetry of the metric, $\fv{\sg}{\mu}{\nu} = \fv{\sg}{\nu}{\mu}$, and $R_{\alp \bet \gam \del} = +R_{\gam \del \alp \bet}$ from MCP~(25.45a).
+
+	Note also that
+	\al{
+		C_{\mu \rho \sig \nu} &= R_{\mu \rho \sig \nu} - \frac{1}{2} \paren{ \sg_{\mu \sig} R_{\rho \nu} - \sg_{\mu \nu} R_{\rho \sig} - \sg_{\rho \sig} R_{\mu \nu} + \sg_{\rho \nu} R_{\mu \sig} } + \frac{1}{12} \paren{ \sg_{\mu \sig} \sg_{\rho \nu} - \sg_{\mu \nu} \sg_{\rho \sig} - \sg_{\rho \sig} \sg_{\mu \nu} + \sg_{\rho \nu} \sg_{\mu \sig} } R, \\
+		%
+		C_{\mu \sig \nu \rho} &= R_{\mu \sig \nu \rho} - \frac{1}{2} \paren{ \sg_{\mu \nu} R_{\sig \rho} - \sg_{\mu \rho} R_{\sig \nu} - \sg_{\sig \nu} R_{\mu \rho} + \sg_{\sig \rho} R_{\mu \nu} } + \frac{1}{12} \paren{ \sg_{\mu \nu} \sg_{\sig \rho} - \sg_{\mu \rho} \sg_{\sig \nu} - \sg_{\sig \nu} \sg_{\mu \rho} + \sg_{\sig \rho} \sg_{\mu \nu} } R.
+	}
+	Then for the equivalent to MCP~(25.45b),
+	\al{
+		C_{\mu \nu \rho \sig} + C_{\mu \rho \sig \nu} + C_{\mu \sig \nu \rho}
+		&= R_{\mu \nu \rho \sig} + R_{\mu \rho \sig \nu} + R_{\mu \sig \nu \rho} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } \\
+		&\hspace{5em} \phantom{=} - \frac{1}{2} \paren{ \sg_{\mu \sig} R_{\rho \nu} - \sg_{\mu \nu} R_{\rho \sig} - \sg_{\rho \sig} R_{\mu \nu} + \sg_{\rho \nu} R_{\mu \sig} } \\
+		&\hspace{5em} \phantom{=} - \frac{1}{2} \paren{ \sg_{\mu \nu} R_{\sig \rho} - \sg_{\mu \rho} R_{\sig \nu} - \sg_{\sig \nu} R_{\mu \rho} + \sg_{\sig \rho} R_{\mu \nu} } \\
+		&\hspace{5em} \phantom{=} + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R \\
+		&\hspace{5em} \phantom{=} + \frac{1}{12} \paren{ \sg_{\mu \sig} \sg_{\rho \nu} - \sg_{\mu \nu} \sg_{\rho \sig} - \sg_{\rho \sig} \sg_{\mu \nu} + \sg_{\rho \nu} \sg_{\mu \sig} } R \\
+		&\hspace{5em} \phantom{=} + \frac{1}{12} \paren{ \sg_{\mu \nu} \sg_{\sig \rho} - \sg_{\mu \rho} \sg_{\sig \nu} - \sg_{\sig \nu} \sg_{\mu \rho} + \sg_{\sig \rho} \sg_{\mu \nu} } R \\
+		&= 0,
+	}
+	where we have used $R_{\alp \bet \gam \del} + R_{\alp \gam \del \bet} + R_{\alp \del \bet \gam} = 0$ from MCP~(25.45b), and the symmetry of the metric tensor.  Thus we have shown that the Weyl curvature tensor has the same symmetries as Riemann in MCP~(25.45): \vfix
+	\ans{\aln{ \label{Csymm}
+		C_{\nu \mu \rho \sig} &= -C_{\mu \nu \rho \sig}, &
+		C_{\mu \nu \sig \rho} &= -C_{\mu \nu \rho \sig}, &
+		C_{\rho \sig \mu \nu} &= +C_{\mu \nu \rho \sig}, &
+		C_{\mu \nu \rho \sig} + C_{\mu \rho \sig \nu} + C_{\mu \sig \nu \rho} &= 0.
+	}}%
+	Now for the contractions.  Contracting the indices within each pair,
+	\aln{ \label{thingy2}
+		\sg^{\mu \nu} C_{\mu \nu \rho \sig} &= \sfvt{C}{\mu}{\mu}{\rho \sig}
+		= -\sfvt{C}{\mu}{\mu}{\rho \sig}
+		= 0, &
+		%
+		\sg^{\rho \sig} C_{\mu \nu \rho \sig} &= \sfv{C}{\mu \nu \rho}{\rho}
+		= -\sfv{C}{\mu \nu \rho}{\rho}
+		= 0,
+	}
+	where we have used $C_{\nu \mu \rho \sig} = -C_{\mu \nu \rho \sig}$ and our ability to swap covariant and contravariant for summed indices.
+	
+	Contracting the first and third indices,
+	\al{
+		\sg^{\mu \rho} C_{\mu \nu \rho \sig} &= \sg^{\mu \rho} \brac{ R_{\mu \nu \rho \sig} - \frac{1}{2} \paren{ \sg_{\mu \rho} R_{\nu \sig} - \sg_{\mu \sig} R_{\nu \rho} - \sg_{\nu \rho} R_{\mu \sig} + \sg_{\nu \sig} R_{\mu \rho} } + \frac{1}{12} \paren{ \sg_{\mu \rho} \sg_{\nu \sig} - \sg_{\mu \sig} \sg_{\nu \rho} - \sg_{\nu \rho} \sg_{\mu \sig} + \sg_{\nu \sig} \sg_{\mu \rho} } R } \\
+		&= \sfvt{R}{\mu \nu}{\mu}{\sig} - \frac{1}{2} \paren{ \sfv{\sg}{\mu}{\mu} R_{\nu \sig} - \sg_{\mu \sig} \sfv{R}{\nu}{\mu} - \sfv{\sg}{\nu}{\mu} R_{\mu \sig} + \sg_{\nu \sig} \sfv{R}{\mu}{\mu} } + \frac{1}{12} \paren{ \sfv{\sg}{\mu}{\mu} \sg_{\nu \sig} - \sg_{\mu \sig} \sfv{\sg}{\nu}{\mu} - \sfv{\sg}{\nu}{\mu} \sg_{\mu \sig} + \sg_{\nu \sig} \sfv{\sg}{\mu}{\mu} } R \\
+		&= R_{\nu \sig} - \frac{1}{2} \paren{ 4 R_{\nu \sig} - R_{\nu \sig} - R_{\nu \sig} + \sg_{\nu \sig} R } + \frac{1}{12} \paren{ 4 \sg_{\nu \sig} - \sg_{\nu \sig} - \sg_{\nu \sig} + 4 \sg_{\nu \sig} } R \\
+		&= R_{\nu \sig} - R_{\nu \sig} - \frac{1}{2} \sg_{\nu \sig} R + \frac{1}{2} \sg_{\nu \sig} R \\
+		&= 0,
+	}
+	where we have used MCP~(24.10), $\sg^{\mu \bet} \sg_{\bet \nu} = \fv{\del}{\mu}{\nu}$, to find $\fv{\sg}{\mu}{\mu} = 4$.  Then, using Eq.~\refeq{Csymm}, we have
+	\eq{
+		0 = \sfvt{C}{\mu \nu}{\mu}{\sig}
+		= -\sfv{C}{\mu \nu \sig}{\mu}
+		= -\sfvt{C}{\nu \mu}{\mu}{\sig}
+		= \sfv{C}{\nu \mu \sig}{\mu}.
+	}
+	Rewriting these as contractions, and incorporating our results in Eq.~\refeq{thingy2}, we have shown
+	\eq{
+		\ans{ 0 = \sg^{\mu \nu} C_{\mu \nu \rho \sig}
+		= \sg^{\mu \rho} C_{\mu \nu \rho \sig}
+		= \sg^{\mu \sig} C_{\mu \nu \rho \sig}
+		= \sg^{\nu \rho} C_{\mu \nu \rho \sig}
+		= \sg^{\nu \sig} C_{\mu \nu \rho \sig}
+		= \sg^{\rho \sig} C_{\mu \nu \rho \sig}; }
+	}
+	that is, the Weyl curvature tensor has vanishing contraction on all its slots.
+	
+	To show that Weyl has just 10 independent components, we refer to the discussion at the end of Lecture~11.  If there were no symmetries, in $n = 4$ spacetime dimensions $C_{\alp \bet \gam \del}$ would have $n^4 = 4^4$ independent components.  Each symmetry gives rise to some number of independent components:
+	\al{
+		\alp \lrarrow \bet \antisymmetry &\qimplies \frac{n (n - 1)}{2} = 6 \components, \\
+		\gam \lrarrow \del \antisymmetry &\qimplies \frac{n (n - 1)}{2} = 6 \components, \\
+		\alp \bet \lrarrow \gam \del \symmetry &\qimplies \text{components reduced by } \frac{1}{2}.
+	}
+	Combining the three (anti)symmetries, we have a total of
+	\eq{
+		\paren{ \frac{n (n - 1)}{2} } \paren{ \frac{n (n - 1)}{2} + 1 } \frac{1}{2} = 21 \components.
+	}
+	Now we account for the constraints imposed by $C_{\mu \nu \rho \sig} + C_{\mu \rho \sig \nu} + C_{\mu \sig \nu \rho} = 0$.  This expression is redundant if any of the indices are the same; for example,
+	\eq{
+		C_{\mu \mu \rho \sig} + C_{\mu \rho \sig \mu} + C_{\mu \sig \mu \rho}
+		= 0 + C_{\sig \mu \mu \rho} + C_{\mu \sig \mu \rho}
+		= C_{\sig \mu \mu \rho} - C_{\sig \mu \mu \rho}
+		= 0,
+	}
+	which we already knew from the other symmetries.  Since there are four indices, this requirement gives us
+	\eq{
+		{ n \choose 4 } = 1 \text{ constraint}.
+	}
+	Finally we account for the constraints imposed by the vanishing contractions.  Only one of the contractions is not redundant under the other symmetries; say, $\fv{C}{\mu}{\nu \mu \sig} = 0$.  This imposes~\cite[p.~146]{Weinberg}
+	\eq{
+		\frac{n (n + 1)}{2} = 10 \constraints.
+	}
+	Finally, we find the number of independent components by
+	\eq{
+		N_\text{components} - N_\text{constraints} = 21 - (1 + 10) = \ans{ 10 \text{ independent components} }
+	}
+	as we wanted to show. \qed
+	
+	Rewriting Eq.~\refeq{weyl},
+	\eq{
+		\ans{ \fv{R}{\mu \nu}{\rho \sig} = \fv{C}{\mu \nu}{\rho \sig} - 2 \fv{\sg}{[ \mu}{[ \rho} \fv{R}{\nu ]}{\sig ]} + \frac{1}{3} \fv{\sg}{[ \mu}{[ \rho} \fv{\sg}{\nu ]}{\sig ]} R, }
+	}
+	which makes it clear that 10 of the 20 independent components of the Riemann tensor come from the Weyl tensor and the remaining 10 come from the Ricci tensor.
+}

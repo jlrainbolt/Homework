@@ -1,0 +1,88 @@
+\state{Ocean tides~(MCP 25.9)}{\hfix}
+
+\prob{
+	Place a local Lorentz frame at the center of Earth, and let $\cEsjk$ be the tidal field there, produced by the Newtonian gravitational fields of the Sun and the Moon.  For simplicity, treat Earth as precisely spherical.  Show that the gravitational acceleration (relative to Earth's center) at some location on or near Earth's surface (radius $r$) is
+	\eqn{show1a}{
+		\gsj = -\frac{G M}{r^2} \nj - \cEjsk r \nk,
+	}
+	where $M$ is Earth's mass, and $\nj$ is a unit vector pointing from Earth's center to the location at which $\gsj$ is evaluated.
+}
+
+\sol{
+	First we find the gravitational acceleration for a spherical body with no tidal field.  We know that the Newtonian potential outside a spherical body with weak Newtonian gravity is
+	\eq{
+		\Phi = -\frac{G M}{r},
+	}
+	where $G$ is Newton's gravitation constant, $M$ is the Earth's mass, and $r$ is the distance from its center~\cite[p.~1211]{MCP}.  Then the acceleration due to this potential is, in spherical coordinates,
+	\eqn{g}{
+		\bg = -\grad \Phi
+		= -\dv{r}(-\frac{G M}{r}) \rh
+		= -\frac{G M}{r^2} \rh,
+	}
+	where $\rh$ is the radial unit vector.  In this problem, $\rh \to \nj$.
+	
+	For the tidal field, we use the Newtonian description of tidal gravity.  Let $\bxi$ be the vector separation of two particles in Euclidean 3-space.  The relative acceleration of the relative separation is given by MCP~(25.23),
+	\eqn{dv}{
+		\dv[2]{\xij}{t} = -\cEjsk \xik,
+	}
+	where $\bcE$ is the Newtonian tidal gravitational field~\cite[p.~1208]{MCP}.  In this problem, $\xik \to r \nk$ since our vector separation is from the center of the Earth to some point a distance $r$ away.  Combining Eqs.~\refeq{g} and \refeq{dv}, then, we have
+	\eq{
+		\ans{ \gsj = -\frac{G M}{r^2} \nj - \cEjsk r \nk }
+	}
+	as we wanted to show. \qed
+}
+
+
+
+\prob{
+	Show that this gravitational acceleration is minus the gradient of the Newtonian potential
+	\eq{
+		\Phi = -\frac{G M}{r} + \frac{1}{2} \cEsjk r^2 \nj \nk.
+	}
+}
+
+\sol{
+	We have
+	\al{
+		\gi &= -\nabsi \Phi \\
+		&= -\brac{ \dv{r}(\frac{G M}{r}) + \nabsi (\frac{1}{2} \cEsjk r^2 \nj \nk) } \nii \\
+		&= -\brac{ \frac{G M}{r^2} + \nabsi \paren{ \frac{1}{2} \cEsjk \xj \xk } } \nii \\
+		&= -\brac{ \frac{G M}{r^2} + \frac{1}{2} (\pt_i \cEsjk) \xj \xk + \frac{1}{2} \cEsjk \del^i_j \xk + \frac{1}{2} \cEsjk \xj \del^i_k } \nii \\
+		&= \ans{ -\frac{G M}{r^2} \nii - \cEsik r \nii \nk, }
+	}
+	where $\xj = r \nj$, and we have used $\pt_i \cEsjk = 0$.  This is true because $\cEsjk$ is evaluated at the center of the Earth, and is therefore constant. \qed
+}
+
+
+
+\prob{
+	Consider regions of Earth's oceans that are far from any coast and have ocean depth large compared to the heights of ocean tides.  If Earth were nonrotating, then explain why the analysis of Sec.~13.3 predicts that the ocean surface in these regions would be a surface of constant $\Phi$.  Explain why this remains true to good accuracy also for the rotating Earth.
+}
+
+\sol{
+	The analysis of a fluid at hydrostatic equilibrium in Sec.~13.3 results in MCP~(13.7),
+	\eqn{thing1c}{
+		\grad \Phi \cross \grad \rho = 0,
+	}
+	where $\Phi$ is the Newtonian gravitational potential and $\rho$ is the density of the fluid.  This means that the contours of constant density correspond with the equipotential surfaces~\cite[p.~682]{MCP}.  We expect that, in deep areas of the still ocean, the density gradient points radially outward.  This is because the stronger gravitational force near the center of the Earth creates a higher density there.  Then the surfaces of constant density are spherical shells, and one of these shells is the surface of the ocean~\cite[p.~690]{MCP}.  Thus the surface of the ocean is also a surface of constant $\Phi$.
+	
+	The case of a hydrostatic fluid with a uniform angular velocity $\bOmg$ is discussed in Sec.~13.3.3.  It is stated that in the presence of uniform rotation, all hydrostatic theorems remain valid in a corotating reference frame with $\Phi$ replaced by $\Phi + \Phicen$.  The centrifugal potential $\Phicen$ is defined by MCP~(13.27),
+	\eq{
+		\Phicen = -\frac{1}{2} (\bOmg \cross \br)^2.
+	}
+	Thus Eq.~\refeq{thing1c} becomes
+	\eq{
+		\grad (\Phi + \Phicen) \cross \grad \rho = 0.
+	}
+	However, $\Phicen$ is small because the Earth rotates slowly~\cite{Centrifugal}.  So it can be neglected, and Eq.~\refeq{thing1c} is still a good approximation.
+}
+
+
+
+\prob{
+	Show that in these ocean regions, the Moon creates high tides pointing toward and away from itself and low tides in the transverse directions on Earth; and similarly for the Sun.  Compute the difference between high and low tides produced by the Moon and by the Sun, and the difference of the total tide when the Moon and the Sun are in approximately the same direction in the sky.  Your answers are reasonably accurate for deep-ocean regions far from any coast, but near a coast, the tides are typically larger and sometimes far larger, and they are shifted in phase relative to the positions of the moon and Sun.  Why?
+}
+
+\sol{
+	I don't have enough time to figure out how to do this part.
+}
