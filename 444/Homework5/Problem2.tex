@@ -1,0 +1,48 @@
+\state{Beta function of the Gross-Neveu model~(P\&S~12.2)}{
+	Compute $\bet(g)$ in the two-dimensional Gross-Neveu model studied in Problem~11.3,
+	\eq{
+		\cL = \psibsi i \ptsl \psisi + \frac{1}{2} g^2 (\psibsi \psisi)^2,
+	}
+	with $i = 1, \ldots, N$.  You should find that this model is asymptotically free.  How was that fact reflected in the solution to Problem~11.3?
+}
+
+\sol{
+	We saw in Problem~2 of Homework~4 that this Lagrangian can be written as
+	\eq{
+		\cL = \psibsi i \ptsl \psisi - \sig \psibsi \psisi - \frac{1}{2 g^2} \sig^2,
+	}
+	where $\sig$ is a new scalar field with no kinetic energy terms.  In the modified minimal subtraction scheme, we found the effective potential was
+	\eqn{Veff}{
+		\Veff = \sig^2 \curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } }.
+	}
+	Since $\Gam[ \phicl ] = -(V T) \Veff(\phi)$ by P\&S~(11.50), we have
+	\eqn{Gam}{
+		\Gam[ \sigcl ] = -(V T)  \sig^2 \curly{ \frac{1}{2 g^2} + \frac{N}{4\pi} \brac{ \ln(\frac{\sig^2}{M^2}) - 1 } }.
+	}
+	Referring to p.~3 of Lecture~11, we can apply the Callan-Symanzik equation to $\Gam$.   The Callan-Symanzik equation is P\&S~(12.41),
+	\eq{
+		\brac{ M \pdv{M} + \bet(\lam) \pdv{\lam} + n \gam(\lam) } G^{(n)}(\{ x_i \}; M, \lam) = 0.
+	}
+	For our problem, $\gam$ is 0 because there are no field insertions.  That is, we have
+	\eq{
+		\brac{ M \pdv{M} + \bet(g) \pdv{g} } \Gam[ \phicl ] = 0.
+	}
+	Using Eq.~\refeq{Gam}, note that
+	\al{
+		\pdv{\Gam}{M} &= (V T) \frac{N \sig^2}{2 \pi M}, &
+		\pdv{\Gam}{g} &= (V T) \frac{\sig^2}{g^3}.
+	}
+	Then
+	\eq{
+		0 = (V T) \paren{ \frac{N \sig^2}{2 \pi} + \bet(g) \frac{\sig^2}{g^3} }
+		\qimplies
+		\ans{ \betg = -\frac{N g^3}{2\pi}. }
+	}
+	This model is asymptotically free because the $\bet$ function is proportional to $-g^3$~\cite[pp.~424--425]{Peskin}.
+	
+	In 2(e) of Homework~4, we found that the vacuum expectation value of $\sig$ was
+	\eq{
+		\sig = \pm M e^{-\pi / N g^2} = \pm v.
+	}
+	We showed that the vacuum expectation value does not depend on the renormalization condition chosen.  This means that we can increase $M \to 0$ while holding $\sig$ constant, and see that $g \to 0$ logarithmically.  This is indicative of an asymptotically-free theory~\cite[p.~425]{Peskin}. \qed
+}
