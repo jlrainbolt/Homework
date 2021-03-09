@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+\usepackage{homework}
+
+\classname{444}
+\homeworknum{6}
+
+
+
+\begin{document}
+
+\input{definitions}
+\input{probdefs}
+
+
+
+\state{The $\CPN$ model~(P\&S~13.3)}{
+	The nonlinear sigma model discussed in the text can be thought of as a quantum theory of fields that are coordinates on the unit sphere.  A slightly more complicated space of high symmetry is complex projective space, $\CPN$.  This space can be defined as the space of $(N + 1)$-dimensional complex vectors $(\zq, \ldots, \zNq)$ subject to the condition
+	\eq{
+		\sumj \abs{\zj}^2 = 1,
+	}
+	with points related by an overall phase rotation identified, that is,
+	\eq{
+		(e^{i \alp} \zq, \ldots, e^{i \alp} \zNq,) \; \text{identified with} \; (\zq, \ldots, \zNq).
+	}
+	In this problem, we study that two-dimensional quantum field theory whose fields are coordinates on this space.
+}
+
+\prob{
+	One way to represent a theory of coordinates on $\CPN$ is to write a Lagrangian depending on fields $\zj(x)$, subject to the constraint, which also has the total symmetry
+	\eq{
+		\zj(x) \to e^{i \alp(x)} \zj(x),
+	}
+	independently at each point $x$.  Show that the following Lagrangian has this symmetry:
+	\eq{
+		\cL = \frac{1}{g^2} \brac{ \abs{\ptsm \zj}^2 + \abs{\zjs \ptsm \zj}^2 }.
+	}
+	To prove the invariance, you will need to use the constraint on the $\zj$, and its consequence
+	\eq{
+		\zjs \ptsm \zj = -(\ptsm \zjs) \zj.
+	}
+	Show that the nonlinear sigma model for the case $N = 3$ can be converted to the $\CPN$ model for the case $N = 1$ by the substitution
+	\eq{
+		\nii = \zs \sigi z,
+	}
+	where $\sigi$ are the Pauli sigma matrices.
+}
+
+
+
+\prob{
+	To write the Lagrangian in a simpler form, introduce a scalar Lagrange multiplier $\lam$ which implements the constraint and also a vector Lagrange multiplier $\Asm$ to express the local symmetry.  More specifically, show that the Lagrangian of the $\CPN$ model is obtained from the Lagrangian
+	\eq{
+		\cL = \frac{1}{g^2} \brac{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj} - 1) },
+	}
+	where $\Dsm = (\ptsm + i \Asm)$, by functionally integrating over the fields $\lam$ and $\Asm$.
+}
+
+
+
+\prob{
+	We can solve the $\CPN$ model in the limit $N \to \infty$ by integrating over the fields $\zj$.  Show that this integral leads to the expression
+	\eq{
+		Z = \int \DDA \DDlam \exp( -N \tr \ln(-D^2 - \lam) + \frac{i}{g^2} \int \ddsx \lam ),
+	}
+	where we have kept only the leading terms for $N \to \infty$, $g^2 N$ fixed.  Using methods similar to those we used for the nonlinear sigma model, examine the conditions for minimizing the exponent with respect to $\lam$ and $\Asm$.  Show that these conditions have a solution at $\Asm = 0$ and $\lam = m^2 > 0$.  Show that, if $g^2$ is renormalized at the scale $M$, $m$ can be written as
+	\eq{
+		m = M \exp( -\frac{2\pi}{g^2 N} ).
+	}
+}
+
+
+
+\prob{
+	Now expand the exponent about $\Asm = 0$.  Show that the first nontrivial term in this expansion is proportional to the vacuum polarization of massive scalar fields.  Evaluate this expression using dimensional regularization, and show that it yields a standard kinetic energy term for $\Asm$.  Thus the strange nonlinear field theory that we started with is finally transformed into a theory of $N + 1$ massive scalar fields interacting with a massless photon.
+}
+
+
+\makebib
+
+\end{document}
