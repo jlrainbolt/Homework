@@ -13,7 +13,7 @@
 
 
 
-\state{The $\CPN$ model~(P\&S~13.3)}{
+\state{The $\boldsymbol{\CPN}$ model~(P\&S~13.3)}{
 	The nonlinear sigma model discussed in the text can be thought of as a quantum theory of fields that are coordinates on the unit sphere.  A slightly more complicated space of high symmetry is complex projective space, $\CPN$.  This space can be defined as the space of $(N + 1)$-dimensional complex vectors $(\zq, \ldots, \zNq)$ subject to the condition
 	\eq{
 		\sumj \abs{\zj}^2 = 1,
@@ -27,36 +27,117 @@
 
 \prob{
 	One way to represent a theory of coordinates on $\CPN$ is to write a Lagrangian depending on fields $\zj(x)$, subject to the constraint, which also has the total symmetry
-	\eq{
+	\eqn{symmetry}{
 		\zj(x) \to e^{i \alp(x)} \zj(x),
 	}
 	independently at each point $x$.  Show that the following Lagrangian has this symmetry:
-	\eq{
-		\cL = \frac{1}{g^2} \brac{ \abs{\ptsm \zj}^2 + \abs{\zjs \ptsm \zj}^2 }.
+	\eqn{lagr}{
+		\cL = \frac{1}{g^2} \brac{ \abs{\ptsm \zj}^2 - \abs*{\zjs \ptsm \zj}^2 }.
 	}
 	To prove the invariance, you will need to use the constraint on the $\zj$, and its consequence
-	\eq{
+	\eqn{consequence}{
 		\zjs \ptsm \zj = -(\ptsm \zjs) \zj.
 	}
 	Show that the nonlinear sigma model for the case $N = 3$ can be converted to the $\CPN$ model for the case $N = 1$ by the substitution
-	\eq{
+	\eqn{substitution}{
 		\nii = \zs \sigi z,
 	}
 	where $\sigi$ are the Pauli sigma matrices.
 }
 
+\sol{
+	The original Lagrangian can be written
+		\eq{
+		\cL = \frac{1}{g^2} \brac{ (\ptsm \zj) (\ptsm \zjs) - \zjs \zk (\ptsm \zj) (\ptsm \zks) }.
+	}
+	For the transformation,
+	\al{
+		\cL &\to \frac{1}{g^2} \brac{ \abs{\ptsm(e^{i \alp} \zj)}^2 - \abs{(e^{i \alp} \zj)^* \ptsm(e^{i \alp} \zj)}^2 } \\[1ex]
+		&= \frac{1}{g^2} \brac{ \abs{\zj \ptsm e^{i \alp} + e^{i \alp} \ptsm \zj}^2 - \abs{e^{-i \alp} \zjs (\zj \ptsm e^{i \alp} + e^{i \alp} \ptsm \zj)}^2 } \\[1ex]
+		&= \frac{1}{g^2} \brac{ \abs{\zj \ptsm e^{i \alp} + e^{i \alp} \ptsm \zj}^2 - \zjs \zk (\zj \ptsm e^{i \alp} + e^{i \alp} \ptsm \zj) (\zks \ptsm e^{-i \alp} + e^{-i \alp} \ptsm \zks) } \\[1ex]
+		&= \frac{1}{g^2} \brac{ \abs{\zj \ptsm e^{i \alp} + e^{i \alp} \ptsm \zj}^2 - (\abs{\zj}^2 \ptsm e^{i \alp} + \zjs e^{i \alp} \ptsm \zj) (\abs{\zk}^2 \ptsm e^{-i \alp} - \zk e^{-i \alp} \ptsm \zks) } \\[1ex]
+		%
+		&= \frac{1}{g^2} \left[ (\ptsm e^{i \alp}) (\ptsm e^{-i \alp}) + e^{-i \alp} \zj (\ptsm e^{i \alp}) (\ptsm \zjs) + e^{i \alp} \zjs (\ptsm e^{-i \alp}) (\ptsm \zj) + (\ptsm \zj) (\ptsm \zjs) \right. \\
+		&\hspace{5em} \phantom{=\ } - (\ptsm e^{i \alp}) (\ptsm e^{-i \alp}) - e^{-i \alp} \zk (\ptsm e^{i \alp}) (\ptsm \zks) - e^{i \alp} \zjs (\ptsm e^{-i \alp}) (\ptsm \zj) - \zjs \zk (\ptsm \zj) (\ptsm \zks) \big] \\[1ex]
+		%
+		&= \frac{1}{g^2} \brac{ (\ptsm \zj) (\ptsm \zjs) - \zjs \zk (\ptsm \zj) (\ptsm \zks) },
+	}
+	where we have used $\abs{\zj}^2 = 1$.  So the Lagrangian has the symmetry Eq.~\refeq{symmetry}.
+	
+	The Lagrangian for the nonlinear sigma model is given by P\&S~(13.67),
+	\eqn{nonlinear}{
+		\cL = \frac{1}{2 g^2} \abs{ \ptsm \vn }^2,
+	}
+	where $\vn(x)$ is an $N$-component vector field constrained to satisfy P\&S~(13.66),
+	\eq{
+		\sumiN \abs{ \nii(x) }^2 = 1.
+	}
+%	For $N = 3$, the Lagrangian is
+%	\eq{
+%		\cL = \frac{1}{2 g^2} \brac{ (\ptsm \nq)^2 + (\ptsm \nw)^2 + (\ptsm \nee)^2 }.
+%	}
+	Making the substitution Eq.~\refeq{substitution} in Eq.~\refeq{nonlinear},
+	\al{
+		\cL &\to \frac{1}{2 g^2} \abs{ \ptsm (\zs \sigi z) }^2 \\
+		&= \frac{1}{2 g^2} \abs{ (\ptsm \zs) \sigi z + \zs \sigi (\ptsm z) }^2 \\
+		&= \frac{1}{2 g^2} \Big[ (\ptsm \zs) \sigi z + \zs \sigi (\ptsm z) \Big] \brac{ (\ptsm \zs) \sigi z + \zs \sigi (\ptsm z) } \\
+		&= \frac{1}{2 g^2} \brac{ (\ptsm \zs) \sigi z (\ptsm \zs) \sigi z + (\ptsm \zs) \sigi z \zs \sigi (\ptsm z) + \zs \sigi (\ptsm z) (\ptsm \zs) \sigi z + \zs \sigi (\ptsm z) \zs \sigi (\ptsm z ) }
+	}
+	where we have used ${\sig^\dagger}^i = \sigi$.
+}
 
 
+\clearpage
 \prob{
 	To write the Lagrangian in a simpler form, introduce a scalar Lagrange multiplier $\lam$ which implements the constraint and also a vector Lagrange multiplier $\Asm$ to express the local symmetry.  More specifically, show that the Lagrangian of the $\CPN$ model is obtained from the Lagrangian
-	\eq{
-		\cL = \frac{1}{g^2} \brac{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj} - 1) },
+	\eqn{showb}{
+		\cL = \frac{1}{g^2} \paren{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj}^2 - 1) },
 	}
 	where $\Dsm = (\ptsm + i \Asm)$, by functionally integrating over the fields $\lam$ and $\Asm$.
 }
 
+\sol{
+	The path integral for Eq.~\refeq{showb} is
+	\eq{
+		\int \DDA \DDlam \DDsz \, \exp[ \frac{i}{g^2} \int \ddsx \paren{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj}^2 - 1) } ].
+	}
+	Since $\lam$ is a Lagrange multiplier, we can compute this integral easily:
+	\eq{
+		\int \DDA \DDlam \DDsz \, \exp[ \frac{i}{g^2} \int \ddsx \paren{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj}^2 - 1) } ]
+		= \int \DDA \DDsz \, \dels(\abs{\zj}^2 - 1) \exp[ \frac{i}{g^2} \int \ddsx \abs{\Dsm \zj}^2 ],
+	}
+	where we have applied~\cite{Integrals}
+	\eq{
+		\int \frac{\dd[d]{k}}{(2\pi)^d} e^{i k (x - y)} = \del^{(d)}(x - y)
+	}
+	and ignored the overall constant.  Now we have
+	\aln{
+		\int \DDA \DDlam \DDsz \, &\exp[ \frac{i}{g^2} \int \ddsx \paren{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj}^2 - 1) } ] \notag \\
+		&= \int \DDA \DDsz \, \dels(\abs{\zj}^2 - 1) \exp[ \frac{i}{g^2} \int \ddsx (\ptsm + i \Asm) \zj (\ptm - i \Ams) \zjs ] \notag \\
+		&= \int \DDA \DDsz \, \dels(\abs{\zj}^2 - 1) \exp[ \frac{i}{g^2} \int \ddsx \curly{ \abs{\ptsm \zj}^2 + 2 i (\ptm \zjs) \zj \Asm + \abs{A}^2 } ], \label{thingb}
+	}
+	where we have imposed $\abs{\zj}^2 = 1$.  We apply~\cite{Integrals}
+	\al{
+		\intnii \ddx \exp( -\frac{1}{2} a x^2 + J x ) &= \exp( \frac{J^2}{2 a} ) \intnii \ddx \exp[ -\frac{1}{a} \paren{ x - \frac{J}{a} }^2 ] \\
+		&= \exp( \frac{J^2}{2 a} ) \intnii \dd{w} \exp( -\frac{1}{2} a w^2 ) \\
+		&= \sqrt{ \frac{2\pi}{a} } \exp( \frac{J^2}{2 a} ).
+	}
+	In Eq.~\refeq{thingb}, $a = -2 i / g^2$ and $J = 2 (\ptm \zjs) \zj / g^2$.  Then
+	\eq{
+		\frac{J^2}{2 a} = -\frac{4 \abs*{(\ptm \zjs) \zj}^2}{g^4} \frac{g^2}{2 i}
+		= \frac{i}{g^2} \abs{\zj \ptm \zjs}^2
+		= \frac{i}{g^2} \abs{\zjs \ptm \zj}^2,
+	}
+	where we have used Eq.~\refeq{consequence}.  Finally, Eq.~\refeq{thingb} gives us
+	\ans{\al{
+		\int \DDA \DDlam \DDsz \, &\exp[ \frac{i}{g^2} \int \ddsx \paren{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj}^2 - 1) } ] \\
+		&= \DDsz \, \dels(\abs{\zj}^2 - 1) \exp[ \frac{i}{g^2} \int \ddsx \curly{ \abs{\ptsm \zj}^2 - \abs{\zjs \ptm \zj}^2 } ],
+	}}%
+	where we have again ignored the overall constant.  Thus we have shown that the Lagrangian Eq.~\refeq{lagr} can be obtained from the Lagrangian Eq.~\refeq{showb} by functionally integrating over the Lagrange multipliers. \qed
+}
 
 
+\clearpage
 \prob{
 	We can solve the $\CPN$ model in the limit $N \to \infty$ by integrating over the fields $\zj$.  Show that this integral leads to the expression
 	\eq{
