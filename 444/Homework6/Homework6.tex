@@ -47,7 +47,7 @@
 
 \sol{
 	The original Lagrangian can be written
-		\eq{
+	\eqn{lagr2}{
 		\cL = \frac{1}{g^2} \brac{ (\ptsm \zj) (\ptsm \zjs) - \zjs \zk (\ptsm \zj) (\ptsm \zks) }.
 	}
 	For the transformation,
@@ -72,22 +72,52 @@
 	\eq{
 		\sumiN \abs{ \nii(x) }^2 = 1.
 	}
-%	For $N = 3$, the Lagrangian is
-%	\eq{
-%		\cL = \frac{1}{2 g^2} \brac{ (\ptsm \nq)^2 + (\ptsm \nw)^2 + (\ptsm \nee)^2 }.
-%	}
 	Making the substitution Eq.~\refeq{substitution} in Eq.~\refeq{nonlinear},
-	\al{
-		\cL &\to \frac{1}{2 g^2} \abs{ \ptsm (\zs \sigi z) }^2 \\
-		&= \frac{1}{2 g^2} \abs{ (\ptsm \zs) \sigi z + \zs \sigi (\ptsm z) }^2 \\
-		&= \frac{1}{2 g^2} \Big[ (\ptsm \zs) \sigi z + \zs \sigi (\ptsm z) \Big] \brac{ (\ptsm \zs) \sigi z + \zs \sigi (\ptsm z) } \\
-		&= \frac{1}{2 g^2} \brac{ (\ptsm \zs) \sigi z (\ptsm \zs) \sigi z + (\ptsm \zs) \sigi z \zs \sigi (\ptsm z) + \zs \sigi (\ptsm z) (\ptsm \zs) \sigi z + \zs \sigi (\ptsm z) \zs \sigi (\ptsm z ) }
+	\aln{
+		\cL &\to \frac{1}{2 g^2} \abs{ \ptsm (\zjs \sigijk \zk) }^2 \notag \\
+		&= \frac{1}{2 g^2} \abs{ (\ptsm \zjs) \sigijk \zk + \zjs \sigijk (\ptsm \zk) }^2 \notag \\[1ex]
+		&= \frac{1}{2 g^2} \brac{ (\ptsm \zjs) \sigijk \zk + \zjs \sigijk (\ptsm \zk) } \brac{ (\ptsm \zls) \sigilm \zm + \zls \sigilm (\ptsm \zm) } \notag \\[1ex]
+		%
+		&= \frac{1}{2 g^2} \left[ (\ptsm \zjs) \sigijk \zk (\ptsm \zls) \sigilm \zm + (\ptsm \zjs) \sigijk \zk \zls \sigilm (\ptsm \zm) + \zjs \sigijk (\ptsm \zk) (\ptsm \zls) \sigilm \zm \right. \notag \\
+		&\hspace{5em} \phantom{=\ } \left. + \zjs \sigijk (\ptsm \zk) \zls \sigilm (\ptsm \zm) \right] \notag \\[1ex]
+		%
+		&= \frac{1}{2 g^2} \sigijk \sigilm \brac{ (\ptsm \zjs) \zk (\ptsm \zls) \zm + (\ptsm \zjs) \zk \zls (\ptsm \zm) + \zjs (\ptsm \zk) (\ptsm \zls) \zm + \zjs (\ptsm \zk) \zls (\ptsm \zm) } \notag \\[1ex]
+		&= \frac{1}{2 g^2} \sigijk \sigilm \brac{ (\ptsm \zjs) \zk (\ptsm \zls) \zm + 2 (\ptsm \zjs) \zk \zls (\ptsm \zm) + \zjs (\ptsm \zk) \zls (\ptsm \zm) }, \label{ugh}
 	}
-	where we have used ${\sig^\dagger}^i = \sigi$.
+	where we have combined terms by relabeling indices.  Note that
+	\al{
+		1 &= \sig^1_{1 2} \sig^1_{1 2} = \sig^1_{2 1} \sig^1_{2 1} = \sig^1_{1 2} \sig^1_{2 1} = \sig^1_{2 1} \sig^1_{1 2}, \\
+		1 &= \sig^2_{1 2} \sig^2_{2 1} = \sig^2_{2 1} \sig^2_{1 2} = -\sig^2_{1 2} \sig^2_{1 2} = -\sig^2_{2 1} \sig^2_{2 1}, \\
+		1 &= \sig^3_{1 1} \sig^3_{1 1} = \sig^3_{2 2} \sig^3_{2 2} = -\sig^3_{1 1} \sig^3_{2 2} = -\sig^3_{2 2} \sig^3_{1 1},
+	}
+	with all other possibilities being zero.  So we have
+	\al{
+		4 \sig^1_{j k} \sig^1_{l m} &= 2 \del_{j l} \del_{k m} + 2 \del_{j m} \del_{k l}, &
+		4 \sig^2_{j k} \sig^2_{l m} &= 2 \del_{j m} \del_{k l} - 2 \del_{j l} \del_{k m}, &
+		4 \sig^3_{j k} \sig^3_{l m} &= 2 \del_{j k l m} - 2 \del_{j k} \del_{l m},
+	}
+	where the factor of 4 arises because each delta function is double counting. Then
+	\eq{
+		\sigijk \sigilm = \frac{1}{4} \paren{ 4 \del_{j m} \del_{k l} + 2 \del_{j k l m} - 2 \del_{j k} \del_{l m} }.
+	}
+	Applying this in Eq.~\refeq{ugh}, we have
+	\al{
+		\cL &\to \frac{1}{8 g^2} (4 \del_{j m} \del_{k l} + 2 \del_{j k l m} - 2 \del_{j k} \del_{l m}) \sigilm \brac{ (\ptsm \zjs) \zk (\ptsm \zls) \zm + 2 (\ptsm \zjs) \zk \zls (\ptsm \zm) + \zjs (\ptsm \zk) \zls (\ptsm \zm) } \\[1ex]
+		%
+		&= \frac{1}{8 g^2} \Big\{ 4 \brac{ (\ptsm \zjs) \zk (\ptsm \zks) \zj + 2 (\ptsm \zjs) \zk \zks (\ptsm \zj) + \zjs (\ptsm \zk) \zks (\ptsm \zj) } \\
+		&\hspace{5em} \phantom{=\ } + 2 \brac{ (\ptsm \zjs) \zj (\ptsm \zjs) \zj + 2 (\ptsm \zjs) \zj \zjs (\ptsm \zj) + \zjs (\ptsm \zj) \zjs (\ptsm \zj) } \\
+		&\hspace{10em} \phantom{=\ } - 2 \brac{ (\ptsm \zjs) \zj (\ptsm \zks) \zk + 2 (\ptsm \zjs) \zj \zks (\ptsm \zk) + \zjs (\ptsm \zj) \zks (\ptsm \zk) } \Big\}. \\[1ex]
+		%
+		&= \frac{1}{8 g^2} \Big\{ 4 \brac{ 2 (\ptsm \zjs) (\ptsm \zj) - 2 \zj \zks (\ptsm \zks) (\ptsm \zj) } + 2 \brac{ 2 (\ptsm \zjs) (\ptsm \zj) - 2 \abs{\zj}^2 (\ptsm \zjs) (\ptsm \zj) } \\
+		&\hspace{5em} \phantom{=\ } - 2 \brac{ 2 \zj \zks (\ptsm \zjs) (\ptsm \zk) - 2 \zj \zks (\ptsm \zjs) (\ptsm \zk) } \Big\} \\[1ex]
+		%
+		&= \ans{ \frac{1}{g^2} \brac{ (\ptsm \zjs) (\ptsm \zj) - \zj \zks (\ptsm \zks) (\ptsm \zj) }, }
+	}
+	which is Eq.~\refeq{lagr2}.  So we have shown that the Lagrangian is the same as for the $\CPN$ model for $N = 1$. \qed
 }
 
 
-\clearpage
+
 \prob{
 	To write the Lagrangian in a simpler form, introduce a scalar Lagrange multiplier $\lam$ which implements the constraint and also a vector Lagrange multiplier $\Asm$ to express the local symmetry.  More specifically, show that the Lagrangian of the $\CPN$ model is obtained from the Lagrangian
 	\eqn{showb}{
@@ -98,10 +128,10 @@
 
 \sol{
 	The path integral for Eq.~\refeq{showb} is
-	\eq{
+	\eqn{thingb}{
 		\int \DDA \DDlam \DDsz \, \exp[ \frac{i}{g^2} \int \ddsx \paren{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj}^2 - 1) } ].
 	}
-	Since $\lam$ is a Lagrange multiplier, we can compute this integral easily:
+	We can compute this integral easily:
 	\eq{
 		\int \DDA \DDlam \DDsz \, \exp[ \frac{i}{g^2} \int \ddsx \paren{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj}^2 - 1) } ]
 		= \int \DDA \DDsz \, \dels(\abs{\zj}^2 - 1) \exp[ \frac{i}{g^2} \int \ddsx \abs{\Dsm \zj}^2 ],
@@ -137,7 +167,7 @@
 }
 
 
-\clearpage
+
 \prob{
 	We can solve the $\CPN$ model in the limit $N \to \infty$ by integrating over the fields $\zj$.  Show that this integral leads to the expression
 	\eq{
@@ -149,10 +179,80 @@
 	}
 }
 
+\sol{
+	Beginning from Eq.~\refeq{thingb},
+	\aln{
+		Z &= \int \DDA \DDlam \DDsz \, \exp[ \frac{i}{g^2} \int \ddsx \paren{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj}^2 - 1) } ] \notag \\
+		&= \int \DDA \DDlam \DDzs \DDz \, \exp[ \frac{i}{g^2} \int \ddsx \paren{ \Dsm \zj \Dm \zjs - \lam (\abs{\zj}^2 - 1) } ] \notag \\
+		&= \int \DDA \DDlam \DDzs \DDz \, \exp[ \frac{i}{g^2} \int \ddsx \paren{ \Dm (\zjs \Dsm \zj) - \zjs D^2 \zj - \lam (\abs{\zj}^2 - 1) } ] \notag \\
+		&= \int \DDA \DDlam \DDzs \DDz \, \exp[ \frac{i}{g^2} \int \ddsx \paren{ \zjs (-D^2 - \lam) \zj + \lam } ], \label{thingc}
+	}
+	where we have used
+	\eq{
+		\Dm (\zjs \Dsm \zj) = (\Dm \zjs) (\Dsm \zj) + \zjs D^2 \zj.
+	}
+%	From P\&S~(9.24),
+%	\eq{
+%		\paren{ \prod_k \dd{\xik} } = \const \times [ \det B ]^{-1/2},
+%	}
+%	and~(9.76),
+%	\eq{
+%		\int \DD{\psib} \DD{\psi} \exp[ i \int \dd[4]{x} \psib (i \Dsl - m) \psi ] = \det(i \Dsl - m),
+%	}
+%	and from~(9.77),
+%	\eq{
+%		\det B = \exp[ \tr( \ln B ) ].
+%	}
+	From P\&S~(13.113) and (13.114),
+	\aln{
+		Z &= \int \DDalp \DD{n} \, \exp[ - \int \dddx \frac{1}{2 \go^2} (\ptsm n)^2 - \frac{i}{2 \go^2} \int \dddx \alp (n^2 - 1) ] \notag \\
+		&= \int \DDalp \, (\det[ -\pt^2 + i \alp(x) ])^{-N / 2} \exp[ \frac{i}{2 \go^2} \int \dddx \alp ] \notag \\
+		&= \int \DDalp \, \exp[ -\frac{N}{2} \tr \log(-\pt^2 + i \alp) + \frac{i}{2 \go^2} \int \dddx \alp ]. \label{factor}
+	}
+	Applying similar operations to Eq.~\refeq{thingc}, we have
+	\aln{
+		Z &= \int \DDA \DDlam \DDsz \, \exp[ \frac{i}{g^2} \int \ddsx \paren{ \abs{\Dsm \zj}^2 - \lam (\abs{\zj}^2 - 1) } ] \notag \\
+		&= \int \DDA \DDlam \, \det(-D^2 - \lam)^{-(N + 1)} \exp[ \frac{i}{g^2} \int \ddsx \lam ] \notag \\
+		&= \int \DDA \DDlam \, \exp[ -(N + 1) \tr \ln(-D^2 - \lam) + \frac{i}{g^2} \int \ddsx \lam ] \notag \\
+		&\to \ans{ \int \DDA \DDlam \, \exp[ -N \tr \ln(-D^2 - \lam) + \frac{i}{g^2} \int \ddsx \lam ], } \label{thingc2}
+	}
+	where we have taken the limit $N \to \infty$ in going to the last line.  The factor of $1/2$ in Eq.~\refeq{factor} does not appear because of the overall factor of 2 in our Lagrangian.
+	
+	Now we follow a similar procedure as in (11.71),
+ 	\eqn{11.71}{
+ 		\tr[ \ln(\pt^2 + m^2) ] = (V T) \int \ddqpf \ln(-p^2 + m^2),
+ 	}
+ 	where $(V T)$ is the four-dimensional volume of the functional integral.  The eigenvalues of $\ptsm$ are $i \psm$.  Adapting Eq.~\refeq{11.71}, then, we have
+ 	\eq{
+ 		\tr \ln[ -(i \psm + i \Asm)^2 - \lam ] = (V T) \int \ddspf \ln(p^2 + \Asm \Am - \lam)
+ 		= (V T) \int \ddspf \ln(p^2 + A^2 - \lam).
+ 	}
+ 	\hl{what happened to the cross terms?}
+ 	Using this in Eq.~\refeq{thingc2},
+ 	\eq{
+ 		Z = \int \DDA \DDlam \, \exp[ \int \ddsx \paren{ -N \int \ddspf \ln(p^2 + A^2 - \lam) + \frac{i}{g^2} \lam } ].
+ 	}
+ 	We can minimize with respect to $\lam$ and $\Asm$ by enforcing that the derivative of the argument of the log is equal to zero.   	For $\Asm$, we have
+ 	\eq{
+ 		\int \ddspf \frac{2 N \Asm}{p^2 + A^2 - \lam} = 0
+ 		\qimplies
+ 		\Asm = 0.
+ 	}
+ 	For $\lam$, we then have
+ 	\eq{
+ 		\int \ddspf \frac{N}{p^2 - \lam} = \frac{i}{g^2}.
+ 	}
+ 	We evaluate this using a momentum cutoff as in (13.118), and find
+ 	\eq{
+
+ 	
+
+}
+
 
 % 13.115 
 
-
+\clearpage
 \prob{
 	Now expand the exponent about $\Asm = 0$.  Show that the first nontrivial term in this expansion is proportional to the vacuum polarization of massive scalar fields.  Evaluate this expression using dimensional regularization, and show that it yields a standard kinetic energy term for $\Asm$.  Thus the strange nonlinear field theory that we started with is finally transformed into a theory of $N + 1$ massive scalar fields interacting with a massless photon.
 }
