@@ -224,12 +224,11 @@
  	}
  	where $(V T)$ is the four-dimensional volume of the functional integral.  The eigenvalues of $\ptsm$ are $i \psm$.  Adapting Eq.~\refeq{11.71}, then, we have
  	\eq{
- 		\tr \ln[ -(i \psm + i \Asm)^2 - \lam ] = (V T) \int \ddspf \ln(p^2 + \Asm \Am - \lam)
+ 		\tr \ln[ -\abs{ i \psm + i \Asm }^2 - \lam ] = (V T) \int \ddspf \ln(p^2 + \Asm \Am - \lam)
  		= (V T) \int \ddspf \ln(p^2 + A^2 - \lam).
  	}
- 	\hl{what happened to the cross terms?}
  	Using this in Eq.~\refeq{thingc2},
- 	\eq{
+ 	\eqn{logexp}{
  		Z = \int \DDA \DDlam \, \exp[ \int \ddsx \paren{ -N \int \ddspf \ln(p^2 + A^2 - \lam) + \frac{i}{g^2} \lam } ].
  	}
  	We can minimize with respect to $\lam$ and $\Asm$ by enforcing that the derivative of the argument of the log is equal to zero.   	For $\Asm$, we have
@@ -240,21 +239,58 @@
  	}
  	For $\lam$, we then have
  	\eq{
- 		\int \ddspf \frac{N}{p^2 - \lam} = \frac{i}{g^2}.
+ 		\int \ddspf \frac{N}{p^2 - \lam} = -\frac{i}{g^2}.
  	}
- 	We evaluate this using a momentum cutoff as in (13.118), and find
+ 	From P\&S~(A.44),
  	\eq{
-
- 	
-
+ 		\int \frac{\dd[d]{\ell}}{(2\pi)^d} \frac{1}{(\ell^2 - \Del)^n} = \frac{(-1)^n i}{(4\pi)^{d / 2}} \frac{\Gam(n - d / 2)}{\Gam(n)} \paren{ \frac{1}{\Del} }^{n - d / 2}.
+ 	}
+ 	Then
+ 	\aln{
+ 		N \int \ddspf \frac{1}{p^2 - \lam} &= -N \frac{i}{(4\pi)^{d / 2}} \Gam(1 - d / 2) \paren{ \frac{1}{\lam} }^{1 - d / 2} \notag \\
+ 		&= -N \frac{i}{(4\pi)^{1 - \eps / 2}} \Gam(-\eps / 2) \paren{ \frac{1}{\lam} }^{-\eps / 2} \notag \\
+ 		&\to \frac{i N}{4\pi} \paren{ \frac{2}{\eps} + \gam + \ln(4\pi) + \ln(\lam) } \notag \\
+ 		&\equiv \frac{i N}{4\pi} \ln(\frac{\lam}{M^2}), \label{integral}
+ 	}
+ 	where we have used modified minimal subtraction~\cite[p.~377]{Peskin}.  Setting $\lam = m^2$, we have
+ 	\eq{
+ 		-\frac{i}{g^2} = \frac{i N}{4\pi} \ln(\frac{m^2}{M^2}) = \frac{i N}{2 \pi} \ln(\frac{m}{M})
+ 		\qimplies
+ 		\ans{ m = M \exp(-\frac{2\pi}{g^2 N}) }
+ 	}
+ 	as we wanted to show. \qed
 }
 
 
-% 13.115 
 
-\clearpage
 \prob{
 	Now expand the exponent about $\Asm = 0$.  Show that the first nontrivial term in this expansion is proportional to the vacuum polarization of massive scalar fields.  Evaluate this expression using dimensional regularization, and show that it yields a standard kinetic energy term for $\Asm$.  Thus the strange nonlinear field theory that we started with is finally transformed into a theory of $N + 1$ massive scalar fields interacting with a massless photon.
+}
+
+\sol{
+	Using the exponent in Eq.~\refeq{logexp}, note that
+	\eq{
+		\exp[ -N \int \ddsx \int \ddspf \ln(p^2 + A^2 - \lam) ] \approx \exp[ -N \int \ddsx \int \ddspf \paren{ \ln(p^2 - \lam) + \frac{A^2}{p^2 - \lam} } ].
+	}
+	The first nonzero term in the expansion is
+	\eq{
+		-N \int \ddspf \frac{A^2}{p^2 - \lam} = -N \int \ddspf \frac{A^2}{p^2 - m^2}.
+	}
+	This looks like the contribution from the loop of the propagator in the nonlinear sigma model, (13.77):
+	\eq{
+		\centergraphics{diag/loop} = \int \frac{\dd[d]{k}}{(2\pi)^d} \frac{i g^2}{k^2 - \mu^2} \del^{k l},
+	}
+	where $\mu$ is the mass of the scalar field.  We know that any contribution to the vacuum polarization of the scalar fields must be proportional to this loop, since it appears in diagrams like the following:
+	\eq{
+		\centergraphics{diag/loop1}
+		\hspace{3cm}
+		\centergraphics{diag/loop2}
+	}	
+	Evaluating the integral as in Eq.~\refeq{integral}, we have
+	\eq{
+		-N \int \ddspf \frac{A^2}{p^2 - m^2} = \ans{ \frac{i N}{4\pi} \ln(\frac{m^2}{M^2}) \Am \Asm. }
+	}
+	The $\Am \Asm$ indicates that this is a kinetic energy term. \qed
 }
 
 

@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{loop_}
+	\fmfframe(-1,2)(-1,2){
+		\begin{fmfgraph*}(10, 10)
+			\fmftop{i}
+			\fmfbottom{o}
+			\fmf{plain,right,tension=0}{i,o,i}
+			\fmfdot{o}
+			\fmfv{label=$k \quad \quad \ \ell$,label.angle=0,label.dist=0w}{o}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}

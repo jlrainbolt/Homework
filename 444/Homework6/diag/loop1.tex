@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage[force]{feynmp-auto}
+\usepackage{grffile}
+
+
+\begin{document}
+
+\unitlength = 1mm
+
+\begin{fmffile}{loop1_}
+	\fmfframe(-1,6)(-1,3){
+		\begin{fmfgraph*}(30, 10)
+			\fmfstraight
+			\fmfleft{i}
+			\fmfright{o}
+			\fmf{phantom}{i,c1,c2,o}
+			\fmffreeze
+			\fmf{photon}{i,c1}
+			\fmf{dashes,left,tension=0}{c1,c2}
+			\fmf{dashes,right,tension=0}{c1,c2}
+			\fmf{photon}{c2,o}
+		\end{fmfgraph*}
+	}
+\end{fmffile}
+
+\end{document}
