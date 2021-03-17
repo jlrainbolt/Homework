@@ -1,5 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{homework}
+\let\div\relax
+\usepackage{mathabx}
 
 \classname{444}
 \homeworknum{6}
@@ -17,7 +19,7 @@
 
 
 \state{The Bertotti-Robsinson solution of the Einstein field equation~(MCP 26.2)}{
-	Bruno Bertotti ans Ivor Rovinson independently solved the Einstein field equation to obtain the following metric for a universe endowed with a uniform magnetic field:
+	Bruno Bertotti and Ivor Rovinson independently solved the Einstein field equation to obtain the following metric for a universe endowed with a uniform magnetic field:
 	\eqn{given1}{
 		\dds^2 = Q^2 (-\ddt^2 + \sin^2 t \ddz^2 + \ddtht^2 + \sin^2\tht \ddphi^2).
 	}
@@ -29,11 +31,16 @@
 		0 &\leq \tht \leq \pi, &
 		0 &\leq \phi \leq 2\pi.
 	}
-	If one computes the Einstein tensor from the metric coefficients of the line element Eq.~\refeq{given1} and equates it to $8\pi$ times a stress-energy tensor, one finds a stress-energy tensor that is precisely the same as for an electromagnetic field lifted, unchanged, into general relativity.  The electromagnetic field is one that, as measured in the local Lorentz frame of an observer with fixed $\{ z, \tht, \phi \}$ (a ``static'' observer), has vanishing electric field and has a magnetic field directed along $\pdv*{z}$ with magnitude independent of where the observer is located in spacetime.  In this sense, the spacetime metric Eq.~\refeq{given1} is that of a homogeneous magnetic universe.  Discuss the geometry of this universe and the nature of the coordinates $\{ t, z, \tht, \phi \}$.
+%	If one computes the Einstein tensor from the metric coefficients of the line element Eq.~\refeq{given1} and equates it to $8\pi$ times a stress-energy tensor, one finds a stress-energy tensor that is precisely the same as for an electromagnetic field lifted, unchanged, into general relativity.  The electromagnetic field is one that, as measured in the local Lorentz frame of an observer with fixed $\{ z, \tht, \phi \}$ (a ``static'' observer), has vanishing electric field and has a magnetic field directed along $\pdv*{z}$ with magnitude independent of where the observer is located in spacetime.  In this sense, the spacetime metric Eq.~\refeq{given1} is that of a homogeneous magnetic universe.  
+Discuss the geometry of this universe and the nature of the coordinates $\{ t, z, \tht, \phi \}$.
 }
 
 \prob{
 	Which coordinate increases in a timelike direction and which coordinates in spacelike directions?
+}
+
+\sol{
+	The coordinate $t$ increases in a timelike direction because $\ddt^2$ appears in the metric with a minus sign.  The coordinates $z$, $\tht$, and $\phi$ all increase in a spacelike direction because $\ddz^2$, $\ddtht^2$, and $\ddphi^2$ appear in the metric with plus signs.
 }
 
 
@@ -42,10 +49,26 @@
 	Is this universe spherically symmetric?
 }
 
+\sol{
+	Yes.  We can think of $\{ \tht, \phi \}$ as a coordinate system on the 2-surface of constant $t$ and $z$.  The metric for this 2-surface is
+	\eq{
+		\spw \dds^2 = Q^2 (\ddtht^2 + \sin^2\tht \dd\phi^2),
+	}
+	which is the line element of a 2-dimensional sphere in spherical coordinates.  This means the spacetime in Eq.~\refeq{given1} is spherically symmetric~\cite[p.~1244]{MCP}.
+}
+
 
 
 \prob{
 	Is this universe cylindrically symmetric?
+}
+
+\sol{
+	No.  In order for the universe to be cylindrically symmetric, we would need a constant-$r$ 2-surface parametrized by some coordinates $\{ \phh, \zh \}$ with the line element
+	\eq{
+		\spw \dds^2 = r^2 \dd{\phh}^2 + \dd{\zh}^2.
+	}
+	This does not appear in Eq.~\refeq{given1}.
 }
 
 
@@ -54,10 +77,22 @@
 	Is this universe asymptotically flat?
 }
 
+\sol{
+	No.  In order for the spacetime to be asymptotically flat, we would need to find some limit in which Eq.~\refeq{given1} took the form
+	\eq{
+		\dds^2 = -\ddt^2 + \ddx^2 + \ddy^2 + \ddz^2.
+	}
+	No such limit exists.
+}
+
 
 
 \prob{
-	How does the geometry of this universe change as $t$ ranges from $0$ to $\pi$?  [Hint: show that the curves $\{ z, \tht, \phi \} = \const,\ t = \tau / Q \}$ are timelike geodesics---the world lines of the static observers referred to above.  Then argue from symmetry, or use the result of Ex.~25.4a.]
+	How does the geometry of this universe change as $t$ ranges from $0$ to $\pi$?  [Hint: show that the curves $\{ z, \tht, \phi = \const,\ t = \tau / Q \}$ are timelike geodesics---the world lines of the static observers referred to above.  Then argue from symmetry, or use the result of Ex.~25.4a.]
+}
+
+\sol{
+	A timelike geodesic has a tangent vector $\vuu$ which can be normalized such that $\vuu = \dv*{\tau}$~\cite[p.~1202]{MCP}.  The geodesic equation is $\nabvuu \vuu = 0$ by MCP~(25.11d).
 }
 
 
@@ -71,48 +106,8 @@
 
 
 
-
-\state{Gravitational redshift of light from a star's surface~(MCP 26.4)}{
-	Consider a photon emitted by an atom at rest on the surface of a static star with mass $M$ and radius $R$.  Analyze the photon's motion in the Schwarzschild coordinate system of the star's exterior, $r \geq R > 2M$.  In particular, compute the ``gravitational redshift'' of the photon by the following steps.
-}
-
-\prob{
-	Since the emitting atom is nearly an ideal clock, it gives the emitted photon nearly the same frequency $\nuem$, as measured in the emitting atom's proper reference frame (as it would give were it in an Earth laboratory or floating in free space).  Thus the proper reference frame of the emitting atom is central to a discussion of the photon's properties and behavior.  Show that the orthonormal basis vectors of that proper reference frame are
-	\al{
-		\veoh &= \frac{1}{\sqrt{1 - 2 M / r}} \pdv{t}, &
-		\verh &= \sqrt{1 - 2 \frac{M}{r}} \pdv{r}, &
-		\vethh &= \frac{1}{r} \pdv{\tht}, &
-		\vephh &= \frac{1}{r \sin\tht} \pdv{\phi},
-	}
-	with $r = R$ (the star's radius).
-}
-
-
-
-\prob{
-	Explain why the photon's energy as measured in the emitter's proper reference frame is $\cE = h \nuem = -\poh = -\vp \cdot \veoh$.  (Here and below $h$ is Planck's constant, and $\vp$ is the photon's 4-momentum.)
-}
-
-
-
-\prob{
-	Show that the quantity $\cEinf = -\pst = -\vp \cdot \pdv*{t}$ is conserved as the photon travels outward from the emitting atom to an observer at very large radius, which we idealize as $r \to \infty$.  [Hint: Recall the result of Ex.~25.4a.]  Show, further, that $\cEinf$ is the photon's energy, as measured by the observer at $r = \infty$---which is why it is called the photon's ``energy-at-infinity'' and denoted $\cEinf$.  The photon's frequency, as measured by that observer, is given, of course, by $h \nuinf = \cEinf$.
-}
-
-
-
-\prob{
-	Show that $\cEinf = \cE \sqrt{1 - 2 M / R}$ and thence that $\nuinf = \nuem \sqrt{1 - 2 M / R}$, and that therefore the photon is redshifted by an amount
-	\eq{
-		\frac{\lamrec - \lamem}{\lamem} = \frac{1}{\sqrt{1 - 2 M / R}} - 1.
-	}
-	Here $\lamrec$ is the wavelength that the photon's spectral line exhibits at the receiver, and $\lamem$ is the wavelength that the emitting kind of atom would produce in an Earth laboratory.  Note that for a nearly Newtonian star (i.e., one with $R \gg M$), this redshift becomes $\simeq M / R = G M / R c^2$.
-}
-
-
-\prob{
-	Evaluate this redshift for Earth, for the Sun, and for a 1.4-solar-mass, 10-km-radius neutron star.
-}
+\clearpage
+\input{Problem2}
 
 
 
@@ -120,22 +115,32 @@
 
 
 
-\state{Mass-radius relation for neutron stars}{
-	The equation of state of a neutron star is very hard to calculate at the supra-nuclear densities required, because the calculation is a complex, many-body problem and the particle interactions are poorly understood an poorly measured.  Observations of neutron stars' masses and radii can therefore provide valuable constraints on fundamental nuclear physics.  As we discuss briefly in the following chapter, various candidate equations of state can already be excluded on these observational grounds.
+\state{Mass-radius relation for neutron stars~(MCP 26.7)}{
+%	The equation of state of a neutron star is very hard to calculate at the supra-nuclear densities required, because the calculation is a complex, many-body problem and the particle interactions are poorly understood an poorly measured.  Observations of neutron stars' masses and radii can therefore provide valuable constraints on fundamental nuclear physics.  As we discuss briefly in the following chapter, various candidate equations of state can already be excluded on these observational grounds.
 	
-	A necessary step for comparing observation with theory is to compute the stellar structure for candidate equations fo state.  We can illustrate the approach using a simple functional form, which, around nuclear density ($\rhonuc \simeq \SI{2.3e17}{\kg\per\cubic\meter}$), is a fair approximation to come of the models:
+%	A necessary step for comparing observation with theory is to compute the stellar structure for candidate equations of state.  
+	We can illustrate the approach using a simple functional form, which, around nuclear density ($\rhonuc \simeq \SI{2.3e17}{\kg\per\cubic\meter}$), is a fair approximation to some of the models:
 	\eq{
 		P = \num{3e32} \paren{ \frac{\rho}{\rhonuc} }^3 \:\si{\newton\per\square\meter}.
 	}
 	For this equation of state, use the equations of stellar structure~(26.38a) and (26.38c) to find the masses and radii of stars with a range of central pressures, and hence deduce a mass-radius relation, $M(R)$.  You should discover that, as the central pressure is increased, the mass passes through a maximum, while the radius continues to decrease.
 }
 
+\sol{
+	MCP~(26.38a) and (26.38c) are, respectively,
+	\al{
+		\dv{m}{r} &= 4 \pi r^2 \rho, &
+		\dv{P}{r} &= -\frac{(\rho + P) (m + 4\pi r^3 P)}{r (r - 2m)}.
+	}
+	\hl{what are we even supposed to do here?}
+}
 
 
 
 
 
 
+\clearpage
 \state{}{
 	An astronaut on a rocket ship has just crossed the event horizon of a Schwarzschild black hole.  Show that, no matter how the rocket engines are fired, they will reach $r = 0$ in a proper time $\tau \leq \pi M$.
 }
@@ -143,22 +148,57 @@
 
 
 
-
+\clearpage
 \state{Fermat's principle for a photon's path in static spacetime~(MCP~27.4)}{
-	Show that the Euler-Lagrange equation for the action principle~(27.8) is equivalent to the geodesic equation for a photon in the static spacetime metric $\sgoo(\xk)$, $\sgij(\xk)$.
+	Show that the Euler-Lagrange equation for the action principle,
+	\eqn{27.8}{
+		\Del t = \intoq \sqrt{ \gamjk \dv{\xj}{\eta} \dv{\xk}{\eta} } \ddeta,
+		\qquad \text{where }
+		\gamjk = \frac{\sgjk}{-\sgoo},
+	}
+	is equivalent to the geodesic equation for a photon in the static spacetime metric $\sgoo(\xk)$, $\sgij(\xk)$.  Specifically, do the following.
 }
 
 \prob{
-	The action~(27.8) is the same as that for a geodesic in a 3-dimensional space with the metric $\gamjk$ and with $t$ playing the role of proper distance traveled~[Eq.~(25.19) converted to a positive-definite, 3-dimensional metric].  Therefore, the Euler-Lagrange equation for Eq.~(27.8) is the geodesice equation in that (fictitious) space [Eq.~(25.14) with $t$ the affine parameter].  Using Eq.~(24.38c) for the connection coefficients, show that the geodesic equation can be written in the form
+	The action~Eq.~\refeq{27.8} is the same as that for a geodesic in a 3-dimensional space with the metric $\gamjk$ and with $t$ playing the role of proper distance traveled~[Eq.~(25.19) converted to a positive-definite, 3-dimensional metric].  Therefore, the Euler-Lagrange equation for Eq.~\refeq{27.8} is the geodesic equation in that (fictitious) space [Eq.~(25.14) with $t$ the affine parameter].  Using Eq.~(24.38c) for the connection coefficients, show that the geodesic equation can be written in the form
 	\eqn{show5a}{
 		\gamjk \dv[2]{\xk}{t} + \frac{1}{2} (\gamjkl + \gamjlk - \gamklj) \dv{\xk}{t} \dv{\xl}{t} = 0.
 	}
 }
 
+\sol{
+	MCP~(25.14) is
+	\eqn{25.14}{
+		\dv[2]{\xalp}{\zet} + \Gam^\alp{}_{\mu \nu} \dv{\xmu}{\zet} \dv{\xnu}{\zet} = 0
+	}
+	with $\zet$ the affine parameter.  With $t$ as the affine parameter, this can be written
+	\eq{
+		0 = \dv[2]{x_j}{t} + \Gam_{j k l} \dv{\xk}{t} \dv{\xl}{t}
+		= \sgjk \dv[2]{\xk}{t} + \Gam_{j k l} \dv{\xk}{t} \dv{\xl}{t},
+	}
+	where we have also lowered the first index.  Using the definition $\gamjk = \sgjk / {-\sgoo}$, we can write
+	\eqn{thing5a}{
+		\gamjk \dv[2]{\xk}{t} + \frac{1}{-\sgoo} \Gam_{j k l} \dv{\xk}{t} \dv{\xl}{t}.
+	}
+	MCP~(24.28c) is
+	\eq{
+		\Gam_{\alp \bet \gam} = \frac{1}{2} (\sg_{\alp \bet, \gam} + \sg_{\alp \gam, \bet} - \sg_{\bet \gam, \alp} + c_{\alp \bet \gam} + c_{\alp \bet \gam} - c_{\bet \gam \alp}).
+	}
+	Assuming a coordinate basis, the commutation coefficients $c_{\alp \bet \gam}$ vanish~\cite[p.~1171]{MCP}.  Then, again using the definition of $\gamjk$, we have
+	\eq{
+		\frac{1}{-\sgoo} \Gam_{j k l} = \frac{1}{2} (\gam_{j k, l} + \gam_{j l, k} - \gam_{k l, j}).
+	}
+	Making this substitution in Eq.~\refeq{thing5a}, we have
+	\eq{
+		\ans{ \gamjk \dv[2]{\xk}{t} + \frac{1}{2} (\gamjkl + \gamjlk - \gamklj) \dv{\xk}{t} \dv{\xl}{t} = 0 }
+	}
+	as desired. \qed
+}
+
 
 
 \prob{
-	Take the geodesic equation~(25.14) for the light ray in the real spacetime, with spacetime affine parameter $\zet$, and change parameters to coordinate time $t$.  Thereby obtain
+	Take the geodesic equation~Eq.~\refeq{25.14} for the light ray in the real spacetime, with spacetime affine parameter $\zet$, and change parameters to coordinate time $t$.  Thereby obtain
 	\aln{ \label{show5b}
 		\sgjk \dv[2]{\xk}{t} + \Gamjkl \dv{\xk}{t} \dv{\xl}{t} - \Gamjoo \frac{\sgkl}{\sgoo} \dv{\xk}{t} \dv{\xl}{t} + \frac{\dv*[2]{t}{\zet}}{(\dv*{t}{\zet})^2} \sgjk \dv{\xk}{t} &= 0, &
 		\frac{\dv*[2]{t}{\zet}}{(\dv*{t}{\zet})^2} + 2 \Gamoko \frac{\dv*{\xk}{t}}{\sgoo} &= 0.

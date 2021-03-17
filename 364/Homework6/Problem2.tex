@@ -1,0 +1,145 @@
+\state{Gravitational redshift of light from a star's surface~(MCP 26.4)}{
+	Consider a photon emitted by an atom at rest on the surface of a static star with mass $M$ and radius $R$.  Analyze the photon's motion in the Schwarzschild coordinate system of the star's exterior, $r \geq R > 2M$.  In particular, compute the ``gravitational redshift'' of the photon by the following steps.
+}
+
+\prob{ \label{2a}
+	Since the emitting atom is nearly an ideal clock, it gives the emitted photon nearly the same frequency $\nuem$, as measured in the emitting atom's proper reference frame (as it would give were it in an Earth laboratory or floating in free space).  Thus the proper reference frame of the emitting atom is central to a discussion of the photon's properties and behavior.  Show that the orthonormal basis vectors of that proper reference frame are
+	\al{
+		\veoh &= \frac{1}{\sqrt{1 - 2 M / r}} \pdv{t}, &
+		\verh &= \sqrt{1 - 2 \frac{M}{r}} \pdv{r}, &
+		\vethh &= \frac{1}{r} \pdv{\tht}, &
+		\vephh &= \frac{1}{r \sin\tht} \pdv{\phi},
+	}
+	with $r = R$ (the star's radius).
+}
+
+\sol{
+	We know that the sun's exterior has a Schwarzschild spacetime geometry~\cite[p.~1250]{MCP}.  According to MCP~(26.1), the Schwarzschild metric is
+	\eq{
+		\dds^2 = -\paren{1 - \frac{2 M}{r} } \ddt^2 + \frac{\ddr^2}{1 - 2 M / r} + r^2 (\ddtht^2 + \sin^2\tht \ddphi^2).
+	}
+	We also know that the wordline of an atom at rest on its surface is timelike ($r = R$, $\tht = \const$, $\phi = \const$) with the squared proper time
+	\eq{
+		\ddtau^2 = -\dds^2
+		= \paren{ 1 - \frac{2 M}{R} } \ddt^2.
+	}
+	This can be read off the Schwarzschild metric, since for $r > 2M$ $t$ is a time coordinate and $r$ is a space coordinate~\cite[pp.~1248, 1250]{MCP}.  This means that the proper rest frame of the atom has a Schwarzschild coordinate system.  From (4) of Box~26.2, the orthonormal basis associated with the Schwarzschild solution of Einstein's equation are~\cite[p.~1243]{MCP}
+	\ans{\al{
+		\veoh &= \frac{1}{\sqrt{1 - 2 M / r}} \pdv{t}, &
+		\verh &= \sqrt{1 - 2 \frac{M}{r}} \pdv{r}, &
+		\vethh &= \frac{1}{r} \pdv{\tht}, &
+		\vephh &= \frac{1}{r \sin\tht} \pdv{\phi}.
+	}}%
+	We have already asserted that $r = R$. \qed
+}
+
+
+
+\prob{
+	Explain why the photon's energy as measured in the emitter's proper reference frame is $\cE = h \nuem = -\poh = -\vp \cdot \veoh$.  (Here and below $h$ is Planck's constant, and $\vp$ is the photon's 4-momentum.)
+}
+
+\sol{
+	A photon's energy is, by definition, $\cE = h \nu$~\cite[p.~106]{MCP}.  We know from \ref{2a} that $\nuem$ is the photon's frequency in the emitter's proper reference frame; thus, $\cE = h \nuem$.  A photon's momentum always has magnitude $\abs{p} = \cE c$, so in natural units $\cE = -\vp$~\cite[p.~35]{MCP}.  \hl{Why the minus sign?}  The zeroth component of any particle's four-momentum is its energy, so it follows that $\cE = -\vp \cdot \veoh$. \qed
+}
+
+
+
+\prob{ \label{2c}
+	Show that the quantity $\cEinf = -\pst = -\vp \cdot \pdv*{t}$ is conserved as the photon travels outward from the emitting atom to an observer at very large radius, which we idealize as $r \to \infty$.  [Hint: Recall the result of Ex.~25.4a.]  Show, further, that $\cEinf$ is the photon's energy, as measured by the observer at $r = \infty$---which is why it is called the photon's ``energy-at-infinity'' and denoted $\cEinf$.  The photon's frequency, as measured by that observer, is given, of course, by $h \nuinf = \cEinf$.
+}
+
+\sol{
+	As $r \to \infty$,
+	\eq{
+		\cE = -\vp \cdot \veoh
+		= -\vp \cdot \frac{1}{\sqrt{1 - 2 M / r}} \pdv{t}
+		\to
+		-\vp \cdot \pdv{t} = \ans{ \cEinf }
+	}
+	as we wanted to show. \qed
+	
+	In this limit, we know the Schwarzschild spacetime is flat and takes the form of MCP~(26.4),
+	\eqn{schflat}{
+		\dds^2 = -\ddt^2 + \ddr^2 + r^2 (\ddtht^2 + \sin^2\tht \ddphi^2).
+	}
+	Then the metric coefficients are easily found by adapting (2) of Box~26.2:
+	\al{
+		\sg_{t t} &= -1, &
+		\sg_{r r} &= 1, &
+		\sg_{\tht \tht} &= r^2, &
+		\sg_{\phi \phi} &= r^2 \sin^2\tht.
+	}
+	This metric is independent of $t$; that is, all $\sg_{\alp \bet, t} = 0$ for all $\alp, \bet$.  As we showed in Ex.~25.4a~(Problem~4 of Homework~4), $p_A = \vp \cdot \pdv*{x^A}$ is a constant of motion for a freely moving particle in a coordinate system with metric coefficients independent of $x^A$.  Applying this result to the metric Eq.~\refeq{schflat}, we conclude that $\cEinf = -\vp \cdot \pdv*{t}$ is a constant of the photon's motion; that is, it is conserved. \qed
+}
+
+
+
+\prob{
+	Show that $\cEinf = \cE \sqrt{1 - 2 M / R}$ and thence that $\nuinf = \nuem \sqrt{1 - 2 M / R}$, and that therefore the photon is redshifted by an amount
+	\eq{
+		\frac{\lamrec - \lamem}{\lamem} = \frac{1}{\sqrt{1 - 2 M / R}} - 1.
+	}
+	Here $\lamrec$ is the wavelength that the photon's spectral line exhibits at the receiver, and $\lamem$ is the wavelength that the emitting kind of atom would produce in an Earth laboratory. % Note that for a nearly Newtonian star (i.e., one with $R \gg M$), this redshift becomes $\simeq M / R = G M / R c^2$.
+}
+
+\sol{
+	We know from \ref{2c} that
+	\al{
+		\cE &= -\vp \cdot \frac{1}{\sqrt{1 - 2 M / r}} \pdv{t}, &
+		\cEinf &= -\vp \cdot \pdv{t}.
+	}
+	It is then obvious that
+	\eq{
+		\cE = \frac{1}{\sqrt{1 - 2 M / r}} \cEinf
+		\qimplies
+		\ans{ \cEinf = \cE \sqrt{1 - \frac{2 M}{r}} }
+	}
+	and
+	\eq{
+		 h \nuinf = h \nuem \sqrt{1 - \frac{2 M}{r}}
+		 \qimplies
+		\ans{ \nuinf = \nuem \sqrt{1 - \frac{2 M}{r}} }
+	}
+	as we wanted to show. \qed
+	
+	We know from \ref{2c} that the observer is located at infinity, so $\lamrec = \lam_\infty$.  In natural units, $\lam = 1 / \nu$.  Then
+	\eq{
+		\frac{\lamrec - \lamem}{\lamem} = \frac{1 / \nuinf - 1 / \nuem}{1 / \nuem}
+		= \frac{\nuem}{\nuinf} - 1
+		= \ans{ \frac{1}{\sqrt{1 - 2 M / R}} - 1 }
+	}
+	as we wanted to show. \qed
+}
+
+
+\prob{
+	Evaluate this redshift for Earth, for the Sun, and for a 1.4-solar-mass, 10-km-radius neutron star.
+}
+
+\sol{
+	In SI units~\cite{Redshift},
+	\eq{
+		z = \frac{\lamrec - \lamem}{\lamem} = \frac{1}{\sqrt{1 - 2 G M / R c^2}} - 1
+	}
+	where $G = \Grav$ and $c = \Speed$~\cite[p.~A-7]{YF}.
+	
+	For Earth, $\Rearth \approx \EarthR$ and $\Mearth \approx \EarthM$~\cite[p.~A-8]{YF}.  Then
+	\eq{
+		\zearth = \frac{1}{\sqrt{1 - 2 G \Mearth / \Rearth c^2}} - 1
+		\approx \sqrt{1 - \frac{2 (\Grav) (\EarthM)}{(\EarthR) (\Speed)^2}}^{-1} - 1
+		\approx \ans{ \num{6.95e-10}. }
+	}
+	For the Sun, $\Rsun \approx \SunR$ and $\Msun \approx \SunM$~\cite[p.~A-8]{YF}.  Then
+	\eq{
+		\zsun = \frac{1}{\sqrt{1 - 2 G \Msun / \Rsun c^2}} - 1
+		\approx \sqrt{1 - \frac{2 (\Grav) (\SunM)}{(\SunR) (\Speed)^2}}^{-1} - 1
+		\approx \ans{ \num{2.12e-6}. }
+	}
+	For the neutron star, $\Rns \approx \NSR$ and $\Mns = 1.4 \Msun \approx \NSM$.  Then
+	\eq{
+		\zns = \frac{1}{\sqrt{1 - 2 G \Mns / \Rns c^2}} - 1
+		\approx \sqrt{1 - \frac{2 (\Grav) (\NSM)}{(\NSR) (\Speed)^2}}^{-1} - 1
+		\approx \ans{ 0.306. }
+	}
+}
